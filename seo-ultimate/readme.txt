@@ -48,12 +48,6 @@ To install the plugin manually:
 4. Go to the new "SEO" menu to start using.
 
 
-== Screenshots ==
-
-1. The Title Rewriter module
-2. The Noindex Manager module
-
-
 == Frequently Asked Questions ==
 
 = Where in WordPress does the plugin add itself? =
@@ -65,6 +59,12 @@ SEO Ultimate puts all its admin pages under a new "SEO" top-level menu. The only
 Here are some troubleshooting ideas:
 1. Try disabling other SEO plugins (they may be conflicting with SEO Ultimate).
 2. Check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
+
+
+== Screenshots ==
+
+1. The Title Rewriter module
+2. The Noindex Manager module
 
 
 == Release History ==
