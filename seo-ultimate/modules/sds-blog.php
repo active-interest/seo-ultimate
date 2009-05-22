@@ -13,7 +13,7 @@ class SU_SdsBlog extends SU_Module {
 	function get_page_title() { return __('SEO Design Solutions Whitepapers', 'seo-ultimate'); }
 	function get_menu_title() { return __('Whitepapers', 'seo-ultimate'); }	
 	function get_menu_pos()   { return 30; }
-	function get_menu_count() { return $this->get_unread_count(); }
+	function get_menu_count() { return 0; /*$this->get_unread_count();*/ }
 	
 	function __construct() {
 		add_filter('su_settings_export_array', array($this, 'filter_export_array'));
