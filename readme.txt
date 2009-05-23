@@ -16,6 +16,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Noindex Manager** - Lets you add the `noindex` meta robots instruction to archives, comment feeds, the login page, and more.
 
 SEO Ultimate was developed with WordPress plugin "best practices" in mind:
+
 * Integration with WordPress's contextual help system
 * Internationalization support
 * Nonce security
@@ -57,6 +58,7 @@ SEO Ultimate puts all its admin pages under a new "SEO" top-level menu. The only
 = Some of the features aren't working! =
 
 Here are some troubleshooting ideas:
+
 1. Try disabling other SEO plugins (they may be conflicting with SEO Ultimate).
 2. Check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
 
