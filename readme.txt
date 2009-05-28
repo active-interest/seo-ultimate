@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: google, seo, title, meta
 Requires at least: 2.7
 Tested up to: 2.7.1
-Stable tag: 0.1
+Stable tag: 0.1.1
 
 This all-in-one SEO plugin can rewrite title tags and noindex archives (with many more features coming soon).
 

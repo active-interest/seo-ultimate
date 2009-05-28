@@ -2,7 +2,7 @@
 /**
  * Title Rewriter Module
  * 
- * @version 1.0
+ * @version 1.0.1
  * @since 0.1
  */
 
@@ -99,7 +99,7 @@ class SU_Titles extends SU_Module {
 			if (count($handlers) > 0 && strcasecmp($handlers[count($handlers)-1], 'SU_Titles::change_title_tag') == 0)
 				ob_end_flush();
 			else
-				su_debug_log(__FILE__, __CLASS__, __FUNCTION__, __LINE__, "Other ob_list_handlers found:\n".print_r($handlers));
+				su_debug_log(__FILE__, __CLASS__, __FUNCTION__, __LINE__, "Other ob_list_handlers found:\n".print_r($handlers, true));
 		}
 	}
 	
