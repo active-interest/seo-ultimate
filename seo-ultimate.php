@@ -1947,7 +1947,8 @@ class SU_Module {
 						$cell = sprintf(__('%1$s<br />%2$s', 'seo-ultimate'), $date, $time);
 						break;
 					case 'user_agent':
-						$cell = get_browser($cell)->parent;
+						$binfo = get_browser($cell, true);
+						$cell = $binfo['parent'];
 						break;
 					case 'url':
 						if ($actions_callback) {
