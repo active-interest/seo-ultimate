@@ -23,7 +23,7 @@ class SU_Settings extends SU_Module {
 	}
 	
 	function init() {
-	
+		
 		if ($this->is_action('export')) {
 			header('Content-Type: application/octet-stream');
 			header('Content-Disposition: attachment; filename="SEO Ultimate Settings ('.date('Y-m-d').').dat"');

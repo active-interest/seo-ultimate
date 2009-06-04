@@ -2,7 +2,7 @@
 /**
  * Noindex Manager Module
  * 
- * @version 1.0
+ * @version 1.0.1
  * @since 0.1
  */
 
@@ -33,7 +33,7 @@ class SU_Noindex extends SU_Module {
 				__("Note: The current <a href='options-privacy.php'>privacy settings</a> will block indexing of the entire site, regardless of which options are set below.", 'seo-ultimate') );
 		
 		$this->admin_form_start();
-		echo "<th><strong>".__('Prevent indexing of...', 'seo-ultimate')."</strong></th>\n";
+		$this->admin_form_subheader(__('Prevent indexing of...', 'seo-ultimate'));
 		$this->checkboxes(array('noindex_admin' => __('Administration back-end pages', 'seo-ultimate')
 							,	'noindex_author' => __('Author archives', 'seo-ultimate')
 							,	'noindex_search' => __('Blog search pages', 'seo-ultimate')

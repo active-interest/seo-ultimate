@@ -2,7 +2,7 @@
 /**
  * Title Rewriter Module
  * 
- * @version 1.0.1
+ * @version 1.0.2
  * @since 0.1
  */
 
@@ -120,7 +120,8 @@ class SU_Titles extends SU_Module {
 		$format = $this->get_title_format();
 		
 		//Custom post/page title?
-		if ($post_title = $this->get_postmeta('title')) return $this->get_title_paged($post_title);
+		if ($post_title = $this->get_postmeta('title'))
+			return htmlspecialchars($this->get_title_paged($post_title));
 		
 		//Load post/page titles
 		$post_title = '';
@@ -167,7 +168,7 @@ class SU_Titles extends SU_Module {
 			, '{ucquery}' => attribute_escape(ucwords(get_search_query()))
 		);
 		
-		$title = htmlspecialchars(str_replace(array_keys($variables), array_values($variables), $format));
+		$title = str_replace(array_keys($variables), array_values($variables), htmlspecialchars($format));
 		
 		return $this->get_title_paged($title);
 	}

@@ -3,7 +3,7 @@
 Plugin Name: SEO Ultimate
 Plugin URI: http://www.seodesignsolutions.com/wordpress-seo/
 Description: This all-in-one SEO plugin can rewrite title tags and add noindex to pages (with many more features coming soon).
-Version: 0.1.1
+Version: 0.2
 Author: SEO Design Solutions
 Author URI: http://www.seodesignsolutions.com/
 Text Domain: seo-ultimate
@@ -12,7 +12,7 @@ Text Domain: seo-ultimate
 /**
  * The main SEO Ultimate plugin file.
  * @package SeoUltimate
- * @version 0.1.1
+ * @version 0.2
  * @link http://www.seodesignsolutions.com/wordpress-seo/ SEO Ultimate Homepage
  */
 
@@ -38,10 +38,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 define("SU_PLUGIN_NAME", "SEO Ultimate");
 define("SU_PLUGIN_URI", "http://www.seodesignsolutions.com/wordpress-seo/");
-define("SU_VERSION", "0.1.1");
+define("SU_VERSION", "0.2");
 define("SU_AUTHOR", "SEO Design Solutions");
 define("SU_AUTHOR_URI", "http://www.seodesignsolutions.com/");
-define("SU_USER_AGENT", "SeoUltimate/0.1.1");
+define("SU_USER_AGENT", "SeoUltimate/0.2");
 
 
 /********** CLASSES **********/
@@ -113,6 +113,14 @@ class SEO_Ultimate {
 	 */
 	var $plugin_dir_url;
 	
+	/**
+	 * The database ID of the current hit.
+	 * 
+	 * @since 0.2
+	 * @var int
+	 */
+	var $hit_id = 0;
+	
 	
 	/********** CLASS CONSTRUCTORS **********/
 	
@@ -121,10 +129,10 @@ class SEO_Ultimate {
 	 * PHP5-style constructor.
 	 * 
 	 * @since 0.1
+	 * @uses load_plugin_data()
 	 * @uses SU_VERSION
 	 * @uses install()
 	 * @uses upgrade()
-	 * @uses load_plugin_data()
 	 * @uses load_modules()
 	 * @uses activate() Registered with WordPress as the activation hook.
 	 * @uses init() Hooked into WordPress's "init" action.
@@ -133,9 +141,16 @@ class SEO_Ultimate {
 	 * @uses admin_includes() Hooked into WordPress's "admin_head" action.
 	 * @uses plugin_page_notices() Hooked into WordPress's "admin_head" action.
 	 * @uses admin_help() Hooked into WordPress's "contextual_help" action.
+	 * @uses log_redirect() Hooked into WordPress's "wp_redirect" action.
 	 * @uses log_hit() Hooked into WordPress's "status_header" action.
 	 */
 	function __construct() {
+		
+		/********** CLASS CONSTRUCTION **********/
+		
+		//Load data about the plugin file itself into the class
+		$this->load_plugin_data();
+		
 		
 		/********** VERSION CHECKING **********/
 		
@@ -158,9 +173,6 @@ class SEO_Ultimate {
 		
 		/********** INITIALIZATION **********/
 		
-		//Load data about the plugin file itself
-		$this->load_plugin_data();
-		
 		//Load plugin modules. Must be called *after* load_plugin_data()
 		$this->load_modules();
 		
@@ -179,7 +191,7 @@ class SEO_Ultimate {
 		
 		/********** ACTION & FILTER HOOKS **********/
 		
-		//Initializes modules at the init action
+		//Initializes modules at WordPress initialization
 		add_action('init', array($this, 'init'));
 		
 		//Hook to output all <head> code
@@ -208,6 +220,7 @@ class SEO_Ultimate {
 		add_action('in_plugin_update_message-'.plugin_basename(__FILE__), array($this, 'plugin_update_info'), 10, 2);
 		
 		//Log this visitor!
+		add_filter('wp_redirect', array($this, 'log_redirect'), 10, 2);
 		add_filter('status_header', array($this, 'log_hit'), 10, 2);
 	}
 
@@ -231,9 +244,15 @@ class SEO_Ultimate {
 	 * @since 0.1
 	 */
 	function install() {
-	
+		
 		//Add the database table
 		$this->db_setup();
+		
+		//Load settings file if present
+		if (get_option('su_settings') === false && is_readable($settingsfile = $this->plugin_dir_path.'settings.txt')) {
+			$import = base64_decode(file_get_contents($settingsfile));
+			if (is_serialized($import)) update_option('su_settings', $import);
+		}
 	}
 	
 	/**
@@ -458,6 +477,7 @@ class SEO_Ultimate {
 			ip_address VARCHAR(255) NOT NULL,
 			user_agent VARCHAR(255) NOT NULL,
 			url TEXT NOT NULL,
+			redirect_url TEXT NOT NULL,
 			status_code SMALLINT(3) NOT NULL,
 			is_new BOOL NOT NULL,
 			PRIMARY KEY  (id)
@@ -488,12 +508,14 @@ class SEO_Ultimate {
 	 * 
 	 * @since 0.1
 	 * @uses get_current_url()
+	 * @uses $hit_id
 	 * 
 	 * @param string $status_header The full HTTP status header. Unused and returned as-is.
 	 * @param int $status_code The numeric HTTP status code.
+	 * @param string $redirect_url The URL to which the visitor is being redirected. Optional.
 	 * @return string Returns the $status_header variable unchanged.
 	 */
-	function log_hit($status_header, $status_code) {
+	function log_hit($status_header, $status_code, $redirect_url = '') {
 		if (!is_user_logged_in()) {
 			global $wpdb;
 			
@@ -501,13 +523,45 @@ class SEO_Ultimate {
 			$url = $this->get_current_url();
 			$is_new = (count($wpdb->get_results($wpdb->prepare("SELECT url FROM $table WHERE url = %s AND is_new = 0", $url))) == 0);
 			
-			$wpdb->query(
-				$wpdb->prepare( "INSERT INTO $table ( time, ip_address, user_agent, url, status_code, is_new ) VALUES ( %d, %s, %s, %s, %d, %d )",
-					time(), $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], $url, $status_code, $is_new )
+			$data = array(
+				  'time' => time()
+				, 'ip_address' => $_SERVER['REMOTE_ADDR']
+				, 'user_agent' => $_SERVER['HTTP_USER_AGENT']
+				, 'url' => $url
+				, 'redirect_url' => $redirect_url
+				, 'status_code' => $status_code
+				, 'is_new' => $is_new
 			);
+			
+			if ($this->hit_id > 0) {
+				
+				//We don't want to overwrite a redirect URL if it's already been logged
+				if (!strlen($data['redirect_url'])) unset($data['redirect_url']);
+				
+				//Update the existing hit record
+				$wpdb->update($table, $data, array('id' => $this->hit_id));
+			} else {
+				$wpdb->insert($table, $data);
+				$this->hit_id = $wpdb->insert_id;
+			}
 		}
 		
 		return $status_header;
+	}
+	
+	/**
+	 * A wp_redirect WordPress filter that logs the current hit.
+	 * 
+	 * @since 0.2
+	 * @uses log_hit()
+	 * 
+	 * @param string $redirect_url The URL to which the visitor is being redirected.
+	 * @param int $status_code The numeric HTTP status code.
+	 * @return string The unchanged $redirect_url parameter.
+	 */
+	function log_redirect($redirect_url, $status_code) {
+		$this->log_hit(null, $status_code, $redirect_url);
+		return $redirect_url;
 	}
 	
 	
@@ -536,8 +590,7 @@ class SEO_Ultimate {
 		$count_code = $this->get_menu_count_code($count);		
 		
 		//Add the "SEO" menu item!
-		if (isset($this->modules['stats'])) $primarykey = 'stats'; else $primarykey = 0;
-		add_utility_page(__('SEO Ultimate', 'seo-ultimate'), __('SEO', 'seo-ultimate').$count_code, 'manage_options', 'seo', array($this->modules[$primarykey], 'admin_page'), 'div');
+		add_utility_page(__('SEO Ultimate', 'seo-ultimate'), __('SEO', 'seo-ultimate').$count_code, 'manage_options', 'seo', array(), 'div');
 		
 		//Translations and count codes will mess up the admin page hook, so we need to fix it manually.
 		global $admin_page_hooks;
@@ -1040,6 +1093,27 @@ class SEO_Ultimate {
 		else
 			return $url.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 	}
+	
+	/**
+	 * Determines the ID of the current post.
+	 * Works in the admin as well as the front-end.
+	 * 
+	 * @since 0.2
+	 * 
+	 * @return int|false The ID of the current post, or false on failure.
+	 */
+	function get_post_id() {
+		if (is_admin())
+			return intval($_REQUEST['post']);
+		elseif (in_the_loop())
+			return intval(get_the_ID());
+		elseif (is_singular()) {
+			global $wp_query;
+			return $wp_query->get_queried_object_id();
+		}
+		
+		return false;
+	}
 }
 
 /**
@@ -1197,7 +1271,7 @@ class SU_Module {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @return mixed The help text, or false if no custom help is available.
+	 * @return string|false The help text, or false if no custom help is available.
 	 */
 	function admin_help() { return false; }
 	
@@ -1226,7 +1300,7 @@ class SU_Module {
 	function init_pre() {
 		$defaults = $this->get_default_settings();
 		foreach ($defaults as $setting => $default) {
-			if ($this->get_setting($setting, "<reset>") === "<reset>")
+			if ($this->get_setting($setting, "{reset}") === "{reset}")
 				$this->update_setting($setting, $default);
 		}
 		
@@ -1275,17 +1349,19 @@ class SU_Module {
 	 * @uses get_module_key()
 	 * 
 	 * @param string $key The name of the setting to retrieve.
-	 * @param string $default What should be returned if the setting does not exist. Optional.
-	 * @param string $module The module to which the setting belongs. Defaults to the current module. Optional.
+	 * @param mixed $default What should be returned if the setting does not exist. Optional.
+	 * @param string|null $module The module to which the setting belongs. Defaults to the current module. Optional.
 	 * @return mixed The value of the setting, or the $default variable.
 	 */
 	function get_setting($key, $default=null, $module=null) {
 		if (!$module) $module = $this->get_module_key();
 		$settings = maybe_unserialize(get_option('su_settings'));
 		if (isset($settings[$module][$key]))
-			return $settings[$module][$key];
+			$setting = $settings[$module][$key];
 		else
-			return $default;
+			$setting = $default;
+		
+		return apply_filters("su_get_setting-$module-$key", $setting);
 	}
 	
 	/**
@@ -1296,12 +1372,17 @@ class SU_Module {
 	 * 
 	 * @param string $key The key of the setting to be changed.
 	 * @param string $value The new value to assign to the setting.
+	 * @param string|null $module The module to which the setting belongs. Defaults to the current module. Optional.
 	 */
-	function update_setting($key, $value) {
-		$settings = maybe_unserialize(get_option('su_settings'));
-		if (!$settings) $settings = array();
-		$settings[$this->get_module_key()][$key] = $value;
-		update_option('su_settings', serialize($settings));
+	function update_setting($key, $value, $module=null) {
+		if (!$module) $module = $this->get_module_key();
+		
+		if (!apply_filters("su_custom_update_setting-$module-$key", false, $value)) {
+			$settings = maybe_unserialize(get_option('su_settings'));
+			if (!$settings) $settings = array();
+			$settings[$module][$key] = $value;
+			update_option('su_settings', serialize($settings));
+		}
 	}
 	
 	/**
@@ -1617,8 +1698,10 @@ class SU_Module {
 	 * @uses get_setting()
 	 * 
 	 * @param array $textareas An array of textareas. (Field/setting IDs are the keys, and descriptions are the values.)
+	 * @param int $rows The value of the textareas' rows attribute.
+	 * @param int $cols The value of the textareas' cols attribute.
 	 */
-	function textareas($textareas) {
+	function textareas($textareas, $rows = 5, $cols = 30) {
 		
 		if ($this->is_action('update')) {
 			foreach ($textareas as $id => $title) {
@@ -1628,11 +1711,11 @@ class SU_Module {
 		
 		foreach ($textareas as $id => $title) {
 			register_setting($this->get_module_key(), $id);
-			$value = attribute_escape($this->get_setting($id));
+			$value = wp_specialchars($this->get_setting($id), ENT_QUOTES, false, true);
 			$id = attribute_escape($id);
 			
 			echo "<tr valign='top'>\n<th scope='row'><label for='$id'>$title</label></th>\n";
-			echo "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='30' rows='3'>$value</textarea>";
+			echo "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='$cols' rows='$rows'>$value</textarea>";
 			echo "</td>\n</tr>\n";
 		}
 	}
@@ -1645,10 +1728,12 @@ class SU_Module {
 	 * 
 	 * @param string $id The field/setting ID.
 	 * @param string $title The label of the HTML element.
+	 * @param int $rows The value of the textarea's rows attribute.
+	 * @param int $cols The value of the textarea's cols attribute.
 	 * @return string The HTML that would render the textarea.
 	 */
-	function textarea($id, $title) {
-		$this->textareas(array($id => $title));
+	function textarea($id, $title, $rows = 5, $cols = 30) {
+		$this->textareas(array($id => $title), $rows, $cols);
 	}
 	
 	/********** ADMIN SECURITY FUNCTIONS **********/
@@ -1897,7 +1982,16 @@ class SU_Module {
 	
 	/********** HITS LOG FUNCTIONS **********/
 	
-	function hits_table($where = false, $actions_callback = false) {
+	/**
+	 * Lists logged hits in an administration table.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string|false $where The WHERE portion of the SQL query to execute.
+	 * @param string|false $actions_callback The name of the module-child function from which to obtain a return value of URL-cell action link HTML.
+	 * @param bool $highlight_new Whether or not to highlight new rows. Optional.
+	 */
+	function hits_table($where = false, $actions_callback = false, $highlight_new = true) {
 		global $wpdb;
 		$mk = $this->get_module_key();
 		
@@ -1911,17 +2005,18 @@ class SU_Module {
 			  'time' => __("Date", 'seo-ultimate')
 			, 'ip_address' => __("IP Address", 'seo-ultimate')
 			, 'user_agent' => __("Browser", 'seo-ultimate')
-			, 'url' => __("URL", 'seo-ultimate')
+			, 'url' => __("URL Requested", 'seo-ultimate')
+			, 'redirect_url' => __("Redirected To", 'seo-ultimate')
 			, 'status_code' => __("Status Code", 'seo-ultimate')
 		);
 		
 		$fields = array();
 		
 		foreach ($allfields as $col => $title) {
-			if (strpos($where, $col) === false) $fields[$col] = $title;
+			if (strpos($where, $col.'=') === false) $fields[$col] = $title;
 		}
 		
-		//if ($actions_callback) $fields['actions'] = __("Actions", 'seo-ultimate');
+		$fields = apply_filters("su_{$mk}_hits_table_columns", $fields);
 		
 		echo "<table class='widefat' cellspacing='0'>\n\t<thead><tr>\n";
 		
@@ -1934,7 +2029,7 @@ class SU_Module {
 		
 		foreach ($result as $row) {
 			
-			if ($row['is_new']) $class = ' class="new-hit"'; else $class='';
+			if ($highlight_new && $row['is_new']) $class = ' class="new-hit"'; else $class='';
 			echo "\t\t<tr$class>\n";
 			
 			foreach ($fields as $col => $title) {
@@ -1953,11 +2048,13 @@ class SU_Module {
 					case 'url':
 						if ($actions_callback) {
 							$actions = call_user_func(array($this, $actions_callback), $row);
-							$actions = apply_filters("su_hits_table_actions-$mk", $actions, $row);
+							$actions = apply_filters("su_{$mk}_hits_table_actions", $actions, $row);
 							$cell = $this->hover_row($cell, $actions);
 						}
 						break;
 				}
+				
+				$cell = apply_filters("su_{$mk}_hits_table_{$col}_cell", $cell, $row);
 				
 				$class = str_replace(' ', '-', strtolower($title));
 				echo "\t\t\t<td class='hit-$class'>$cell</td>\n";
@@ -1965,7 +2062,6 @@ class SU_Module {
 			echo "\t\t</tr>\n";
 			
 			$wpdb->update($table, array('is_new' => 0), array('id' => $row['id']));
-			//$wpdb->query($wpdb->prepare("UPDATE $table SET is_new=0 WHERE id = %d", $row['id']));
 		}
 		
 		echo "\t</tbody>\n</table>\n";

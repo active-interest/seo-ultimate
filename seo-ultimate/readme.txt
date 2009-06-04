@@ -1,11 +1,11 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: google, seo, title, meta
+Tags: seo, title, meta, noindex, google, yahoo, admin, post, page
 Requires at least: 2.7
-Tested up to: 2.7.1
-Stable tag: 0.1.1
+Tested up to: 2.8 Beta 2
+Stable tag: 0.2
 
-This all-in-one SEO plugin can rewrite title tags and noindex archives (with many more features coming soon).
+This all-in-one SEO plugin can rewrite title tags, noindex archives, and customize meta data (with many more features coming soon).
 
 == Description ==
 
@@ -15,6 +15,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Noindex Manager** - Lets you add the `noindex` meta robots instruction to archives, comment feeds, the login page, and more.
 
+* **Meta Editor** - Lets you edit the meta descriptions/keywords for your posts, pages, and homepage. Also lets you enter verification meta codes and give code instructions to search engine spiders.
+
 SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 
 * Integration with WordPress's contextual help system
@@ -23,7 +25,7 @@ SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 * An uninstall routine
 * Integration with the new WordPress 2.7 menu
 
-**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release, including meta editing, 404 monitoring, canonical tag insertion, PageRank sculpting, and more.
+**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release, including 404 monitoring, canonical tag insertion, PageRank sculpting, and more.
 
 If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
 
@@ -67,9 +69,18 @@ Here are some troubleshooting ideas:
 
 1. The Title Rewriter module
 2. The Noindex Manager module
+3. The Meta Editor module
 
 
 == Release History ==
+
+= Version 0.2 (June 4, 2009) =
+* Added the Meta Editor module
+* Fixed a double-escaping bug in the Title Rewriter
+
+= Version 0.1.1 (May 28, 2009) =
+* Fixed a bug that surfaced when other SEO plugins were installed
+* Fixed a bug that appeared on certain PHP setups
 
 = Version 0.1 (May 22, 2009) =
 * Initial release

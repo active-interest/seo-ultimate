@@ -3,7 +3,7 @@
  * SEO Design Solutions Whitepapers Module
  * 
  * @version 1.0
- * @since 0.2
+ * @since 0.1
  */
 
 if (class_exists('SU_Module')) {

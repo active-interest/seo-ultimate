@@ -56,6 +56,11 @@ div.su-module .su-message .su-error {
 	border-color: #FF0000;
 }
 
+div.su-module .su-message .su-warning {
+	background-color: #FFFFE0;
+	border-color: orange;
+}
+
 div.su-module .su-message .su-info {
 	background-color: #DFEEFF;
 	border-color: #8F93FF;
