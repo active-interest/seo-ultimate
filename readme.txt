@@ -77,6 +77,7 @@ Here are some troubleshooting ideas:
 = Version 0.2 (June 4, 2009) =
 * Added the Meta Editor module
 * Fixed a double-escaping bug in the Title Rewriter
+* Fixed a bug that caused the Modules list to display twice on some installations
 
 = Version 0.1.1 (May 28, 2009) =
 * Fixed a bug that surfaced when other SEO plugins were installed
