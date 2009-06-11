@@ -5,7 +5,7 @@ Requires at least: 2.8
 Tested up to: 2.8
 Stable tag: 0.3
 
-This all-in-one SEO plugin can rewrite title tags, noindex archives, customize meta data, and insert canonical tags (with many more features coming soon).
+This all-in-one SEO plugin can rewrite title tags, noindex archives, customize meta data, and insert canonical tags (with many more features coming).
 
 == Description ==
 
