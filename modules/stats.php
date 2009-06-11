@@ -2,7 +2,7 @@
 /**
  * Stats Central Module
  * 
- * @version 0.1
+ * @version 0.1.1
  * @since 0.1
  */
 
@@ -32,7 +32,7 @@ class SU_Stats extends SU_Module {
 	
 	function admin_help() {
 		return __(<<<STR
-<p>Click a module&#8217;s name to open its admin page.
+<p>Click a module&#8217;s name to open its admin page.</p>
 STR
 , 'seo-ultimate');
 	}

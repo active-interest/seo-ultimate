@@ -251,19 +251,5 @@ STR
 
 }
 
-if (!function_exists('jl_seoa_get_title')) {
-
-	function jl_seoa_get_title($isTitleTag = false) {
-		if (is_tag()) {
-			global $seo_ultimate;
-			$format = $seo_ultimate->modules['titles']->get_setting('title_tag');
-			if (!$isTitleTag) $format = trim(str_replace('{blog}', '', $format), ' |-');
-			return str_replace('{tag}', single_tag_title('', false), $format);
-		}
-		
-		return '';
-	}
-}
-
 }
 ?>

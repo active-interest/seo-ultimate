@@ -138,3 +138,7 @@ div.su-help ul {
 #su-postmeta-box table td textarea {
 	width: 100%;
 }
+
+#wpwrap .su-plugin-notice .update-message {
+	font-weight: normal;
+}

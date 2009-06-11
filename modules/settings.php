@@ -19,6 +19,7 @@ class SU_Settings extends SU_Module {
 	function get_default_settings() {
 		return array(
 			  'attribution_link' => true
+			, 'plugin_notices' => true
 		);
 	}
 	
@@ -49,6 +50,7 @@ class SU_Settings extends SU_Module {
 		$this->admin_form_start(__("Plugin Settings", 'seo-ultimate'));
 		$this->checkboxes(array(
 			  'attribution_link' => __("Enable attribution link", 'seo-ultimate')
+			, 'plugin_notices' => __("Notify me about unnecessary active plugins", 'seo-ultimate')
 			//, 'debug_mode' => __("Enable debug-mode logging", 'seo-ultimate')
 			, 'mark_code' => __("Insert comments around HTML code insertions", 'seo-ultimate')
 		));

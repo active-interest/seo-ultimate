@@ -1,11 +1,11 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, title, meta, noindex, google, yahoo, admin, post, page
-Requires at least: 2.7
-Tested up to: 2.8 Beta 2
-Stable tag: 0.2
+Tags: seo, title, meta, noindex, canonical, google, yahoo, bing, search engines, admin, post, page
+Requires at least: 2.8
+Tested up to: 2.8
+Stable tag: 0.3
 
-This all-in-one SEO plugin can rewrite title tags, noindex archives, and customize meta data (with many more features coming soon).
+This all-in-one SEO plugin can rewrite title tags, noindex archives, customize meta data, and insert canonical tags (with many more features coming soon).
 
 == Description ==
 
@@ -17,15 +17,17 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Meta Editor** - Lets you edit the meta descriptions/keywords for your posts, pages, and homepage. Also lets you enter verification meta codes and give code instructions to search engine spiders.
 
+* **Canonicalizer** - Inserts `<link rel="canonical" />` tags for your homepage and each of your posts, Pages, categories, tags, date archives, and author archives.
+
 SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 
-* Integration with WordPress's contextual help system
+* Integration with the contextual help system of WordPress 2.7+
 * Internationalization support
 * Nonce security
 * An uninstall routine
-* Integration with the new WordPress 2.7 menu
+* Integration with the new WordPress 2.7+ menu
 
-**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release, including 404 monitoring, canonical tag insertion, PageRank sculpting, and more.
+**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release, including 404 monitoring, PageRank sculpting, robots.txt editing, and more.
 
 If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
 
@@ -64,10 +66,6 @@ Here are some troubleshooting ideas:
 1. Try disabling other SEO plugins (they may be conflicting with SEO Ultimate).
 2. Check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
 
-= How do I remove the attribution link? =
-
-Because of the tremendous effort put into this plugin, we ask that you please leave the link enabled. If you must disable it, you can do so under `Settings > SEO Ultimate`.
-
 
 == Screenshots ==
 
@@ -78,10 +76,15 @@ Because of the tremendous effort put into this plugin, we ask that you please le
 
 == Release History ==
 
+= Version 0.3 (June 11, 2009) =
+* Added the Canonicalizer module
+* Added alerts of possible plugin conflicts
+* Fixed a WordPress 2.8 compatibility issue
+* SEO Ultimate now requires WordPress 2.8 or above
+
 = Version 0.2 (June 4, 2009) =
 * Added the Meta Editor module
 * Fixed a double-escaping bug in the Title Rewriter
-* Fixed a bug that caused the Modules list to display twice on some installations
 
 = Version 0.1.1 (May 28, 2009) =
 * Fixed a bug that surfaced when other SEO plugins were installed
