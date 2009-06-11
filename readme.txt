@@ -66,6 +66,10 @@ Here are some troubleshooting ideas:
 1. Try disabling other SEO plugins (they may be conflicting with SEO Ultimate).
 2. Check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
 
+= How do I remove the attribution link? =
+
+Because of the tremendous effort put into this plugin, we ask that you please leave the link enabled. If you must disable it, you can do so under `Settings > SEO Ultimate`.
+
 
 == Screenshots ==
 
@@ -85,6 +89,7 @@ Here are some troubleshooting ideas:
 = Version 0.2 (June 4, 2009) =
 * Added the Meta Editor module
 * Fixed a double-escaping bug in the Title Rewriter
+* Fixed a bug that caused the Modules list to display twice on some installations
 
 = Version 0.1.1 (May 28, 2009) =
 * Fixed a bug that surfaced when other SEO plugins were installed
