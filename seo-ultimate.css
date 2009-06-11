@@ -1,0 +1,144 @@
+#adminmenu #toplevel_page_seo div.wp-menu-image {
+	background-image: url(images/icon.png);
+	background-position: -1px -33px;
+}
+
+#adminmenu #toplevel_page_seo:hover div.wp-menu-image,
+#adminmenu #toplevel_page_seo.wp-has-current-submenu div.wp-menu-image {
+	background-position: -1px -1px;
+}
+
+div.su-module .su-success,
+div.su-module .su-error,
+div.su-module .su-warning,
+div.su-module .su-info {
+	padding-left: 21px;
+	background-repeat: no-repeat;
+	background-position: 0px center;
+}
+
+div.su-module .su-success {
+	background-image: url(images/success.png);
+	color: #008000;
+}
+
+div.su-module .su-error {
+	background-image: url(images/error.png);
+	color: #FF0000;
+}
+
+div.su-module .su-warning {
+	background-image: url(images/warning.png);
+	color: #FF8C00;
+}
+
+div.su-module .su-info {
+	background-image: url(images/info.png);
+	color: #0000FF;
+}
+
+#wpcontent div.su-module div.su-message p {
+	background-position: 10px center;
+	padding: 10px 10px 10px 36px;
+	margin: 1em 0;
+	color: black;
+	border-width: 1px;
+	border-style: solid;
+}
+
+div.su-module .su-message .su-success {
+	background-color: #DFFFE3;
+	border-color: #61DF6F;
+}
+
+div.su-module .su-message .su-error {
+	background-color: #FFBFBF;
+	border-color: #FF0000;
+}
+
+div.su-module .su-message .su-warning {
+	background-color: #FFFFE0;
+	border-color: orange;
+}
+
+div.su-module .su-message .su-info {
+	background-color: #DFEEFF;
+	border-color: #8F93FF;
+}
+
+div.su-module h3.su-subheader {
+	margin-top: 3em;
+	padding-top: 1em;
+	border-top: 3px solid #ccc;
+}
+
+div.su-module table.widefat {
+	width: auto;
+	margin: 2em 0;
+}
+
+div.su-module table.widefat th,
+div.su-module table.widefat td {
+	padding-right: 2em;
+}
+
+div.su-module table.widefat tr.new-hit td {
+	background-color: #DFFFE3;
+}
+
+div.su-module .form-table .regular-text {
+	width: 325px;
+}
+
+div.su-module .form-table td div.field {
+	padding-bottom: 1em;
+}
+
+div.su-help div.metabox-prefs {
+	margin-bottom: 2em;
+}
+
+div.su-help ul {
+	list-style-type: disc;
+	padding-left: 1em;
+	margin-left: 1em;
+}
+
+#su-postmeta-box table tr {
+	vertical-align: middle;
+}
+
+#su-postmeta-box table th,
+#su-postmeta-box table td {
+	padding: 0.5em 0;
+}
+
+#su-postmeta-box table th {
+	text-align: right;
+	font-weight: bold;
+	padding-right: 0.5em;
+}
+
+#su-postmeta-box table tr.textarea {
+	vertical-align: top;
+}
+
+#su-postmeta-box table tr.textarea th label {
+	display: block;
+	margin-top: 5px;
+}
+
+#su-postmeta-box table th em {
+	font-weight: normal;
+}
+
+#su-postmeta-box table,
+#su-postmeta-box table td,
+#su-postmeta-box table td input.regular-text,
+#su-postmeta-box table td textarea {
+	width: 100%;
+}
+
+#wpwrap .su-plugin-notice .update-message {
+	font-weight: normal;
+}
