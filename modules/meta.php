@@ -2,7 +2,7 @@
 /**
  * Meta Editor Module
  * 
- * @version 1.0
+ * @version 1.0.1
  * @since 0.3
  */
 
@@ -57,7 +57,7 @@ class SU_Meta extends SU_Module {
 			. " onkeyup=\"javascript:textbox_char_count('_su_description', 'su_meta_description_charcount')\">$value</textarea>"
 			. "<br />".sprintf(__("You&#8217;ve entered %s characters. Most search engines use up to 160.", 'seo-ultimate'), "<strong id='su_meta_description_charcount'>".strlen($value)."</strong>")
 			. "</td>\n</tr>\n"
-			. $this->get_postmeta_textbox('keywords', __('Keywords:<br /><em>(separate with commas)', 'seo-ultimate'))
+			. $this->get_postmeta_textbox('keywords', __('Keywords:<br /><em>(separate with commas)</em>', 'seo-ultimate'))
 		;
 		
 		return $fields;
