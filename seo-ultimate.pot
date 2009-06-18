@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2009-06-11 21:39+0000\n"
+"POT-Creation-Date: 2009-06-18 18:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,35 @@ msgstr ""
 msgid "SEO Settings"
 msgstr ""
 
+#: class.su-hitset.php:36
+msgid "Date"
+msgstr ""
+
+#: class.su-hitset.php:37
+msgid "IP Address"
+msgstr ""
+
+#: class.su-hitset.php:38
+msgid "Browser"
+msgstr ""
+
+#: class.su-hitset.php:39
+msgid "URL Requested"
+msgstr ""
+
+#: class.su-hitset.php:40
+msgid "Redirected To"
+msgstr ""
+
+#: class.su-hitset.php:41
+msgid "Status Code"
+msgstr ""
+
+#: class.su-hitset.php:73
+#, php-format
+msgid "%1$s<br />%2$s"
+msgstr ""
+
 #: class.su-module.php:408
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
@@ -77,33 +106,44 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: class.su-module.php:921
-msgid "Date"
+#: modules/404s.php:19
+msgid "404 Monitor"
 msgstr ""
 
-#: class.su-module.php:922
-msgid "IP Address"
+#: modules/404s.php:35
+msgid "The log entry was successfully deleted."
 msgstr ""
 
-#: class.su-module.php:923
-msgid "Browser"
+#: modules/404s.php:37
+msgid "This log entry has already been deleted."
 msgstr ""
 
-#: class.su-module.php:924
-msgid "URL Requested"
+#: modules/404s.php:44
+msgid "The log was successfully cleared."
 msgstr ""
 
-#: class.su-module.php:925
-msgid "Redirected To"
+#: modules/404s.php:50
+msgid "No 404 errors in the log."
 msgstr ""
 
-#: class.su-module.php:926
-msgid "Status Code"
+#: modules/404s.php:59
+msgid "Are you sure you want to delete all 404 log entries?"
 msgstr ""
 
-#: class.su-module.php:958
-#, php-format
-msgid "%1$s<br />%2$s"
+#: modules/404s.php:61
+msgid "Clear Log"
+msgstr ""
+
+#: modules/404s.php:73
+msgid "Open"
+msgstr ""
+
+#: modules/404s.php:74
+msgid "Google Cache"
+msgstr ""
+
+#: modules/404s.php:75
+msgid "Delete Log Entry"
 msgstr ""
 
 #: modules/canonical.php:13
@@ -183,7 +223,7 @@ msgid "You&#8217;ve entered %s characters. Most search engines use up to 160."
 msgstr ""
 
 #: modules/meta.php:60
-msgid "Keywords:<br /><em>(separate with commas)"
+msgid "Keywords:<br /><em>(separate with commas)</em>"
 msgstr ""
 
 #: modules/meta.php:117
@@ -412,8 +452,8 @@ msgstr ""
 #. Description of an extension
 msgid ""
 "This all-in-one SEO plugin can rewrite title tags, edit meta data, add "
-"noindex to pages, and insert canonical tags (with many more features coming "
-"soon)."
+"noindex, insert canonical tags, and log 404 errors (with many more features "
+"coming soon)."
 msgstr ""
 
 #. Author of an extension
