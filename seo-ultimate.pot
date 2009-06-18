@@ -1,0 +1,425 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR SEO Design Solutions
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
+"POT-Creation-Date: 2009-06-11 21:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. #-#-#-#-#  plugin.pot (PACKAGE VERSION)  #-#-#-#-#
+#. Plugin Name of an extension
+#: class.seo-ultimate.php:581 modules/settings.php:16
+msgid "SEO Ultimate"
+msgstr ""
+
+#: class.seo-ultimate.php:581
+msgid "SEO"
+msgstr ""
+
+#: class.seo-ultimate.php:767
+#, php-format
+msgid "%s Help"
+msgstr ""
+
+#: class.seo-ultimate.php:787
+msgid "SEO Settings Help"
+msgstr ""
+
+#: class.seo-ultimate.php:789
+msgid "The SEO Settings box lets you customize these settings:"
+msgstr ""
+
+#: class.seo-ultimate.php:791
+msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
+msgstr ""
+
+#: class.seo-ultimate.php:838
+#, php-format
+msgid ""
+"SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
+"1$s to avoid plugin conflicts."
+msgstr ""
+
+#: class.seo-ultimate.php:906
+msgid "SEO Settings"
+msgstr ""
+
+#: class.su-module.php:408
+#, php-format
+msgid "%1$s | %2$s %3$s by %4$s"
+msgstr ""
+
+#: class.su-module.php:443
+msgid "Settings updated."
+msgstr ""
+
+#: class.su-module.php:468
+msgid "Save Changes"
+msgstr ""
+
+#: class.su-module.php:558
+msgid ""
+"Are you sure you want to replace the textbox contents with this default "
+"value?"
+msgstr ""
+
+#: class.su-module.php:571
+msgid "Reset"
+msgstr ""
+
+#: class.su-module.php:921
+msgid "Date"
+msgstr ""
+
+#: class.su-module.php:922
+msgid "IP Address"
+msgstr ""
+
+#: class.su-module.php:923
+msgid "Browser"
+msgstr ""
+
+#: class.su-module.php:924
+msgid "URL Requested"
+msgstr ""
+
+#: class.su-module.php:925
+msgid "Redirected To"
+msgstr ""
+
+#: class.su-module.php:926
+msgid "Status Code"
+msgstr ""
+
+#: class.su-module.php:958
+#, php-format
+msgid "%1$s<br />%2$s"
+msgstr ""
+
+#: modules/canonical.php:13
+msgid "Canonicalizer"
+msgstr ""
+
+#: modules/canonical.php:23
+msgid "Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags."
+msgstr ""
+
+#: modules/meta.php:13
+msgid "Meta Editor"
+msgstr ""
+
+#: modules/meta.php:30
+msgid "Blog Homepage Meta Description"
+msgstr ""
+
+#: modules/meta.php:31
+msgid "Blog Homepage Meta Keywords"
+msgstr ""
+
+#: modules/meta.php:34
+msgid "Use this blog&#8217s tagline as the default homepage description."
+msgstr ""
+
+#: modules/meta.php:35
+msgid "Default Values"
+msgstr ""
+
+#: modules/meta.php:37
+msgid ""
+"Don&#8217t use this site&#8217s Open Directory description in search results."
+msgstr ""
+
+#: modules/meta.php:38
+msgid ""
+"Don&#8217t use this site&#8217s Yahoo! Directory description in search "
+"results."
+msgstr ""
+
+#: modules/meta.php:39
+msgid "Don&#8217t cache or archive this site."
+msgstr ""
+
+#: modules/meta.php:40
+msgid "Spider Instructions"
+msgstr ""
+
+#: modules/meta.php:42
+msgid "Google Webmaster Tools:"
+msgstr ""
+
+#: modules/meta.php:43
+msgid "Yahoo! Site Explorer:"
+msgstr ""
+
+#: modules/meta.php:44
+msgid "Bing Webmaster Center:"
+msgstr ""
+
+#: modules/meta.php:45
+msgid "Verification Codes"
+msgstr ""
+
+#: modules/meta.php:46
+msgid "Custom &lt;head&gt; HTML"
+msgstr ""
+
+#: modules/meta.php:55
+msgid "Description:"
+msgstr ""
+
+#: modules/meta.php:58
+#, php-format
+msgid "You&#8217;ve entered %s characters. Most search engines use up to 160."
+msgstr ""
+
+#: modules/meta.php:60
+msgid "Keywords:<br /><em>(separate with commas)"
+msgstr ""
+
+#: modules/meta.php:117
+msgid "Custom Header Code"
+msgstr ""
+
+#: modules/meta.php:166
+msgid ""
+"<strong>Description:</strong> &mdash; The value of the meta description tag. "
+"The description will often appear underneath the title in search engine "
+"results. "
+msgstr ""
+
+#: modules/meta.php:168
+msgid ""
+"<strong>Keywords:</strong> &mdash; The value of the meta keywords tag. The "
+"keywords list gives search engines a hint as to what this post/page is "
+"about. "
+msgstr ""
+
+#: modules/noindex.php:13
+msgid "Noindex Manager"
+msgstr ""
+
+#: modules/noindex.php:33
+msgid ""
+"Note: The current <a href='options-privacy.php'>privacy settings</a> will "
+"block indexing of the entire site, regardless of which options are set below."
+msgstr ""
+
+#: modules/noindex.php:36
+msgid "Prevent indexing of..."
+msgstr ""
+
+#: modules/noindex.php:37
+msgid "Administration back-end pages"
+msgstr ""
+
+#: modules/noindex.php:38
+msgid "Author archives"
+msgstr ""
+
+#: modules/noindex.php:39
+msgid "Blog search pages"
+msgstr ""
+
+#: modules/noindex.php:40
+msgid "Category archives"
+msgstr ""
+
+#: modules/noindex.php:41
+msgid "Comment feeds"
+msgstr ""
+
+#: modules/noindex.php:43
+msgid "Date-based archives"
+msgstr ""
+
+#: modules/noindex.php:44
+msgid "Subpages of the homepage"
+msgstr ""
+
+#: modules/noindex.php:45
+msgid "Tag archives"
+msgstr ""
+
+#: modules/noindex.php:46
+msgid "User login/registration pages"
+msgstr ""
+
+#: modules/sds-blog.php:13
+msgid "SEO Design Solutions Whitepapers"
+msgstr ""
+
+#: modules/sds-blog.php:14
+msgid "Whitepapers"
+msgstr ""
+
+#: modules/sds-blog.php:38
+msgid ""
+"Search engine optimization articles from the company behind the SEO Ultimate "
+"plugin."
+msgstr ""
+
+#: modules/sds-blog.php:89
+msgid ""
+"The articles below are loaded from the SEO Design Solutions website. Click "
+"on an article&#8217s title to read it."
+msgstr ""
+
+#: modules/settings.php:15
+msgid "SEO Ultimate Plugin Settings"
+msgstr ""
+
+#: modules/settings.php:50
+msgid "Plugin Settings"
+msgstr ""
+
+#: modules/settings.php:52
+msgid "Enable attribution link"
+msgstr ""
+
+#: modules/settings.php:53
+msgid "Notify me about unnecessary active plugins"
+msgstr ""
+
+#: modules/settings.php:55
+msgid "Insert comments around HTML code insertions"
+msgstr ""
+
+#: modules/stats.php:13 modules/stats.php:14
+msgid "Modules"
+msgstr ""
+
+#: modules/titles.php:13
+msgid "Title Rewriter"
+msgstr ""
+
+#: modules/titles.php:25
+msgid "{blog}"
+msgstr ""
+
+#: modules/titles.php:26
+msgid "{post} | {blog}"
+msgstr ""
+
+#: modules/titles.php:27
+msgid "{page} | {blog}"
+msgstr ""
+
+#: modules/titles.php:28
+msgid "{category} | {blog}"
+msgstr ""
+
+#: modules/titles.php:29
+msgid "{tag} | {blog}"
+msgstr ""
+
+#: modules/titles.php:30
+msgid "Archives for {month} {day}, {year} | {blog}"
+msgstr ""
+
+#: modules/titles.php:31
+msgid "Archives for {month} {year} | {blog}"
+msgstr ""
+
+#: modules/titles.php:32
+msgid "Archives for {year} | {blog}"
+msgstr ""
+
+#: modules/titles.php:33
+msgid "Posts by {author} | {blog}"
+msgstr ""
+
+#: modules/titles.php:34
+msgid "Search Results for {query} | {blog}"
+msgstr ""
+
+#: modules/titles.php:35
+msgid "404 Not Found | {blog}"
+msgstr ""
+
+#: modules/titles.php:36
+msgid "{title} - Page {num}"
+msgstr ""
+
+#: modules/titles.php:42
+msgid "Blog Homepage Title"
+msgstr ""
+
+#: modules/titles.php:43
+msgid "Post Title Format"
+msgstr ""
+
+#: modules/titles.php:44
+msgid "Page Title Format"
+msgstr ""
+
+#: modules/titles.php:45
+msgid "Category Title Format"
+msgstr ""
+
+#: modules/titles.php:46
+msgid "Tag Title Format"
+msgstr ""
+
+#: modules/titles.php:47
+msgid "Day Archive Title Format"
+msgstr ""
+
+#: modules/titles.php:48
+msgid "Month Archive Title Format"
+msgstr ""
+
+#: modules/titles.php:49
+msgid "Year Archive Title Format"
+msgstr ""
+
+#: modules/titles.php:50
+msgid "Author Archive Title Format"
+msgstr ""
+
+#: modules/titles.php:51
+msgid "Search Title Format"
+msgstr ""
+
+#: modules/titles.php:52
+msgid "404 Title Format"
+msgstr ""
+
+#: modules/titles.php:53
+msgid "Pagination Title Format"
+msgstr ""
+
+#: modules/titles.php:247
+msgid ""
+"<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; "
+"tag. The title appears in visitors' title bars and in search engine result "
+"titles. "
+msgstr ""
+
+#. Plugin URI of an extension
+msgid "http://www.seodesignsolutions.com/wordpress-seo/"
+msgstr ""
+
+#. Description of an extension
+msgid ""
+"This all-in-one SEO plugin can rewrite title tags, edit meta data, add "
+"noindex to pages, and insert canonical tags (with many more features coming "
+"soon)."
+msgstr ""
+
+#. Author of an extension
+msgid "SEO Design Solutions"
+msgstr ""
+
+#. Author URI of an extension
+msgid "http://www.seodesignsolutions.com/"
+msgstr ""
