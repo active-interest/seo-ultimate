@@ -3,7 +3,7 @@
  * The pseudo-abstract class upon which all modules are based.
  * 
  * @abstract
- * @version 1.2
+ * @version 1.2.1
  * @since 0.1
  */
 class SU_Module {
@@ -893,97 +893,6 @@ class SU_Module {
 	 */
 	function get_postmeta_checkbox($id, $title, $grouptext) {
 		return $this->get_postmeta_checkboxes(array($id => $title), $grouptext);
-	}
-	
-	
-	/********** HITS LOG FUNCTIONS **********/
-	
-	/**
-	 * Lists logged hits in an administration table.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string|false $where The WHERE portion of the SQL query to execute.
-	 * @param string|false $actions_callback The name of the module-child function from which to obtain a return value of URL-cell action link HTML.
-	 * @param bool $highlight_new Whether or not to highlight new rows. Optional.
-	 */
-	function hits_table($where = false, $actions_callback = false, $highlight_new = true) {
-		global $wpdb;
-		$mk = $this->get_module_key();
-		
-		$table = SEO_Ultimate::get_table_name('hits');
-		if ($where) $where = " WHERE $where";
-		$result = $wpdb->get_results("SELECT * FROM $table$where ORDER BY id DESC", ARRAY_A);
-		
-		if (!$result) return false;
-		
-		$allfields = array(
-			  'time' => __("Date", 'seo-ultimate')
-			, 'ip_address' => __("IP Address", 'seo-ultimate')
-			, 'user_agent' => __("Browser", 'seo-ultimate')
-			, 'url' => __("URL Requested", 'seo-ultimate')
-			, 'redirect_url' => __("Redirected To", 'seo-ultimate')
-			, 'status_code' => __("Status Code", 'seo-ultimate')
-		);
-		
-		$fields = array();
-		
-		foreach ($allfields as $col => $title) {
-			if (strpos($where, " $col=") === false) $fields[$col] = $title;
-		}
-		
-		$fields = apply_filters("su_{$mk}_hits_table_columns", $fields);
-		
-		echo "<table class='widefat' cellspacing='0'>\n\t<thead><tr>\n";
-		
-		foreach ($fields as $title) {
-			$class = str_replace(' ', '-', strtolower($title));
-			echo "\t\t<th scope='col' class='hit-$class'>$title</th>\n";
-		}
-		
-		echo "\t</tr></thead>\n\t<tbody>\n";
-		
-		foreach ($result as $row) {
-			
-			if ($highlight_new && $row['is_new']) $class = ' class="new-hit"'; else $class='';
-			echo "\t\t<tr$class>\n";
-			
-			foreach ($fields as $col => $title) {
-				$cell = htmlspecialchars($row[$col]);
-				
-				switch ($col) {
-					case 'time':
-						$date = date_i18n(get_option('date_format'), $cell);
-						$time = date_i18n(get_option('time_format'), $cell);
-						$cell = sprintf(__('%1$s<br />%2$s', 'seo-ultimate'), $date, $time);
-						break;
-					case 'user_agent':
-						$binfo = get_browser($cell, true);
-						$ua = attribute_escape($cell);
-						$cell = '<abbr title="'.$ua.'">'.$binfo['parent'].'</abbr>';
-						break;
-					case 'url':
-						if ($actions_callback) {
-							$actions = call_user_func(array($this, $actions_callback), $row);
-							$actions = apply_filters("su_{$mk}_hits_table_actions", $actions, $row);
-							$cell = $this->hover_row($cell, $actions);
-						}
-						break;
-				}
-				
-				$cell = apply_filters("su_{$mk}_hits_table_{$col}_cell", $cell, $row);
-				
-				$class = str_replace(' ', '-', strtolower($title));
-				echo "\t\t\t<td class='hit-$class'>$cell</td>\n";
-			}
-			echo "\t\t</tr>\n";
-			
-			$wpdb->update($table, array('is_new' => 0), array('id' => $row['id']));
-		}
-		
-		echo "\t</tbody>\n</table>\n";
-		
-		return true;
 	}
 	
 	

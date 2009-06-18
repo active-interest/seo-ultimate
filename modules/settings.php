@@ -2,7 +2,7 @@
 /**
  * Settings Module
  * 
- * @version 1.0
+ * @version 1.0.1
  * @since 0.2
  */
 
@@ -127,7 +127,7 @@ class SU_Settings extends SU_Module {
 	
 	function footer_link() {
 		if (!$this->wp_meta_called)
-			echo "\n<p><a href='http://www.seodesignsolutions.com/'>SEO</a> optimization provided by SEO Design Solutions</a></p>\n";
+			echo "\n<p>Search engine optimization by <a href='http://www.seodesignsolutions.com/'>SEO Design Solutions</a></a></p>\n";
 	}
 	
 	function admin_help() {

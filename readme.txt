@@ -1,11 +1,11 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, title, meta, noindex, canonical, google, yahoo, bing, search engines, admin, post, page
+Tags: seo, title, meta, noindex, canonical, 404, google, yahoo, bing, search engines, admin, post, page
 Requires at least: 2.8
 Tested up to: 2.8
-Stable tag: 0.3
+Stable tag: 0.4
 
-This all-in-one SEO plugin can rewrite title tags, noindex archives, customize meta data, and insert canonical tags (with many more features coming).
+This all-in-one SEO plugin can handle titles, noindex, meta data, canonical tags, and 404 error tracking (with many more features coming soon).
 
 == Description ==
 
@@ -19,6 +19,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Canonicalizer** - Inserts `<link rel="canonical" />` tags for your homepage and each of your posts, Pages, categories, tags, date archives, and author archives.
 
+* **404 Monitor** - Logs 404 errors generated on your blog.
+
 SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 
 * Integration with the contextual help system of WordPress 2.7+
@@ -27,7 +29,7 @@ SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 * An uninstall routine
 * Integration with the new WordPress 2.7+ menu
 
-**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release, including 404 monitoring, PageRank sculpting, robots.txt editing, and more.
+**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release, including PageRank sculpting, robots.txt editing, 301 logging, and much more.
 
 If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
 
@@ -79,6 +81,9 @@ Because of the tremendous effort put into this plugin, we ask that you please le
 
 
 == Release History ==
+
+= Version 0.4 (June 18, 2009) =
+* Added the 404 Monitor module
 
 = Version 0.3 (June 11, 2009) =
 * Added the Canonicalizer module

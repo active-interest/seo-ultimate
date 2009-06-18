@@ -47,6 +47,19 @@ function su_debug_log($file, $class, $function, $line, $message) {
 	}
 }
 
+/**
+ * Returns whether or not a given string starts with a given substring.
+ * 
+ * @since 0.4
+ * 
+ * @param string $str The "haystack" string.
+ * @param string $sub The "needle" string.
+ * @return bool Whether or not $str starts with $sub.
+ */
+function su_str_startswith( $str, $sub ) {
+   return ( substr( $str, 0, strlen( $sub ) ) === $sub );
+}
+
 
 /********** CLASS FUNCTION ALIASES **********/
 
