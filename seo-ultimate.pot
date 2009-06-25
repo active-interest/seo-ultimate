@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2009-06-18 18:04+0000\n"
+"POT-Creation-Date: 2009-06-25 21:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,39 @@ msgstr ""
 
 #. #-#-#-#-#  plugin.pot (PACKAGE VERSION)  #-#-#-#-#
 #. Plugin Name of an extension
-#: class.seo-ultimate.php:581 modules/settings.php:16
+#: class.seo-ultimate.php:584 modules/settings.php:16
 msgid "SEO Ultimate"
 msgstr ""
 
-#: class.seo-ultimate.php:581
+#: class.seo-ultimate.php:584
 msgid "SEO"
 msgstr ""
 
-#: class.seo-ultimate.php:767
+#: class.seo-ultimate.php:770
 #, php-format
 msgid "%s Help"
 msgstr ""
 
-#: class.seo-ultimate.php:787
+#: class.seo-ultimate.php:790
 msgid "SEO Settings Help"
 msgstr ""
 
-#: class.seo-ultimate.php:789
+#: class.seo-ultimate.php:792
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: class.seo-ultimate.php:791
+#: class.seo-ultimate.php:794
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: class.seo-ultimate.php:838
+#: class.seo-ultimate.php:846
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: class.seo-ultimate.php:906
+#: class.seo-ultimate.php:914
 msgid "SEO Settings"
 msgstr ""
 
@@ -83,26 +83,26 @@ msgstr ""
 msgid "%1$s<br />%2$s"
 msgstr ""
 
-#: class.su-module.php:408
+#: class.su-module.php:406
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: class.su-module.php:443
+#: class.su-module.php:441
 msgid "Settings updated."
 msgstr ""
 
-#: class.su-module.php:468
+#: class.su-module.php:465
 msgid "Save Changes"
 msgstr ""
 
-#: class.su-module.php:558
+#: class.su-module.php:555
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: class.su-module.php:571
+#: class.su-module.php:568
 msgid "Reset"
 msgstr ""
 
@@ -302,13 +302,13 @@ msgstr ""
 msgid "Whitepapers"
 msgstr ""
 
-#: modules/sds-blog.php:38
+#: modules/sds-blog.php:37
 msgid ""
 "Search engine optimization articles from the company behind the SEO Ultimate "
 "plugin."
 msgstr ""
 
-#: modules/sds-blog.php:89
+#: modules/sds-blog.php:88
 msgid ""
 "The articles below are loaded from the SEO Design Solutions website. Click "
 "on an article&#8217s title to read it."
@@ -318,20 +318,96 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:50
+#: modules/settings.php:63
+msgid "Settings successfully imported."
+msgstr ""
+
+#: modules/settings.php:65
+msgid ""
+"The uploaded file is not in the proper format. Settings could not be "
+"imported."
+msgstr ""
+
+#: modules/settings.php:67
+msgid "The settings file could not be uploaded successfully."
+msgstr ""
+
+#: modules/settings.php:70
+msgid ""
+"Settings could not be imported because no settings file was selected. Please "
+"click the &#8220;Browse&#8221; button and select a file to import."
+msgstr ""
+
+#: modules/settings.php:78
+msgid "All settings have been erased and defaults have been restored."
+msgstr ""
+
+#: modules/settings.php:92
 msgid "Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:52
+#: modules/settings.php:94
 msgid "Enable attribution link"
 msgstr ""
 
-#: modules/settings.php:53
+#: modules/settings.php:95
 msgid "Notify me about unnecessary active plugins"
 msgstr ""
 
-#: modules/settings.php:55
+#: modules/settings.php:97
 msgid "Insert comments around HTML code insertions"
+msgstr ""
+
+#: modules/settings.php:102
+msgid "Manage Settings Data"
+msgstr ""
+
+#: modules/settings.php:106
+msgid ""
+"This section allows you to export, import, and reset the settings of the "
+"plugin and all its modules."
+msgstr ""
+
+#: modules/settings.php:108
+msgid ""
+"A settings file includes the data of every checkbox and textbox of every "
+"installed module, as well as the &#8220;Plugin Settings&#8221; section "
+"above. "
+msgstr ""
+
+#: modules/settings.php:117
+msgid "Export:"
+msgstr ""
+
+#: modules/settings.php:120
+msgid "Download Settings File"
+msgstr ""
+
+#: modules/settings.php:125
+msgid "Import:"
+msgstr ""
+
+#: modules/settings.php:130
+msgid ""
+"Are you sure you want to import this settings file? This will erase all "
+"current settings and cannot be undone."
+msgstr ""
+
+#: modules/settings.php:131
+msgid "Import This Settings File"
+msgstr ""
+
+#: modules/settings.php:138
+msgid "Reset:"
+msgstr ""
+
+#: modules/settings.php:141
+msgid ""
+"Are you sure you want to erase all module settings? This cannot be undone."
+msgstr ""
+
+#: modules/settings.php:142
+msgid "Restore Default Settings"
 msgstr ""
 
 #: modules/stats.php:13 modules/stats.php:14
@@ -436,6 +512,10 @@ msgstr ""
 
 #: modules/titles.php:53
 msgid "Pagination Title Format"
+msgstr ""
+
+#: modules/titles.php:64
+msgid "Title Tag:"
 msgstr ""
 
 #: modules/titles.php:247
