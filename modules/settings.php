@@ -2,7 +2,7 @@
 /**
  * Settings Module
  * 
- * @version 1.0.1
+ * @version 2.0
  * @since 0.2
  */
 
@@ -23,19 +23,61 @@ class SU_Settings extends SU_Module {
 		);
 	}
 	
+	function portable_options() {
+		return array('settings', 'modules');
+	}
+	
 	function init() {
 		
 		if ($this->is_action('export')) {
 			header('Content-Type: application/octet-stream');
 			header('Content-Disposition: attachment; filename="SEO Ultimate Settings ('.date('Y-m-d').').dat"');
 			
-			$export = maybe_unserialize(get_option('su_settings'));
-			$export = apply_filters('su_settings_export_array', $export);
+			$options = $this->portable_options();
+			$export = array();
+			foreach ($options as $option) {
+				$data = maybe_unserialize(get_option("su_$option"));
+				$data = apply_filters("su_{$option}_export_array", $data);
+				$export[$option] = $data;
+			}
 			$export = base64_encode(serialize($export));
 			
 			echo $export;
 			die();
+			
+		} elseif ($this->is_action('import')) {
+			
+			if (strlen($_FILES['settingsfile']['name'])) {
+			
+				$file = $_FILES['settingsfile']['tmp_name'];			
+				if (is_uploaded_file($file)) {
+					$import = base64_decode(file_get_contents($file));
+					if (is_serialized($import)) {
+						$import = unserialize($import);
+						
+						$options = $this->portable_options();
+						foreach ($options as $option) {
+							update_option("su_$option", $import[$option]);
+						}
+						
+						$this->queue_message('success', __("Settings successfully imported.", 'seo-ultimate'));
+					} else
+						$this->queue_message('error', __("The uploaded file is not in the proper format. Settings could not be imported.", 'seo-ultimate'));
+				} else
+					$this->queue_message('error', __("The settings file could not be uploaded successfully.", 'seo-ultimate'));
+					
+			} else
+				$this->queue_message('warning', __("Settings could not be imported because no settings file was selected. Please click the &#8220;Browse&#8221; button and select a file to import.", 'seo-ultimate'));
+			
+		} elseif ($this->is_action('reset')) {
+			
+			update_option('su_settings', serialize(array()));
+			delete_option('su_modules');
+			$this->load_default_settings();
+			
+			$this->queue_message('success', __("All settings have been erased and defaults have been restored.", 'seo-ultimate'));
 		}
+		
 		
 		//Hook to add attribution link
 		if ($this->get_setting('attribution_link', true)) {
@@ -56,32 +98,16 @@ class SU_Settings extends SU_Module {
 		));
 		$this->admin_form_end();
 		
-		/*//Manage Settings
+		//Manage Settings
 		$this->admin_subheader(__("Manage Settings Data", 'seo-ultimate'));
+		$this->print_messages();
 		
 		echo "<p>";
 		_e("This section allows you to export, import, and reset the settings of the plugin and all its modules.", 'seo-ultimate');
+		echo "</p><p>";
+		_e("A settings file includes the data of every checkbox and textbox of every installed module, as well as the &#8220;Plugin Settings&#8221; section above. ".
+			"It does NOT include site-specific data like logged 404s or post/page title/meta data (this data would be included in a standard database backup, however).", 'seo-ultimate');
 		echo "</p>";
-		
-		if ($this->is_action('import')) {
-			
-			$file = $_FILES['settingsfile']['tmp_name'];			
-			if (is_uploaded_file($file)) {
-				$settings = base64_decode(file_get_contents($file));
-				if (is_serialized($settings)) {
-					update_option('su_settings', $settings);
-					$this->print_message('success', __("Settings successfully imported.", 'seo-ultimate'));
-				} else
-					$this->print_message('error', __("The uploaded file is not in the proper format. Settings could not be imported.", 'seo-ultimate'));
-			} else
-				$this->print_message('error', __("The settings file could not be uploaded successfully.", 'seo-ultimate'));
-			
-		} elseif ($this->is_action('reset')) {
-			
-			update_option('su_settings', serialize(array()));
-			delete_option('su_modules');
-			$this->print_message('success', __("All settings have been erased.", 'seo-ultimate'));
-		}
 		
 		//Begin table
 		echo "<table id='manage-settings'>\n";
@@ -117,7 +143,7 @@ class SU_Settings extends SU_Module {
 		echo "</td></tr>";
 		
 		//End table
-		echo "</table>";*/
+		echo "</table>";
 	}
 	
 	function meta_link() {

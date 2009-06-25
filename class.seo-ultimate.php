@@ -2,7 +2,7 @@
 /**
  * The main class. Provides plugin-level functionality.
  * 
- * @version 1.2
+ * @version 1.3
  * @since 0.1
  */
 class SEO_Ultimate {
@@ -351,7 +351,7 @@ class SEO_Ultimate {
 					if ($name) $name = str_replace(' Module', '', ltrim($name[2], ' *'));
 							else $name = ucwords(str_replace('-', ' ', $module));
 					
-					$this->disabled_modules[$module] = $name;
+					$this->disabled_modules[$module] = __($name, 'seo-ultimate');
 					
 				} else {
 				
@@ -411,11 +411,12 @@ class SEO_Ultimate {
 	
 	/**
 	 * Runs during WordPress's init action.
-	 * Loads the textdomain and calls modules' init_pre() functions.
+	 * Loads the textdomain and calls modules' initialization functions.
 	 * 
 	 * @since 0.1
 	 * @uses $plugin_file_path
-	 * @uses SU_Module::init_pre()
+	 * @uses SU_Module::load_default_settings()
+	 * @uses SU_Module::init()
 	 */
 	function init() {
 		
@@ -423,8 +424,10 @@ class SEO_Ultimate {
 		load_plugin_textdomain('seo-ultimate', '', plugin_basename($this->plugin_file_path));
 		
 		//Let the modules run init tasks
-		foreach ($this->modules as $module)
-			$module->init_pre();
+		foreach ($this->modules as $module) {
+			$module->load_default_settings();
+			$module->init();
+		}
 	}
 	
 	
@@ -834,7 +837,12 @@ class SEO_Ultimate {
 	 */
 	function plugin_page_notice($file, $data, $context) {
 		if ($context != 'inactive') {
-			echo "<tr class='plugin-update-tr su-plugin-notice'><td colspan='3' class='plugin-update'><div class='update-message'>\n";
+		
+			//3 columns if 2.8+ but 5 columns if 2.7.x or prior
+			global $wp_version;
+			$columns = version_compare($wp_version, '2.8', '>=') ? 3 : 5;
+			
+			echo "<tr class='plugin-update-tr su-plugin-notice'><td colspan='$columns' class='plugin-update'><div class='update-message'>\n";
 			printf(__('SEO Ultimate includes the functionality of %1$s. You may want to deactivate %1$s to avoid plugin conflicts.', 'seo-ultimate'), $data['Name']);
 			echo "</div></td></tr>\n";
 		}

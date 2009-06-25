@@ -2,7 +2,7 @@
 /**
  * SEO Design Solutions Whitepapers Module
  * 
- * @version 1.0
+ * @version 1.0.1
  * @since 0.1
  */
 
@@ -12,7 +12,6 @@ class SU_SdsBlog extends SU_Module {
 	
 	function get_page_title() { return __('SEO Design Solutions Whitepapers', 'seo-ultimate'); }
 	function get_menu_title() { return __('Whitepapers', 'seo-ultimate'); }	
-	function get_menu_pos()   { return 30; }
 	function get_menu_count() { return 0; /*$this->get_unread_count();*/ }
 	
 	function __construct() {

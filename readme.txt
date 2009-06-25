@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
 Tags: seo, title, meta, noindex, canonical, 404, google, yahoo, bing, search engines, admin, post, page
-Requires at least: 2.8
+Requires at least: 2.7
 Tested up to: 2.8
-Stable tag: 0.4
+Stable tag: 0.5
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, canonical tags, and 404 error tracking (with many more features coming soon).
 
@@ -28,6 +28,7 @@ SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 * Nonce security
 * An uninstall routine
 * Integration with the new WordPress 2.7+ menu
+* Settings import/export/reset functionality
 
 **NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release, including PageRank sculpting, robots.txt editing, 301 logging, and much more.
 
@@ -80,7 +81,15 @@ Because of the tremendous effort put into this plugin, we ask that you please le
 3. The Meta Editor module
 
 
-== Release History ==
+== Changelog ==
+
+= Version 0.5 (June 25, 2009) =
+* Feature: Added settings exporter
+* Feature: Added settings importer
+* Feature: Added button that restores default settings
+* Bugfix: Fixed bug that decoded HTML entities in textboxes
+* Bugfix: Added internationalization support to some overlooked strings
+* Compatibility: Restores support for the WordPress 2.7 branch
 
 = Version 0.4 (June 18, 2009) =
 * Added the 404 Monitor module

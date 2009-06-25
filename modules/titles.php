@@ -2,7 +2,7 @@
 /**
  * Title Rewriter Module
  * 
- * @version 1.0.2
+ * @version 1.0.3
  * @since 0.1
  */
 
@@ -61,7 +61,7 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function postmeta_fields($fields) {
-		$fields['10-title'] = $this->get_postmeta_textbox('title', 'Title Tag:');
+		$fields['10-title'] = $this->get_postmeta_textbox('title', __('Title Tag:', 'seo-ultimate'));
 		return $fields;
 	}
 	

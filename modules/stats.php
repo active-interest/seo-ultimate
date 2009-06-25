@@ -2,7 +2,7 @@
 /**
  * Stats Central Module
  * 
- * @version 0.1.1
+ * @version 0.1.2
  * @since 0.1
  */
 
@@ -18,7 +18,7 @@ class SU_Stats extends SU_Module {
 		echo "<ul>";
 		global $seo_ultimate;
 		foreach ($seo_ultimate->modules as $module) {
-			if ($module->get_menu_parent() == 'seo') {
+			if ($module->get_menu_parent() == 'seo' && $module->get_parent_module() === false) {
 				$key = $module->get_module_key();
 				if ($key != $this->get_module_key()) {
 					$key = SEO_Ultimate::key_to_hook($key);

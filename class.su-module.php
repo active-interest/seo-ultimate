@@ -3,7 +3,7 @@
  * The pseudo-abstract class upon which all modules are based.
  * 
  * @abstract
- * @version 1.2.1
+ * @version 1.3
  * @since 0.1
  */
 class SU_Module {
@@ -188,25 +188,23 @@ class SU_Module {
 	function postmeta_fields($fields) { return $fields;	}
 	
 	
-	/********** INITIALIZATION FUNCTION **********/
+	/********** INITIALIZATION FUNCTIONALITY **********/
 	
 	/**
-	 * Runs preliminary initialization tasks before calling the module's own init() function.
+	 * If settings are unset, apply the defaults if available.
 	 * 
-	 * @since 0.1
+	 * @since 0.5
 	 * @uses get_default_settings()
 	 * @uses get_setting()
 	 * @uses update_setting()
-	 * @uses init()
 	 */
-	function init_pre() {
+	function load_default_settings() {
+		
 		$defaults = $this->get_default_settings();
 		foreach ($defaults as $setting => $default) {
 			if ($this->get_setting($setting, "{reset}") === "{reset}")
 				$this->update_setting($setting, $default);
 		}
-		
-		$this->init();
 	}
 	
 	
@@ -440,8 +438,7 @@ class SU_Module {
 		if ($header) $this->admin_subheader($header);
 		
 		if (!$this->get_parent_module()) {
-			if ($this->is_action('update')) $this->queue_message('success', __('Settings updated.', 'seo-ultimate'));
-			$this->print_messages();
+			if ($this->is_action('update')) $this->print_message('success', __('Settings updated.', 'seo-ultimate'));
 			echo "<form method='post' action='?page=$hook'>\n";
 			settings_fields($hook);
 		}
@@ -552,7 +549,7 @@ class SU_Module {
 		
 		foreach ($textboxes as $id => $title) {
 			register_setting($this->get_module_key(), $id);
-			$value = attribute_escape($this->get_setting($id));
+			$value = wp_specialchars($this->get_setting($id), ENT_QUOTES, false, true);
 			$default = attribute_escape($defaults[$id]);
 			$id = attribute_escape($id);
 			$resetmessage = attribute_escape(__("Are you sure you want to replace the textbox contents with this default value?", 'seo-ultimate'));
