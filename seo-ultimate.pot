@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2009-06-25 21:38+0000\n"
+"POT-Creation-Date: 2009-07-02 22:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,14 +43,14 @@ msgstr ""
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: class.seo-ultimate.php:846
+#: class.seo-ultimate.php:849
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: class.seo-ultimate.php:914
+#: class.seo-ultimate.php:917
 msgid "SEO Settings"
 msgstr ""
 
@@ -83,6 +83,18 @@ msgstr ""
 msgid "%1$s<br />%2$s"
 msgstr ""
 
+#: class.su-importmodule.php:41
+msgid "Import Now"
+msgstr ""
+
+#: class.su-importmodule.php:52
+msgid "Return to settings page"
+msgstr ""
+
+#: class.su-importmodule.php:55
+msgid "Return to SEO page"
+msgstr ""
+
 #: class.su-module.php:406
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
@@ -92,17 +104,17 @@ msgstr ""
 msgid "Settings updated."
 msgstr ""
 
-#: class.su-module.php:465
+#: class.su-module.php:461
 msgid "Save Changes"
 msgstr ""
 
-#: class.su-module.php:555
+#: class.su-module.php:557
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: class.su-module.php:568
+#: class.su-module.php:570
 msgid "Reset"
 msgstr ""
 
@@ -152,6 +164,34 @@ msgstr ""
 
 #: modules/canonical.php:23
 msgid "Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags."
+msgstr ""
+
+#: modules/linkbox.php:13
+msgid "Linkbox Inserter"
+msgstr ""
+
+#: modules/linkbox.php:18
+msgid "Link to this post!"
+msgstr ""
+
+#: modules/linkbox.php:47
+msgid "At the end of posts"
+msgstr ""
+
+#: modules/linkbox.php:48
+msgid "At the end of pages"
+msgstr ""
+
+#: modules/linkbox.php:49
+msgid "When called by the su_linkbox hook"
+msgstr ""
+
+#: modules/linkbox.php:50
+msgid "Display linkboxes..."
+msgstr ""
+
+#: modules/linkbox.php:51
+msgid "Linkbox HTML"
 msgstr ""
 
 #: modules/meta.php:13
@@ -318,95 +358,99 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:63
+#: modules/settings.php:64
 msgid "Settings successfully imported."
 msgstr ""
 
-#: modules/settings.php:65
+#: modules/settings.php:66
 msgid ""
 "The uploaded file is not in the proper format. Settings could not be "
 "imported."
 msgstr ""
 
-#: modules/settings.php:67
+#: modules/settings.php:68
 msgid "The settings file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings.php:70
+#: modules/settings.php:71
 msgid ""
 "Settings could not be imported because no settings file was selected. Please "
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings.php:78
+#: modules/settings.php:79
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings.php:92
+#: modules/settings.php:93
 msgid "Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:94
+#: modules/settings.php:95
 msgid "Enable attribution link"
 msgstr ""
 
-#: modules/settings.php:95
-msgid "Notify me about unnecessary active plugins"
+#: modules/settings.php:96
+msgid "Enable attribution link CSS styling"
 msgstr ""
 
 #: modules/settings.php:97
+msgid "Notify me about unnecessary active plugins"
+msgstr ""
+
+#: modules/settings.php:99
 msgid "Insert comments around HTML code insertions"
 msgstr ""
 
-#: modules/settings.php:102
+#: modules/settings.php:104
 msgid "Manage Settings Data"
 msgstr ""
 
-#: modules/settings.php:106
+#: modules/settings.php:108
 msgid ""
 "This section allows you to export, import, and reset the settings of the "
 "plugin and all its modules."
 msgstr ""
 
-#: modules/settings.php:108
+#: modules/settings.php:110
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module, as well as the &#8220;Plugin Settings&#8221; section "
 "above. "
 msgstr ""
 
-#: modules/settings.php:117
+#: modules/settings.php:119
 msgid "Export:"
 msgstr ""
 
-#: modules/settings.php:120
+#: modules/settings.php:122
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings.php:125
+#: modules/settings.php:127
 msgid "Import:"
 msgstr ""
 
-#: modules/settings.php:130
+#: modules/settings.php:132
 msgid ""
 "Are you sure you want to import this settings file? This will erase all "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings.php:131
+#: modules/settings.php:133
 msgid "Import This Settings File"
 msgstr ""
 
-#: modules/settings.php:138
+#: modules/settings.php:140
 msgid "Reset:"
 msgstr ""
 
-#: modules/settings.php:141
+#: modules/settings.php:143
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings.php:142
+#: modules/settings.php:144
 msgid "Restore Default Settings"
 msgstr ""
 
