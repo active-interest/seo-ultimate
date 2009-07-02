@@ -2,7 +2,7 @@
 /**
  * The main class. Provides plugin-level functionality.
  * 
- * @version 1.3
+ * @version 1.3.1
  * @since 0.1
  */
 class SEO_Ultimate {
@@ -817,8 +817,11 @@ class SEO_Ultimate {
 		if ($pagenow == 'plugins.php') {
 		
 			$r_plugins = array(
-				  'all-in-one-seo-pack/all_in_one_seo_pack.php'
-				, 'canonical/canonical.php'
+				  'all-in-one-seo-pack/all_in_one_seo_pack.php' //Title Rewriter, Meta Editor, Noindex Manager
+				, 'another-wordpress-meta-plugin/another_wordpress_meta_plugin.php' //Meta Editor
+				, 'canonical/canonical.php' //Canonicalizer
+				, 'noindex-login/noindex-login.php' //Noindex Manager
+				, 'search-engine-verify/search-engine-verify.php' //Meta Editor
 			);
 			
 			$i_plugins = get_plugins();
@@ -836,8 +839,8 @@ class SEO_Ultimate {
 	 * @since 0.1
 	 */
 	function plugin_page_notice($file, $data, $context) {
-		if ($context != 'inactive') {
-		
+		if (is_plugin_active($file)) {
+			
 			//3 columns if 2.8+ but 5 columns if 2.7.x or prior
 			global $wp_version;
 			$columns = version_compare($wp_version, '2.8', '>=') ? 3 : 5;

@@ -142,3 +142,13 @@ div.su-help ul {
 #wpwrap .su-plugin-notice .update-message {
 	font-weight: normal;
 }
+
+.su-module table#import-status {
+	border: 0;
+	width: auto;
+	margin: 2em 0;
+}
+
+.su-module table#import-status td {
+	padding: 0 0.5em 1em 0;
+}

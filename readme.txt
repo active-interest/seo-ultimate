@@ -3,9 +3,9 @@ Contributors: SEO Design Solutions
 Tags: seo, title, meta, noindex, canonical, 404, google, yahoo, bing, search engines, admin, post, page
 Requires at least: 2.7
 Tested up to: 2.8
-Stable tag: 0.5
+Stable tag: 0.6
 
-This all-in-one SEO plugin can handle titles, noindex, meta data, canonical tags, and 404 error tracking (with many more features coming soon).
+This all-in-one SEO plugin can handle titles, noindex, meta data, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
 == Description ==
 
@@ -20,6 +20,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Canonicalizer** - Inserts `<link rel="canonical" />` tags for your homepage and each of your posts, Pages, categories, tags, date archives, and author archives.
 
 * **404 Monitor** - Logs 404 errors generated on your blog.
+
+* **Linkbox Inserter** - Encourages linkbuilding activity by inserting textboxes containing link HTML.
 
 SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 
@@ -82,6 +84,10 @@ Because of the tremendous effort put into this plugin, we ask that you please le
 
 
 == Changelog ==
+
+= Version 0.6 (July 2, 2009) =
+* Feature: Added the Linkbox Inserter module
+* Bugfix: Fixed plugin notices bug
 
 = Version 0.5 (June 25, 2009) =
 * Feature: Added settings exporter

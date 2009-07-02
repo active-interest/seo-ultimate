@@ -3,7 +3,7 @@
  * The pseudo-abstract class upon which all modules are based.
  * 
  * @abstract
- * @version 1.3
+ * @version 1.3.1
  * @since 0.1
  */
 class SU_Module {
@@ -454,15 +454,17 @@ class SU_Module {
 	 * @since 0.1
 	 * @uses get_parent_module()
 	 * 
+	 * @param string|false $button The label of the submit button.
 	 * @param boolean $table Whether or not a form table should be ended.
 	 */
-	function admin_form_end($table = true) {
+	function admin_form_end($button = false, $table = true) {
+		if (!$button) $button = __('Save Changes'); //This string is used in normal WP, so we don't need a textdomain
 		if ($table) echo "</table>\n";
 		
 		if (!$this->get_parent_module()) {
 ?>
 <p class="submit">
-	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+	<input type="submit" class="button-primary" value="<?php echo $button ?>" />
 </p>
 </form>
 <?php

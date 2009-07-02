@@ -2,7 +2,7 @@
 /**
  * Settings Module
  * 
- * @version 2.0
+ * @version 2.1
  * @since 0.2
  */
 
@@ -19,6 +19,7 @@ class SU_Settings extends SU_Module {
 	function get_default_settings() {
 		return array(
 			  'attribution_link' => true
+			, 'attribution_link_css' => true
 			, 'plugin_notices' => true
 		);
 	}
@@ -92,6 +93,7 @@ class SU_Settings extends SU_Module {
 		$this->admin_form_start(__("Plugin Settings", 'seo-ultimate'));
 		$this->checkboxes(array(
 			  'attribution_link' => __("Enable attribution link", 'seo-ultimate')
+			, 'attribution_link_css' => __("Enable attribution link CSS styling", 'seo-ultimate')
 			, 'plugin_notices' => __("Notify me about unnecessary active plugins", 'seo-ultimate')
 			//, 'debug_mode' => __("Enable debug-mode logging", 'seo-ultimate')
 			, 'mark_code' => __("Insert comments around HTML code insertions", 'seo-ultimate')
@@ -152,8 +154,14 @@ class SU_Settings extends SU_Module {
 	}
 	
 	function footer_link() {
-		if (!$this->wp_meta_called)
-			echo "\n<p>Search engine optimization by <a href='http://www.seodesignsolutions.com/'>SEO Design Solutions</a></a></p>\n";
+		if (!$this->wp_meta_called) {
+			if ($this->get_setting('attribution_link_css')) {
+				$pstyle = " style='text-align: center; font-size: smaller;'";
+				$astyle = " style='color: inherit;'"; 
+			} else $pstyle = $astyle = '';
+			
+			echo "\n<p id='suattr'$pstyle>Search engine optimization by <a href='http://www.seodesignsolutions.com/'$astyle>SEO Design Solutions</a></a></p>\n";
+		}
 	}
 	
 	function admin_help() {
