@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, title, meta, noindex, canonical, 404, google, yahoo, bing, search engines, admin, post, page
+Tags: seo, title, meta, noindex, canonical, 404, google, yahoo, bing, search engines, admin, post, page, modules
 Requires at least: 2.7
 Tested up to: 2.8
-Stable tag: 0.6
+Stable tag: 0.7
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
@@ -84,6 +84,10 @@ Because of the tremendous effort put into this plugin, we ask that you please le
 
 
 == Changelog ==
+
+= Version 0.7 (July 16, 2009) =
+* Feature: Added the Module Manager
+* Feature: Modules can optionally display numeric notices in the menu
 
 = Version 0.6 (July 2, 2009) =
 * Feature: Added the Linkbox Inserter module
