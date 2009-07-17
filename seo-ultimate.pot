@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2009-07-02 22:42+0000\n"
+"POT-Creation-Date: 2009-07-17 03:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,26 +95,26 @@ msgstr ""
 msgid "Return to SEO page"
 msgstr ""
 
-#: class.su-module.php:406
+#: class.su-module.php:491
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: class.su-module.php:441
+#: class.su-module.php:526
 msgid "Settings updated."
 msgstr ""
 
-#: class.su-module.php:461
+#: class.su-module.php:546
 msgid "Save Changes"
 msgstr ""
 
-#: class.su-module.php:557
+#: class.su-module.php:642
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: class.su-module.php:570
+#: class.su-module.php:655
 msgid "Reset"
 msgstr ""
 
@@ -282,6 +282,40 @@ msgid ""
 "<strong>Keywords:</strong> &mdash; The value of the meta keywords tag. The "
 "keywords list gives search engines a hint as to what this post/page is "
 "about. "
+msgstr ""
+
+#: modules/modules.php:13
+msgid "Module Manager"
+msgstr ""
+
+#: modules/modules.php:40
+msgid ""
+"Here you can disable or hide modules you don&#8217;t use. You can also "
+"silence modules from displaying bubble alerts on the menu."
+msgstr ""
+
+#: modules/modules.php:46
+msgid "Status"
+msgstr ""
+
+#: modules/modules.php:47
+msgid "Module"
+msgstr ""
+
+#: modules/modules.php:60
+msgid "Enabled"
+msgstr ""
+
+#: modules/modules.php:61
+msgid "Silenced"
+msgstr ""
+
+#: modules/modules.php:62
+msgid "Hidden"
+msgstr ""
+
+#: modules/modules.php:63
+msgid "Disabled"
 msgstr ""
 
 #: modules/noindex.php:13
@@ -452,10 +486,6 @@ msgstr ""
 
 #: modules/settings.php:144
 msgid "Restore Default Settings"
-msgstr ""
-
-#: modules/stats.php:13 modules/stats.php:14
-msgid "Modules"
 msgstr ""
 
 #: modules/titles.php:13
