@@ -2,7 +2,7 @@
 /**
  * 404 Monitor Module
  * 
- * @version 1.0
+ * @version 1.0.1
  * @since 0.4
  */
 
@@ -17,12 +17,12 @@ class SU_404s extends SU_Module {
 	}
 	
 	function get_menu_title() { return __('404 Monitor', 'seo-ultimate'); }
-	/*function get_menu_count() {
+	
+	function get_menu_count() {
 		global $wpdb;
 		$table = SEO_Ultimate::get_table_name('hits');
 		return $wpdb->query("SELECT id FROM $table WHERE status_code=404 AND is_new=1");
 	}
-	function get_menu_count_label() { return __('New 404 Errors', 'seo-ultimate'); }*/
 	
 	function admin_page_contents() {
 		

@@ -3,7 +3,7 @@
  * The pseudo-abstract class upon which all modules are based.
  * 
  * @abstract
- * @version 1.3.1
+ * @version 1.4
  * @since 0.1
  */
 class SU_Module {
@@ -239,6 +239,22 @@ class SU_Module {
 		return isset($seo_ultimate->modules[$key]);
 	}
 	
+	/**
+	 * Returns the absolute URL of the module's admin page.
+	 * 
+	 * @since 0.7
+	 */
+	function get_admin_url() {
+		if ($key = $this->get_parent_module()) {
+			$anchor = '#'.SEO_Ultimate::key_to_hook($this->get_module_key());
+		} else {
+			$key = $this->get_module_key();
+			$anchor = '';
+		}
+		
+		return admin_url('admin.php?page='.SEO_Ultimate::key_to_hook($key).$anchor);
+	}
+	
 	
 	/********** SETTINGS FUNCTIONS **********/
 	
@@ -391,6 +407,75 @@ class SU_Module {
 	 */
 	function admin_page_end() {
 		echo "\n</div>\n</div>\n";
+	}
+	
+	/**
+	 * Outputs a tab control and loads the current tab.
+	 * 
+	 * @since 0.7
+	 * @uses get_admin_url()
+	 * 
+	 * @param array $tabs The names of the functions that display the tab contents are the array keys, and the internationalized tab titles are the array values.
+	 */
+	function admin_page_tabs($tabs = array(), $tabset = 'su-tabset') {
+		
+		echo "\n\n<div id='$tabset' class='su-tabs'>\n";
+		
+		foreach ($tabs as $function => $title) {
+			echo "<fieldset id='$function'>\n<h3>$title</h3>\n";
+			if (is_callable($call = array($this, $function))) call_user_func($call);
+			echo "</fieldset>\n";
+		}
+		echo "</div>\n";
+?>
+
+<script type="text/javascript">
+/* <![CDATA[ */	
+	jQuery(function() 
+	{
+		su_init_tabs();		
+	 });
+	
+	function su_init_tabs()
+	{
+		/* if this is not the breadcrumb admin page, quit */
+		if (!jQuery("#<?php echo $tabset; ?>").length) return;		
+
+		/* init markup for tabs */
+		jQuery('#<?php echo $tabset; ?>').prepend("<ul><\/ul>");
+		jQuery('#<?php echo $tabset; ?> > fieldset').each(function(i)
+		{
+		    id      = jQuery(this).attr('id');
+		    caption = jQuery(this).find('h3').text();
+		    jQuery('#<?php echo $tabset; ?> > ul').append('<li><a href="#'+id+'"><span>'+caption+"<\/span><\/a><\/li>");
+		    jQuery(this).find('h3').hide();					    
+	    });
+		
+		/* init the tabs plugin */
+		var jquiver = undefined == jQuery.ui ? [0,0,0] : undefined == jQuery.ui.version ? [0,1,0] : jQuery.ui.version.split('.');
+		switch(true) {
+			// tabs plugin has been fixed to work on the parent element again.
+			case jquiver[0] >= 1 && jquiver[1] >= 7:
+				jQuery("#<?php echo $tabset; ?>").tabs();
+				break;
+			// tabs plugin has bug and needs to work on ul directly.
+			default:
+				jQuery("#<?php echo $tabset; ?> > ul").tabs(); 
+		}
+
+		/* handler for openeing the last tab after submit (compability version) */
+		jQuery('#<?php echo $tabset; ?> ul a').click(function(i){
+			var form   = jQuery('#bcn_admin_options');
+			var action = form.attr("action").split('#', 1) + jQuery(this).attr('href');
+			// an older bug pops up with some jQuery version(s), which makes it
+			// necessary to set the form's action attribute by standard javascript 
+			// node access:						
+			form.get(0).setAttribute("action", action);
+		});
+	}
+</script>
+
+<?php
 	}
 	
 	/**

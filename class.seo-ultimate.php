@@ -2,11 +2,11 @@
 /**
  * The main class. Provides plugin-level functionality.
  * 
- * @version 1.3.1
+ * @version 1.3.2
  * @since 0.1
  */
 class SEO_Ultimate {
-
+	
 	/********** VARIABLES **********/
 
 	/**
@@ -652,7 +652,7 @@ class SEO_Ultimate {
 	
 	/**
 	 * Converts a module key to a menu hook.
-	 * (Makes the "Stats" module load when the "SEO" parent item is clicked.)
+	 * (Makes the "Module Manager" module load when the "SEO" parent item is clicked.)
 	 * 
 	 * @since 0.1
 	 * 
@@ -661,7 +661,7 @@ class SEO_Ultimate {
 	 */
 	function key_to_hook($key) {
 		switch ($key) {
-			case 'stats': return 'seo'; break;
+			case 'modules': return 'seo'; break;
 			case 'settings': return 'seo-ultimate'; break;
 			default: return "su-$key"; break;
 		}
@@ -669,7 +669,7 @@ class SEO_Ultimate {
 	
 	/**
 	 * Converts a menu hook to a module key.
-	 * (If the "SEO" parent item is clicked, then the Stats module is being shown.)
+	 * (If the "SEO" parent item is clicked, then the Module Manager is being shown.)
 	 * 
 	 * @since 0.1
 	 * 
@@ -678,7 +678,7 @@ class SEO_Ultimate {
 	 */
 	function hook_to_key($hook) {
 		switch ($hook) {
-			case 'seo': return 'stats'; break;
+			case 'seo': return 'modules'; break;
 			case 'seo-ultimate': return 'settings'; break;
 			default: return substr($hook, 3); break;
 		}
