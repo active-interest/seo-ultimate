@@ -2,7 +2,7 @@
 /**
  * Module Manager Module
  * 
- * @version 1.0
+ * @version 1.1
  * @since 0.7
  */
 
@@ -10,27 +10,22 @@ if (class_exists('SU_Module')) {
 
 class SU_Modules extends SU_Module {
 	
-	function get_menu_title() { return __('Module Manager', 'seo-ultimate'); }
+	function get_menu_title() { return __('Modules', 'seo-ultimate'); }
+	function get_page_title() { return __('Module Manager', 'seo-ultimate'); }
 	function get_menu_pos()   { return 10; }
 	
 	function init() {
 		global $seo_ultimate;
 		
-		if ($_GET['page'] == SEO_Ultimate::key_to_hook($this->get_module_key()) && $this->is_action('update')) {
-			
-			$module_statuses = maybe_unserialize(get_option('su_modules', false));
+		if ($this->is_action('update')) {
 			
 			foreach ($_POST as $key => $value) {
 				if (substr($key, 0, 3) == 'su-') {
 					$key = str_replace(array('su-', '-module-status'), '', $key);
-					$module_statuses[$key] = intval($value);
+					$seo_ultimate->dbdata['modules'][$key] = intval($value);
 				}
 			}
-			
-			$seo_ultimate->module_status = $module_statuses;
-			update_option('su_modules', serialize($module_statuses));
 		}
-	
 	}
 	
 	function admin_page_contents() {
@@ -65,16 +60,18 @@ STR;
 		
 		$modules = array();
 		
-		foreach ($seo_ultimate->modules as $key => $module)
-			if (get_parent_class($module) == 'SU_Module' && !in_array($key, array('stats', 'modules')))
+		foreach ($seo_ultimate->modules as $key => $module) {
+			//On some setups, get_parent_class() returns the class name in lowercase
+			if (strcasecmp(get_parent_class($module), 'SU_Module') == 0 && !in_array($key, array('stats', 'modules')))
 				$modules[$key] = $module->get_page_title();
+		}
 		
 		$modules = array_merge($modules, $seo_ultimate->disabled_modules);
 		asort($modules);
 		
 		foreach ($modules as $key => $name) {
 			
-			$currentstatus = $seo_ultimate->module_status[$key];
+			$currentstatus = $seo_ultimate->dbdata['modules'][$key];
 			
 			echo "\t\t<tr>\n\t\t\t<td class='module-status' id='$key-module-status'>\n";
 			echo "\t\t\t\t<input type='hidden' name='su-$key-module-status' id='su-$key-module-status' value='$currentstatus' />\n";
@@ -86,8 +83,8 @@ STR;
 				echo "<a href='javascript:void(0)' onclick=\"javascript:set_module_status('$key', $statuscode, this)\" class='$current'>$statuslabel</a></span>\n";
 			}
 			
-			if ($seo_ultimate->module_status[$key] > SU_MODULE_DISABLED) {
-				$cellcontent = "<a href='".$seo_ultimate->modules[$key]->get_admin_url()."'>$name</a>";
+			if ($currentstatus > SU_MODULE_DISABLED) {
+				$cellcontent = "<a href='".$this->get_admin_url($key)."'>$name</a>";
 			} else
 				$cellcontent = $name;
 			
@@ -104,6 +101,19 @@ STR;
 		echo "\t</tbody>\n</table>\n";
 		
 		$this->admin_form_end(false, false);
+	}
+	
+	function admin_help() {
+		return __(<<<STR
+<p>The Module Manager lets you customize the visibility and accessibility of each module; here are the options available:</p>
+<ul>
+	<li><strong>Enabled</strong> &mdash; The default option. The module will be fully enabled and accessible.</li>
+	<li><strong>Silenced</strong> &mdash; The module will be enabled and accessible, but it won&#8217;t be allowed to display numeric bubble alerts on the menu.</li>
+	<li><strong>Hidden</strong> &mdash; The module&#8217;s functionality will be enabled, but the module won&#8217;t be visible on the SEO menu. You will still be able to access the module&#8217;s admin page by clicking on its title in the Module Manager table.</li>
+	<li><strong>Disabled</strong> &mdash; The module will be completely disabled and inaccessible.</li>
+</ul>
+STR
+, 'seo-ultimate');
 	}
 }
 

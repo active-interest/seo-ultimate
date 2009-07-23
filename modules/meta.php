@@ -2,7 +2,7 @@
 /**
  * Meta Editor Module
  * 
- * @version 1.0.1
+ * @version 1.0.2
  * @since 0.3
  */
 
@@ -51,7 +51,7 @@ class SU_Meta extends SU_Module {
 		$id = "_su_description";
 		$value = attribute_escape($this->get_postmeta('description'));
 		
-		$fields['20-meta'] =
+		$fields['20|description|keywords'] =
 			  "<tr class='textarea'>\n<th scope='row'><label for='$id'>".__("Description:", 'seo-ultimate')."</label></th>\n"
 			. "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='60' rows='3'"
 			. " onkeyup=\"javascript:textbox_char_count('_su_description', 'su_meta_description_charcount')\">$value</textarea>"
@@ -89,12 +89,12 @@ class SU_Meta extends SU_Module {
 		}
 		
 		if ($desc) {
-			$desc = attribute_escape($desc);
+			$desc = su_esc_attr($desc);
 			echo "\t<meta name=\"description\" content=\"$desc\" />\n";
 		}
 		
 		if ($kw) {
-			$kw = attribute_escape($kw);
+			$kw = su_esc_attr($kw);
 			echo "\t<meta name=\"keywords\" content=\"$kw\" />\n";
 		}
 		
@@ -106,7 +106,7 @@ class SU_Meta extends SU_Module {
 		
 		foreach ($verify as $site => $name) {
 			if ($value = $this->get_setting($site.'_verify')) {
-				$value = attribute_escape($value);
+				$value = su_esc_attr($value);
 				echo "\t<meta name=\"$name\" content=\"$value\" />\n";
 			}
 		}

@@ -3,7 +3,7 @@
  * The pseudo-abstract class upon which all modules are based.
  * 
  * @abstract
- * @version 1.4
+ * @version 1.5
  * @since 0.1
  */
 class SU_Module {
@@ -243,13 +243,22 @@ class SU_Module {
 	 * Returns the absolute URL of the module's admin page.
 	 * 
 	 * @since 0.7
+	 * @uses get_parent_module()
+	 * @uses get_module_key()
+	 * @uses SEO_Ultimate::key_to_hook()
+	 * 
+	 * @param string|false $key The key of the module for which to generate the admin URL.
+	 * @return string The absolute URL to the admin page.
 	 */
-	function get_admin_url() {
-		if ($key = $this->get_parent_module()) {
-			$anchor = '#'.SEO_Ultimate::key_to_hook($this->get_module_key());
-		} else {
-			$key = $this->get_module_key();
-			$anchor = '';
+	function get_admin_url($key = false) {
+		
+		if ($key === false) {
+			if ($key = $this->get_parent_module()) {
+				$anchor = '#'.SEO_Ultimate::key_to_hook($this->get_module_key());
+			} else {
+				$key = $this->get_module_key();
+				$anchor = '';
+			}
 		}
 		
 		return admin_url('admin.php?page='.SEO_Ultimate::key_to_hook($key).$anchor);
@@ -271,9 +280,11 @@ class SU_Module {
 	 */
 	function get_setting($key, $default=null, $module=null) {
 		if (!$module) $module = $this->get_module_key();
-		$settings = maybe_unserialize(get_option('su_settings'));
-		if (isset($settings[$module][$key]))
-			$setting = $settings[$module][$key];
+		
+		global $seo_ultimate;
+		
+		if (isset($seo_ultimate->dbdata['settings'][$module][$key]))
+			$setting = $seo_ultimate->dbdata['settings'][$module][$key];
 		else
 			$setting = $default;
 		
@@ -294,10 +305,8 @@ class SU_Module {
 		if (!$module) $module = $this->get_module_key();
 		
 		if (!apply_filters("su_custom_update_setting-$module-$key", false, $value)) {
-			$settings = maybe_unserialize(get_option('su_settings'));
-			if (!$settings) $settings = array();
-			$settings[$module][$key] = $value;
-			update_option('su_settings', serialize($settings));
+			global $seo_ultimate;
+			$seo_ultimate->dbdata['settings'][$module][$key] = $value;
 		}
 	}
 	
@@ -479,6 +488,24 @@ class SU_Module {
 	}
 	
 	/**
+	 * Adds the hook necessary to initialize the admin page tabs.
+	 * 
+	 * @since 0.8
+	 */
+	function admin_page_tabs_init() {
+		add_action('wp_print_scripts', array($this, 'admin_page_tabs_js'));
+	}
+	
+	/**
+	 * Enqueues the JavaScript needed for the admin page tabs.
+	 * 
+	 * @since 0.8
+	 */
+	function admin_page_tabs_js() {
+		wp_enqueue_script('jquery-ui-tabs');
+	}
+	
+	/**
 	 * Adds plugin/module information to the admin footer.
 	 * 
 	 * @since 0.1
@@ -511,8 +538,7 @@ class SU_Module {
 	 * @uses get_module_key()
 	 * @uses admin_subheader()
 	 * @uses is_action()
-	 * @uses queue_message()
-	 * @uses print_messages()
+	 * @uses print_message()
 	 * @uses get_parent_module()
 	 * 
 	 * @param mixed $header The text of the subheader that should go right before the form. Optional.
@@ -737,14 +763,18 @@ class SU_Module {
 	 * Determines if a particular nonce-secured admin action is being executed.
 	 * 
 	 * @since 0.1
-	 * @uses nonce_validates()
+	 * @uses SEO_Ultimate::key_to_hook()
+	 * @uses get_module_key()
+	 * @uses nonce_validates()	 
 	 * 
 	 * @param string $action The name of the action to check.
 	 * @return bool Whether or not the action is being executed.
 	 */
 	function is_action($action) {
 		if (!($object = $_GET['object'])) $object = false;
-		return (($_GET['action'] == $action || $_POST['action'] == $action) && $this->nonce_validates($action, $object));
+		return (strcasecmp($_GET['page'], SEO_Ultimate::key_to_hook($this->get_module_key())) == 0 //Is $this module being shown?
+			&& ($_GET['action'] == $action || $_POST['action'] == $action) //Is this $action being executed?
+			&& $this->nonce_validates($action, $object)); //Is the nonce valid?
 	}
 	
 	/**
@@ -1006,10 +1036,8 @@ class SU_Module {
 			wp_schedule_event($start, $recurrance, $hook);
 			
 			//Make a record of it
-			$data = maybe_unserialize(get_option('su_cron'));
-			if (!is_array($data)) $data = array();
-			$data[$mk][$function] = array($hook, $start, $recurrance);
-			update_option('su_cron', serialize($data));
+			global $seo_ultimate;
+			$seo_ultimate->dbdata['cron'][$mk][$function] = array($hook, $start, $recurrance);
 			
 			//Run the event now
 			call_user_func(array($this, $function));

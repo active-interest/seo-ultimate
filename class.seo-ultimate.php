@@ -2,7 +2,7 @@
 /**
  * The main class. Provides plugin-level functionality.
  * 
- * @version 1.3.2
+ * @version 1.5
  * @since 0.1
  */
 class SEO_Ultimate {
@@ -26,12 +26,12 @@ class SEO_Ultimate {
 	var $disabled_modules = array();
 	
 	/**
-	 * Stores the status (disabled/hidden/silenced/enabled) of each module.
+	 * Stores all database data.
 	 * 
-	 * @since 0.1
+	 * @since 0.8
 	 * @var array
 	 */
-	var $module_status = array();
+	var $dbdata = array();
 	
 	/**
 	 * The server path of this plugin file.
@@ -93,6 +93,8 @@ class SEO_Ultimate {
 	 * PHP5-style constructor.
 	 * 
 	 * @since 0.1
+	 * @uses $dbdata
+	 * @uses save_dbdata()
 	 * @uses load_plugin_data()
 	 * @uses SU_VERSION
 	 * @uses install()
@@ -101,14 +103,26 @@ class SEO_Ultimate {
 	 * @uses activate() Registered with WordPress as the activation hook.
 	 * @uses init() Hooked into WordPress's "init" action.
 	 * @uses add_menus() Hooked into WordPress's "admin_menu" action.
-	 * @uses sanitize_menu_hook() Hooked into WordPress's "sanitize_title" filter.
 	 * @uses admin_includes() Hooked into WordPress's "admin_head" action.
 	 * @uses plugin_page_notices() Hooked into WordPress's "admin_head" action.
-	 * @uses admin_help() Hooked into WordPress's "contextual_help" action.
-	 * @uses log_redirect() Hooked into WordPress's "wp_redirect" action.
-	 * @uses log_hit() Hooked into WordPress's "status_header" action.
+	 * @uses admin_help() Hooked into WordPress's "contextual_help" filter.
+	 * @uses add_postmeta_box() Hooked into WordPress's "admin_menu" action.
+	 * @uses save_postmeta_box() Hooked into WordPress's "save_post" action.
+	 * @uses plugin_update_info() Hooked into the "in_plugin_update_message-seo-ultimate/seo-ultimate.php" action.
+	 * @uses log_redirect_canonical() Hooked into WordPress's "redirect_canonical" filter.
+	 * @uses log_redirect() Hooked into WordPress's "wp_redirect" filter.
+	 * @uses log_hit() Hooked into WordPress's "status_header" filter.
 	 */
 	function __construct() {
+		
+		/********** LOAD/SAVE DATABASE DATA **********/
+		
+		//Load
+		$this->dbdata = get_option('seo_ultimate', array());
+		$this->upgrade_to_08();
+		
+		//Save
+		add_action('shutdown', array($this, 'save_dbdata'));
 		
 		/********** CLASS CONSTRUCTION **********/
 		
@@ -118,21 +132,27 @@ class SEO_Ultimate {
 		
 		/********** VERSION CHECKING **********/
 		
-		//Get the current version, and the version when the plugin last ran
+		//Get the current version
 		$version = SU_VERSION;
-		$oldversion = get_option('su_version', false);
 		
-		//If this is the first time the plugin is running, then install()
-		if ($oldversion === false)
+		//Get the version when the plugin last ran.
+		if (isset($this->dbdata['version']))
+			$oldversion = $this->dbdata['version'];
+		else
+			$oldversion = get_option('su_version', false);
+
+		//Or, if this is the first time the plugin is running, then install()			
+		if ($oldversion) {
+			
+			//If $oldversion is less than $version, then upgrade()
+			if (version_compare($version, $oldversion) == 1)
+				$this->upgrade($oldversion);
+		} else {
 			$this->install();
-		
-		//If $oldversion is less than $version, then upgrade()
-		elseif (version_compare($version, $oldversion) == 1)
-			$this->upgrade($oldversion);
+		}
 		
 		//Store the current version in the database.
-		//Rest assured, WordPress won't waste a database query if the value hasn't changed.
-		update_option('su_version', $version);
+		$this->dbdata['version'] = $version;
 		
 		
 		/********** INITIALIZATION **********/
@@ -174,7 +194,7 @@ class SEO_Ultimate {
 		add_action('admin_menu', array($this, 'add_menus'), 10);
 		
 		//Hook to customize contextual help
-		add_action('contextual_help', array($this, 'admin_help'), 10, 2);
+		add_filter('contextual_help', array($this, 'admin_help'), 10, 2);
 		
 		//Postmeta box hooks
 		add_action('admin_menu', array($this, 'add_postmeta_box'));
@@ -214,9 +234,9 @@ class SEO_Ultimate {
 		$this->db_setup();
 		
 		//Load settings file if present
-		if (get_option('su_settings') === false && is_readable($settingsfile = $this->plugin_dir_path.'settings.txt')) {
+		if (!isset($this->dbdata['settings']) && is_readable($settingsfile = $this->plugin_dir_path.'settings.txt')) {
 			$import = base64_decode(file_get_contents($settingsfile));
-			if (is_serialized($import)) update_option('su_settings', $import);
+			if (is_serialized($import)) $this->dbdata['settings'] = unserialize($import);
 		}
 	}
 	
@@ -224,11 +244,29 @@ class SEO_Ultimate {
 	 * This will be called if the plugin's version has increased since the last run.
 	 * 
 	 * @since 0.1
+	 * 
+	 * @param string $oldversion The version that was last installed.
 	 */
-	function upgrade() {
+	function upgrade($oldversion) {
 	
 		//Upgrade database schemas if needed
 		$this->db_setup();
+	}
+	
+	/**
+	 * Upgrades SEO Ultimate to version 0.8.
+	 * 
+	 * @since 0.8
+	 * @uses $dbdata
+	 */
+	function upgrade_to_08() {
+		$options = array('cron', 'modules', 'settings', 'version');
+		foreach ($options as $option) {
+			if (($value = get_option("su_$option", false)) !== false) {
+				$this->dbdata[$option] = maybe_unserialize($value);
+				delete_option("su_$option");
+			}
+		}
 	}
 	
 	/**
@@ -256,10 +294,13 @@ class SEO_Ultimate {
 		$this->remove_cron_jobs(true);
 		
 		//Delete module records, so that modules are re-activated if the plugin is.
-		delete_option('su_modules');
+		unset($this->dbdata['modules']);
 		
 		//Delete all cron job records, since the jobs no longer exist
-		delete_option('su_cron');
+		unset($this->dbdata['cron']);
+		
+		//Save to database
+		$this->save_dbdata();
 	}
 	
 	/**
@@ -275,9 +316,12 @@ class SEO_Ultimate {
 		//Let modules run uninstallation tasks
 		do_action('su_uninstall');
 		
-		//Delete all other options that aren't deleted in deactivate()
-		delete_option('su_version');
-		delete_option('su_settings');
+		//Delete all database data
+		$this->dbdata = array();
+		delete_option('seo_ultimate');
+		
+		//Stop the database data from being re-saved
+		remove_action('shutdown', array($this, 'save_dbdata'));
 		
 		//Delete the hits table
 		mysql_query("DROP TABLE IF EXISTS ".$this->get_table_name('hits'));
@@ -324,20 +368,19 @@ class SEO_Ultimate {
 		//The modules are in the "modules" subdirectory of the plugin folder.
 		$dir = opendir($this->plugin_dir_path.'modules');
 		
-		//Get the modules list from last time the plugin was loaded.
-		$oldmodules = maybe_unserialize(get_option('su_modules', false));
+		//If no modules list is found, then create a new, empty list.
+		if (!isset($this->dbdata['modules']))
+			$this->dbdata['modules'] = array();
 		
-		//If no list is found, then create a new, empty list.
-		if ($oldmodules === false) {
-			$oldmodules = array();
-			add_option('su_modules', serialize($oldmodules));
-		}
+		//Get the modules list from last time the plugin was loaded.
+		$oldmodules = $this->dbdata['modules'];
 		
 		//This loop will be repeated as long as there are more files to inspect
 		while ($file = readdir($dir)) {
 			
 			//Modules are non-directory files with the .php extension
-			if ($file != '.' && $file != '..' && !is_dir($file) &&
+			//We need to exclude index.php or else we'll get 403s galore
+			if ($file != '.' && $file != '..' && $file != 'index.php' && !is_dir($file) &&
 					substr($file, -4) == '.php') {
 				
 				//Figure out the module's array key and class name
@@ -402,8 +445,7 @@ class SEO_Ultimate {
 		}
 		
 		//Save the new modules list
-		$this->module_status = $newmodules;
-		update_option('su_modules', serialize($newmodules));
+		$this->dbdata['modules'] = $newmodules;
 		
 		//Remove the cron jobs of deleted modules
 		$this->remove_cron_jobs();
@@ -473,6 +515,26 @@ class SEO_Ultimate {
 			return $wpdb->prefix . "sds_hits";
 		else
 			return '';
+	}
+	
+	/**
+	 * Saves data to the database.
+	 * 
+	 * @since 0.8
+	 * @uses $dbdata
+	 */
+	function save_dbdata() {
+		
+		//If we don't clear the cache, we sometimes end up with multiple seo_ultimate options entries
+		wp_cache_delete('seo_ultimate', 'options');
+		wp_cache_delete('notoptions', 'options');
+		
+		if (empty($this->dbdata))
+			//If we don't have any data to save, then delete the option instead of saving an empty array
+			delete_option('seo_ultimate');
+		else
+			//Save our data to the database
+			update_option('seo_ultimate', $this->dbdata);
 	}
 	
 	/**
@@ -575,7 +637,7 @@ class SEO_Ultimate {
 		//If subitems have numeric bubbles, then add them up and show the total by the main menu item
 		$count = 0;
 		foreach ($this->modules as $key => $module) {
-			if ($this->module_status[$key] > SU_MODULE_SILENCED && $module->get_menu_count() > 0 && $module->get_menu_parent() == 'seo')
+			if ($this->dbdata['modules'][$key] > SU_MODULE_SILENCED && $module->get_menu_count() > 0 && $module->get_menu_parent() == 'seo')
 				$count += $module->get_menu_count();
 		}
 		$count_code = $this->get_menu_count_code($count);		
@@ -595,12 +657,12 @@ class SEO_Ultimate {
 				
 				//If the module is hidden, put the module under a non-existant menu parent
 				//(this will let the module's admin page be loaded, but it won't show up on the menu)
-				if ($this->module_status[$file] > SU_MODULE_HIDDEN)
+				if ($this->dbdata['modules'][$file] > SU_MODULE_HIDDEN)
 					$parent = $module->get_menu_parent();
 				else
 					$parent = 'su-hidden-modules';
 				
-				if ($this->module_status[$file] > SU_MODULE_SILENCED)
+				if ($this->dbdata['modules'][$file] > SU_MODULE_SILENCED)
 					$count_code = $this->get_menu_count_code($module->get_menu_count());
 				else
 					$count_code = '';
@@ -884,10 +946,7 @@ class SEO_Ultimate {
 	 */
 	function get_postmeta_fields($screen='post') {
 		
-		//Compile the fields array
-		$fields = array();
-		foreach ($this->modules as $module)
-			$fields = $module->postmeta_fields($fields, $screen);
+		$fields = $this->get_postmeta_array($screen);
 		
 		if (count($fields) > 0) {
 		
@@ -900,7 +959,23 @@ class SEO_Ultimate {
 		
 		return '';
 	}
-
+	
+	/**
+	 * Compiles the post meta box field array based on data provided by the modules.
+	 * 
+	 * @since 0.8
+	 * @uses SU_Module::postmeta_fields()
+	 * 
+	 * @param string $screen The admin screen currently being viewed (post, page). Defaults to post. Optional.
+	 * @return array An array of post meta HTML.
+	 */
+	function get_postmeta_array($screen='post') {
+		$fields = array();
+		foreach ($this->modules as $module)
+			$fields = $module->postmeta_fields($fields, $screen);
+		return $fields;
+	}
+	
 	/**
 	 * If we have post meta fields to display, then register our meta box with WordPress.
 	 * 
@@ -966,57 +1041,45 @@ class SEO_Ultimate {
 	 * @since 0.1
 	 * 
 	 * @param int $post_id The ID of the post being saved.
-	 * @return int The ID of the post being saved.
+	 * @param object $post The post being saved.
 	 */
 	function save_postmeta_box($post_id, $post) {
 		
 		//Sanitize
 		$post_id = (int)$post_id;
 		
-		//Don't save postmeta if this is a revision!
-		if ($post->post_type == 'revision') return;
-		
 		//Run preliminary permissions checks
-		if ( !check_admin_referer('su-update-postmeta', '_su_wpnonce') ) return;
+		if ( !wp_verify_nonce($_REQUEST['_su_wpnonce'], 'su-update-postmeta') ) return;
 		if ( 'page' == $_POST['post_type'] ) {
 			if ( !current_user_can( 'edit_page', $post_id )) return;
 		} elseif ( 'post' == $_POST['post_type'] ) {
 			if ( !current_user_can( 'edit_post', $post_id )) return;
 		} else return;
 		
-		//Get an array of all postmeta
-		$allmeta = wp_cache_get($post_id, 'post_meta');
-		if (!$allmeta) {
-			update_postmeta_cache($post_id);
-			$allmeta = wp_cache_get($post_id, 'post_meta');
+		//Get an array of the postmeta fields
+		$keys = array_keys($this->get_postmeta_array($_POST['post_type']));
+		$fields = array();
+		
+		foreach ($keys as $key) {
+			$newfields = explode('|', $key);
+			array_shift($newfields);
+			$fields = array_merge($fields, $newfields);
 		}
 		
 		//Update postmeta values
-		foreach ($_POST as $key => $value) {
-			if (substr($key, 0, 4) == '_su_') {
-				
-				//Turn checkboxes into integers
-				if (strcmp($value, '1') == 0) $value = 1;
-				
-				//Set the postmeta
-				update_post_meta($post_id, $key, $value);
-				
-				//This value has been updated.
-				unset($allmeta[$key]);
+		foreach ($fields as $field) {
+			
+			$metakey = "_su_$field";
+			
+			//Delete the old value
+			delete_post_meta($post_id, $metakey);
+			
+			//Add the new value, if there is one
+			$value = $_POST[$metakey];
+			if (!empty($value)) {
+				add_post_meta($post_id, $metakey, $value);
 			}
 		}
-		
-		//Update values for unchecked checkboxes.
-		foreach ($allmeta as $key => $value) {
-			if (substr($key, 0, 4) == '_su_') {
-				$value = maybe_unserialize($value[0]);
-				if ($value == 1)
-					update_post_meta($post_id, $key, 0);
-			}
-		}
-		
-		//All done
-		return $post_id;
 	}
 	
 	
@@ -1030,7 +1093,7 @@ class SEO_Ultimate {
 	 * @param bool $remove_all Whether to remove all cron jobs. Optional.
 	 */
 	function remove_cron_jobs($remove_all = false) {
-		$crondata = maybe_unserialize(get_option('su_cron'));
+		$crondata = $this->dbdata['cron'];
 		if (is_array($crondata)) {
 			$newcrondata = $crondata;
 			
@@ -1041,7 +1104,7 @@ class SEO_Ultimate {
 				}
 			}
 			
-			update_option('su_cron', serialize($newcrondata));
+			$this->dbdata['cron'] = $newcrondata;
 		}
 	}
 	

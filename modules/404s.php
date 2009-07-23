@@ -2,7 +2,7 @@
 /**
  * 404 Monitor Module
  * 
- * @version 1.0.1
+ * @version 1.0.2
  * @since 0.4
  */
 
@@ -12,17 +12,12 @@ class SU_404s extends SU_Module {
 	
 	var $hitset;
 	
-	function init() {
-		$this->hitset = new SU_HitSet($this->get_module_key(), "status_code=404 AND redirect_url=''");
+	function __construct() {
+		$this->hitset = new SU_HitSet('404s', "status_code=404 AND redirect_url='' AND url NOT LIKE '%/favicon.ico'");
 	}
 	
 	function get_menu_title() { return __('404 Monitor', 'seo-ultimate'); }
-	
-	function get_menu_count() {
-		global $wpdb;
-		$table = SEO_Ultimate::get_table_name('hits');
-		return $wpdb->query("SELECT id FROM $table WHERE status_code=404 AND is_new=1");
-	}
+	function get_menu_count() { return $this->hitset->hits_count(); }
 	
 	function admin_page_contents() {
 		
@@ -48,7 +43,7 @@ class SU_404s extends SU_Module {
 		
 		if (!$this->hitset->have_hits())
 			$this->queue_message('success', __("No 404 errors in the log.", 'seo-ultimate'));
-				
+		
 		$this->print_messages();
 		
 		if ($this->hitset->have_hits()) {
@@ -91,6 +86,8 @@ STR;
 			return __(<<<STR
 <p>The 404 Monitor keeps track of non-existant URLs that generated 404 errors. 404 errors are when a search engine or visitor comes to a URL on your site but nothing exists at that URL. 
 The 404 Monitor helps you spot 404 errors; then you can take steps to correct them (e.g. finding the broken links responsible or creating redirects).</p>
+<p>A numeric bubble will appear next to the &#8220;404 Monitor&#8221; item on the menu if there are any newly-logged URLs that you haven&#8217;t seen yet. 
+These new URLs will also be highlighted green in the table.</p>
 <p>Hover over a table row to access these options:</p>
 <ul>
 	<li>The &#8220;View&#8221; link will open the URL in a new window. This is useful for testing whether or not a redirect is working.</li>
@@ -106,9 +103,6 @@ The 404 Monitor helps you spot 404 errors; then you can take steps to correct th
 </ul>
 STR
 , 'seo-ultimate');
-
-/*<p>A numeric bubble will appear next to the &#8220;404 Monitor&#8221; item on the menu if there are any newly-logged URLs that you haven&#8217;t seen yet. 
-These new URLs will also be highlighted green in the table.</p>*/
 
 		} else {
 		

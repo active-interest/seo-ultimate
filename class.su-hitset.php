@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * A class that stores the results of a query to to the hits table.
+ * 
+ * @version 1.1
+ */
 class SU_HitSet {
 	
 	var $result;
@@ -23,6 +27,10 @@ class SU_HitSet {
 		return (is_array($this->result) && count($this->result) > 0);
 	}
 	
+	function hits_count() {
+		return count($this->result);
+	}
+	
 	function admin_table($actions_callback = false, $highlight_new = true) {
 		
 		if (!$this->result || !$this->where) return;
@@ -35,7 +43,7 @@ class SU_HitSet {
 		$allfields = array(
 			  'time' => __("Date", 'seo-ultimate')
 			, 'ip_address' => __("IP Address", 'seo-ultimate')
-			, 'user_agent' => __("Browser", 'seo-ultimate')
+			, 'user_agent' => __("User Agent", 'seo-ultimate')
 			, 'url' => __("URL Requested", 'seo-ultimate')
 			, 'redirect_url' => __("Redirected To", 'seo-ultimate')
 			, 'status_code' => __("Status Code", 'seo-ultimate')
@@ -73,9 +81,9 @@ class SU_HitSet {
 						$cell = sprintf(__('%1$s<br />%2$s', 'seo-ultimate'), $date, $time);
 						break;
 					case 'user_agent':
-						$binfo = get_browser($cell, true);
+						$text = su_str_truncate($cell, 50);
 						$ua = attribute_escape($cell);
-						$cell = '<abbr title="'.$ua.'">'.$binfo['parent'].'</abbr>';
+						$cell = "<abbr title='$ua'>$text</abbr>";
 						break;
 					case 'url':
 						if (is_array($actions_callback)) {

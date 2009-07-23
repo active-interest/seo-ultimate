@@ -2,7 +2,7 @@
 /**
  * Settings Module
  * 
- * @version 2.1
+ * @version 2.2
  * @since 0.2
  */
 
@@ -29,6 +29,7 @@ class SU_Settings extends SU_Module {
 	}
 	
 	function init() {
+		global $seo_ultimate;
 		
 		if ($this->is_action('export')) {
 			header('Content-Type: application/octet-stream');
@@ -37,7 +38,7 @@ class SU_Settings extends SU_Module {
 			$options = $this->portable_options();
 			$export = array();
 			foreach ($options as $option) {
-				$data = maybe_unserialize(get_option("su_$option"));
+				$data = $seo_ultimate->dbdata[$option];
 				$data = apply_filters("su_{$option}_export_array", $data);
 				$export[$option] = $data;
 			}
@@ -58,7 +59,7 @@ class SU_Settings extends SU_Module {
 						
 						$options = $this->portable_options();
 						foreach ($options as $option) {
-							update_option("su_$option", $import[$option]);
+							$seo_ultimate->dbdata[$option] = array_merge($seo_ultimate->dbdata[$option], $import[$option]);
 						}
 						
 						$this->queue_message('success', __("Settings successfully imported.", 'seo-ultimate'));
@@ -72,8 +73,8 @@ class SU_Settings extends SU_Module {
 			
 		} elseif ($this->is_action('reset')) {
 			
-			update_option('su_settings', serialize(array()));
-			delete_option('su_modules');
+			$seo_ultimate->dbdata['settings'] = array();
+			unset($seo_ultimate->dbdata['modules']);
 			$this->load_default_settings();
 			
 			$this->queue_message('success', __("All settings have been erased and defaults have been restored.", 'seo-ultimate'));
@@ -129,7 +130,7 @@ class SU_Settings extends SU_Module {
 		$hook = SEO_Ultimate::key_to_hook($this->get_module_key());
 		echo "<form enctype='multipart/form-data' method='post' action='?page=$hook&amp;action=import'>\n";
 		echo "\t<input name='settingsfile' type='file' /> ";
-		$confirm = __("Are you sure you want to import this settings file? This will erase all current settings and cannot be undone.", 'seo-ultimate');
+		$confirm = __("Are you sure you want to import this settings file? This will overwrite your current settings and cannot be undone.", 'seo-ultimate');
 		echo "<input type='submit' class='button-secondary' value='".__("Import This Settings File", 'seo-ultimate')."' onclick=\"javascript:return confirm('$confirm')\" />\n";
 		wp_nonce_field($this->get_nonce_handle('import'));
 		echo "</form>\n";

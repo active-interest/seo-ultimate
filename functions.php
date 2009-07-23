@@ -60,6 +60,35 @@ function su_str_startswith( $str, $sub ) {
    return ( substr( $str, 0, strlen( $sub ) ) === $sub );
 }
 
+/**
+ * Truncates a string if it is longer than a given length.
+ * 
+ * @since 0.8
+ * 
+ * @param string $str The string to possibly truncate.
+ * @param int $maxlen The desired maximum length of the string.
+ * @param str $truncate The string that should be added to the end of a truncated string.
+ */
+function su_str_truncate( $str, $maxlen, $truncate = '...' ) {
+	if ( strlen($str) > $maxlen )
+		return substr( $str, 0, $maxlen - strlen($truncate) ) . $truncate;
+	
+	return $str;
+}
+
+/**
+ * Escapes an attribute value and removes unwanted characters.
+ * 
+ * @since 0.8
+ * 
+ * @param string $str The attribute value.
+ * @return string The filtered attribute value.
+ */
+function su_esc_attr($str) {
+	$str = str_replace(array("\t", "\r\n", "\n"), ' ', $str);
+	$str = attribute_escape($str);
+	return $str;
+}
 
 /********** CLASS FUNCTION ALIASES **********/
 

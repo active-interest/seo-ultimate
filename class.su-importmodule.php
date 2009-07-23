@@ -3,7 +3,7 @@
  * Import Module
  * 
  * @abstract
- * @version 1.0
+ * @version 1.0.1
  * @since 0.6
  */
 
@@ -12,10 +12,6 @@ if (class_exists('SU_Module')) {
 class SU_ImportModule extends SU_Module {
 	
 	var $import_status_image;
-	
-	function __construct() {
-		
-	}
 	
 	function get_menu_parent() { return 'su-import-modules'; }
 	
@@ -65,17 +61,6 @@ class SU_ImportModule extends SU_Module {
 		if (!isset($this->settings[$module][$key]) || $this->get_setting('overwrite_su')) {
 			$this->settings[$module][$key] = get_option($option);
 			if ($this->get_setting('delete_import')) delete_option($option);
-		}
-	}
-	
-	function update_setting($key, $value, $module=null) {
-		if (!$module) $module = $this->get_module_key();
-		
-		if (!apply_filters("su_custom_update_setting-$module-$key", false, $value)) {
-			$settings = maybe_unserialize(get_option('su_settings'));
-			if (!$settings) $settings = array();
-			$settings[$module][$key] = $value;
-			update_option('su_settings', serialize($settings));
 		}
 	}
 }

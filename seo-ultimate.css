@@ -72,6 +72,10 @@ div.su-module .su-message .su-info {
 
 /* ADMIN PAGES */
 
+div.su-module {
+	padding-bottom: 1em;
+}
+
 div.su-module h3.su-subheader {
 	margin-top: 3em;
 	padding-top: 1em;
