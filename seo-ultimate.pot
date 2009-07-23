@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2009-07-17 03:13+0000\n"
+"POT-Creation-Date: 2009-07-23 22:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,103 +18,103 @@ msgstr ""
 
 #. #-#-#-#-#  plugin.pot (PACKAGE VERSION)  #-#-#-#-#
 #. Plugin Name of an extension
-#: class.seo-ultimate.php:584 modules/settings.php:16
+#: class.seo-ultimate.php:646 modules/settings.php:16
 msgid "SEO Ultimate"
 msgstr ""
 
-#: class.seo-ultimate.php:584
+#: class.seo-ultimate.php:646
 msgid "SEO"
 msgstr ""
 
-#: class.seo-ultimate.php:770
+#: class.seo-ultimate.php:832
 #, php-format
 msgid "%s Help"
 msgstr ""
 
-#: class.seo-ultimate.php:790
+#: class.seo-ultimate.php:852
 msgid "SEO Settings Help"
 msgstr ""
 
-#: class.seo-ultimate.php:792
+#: class.seo-ultimate.php:854
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: class.seo-ultimate.php:794
+#: class.seo-ultimate.php:856
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: class.seo-ultimate.php:849
+#: class.seo-ultimate.php:911
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: class.seo-ultimate.php:917
+#: class.seo-ultimate.php:992
 msgid "SEO Settings"
 msgstr ""
 
-#: class.su-hitset.php:36
+#: class.su-hitset.php:44
 msgid "Date"
 msgstr ""
 
-#: class.su-hitset.php:37
+#: class.su-hitset.php:45
 msgid "IP Address"
 msgstr ""
 
-#: class.su-hitset.php:38
-msgid "Browser"
+#: class.su-hitset.php:46
+msgid "User Agent"
 msgstr ""
 
-#: class.su-hitset.php:39
+#: class.su-hitset.php:47
 msgid "URL Requested"
 msgstr ""
 
-#: class.su-hitset.php:40
+#: class.su-hitset.php:48
 msgid "Redirected To"
 msgstr ""
 
-#: class.su-hitset.php:41
+#: class.su-hitset.php:49
 msgid "Status Code"
 msgstr ""
 
-#: class.su-hitset.php:73
+#: class.su-hitset.php:81
 #, php-format
 msgid "%1$s<br />%2$s"
 msgstr ""
 
-#: class.su-importmodule.php:41
+#: class.su-importmodule.php:37
 msgid "Import Now"
 msgstr ""
 
-#: class.su-importmodule.php:52
+#: class.su-importmodule.php:48
 msgid "Return to settings page"
 msgstr ""
 
-#: class.su-importmodule.php:55
+#: class.su-importmodule.php:51
 msgid "Return to SEO page"
 msgstr ""
 
-#: class.su-module.php:491
+#: class.su-module.php:518
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: class.su-module.php:526
+#: class.su-module.php:552
 msgid "Settings updated."
 msgstr ""
 
-#: class.su-module.php:546
+#: class.su-module.php:572
 msgid "Save Changes"
 msgstr ""
 
-#: class.su-module.php:642
+#: class.su-module.php:668
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: class.su-module.php:655
+#: class.su-module.php:681
 msgid "Reset"
 msgstr ""
 
@@ -122,39 +122,39 @@ msgstr ""
 msgid "404 Monitor"
 msgstr ""
 
-#: modules/404s.php:35
+#: modules/404s.php:30
 msgid "The log entry was successfully deleted."
 msgstr ""
 
-#: modules/404s.php:37
+#: modules/404s.php:32
 msgid "This log entry has already been deleted."
 msgstr ""
 
-#: modules/404s.php:44
+#: modules/404s.php:39
 msgid "The log was successfully cleared."
 msgstr ""
 
-#: modules/404s.php:50
+#: modules/404s.php:45
 msgid "No 404 errors in the log."
 msgstr ""
 
-#: modules/404s.php:59
+#: modules/404s.php:54
 msgid "Are you sure you want to delete all 404 log entries?"
 msgstr ""
 
-#: modules/404s.php:61
+#: modules/404s.php:56
 msgid "Clear Log"
 msgstr ""
 
-#: modules/404s.php:73
+#: modules/404s.php:68
 msgid "Open"
 msgstr ""
 
-#: modules/404s.php:74
+#: modules/404s.php:69
 msgid "Google Cache"
 msgstr ""
 
-#: modules/404s.php:75
+#: modules/404s.php:70
 msgid "Delete Log Entry"
 msgstr ""
 
@@ -164,6 +164,63 @@ msgstr ""
 
 #: modules/canonical.php:23
 msgid "Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags."
+msgstr ""
+
+#: modules/files.php:15
+msgid "File Editor"
+msgstr ""
+
+#: modules/files.php:41
+msgid ""
+"A .htaccess file exists, but it&#8217;s not writable. You can edit it here "
+"once the file permissions are corrected."
+msgstr ""
+
+#: modules/files.php:45
+msgid ""
+"WordPress won&#8217;t be able to display your robots.txt file because the "
+"default <a href=\"options-permalink.php\" target=\"_blank\">permalink "
+"structure</a> is in use."
+msgstr ""
+
+#: modules/files.php:51
+#, php-format
+msgid "robots.txt [<a href=\"%s\" target=\"_blank\">Open</a>]"
+msgstr ""
+
+#: modules/files.php:53
+msgid "Enable this custom robots.txt file and disable the default file"
+msgstr ""
+
+#: modules/files.php:54
+msgid "Let other plugins add rules to my custom robots.txt file"
+msgstr ""
+
+#: modules/files.php:55
+msgid "robots.txt Settings"
+msgstr ""
+
+#: modules/files.php:58
+msgid ""
+"Please realize that incorrectly editing your robots.txt file could block "
+"search engines from your site."
+msgstr ""
+
+#: modules/files.php:61
+msgid ".htaccess"
+msgstr ""
+
+#: modules/files.php:64
+msgid ""
+"Also, incorrectly editing your .htaccess file could disable your entire "
+"website. Edit with caution!"
+msgstr ""
+
+#: modules/files.php:107
+#, php-format
+msgid ""
+"Please note that your privacy settings won&#8217;t have any effect on your "
+"robots.txt file, since you&#8217;re using <a href=\"%s\">a custom one</a>."
 msgstr ""
 
 #: modules/linkbox.php:13
@@ -285,36 +342,40 @@ msgid ""
 msgstr ""
 
 #: modules/modules.php:13
+msgid "Modules"
+msgstr ""
+
+#: modules/modules.php:14
 msgid "Module Manager"
 msgstr ""
 
-#: modules/modules.php:40
+#: modules/modules.php:35
 msgid ""
 "Here you can disable or hide modules you don&#8217;t use. You can also "
 "silence modules from displaying bubble alerts on the menu."
 msgstr ""
 
-#: modules/modules.php:46
+#: modules/modules.php:41
 msgid "Status"
 msgstr ""
 
-#: modules/modules.php:47
+#: modules/modules.php:42
 msgid "Module"
 msgstr ""
 
-#: modules/modules.php:60
+#: modules/modules.php:55
 msgid "Enabled"
 msgstr ""
 
-#: modules/modules.php:61
+#: modules/modules.php:56
 msgid "Silenced"
 msgstr ""
 
-#: modules/modules.php:62
+#: modules/modules.php:57
 msgid "Hidden"
 msgstr ""
 
-#: modules/modules.php:63
+#: modules/modules.php:58
 msgid "Disabled"
 msgstr ""
 
@@ -392,99 +453,99 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:64
+#: modules/settings.php:65
 msgid "Settings successfully imported."
 msgstr ""
 
-#: modules/settings.php:66
+#: modules/settings.php:67
 msgid ""
 "The uploaded file is not in the proper format. Settings could not be "
 "imported."
 msgstr ""
 
-#: modules/settings.php:68
+#: modules/settings.php:69
 msgid "The settings file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings.php:71
+#: modules/settings.php:72
 msgid ""
 "Settings could not be imported because no settings file was selected. Please "
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings.php:79
+#: modules/settings.php:80
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings.php:93
+#: modules/settings.php:94
 msgid "Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:95
+#: modules/settings.php:96
 msgid "Enable attribution link"
 msgstr ""
 
-#: modules/settings.php:96
+#: modules/settings.php:97
 msgid "Enable attribution link CSS styling"
 msgstr ""
 
-#: modules/settings.php:97
+#: modules/settings.php:98
 msgid "Notify me about unnecessary active plugins"
 msgstr ""
 
-#: modules/settings.php:99
+#: modules/settings.php:100
 msgid "Insert comments around HTML code insertions"
 msgstr ""
 
-#: modules/settings.php:104
+#: modules/settings.php:105
 msgid "Manage Settings Data"
 msgstr ""
 
-#: modules/settings.php:108
+#: modules/settings.php:109
 msgid ""
 "This section allows you to export, import, and reset the settings of the "
 "plugin and all its modules."
 msgstr ""
 
-#: modules/settings.php:110
+#: modules/settings.php:111
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module, as well as the &#8220;Plugin Settings&#8221; section "
 "above. "
 msgstr ""
 
-#: modules/settings.php:119
+#: modules/settings.php:120
 msgid "Export:"
 msgstr ""
 
-#: modules/settings.php:122
+#: modules/settings.php:123
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings.php:127
+#: modules/settings.php:128
 msgid "Import:"
 msgstr ""
 
-#: modules/settings.php:132
+#: modules/settings.php:133
 msgid ""
-"Are you sure you want to import this settings file? This will erase all "
+"Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings.php:133
+#: modules/settings.php:134
 msgid "Import This Settings File"
 msgstr ""
 
-#: modules/settings.php:140
+#: modules/settings.php:141
 msgid "Reset:"
 msgstr ""
 
-#: modules/settings.php:143
+#: modules/settings.php:144
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings.php:144
+#: modules/settings.php:145
 msgid "Restore Default Settings"
 msgstr ""
 
@@ -605,9 +666,9 @@ msgstr ""
 
 #. Description of an extension
 msgid ""
-"This all-in-one SEO plugin can rewrite title tags, edit meta data, add "
-"noindex, insert canonical tags, and log 404 errors (with many more features "
-"coming soon)."
+"This all-in-one SEO plugin can rewrite title tags, set meta data, add "
+"noindex, insert canonical tags, log 404 errors, edit your robots.txt, and "
+"more."
 msgstr ""
 
 #. Author of an extension
