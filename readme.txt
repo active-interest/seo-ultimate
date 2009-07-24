@@ -34,9 +34,7 @@ SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 * Integration with the new WordPress 2.7+ menu
 * Settings import/export/reset functionality
 
-**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release, including PageRank sculpting, robots.txt editing, 301 logging, and much more.
-
-If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
+**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release. If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
 
 
 == Installation ==
@@ -130,12 +128,9 @@ The "title" is the title of your post or page, and is displayed on your site and
 
 Because of the tremendous effort put into this plugin, we ask that you please leave the link enabled. If you must disable it, you can do so under `Settings > SEO Ultimate`.
 
-= Why are the "SEO Settings" fields not taking effect? =
+= Why isn't the Title Rewriter or the Meta Editor working? =
 
-Here are some troubleshooting ideas:
-
-1. Try disabling other SEO plugins (they may be conflicting with SEO Ultimate).
-2. Check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
+Try disabling other SEO plugins, as they may be conflicting with SEO Ultimate. Also, check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
 
 = How do I disable the "SEO Settings" box in the post/page editors? =
 
@@ -170,7 +165,7 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 = Version 0.8 (July 22, 2009) =
 * Feature: Added robots.txt editor (new File Editor module)
 * Feature: Added .htaccess editor (new File Editor module)
-* Bugfix: 404 Monitor no longer uses unreliable get_browser() function
+* Bugfix: 404 Monitor no longer uses the unreliable get_browser() function
 * Bugfix: 404 Monitor now ignores favicon requests
 * Bugfix: Fixed conflict with the WP Table Reloaded plugin
 * Bugfix: Fixed bug that caused Module Manager to appear blank on certain configurations
