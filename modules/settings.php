@@ -2,23 +2,23 @@
 /**
  * Settings Module
  * 
- * @version 2.2
+ * @version 2.2.1
  * @since 0.2
  */
 
 if (class_exists('SU_Module')) {
 
 class SU_Settings extends SU_Module {
-
+	
 	var $wp_meta_called = false;
-
+	
 	function get_page_title() { return __('SEO Ultimate Plugin Settings', 'seo-ultimate'); }
 	function get_menu_title() { return __('SEO Ultimate', 'seo-ultimate'); }
 	function get_menu_parent(){ return 'options-general.php'; }
-
+	
 	function get_default_settings() {
 		return array(
-			  'attribution_link' => true
+			  'attribution_link' => false
 			, 'attribution_link_css' => true
 			, 'plugin_notices' => true
 		);
@@ -166,7 +166,7 @@ class SU_Settings extends SU_Module {
 	}
 	
 	function admin_help() {
-		return __(<<<STR
+		return __("
 <p>The Settings module lets you manage settings related to the SEO Ultimate plugin as a whole.</p>
 <p>Here&#8217;s information on each of the settings:</p>
 <ul>
@@ -175,8 +175,7 @@ class SU_Settings extends SU_Module {
 	<li><p><strong>Insert comments around HTML code insertions</strong> &mdash; If enabled, SEO Ultimate will use HTML comments to identify all code it inserts into your &lt;head&gt; tag.
 		This is useful if you&#8217;re trying to figure out whether or not SEO Ultimate is inserting a certain piece of header code.</p></li>
 </ul>
-STR
-, 'seo-ultimate');
+", 'seo-ultimate');
 	}
 
 }

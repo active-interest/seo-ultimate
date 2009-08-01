@@ -3,7 +3,7 @@
 Plugin Name: SEO Ultimate
 Plugin URI: http://www.seodesignsolutions.com/wordpress-seo/
 Description: This all-in-one SEO plugin can rewrite title tags, set meta data, add noindex, insert canonical tags, log 404 errors, edit your robots.txt, and more.
-Version: 0.8
+Version: 0.9
 Author: SEO Design Solutions
 Author URI: http://www.seodesignsolutions.com/
 Text Domain: seo-ultimate
@@ -12,7 +12,7 @@ Text Domain: seo-ultimate
 /**
  * The main SEO Ultimate plugin file.
  * @package SeoUltimate
- * @version 0.8
+ * @version 0.9
  * @link http://www.seodesignsolutions.com/wordpress-seo/ SEO Ultimate Homepage
  */
 
@@ -33,15 +33,15 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 /********** CONSTANTS **********/
 
+//Reading plugin info from constants is faster than trying to parse it from the header above.
 define("SU_PLUGIN_NAME", "SEO Ultimate");
 define("SU_PLUGIN_URI", "http://www.seodesignsolutions.com/wordpress-seo/");
-define("SU_VERSION", "0.8");
+define("SU_VERSION", "0.9");
 define("SU_AUTHOR", "SEO Design Solutions");
 define("SU_AUTHOR_URI", "http://www.seodesignsolutions.com/");
-define("SU_USER_AGENT", "SeoUltimate/0.8");
+define("SU_USER_AGENT", "SeoUltimate/0.9");
 
 define('SU_MODULE_ENABLED', 10);
 define('SU_MODULE_SILENCED', 5);
@@ -54,13 +54,10 @@ define('SU_RESULT_ERROR', -1);
 
 /********** INCLUDES **********/
 
+require('functions.php');
 require('class.seo-ultimate.php');
 require('class.su-module.php');
-require('class.su-importmodule.php');
-require('class.su-parentmodule.php');
-require('class.su-widget.php');
 require('class.su-hitset.php');
-require('functions.php');
 
 
 /********** PLUGIN FILE LOAD HANDLER **********/

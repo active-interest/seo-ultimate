@@ -2,7 +2,7 @@
 /**
  * Title Rewriter Module
  * 
- * @version 1.0.4
+ * @version 1.0.5
  * @since 0.1
  */
 
@@ -200,18 +200,32 @@ class SU_Titles extends SU_Module {
 			return $title;
 	}
 	
-	function admin_help() {
-		return __(<<<STR
-<p>Title Rewriter helps you customize the contents of your website&#8217;s &lt;title&gt; tags.
-The tag contents are displayed in web browser title bars and in search engine result pages.
-Properly rewriting title tags is an important first step for basic WordPress SEO,
-as proper rewriting ensures that your post keywords have greater prominence for search engine
-spiders and users.</p>
-<p>Title Rewriter enables recommended settings automatically. However, we&#8217;ve also provided this
-administration interface so that advanced users can fine-tune the rewriting formats as desired.
-Various variables, surrounded in {curly brackets}, are provided. All settings support the {blog} variable,
-which is replaced with the name of the blog.</p>
-<p>Here&#8217;s information on each of the settings:</p>
+	function admin_dropdowns() {
+		return array(
+			  'overview' => __('Overview', 'seo-ultimate')
+			, 'settings' => __('Settings & Variables', 'seo-ultimate')
+		);
+	}
+	
+	function admin_dropdown_overview() {
+		return __("
+<ul>
+	<li><p><strong>What it does:</strong> Title Rewriter helps you customize the contents of your website&#8217;s <code>&lt;title&gt;</code> tags.
+		The tag contents are displayed in web browser title bars and in search engine result pages.</p></li>
+	<li><p><strong>Why it helps:</strong> Proper title rewriting ensures that the keywords in your post/Page titles have greater prominence for search engine spiders and users.
+		This is an important foundation for WordPress SEO.</p></li>
+	<li><p><strong>How to use it:</strong> Title Rewriter enables recommended settings automatically, so you shouldn&#8217;t need to change anything.
+		If you do wish to edit the rewriting formats, you can do so using the textboxes below (the &#8220;Settings Help&#8221; tab includes additional information on this).
+		You also have the option of overriding the <code>&lt;title&gt;</code> tag of an individual post or page by using the &#8220;Title Tag&#8221; textbox that Title Rewriter adds to the post/page editors.</p></li>
+</ul>
+", 'seo-ultimate');
+	}
+	
+	function admin_dropdown_settings() {
+		return __("
+<p>Various variables, surrounded in {curly brackets}, are provided for use in the title formats.
+All settings support the {blog} variable, which is replaced with the name of the blog.</p>
+<p>Here&#8217;s information on each of the settings and its supported variables:</p>
 <ul>
 	<li><p><strong>Blog Homepage Title</strong> &mdash; Displays on the main blog posts page.</p></li>
 	<li><p><strong>Post Title Format</strong> &mdash; Displays on single-post pages. The {post} variable is replaced with the post&#8217;s title.</p></li>
@@ -239,8 +253,7 @@ which is replaced with the name of the blog.</p>
 			<li>{max} &mdash; The total number of subpages available. Would usually be used like this: Page {num} of {max}</li>
 		</ul></li>
 </ul>
-STR
-, 'seo-ultimate');
+", 'seo-ultimate');
 	}
 	
 	function postmeta_help($help) {

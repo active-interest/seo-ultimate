@@ -2,7 +2,7 @@
 /**
  * Linkbox Inserter Module
  * 
- * @version 1.0
+ * @version 1.0.2
  * @since 0.6
  */
 
@@ -13,6 +13,7 @@ class SU_Linkbox extends SU_Module {
 	function get_menu_title() { return __('Linkbox Inserter', 'seo-ultimate'); }
 	
 	function get_default_settings() {
+		//The default linkbox HTML
 		return array(
 			  'html' => '<div class="su-linkbox" id="post-{id}-linkbox"><div class="su-linkbox-label">' .
 						__('Link to this post!', 'seo-ultimate') .
@@ -24,22 +25,20 @@ class SU_Linkbox extends SU_Module {
 	}
 	
 	function init() {
+		//We only want to filter post content when we're in the front-end, so we hook into template_redirect
 		add_action('template_redirect', array($this, 'template_init'));
 	}
 	
 	function template_init() {
 		$enabled = false;
 		
-		if ($this->should_linkbox()) {
+		if ($this->should_linkbox())
+			//Add the linkbox to post/page content
 			add_filter('the_content', array($this, 'linkbox_filter'));
-			$enabled = true;
-		}
-		if ($this->get_setting('action_hook')) {
+		
+		if ($this->get_setting('action_hook'))
+			//Enable the action hook
 			add_action('su_linkbox', array($this, 'linkbox_action'));
-			$enabled = true;
-		}
-		if ($enabled && trim($this->get_setting('css')))
-			add_action('su_head', array($this, 'output_css'));
 	}
 	
 	function admin_page_contents() {
@@ -59,15 +58,23 @@ class SU_Linkbox extends SU_Module {
 	
 	function linkbox_filter($content, $id = false) {
 		
+		//If no ID is provided, get the ID of the current post
 		if (!$id) $id = SEO_Ultimate::get_post_id();
 		
 		if ($id) {
+			//Don't add a linkbox if a "more" link is present (since a linkbox should go at the very bottom of a post)
+			$morelink = '<a href="'.get_permalink($id).'#more-'.$id.'" class="more-link">';
+			if (strpos($content, $morelink) !== false) return $content;
+			
+			//Load the HTML and replace the variables with the proper values
 			$linkbox = $this->get_setting('html');
 			$linkbox = str_replace(
 				array('{id}', '{url}', '{title}'),
 				array(intval($id), attribute_escape(get_permalink($id)), attribute_escape(get_the_title($id))),
 				$linkbox
 			);
+			
+			//Return the content with the linkbox added to the bottom
 			return $content.$linkbox;
 		}
 		
@@ -78,16 +85,25 @@ class SU_Linkbox extends SU_Module {
 		echo $this->linkbox_filter('', $id);
 	}
 	
-	function output_css() {
-		echo "\t<style type='text/css'>\n";
-		echo $this->get_setting('css');
-		echo "\n\t</style>\n";
+	function admin_dropdowns() {
+		return array(
+			  'overview' => __('Overview', 'seo-ultimate')
+			, 'settings' => __('Settings Help', 'seo-ultimate')
+		);
 	}
 	
-	function admin_help() {
-		return __(<<<STR
-<p>The Linkbox Inserter can add linkboxes to your posts/pages. These linkboxes contain HTML code that visitors can use to link to your site. 
-This is a great way to encourage SEO-beneficial linking activity.</p>
+	function admin_dropdown_overview() {
+		return __("
+<ul>
+	<li><p><strong>What it does:</strong> Linkbox Inserter can add linkboxes to your posts/pages.</p></li>
+	<li><p><strong>Why it helps:</strong> Linkboxes contain HTML code that visitors can use to link to your site. This is a great way to encourage SEO-beneficial linking activity.</p></li>
+	<li><p><strong>How to use it:</strong> Use the checkboxes to enable the Linkbox Inserter in various areas of your site. Customize the HTML if desired. Click &#8220;Save Changes&#8221; when finished.</p></li>
+</ul>
+", 'seo-ultimate');
+	}
+	
+	function admin_dropdown_settings() {
+		return __("
 <p>Here&#8217;s information on the various settings:</p>
 <ul>
 	<li><p><strong>Display linkboxes...</strong></p>
@@ -109,8 +125,7 @@ This is a great way to encourage SEO-beneficial linking activity.</p>
 		</ul>
 	</li>
 </ul>
-STR
-, 'seo-ultimate');
+", 'seo-ultimate');
 	}
 }
 

@@ -2,7 +2,6 @@
 /**
  * The main class. Provides plugin-level functionality.
  * 
- * @version 1.5
  * @since 0.1
  */
 class SEO_Ultimate {
@@ -34,7 +33,7 @@ class SEO_Ultimate {
 	var $dbdata = array();
 	
 	/**
-	 * The server path of this plugin file.
+	 * The server path of the main plugin file.
 	 * Example: /home/user/public_html/wp-content/plugins/seo-ultimate/seo-ultimate.php
 	 * 
 	 * @since 0.1
@@ -43,7 +42,7 @@ class SEO_Ultimate {
 	var $plugin_file_path;
 	
 	/**
-	 * The public URL of this plugin file.
+	 * The public URL of the main plugin file.
 	 * Example: http://www.example.com/wp-content/plugins/seo-ultimate/seo-ultimate.php
 	 * 
 	 * @since 0.1
@@ -70,12 +69,12 @@ class SEO_Ultimate {
 	var $plugin_dir_url;
 	
 	/**
-	 * The database ID of the current hit.
+	 * The array to be inserted into the hits table.
 	 * 
-	 * @since 0.2
-	 * @var int
+	 * @since 0.9
+	 * @var array
 	 */
-	var $hit_id = 0;
+	var $hit = array();
 	
 	/**
 	 * The name of the function/mechanism that triggered the current redirect.
@@ -83,7 +82,7 @@ class SEO_Ultimate {
 	 * @since 0.3
 	 * @var string
 	 */
-	var $hit_redirect_trigger;
+	var $hit_redirect_trigger = '';
 	
 	
 	/********** CLASS CONSTRUCTORS **********/
@@ -94,7 +93,8 @@ class SEO_Ultimate {
 	 * 
 	 * @since 0.1
 	 * @uses $dbdata
-	 * @uses save_dbdata()
+	 * @uses save_dbdata() Hooked into WordPress's "shutdown" action.
+	 * @uses save_hit() Hooked into WordPress's "shutdown" action.
 	 * @uses load_plugin_data()
 	 * @uses SU_VERSION
 	 * @uses install()
@@ -123,6 +123,7 @@ class SEO_Ultimate {
 		
 		//Save
 		add_action('shutdown', array($this, 'save_dbdata'));
+		add_action('shutdown', array($this, 'save_hit'));
 		
 		/********** CLASS CONSTRUCTION **********/
 		
@@ -255,6 +256,7 @@ class SEO_Ultimate {
 	
 	/**
 	 * Upgrades SEO Ultimate to version 0.8.
+	 * Version 0.8 uses 1 wp_options entry instead of 4.
 	 * 
 	 * @since 0.8
 	 * @uses $dbdata
@@ -353,12 +355,17 @@ class SEO_Ultimate {
 	 * Finds and loads all modules. Runs the activation functions of newly-uploaded modules.
 	 * Updates the modules list and saves it in the database. Removes the cron jobs of deleted modules.
 	 * 
+	 * SEO Ultimate uses a modular system that allows functionality to be added and removed on-the-fly.
+	 * 
 	 * @since 0.1
 	 * @uses $plugin_dir_path
+	 * @uses $dbdata
 	 * @uses $modules Stores module classes in this array.
+	 * @uses $disabled_modules
 	 * @uses module_sort_callback() Passes this function to uasort() to sort the $modules array.
 	 * @uses SU_MODULE_ENABLED
 	 * @uses SU_MODULE_DISABLED
+	 * @uses remove_cron_jobs()
 	 */
 	function load_modules() {
 	
@@ -440,6 +447,7 @@ class SEO_Ultimate {
 			}
 		}
 		
+		//Register disabled modules as such
 		foreach ($this->disabled_modules as $key => $name) {
 			$newmodules[$key] = SU_MODULE_DISABLED;
 		}
@@ -465,7 +473,7 @@ class SEO_Ultimate {
 		//Allow translation of this plugin
 		load_plugin_textdomain('seo-ultimate', '', plugin_basename($this->plugin_file_path));
 		
-		//Let the modules run init tasks
+		//Load default module settings and run modules' init tasks
 		foreach ($this->modules as $module) {
 			$module->load_default_settings();
 			$module->init();
@@ -518,7 +526,7 @@ class SEO_Ultimate {
 	}
 	
 	/**
-	 * Saves data to the database.
+	 * Saves settings data to the database.
 	 * 
 	 * @since 0.8
 	 * @uses $dbdata
@@ -538,7 +546,19 @@ class SEO_Ultimate {
 	}
 	
 	/**
-	 * A status_header WordPress filter that logs the current hit.
+	 * Saves the hit data to the database.
+	 * 
+	 * @since 0.9
+	 * @uses $hit
+	 */
+	function save_hit() {
+		global $wpdb;
+		if (!empty($this->hit))
+			$wpdb->insert($this->get_table_name('hits'), $this->hit);
+	}
+	
+	/**
+	 * Saves information about the current hit into an array, which is later saved to the database.
 	 * 
 	 * @since 0.1
 	 * @uses get_current_url()
@@ -551,13 +571,18 @@ class SEO_Ultimate {
 	 */
 	function log_hit($status_header, $status_code, $redirect_url = '') {
 		
+		//Only log hits from non-logged-in users
 		if (!is_user_logged_in()) {
 			global $wpdb;
 			
-			$table = $this->get_table_name('hits');
+			//Get the current URL
 			$url = $this->get_current_url();
+			
+			//Have we seen this URL before?
+			$table = $this->get_table_name('hits');
 			$is_new = (count($wpdb->get_results($wpdb->prepare("SELECT url FROM $table WHERE url = %s AND is_new = 0", $url))) == 0);
 			
+			//Put it all into an array
 			$data = array(
 				  'time' => time()
 				, 'ip_address' => $_SERVER['REMOTE_ADDR']
@@ -570,24 +595,22 @@ class SEO_Ultimate {
 				, 'is_new' => $is_new
 			);
 			
-			if ($this->hit_id > 0) {
-				
-				//We don't want to overwrite a redirect URL if it's already been logged
-				if (!strlen($data['redirect_url'])) unset($data['redirect_url']);
-				
-				//Update the existing hit record
-				$wpdb->update($table, $data, array('id' => $this->hit_id));
-			} else {
-				$wpdb->insert($table, $data);
-				$this->hit_id = $wpdb->insert_id;
-			}
+			//We don't want to overwrite a redirect URL if it's already been logged
+			if (strlen($this->hit['redirect_url']))
+				$data['redirect_url'] = $this->hit['redirect_url'];
+			
+			//Put the hit data into our variable.
+			//We'll save it to the database later, since the hit data may change as we gather further information
+			//(e.g. when the redirect URL is discovered).
+			$this->hit = $data;
 		}
 		
+		//This function can be used as a WordPress filter, so we return the needed variable.
 		return $status_header;
 	}
 	
 	/**
-	 * A wp_redirect WordPress filter that logs the current hit.
+	 * A wp_redirect WordPress filter that logs the URL to which the visitor is being redirected.
 	 * 
 	 * @since 0.2
 	 * @uses log_hit()
@@ -597,13 +620,13 @@ class SEO_Ultimate {
 	 * @return string The unchanged $redirect_url parameter.
 	 */
 	function log_redirect($redirect_url, $status_code) {
-		if (!$this->hit_redirect_trigger) $this->hit_redirect_trigger = 'wp_redirect';
-		$this->log_hit(null, $status_code, $redirect_url);
+		if (empty($this->hit_redirect_trigger)) $this->hit_redirect_trigger = 'wp_redirect';
+		$this->log_hit(null, $status_code, $redirect_url); //We call log_hit() again so we can pass along the redirect URL
 		return $redirect_url;
 	}
 	
 	/**
-	 * A redirect_canonical WordPress filter that logs the current hit.
+	 * A redirect_canonical WordPress filter that logs the fact that a canonical redirect is being issued.
 	 * 
 	 * @since 0.3
 	 * @uses log_hit()
@@ -612,8 +635,7 @@ class SEO_Ultimate {
 	 * @return string The unchanged $redirect_url parameter.
 	 */
 	function log_redirect_canonical($redirect_url) {
-		if (!$this->hit_redirect_trigger) $this->hit_redirect_trigger = 'redirect_canonical';
-		//$this->log_hit(null, 301, $redirect_url, 'redirect_canonical');
+		if (empty($this->hit_redirect_trigger)) $this->hit_redirect_trigger = 'redirect_canonical';
 		return $redirect_url;
 	}
 	
@@ -761,7 +783,7 @@ class SEO_Ultimate {
 			global $plugin_page;
 			
 			foreach ($this->modules as $key => $module) {
-				if ($plugin_page == $this->key_to_hook($key)) return true;
+				if (strcmp($plugin_page, $this->key_to_hook($key)) == 0) return true;
 			}
 		}
 		
@@ -781,10 +803,9 @@ class SEO_Ultimate {
 	 * @uses hook_to_key()
 	 */
 	function admin_includes() {
-	
-		//Global plugin CSS and JavaScript
-		echo "\n<link rel='stylesheet' type='text/css' href='".$this->plugin_dir_url."seo-ultimate.css?version=".SU_VERSION."' />\n";
-		echo "\n<script type='text/javascript' src='".$this->plugin_dir_url."seo-ultimate.js?version=".SU_VERSION."'></script>\n";
+		
+		//Global CSS
+		echo "\n<link rel='stylesheet' type='text/css' href='".$this->plugin_dir_url."global.css?v=".SU_VERSION."' />\n";
 		
 		//Figure out what plugin admin page we're on
 		global $plugin_page;
@@ -792,17 +813,25 @@ class SEO_Ultimate {
 		
 		foreach ($this->modules as $key => $module) {
 			
-			//Is the current admin page belong to this module? If so, print links to the module's CSS and JavaScript.
+			//Does the current admin page belong to this module?
 			if (strcmp($key, $pp) == 0) {
-				echo "\n<link rel='stylesheet' type='text/css' href='".$module->module_url."?css=admin&amp;version=".SU_VERSION."' />\n";
-				echo "\n<script type='text/javascript' src='".$module->module_url."?js=admin&amp;version=".SU_VERSION."'></script>\n";
+				
+				//We're viewing a module page, so print links to the CSS/JavaScript files loaded for all modules
+				echo "\n<link rel='stylesheet' type='text/css' href='".$this->plugin_dir_url."modules.css?v=".SU_VERSION."' />\n";
+				echo "\n<script type='text/javascript' src='".$this->plugin_dir_url."modules.js?v=".SU_VERSION."'></script>\n";
+				
+				//Print links to the module's CSS and JavaScript.
+				echo "\n<link rel='stylesheet' type='text/css' href='".$module->module_url."?css=admin&amp;v=".SU_VERSION."' />\n";
+				echo "\n<script type='text/javascript' src='".$module->module_url."?js=admin&amp;v=".SU_VERSION."'></script>\n";
+				
+				//The module has been found; mission accomplished.
 				return;
 			}
 		}
 	}
 	
 	/**
-	 * Replaces WordPress's default contextual help with module-specific help text, if the module provides it.
+	 * Replaces WordPress's default contextual help with postmeta help when appropriate.
 	 * 
 	 * @since 0.1
 	 * @uses $modules
@@ -812,31 +841,9 @@ class SEO_Ultimate {
 	 * @return string The contextual help content that should be shown.
 	 */
 	function admin_help($text, $screen) {
-		//If $screen begins with a recognized prefix...
-		if ($screen == 'toplevel_page_seo' || substr($screen, 0, 9) == 'seo_page_' || substr($screen, 0, 14) == 'settings_page_') {
 		
-			//Remove the prefix from $screen to get the $key
-			$key = $this->hook_to_key(str_replace(array('toplevel_page_', 'seo_page_', 'settings_page_'), '', $screen));
-			
-			//If $key refers to a module...
-			if (isset($this->modules[$key])) {
-			
-				//Ask the module for custom help content
-				$customhelp = $this->modules[$key]->admin_help();
-				
-				//If we have custom help to display...
-				if ($customhelp !== false) {
-				
-					//Return the help content with an <h5> title
-					$help = "<div class='su-help'>\n";
-					$help .= '<h5>'.sprintf(__('%s Help', 'seo-ultimate'),
-						$this->modules[$key]->get_page_title())."</h5>\n";
-					$help .= "<div class='metabox-prefs'>\n".$customhelp."\n</div>\n";
-					$help .= "</div>\n";
-					return $help;
-				}
-			}
-		} elseif (strcmp($screen, 'post') == 0 || strcmp($screen, 'page') == 0) {
+		//If we're on the post or page editor...
+		if (strcmp($screen, 'post') == 0 || strcmp($screen, 'page') == 0) {
 		
 			//Gather post meta help content
 			$helparray = apply_filters('su_postmeta_help', array());

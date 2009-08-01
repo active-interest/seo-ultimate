@@ -2,7 +2,7 @@
 /**
  * A class that stores the results of a query to to the hits table.
  * 
- * @version 1.1
+ * @version 1.1.1
  */
 class SU_HitSet {
 	
@@ -47,6 +47,7 @@ class SU_HitSet {
 			, 'url' => __("URL Requested", 'seo-ultimate')
 			, 'redirect_url' => __("Redirected To", 'seo-ultimate')
 			, 'status_code' => __("Status Code", 'seo-ultimate')
+			, 'referer' => __("Referring URL", 'seo-ultimate')
 		);
 		
 		$fields = array();

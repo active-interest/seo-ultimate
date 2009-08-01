@@ -2,7 +2,7 @@
 /**
  * Meta Editor Module
  * 
- * @version 1.0.2
+ * @version 1.0.3
  * @since 0.3
  */
 
@@ -54,7 +54,7 @@ class SU_Meta extends SU_Module {
 		$fields['20|description|keywords'] =
 			  "<tr class='textarea'>\n<th scope='row'><label for='$id'>".__("Description:", 'seo-ultimate')."</label></th>\n"
 			. "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='60' rows='3'"
-			. " onkeyup=\"javascript:textbox_char_count('_su_description', 'su_meta_description_charcount')\">$value</textarea>"
+			. " onkeyup=\"javascript:document.getElementById('su_meta_description_charcount').innerHTML = document.getElementById('_su_description').value.length\">$value</textarea>"
 			. "<br />".sprintf(__("You&#8217;ve entered %s characters. Most search engines use up to 160.", 'seo-ultimate'), "<strong id='su_meta_description_charcount'>".strlen($value)."</strong>")
 			. "</td>\n</tr>\n"
 			. $this->get_postmeta_textbox('keywords', __('Keywords:<br /><em>(separate with commas)</em>', 'seo-ultimate'))
@@ -63,6 +63,7 @@ class SU_Meta extends SU_Module {
 		return $fields;
 	}
 	
+	//Add the appropriate commands to the meta robots array
 	function meta_robots($commands) {
 		
 		$tags = array('noodp', 'noydir', 'noarchive');
@@ -79,31 +80,38 @@ class SU_Meta extends SU_Module {
 		$desc = false;
 		$kw = false;
 		
+		//If we're viewing the homepage, look for homepage meta data.
 		if (is_home()) {
 			$desc = $this->get_setting('home_description');
 			if (!$desc && $this->get_setting('home_description_tagline_default')) $desc = get_bloginfo('description');
 			$kw = $this->get_setting('home_keywords');
+		
+		//If we're viewing a post or page, look for its meta data.
 		} elseif (is_singular()) {
 			$desc = $this->get_postmeta('description');
 			$kw = $this->get_postmeta('keywords');	
 		}
 		
+		//Do we have a description? If so, output it.
 		if ($desc) {
 			$desc = su_esc_attr($desc);
 			echo "\t<meta name=\"description\" content=\"$desc\" />\n";
 		}
 		
+		//Do we have keywords? If so, output them.
 		if ($kw) {
 			$kw = su_esc_attr($kw);
 			echo "\t<meta name=\"keywords\" content=\"$kw\" />\n";
 		}
 		
+		//Supported meta tags and their names
 		$verify = array(
 			  'google' => 'verify-v1'
 			, 'yahoo' => 'y_key'
 			, 'microsoft' => 'msvalidate.01'
 		);
 		
+		//Do we have verification tags? If so, output them.
 		foreach ($verify as $site => $name) {
 			if ($value = $this->get_setting($site.'_verify')) {
 				$value = su_esc_attr($value);
@@ -111,8 +119,10 @@ class SU_Meta extends SU_Module {
 			}
 		}
 		
+		//Display custom code if provided
 		if ($custom = $this->get_setting('custom_html')) {
 			
+			//Does the plugin user want us to surround code insertions with comments? If so, mark the custom code as such.
 			$mark_code = $this->get_setting('mark_code', false, 'settings');
 			$desc = __('Custom Header Code', 'seo-ultimate');
 			
@@ -125,9 +135,25 @@ class SU_Meta extends SU_Module {
 		
 	}
 	
-	function admin_help() {
-		return __(<<<STR
-<p>The Meta Editor lets you customize a wide variety of settings known as &#8220;meta data.&#8221;</p>
+	function admin_dropdowns() {
+		return array(
+			  'overview' => __('Overview', 'seo-ultimate')
+			, 'settings' => __('Settings Help', 'seo-ultimate')
+		);
+	}
+	
+	function admin_dropdown_overview() {
+		return __("
+<ul>
+	<li><p><strong>What it does:</strong> Meta Editor lets you customize a wide variety of settings known as &#8220;meta data.&#8221;</p></li>
+	<li><p><strong>Why it helps:</strong> Using meta data, you can convey information to search engines, such as what text you want displayed by your site in search results, what your site is about, whether they can cache your site, etc.</p></li>
+	<li><p><strong>How to use it:</strong> Adjust the settings as desired, and then click Save Changes. You can refer to the &#8220;Settings Help&#8221; tab for information on the settings available. You can also customize the meta data of an individual post or page by using the textboxes that Meta Editor adds to the post/page editors.</p></li>
+</ul>
+", 'seo-ultimate');
+	}
+	
+	function admin_dropdown_settings() {
+		return __("
 <p>Here&#8217;s information on the various settings:</p>
 <ul>
 	<li><p><strong>Blog Homepage Meta Description</strong> &mdash; When your blog homepage appears in search results, it&#8217;ll have a title and a description. 
@@ -145,8 +171,8 @@ class SU_Meta extends SU_Module {
 	<li><p><strong>Spider Instructions</strong></p>
 		<ul>
 			<li><p><strong>Don&#8217;t use this site&#8217;s Open Directory / Yahoo! Directory description in search results.</strong> &mdash; 
-				If your site is listed in the <a href="http://www.dmoz.org/" target="_blank">Open Directory (DMOZ)</a> or 
-				the <a href="http://dir.yahoo.com/" target="_blank">Yahoo! Directory</a>, 
+				If your site is listed in the <a href='http://www.dmoz.org/' target='_blank'>Open Directory (DMOZ)</a> or 
+				the <a href='http://dir.yahoo.com/' target='_blank'>Yahoo! Directory</a>, 
 				some search engines may use your directory listing as the meta description. 
 				These boxes tell search engines not to do that and will give you full control over your meta descriptions. 
 				These settings have no effect if your site isn&#8217;t listed in the Open Directory or Yahoo! Directory respectively.</p></li>
@@ -158,8 +184,7 @@ class SU_Meta extends SU_Module {
 	<li><p><strong>Verification Codes</strong> &mdash; This section lets you enter in verification codes for the webmaster portals of the 3 leading search engines.</p></li>
 	<li><p><strong>Custom &lt;head&gt; HTML</strong> &mdash; Just enter in raw HTML code here, and it&#8217;ll be entered into the &lt;head&gt; tag across your entire site.</p></li>
 </ul>
-STR
-, 'seo-ultimate');
+", 'seo-ultimate');
 	}
 	
 	function postmeta_help($help) {

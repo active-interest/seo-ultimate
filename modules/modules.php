@@ -2,7 +2,7 @@
 /**
  * Module Manager Module
  * 
- * @version 1.1
+ * @version 1.1.1
  * @since 0.7
  */
 
@@ -32,7 +32,9 @@ class SU_Modules extends SU_Module {
 		global $seo_ultimate;
 		
 		echo "<p>";
-		_e("Here you can disable or hide modules you don&#8217;t use. You can also silence modules from displaying bubble alerts on the menu.", 'seo-ultimate');
+		_e("SEO Ultimate&#8217;s features are located in groups called &#8220;modules.&#8221; By default, most of these modules are listed in the &#8220;SEO&#8221; menu on the left. Whenever you&#8217;re working with a module, you can view documentation by clicking the &#8220;Help&#8221; tab in the upper-right-hand corner of your administration screen.", 'seo-ultimate');
+		echo "</p><p>";
+		_e("The Module Manager lets you  disable or hide modules you don&#8217;t use. You can also silence modules from displaying bubble alerts on the menu.", 'seo-ultimate');
 		echo "</p>";
 		
 		$this->admin_form_start(false, false);
@@ -104,7 +106,7 @@ STR;
 	}
 	
 	function admin_help() {
-		return __(<<<STR
+		return __("
 <p>The Module Manager lets you customize the visibility and accessibility of each module; here are the options available:</p>
 <ul>
 	<li><strong>Enabled</strong> &mdash; The default option. The module will be fully enabled and accessible.</li>
@@ -112,8 +114,7 @@ STR;
 	<li><strong>Hidden</strong> &mdash; The module&#8217;s functionality will be enabled, but the module won&#8217;t be visible on the SEO menu. You will still be able to access the module&#8217;s admin page by clicking on its title in the Module Manager table.</li>
 	<li><strong>Disabled</strong> &mdash; The module will be completely disabled and inaccessible.</li>
 </ul>
-STR
-, 'seo-ultimate');
+", 'seo-ultimate');
 	}
 }
 

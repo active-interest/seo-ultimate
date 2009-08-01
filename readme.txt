@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, google, yahoo, bing, search engines, admin, post, page, modules
+Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, google, yahoo, bing, search engines, admin, post, page, modules
 Requires at least: 2.7
 Tested up to: 2.8.2
-Stable tag: 0.8
+Stable tag: 0.9
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
@@ -24,6 +24,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Linkbox Inserter** - Encourages linkbuilding activity by inserting textboxes containing link HTML.
 
 * **File Editor** - Lets you edit two important SEO-related files: robots.txt and .htaccess
+
+* **Slug Optimizer** - Removes common words from post/Page slugs to increase in-URL keyword potency.
 
 SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 
@@ -124,6 +126,34 @@ No. The Title Rewriter edits the `<title>` tags of your site, not your post/page
 
 The "title" is the title of your post or page, and is displayed on your site and in your RSS feed. The title is also used in your `<title>` tag by default; however, you can override the value of just the `<title>` tag by using the "Title Tag" field in the "SEO Settings" box.
 
+= What's a slug? =
+
+The slug of a post or page is the portion of its URL that is based on its title.
+
+When you edit a post or Page in WordPress, the slug is the yellow-highlighted portion of the Permalink beneath the Title textbox.
+
+= Does the Slug Optimizer change my existing URLs? =
+
+No. Slug Optimizer will not relocate your content by changing existing URLs. Slug Optimizer only takes effect on new posts and pages.
+
+= How do I see Slug Optimizer in action? =
+
+1. Create a new post/Page in WordPress.
+2. Type in a title containing some common words.
+3. Click outside the Title box. WordPress will insert a URL labeled "Permalink" below the Title textbox. The Slug Optimizer will have removed the common words from the URL.
+
+= Why didn't the Slug Optimizer remove common words from my slug? =
+
+It's possible that every word in your post title is in the list of words to remove. In this case, Slug Optimizer doesn't remove the words, because if it did, you'd end up with a blank slug.
+
+= What if I want to include a common word in my slug? =
+
+When editing the post or page in question, just click the "Edit" button next to the permalink and change the slug as desired.
+
+= How do I revert back to the optimized slug after making changes? =
+
+When editing the post or page in question, just click the "Edit" button next to the permalink; a "Save" button will appear in its place. Next erase the contents of the textbox, and then click the aforementioned "Save" button.
+
 = How do I remove the attribution link? =
 
 Because of the tremendous effort put into this plugin, we ask that you please leave the link enabled. If you must disable it, you can do so under `Settings > SEO Ultimate`.
@@ -161,6 +191,20 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 6. The File Editor module
 
 == Changelog ==
+
+= Version 0.9 (August 1, 2009) =
+* Feature: Added the Slug Optimizer module
+* Feature: Noindex Manager now supports noindexing comment subpages
+* Bugfix: 404 Monitor's numeric notice now only includes new 404s
+* Bugfix: Linkbox Inserter now respects the "more" tag
+* Bugfix: Missing strings added to the POT file
+* Improvement: 404 Monitor now shows the referring URL for all 404 errors
+* Improvement: Reduced the number of database queries the plugin makes
+* Improvement: CSS and JavaScript are now only loaded when appropriate
+* Improvement: Added additional built-in documentation
+* Improvement: Divided built-in help into multiple tabs to reduce dropdown height
+* Improvement: Miscellaneous code efficiency improvements
+* Improvement: Many additional code comments added
 
 = Version 0.8 (July 22, 2009) =
 * Feature: Added robots.txt editor (new File Editor module)

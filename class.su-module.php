@@ -3,7 +3,6 @@
  * The pseudo-abstract class upon which all modules are based.
  * 
  * @abstract
- * @version 1.5
  * @since 0.1
  */
 class SU_Module {
@@ -167,6 +166,15 @@ class SU_Module {
 	 * @since 0.1
 	 */
 	function admin_page_contents() { }
+	
+	/**
+	 * Returns an array of arrays, each of which includes the key, title, and content of a custom module dropdown.
+	 * 
+	 * @since 0.9
+	 * 
+	 * @return array
+	 */
+	function admin_dropdowns() { return array(); }
 	
 	/**
 	 * Returns the module's custom help content that should go in the "Help" dropdown of WordPress 2.7 and above.
@@ -372,6 +380,7 @@ class SU_Module {
 	 * 
 	 * @since 0.1
 	 * @uses admin_footer() Hooked into WordPress's in_admin_footer action.
+	 * @uses screen_meta_filter() Hooked into our screen_meta filter
 	 * @uses get_module_key()
 	 * @uses get_page_title()
 	 * 
@@ -380,6 +389,7 @@ class SU_Module {
 	function admin_page_start($icon = 'options-general') {
 		
 		add_action('in_admin_footer', array($this, 'admin_footer'));
+		add_filter('screen_meta', array($this, 'screen_meta_filter'));
 		
 		echo "<div class=\"wrap\">\n";
 		echo "<div id=\"su-".attribute_escape($this->get_module_key())."\" class=\"su-module\">\n";
@@ -422,69 +432,26 @@ class SU_Module {
 	 * Outputs a tab control and loads the current tab.
 	 * 
 	 * @since 0.7
+	 * @uses $seo_ultimate
 	 * @uses get_admin_url()
+	 * @uses SEO_Ultimate::plugin_dir_url
 	 * 
-	 * @param array $tabs The names of the functions that display the tab contents are the array keys, and the internationalized tab titles are the array values.
+	 * @param array $tabs The internationalized tab titles are the array keys, and the references to the functions that display the tab contents are the array values.
 	 */
-	function admin_page_tabs($tabs = array(), $tabset = 'su-tabset') {
+	function admin_page_tabs($tabs = array()) {
 		
-		echo "\n\n<div id='$tabset' class='su-tabs'>\n";
+		global $seo_ultimate;
 		
-		foreach ($tabs as $function => $title) {
+		echo "\n\n<div id='su-tabset' class='su-tabs'>\n";
+		
+		foreach ($tabs as $title => $function) {
 			echo "<fieldset id='$function'>\n<h3>$title</h3>\n";
 			if (is_callable($call = array($this, $function))) call_user_func($call);
 			echo "</fieldset>\n";
 		}
 		echo "</div>\n";
-?>
-
-<script type="text/javascript">
-/* <![CDATA[ */	
-	jQuery(function() 
-	{
-		su_init_tabs();		
-	 });
-	
-	function su_init_tabs()
-	{
-		/* if this is not the breadcrumb admin page, quit */
-		if (!jQuery("#<?php echo $tabset; ?>").length) return;		
-
-		/* init markup for tabs */
-		jQuery('#<?php echo $tabset; ?>').prepend("<ul><\/ul>");
-		jQuery('#<?php echo $tabset; ?> > fieldset').each(function(i)
-		{
-		    id      = jQuery(this).attr('id');
-		    caption = jQuery(this).find('h3').text();
-		    jQuery('#<?php echo $tabset; ?> > ul').append('<li><a href="#'+id+'"><span>'+caption+"<\/span><\/a><\/li>");
-		    jQuery(this).find('h3').hide();					    
-	    });
 		
-		/* init the tabs plugin */
-		var jquiver = undefined == jQuery.ui ? [0,0,0] : undefined == jQuery.ui.version ? [0,1,0] : jQuery.ui.version.split('.');
-		switch(true) {
-			// tabs plugin has been fixed to work on the parent element again.
-			case jquiver[0] >= 1 && jquiver[1] >= 7:
-				jQuery("#<?php echo $tabset; ?>").tabs();
-				break;
-			// tabs plugin has bug and needs to work on ul directly.
-			default:
-				jQuery("#<?php echo $tabset; ?> > ul").tabs(); 
-		}
-
-		/* handler for openeing the last tab after submit (compability version) */
-		jQuery('#<?php echo $tabset; ?> ul a').click(function(i){
-			var form   = jQuery('#bcn_admin_options');
-			var action = form.attr("action").split('#', 1) + jQuery(this).attr('href');
-			// an older bug pops up with some jQuery version(s), which makes it
-			// necessary to set the form's action attribute by standard javascript 
-			// node access:						
-			form.get(0).setAttribute("action", action);
-		});
-	}
-</script>
-
-<?php
+		echo '<script type="text/javascript" src="'.$seo_ultimate->plugin_dir_url.'tabs.js?v='.SU_VERSION.'"></script>';
 	}
 	
 	/**
@@ -493,7 +460,7 @@ class SU_Module {
 	 * @since 0.8
 	 */
 	function admin_page_tabs_init() {
-		add_action('wp_print_scripts', array($this, 'admin_page_tabs_js'));
+		add_action('admin_print_scripts', array($this, 'admin_page_tabs_js'));
 	}
 	
 	/**
@@ -503,6 +470,50 @@ class SU_Module {
 	 */
 	function admin_page_tabs_js() {
 		wp_enqueue_script('jquery-ui-tabs');
+	}
+	
+	/**
+	 * Adds the module's custom screen meta, if present.
+	 * 
+	 * @since 0.9
+	 * @uses admin_dropdowns()
+	 */
+	function screen_meta_filter($screen_meta) {
+		
+		$dropdowns = array_reverse($this->admin_dropdowns());
+		
+		$script = "<script type='text/javascript'>jQuery(function($) { $('#contextual-help-link').css('display', 'none'); });</script>";
+		
+		if (is_array($dropdowns) && count($dropdowns)) {
+			foreach ($dropdowns as $key => $label) {
+				
+				$label = htmlspecialchars($label);
+				
+				$function = array($this, "admin_dropdown_$key");
+				if (is_callable($function)) {
+					$content  = "<div class='su-help'>\n";
+					$content .= '<h5>'.sprintf(_c('%s %s|Dropdown Title', 'seo-ultimate'), $this->get_page_title(), $label)."</h5>\n\n";
+					$content .= call_user_func($function);
+					$content .= "\n</div>\n";
+					$screen_meta[] = compact('key', 'label', 'content');
+				}
+			}
+			
+			echo $script;
+			
+		} elseif ($this->admin_help() !== false) {
+			
+			$content  = "<div class='su-help'>\n";
+			$content .= '<h5>'.sprintf(_c('%s Documentation', 'seo-ultimate'), $this->get_page_title())."</h5>\n\n";
+			$content .= $this->admin_help();
+			$content .= "\n</div>\n";
+			
+			$screen_meta[] = array('key' => 'documentation', 'label' => __('Documentation', 'seo-ultimate'), 'content' => $content);
+			
+			echo $script;
+		}
+		
+		return $screen_meta;
 	}
 	
 	/**
@@ -674,8 +685,8 @@ class SU_Module {
 			
 			echo "<input name='$id' id='$id' type='text' value='$value' class='regular-text' ";
 			if (isset($defaults[$id])) {
-				echo "onkeyup=\"javascript:textbox_value_changed(this, '$default', '{$id}_reset')\" />";
-				echo "&nbsp;<a href=\"javascript:void(0)\" id=\"{$id}_reset\" onclick=\"javascript:reset_textbox('$id', '$default', '$resetmessage', this)\"";
+				echo "onkeyup=\"javascript:su_textbox_value_changed(this, '$default', '{$id}_reset')\" />";
+				echo "&nbsp;<a href=\"javascript:void(0)\" id=\"{$id}_reset\" onclick=\"javascript:su_reset_textbox('$id', '$default', '$resetmessage', this)\"";
 				if ($default == $value) echo ' class="hidden"';
 				echo ">";
 				_e('Reset', 'seo-ultimate');
