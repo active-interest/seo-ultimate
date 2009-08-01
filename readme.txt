@@ -197,6 +197,7 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 * Feature: Noindex Manager now supports noindexing comment subpages
 * Bugfix: 404 Monitor's numeric notice now only includes new 404s
 * Bugfix: Linkbox Inserter now respects the "more" tag
+* Bugfix: Missing strings added to the POT file
 * Improvement: 404 Monitor now shows the referring URL for all 404 errors
 * Improvement: Reduced the number of database queries the plugin makes
 * Improvement: CSS and JavaScript are now only loaded when appropriate
