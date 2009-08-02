@@ -2,7 +2,7 @@
 /**
  * SEO Design Solutions Whitepapers Module
  * 
- * @version 1.0.2
+ * @version 1.0.3
  * @since 0.1
  */
 
@@ -20,6 +20,11 @@ class SU_SdsBlog extends SU_Module {
 	
 	function init() {
 		$this->cron('load_blog_rss', 'hourly');
+	}
+	
+	function get_default_settings() {
+		//Don't notify about new items when the plugin is just installed
+		return array('lastread' => time());
 	}
 	
 	function filter_export_array($settings) {
