@@ -5,7 +5,7 @@ Requires at least: 2.7
 Tested up to: 2.8.2
 Stable tag: 0.9
 
-This all-in-one SEO plugin can handle titles, noindex, meta data, canonical tags, 404 error tracking, and more (with many more features coming soon).
+This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
 == Description ==
 
@@ -27,6 +27,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Slug Optimizer** - Removes common words from post/Page slugs to increase in-URL keyword potency.
 
+We have many more features that we're working on finetuning before release. If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
+
 SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 
 * Integration with the contextual help system of WordPress 2.7+
@@ -35,8 +37,6 @@ SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 * An uninstall routine
 * Integration with the new WordPress 2.7+ menu
 * Settings import/export/reset functionality
-
-**NOTE:** This plugin is in beta, which means it's very feature-incomplete. We have many more features that we're working on finetuning before release. If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
 
 
 == Installation ==
