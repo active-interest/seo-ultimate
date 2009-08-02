@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, google, yahoo, bing, search engines, admin, post, page, modules
 Requires at least: 2.7
 Tested up to: 2.8.2
-Stable tag: 0.9.1
+Stable tag: 0.9.3
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
@@ -191,6 +191,11 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 6. The File Editor module
 
 == Changelog ==
+
+= Version 0.9.3 (August 1, 2009) =
+* Bugfix: Optimized slugs save with post
+* Bugfix: Slug Optimizer now treats words as case-insensitive
+* Bugfix: Slug Optimizer now handles words with apostrophes
 
 = Version 0.9.1 (August 1, 2009) =
 * Bugfix: Fixed PHP parse errors

@@ -18,7 +18,7 @@ class SU_Settings extends SU_Module {
 	
 	function get_default_settings() {
 		return array(
-			  'attribution_link' => false
+			  'attribution_link' => true
 			, 'attribution_link_css' => true
 			, 'plugin_notices' => true
 		);
