@@ -6,8 +6,12 @@
  */
 class SEO_Ultimate {
 	
+	//Note: Throughout this class and the rest of the plugin, you may notice the occasional code segment that is apparently unused by any of this plugin's modules.
+	//The core SEO Ultimate classes form a module development framework; for compatibility reasons, I develop both existing modules and upcoming modules off of the same framework.
+	//This is why you may see new code in the SEO Ultimate framework some time before I bundle modules that use it.
+	
 	/********** VARIABLES **********/
-
+	
 	/**
 	 * Stores all module class instances.
 	 * 

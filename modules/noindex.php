@@ -2,7 +2,7 @@
 /**
  * Noindex Manager Module
  * 
- * @version 1.0.2
+ * @version 1.1
  * @since 0.1
  */
 
@@ -117,7 +117,7 @@ class SU_Noindex extends SU_Module {
 	<li><p><strong>Category archives</strong> &mdash; Tells spiders not to index category archives. Recommended only if you don&#8217;t use categories.</p></li>
 	<li><p><strong>Comment feeds</strong> &mdash; Tells spiders not to index the RSS feeds that exist for every post&#8217;s comments.
 		(These comment feeds are totally separate from your normal blog feeds.) Recommended.</p></li>
-	<li><p><strong>Comment subpages</strong> &mdash; Tells spiders not to index comment subpages (page 2, page 3, etc.).</p></li>
+	<li><p><strong>Comment subpages</strong> &mdash; Tells spiders not to index posts' comment subpages.</p></li>
 	<li><p><strong>Date-based archives</strong> &mdash; Tells spiders not to index day/month/year archives.
 		Recommended, since these pages have little keyword value.</p></li>
 	<li><p><strong>Subpages of the homepage</strong> &mdash; Tells spiders not to index the homepage's subpages (page 2, page 3, etc).

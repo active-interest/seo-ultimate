@@ -2,7 +2,7 @@
 /**
  * Meta Editor Module
  * 
- * @version 1.0.3
+ * @version 1.0.4
  * @since 0.3
  */
 
@@ -165,7 +165,7 @@ class SU_Meta extends SU_Module {
 		<ul>
 			<li><p><strong>Use this blog&#8217;s tagline as the default homepage description.</strong> &mdash; 
 				If this box is checked and if the Blog Homepage Meta Description field is empty, 
-				Meta Editor will use your blog&#8217;s <a href="options-general.php" target="_blank">tagline</a> as the meta description.</p></li>
+				Meta Editor will use your blog&#8217;s <a href='options-general.php' target='_blank'>tagline</a> as the meta description.</p></li>
 		</ul>
 	</li>
 	<li><p><strong>Spider Instructions</strong></p>
