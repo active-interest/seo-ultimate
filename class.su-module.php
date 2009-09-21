@@ -255,7 +255,7 @@ class SU_Module {
 	 * @uses get_module_key()
 	 * @uses SEO_Ultimate::key_to_hook()
 	 * 
-	 * @param string|false $key The key of the module for which to generate the admin URL.
+	 * @param string|false $key The key of the module for which to generate the admin URL. Optional.
 	 * @return string The absolute URL to the admin page.
 	 */
 	function get_admin_url($key = false) {
@@ -269,7 +269,30 @@ class SU_Module {
 			}
 		}
 		
-		return admin_url('admin.php?page='.SEO_Ultimate::key_to_hook($key).$anchor);
+		$basepage = 'admin.php';
+		global $seo_ultimate;
+		if (isset($seo_ultimate->modules[$key]) && su_str_endswith($custom_basepage = $seo_ultimate->modules[$key]->get_menu_parent(), '.php'))
+			$basepage = $custom_basepage;
+		
+		return admin_url($basepage.'?page='.SEO_Ultimate::key_to_hook($key).$anchor);
+	}
+	
+	/**
+	 * Returns an <a> link to the module's admin page, if the module is enabled.
+	 * 
+	 * @since 1.0
+	 * @uses get_admin_url()
+	 * 
+	 * @param string|false $key The key of the module for which to generate the admin URL.
+	 * @param string $label The text to go inside the <a> element.
+	 * @return string The <a> element, if the module exists; otherwise, the label by itself.
+	 */
+	function get_admin_link($key, $label) {
+	
+		if ($key == false || $this->module_exists($key))
+			return sprintf('<a href="%s">%s</a>', $this->get_admin_url($key), $label);
+		else
+			return $label;
 	}
 	
 	
@@ -296,7 +319,10 @@ class SU_Module {
 		else
 			$setting = $default;
 		
-		return apply_filters("su_get_setting-$module-$key", $setting);
+		$setting = apply_filters("su_get_setting-$module", $setting, $key);
+		$setting = apply_filters("su_get_setting-$module-$key", $setting, $key);
+		
+		return $setting;
 	}
 	
 	/**
@@ -312,7 +338,10 @@ class SU_Module {
 	function update_setting($key, $value, $module=null) {
 		if (!$module) $module = $this->get_module_key();
 		
-		if (!apply_filters("su_custom_update_setting-$module-$key", false, $value)) {
+		$use_custom  = 	apply_filters("su_custom_update_setting-$module-$key", false, $value, $key) ||
+						apply_filters("su_custom_update_setting-$module", false, $value, $key);
+		
+		if (!$use_custom) {
 			global $seo_ultimate;
 			$seo_ultimate->dbdata['settings'][$module][$key] = $value;
 		}
@@ -445,8 +474,10 @@ class SU_Module {
 		echo "\n\n<div id='su-tabset' class='su-tabs'>\n";
 		
 		foreach ($tabs as $title => $function) {
-			echo "<fieldset id='$function'>\n<h3>$title</h3>\n";
-			if (is_callable($call = array($this, $function))) call_user_func($call);
+			$id = preg_replace('/[^a-z0-9]/', '', strtolower($title));
+			echo "<fieldset id='$id'>\n<h3>$title</h3>\n";
+			if (!is_array($function)) $call = array($this, $function);
+			if (is_callable($call)) call_user_func($call);
 			echo "</fieldset>\n";
 		}
 		echo "</div>\n";
@@ -624,6 +655,11 @@ class SU_Module {
 		if ($this->is_action('update')) {
 			foreach ($checkboxes as $name => $desc) {
 				$this->update_setting($name, $_POST[$name] == '1');
+				
+				if (strpos($desc, '%d') !== false) {
+					$name .= '_value';
+					$this->update_setting($name, intval($_POST[$name]));
+				}
 			}
 		}
 		
@@ -634,11 +670,26 @@ class SU_Module {
 		
 		if (is_array($checkboxes)) {
 			foreach ($checkboxes as $name => $desc) {
+				
+				//$desc = preg_replace_callback('/%d/', array($this, "insert_int_var_textboxes"), $desc);
+				
 				register_setting($this->get_module_key(), $name, 'intval');
 				$name = attribute_escape($name);
+				
+				if (strpos($desc, '%d') === false) {
+					$onclick = '';
+				} else {
+					$int_var_name = $name.'_value';
+					$int_var_value = intval($this->get_setting($int_var_name));
+					if ($this->get_setting($name) === true) $disabled = ''; else $disabled = "disabled='disabled' ";
+					$desc = str_replace('%d', "</label><input name='$int_var_name' id='$int_var_name' type='text' value='$int_var_value' size='2' maxlength='3' $disabled/><label for='$name'>", $desc);
+					$desc = str_replace("<label for='$name'></label>", '', $desc);
+					$onclick = " onclick=\"javascript:document.getElementById('$int_var_name').disabled=!this.checked\"";
+				}
+				
 				echo "<label for='$name'><input name='$name' id='$name' type='checkbox' value='1'";
 				if ($this->get_setting($name) === true) echo " checked='checked'";
-				echo " /> $desc</label><br />\n";
+				echo "$onclick /> $desc</label><br />\n";
 			}
 		}
 		
@@ -680,8 +731,10 @@ class SU_Module {
 			
 			if ($grouptext)
 				echo "<div class='field'><label for='$id'>$title</label><br />\n";
-			else
+			elseif (strpos($title, '</a>') === false)
 				echo "<tr valign='top'>\n<th scope='row'><label for='$id'>$title</label></th>\n<td>";
+			else
+				echo "<tr valign='top'>\n<td>$title</td>\n<td>";
 			
 			echo "<input name='$id' id='$id' type='text' value='$value' class='regular-text' ";
 			if (isset($defaults[$id])) {

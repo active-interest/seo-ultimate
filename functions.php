@@ -61,6 +61,19 @@ function su_str_startswith( $str, $sub ) {
 }
 
 /**
+ * Returns whether or not a given string ends with a given substring.
+ * 
+ * @since 1.0
+ * 
+ * @param string $str The "haystack" string.
+ * @param string $sub The "needle" string.
+ * @return bool Whether or not $str ends with $sub.
+ */
+function su_str_endswith( $str, $sub ) {
+   return ( substr( $str, strlen( $str ) - strlen( $sub ) ) === $sub );
+}
+
+/**
  * Truncates a string if it is longer than a given length.
  * 
  * @since 0.8

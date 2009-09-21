@@ -1,8 +1,8 @@
 <?php
 /**
- * Settings Module
+ * SEO Ultimate Plugin Settings Module
  * 
- * @version 2.2.1
+ * @version 2.2.2
  * @since 0.2
  */
 
@@ -21,6 +21,8 @@ class SU_Settings extends SU_Module {
 			  'attribution_link' => true
 			, 'attribution_link_css' => true
 			, 'plugin_notices' => true
+			, 'log_hits' => true
+			, 'delete_old_hits_value' => 30
 		);
 	}
 	
@@ -98,6 +100,8 @@ class SU_Settings extends SU_Module {
 			, 'plugin_notices' => __("Notify me about unnecessary active plugins", 'seo-ultimate')
 			//, 'debug_mode' => __("Enable debug-mode logging", 'seo-ultimate')
 			, 'mark_code' => __("Insert comments around HTML code insertions", 'seo-ultimate')
+			, 'log_hits' => __("Allow modules to save visitor information to the database", 'seo-ultimate')
+			, 'delete_old_hits' => __("Delete logged visitor information after %d days", 'seo-ultimate')
 		));
 		$this->admin_form_end();
 		
@@ -168,12 +172,17 @@ class SU_Settings extends SU_Module {
 	function admin_help() {
 		return __("
 <p>The Settings module lets you manage settings related to the SEO Ultimate plugin as a whole.</p>
-<p>Here&#8217;s information on each of the settings:</p>
+<p>Here&#8217;s information on some of the settings:</p>
 <ul>
 	<li><p><strong>Enable attribution link</strong> &mdash; If enabled, the plugin will display an attribution link on your site.
 		We ask that you please leave this enabled.</p></li>
 	<li><p><strong>Insert comments around HTML code insertions</strong> &mdash; If enabled, SEO Ultimate will use HTML comments to identify all code it inserts into your &lt;head&gt; tag.
 		This is useful if you&#8217;re trying to figure out whether or not SEO Ultimate is inserting a certain piece of header code.</p></li>
+	<li><p><strong>Allow modules to save visitor information to the database</strong> &mdash; This allows enabled modules to record information about the people or robots that visit your website.
+		This information is stored in your WordPress database. This setting must be enabled in order for modules like the 404 Monitor to function.</p></li>
+	<li><p><strong>Delete logged visitor information after ___ days</strong> &mdash; If enabled, SEO Ultimate will delete visitor information once it has been stored for more than a specified number of days.
+		(The default value is 30.) Enable this setting if the visitor-logging functionality is making your database size unmanageable.
+		Please note that as soon as you enable this and click the Save button, your old visitor information will be irreversably purged accordingly.</p></li>
 </ul>
 ", 'seo-ultimate');
 	}

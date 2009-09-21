@@ -530,6 +530,24 @@ class SEO_Ultimate {
 	}
 	
 	/**
+	 * Gets the value of a module setting.
+	 * 
+	 * @since 1.0
+	 * @uses $modules
+	 * 
+	 * @param string $key The name of the setting to retrieve.
+	 * @param mixed $default What should be returned if the setting does not exist. Optional.
+	 * @param string|null $module The module to which the setting belongs. Defaults to the current module. Optional.
+	 * @return mixed The value of the setting, or the $default variable.
+	 */
+	function get_setting($key, $default, $module) {
+		if (isset($this->modules[$module]))
+			return $this->modules[$module]->get_setting($key, $default);
+		else
+			return $default;
+	}
+	
+	/**
 	 * Saves settings data to the database.
 	 * 
 	 * @since 0.8
@@ -547,17 +565,24 @@ class SEO_Ultimate {
 		else
 			//Save our data to the database
 			update_option('seo_ultimate', $this->dbdata);
+		
+		//Delete old hits, if this behavior is enabled
+		if ($this->get_setting('delete_old_hits', false, 'settings')) {
+			global $wpdb;
+			$mintime = time() - (intval($this->get_setting('delete_old_hits_value', 30, 'settings')) * 24 * 60 * 60);
+			$wpdb->query($wpdb->prepare('DELETE FROM '.$this->get_table_name('hits').' WHERE `time` < %d', $mintime));
+		}
 	}
 	
 	/**
-	 * Saves the hit data to the database.
+	 * Saves the hit data to the database if so instructed by a module.
 	 * 
 	 * @since 0.9
 	 * @uses $hit
 	 */
 	function save_hit() {
 		global $wpdb;
-		if (!empty($this->hit))
+		if (!empty($this->hit) && $this->get_setting('log_hits', true, 'settings') && apply_filters('su_save_hit', false, $this->hit))
 			$wpdb->insert($this->get_table_name('hits'), $this->hit);
 	}
 	
@@ -693,8 +718,13 @@ class SEO_Ultimate {
 				else
 					$count_code = '';
 				
+				$hook = $this->key_to_hook($file);
+				
 				add_submenu_page($parent, $module->get_page_title(), $module->get_menu_title().$count_code,
-					'manage_options', $this->key_to_hook($file), array($module, 'admin_page'));
+					'manage_options', $hook, array($module, 'admin_page'));
+				
+				//Support for the "Ozh' Admin Drop Down Menu" plugin
+				add_filter("ozh_adminmenu_icon_$hook", array($this, 'get_admin_menu_icon_url'));
 			}
 		}
 	}
@@ -770,6 +800,23 @@ class SEO_Ultimate {
 			case 'seo-ultimate': return 'settings'; break;
 			default: return substr($hook, 3); break;
 		}
+	}
+	
+	/**
+	 * Returns the icon for one of the plugin's admin menu items.
+	 * Used to provide support for the Ozh' Admin Drop Down Menu plugin.
+	 * 
+	 * @since 1.0
+	 * 
+	 * @param string $hook The menu item for which an icon is needed.
+	 * @return string The absolute URL of the menu icon.
+	 */
+	function get_admin_menu_icon_url($hook) {
+		$key = $this->hook_to_key($hook);
+		if (isset($this->modules[$key]) && is_readable($this->plugin_dir_path."images/$key.png"))
+			return $this->plugin_dir_url."images/$key.png";
+		else
+			return $hook;
 	}
 	
 	
@@ -934,7 +981,7 @@ class SEO_Ultimate {
 	 * @param obejct $r The response object from the WordPress Plugin Directory.
 	 */
 	function plugin_update_info($plugin_data, $r) {
-		if ($r && $r->new_version) {
+		if ($r && $r->new_version && !is_plugin_active('changelogger/changelogger.php')) {
 			$info = $this->load_webpage("http://www.seodesignsolutions.com/apis/su/update-info/?ov=".urlencode(SU_VERSION)."&nv=".urlencode($r->new_version));
 			if ($info) {
 				$info = strip_tags($info, "<br><a><b><i><span>");

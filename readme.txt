@@ -2,8 +2,8 @@
 Contributors: SEO Design Solutions
 Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, google, yahoo, bing, search engines, admin, post, page, modules
 Requires at least: 2.7
-Tested up to: 2.8.2
-Stable tag: 0.9.3
+Tested up to: 2.8.4
+Stable tag: 1.0
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
@@ -191,6 +191,16 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 6. The File Editor module
 
 == Changelog ==
+
+= Version 1.0 =
+* Feature: Canonicalizer can now redirect requests for nonexistent pagination
+* Feature: Visitor logging can now be disabled completely from the Plugin Settings page
+* Feature: Logged visitor information can now be automatically deleted after a certain number of days
+* Feature: Added icon support for the Ozh Admin Drop Down Menu plugin
+* Bugfix: 404 Monitor notification count now consistent with new errors shown
+* Improvement: Canonicalizer now removes the duplicate canonical tags produced by the WordPress 2.9 Trunk
+* Improvement: Inline changelogs now won't display if the Changelogger plugin is activated
+* Improvement: SEO Ultimate now selectively logs visitors based on which modules are enabled
 
 = Version 0.9.3 (August 1, 2009) =
 * Bugfix: Optimized slugs save with post

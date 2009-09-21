@@ -15,6 +15,11 @@ div.su-module table.widefat {
 	margin: 2em 0;
 }
 
+div.su-module table.fullwidth,
+div.su-module table.fullwidth input.regular-text {
+	width: 100%;
+} 
+
 div.su-module table.widefat th,
 div.su-module table.widefat td {
 	padding-right: 2em;

@@ -2,7 +2,7 @@
 /**
  * Canonicalizer Module
  * 
- * @version 1.0
+ * @version 1.1
  * @since 0.3
  */
 
@@ -13,15 +13,26 @@ class SU_Canonical extends SU_Module {
 	function get_menu_title() { return __('Canonicalizer', 'seo-ultimate'); }
 	
 	function init() {
-		//If the canonical tags are enabled, then hook them into the front-end header.
-		if ($this->get_setting('link_rel_canonical'))
+		//If the canonical tags are enabled, then...
+		if ($this->get_setting('link_rel_canonical')) {
+			
+			//...remove WordPress's default canonical tags (since they only handle posts/pages/attachments)
+			remove_action('wp_head', 'rel_canonical');
+			
+			//...and add our custom canonical tags.
 			add_action('su_head', array($this, 'link_rel_canonical_tag'));
+		}
+		
+		//Should we remove nonexistent pagination?
+		if ($this->get_setting('remove_nonexistent_pagination'))
+			add_action('template_redirect', array($this, 'remove_nonexistent_pagination'), 11);
 	}
 	
 	function admin_page_contents() {
 		$this->admin_form_start();
 		$this->checkboxes(array(
 				  'link_rel_canonical' => __("Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags.", 'seo-ultimate')
+				, 'remove_nonexistent_pagination' => __("Redirect requests for nonexistent pagination.", 'seo-ultimate')
 			));
 		
 		$this->admin_form_end();
@@ -131,6 +142,42 @@ class SU_Canonical extends SU_Module {
 		return $link;
 	}
 	
+	function remove_nonexistent_pagination() {
+		
+		if (!is_admin()) {
+			
+			global $wp_rewrite, $wp_query;
+			
+			$url = SEO_Ultimate::get_current_url();
+			
+			if (is_singular()) {
+				$num = absint(get_query_var('page'));
+				$post = $wp_query->get_queried_object();
+				$max = count(explode('<!--nextpage-->', $post->post_content));
+				
+				if ($max > 0 && ($num == 1 || ($num > 1 && $num > $max))) {
+					
+					if ($wp_rewrite->using_permalinks())
+						wp_redirect(preg_replace('|/[0-9]{1,9}/?$|', '/', $url), 301);
+					else
+						wp_redirect(remove_query_arg('page', $url), 301);
+				}
+				
+			} elseif (is_paged()) {
+				$num = absint(get_query_var('paged'));
+				$max = absint($wp_query->max_num_pages);
+				
+				if ($max > 0 && ($num == 1 || ($num > 1 && $num > $max))) {
+					
+					if ($wp_rewrite->using_permalinks())
+						wp_redirect(preg_replace('|/page/[0-9]{1,9}/?$|', '/', $url), 301);
+					else
+						wp_redirect(remove_query_arg('paged', $url), 301);
+				}
+			}
+		}
+	}
+	
 	function admin_dropdowns() {
 		return array(
 			  'overview' => __('Overview', 'seo-ultimate')
@@ -140,11 +187,16 @@ class SU_Canonical extends SU_Module {
 	function admin_dropdown_overview() {
 		return __("
 <ul>
-	<li><p><strong>What it does:</strong> Canonicalizer inserts <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags to minimize possible exact-content duplication penalties.</p></li>
-	<li><p><strong>Why it helps:</strong> These tags will point Google to the correct URL for your homepage and each of your posts, Pages, categories, tags, date archives, and author archives. 
+	<li><p><strong>What it does:</strong> Canonicalizer improves on two WordPress features to minimize possible exact-content duplication penalties.
+		The <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags setting improves on the canonical tags feature of WordPress 2.9 and above by encompassing much more of your site than just your posts and Pages.
+		The nonexistent pagination redirect feature fills a gap in WordPress&#8217;s built-in canonicalization functionality: 
+		for example, if a URL request is made for page 6 of a category archive, and that category doesn&#8217;t have a page 6,
+		then WordPress by default will display the content of the closest page number available, without issuing a 404 error or a 301 redirect (thus creating two or more identical webpages);
+		the Canonicalizer&#8217;s feature fixes that behavior by issuing 301 redirects to page 1 of the paginated section in question.</p></li>
+	<li><p><strong>Why it helps:</strong> These features will point Google to the correct URL for your homepage and each of your posts, Pages, categories, tags, date archives, and author archives. 
 That way, if Google comes across an alternate URL by which one of those items can be accessed, it will be able to find the correct URL 
 and won&#8217;t penalize you for having two identical pages on your site.</p></li>
-	<li><p><strong>How to use it:</strong> Just check the checkbox and click Save Changes. SEO Ultimate will do the rest.</p></li>
+	<li><p><strong>How to use it:</strong> Just check both checkboxes and click Save Changes. SEO Ultimate will do the rest.</p></li>
 </ul>
 ", 'seo-ultimate');
 	}
