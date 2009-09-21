@@ -1,47 +1,51 @@
-# SEO Ultimate
-# Copyright (C) 2009 John Lamansky
-# This file is distributed under the same license as the SEO Ultimate package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR SEO Design Solutions
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 0.9\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2009-07-23 22:19+0000\n"
+"POT-Creation-Date: 2009-09-21 23:17+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. #-#-#-#-#  seo-ultimate.pot (SEO Ultimate 0.9)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (PACKAGE VERSION)  #-#-#-#-#
 #. Plugin Name of an extension
-#: class.seo-ultimate.php:668 modules/settings.php:16
+#: class.seo-ultimate.php:697 modules/settings.php:16
 msgid "SEO Ultimate"
 msgstr ""
 
-#: class.seo-ultimate.php:668
+#: class.seo-ultimate.php:697
 msgid "SEO"
 msgstr ""
 
-#: class.seo-ultimate.php:859
+#: class.seo-ultimate.php:910
 msgid "SEO Settings Help"
 msgstr ""
 
-#: class.seo-ultimate.php:861
+#: class.seo-ultimate.php:912
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: class.seo-ultimate.php:863
+#: class.seo-ultimate.php:914
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: class.seo-ultimate.php:918
+#: class.seo-ultimate.php:969
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: class.seo-ultimate.php:999
+#: class.seo-ultimate.php:1050
 msgid "SEO Settings"
 msgstr ""
 
@@ -78,98 +82,109 @@ msgstr ""
 msgid "%1$s<br />%2$s"
 msgstr ""
 
-#: class.su-module.php:495
+#: class.su-module.php:526
 #, php-format
 msgid "%s %s|Dropdown Title"
 msgstr ""
 
-#: class.su-module.php:507
+#: class.su-module.php:538
 #, php-format
 msgid "%s Documentation"
 msgstr ""
 
-#: class.su-module.php:511
+#: class.su-module.php:542
 msgid "Documentation"
 msgstr ""
 
-#: class.su-module.php:529
+#: class.su-module.php:560
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: class.su-module.php:563
+#: class.su-module.php:594
 msgid "Settings updated."
 msgstr ""
 
-#: class.su-module.php:583
+#: class.su-module.php:614
 msgid "Save Changes"
 msgstr ""
 
-#: class.su-module.php:679
+#: class.su-module.php:730
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: class.su-module.php:692
+#: class.su-module.php:745
 msgid "Reset"
 msgstr ""
 
-#: modules/404s.php:20
+#: modules/404s.php:29
 msgid "404 Monitor"
 msgstr ""
 
-#: modules/404s.php:38
+#: modules/404s.php:46
+#, php-format
+msgid ""
+"Please note that new 404 errors will not be recorded, since visitor logging "
+"is disabled in the %s."
+msgstr ""
+
+#: modules/404s.php:47 modules/404s.php:174
+msgid "Plugin Settings module"
+msgstr ""
+
+#: modules/404s.php:54
 msgid "The log entry was successfully deleted."
 msgstr ""
 
-#: modules/404s.php:40
+#: modules/404s.php:56
 msgid "This log entry has already been deleted."
 msgstr ""
 
-#: modules/404s.php:49
+#: modules/404s.php:65
 msgid "The log was successfully cleared."
 msgstr ""
 
-#: modules/404s.php:57
+#: modules/404s.php:73
 msgid "No 404 errors in the log."
 msgstr ""
 
-#: modules/404s.php:68
+#: modules/404s.php:84
 msgid "Are you sure you want to delete all 404 log entries?"
 msgstr ""
 
-#: modules/404s.php:70
+#: modules/404s.php:86
 msgid "Clear Log"
 msgstr ""
 
-#: modules/404s.php:83
+#: modules/404s.php:99
 msgid "Open"
 msgstr ""
 
-#: modules/404s.php:84
+#: modules/404s.php:100
 msgid "Google Cache"
 msgstr ""
 
-#: modules/404s.php:85
+#: modules/404s.php:101
 msgid "Delete Log Entry"
 msgstr ""
 
-#: modules/404s.php:101 modules/canonical.php:136 modules/files.php:140
+#: modules/404s.php:117 modules/canonical.php:183 modules/files.php:140
 #: modules/linkbox.php:90 modules/meta.php:140 modules/noindex.php:94
-#: modules/slugs.php:46 modules/titles.php:205
+#: modules/slugs.php:61 modules/titles.php:205
 msgid "Overview"
 msgstr ""
 
-#: modules/404s.php:104
+#: modules/404s.php:120
 msgid "Options Help"
 msgstr ""
 
-#: modules/404s.php:107
+#: modules/404s.php:123
 msgid "Troubleshooting"
 msgstr ""
 
-#: modules/404s.php:113
+#: modules/404s.php:129
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -194,7 +209,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/404s.php:130
+#: modules/404s.php:146
 msgid ""
 "Currently, the 404 Monitor doesn&#8217;t have any 404 errors in its log. "
 "This is good, and means there&#8217;s no action required on your part. If "
@@ -202,7 +217,7 @@ msgid ""
 "this page."
 msgstr ""
 
-#: modules/404s.php:138
+#: modules/404s.php:154
 msgid ""
 "\r\n"
 "<p>Hover over a table row to access these options:</p>\r\n"
@@ -218,40 +233,66 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/404s.php:149
+#: modules/404s.php:165
+#, php-format
 msgid ""
 "\r\n"
 "<p>404 Monitor doesn&#8217;t appear to work? Take these notes into "
 "consideration:</p>\r\n"
 "<ul>\r\n"
-"\t\t<li>In order for the 404 Monitor to track 404 errors, you must have "
-"&#8220;Pretty Permalinks&#8221; enabled in your <a href="
+"\t<li>Visitor logging must be enabled in the %s. (It&#8217;s enabled by "
+"default.)</li>\r\n"
+"\t<li>In order for the 404 Monitor to track 404 errors, you must have &#8220;"
+"Pretty Permalinks&#8221; enabled in your <a href='options-permalink."
+"php'>permalink options</a>.</li>\r\n"
+"\t<li>Some parts of your website may not be under WordPress&#8217;s control; "
+"the 404 Monitor can&#8217;t track 404 errors on non-WordPress website areas."
+"</li>\r\n"
+"\t<li>The 404 Monitor doesn&#8217;t record 404 errors generated by logged-in "
+"users.</li>\r\n"
+"</ul>\r\n"
 msgstr ""
 
 #: modules/canonical.php:13
 msgid "Canonicalizer"
 msgstr ""
 
-#: modules/canonical.php:24
+#: modules/canonical.php:34
 msgid "Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags."
 msgstr ""
 
-#: modules/canonical.php:141
+#: modules/canonical.php:35
+msgid "Redirect requests for nonexistent pagination."
+msgstr ""
+
+#: modules/canonical.php:188
 msgid ""
 "\r\n"
 "<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> Canonicalizer inserts <code>&lt;link "
-"rel=&quot;canonical&quot; /&gt;</code> tags to minimize possible exact-"
-"content duplication penalties.</p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> These tags will point Google to the "
-"correct URL for your homepage and each of your posts, Pages, categories, "
+"\t<li><p><strong>What it does:</strong> Canonicalizer improves on two "
+"WordPress features to minimize possible exact-content duplication penalties."
+"\r\n"
+"\t\tThe <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags setting "
+"improves on the canonical tags feature of WordPress 2.9 and above by "
+"encompassing much more of your site than just your posts and Pages.\r\n"
+"\t\tThe nonexistent pagination redirect feature fills a gap in "
+"WordPress&#8217;s built-in canonicalization functionality: \r\n"
+"\t\tfor example, if a URL request is made for page 6 of a category archive, "
+"and that category doesn&#8217;t have a page 6,\r\n"
+"\t\tthen WordPress by default will display the content of the closest page "
+"number available, without issuing a 404 error or a 301 redirect (thus "
+"creating two or more identical webpages);\r\n"
+"\t\tthe Canonicalizer&#8217;s feature fixes that behavior by issuing 301 "
+"redirects to page 1 of the paginated section in question.</p></li>\r\n"
+"\t<li><p><strong>Why it helps:</strong> These features will point Google to "
+"the correct URL for your homepage and each of your posts, Pages, categories, "
 "tags, date archives, and author archives. \r\n"
 "That way, if Google comes across an alternate URL by which one of those "
 "items can be accessed, it will be able to find the correct URL \r\n"
 "and won&#8217;t penalize you for having two identical pages on your site.</"
 "p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> Just check the checkbox and click "
-"Save Changes. SEO Ultimate will do the rest.</p></li>\r\n"
+"\t<li><p><strong>How to use it:</strong> Just check both checkboxes and "
+"click Save Changes. SEO Ultimate will do the rest.</p></li>\r\n"
 "</ul>\r\n"
 msgstr ""
 
@@ -312,7 +353,7 @@ msgid ""
 "robots.txt file, since you&#8217;re using <a href=\"%s\">a custom one</a>."
 msgstr ""
 
-#: modules/files.php:141 modules/slugs.php:47
+#: modules/files.php:141 modules/slugs.php:62
 msgid "FAQ"
 msgstr ""
 
@@ -556,7 +597,39 @@ msgid ""
 "description.</strong> &mdash; \r\n"
 "\t\t\t\tIf this box is checked and if the Blog Homepage Meta Description "
 "field is empty, \r\n"
-"\t\t\t\tMeta Editor will use your blog&#8217;s <a href="
+"\t\t\t\tMeta Editor will use your blog&#8217;s <a href='options-general.php' "
+"target='_blank'>tagline</a> as the meta description.</p></li>\r\n"
+"\t\t</ul>\r\n"
+"\t</li>\r\n"
+"\t<li><p><strong>Spider Instructions</strong></p>\r\n"
+"\t\t<ul>\r\n"
+"\t\t\t<li><p><strong>Don&#8217;t use this site&#8217;s Open Directory / "
+"Yahoo! Directory description in search results.</strong> &mdash; \r\n"
+"\t\t\t\tIf your site is listed in the <a href='http://www.dmoz.org/' "
+"target='_blank'>Open Directory (DMOZ)</a> or \r\n"
+"\t\t\t\tthe <a href='http://dir.yahoo.com/' target='_blank'>Yahoo! "
+"Directory</a>, \r\n"
+"\t\t\t\tsome search engines may use your directory listing as the meta "
+"description. \r\n"
+"\t\t\t\tThese boxes tell search engines not to do that and will give you "
+"full control over your meta descriptions. \r\n"
+"\t\t\t\tThese settings have no effect if your site isn&#8217;t listed in the "
+"Open Directory or Yahoo! Directory respectively.</p></li>\r\n"
+"\t\t\t<li><p><strong>Don&#8217;t cache or archive this site.</strong> "
+"&mdash; \r\n"
+"\t\t\t\tWhen you check this box, Meta Editor will ask search engines "
+"(Google, Yahoo!, Bing, etc.) and archivers (Archive.org, etc.) \r\n"
+"\t\t\t\tto <em>not</em> make cached or archived &#8220;copies&#8221; of your "
+"site.</p></li>\r\n"
+"\t\t</ul>\r\n"
+"\t</li>\r\n"
+"\t<li><p><strong>Verification Codes</strong> &mdash; This section lets you "
+"enter in verification codes for the webmaster portals of the 3 leading "
+"search engines.</p></li>\r\n"
+"\t<li><p><strong>Custom &lt;head&gt; HTML</strong> &mdash; Just enter in raw "
+"HTML code here, and it&#8217;ll be entered into the &lt;head&gt; tag across "
+"your entire site.</p></li>\r\n"
+"</ul>\r\n"
 msgstr ""
 
 #: modules/meta.php:191
@@ -733,7 +806,7 @@ msgid ""
 "\t\t(These comment feeds are totally separate from your normal blog feeds.) "
 "Recommended.</p></li>\r\n"
 "\t<li><p><strong>Comment subpages</strong> &mdash; Tells spiders not to "
-"index comment subpages (page 2, page 3, etc.).</p></li>\r\n"
+"index posts' comment subpages.</p></li>\r\n"
 "\t<li><p><strong>Date-based archives</strong> &mdash; Tells spiders not to "
 "index day/month/year archives.\r\n"
 "\t\tRecommended, since these pages have little keyword value.</p></li>\r\n"
@@ -756,13 +829,13 @@ msgstr ""
 msgid "Whitepapers"
 msgstr ""
 
-#: modules/sds-blog.php:37
+#: modules/sds-blog.php:42
 msgid ""
 "Search engine optimization articles from the company behind the SEO Ultimate "
 "plugin."
 msgstr ""
 
-#: modules/sds-blog.php:88
+#: modules/sds-blog.php:93
 msgid ""
 "The articles below are loaded from the SEO Design Solutions website. Click "
 "on an article&#8217s title to read it."
@@ -772,108 +845,117 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:65
+#: modules/settings.php:67
 msgid "Settings successfully imported."
 msgstr ""
 
-#: modules/settings.php:67
+#: modules/settings.php:69
 msgid ""
 "The uploaded file is not in the proper format. Settings could not be "
 "imported."
 msgstr ""
 
-#: modules/settings.php:69
+#: modules/settings.php:71
 msgid "The settings file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings.php:72
+#: modules/settings.php:74
 msgid ""
 "Settings could not be imported because no settings file was selected. Please "
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings.php:80
+#: modules/settings.php:82
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings.php:94
+#: modules/settings.php:96
 msgid "Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:96
+#: modules/settings.php:98
 msgid "Enable attribution link"
 msgstr ""
 
-#: modules/settings.php:97
+#: modules/settings.php:99
 msgid "Enable attribution link CSS styling"
 msgstr ""
 
-#: modules/settings.php:98
+#: modules/settings.php:100
 msgid "Notify me about unnecessary active plugins"
 msgstr ""
 
-#: modules/settings.php:100
+#: modules/settings.php:102
 msgid "Insert comments around HTML code insertions"
 msgstr ""
 
-#: modules/settings.php:105
-msgid "Manage Settings Data"
+#: modules/settings.php:103
+msgid "Allow modules to save visitor information to the database"
+msgstr ""
+
+#: modules/settings.php:104
+#, php-format
+msgid "Delete logged visitor information after %d days"
 msgstr ""
 
 #: modules/settings.php:109
+msgid "Manage Settings Data"
+msgstr ""
+
+#: modules/settings.php:113
 msgid ""
 "This section allows you to export, import, and reset the settings of the "
 "plugin and all its modules."
 msgstr ""
 
-#: modules/settings.php:111
+#: modules/settings.php:115
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module, as well as the &#8220;Plugin Settings&#8221; section "
 "above. "
 msgstr ""
 
-#: modules/settings.php:120
+#: modules/settings.php:124
 msgid "Export:"
 msgstr ""
 
-#: modules/settings.php:123
+#: modules/settings.php:127
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings.php:128
+#: modules/settings.php:132
 msgid "Import:"
 msgstr ""
 
-#: modules/settings.php:133
+#: modules/settings.php:137
 msgid ""
 "Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings.php:134
+#: modules/settings.php:138
 msgid "Import This Settings File"
 msgstr ""
 
-#: modules/settings.php:141
+#: modules/settings.php:145
 msgid "Reset:"
 msgstr ""
 
-#: modules/settings.php:144
+#: modules/settings.php:148
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings.php:145
+#: modules/settings.php:149
 msgid "Restore Default Settings"
 msgstr ""
 
-#: modules/settings.php:169
+#: modules/settings.php:173
 msgid ""
 "\r\n"
 "<p>The Settings module lets you manage settings related to the SEO Ultimate "
 "plugin as a whole.</p>\r\n"
-"<p>Here&#8217;s information on each of the settings:</p>\r\n"
+"<p>Here&#8217;s information on some of the settings:</p>\r\n"
 "<ul>\r\n"
 "\t<li><p><strong>Enable attribution link</strong> &mdash; If enabled, the "
 "plugin will display an attribution link on your site.\r\n"
@@ -883,6 +965,20 @@ msgid ""
 "it inserts into your &lt;head&gt; tag.\r\n"
 "\t\tThis is useful if you&#8217;re trying to figure out whether or not SEO "
 "Ultimate is inserting a certain piece of header code.</p></li>\r\n"
+"\t<li><p><strong>Allow modules to save visitor information to the database</"
+"strong> &mdash; This allows enabled modules to record information about the "
+"people or robots that visit your website.\r\n"
+"\t\tThis information is stored in your WordPress database. This setting must "
+"be enabled in order for modules like the 404 Monitor to function.</p></li>"
+"\r\n"
+"\t<li><p><strong>Delete logged visitor information after ___ days</strong> "
+"&mdash; If enabled, SEO Ultimate will delete visitor information once it has "
+"been stored for more than a specified number of days.\r\n"
+"\t\t(The default value is 30.) Enable this setting if the visitor-logging "
+"functionality is making your database size unmanageable.\r\n"
+"\t\tPlease note that as soon as you enable this and click the Save button, "
+"your old visitor information will be irreversably purged accordingly.</p></"
+"li>\r\n"
 "</ul>\r\n"
 msgstr ""
 
@@ -894,7 +990,7 @@ msgstr ""
 msgid "Words to Remove"
 msgstr ""
 
-#: modules/slugs.php:52
+#: modules/slugs.php:67
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -912,7 +1008,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/slugs.php:63
+#: modules/slugs.php:78
 msgid ""
 "\r\n"
 "<h6>What's a slug?</h6>\r\n"
