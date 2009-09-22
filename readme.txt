@@ -192,7 +192,7 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 
 == Changelog ==
 
-= Version 1.0 =
+= Version 1.0 (September 21, 2009) =
 * Feature: Canonicalizer can now redirect requests for nonexistent pagination
 * Feature: Visitor logging can now be disabled completely from the Plugin Settings page
 * Feature: Logged visitor information can now be automatically deleted after a certain number of days
