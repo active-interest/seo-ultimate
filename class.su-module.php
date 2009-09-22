@@ -681,10 +681,10 @@ class SU_Module {
 				} else {
 					$int_var_name = $name.'_value';
 					$int_var_value = intval($this->get_setting($int_var_name));
-					if ($this->get_setting($name) === true) $disabled = ''; else $disabled = "disabled='disabled' ";
+					if ($this->get_setting($name) === true) $disabled = ''; else $disabled = "readonly='readonly' ";
 					$desc = str_replace('%d', "</label><input name='$int_var_name' id='$int_var_name' type='text' value='$int_var_value' size='2' maxlength='3' $disabled/><label for='$name'>", $desc);
 					$desc = str_replace("<label for='$name'></label>", '', $desc);
-					$onclick = " onclick=\"javascript:document.getElementById('$int_var_name').disabled=!this.checked\"";
+					$onclick = " onclick=\"javascript:document.getElementById('$int_var_name').readOnly=!this.checked;\"";
 				}
 				
 				echo "<label for='$name'><input name='$name' id='$name' type='checkbox' value='1'";
