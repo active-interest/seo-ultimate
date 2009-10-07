@@ -126,8 +126,8 @@ class SEO_Ultimate {
 		$this->upgrade_to_08();
 		
 		//Save
-		add_action('shutdown', array($this, 'save_dbdata'));
-		add_action('shutdown', array($this, 'save_hit'));
+		add_action('shutdown', array(&$this, 'save_dbdata'));
+		add_action('shutdown', array(&$this, 'save_hit'));
 		
 		/********** CLASS CONSTRUCTION **********/
 		
@@ -169,10 +169,10 @@ class SEO_Ultimate {
 		/********** PLUGIN EVENT HOOKS **********/
 		
 		//If we're activating the plugin, then call the activation function
-		register_activation_hook($this->plugin_file_path, array($this, 'activate'));
+		register_activation_hook($this->plugin_file_path, array(&$this, 'activate'));
 		
 		//If we're deactivating the plugin, then call the deactivation function
-		register_deactivation_hook($this->plugin_file_path, array($this, 'deactivate'));
+		register_deactivation_hook($this->plugin_file_path, array(&$this, 'deactivate'));
 		
 		//If we're uninstalling the plugin, then call the uninstallation function
 		register_uninstall_hook($this->plugin_file_path, 'su_uninstall');
@@ -181,37 +181,40 @@ class SEO_Ultimate {
 		/********** ACTION & FILTER HOOKS **********/
 		
 		//Initializes modules at WordPress initialization
-		add_action('init', array($this, 'init'));
+		add_action('init', array(&$this, 'init'));
 		
 		//Hook to output all <head> code
-		add_action('wp_head', array($this, 'template_head'), 1);
+		add_action('wp_head', array(&$this, 'template_head'), 1);
 		
 		//Hook to include JavaScript and CSS
-		add_action('admin_head', array($this, 'admin_includes'));
+		add_action('admin_head', array(&$this, 'admin_includes'));
 		
 		//Hook to add plugin notice actions
-		add_action('admin_head', array($this, 'plugin_page_notices'));
+		add_action('admin_head', array(&$this, 'plugin_page_notices'));
+		
+		//Hook to remove other plugins' notices from our admin pages
+		add_action('admin_head', array(&$this, 'remove_admin_notices'));
 		
 		//When loading the admin menu, call on our menu constructor function.
 		//For future-proofing purposes, we specifically state the default priority of 10,
 		//since some modules set a priority of 9 with the specific intention of running
 		//before this main plugin's hook.
-		add_action('admin_menu', array($this, 'add_menus'), 10);
+		add_action('admin_menu', array(&$this, 'add_menus'), 10);
 		
 		//Hook to customize contextual help
-		add_filter('contextual_help', array($this, 'admin_help'), 10, 2);
+		add_filter('contextual_help', array(&$this, 'admin_help'), 10, 2);
 		
 		//Postmeta box hooks
-		add_action('admin_menu', array($this, 'add_postmeta_box'));
-		add_action('save_post',  array($this, 'save_postmeta_box'), 10, 2);
+		add_action('admin_menu', array(&$this, 'add_postmeta_box'));
+		add_action('save_post',  array(&$this, 'save_postmeta_box'), 10, 2);
 		
 		//Display info on new versions
-		add_action('in_plugin_update_message-'.plugin_basename($this->plugin_file_path), array($this, 'plugin_update_info'), 10, 2);
+		add_action('in_plugin_update_message-'.plugin_basename($this->plugin_file_path), array(&$this, 'plugin_update_info'), 10, 2);
 		
 		//Log this visitor!
-		add_filter('redirect_canonical', array($this, 'log_redirect_canonical'));
-		add_filter('wp_redirect', array($this, 'log_redirect'), 10, 2);
-		add_filter('status_header', array($this, 'log_hit'), 10, 2);
+		add_filter('redirect_canonical', array(&$this, 'log_redirect_canonical'));
+		add_filter('wp_redirect', array(&$this, 'log_redirect'), 10, 2);
+		add_filter('status_header', array(&$this, 'log_hit'), 10, 2);
 	}
 	
 	/**
@@ -327,7 +330,7 @@ class SEO_Ultimate {
 		delete_option('seo_ultimate');
 		
 		//Stop the database data from being re-saved
-		remove_action('shutdown', array($this, 'save_dbdata'));
+		remove_action('shutdown', array(&$this, 'save_dbdata'));
 		
 		//Delete the hits table
 		mysql_query("DROP TABLE IF EXISTS ".$this->get_table_name('hits'));
@@ -436,7 +439,7 @@ class SEO_Ultimate {
 		//If the loop above found modules, then sort them with our special sorting function
 		//so they appear on the admin menu in the right order
 		if (count($this->modules) > 0)
-			uasort($this->modules, array($this, 'module_sort_callback'));
+			uasort($this->modules, array(&$this, 'module_sort_callback'));
 		
 		//Now we'll compare the current module set with the one from last time.
 		
@@ -534,6 +537,7 @@ class SEO_Ultimate {
 	 * 
 	 * @since 1.0
 	 * @uses $modules
+	 * @uses SU_Module::get_setting()
 	 * 
 	 * @param string $key The name of the setting to retrieve.
 	 * @param mixed $default What should be returned if the setting does not exist. Optional.
@@ -549,9 +553,12 @@ class SEO_Ultimate {
 	
 	/**
 	 * Saves settings data to the database.
+	 * Also deletes old hits, if that behavior is enabled.
 	 * 
 	 * @since 0.8
 	 * @uses $dbdata
+	 * @uses get_setting()
+	 * @uses get_table_name()
 	 */
 	function save_dbdata() {
 		
@@ -724,7 +731,7 @@ class SEO_Ultimate {
 					'manage_options', $hook, array($module, 'admin_page'));
 				
 				//Support for the "Ozh' Admin Drop Down Menu" plugin
-				add_filter("ozh_adminmenu_icon_$hook", array($this, 'get_admin_menu_icon_url'));
+				add_filter("ozh_adminmenu_icon_$hook", array(&$this, 'get_admin_menu_icon_url'));
 			}
 		}
 	}
@@ -763,7 +770,7 @@ class SEO_Ultimate {
 	
 		//If we have alerts that need a bubble, then return the bubble HTML.
 		if ($count > 0)
-			return "&nbsp;<span id='awaiting-mod' class='count-$count'><span class='pending-count'>$count</span></span>";
+			return "&nbsp;<span id='awaiting-mod' class='count-$count'><span class='pending-count'>".number_format_i18n($count)."</span></span>";
 		else
 			return '';
 	}
@@ -948,7 +955,7 @@ class SEO_Ultimate {
 			
 			foreach ($r_plugins as $path) {
 				if (isset($i_plugins[$path]))
-					add_action("after_plugin_row_$path", array($this, 'plugin_page_notice'), 10, 3);
+					add_action("after_plugin_row_$path", array(&$this, 'plugin_page_notice'), 10, 3);
 			}
 		}
 	}
@@ -990,6 +997,18 @@ class SEO_Ultimate {
 		}
 	}
 	
+	/**
+	 * Removes the activation notices of All in One SEO Pack and Akismet from our admin pages.
+	 * (It could be confusing for users to see another plugin's notices on our plugin's pages.)
+	 * 
+	 * @since 1.1
+	 */
+	function remove_admin_notices() {
+		if ($this->is_plugin_admin_page()) {
+			remove_action('admin_notices', 'aioseop_activation_notice');
+			remove_action('admin_notices', 'akismet_warning');
+		}
+	}
 	
 	/********** ADMIN POST META BOX FUNCTIONS **********/
 	
@@ -1047,7 +1066,7 @@ class SEO_Ultimate {
 		
 			//Only show the meta box if there are fields to show.
 			if ($this->get_postmeta_fields($screen))
-				add_meta_box('su_postmeta', __('SEO Settings', 'seo-ultimate'), array($this, "show_{$screen}_postmeta_box"), $screen, 'normal', 'high');
+				add_meta_box('su_postmeta', __('SEO Settings', 'seo-ultimate'), array(&$this, "show_{$screen}_postmeta_box"), $screen, 'normal', 'high');
 		}
 	}
 	
@@ -1259,21 +1278,6 @@ class SEO_Ultimate {
 		if ( 200 != $response['response']['code'] ) return false;
 		
 		return trim( $response['body'] );
-	}
-	
-	/**
-	 * Uses the Google Chart API to output a 3D pie chart.
-	 * 
-	 * @since 0.3
-	 * 
-	 * @param array $data The labels (keys) and values that go on the pie chart.
-	 * @param array|string $color An array or string of which color(s) to use on the pie chart.
-	 */
-	function pie_chart_3d($data, $color = '0000FF') {
-		$labels = implode('|', array_keys($data));
-		$values = implode(',', array_values($data));
-		$colors = implode(',', (array)$color);
-		echo "<img src='http://chart.apis.google.com/chart?cht=p3&amp;chd=t:$values&amp;chs=250x100&amp;chl=$labels&amp;chco=$colors' alt='' />";
 	}
 }
 ?>

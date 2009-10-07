@@ -2,7 +2,7 @@
 /**
  * Linkbox Inserter Module
  * 
- * @version 1.0.2
+ * @version 1.0.3
  * @since 0.6
  */
 
@@ -26,7 +26,7 @@ class SU_Linkbox extends SU_Module {
 	
 	function init() {
 		//We only want to filter post content when we're in the front-end, so we hook into template_redirect
-		add_action('template_redirect', array($this, 'template_init'));
+		add_action('template_redirect', array(&$this, 'template_init'));
 	}
 	
 	function template_init() {
@@ -34,11 +34,11 @@ class SU_Linkbox extends SU_Module {
 		
 		if ($this->should_linkbox())
 			//Add the linkbox to post/page content
-			add_filter('the_content', array($this, 'linkbox_filter'));
+			add_filter('the_content', array(&$this, 'linkbox_filter'));
 		
 		if ($this->get_setting('action_hook'))
 			//Enable the action hook
-			add_action('su_linkbox', array($this, 'linkbox_action'));
+			add_action('su_linkbox', array(&$this, 'linkbox_action'));
 	}
 	
 	function admin_page_contents() {

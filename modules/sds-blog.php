@@ -2,7 +2,7 @@
 /**
  * SEO Design Solutions Whitepapers Module
  * 
- * @version 1.0.3
+ * @version 1.0.4
  * @since 0.1
  */
 
@@ -15,7 +15,7 @@ class SU_SdsBlog extends SU_Module {
 	function get_menu_count() { return $this->get_unread_count(); }
 	
 	function __construct() {
-		add_filter('su_settings_export_array', array($this, 'filter_export_array'));
+		add_filter('su_settings_export_array', array(&$this, 'filter_export_array'));
 	}
 	
 	function init() {
@@ -38,7 +38,8 @@ class SU_SdsBlog extends SU_Module {
 	}
 	
 	function admin_page_contents() {
-		echo "<a href='http://www.seodesignsolutions.com'><img src='http://www.seodesignsolutions.com/wp/wp-content/themes/sds3/images/logo.png' alt='SEO' id='sds-logo' /></a>";
+		global $seo_ultimate;
+		echo "<a href='http://www.seodesignsolutions.com'><img src='{$seo_ultimate->plugin_dir_url}images/sds-logo.png' alt='".__("SEO Design Solutions", 'seo-ultimate')."' id='sds-logo' /></a>";
 		echo "<p>".__("Search engine optimization articles from the company behind the SEO Ultimate plugin.", 'seo-ultimate')."</p>\n";
 		echo "<div class='rss-widget'>\n";
 		

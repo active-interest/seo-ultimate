@@ -103,6 +103,47 @@ function su_esc_attr($str) {
 	return $str;
 }
 
+/**
+ * Joins strings into a natural-language list.
+ * Can be internationalized with gettext or the su_lang_implode filter.
+ * 
+ * @since 1.1
+ * 
+ * @param array $items The strings (or objects with $var child strings) to join.
+ * @param string|false $var The name of the items' object variables whose values should be imploded into a list.
+	If false, the items themselves will be used.
+ * @param bool $ucwords Whether or not to capitalize the first letter of every word in the list.
+ * @return string|array The items in a natural-language list.
+ */
+function su_lang_implode($items, $var=false, $ucwords=false) {
+	
+	if (is_array($items) ) {
+		
+		if (strlen($var)) {
+			$_items = array();
+			foreach ($items as $item) $_items[] = $item->$var;
+			$items = $_items;
+		}
+		
+		if ($ucwords) $items = array_map('ucwords', $items);
+		
+		switch (count($items)) {
+			case 0: $list = ''; break;
+			case 1: $list = $items[0]; break;
+			case 2: $list = sprintf(__('%s and %s', 'seo-ultimate'), $items[0], $items[1]); break;
+			default:
+				$last = array_pop($items);
+				$list = implode(__(', ', 'seo-ultimate'), $items);
+				$list = sprintf(__('%s, and %s', 'seo-ultimate'), $list, $last);
+				break;
+		}
+		
+		return apply_filters('su_lang_implode', $list, $items);
+	}
+
+	return $items;
+}
+
 /********** CLASS FUNCTION ALIASES **********/
 
 /**

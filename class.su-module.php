@@ -417,9 +417,13 @@ class SU_Module {
 	 */
 	function admin_page_start($icon = 'options-general') {
 		
-		add_action('in_admin_footer', array($this, 'admin_footer'));
-		add_filter('screen_meta', array($this, 'screen_meta_filter'));
+		//Add our custom footer attribution
+		add_action('in_admin_footer', array(&$this, 'admin_footer'));
 		
+		//Add our custom contextual help
+		add_filter('screen_meta', array(&$this, 'screen_meta_filter'));
+		
+		//Output the beginning of the admin screen
 		echo "<div class=\"wrap\">\n";
 		echo "<div id=\"su-".attribute_escape($this->get_module_key())."\" class=\"su-module\">\n";
 		screen_icon($icon);
@@ -476,7 +480,7 @@ class SU_Module {
 		foreach ($tabs as $title => $function) {
 			$id = preg_replace('/[^a-z0-9]/', '', strtolower($title));
 			echo "<fieldset id='$id'>\n<h3>$title</h3>\n";
-			if (!is_array($function)) $call = array($this, $function);
+			if (!is_array($function)) $call = array(&$this, $function);
 			if (is_callable($call)) call_user_func($call);
 			echo "</fieldset>\n";
 		}
@@ -491,7 +495,7 @@ class SU_Module {
 	 * @since 0.8
 	 */
 	function admin_page_tabs_init() {
-		add_action('admin_print_scripts', array($this, 'admin_page_tabs_js'));
+		add_action('admin_print_scripts', array(&$this, 'admin_page_tabs_js'));
 	}
 	
 	/**
@@ -520,7 +524,7 @@ class SU_Module {
 				
 				$label = htmlspecialchars($label);
 				
-				$function = array($this, "admin_dropdown_$key");
+				$function = array(&$this, "admin_dropdown_$key");
 				if (is_callable($function)) {
 					$content  = "<div class='su-help'>\n";
 					$content .= '<h5>'.sprintf(_c('%s %s|Dropdown Title', 'seo-ultimate'), $this->get_page_title(), $label)."</h5>\n\n";
@@ -592,7 +596,7 @@ class SU_Module {
 		
 		if (!$this->get_parent_module()) {
 			if ($this->is_action('update')) $this->print_message('success', __('Settings updated.', 'seo-ultimate'));
-			echo "<form method='post' action='?page=$hook'>\n";
+			echo "<form id='su-admin-form' method='post' action='?page=$hook'>\n";
 			settings_fields($hook);
 		}
 		
@@ -671,7 +675,7 @@ class SU_Module {
 		if (is_array($checkboxes)) {
 			foreach ($checkboxes as $name => $desc) {
 				
-				//$desc = preg_replace_callback('/%d/', array($this, "insert_int_var_textboxes"), $desc);
+				//$desc = preg_replace_callback('/%d/', array(&$this, "insert_int_var_textboxes"), $desc);
 				
 				register_setting($this->get_module_key(), $name, 'intval');
 				$name = attribute_escape($name);
@@ -1107,7 +1111,7 @@ class SU_Module {
 			call_user_func(array($this, $function));
 		}
 		
-		add_action($hook, array($this, $function));
+		add_action($hook, array(&$this, $function));
 	}
 	
 	/********** RSS FUNCTION **********/

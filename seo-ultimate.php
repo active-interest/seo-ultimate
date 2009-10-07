@@ -3,7 +3,7 @@
 Plugin Name: SEO Ultimate
 Plugin URI: http://www.seodesignsolutions.com/wordpress-seo/
 Description: This all-in-one SEO plugin can rewrite title tags, set meta data, add noindex, insert canonical tags, log 404 errors, edit your robots.txt, and more.
-Version: 1.0
+Version: 1.1
 Author: SEO Design Solutions
 Author URI: http://www.seodesignsolutions.com/
 Text Domain: seo-ultimate
@@ -12,7 +12,7 @@ Text Domain: seo-ultimate
 /**
  * The main SEO Ultimate plugin file.
  * @package SeoUltimate
- * @version 1.0
+ * @version 1.1
  * @link http://www.seodesignsolutions.com/wordpress-seo/ SEO Ultimate Homepage
  */
 
@@ -38,10 +38,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //Reading plugin info from constants is faster than trying to parse it from the header above.
 define("SU_PLUGIN_NAME", "SEO Ultimate");
 define("SU_PLUGIN_URI", "http://www.seodesignsolutions.com/wordpress-seo/");
-define("SU_VERSION", "1.0");
+define("SU_VERSION", "1.1");
 define("SU_AUTHOR", "SEO Design Solutions");
 define("SU_AUTHOR_URI", "http://www.seodesignsolutions.com/");
-define("SU_USER_AGENT", "SeoUltimate/1.0");
+define("SU_USER_AGENT", "SeoUltimate/1.1");
 
 define('SU_MODULE_ENABLED', 10);
 define('SU_MODULE_SILENCED', 5);
@@ -62,7 +62,7 @@ require('class.su-hitset.php');
 
 /********** PLUGIN FILE LOAD HANDLER **********/
 
-//If we're running WordPress, then initialize the main class defined above.
+//If we're running WordPress, then initialize the main class loaded above.
 //Or, show a blank page on direct load.
 
 global $seo_ultimate;

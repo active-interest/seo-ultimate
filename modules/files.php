@@ -2,7 +2,7 @@
 /**
  * File Editor Module
  * 
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2.0
  */
 
@@ -21,15 +21,15 @@ class SU_Files extends SU_Module {
 			
 			//...Remove WordPress's robots.txt handler and replace it with ours.
 			remove_action('do_robots', 'do_robots');
-			add_action('do_robots', array($this, 'do_robots'));
+			add_action('do_robots', array(&$this, 'do_robots'));
 			
 			//...And put a notice on the Privacy options page that the privacy settings won't take effect.
-			add_action('admin_notices', array($this, 'privacy_options_notice'));
+			add_action('admin_notices', array(&$this, 'privacy_options_notice'));
 		}
 		
 		//We override the default behavior of saving the custom htaccess contents to the database and instead save the contents to the file
-		add_filter('su_get_setting-files-htaccess', array($this, 'get_htaccess'));
-		add_filter('su_custom_update_setting-files-htaccess', array($this, 'update_htaccess'), 10, 2);
+		add_filter('su_get_setting-files-htaccess', array(&$this, 'get_htaccess'));
+		add_filter('su_custom_update_setting-files-htaccess', array(&$this, 'update_htaccess'), 10, 2);
 	}
 	
 	function admin_page_contents() {

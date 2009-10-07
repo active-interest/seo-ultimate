@@ -2,7 +2,7 @@
 /**
  * Title Rewriter Module
  * 
- * @version 1.0.5
+ * @version 2.0
  * @since 0.1
  */
 
@@ -13,9 +13,9 @@ class SU_Titles extends SU_Module {
 	function get_menu_title() { return __('Title Rewriter', 'seo-ultimate'); }
 	
 	function init() {
-		add_action('template_redirect', array($this, 'before_header'), 0);
-		add_action('wp_head', array($this, 'after_header'), 1000);
-		add_filter('su_postmeta_help', array($this, 'postmeta_help'), 10);
+		add_action('template_redirect', array(&$this, 'before_header'), 0);
+		add_action('wp_head', array(&$this, 'after_header'), 1000);
+		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 10);
 	}
 	
 	function get_default_settings() {
@@ -55,9 +55,19 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function admin_page_contents() {
-		$this->admin_form_start();
+		$this->admin_form_start(false, false);
+		$this->admin_page_tabs(array(
+			  __('Default Formats', 'seo-ultimate') => 'admin_page_formats_tab'
+			, __('Posts', 'seo-ultimate') => 'admin_page_posts_tab'
+			, __('Pages', 'seo-ultimate') => 'admin_page_pages_tab'
+		));
+		$this->admin_form_end(false, false);
+	}
+	
+	function admin_page_formats_tab() {
+		echo "<table class='form-table'>\n";
 		$this->textboxes($this->get_supported_settings(), $this->get_default_settings());
-		$this->admin_form_end();
+		echo "</table>";
 	}
 	
 	function postmeta_fields($fields) {
@@ -89,7 +99,7 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function before_header() {
-		if ($this->should_rewrite_title()) ob_start(array($this, 'change_title_tag'));
+		if ($this->should_rewrite_title()) ob_start(array(&$this, 'change_title_tag'));
 	}
 
 	function after_header() {
@@ -124,10 +134,12 @@ class SU_Titles extends SU_Module {
 			return htmlspecialchars($this->get_title_paged($post_title));
 		
 		//Load post/page titles
+		$post_id = 0;
 		$post_title = '';
 		if (is_singular()) {
 			$post = $wp_query->get_queried_object();
 			$post_title = strip_tags( apply_filters( 'single_post_title', $post->post_title ) );
+			$post_id = $post->ID;
 		}
 		
 		//Load date-based archive titles
@@ -145,25 +157,67 @@ class SU_Titles extends SU_Module {
 		$day = date('jS', mktime(12,0,0,$monthnum,$daynum,$year));
 		$daynum = zeroise($daynum, 2);
 		
-		//Load author archive titles
-		$author_name = '';
-		if (is_author()) {
-			$author = $wp_query->get_queried_object();
-			$author_name = $author->display_name;
+		//Load category titles
+		$cat_title = $cat_titles = $cat_desc = '';
+		if (is_category()) {
+			$cat_title = single_cat_title('', false);
+			$cat_desc = category_description();
+		} elseif (count($categories = get_the_category())) {
+			$cat_titles = su_lang_implode($categories, 'name');
+			usort($categories, '_usort_terms_by_ID');
+			$cat_title = $categories[0]->name;
+			$cat_desc = category_description($categories[0]->term_id);
 		}
+		
+		//Load tag titles
+		$tag_title = $tag_desc = '';
+		if (is_tag()) {
+			$tag_title = single_tag_title('', false);
+			$tag_desc = tag_description();
+		}
+		
+		//Load author titles
+		if (is_author()) {
+			$author_obj = $wp_query->get_queried_object();
+		} elseif (is_singular()) {
+			global $authordata;
+			$author_obj = $authordata;
+		} else {
+			$author_obj = null;
+		}
+		if ($author_obj)
+			$author = array(
+				  'username' => $author_obj->user_login
+				, 'name' => $author_obj->display_name
+				, 'firstname' => get_the_author_meta('first_name', $author_obj->ID)
+				, 'lastname' => get_the_author_meta('last_name',  $author_obj->ID)
+				, 'nickname' => get_the_author_meta('nickname',   $author_obj->ID)
+			);
+		else
+			$author = array();
 		
 		$variables = array(
 			  '{blog}' => get_bloginfo('name')
+			, '{tagline}' => get_bloginfo('description')
 			, '{post}' => $post_title
 			, '{page}' => $post_title
-			, '{category}' => single_cat_title('', false)
-			, '{tag}' => single_tag_title('', false)
+			, '{category}' => $cat_title
+			, '{categories}' => $cat_titles
+			, '{category_description}' => $cat_desc
+			, '{tag}' => $tag_title
+			, '{tag_description}' => $tag_desc
+			, '{tags}' => su_lang_implode(get_the_tags($post_id), 'name', true)
 			, '{daynum}' => $daynum
 			, '{day}' => $day
 			, '{monthnum}' => $monthnum
 			, '{month}' => $month
 			, '{year}' => $year
-			, '{author}' => $author_name
+			, '{author}' => $author['name']
+			, '{author_name}' => $author['name']
+			, '{author_username}' => $author['username']
+			, '{author_firstname}' => $author['firstname']
+			, '{author_lastname}' => $author['lastname']
+			, '{author_nickname}' => $author['nickname']
 			, '{query}' => attribute_escape(get_search_query())
 			, '{ucquery}' => attribute_escape(ucwords(get_search_query()))
 		);
@@ -200,6 +254,80 @@ class SU_Titles extends SU_Module {
 			return $title;
 	}
 	
+	function admin_page_posts_tab() {
+		$this->title_editing_table('post', __('Post'), 'get_posts');
+	}
+	
+	function admin_page_pages_tab() {
+		$this->title_editing_table('page', __('Page'), 'get_pages');
+	}
+	
+	function get_id_from_settings_key($key) {
+		$matches = array();
+		if (preg_match('/([a-z]+)_([0-9]+)_([a-z]+)/', $key, $matches))
+			return (int)$matches[2];
+		
+		return false;
+	}
+	
+	function get_singular_title($value, $key) {
+		if ($id = $this->get_id_from_settings_key($key))
+			return $this->get_postmeta('title', $id);
+		
+		return $value;
+	}
+	
+	function save_singular_title($unused, $value, $key) {
+		if ($id = $this->get_id_from_settings_key($key)) {
+			update_post_meta($id, '_su_title', $value);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	function title_editing_table($object_type, $object_type_label, $function,
+			$get_value_callback = 'get_singular_title', $save_value_callback = 'save_singular_title',
+			$num_varname = 'numberposts', $offset_varname = 'offset', $id_varname = 'ID', $title_varname = 'post_title', $edit_link_function = 'get_edit_post_link') {
+	
+		$mk = $this->get_module_key();
+	
+		add_filter("su_get_setting-$mk", array(&$this, $get_value_callback), 10, 2);
+		add_filter("su_custom_update_setting-$mk", array(&$this, $save_value_callback), 10, 3);
+	
+		$headers = array( __('ID'), $object_type_label, __('Title Tag', 'seo-ultimate') );
+	
+		echo <<<STR
+<table class="widefat fullwidth" cellspacing="0">
+	<thead><tr>
+		<!--<th scope="col" class="$object_type-id">{$headers[0]}</th>-->
+		<th scope="col" class="$object_type-title">{$headers[1]}</th>
+		<th scope="col" class="$object_type-title-tag">{$headers[2]}</th>
+	</tr></thead>
+	<tbody>
+
+STR;
+		
+		/*if (strlen($num_varname) && strlen($offset_varname))
+			$args = "$num_varname=20&$offset_varname=0";
+		else*/
+			$args = '';
+		
+		$objects = $function($args);
+		$pagination_total = ceil(count($function()) / 2);
+		
+		foreach ($objects as $object) {
+			$id = $object->$id_varname;
+			$editlink = $edit_link_function($id);
+			$title = $object->$title_varname;
+			
+			$this->textbox("{$object_type}_{$id}_title", "<a href='$editlink'>$title</a>");
+		}
+		
+		echo "\t</tbody>\n</table>\n";
+	
+	}
+	
 	function admin_dropdowns() {
 		return array(
 			  'overview' => __('Overview', 'seo-ultimate')
@@ -216,7 +344,7 @@ class SU_Titles extends SU_Module {
 		This is an important foundation for WordPress SEO.</p></li>
 	<li><p><strong>How to use it:</strong> Title Rewriter enables recommended settings automatically, so you shouldn&#8217;t need to change anything.
 		If you do wish to edit the rewriting formats, you can do so using the textboxes below (the &#8220;Settings Help&#8221; tab includes additional information on this).
-		You also have the option of overriding the <code>&lt;title&gt;</code> tag of an individual post or page by using the &#8220;Title Tag&#8221; textbox that Title Rewriter adds to the post/page editors.</p></li>
+		You also have the option of overriding the <code>&lt;title&gt;</code> tag of an individual post or page by using the textboxes under the &#8220;Post&#8221; and &#8220;Page&#8221; tabs below, or by using the &#8220;Title Tag&#8221; textbox that Title Rewriter adds to the post/page editors.</p></li>
 </ul>
 ", 'seo-ultimate');
 	}
@@ -224,14 +352,23 @@ class SU_Titles extends SU_Module {
 	function admin_dropdown_settings() {
 		return __("
 <p>Various variables, surrounded in {curly brackets}, are provided for use in the title formats.
-All settings support the {blog} variable, which is replaced with the name of the blog.</p>
+All settings support the {blog} variable, which is replaced with the name of the blog, 
+and the {tagline} variable, which is replaced with the blog tagline as set under <a href='options-general.php' target='_blank'>General&nbsp;Settings</a>.</p>
 <p>Here&#8217;s information on each of the settings and its supported variables:</p>
 <ul>
 	<li><p><strong>Blog Homepage Title</strong> &mdash; Displays on the main blog posts page.</p></li>
-	<li><p><strong>Post Title Format</strong> &mdash; Displays on single-post pages. The {post} variable is replaced with the post&#8217;s title.</p></li>
-	<li><p><strong>Page Title Format</strong> &mdash; Displays on WordPress Pages. The {page} variable is replaced with the Page&#8217;s title.</p></li>
-	<li><p><strong>Category Title Format</strong> &mdash; Displays on category archives. The {category} variable is replaced with the name of the category.</p></li>
-	<li><p><strong>Tag Title Format</strong> &mdash; Displays on tag archives. The {tag} variable is replaced with the name of the tag.</p></li>
+	<li><p><strong>Post Title Format</strong> &mdash; Displays on single-post pages. Supports these variables:</p>
+		<ul>
+			<li>{post} &mdash; The post&#8217;s title.</li>
+			<li>{category} &mdash; The title of the post category with the lowest ID number.</li>
+			<li>{categories} &mdash; A natural-language list of the post&#8217;s categories (e.g. &#8220;Category A, Category B, and Category C&#8221;).</li>
+			<li>{tags} &mdash; A natural-language list of the post&#8217;s tags (e.g. &#8220;Tag A, Tag B, and Tag C&#8221;).</li>
+			<li>{author} &mdash; The Display Name of the post&#8217;s author.</li>
+			<li>{author_username}, {author_firstname}, {author_lastname}, {author_nickname} &mdash; The username, first name, last name, and nickname of the post&#8217;s author, respectively, as set in his or her profile.</li>
+		</ul>
+	<li><p><strong>Page Title Format</strong> &mdash; Displays on WordPress Pages. The {page} variable is replaced with the Page&#8217;s title. Also supports the same author variables as the Post Title Format.</p></li>
+	<li><p><strong>Category Title Format</strong> &mdash; Displays on category archives. The {category} variable is replaced with the name of the category, and {category_description} is replaced with its description.</p></li>
+	<li><p><strong>Tag Title Format</strong> &mdash; Displays on tag archives. The {tag} variable is replaced with the name of the tag, and {tag_description} is replaced with its description.</p></li>
 	<li><p><strong>Day Archive Title Format</strong> &mdash; Displays on day archives. Supports these variables:</p>
 		<ul>
 			<li>{day} &mdash; The day number, with ordinal suffix, e.g. 23rd</li>
@@ -242,7 +379,8 @@ All settings support the {blog} variable, which is replaced with the name of the
 		</ul></li>
 	<li><p><strong>Month Archive Title Format</strong> &mdash; Displays on month archives. Supports {month}, {monthnum}, and {year}.</p></li>
 	<li><p><strong>Year Archive Title Format</strong> &mdash; Displays on year archives. Supports the {year} variable.</p></li>
-	<li><p><strong>Author Archive Title Format</strong> &mdash; Displays on author archives. The {author} variable is replaced with the author&#8217;s Display Name.</p></li>
+	<li><p><strong>Author Archive Title Format</strong> &mdash; Displays on author archives. Supports the same author variables as the Post Title Format box, 
+		i.e. {author}, {author_username}, {author_firstname}, {author_lastname}, and {author_nickname}.</p></li>
 	<li><p><strong>Search Title Format</strong> &mdash; Displays on the result pages for WordPress&#8217;s blog search function.
 		The {query} variable is replaced with the search query as-is. The {ucwords} variable returns the search query with the first letter of each word capitalized.</p></li>
 	<li><p><strong>404 Title Format</strong> &mdash; Displays whenever a URL doesn&#8217;t go anywhere.</p></li>
@@ -264,5 +402,18 @@ All settings support the {blog} variable, which is replaced with the name of the
 
 }
 
+} elseif ($_GET['css'] == 'admin') {
+	header('Content-type: text/css');
+?>
+
+#su-titles table.widefat {
+	width: auto;
+}
+
+#su-titles table.widefat td input.regular-text {
+	width: 400px;
+}
+
+<?php
 }
 ?>

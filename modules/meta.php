@@ -2,7 +2,7 @@
 /**
  * Meta Editor Module
  * 
- * @version 1.0.4
+ * @version 1.0.5
  * @since 0.3
  */
 
@@ -13,9 +13,9 @@ class SU_Meta extends SU_Module {
 	function get_menu_title() { return __('Meta Editor', 'seo-ultimate'); }
 	
 	function init() {
-		add_filter('su_meta_robots', array($this, 'meta_robots'));
-		add_action('su_head', array($this, 'head_tag_output'));
-		add_filter('su_postmeta_help', array($this, 'postmeta_help'), 20);
+		add_filter('su_meta_robots', array(&$this, 'meta_robots'));
+		add_action('su_head', array(&$this, 'head_tag_output'));
+		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 20);
 	}
 	
 	function get_default_settings() {

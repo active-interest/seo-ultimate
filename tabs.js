@@ -32,7 +32,7 @@ function su_init_tabs()
 
 	/* handler for openeing the last tab after submit (compability version) */
 	jQuery('#su-tabset ul a').click(function(i){
-		var form   = jQuery('#bcn_admin_options');
+		var form   = jQuery('#su-admin-form');
 		var action = form.attr("action").split('#', 1) + jQuery(this).attr('href');
 		// an older bug pops up with some jQuery version(s), which makes it
 		// necessary to set the form's action attribute by standard javascript 

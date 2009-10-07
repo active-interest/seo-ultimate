@@ -2,7 +2,7 @@
 /**
  * 404 Monitor Module
  * 
- * @version 1.0.6
+ * @version 1.0.7
  * @since 0.4
  */
 
@@ -16,7 +16,7 @@ class SU_404s extends SU_Module {
 		//Load 404s from the database
 		$this->hitset = new SU_HitSet('404s', "status_code=404 AND redirect_url='' AND url NOT LIKE '%/favicon.ico'");
 		
-		add_filter('su_save_hit', array($this, 'should_log_hit'), 10, 2);
+		add_filter('su_save_hit', array(&$this, 'should_log_hit'), 10, 2);
 	}
 	
 	function should_log_hit($should_log, $hit) {
@@ -77,7 +77,7 @@ class SU_404s extends SU_Module {
 		if ($this->hitset->have_hits()) {
 			
 			//Display the 404 table
-			$this->hitset->admin_table(array($this, 'hits_table_action_links'));
+			$this->hitset->admin_table(array(&$this, 'hits_table_action_links'));
 			
 			//Create the "Clear Log" button
 			$clearurl = $this->get_nonce_url('clear');

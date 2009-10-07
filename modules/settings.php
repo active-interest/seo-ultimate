@@ -2,7 +2,7 @@
 /**
  * SEO Ultimate Plugin Settings Module
  * 
- * @version 2.2.2
+ * @version 2.2.3
  * @since 0.2
  */
 
@@ -85,8 +85,8 @@ class SU_Settings extends SU_Module {
 		
 		//Hook to add attribution link
 		if ($this->get_setting('attribution_link', true)) {
-			add_action('wp_meta', array($this, 'meta_link'));
-			add_action('wp_footer', array($this, 'footer_link'));
+			add_action('wp_meta', array(&$this, 'meta_link'));
+			add_action('wp_footer', array(&$this, 'footer_link'));
 		}
 	}
 	

@@ -2,7 +2,7 @@
 /**
  * Noindex Manager Module
  * 
- * @version 1.1
+ * @version 1.1.1
  * @since 0.1
  */
 
@@ -15,21 +15,21 @@ class SU_Noindex extends SU_Module {
 	function init() {
 		
 		//Hook into our wp_head() action
-		add_action('su_meta_robots', array($this, 'wphead_noindex'), 1);
+		add_action('su_meta_robots', array(&$this, 'wphead_noindex'), 1);
 		
 		//Now we'll hook into places where wp_head() is not called
 		
 		//Hook into comment feed headers
 		if ($this->get_setting('noindex_comments_feed'))
-			add_action('commentsrss2_head', array($this, 'rss2_noindex_tag'));
+			add_action('commentsrss2_head', array(&$this, 'rss2_noindex_tag'));
 		
 		//Hook into the admin header
 		if ($this->get_setting('noindex_admin'))
-			add_action('admin_head', array($this, 'xhtml_noindex_tag'));
+			add_action('admin_head', array(&$this, 'xhtml_noindex_tag'));
 		
 		//Hook into the login header
 		if ($this->get_setting('noindex_login'))
-			add_action('login_head', array($this, 'xhtml_noindex_tag'));
+			add_action('login_head', array(&$this, 'xhtml_noindex_tag'));
 	}
 	
 	function admin_page_contents() {

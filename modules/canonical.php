@@ -2,7 +2,7 @@
 /**
  * Canonicalizer Module
  * 
- * @version 1.1
+ * @version 1.1.1
  * @since 0.3
  */
 
@@ -20,12 +20,12 @@ class SU_Canonical extends SU_Module {
 			remove_action('wp_head', 'rel_canonical');
 			
 			//...and add our custom canonical tags.
-			add_action('su_head', array($this, 'link_rel_canonical_tag'));
+			add_action('su_head', array(&$this, 'link_rel_canonical_tag'));
 		}
 		
 		//Should we remove nonexistent pagination?
 		if ($this->get_setting('remove_nonexistent_pagination'))
-			add_action('template_redirect', array($this, 'remove_nonexistent_pagination'), 11);
+			add_action('template_redirect', array(&$this, 'remove_nonexistent_pagination'), 11);
 	}
 	
 	function admin_page_contents() {
@@ -188,11 +188,13 @@ class SU_Canonical extends SU_Module {
 		return __("
 <ul>
 	<li><p><strong>What it does:</strong> Canonicalizer improves on two WordPress features to minimize possible exact-content duplication penalties.
-		The <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags setting improves on the canonical tags feature of WordPress 2.9 and above by encompassing much more of your site than just your posts and Pages.
-		The nonexistent pagination redirect feature fills a gap in WordPress&#8217;s built-in canonicalization functionality: 
+		The <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags setting improves on the canonical tags feature of WordPress 2.9 and above by encompassing much more of your site than just your posts and Pages.</p>
+		<p>The nonexistent pagination redirect feature fills a gap in WordPress&#8217;s built-in canonicalization functionality: 
 		for example, if a URL request is made for page 6 of a category archive, and that category doesn&#8217;t have a page 6,
-		then WordPress by default will display the content of the closest page number available, without issuing a 404 error or a 301 redirect (thus creating two or more identical webpages);
-		the Canonicalizer&#8217;s feature fixes that behavior by issuing 301 redirects to page 1 of the paginated section in question.</p></li>
+		then by default, depending on the context, WordPress will display a blank page, or it will display the content of the closest page number available, 
+		without issuing a 404 error or a 301 redirect (thus creating two or more identical webpages). 
+		This duplicate-content situation can happen when you, for example, remove many posts from a category, thus reducing the amount of pagination needed in the category&#8217;s archive. 
+		The Canonicalizer&#8217;s feature fixes that behavior by issuing 301 redirects to page 1 of the paginated section in question.</p></li>
 	<li><p><strong>Why it helps:</strong> These features will point Google to the correct URL for your homepage and each of your posts, Pages, categories, tags, date archives, and author archives. 
 That way, if Google comes across an alternate URL by which one of those items can be accessed, it will be able to find the correct URL 
 and won&#8217;t penalize you for having two identical pages on your site.</p></li>

@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, google, yahoo, bing, search engines, admin, post, page, modules
 Requires at least: 2.7
 Tested up to: 2.8.4
-Stable tag: 1.0
+Stable tag: 1.1
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
@@ -11,7 +11,7 @@ This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonic
 
 SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these features:
 
-* **Title Rewriter** - Lets you format the `<title>` tags of posts, pages, categories, tags, archives, search results, the blog homepage, and more.
+* **Title Rewriter** - Lets you format the `<title>` tags of posts, pages, categories, tags, archives, search results, the blog homepage, and more. Also includes a mass-editor for post/page <title> tags.
 
 * **Noindex Manager** - Lets you add the `noindex` meta robots instruction to archives, comment feeds, the login page, and more.
 
@@ -35,7 +35,7 @@ SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 * Internationalization support
 * Nonce security
 * An uninstall routine
-* Integration with the new WordPress 2.7+ menu
+* Icon support for the new WordPress 2.7+ menu
 * Settings import/export/reset functionality
 
 
@@ -191,6 +191,14 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 6. The File Editor module
 
 == Changelog ==
+
+= Version 1.1 (October 7, 2009) =
+* Feature: You can now mass-edit post/page titles from the Title Rewriter module
+* Bugfix: Fixed a variety of bugs that only appear on PHP4 setups
+* Bugfix: Fixed logo background color in the Whitepapers module
+* Improvement: Title Rewriter now supports 10 additional title format variables
+* Improvement: Added internationalization support for admin menu notice numbers
+* Improvement: Certain third-party plugin notices are now removed from SEO Ultimate's admin pages
 
 = Version 1.0 (September 21, 2009) =
 * Feature: Canonicalizer can now redirect requests for nonexistent pagination
