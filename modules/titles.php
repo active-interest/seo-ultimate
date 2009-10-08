@@ -16,6 +16,7 @@ class SU_Titles extends SU_Module {
 		add_action('template_redirect', array(&$this, 'before_header'), 0);
 		add_action('wp_head', array(&$this, 'after_header'), 1000);
 		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 10);
+		$this->admin_page_tabs_init();
 	}
 	
 	function get_default_settings() {

@@ -295,6 +295,22 @@ class SU_Module {
 			return $label;
 	}
 	
+	/**
+	 * Returns a boolean indicating whether the user is currently viewing this module's admin page.
+	 * 
+	 * @since 1.1.1
+	 * 
+	 * @return bool Whether the user is currently viewing this module's admin page.
+	 */
+	function is_module_admin_page() {
+		if (is_admin()) {
+			global $plugin_page;
+			if (strcmp($plugin_page, SEO_Ultimate::key_to_hook($this->get_module_key())) == 0) return true;
+		}
+		
+		return false;
+	}
+	
 	
 	/********** SETTINGS FUNCTIONS **********/
 	
@@ -502,9 +518,11 @@ class SU_Module {
 	 * Enqueues the JavaScript needed for the admin page tabs.
 	 * 
 	 * @since 0.8
+	 * @uses is_module_admin_page()
 	 */
 	function admin_page_tabs_js() {
-		wp_enqueue_script('jquery-ui-tabs');
+		if ($this->is_module_admin_page())
+			wp_enqueue_script('jquery-ui-tabs');
 	}
 	
 	/**
