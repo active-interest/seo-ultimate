@@ -311,8 +311,9 @@ STR;
 		
 		/*if (strlen($num_varname) && strlen($offset_varname))
 			$args = "$num_varname=20&$offset_varname=0";
-		else*/
-			$args = '';
+		else
+			$args = '';*/
+		$args = "$num_varname=1000";
 		
 		$objects = $function($args);
 		$pagination_total = ceil(count($function()) / 2);
