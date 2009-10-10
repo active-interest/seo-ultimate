@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, google, yahoo, bing, search engines, admin, post, page, modules
 Requires at least: 2.7
 Tested up to: 2.8.4
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
@@ -192,12 +192,14 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 
 == Changelog ==
 
+= Version 1.1.2 (October 9, 2009) =
+* Compatibility: Added PHP4 support
+
 = Version 1.1.1 (October 8, 2009) =
 * Bugfix: Fixed tab rendering bug
 
 = Version 1.1 (October 7, 2009) =
 * Feature: You can now mass-edit post/page titles from the Title Rewriter module
-* Bugfix: Fixed a variety of bugs that only appear on PHP4 setups
 * Bugfix: Fixed logo background color in the Whitepapers module
 * Improvement: Title Rewriter now supports 10 additional title format variables
 * Improvement: Added internationalization support for admin menu notice numbers

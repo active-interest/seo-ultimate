@@ -5,7 +5,7 @@ jQuery(function()
 
 function su_init_tabs()
 {
-	/* if this is not the breadcrumb admin page, quit */
+	/* if this is not the SEO Ultimate admin page, quit */
 	if (!jQuery("#su-tabset").length) return;		
 
 	/* init markup for tabs */

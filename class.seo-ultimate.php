@@ -449,7 +449,7 @@ class SEO_Ultimate {
 			if (isset($oldmodules[$key])) {
 				$newmodules[$key] = $oldmodules[$key];
 			} else {
-				$module->activate();
+				$this->modules[$key]->activate();
 				$newmodules[$key] = SU_MODULE_ENABLED;
 			}
 		}
@@ -481,9 +481,10 @@ class SEO_Ultimate {
 		load_plugin_textdomain('seo-ultimate', '', plugin_basename($this->plugin_file_path));
 		
 		//Load default module settings and run modules' init tasks
-		foreach ($this->modules as $module) {
-			$module->load_default_settings();
-			$module->init();
+		foreach ($this->modules as $key => $module) {
+			//Accessing $module directly causes problems when the modules use the &$this reference
+			$this->modules[$key]->load_default_settings();
+			$this->modules[$key]->init();
 		}
 	}
 	
@@ -1048,8 +1049,8 @@ class SEO_Ultimate {
 	 */
 	function get_postmeta_array($screen='post') {
 		$fields = array();
-		foreach ($this->modules as $module)
-			$fields = $module->postmeta_fields($fields, $screen);
+		foreach ($this->modules as $key => $module)
+			$fields = $this->modules[$key]->postmeta_fields($fields, $screen);
 		return $fields;
 	}
 	
