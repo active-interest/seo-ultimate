@@ -2,7 +2,7 @@
 Contributors: SEO Design Solutions
 Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, google, yahoo, bing, search engines, admin, post, page, modules
 Requires at least: 2.7
-Tested up to: 2.8.4
+Tested up to: 2.8.5
 Stable tag: 1.2
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonical tags, 404 error tracking, and more (with many more features coming soon).
@@ -158,7 +158,7 @@ When editing the post or page in question, just click the "Edit" button next to 
 
 = How does the Competition Researcher work? =
 
-The Competition Researcher opens Google search results in iframes based on the parameters you specify. You can study these results to glean information about the general competition for a keyword or specific competitors' websites. The Competition Researcher does _not_ scrape/crawl Google's search results or use other illicit automated methods; it just opens the Google search results in your browser.
+The Competition Researcher opens Google search results in iframes based on the parameters you specify. You can study these results to glean information about the general competition for a keyword or about specific competitors' websites. The Competition Researcher does _not_ scrape/crawl Google's search results or use other illicit automated methods; it just opens the Google search results in your browser.
 
 = How do I remove the attribution link? =
 
