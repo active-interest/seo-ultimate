@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, google, yahoo, bing, search engines, admin, post, page, modules
 Requires at least: 2.7
 Tested up to: 2.8.4
-Stable tag: 1.1.2
+Stable tag: 1.2
 
 This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonical tags, 404 error tracking, and more (with many more features coming soon).
 
@@ -26,6 +26,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **File Editor** - Lets you edit two important SEO-related files: robots.txt and .htaccess
 
 * **Slug Optimizer** - Removes common words from post/Page slugs to increase in-URL keyword potency.
+
+* **Competition Researcher** - Investigate multiple keywords or URLs with quick access to search query parameters like `allinanchor:keyword`, `site:example.com`, `link:example.com`, and more.
 
 We have many more features that we're working on finetuning before release. If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
 
@@ -154,6 +156,10 @@ When editing the post or page in question, just click the "Edit" button next to 
 
 When editing the post or page in question, just click the "Edit" button next to the permalink; a "Save" button will appear in its place. Next erase the contents of the textbox, and then click the aforementioned "Save" button.
 
+= How does the Competition Researcher work? =
+
+The Competition Researcher opens Google search results in iframes based on the parameters you specify. You can study these results to glean information about the general competition for a keyword or specific competitors' websites. The Competition Researcher does _not_ scrape/crawl Google's search results or use other illicit automated methods; it just opens the Google search results in your browser.
+
 = How do I remove the attribution link? =
 
 Because of the tremendous effort put into this plugin, we ask that you please leave the link enabled. If you must disable it, you can do so under `Settings > SEO Ultimate`.
@@ -191,6 +197,9 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 6. The File Editor module
 
 == Changelog ==
+
+= Version 1.2 (October 31, 2009) =
+* Feature: Added the Competition Researcher module
 
 = Version 1.1.2 (October 9, 2009) =
 * Compatibility: Added PHP4 support
