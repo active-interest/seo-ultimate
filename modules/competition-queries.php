@@ -66,6 +66,7 @@ class SU_CompetitionQueries extends SU_Module {
 </div>
 <input type="hidden" name="mixing" id="mixing" value="0" />
 <input type="hidden" name="showback" id="showback" value="0" />
+<input type="hidden" name="client" id="client" value="su-<?php echo SU_VERSION; ?>" />
 
 <div id="submit"><input type="submit" value="<?php _e("Submit", 'seo-ultimate'); ?>" class="button-primary" /></div>
 </form>
