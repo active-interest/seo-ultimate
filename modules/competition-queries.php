@@ -2,7 +2,7 @@
 /**
  * Competition Researcher Module
  * 
- * @version 1.0
+ * @version 1.0.1
  * @since 1.2
  */
 
@@ -24,7 +24,7 @@ class SU_CompetitionQueries extends SU_Module {
 		
 		$methods = array(
 			__('Keywords', 'seo-ultimate') => array( __('Normal Search', 'seo-ultimate') => __("Find out how many pages contain the words in each query", 'seo-ultimate')
-													,__('In-Quotes', 'seo-ultimate') => __("Find out how many &quot;actual&quot; pages are competing for each query", 'seo-ultimate')
+													,__('Phrase Match', 'seo-ultimate') => __("Find out how many &#8220;actual&#8221; pages are competing for each query", 'seo-ultimate')
 													,__('Allinanchor', 'seo-ultimate') => __("Find out which sites have the most links for each query", 'seo-ultimate')
 													,__('Allintitle', 'seo-ultimate') => __("Find out which sites have the highest relevance in the title for each query", 'seo-ultimate')
 													,__('Allintext', 'seo-ultimate') => __("Find out which sites have the most relevant content/text on their pages", 'seo-ultimate')
@@ -70,6 +70,9 @@ class SU_CompetitionQueries extends SU_Module {
 
 <div id="submit"><input type="submit" value="<?php _e("Submit", 'seo-ultimate'); ?>" class="button-primary" /></div>
 </form>
+
+<!--Load the blog's homepage so that it shows up as a purple link in Google's minimal mode-->
+<iframe src="<?php bloginfo('url') ?>" style="width: 0; height: 0; display: none; visibility: hidden;"></iframe>
 <?php
 	}
 }

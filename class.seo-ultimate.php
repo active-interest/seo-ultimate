@@ -993,7 +993,7 @@ class SEO_Ultimate {
 			$info = $this->load_webpage("http://www.seodesignsolutions.com/apis/su/update-info/?ov=".urlencode(SU_VERSION)."&nv=".urlencode($r->new_version));
 			if ($info) {
 				$info = strip_tags($info, "<br><a><b><i><span>");
-				echo "<br />$info";
+				echo "<span class='su-plugin-update-info'><br />$info</span>";
 			}
 		}
 	}

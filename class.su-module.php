@@ -402,6 +402,20 @@ class SU_Module {
 			update_setting($key, $value);
 	}
 	
+	/**
+	 * Returns a default setting. Only use this function if a default is indeed provided!
+	 * 
+	 * @since 1.3
+	 * @uses get_default_settings()
+	 * 
+	 * @param string $key The name of the setting whose default to retrieve.
+	 * @return mixed The default value for the setting.
+	 */
+	function get_default_setting($key) {
+		$defaults = $this->get_default_settings();
+		return $defaults[$key];
+	}
+	
 	
 	/********** ADMIN PAGE FUNCTIONS **********/
 	
@@ -747,7 +761,7 @@ class SU_Module {
 		foreach ($textboxes as $id => $title) {
 			register_setting($this->get_module_key(), $id);
 			$value = wp_specialchars($this->get_setting($id), ENT_QUOTES, false, true);
-			$default = attribute_escape($defaults[$id]);
+			$default = wp_specialchars($defaults[$id], ENT_QUOTES, false, true);
 			$id = attribute_escape($id);
 			$resetmessage = attribute_escape(__("Are you sure you want to replace the textbox contents with this default value?", 'seo-ultimate'));
 			
@@ -788,10 +802,12 @@ class SU_Module {
 	 * 
 	 * @param string $id The field/setting ID.
 	 * @param string $title The label of the HTML element.
+	 * @param string|false $default The default textbox value. Setting this will trigger a "Reset" link. Optional.
 	 * @return string The HTML that would render the textbox.
 	 */
-	function textbox($id, $title) {
-		$this->textboxes(array($id => $title));
+	function textbox($id, $title, $default=false) {
+		if ($default === false) $default = array(); else $default = array($id => $default);
+		$this->textboxes(array($id => $title), $default);
 	}
 	
 	
@@ -992,19 +1008,28 @@ class SU_Module {
 	function get_postmeta($key, $id=false) {
 
 		if (!$id) {
-			if (is_admin())
+			if (is_admin()) {
 				$id = intval($_REQUEST['post']);
-			elseif (in_the_loop())
+				global $post;
+			} elseif (in_the_loop()) {
 				$id = intval(get_the_ID());
-			elseif (is_singular()) {
+				global $post;
+			} elseif (is_singular()) {
 				global $wp_query;
 				$id = $wp_query->get_queried_object_id();
+				$post = $wp_query->get_queried_object();
 			}
 		}
 		
-		if ($id) return get_post_meta($id, "_su_$key", true);
+		if ($id)
+			$value = get_post_meta($id, "_su_$key", true);
+		else
+			$value = '';
 		
-		return '';
+		$value = apply_filters("su_get_postmeta", $value, $key, $post);
+		$value = apply_filters("su_get_postmeta-$key", $value, $key, $post);
+		
+		return $value;
 	}
 
 	/**
@@ -1023,7 +1048,7 @@ class SU_Module {
 		foreach ($textboxes as $id => $title) {
 		
 			register_setting('seo-ultimate', $id);
-			$value = attribute_escape($this->get_postmeta($id));
+			$value = wp_specialchars($this->get_postmeta($id), ENT_QUOTES, false, true);
 			$id = "_su_".attribute_escape($id);
 			$title = str_replace(' ', '&nbsp;', $title);
 			

@@ -131,6 +131,6 @@ div.su-help h6 {
 
 /* PLUGIN NOTICES */
 
-#wpwrap .su-plugin-notice .update-message {
+#wpwrap .su-plugin-notice .update-message, #wpwrap .su-plugin-update-info {
 	font-weight: normal;
 }

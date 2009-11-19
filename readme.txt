@@ -1,11 +1,11 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, google, yahoo, bing, search engines, admin, post, page, modules
+Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
 Requires at least: 2.7
-Tested up to: 2.8.5
-Stable tag: 1.2
+Tested up to: 2.8.6
+Stable tag: 1.3
 
-This all-in-one SEO plugin can handle titles, noindex, meta data, slugs, canonical tags, 404 error tracking, and more (with many more features coming soon).
+This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
 == Description ==
 
@@ -29,11 +29,15 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Competition Researcher** - Investigate multiple keywords or URLs with quick access to search query parameters like `allinanchor:keyword`, `site:example.com`, `link:example.com`, and more.
 
+* **More Link Customizer** - Lets you customize the anchor text of the "more" link on a global and per-post basis.
+
 We have many more features that we're working on finetuning before release. If you install the plugin now, you can have these new features delivered to you on a regular basis via WordPress's automatic plugin upgrader.
 
 SEO Ultimate was developed with WordPress plugin "best practices" in mind:
 
-* Integration with the contextual help system of WordPress 2.7+
+* No ads or donation nags
+* Clean, simple interface
+* Built-in documentation (integration with the contextual help system of WordPress 2.7+)
 * Internationalization support
 * Nonce security
 * An uninstall routine
@@ -160,6 +164,18 @@ When editing the post or page in question, just click the "Edit" button next to 
 
 The Competition Researcher opens Google search results in iframes based on the parameters you specify. You can study these results to glean information about the general competition for a keyword or about specific competitors' websites. The Competition Researcher does _not_ scrape/crawl Google's search results or use other illicit automated methods; it just opens the Google search results in your browser.
 
+= Why is the More Link Customizer an improvement over WordPress's built-in functionality? =
+
+Although WordPress does allow basic [custom "more" anchors](http://codex.wordpress.org/Customizing_the_Read_More#Having_a_custom_text_for_each_post), the SEO Ultimate approach has several benefits:
+
+* More Link Customizer (MLC) lets you set a custom default anchor text. WordPress, on the other hand, leaves this up to the currently-active theme.
+* MLC lets you dynamically incorporate the post's title into the anchor text.
+* MLC lets you include HTML tags in your anchor, whereas WordPress strips these out.
+* MLC's functionality is much more prominent than WordPress's unintuitive, barely-documented approach.
+* Unlike WordPress's method, MLC doesn't require you to utilize the HTML editor.
+
+If you've already specified custom anchors via WordPress's method, SEO Ultimate will import those anchors automatically into the More Link Customizer.
+
 = How do I remove the attribution link? =
 
 Because of the tremendous effort put into this plugin, we ask that you please leave the link enabled. If you must disable it, you can do so under `Settings > SEO Ultimate`.
@@ -198,6 +214,11 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 
 == Changelog ==
 
+= Version 1.3 (November 13, 2009) =
+* Feature: Added the More Link Customizer module
+* Bugfix: Postmeta fields now handle HTML entities properly
+* Improvement: Made minor tweaks to the Competition Researcher
+
 = Version 1.2 (October 31, 2009) =
 * Feature: Added the Competition Researcher module
 
@@ -220,7 +241,7 @@ Yes. WordPress plugins are supposed to delete their settings during the uninstal
 * Feature: Logged visitor information can now be automatically deleted after a certain number of days
 * Feature: Added icon support for the Ozh Admin Drop Down Menu plugin
 * Bugfix: 404 Monitor notification count now consistent with new errors shown
-* Improvement: Canonicalizer now removes the duplicate canonical tags produced by the WordPress 2.9 Trunk
+* Improvement: Canonicalizer now removes the duplicate canonical tags produced by WordPress 2.9-rare
 * Improvement: Inline changelogs now won't display if the Changelogger plugin is activated
 * Improvement: SEO Ultimate now selectively logs visitors based on which modules are enabled
 
