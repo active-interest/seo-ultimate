@@ -5,43 +5,43 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 1.1\n"
+"Project-Id-Version: SEO Ultimate 1.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
 "POT-Creation-Date: 2009-07-23 22:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. #-#-#-#-#  seo-ultimate.pot (SEO Ultimate 1.1)  #-#-#-#-#
+#. #-#-#-#-#  seo-ultimate.pot (SEO Ultimate 1.3)  #-#-#-#-#
 #. Plugin Name of an extension
-#: class.seo-ultimate.php:704 modules/settings.php:16
+#: class.seo-ultimate.php:705 modules/settings.php:16
 msgid "SEO Ultimate"
 msgstr ""
 
-#: class.seo-ultimate.php:704
+#: class.seo-ultimate.php:705
 msgid "SEO"
 msgstr ""
 
-#: class.seo-ultimate.php:917
+#: class.seo-ultimate.php:918
 msgid "SEO Settings Help"
 msgstr ""
 
-#: class.seo-ultimate.php:919
+#: class.seo-ultimate.php:920
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: class.seo-ultimate.php:921
+#: class.seo-ultimate.php:922
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: class.seo-ultimate.php:976
+#: class.seo-ultimate.php:977
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: class.seo-ultimate.php:1069
+#: class.seo-ultimate.php:1070
 msgid "SEO Settings"
 msgstr ""
 
@@ -78,40 +78,40 @@ msgstr ""
 msgid "%1$s<br />%2$s"
 msgstr ""
 
-#: class.su-module.php:530
+#: class.su-module.php:562
 #, php-format
 msgid "%s %s|Dropdown Title"
 msgstr ""
 
-#: class.su-module.php:542
+#: class.su-module.php:574
 #, php-format
 msgid "%s Documentation"
 msgstr ""
 
-#: class.su-module.php:546
+#: class.su-module.php:578
 msgid "Documentation"
 msgstr ""
 
-#: class.su-module.php:564
+#: class.su-module.php:596
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: class.su-module.php:598
+#: class.su-module.php:630
 msgid "Settings updated."
 msgstr ""
 
-#: class.su-module.php:618
+#: class.su-module.php:650
 msgid "Save Changes"
 msgstr ""
 
-#: class.su-module.php:734
+#: class.su-module.php:766
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: class.su-module.php:749
+#: class.su-module.php:781
 msgid "Reset"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr ""
 
 #: modules/404s.php:117 modules/canonical.php:183 modules/files.php:140
 #: modules/linkbox.php:90 modules/meta.php:140 modules/noindex.php:94
-#: modules/slugs.php:61 modules/titles.php:333
+#: modules/slugs.php:61 modules/titles.php:335
 msgid "Overview"
 msgstr ""
 
@@ -309,6 +309,132 @@ msgid ""
 "\t<li><p><strong>How to use it:</strong> Just check both checkboxes and "
 "click Save Changes. SEO Ultimate will do the rest.</p></li>\r\n"
 "</ul>\r\n"
+msgstr ""
+
+#: modules/competition-queries.php:13
+msgid "Comp. Researcher"
+msgstr ""
+
+#: modules/competition-queries.php:14
+msgid "Competition Researcher"
+msgstr ""
+
+#: modules/competition-queries.php:18
+msgid ""
+"The Competition Researcher provides you with easy access to various search "
+"engine tools which you can use to research multiple search queries or URLs."
+msgstr ""
+
+#: modules/competition-queries.php:22
+msgid "Step 1: Choose Your Research Tool"
+msgstr ""
+
+#: modules/competition-queries.php:26
+msgid "Keywords"
+msgstr ""
+
+#: modules/competition-queries.php:26
+msgid "Normal Search"
+msgstr ""
+
+#: modules/competition-queries.php:26
+msgid "Find out how many pages contain the words in each query"
+msgstr ""
+
+#: modules/competition-queries.php:27
+msgid "Phrase Match"
+msgstr ""
+
+#: modules/competition-queries.php:27
+msgid ""
+"Find out how many &#8220;actual&#8221; pages are competing for each query"
+msgstr ""
+
+#: modules/competition-queries.php:28
+msgid "Allinanchor"
+msgstr ""
+
+#: modules/competition-queries.php:28
+msgid "Find out which sites have the most links for each query"
+msgstr ""
+
+#: modules/competition-queries.php:29
+msgid "Allintitle"
+msgstr ""
+
+#: modules/competition-queries.php:29
+msgid ""
+"Find out which sites have the highest relevance in the title for each query"
+msgstr ""
+
+#: modules/competition-queries.php:30
+msgid "Allintext"
+msgstr ""
+
+#: modules/competition-queries.php:30
+msgid "Find out which sites have the most relevant content/text on their pages"
+msgstr ""
+
+#: modules/competition-queries.php:31
+msgid "Allinurl"
+msgstr ""
+
+#: modules/competition-queries.php:31
+msgid ""
+"Find out which sites have the most relevant naming conventions for each "
+"keyword"
+msgstr ""
+
+#: modules/competition-queries.php:33
+msgid "URLs"
+msgstr ""
+
+#: modules/competition-queries.php:33
+msgid "Site"
+msgstr ""
+
+#: modules/competition-queries.php:33
+msgid "Find out how many pages are indexed for each domain"
+msgstr ""
+
+#: modules/competition-queries.php:34 modules/competition-queries.php:39
+msgid "Inbound Links"
+msgstr ""
+
+#: modules/competition-queries.php:34
+msgid "Find out how many sites link to the domains"
+msgstr ""
+
+#: modules/competition-queries.php:35 modules/competition-queries.php:39
+msgid "Outbound Links"
+msgstr ""
+
+#: modules/competition-queries.php:35
+msgid "Find out how many sites the domains link to"
+msgstr ""
+
+#: modules/competition-queries.php:57
+msgid "Step 2: Enter the <span id='methodtype'>Keywords</span> To Research"
+msgstr ""
+
+#: modules/competition-queries.php:59
+msgid "(Type in one per line)"
+msgstr ""
+
+#: modules/competition-queries.php:61
+msgid "Step 3: Set Options and Submit"
+msgstr ""
+
+#: modules/competition-queries.php:63
+msgid "Show 100 results per page"
+msgstr ""
+
+#: modules/competition-queries.php:65
+msgid "Use Google's minimal mode"
+msgstr ""
+
+#: modules/competition-queries.php:71
+msgid "Submit"
 msgstr ""
 
 #: modules/files.php:15
@@ -728,6 +854,44 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
+#: modules/more-links.php:13
+msgid "More Link Customizer"
+msgstr ""
+
+#: modules/more-links.php:28
+msgid "Default More Link Text"
+msgstr ""
+
+#: modules/more-links.php:46
+msgid "More Link Text:"
+msgstr ""
+
+#: modules/more-links.php:69
+msgid ""
+"\r\n"
+"<ul>\r\n"
+"\t<li><p><strong>What it does:</strong> More Link Customizer lets you modify "
+"the anchor text of your posts&#8217; <a href='http://codex.wordpress.org/"
+"Customizing_the_Read_More' target='_blank'>&#8220;more&#8221; links</a>.</"
+"p></li>\r\n"
+"\t<li><p><strong>Why it helps:</strong> On the typical WordPress setup, the "
+"&#8220;more link&#8221; always has the same anchor text (e.g. &#8220;Read "
+"more of this entry &raquo;&#8221;). Since internal anchor text conveys web "
+"page topicality to search engines, the &#8220;read more&#8221; phrase "
+"isn&#8217;t a desirable anchor phrase. More Link Customizer lets you replace "
+"the boilerplate text with a new anchor that, by default, integrates your "
+"post titles (which will ideally be keyword-oriented).</p></li>\r\n"
+"\t<li><p><strong>How to use it:</strong> On this page you can set the anchor "
+"text you&#8217;d like to use by default. The <code>{post}</code> variable "
+"will be replaced with the post&#8217;s title. HTML and encoded entities are "
+"supported. If instead you decide that you&#8217;d like to use the default "
+"anchor text specified by your currently-active theme, just erase the "
+"contents of the textbox. The anchor text can be overriden on a per-post "
+"basis via the &#8220;More Link Text&#8221; box in the &#8220;SEO "
+"Settings&#8221; section of the WordPress post editor.</p></li>\r\n"
+"</ul>\r\n"
+msgstr ""
+
 #: modules/noindex.php:13
 msgid "Noindex Manager"
 msgstr ""
@@ -1071,139 +1235,139 @@ msgstr ""
 msgid "Title Rewriter"
 msgstr ""
 
-#: modules/titles.php:25
+#: modules/titles.php:26
 msgid "{blog}"
 msgstr ""
 
-#: modules/titles.php:26
+#: modules/titles.php:27
 msgid "{post} | {blog}"
 msgstr ""
 
-#: modules/titles.php:27
+#: modules/titles.php:28
 msgid "{page} | {blog}"
 msgstr ""
 
-#: modules/titles.php:28
+#: modules/titles.php:29
 msgid "{category} | {blog}"
 msgstr ""
 
-#: modules/titles.php:29
+#: modules/titles.php:30
 msgid "{tag} | {blog}"
 msgstr ""
 
-#: modules/titles.php:30
+#: modules/titles.php:31
 msgid "Archives for {month} {day}, {year} | {blog}"
 msgstr ""
 
-#: modules/titles.php:31
+#: modules/titles.php:32
 msgid "Archives for {month} {year} | {blog}"
 msgstr ""
 
-#: modules/titles.php:32
+#: modules/titles.php:33
 msgid "Archives for {year} | {blog}"
 msgstr ""
 
-#: modules/titles.php:33
+#: modules/titles.php:34
 msgid "Posts by {author} | {blog}"
 msgstr ""
 
-#: modules/titles.php:34
+#: modules/titles.php:35
 msgid "Search Results for {query} | {blog}"
 msgstr ""
 
-#: modules/titles.php:35
+#: modules/titles.php:36
 msgid "404 Not Found | {blog}"
 msgstr ""
 
-#: modules/titles.php:36
+#: modules/titles.php:37
 msgid "{title} - Page {num}"
 msgstr ""
 
-#: modules/titles.php:42
+#: modules/titles.php:43
 msgid "Blog Homepage Title"
 msgstr ""
 
-#: modules/titles.php:43
+#: modules/titles.php:44
 msgid "Post Title Format"
 msgstr ""
 
-#: modules/titles.php:44
+#: modules/titles.php:45
 msgid "Page Title Format"
 msgstr ""
 
-#: modules/titles.php:45
+#: modules/titles.php:46
 msgid "Category Title Format"
 msgstr ""
 
-#: modules/titles.php:46
+#: modules/titles.php:47
 msgid "Tag Title Format"
 msgstr ""
 
-#: modules/titles.php:47
+#: modules/titles.php:48
 msgid "Day Archive Title Format"
 msgstr ""
 
-#: modules/titles.php:48
+#: modules/titles.php:49
 msgid "Month Archive Title Format"
 msgstr ""
 
-#: modules/titles.php:49
+#: modules/titles.php:50
 msgid "Year Archive Title Format"
 msgstr ""
 
-#: modules/titles.php:50
+#: modules/titles.php:51
 msgid "Author Archive Title Format"
 msgstr ""
 
-#: modules/titles.php:51
+#: modules/titles.php:52
 msgid "Search Title Format"
 msgstr ""
 
-#: modules/titles.php:52
+#: modules/titles.php:53
 msgid "404 Title Format"
 msgstr ""
 
-#: modules/titles.php:53
+#: modules/titles.php:54
 msgid "Pagination Title Format"
 msgstr ""
 
-#: modules/titles.php:60
+#: modules/titles.php:61
 msgid "Default Formats"
 msgstr ""
 
-#: modules/titles.php:61
+#: modules/titles.php:62
 msgid "Posts"
 msgstr ""
 
-#: modules/titles.php:62
+#: modules/titles.php:63
 msgid "Pages"
 msgstr ""
 
-#: modules/titles.php:74
+#: modules/titles.php:75
 msgid "Title Tag:"
 msgstr ""
 
-#: modules/titles.php:258
+#: modules/titles.php:259
 msgid "Post"
 msgstr ""
 
-#: modules/titles.php:262
+#: modules/titles.php:263
 msgid "Page"
 msgstr ""
 
-#: modules/titles.php:298
+#: modules/titles.php:299
 msgid "ID"
 msgstr ""
 
-#: modules/titles.php:298
+#: modules/titles.php:299
 msgid "Title Tag"
 msgstr ""
 
-#: modules/titles.php:334
+#: modules/titles.php:336
 msgid "Settings & Variables"
 msgstr ""
 
-#: modules/titles.php:339
+#: modules/titles.php:341
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1228,7 +1392,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles.php:353
+#: modules/titles.php:355
 msgid ""
 "\r\n"
 "<p>Various variables, surrounded in {curly brackets}, are provided for use "
@@ -1310,7 +1474,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles.php:398
+#: modules/titles.php:400
 msgid ""
 "<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; "
 "tag. The title appears in visitors' title bars and in search engine result "
@@ -1323,9 +1487,8 @@ msgstr ""
 
 #. Description of an extension
 msgid ""
-"This all-in-one SEO plugin can rewrite title tags, set meta data, add "
-"noindex, insert canonical tags, log 404 errors, edit your robots.txt, and "
-"more."
+"This all-in-one SEO plugin gives you control over titles, noindex, meta "
+"data, slugs, canonical tags, \"more\" links, 404 error tracking, and more."
 msgstr ""
 
 #. Author URI of an extension
