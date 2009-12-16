@@ -2,7 +2,7 @@
 /**
  * Title Rewriter Module
  * 
- * @version 2.0
+ * @version 2.0.1
  * @since 0.1
  */
 
@@ -96,7 +96,7 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function should_rewrite_title() {
-		return (strlen(strval($this->get_title_format())) > 0);
+		return (!is_feed() && strlen(strval($this->get_title_format())) > 0);
 	}
 	
 	function before_header() {
