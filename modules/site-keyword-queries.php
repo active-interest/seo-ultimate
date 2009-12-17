@@ -1,6 +1,6 @@
 <?php
 /**
- * Keyword-Page Association Identifier Module
+ * Internal Relevance Researcher Module
  * 
  * @version 1.0
  * @since 1.4
@@ -10,8 +10,8 @@ if (class_exists('SU_Module')) {
 
 class SU_SiteKeywordQueries extends SU_Module {
 
-	function get_menu_title() { return __('KPA Identifier', 'seo-ultimate'); }
-	function get_page_title() { return __('Keyword-Page Association Identifier', 'seo-ultimate'); }
+	function get_menu_title() { return __('Int. Rel. Researcher', 'seo-ultimate'); }
+	function get_page_title() { return __('Internal Relevance Researcher', 'seo-ultimate'); }
 
 	function admin_page_contents() {
 ?>

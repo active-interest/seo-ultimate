@@ -11,7 +11,7 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
-* Version 1.4 adds the KPA Identifier module
+* Version 1.4 adds the Internal Relevance Researcher module
 * Version 1.3 adds the More Link Customizer module
 * Version 1.2 adds the Competition Researcher module
 
@@ -66,7 +66,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Override the "read more" link on a per-post basis.
 	* Include `<strong>` or `<em>` tags in the anchor text if so desired.
 
-* **Keyword-Page Association (KPA) Identifier** -- NEW in Version 1.4
+* **Internal Relevance Researcher** -- NEW in Version 1.4
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
@@ -150,7 +150,7 @@ On the 404 Monitor page, hover over a table row to access these options:
 
 * **What it does:** Canonicalizer improves on two WordPress features to minimize possible exact-content duplication penalties. The `<link rel="canonical" />` tags setting improves on the canonical tags feature of WordPress 2.9 and above by encompassing much more of your site than just your posts and Pages.
 
-		The nonexistent pagination redirect feature fills a gap in WordPress's built-in canonicalization functionality: for example, if a URL request is made for page 6 of a category archive, and that category doesn't have a page 6, then by default, depending on the context, WordPress will display a blank page, or it will display the content of the closest page number available, without issuing a 404 error or a 301 redirect (thus creating two or more identical webpages). This duplicate-content situation can happen when you, for example, remove many posts from a category, thus reducing the amount of pagination needed in the category's archive. The Canonicalizer's feature fixes that behavior by issuing 301 redirects to page 1 of the paginated section in question.
+	The nonexistent pagination redirect feature fills a gap in WordPress's built-in canonicalization functionality: for example, if a URL request is made for page 6 of a category archive, and that category doesn't have a page 6, then by default, depending on the context, WordPress will display a blank page, or it will display the content of the closest page number available, without issuing a 404 error or a 301 redirect (thus creating two or more identical webpages). This duplicate-content situation can happen when you, for example, remove many posts from a category, thus reducing the amount of pagination needed in the category's archive. The Canonicalizer's feature fixes that behavior by issuing 301 redirects to page 1 of the paginated section in question.
 
 * **Why it helps:** These features will point Google to the correct URL for your homepage and each of your posts, Pages, categories, tags, date archives, and author archives. That way, if Google comes across an alternate URL by which one of those items can be accessed, it will be able to find the correct URL and won't penalize you for having two identical pages on your site.
 
@@ -205,13 +205,13 @@ On the 404 Monitor page, hover over a table row to access these options:
 
 
 
-== KPA Identifier ==
+== Internal Relevance Researcher ==
 
 = Overview =
 
-* **What it does:** The Keyword-Page Association (KPA) Identifier opens Google search results in iframes based on the keywords you specify. For each keyword, KPA Identifier queries Google in this format: `site:example.com keyword`. KPA Identifier does _not_ scrape/crawl Google's search results or use other illicit automated methods; it just opens the Google search results in your browser.
+* **What it does:** The Internal Relevance Researcher (IRR) opens Google search results in iframes based on the keywords you specify. For each keyword, IRR queries Google in this format: `site:example.com keyword`. IRR does _not_ scrape/crawl Google's search results or use other illicit automated methods; it just opens the Google search results in your browser.
 
-* **Why it helps:** KPA Identifier lets you determine which of your webpages Google most strongly associates with the keywords you specify. You can ascertain this by observing which of your pages rank the highest for each keyword. You can then use this information to determine ideal targets for incoming links or ideal sources of outgoing links.
+* **Why it helps:** Internal Relevance Researcher lets you determine which of your webpages Google most strongly associates with the keywords you specify. You can ascertain this by observing which of your pages rank the highest for each keyword. You can then use this information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
 * **How to use it:** Enter the keywords you'd like to research, select options if desired, and then click Submit. The results will open in a new window.
 
@@ -238,7 +238,7 @@ Here's information on the various settings:
 	
 	* **At the end of pages** -- Adds the linkbox HTML to the end of all Pages.
 	
-	* **When called by the su_linkbox hook** -- For more fine-tuned control over where linkboxes appear, enable this option and add `<?php do\_action('su\_linkbox'); ?>` to your theme. You can also add an ID parameter to display the linkbox of a particular post/page; for example: `<?php do\_action('su\_linkbox', 123); ?>`
+	* **When called by the su_linkbox hook** -- For more fine-tuned control over where linkboxes appear, enable this option and add `<?php do_action('su_linkbox'); ?>` to your theme. You can also add an ID parameter to display the linkbox of a particular post/page; for example: `<?php do_action('su_linkbox', 123); ?>`
 	
 	* **HTML** -- The HTML that will be outputted to display the linkboxes. The HTML field supports these variables:
 		
@@ -311,7 +311,7 @@ The Module Manager lets you customize the visibility and accessibility of each m
 
 = FAQ =
 
-* **What are modules? **
+* **What are modules?**
 	SEO Ultimate's features are divided into groups called "modules." SEO Ultimate's "Module Manager" lets you enable or disable each of these groups of features. This way, you can pick-and-choose which SEO Ultimate features you want.
 
 * **Can I access a module again after I've hidden it?**
@@ -559,7 +559,7 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 == Changelog ==
 
 = Version 1.4 (December 16, 2009) =
-* Feature: Added the KPA Identifier module
+* Feature: Added the Internal Relevance Researcher
 * Bugfix: Title Rewriter no longer rewrites XML <title> tags in feeds
 * Improvement: Copied all documentation to the readme.txt file
 
