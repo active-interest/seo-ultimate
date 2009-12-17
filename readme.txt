@@ -560,7 +560,7 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 = Version 1.4 (December 16, 2009) =
 * Feature: Added the Internal Relevance Researcher
-* Bugfix: Title Rewriter no longer rewrites XML <title> tags in feeds
+* Bugfix: Title Rewriter no longer rewrites XML `<title>` tags in feeds
 * Improvement: Copied all documentation to the readme.txt file
 
 = Version 1.3 (November 13, 2009) =
