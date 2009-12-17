@@ -90,9 +90,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Automated internal linking.
 	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
 
-= Download =
-
-[Download](http://wordpress.org/extend/plugins/seo-ultimate/) your free copy of SEO Ultimate today.
+**[Download](http://downloads.wordpress.org/plugin/seo-ultimate.zip) your free copy of SEO Ultimate today.**
 
 == Installation ==
 
