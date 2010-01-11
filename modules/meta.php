@@ -2,7 +2,7 @@
 /**
  * Meta Editor Module
  * 
- * @version 1.0.5
+ * @version 1.0.6
  * @since 0.3
  */
 
@@ -106,7 +106,7 @@ class SU_Meta extends SU_Module {
 		
 		//Supported meta tags and their names
 		$verify = array(
-			  'google' => 'verify-v1'
+			  'google' => 'google-site-verification'
 			, 'yahoo' => 'y_key'
 			, 'microsoft' => 'msvalidate.01'
 		);

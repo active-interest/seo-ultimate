@@ -2,8 +2,8 @@
 Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
 Requires at least: 2.7
-Tested up to: 2.9
-Stable tag: 1.4
+Tested up to: 2.9.1
+Stable tag: 1.4.1
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -555,6 +555,9 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 1.4.1 (January 11, 2010) =
+* Compatibility: Meta Editor now supports the new Google Webmaster Tools verification code
 
 = Version 1.4 (December 16, 2009) =
 * Feature: Added the Internal Relevance Researcher
