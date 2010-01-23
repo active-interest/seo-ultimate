@@ -1,511 +1,363 @@
-# SEO Ultimate
-# Copyright (C) 2009 John Lamansky
+# Translation of the WordPress plugin SEO Ultimate 1.5 by SEO Design Solutions.
+# Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 1.3\n"
+"Project-Id-Version: SEO Ultimate 1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2009-07-23 22:19+0000\n"
+"POT-Creation-Date: 2010-01-23 20:08+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. #-#-#-#-#  seo-ultimate.pot (SEO Ultimate 1.3)  #-#-#-#-#
-#. Plugin Name of an extension
-#: class.seo-ultimate.php:705 modules/settings.php:16
-msgid "SEO Ultimate"
-msgstr ""
-
-#: class.seo-ultimate.php:705
-msgid "SEO"
-msgstr ""
-
-#: class.seo-ultimate.php:918
-msgid "SEO Settings Help"
-msgstr ""
-
-#: class.seo-ultimate.php:920
-msgid "The SEO Settings box lets you customize these settings:"
-msgstr ""
-
-#: class.seo-ultimate.php:922
-msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
-msgstr ""
-
-#: class.seo-ultimate.php:977
-#, php-format
-msgid ""
-"SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
-"1$s to avoid plugin conflicts."
-msgstr ""
-
-#: class.seo-ultimate.php:1070
-msgid "SEO Settings"
-msgstr ""
-
-#: class.su-hitset.php:44
-msgid "Date"
-msgstr ""
-
-#: class.su-hitset.php:45
-msgid "IP Address"
-msgstr ""
-
-#: class.su-hitset.php:46
-msgid "User Agent"
-msgstr ""
-
-#: class.su-hitset.php:47
-msgid "URL Requested"
-msgstr ""
-
-#: class.su-hitset.php:48
-msgid "Redirected To"
-msgstr ""
-
-#: class.su-hitset.php:49
-msgid "Status Code"
-msgstr ""
-
-#: class.su-hitset.php:50
-msgid "Referring URL"
-msgstr ""
-
-#: class.su-hitset.php:82
-#, php-format
-msgid "%1$s<br />%2$s"
-msgstr ""
-
-#: class.su-module.php:562
-#, php-format
-msgid "%s %s|Dropdown Title"
-msgstr ""
-
-#: class.su-module.php:574
-#, php-format
-msgid "%s Documentation"
-msgstr ""
-
-#: class.su-module.php:578
-msgid "Documentation"
-msgstr ""
-
-#: class.su-module.php:596
-#, php-format
-msgid "%1$s | %2$s %3$s by %4$s"
-msgstr ""
-
-#: class.su-module.php:630
-msgid "Settings updated."
-msgstr ""
-
-#: class.su-module.php:650
-msgid "Save Changes"
-msgstr ""
-
-#: class.su-module.php:766
-msgid ""
-"Are you sure you want to replace the textbox contents with this default "
-"value?"
-msgstr ""
-
-#: class.su-module.php:781
-msgid "Reset"
-msgstr ""
-
-#: functions.php:133
+#: includes/jlfunctions/str.php:76 plugin/su-functions.php:77
 #, php-format
 msgid "%s and %s"
 msgstr ""
 
-#: functions.php:136
+#: includes/jlfunctions/str.php:79 plugin/su-functions.php:80
 msgid ", "
 msgstr ""
 
-#: functions.php:137
+#: includes/jlfunctions/str.php:80 plugin/su-functions.php:81
 #, php-format
 msgid "%s, and %s"
 msgstr ""
 
-#: modules/404s.php:29
+#: modules/404s/404s.php:29
 msgid "404 Monitor"
 msgstr ""
 
-#: modules/404s.php:46
+#: modules/404s/404s.php:48
 #, php-format
 msgid ""
 "Please note that new 404 errors will not be recorded, since visitor logging "
 "is disabled in the %s."
 msgstr ""
 
-#: modules/404s.php:47 modules/404s.php:174
+#: modules/404s/404s.php:49
 msgid "Plugin Settings module"
 msgstr ""
 
-#: modules/404s.php:54
+#: modules/404s/404s.php:56
 msgid "The log entry was successfully deleted."
 msgstr ""
 
-#: modules/404s.php:56
+#: modules/404s/404s.php:58
 msgid "This log entry has already been deleted."
 msgstr ""
 
-#: modules/404s.php:65
+#: modules/404s/404s.php:67
 msgid "The log was successfully cleared."
 msgstr ""
 
-#: modules/404s.php:73
+#: modules/404s/404s.php:75
 msgid "No 404 errors in the log."
 msgstr ""
 
-#: modules/404s.php:84
+#: modules/404s/404s.php:86
 msgid "Are you sure you want to delete all 404 log entries?"
 msgstr ""
 
-#: modules/404s.php:86
+#: modules/404s/404s.php:88
 msgid "Clear Log"
 msgstr ""
 
-#: modules/404s.php:99
+#: modules/404s/404s.php:101
 msgid "Open"
 msgstr ""
 
-#: modules/404s.php:100
+#: modules/404s/404s.php:102
 msgid "Google Cache"
 msgstr ""
 
-#: modules/404s.php:101
+#: modules/404s/404s.php:103
 msgid "Delete Log Entry"
 msgstr ""
 
-#: modules/404s.php:117 modules/canonical.php:183 modules/files.php:140
-#: modules/linkbox.php:90 modules/meta.php:140 modules/noindex.php:94
-#: modules/slugs.php:61 modules/titles.php:335
-msgid "Overview"
-msgstr ""
-
-#: modules/404s.php:120
-msgid "Options Help"
-msgstr ""
-
-#: modules/404s.php:123
-msgid "Troubleshooting"
-msgstr ""
-
-#: modules/404s.php:129
-msgid ""
-"\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> The 404 Monitor keeps track of non-"
-"existant URLs that generated 404 errors.\r\n"
-"\t\t404 errors are when a search engine or visitor comes to a URL on your "
-"site but nothing exists at that URL.</p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> The 404 Monitor helps you spot 404 "
-"errors; \r\n"
-"\t\tthen you can take steps to correct them to reduce linkjuice loss from "
-"broken links.</p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> Check the 404 Monitor occasionally "
-"for errors.\r\n"
-"\t\t(A numeric bubble will appear next to the &#8220;404 Monitor&#8221; item "
-"on the menu if there are any newly-logged URLs that you haven&#8217;t seen "
-"yet. \r\n"
-"\t\tThese new URLs will also be highlighted green in the table.)\r\n"
-"\t\tIf a 404 error&#8217;s referring URL is located on your site, try "
-"locating and fixing the broken URL.\r\n"
-"\t\tIf moved content was previously located at the requested URL, try using "
-"a redirection plugin to point the old URL to the new one.</p></li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/404s.php:146
-msgid ""
-"Currently, the 404 Monitor doesn&#8217;t have any 404 errors in its log. "
-"This is good, and means there&#8217;s no action required on your part. If "
-"the 404 Monitor logs any 404 errors in the future, you&#8217;ll see them on "
-"this page."
-msgstr ""
-
-#: modules/404s.php:154
-msgid ""
-"\r\n"
-"<p>Hover over a table row to access these options:</p>\r\n"
-"<ul>\r\n"
-"\t\t<li>The &#8220;View&#8221; link will open the URL in a new window. This "
-"is useful for testing whether or not a redirect is working.</li>\r\n"
-"\t\t<li>The &#8220;Google Cache&#8221; link will open Google&#8217;s "
-"archived version of the URL in a new window. This is useful for determining "
-"what content, if any, used to be located at that URL.</li>\r\n"
-"\t\t<li>Once you've taken care of a 404 error, you can click the &#8220;"
-"Delete Log Entry&#8221; link to remove it from the list. The URL will "
-"reappear on the list if it triggers a 404 error in the future.</li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/404s.php:165
-#, php-format
-msgid ""
-"\r\n"
-"<p>404 Monitor doesn&#8217;t appear to work? Take these notes into "
-"consideration:</p>\r\n"
-"<ul>\r\n"
-"\t<li>Visitor logging must be enabled in the %s. (It&#8217;s enabled by "
-"default.)</li>\r\n"
-"\t<li>In order for the 404 Monitor to track 404 errors, you must have &#8220;"
-"Pretty Permalinks&#8221; enabled in your <a href='options-permalink."
-"php'>permalink options</a>.</li>\r\n"
-"\t<li>Some parts of your website may not be under WordPress&#8217;s control; "
-"the 404 Monitor can&#8217;t track 404 errors on non-WordPress website areas."
-"</li>\r\n"
-"\t<li>The 404 Monitor doesn&#8217;t record 404 errors generated by logged-in "
-"users.</li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/canonical.php:13
+#: modules/canonical/canonical.php:13
 msgid "Canonicalizer"
 msgstr ""
 
-#: modules/canonical.php:34
+#: modules/canonical/canonical.php:34
 msgid "Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags."
 msgstr ""
 
-#: modules/canonical.php:35
+#: modules/canonical/canonical.php:35
 msgid "Redirect requests for nonexistent pagination."
 msgstr ""
 
-#: modules/canonical.php:188
+#: modules/class.su-importmodule.php:37
+msgid "Import Now"
+msgstr ""
+
+#: modules/class.su-importmodule.php:40
+#, php-format
 msgid ""
-"\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> Canonicalizer improves on two "
-"WordPress features to minimize possible exact-content duplication penalties."
-"\r\n"
-"\t\tThe <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags setting "
-"improves on the canonical tags feature of WordPress 2.9 and above by "
-"encompassing much more of your site than just your posts and Pages.</p>\r\n"
-"\t\t<p>The nonexistent pagination redirect feature fills a gap in "
-"WordPress&#8217;s built-in canonicalization functionality: \r\n"
-"\t\tfor example, if a URL request is made for page 6 of a category archive, "
-"and that category doesn&#8217;t have a page 6,\r\n"
-"\t\tthen by default, depending on the context, WordPress will display a "
-"blank page, or it will display the content of the closest page number "
-"available, \r\n"
-"\t\twithout issuing a 404 error or a 301 redirect (thus creating two or more "
-"identical webpages). \r\n"
-"\t\tThis duplicate-content situation can happen when you, for example, "
-"remove many posts from a category, thus reducing the amount of pagination "
-"needed in the category&#8217;s archive. \r\n"
-"\t\tThe Canonicalizer&#8217;s feature fixes that behavior by issuing 301 "
-"redirects to page 1 of the paginated section in question.</p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> These features will point Google to "
-"the correct URL for your homepage and each of your posts, Pages, categories, "
-"tags, date archives, and author archives. \r\n"
-"That way, if Google comes across an alternate URL by which one of those "
-"items can be accessed, it will be able to find the correct URL \r\n"
-"and won&#8217;t penalize you for having two identical pages on your site.</"
-"p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> Just check both checkboxes and "
-"click Save Changes. SEO Ultimate will do the rest.</p></li>\r\n"
-"</ul>\r\n"
+"The import cannot be undone. It is your responsibility to <a href=\"%s\" "
+"target=\"_blank\">backup your database</a> before proceeding!"
 msgstr ""
 
-#: modules/competition-queries.php:13
-msgid "Comp. Researcher"
+#: modules/class.su-importmodule.php:50
+msgid "Import complete."
 msgstr ""
 
-#: modules/competition-queries.php:14
+#: modules/class.su-importmodule.php:57
+msgid "Return to import page"
+msgstr ""
+
+#: modules/class.su-importmodule.php:60
+msgid "Return to settings page"
+msgstr ""
+
+#: modules/class.su-importmodule.php:63
+msgid "Return to SEO page"
+msgstr ""
+
+#: modules/class.su-module.php:320
+msgid ""
+"(Note: This translated documentation was designed for an older version of "
+"SEO Ultimate and may be outdated.)"
+msgstr ""
+
+#: modules/class.su-module.php:851
+#, php-format
+msgid "%s %s|Dropdown Title"
+msgstr ""
+
+#: modules/class.su-module.php:879
+#, php-format
+msgid "%1$s | %2$s %3$s by %4$s"
+msgstr ""
+
+#: modules/class.su-module.php:913
+msgid "Settings updated."
+msgstr ""
+
+#: modules/class.su-module.php:933
+msgid "Save Changes"
+msgstr ""
+
+#: modules/class.su-module.php:1172
+msgid ""
+"Are you sure you want to replace the textbox contents with this default "
+"value?"
+msgstr ""
+
+#: modules/class.su-module.php:1187
+msgid "Reset"
+msgstr ""
+
+#: modules/competition-queries/competition-queries.php:13
 msgid "Competition Researcher"
 msgstr ""
 
-#: modules/competition-queries.php:18
+#: modules/competition-queries/competition-queries.php:14
+msgid "Comp. Researcher"
+msgstr ""
+
+#: modules/competition-queries/competition-queries.php:18
 msgid ""
 "The Competition Researcher provides you with easy access to various search "
 "engine tools which you can use to research multiple search queries or URLs."
 msgstr ""
 
-#: modules/competition-queries.php:22
+#: modules/competition-queries/competition-queries.php:22
 msgid "Step 1: Choose Your Research Tool"
 msgstr ""
 
-#: modules/competition-queries.php:26
+#: modules/competition-queries/competition-queries.php:26
 msgid "Keywords"
 msgstr ""
 
-#: modules/competition-queries.php:26
+#: modules/competition-queries/competition-queries.php:26
 msgid "Normal Search"
 msgstr ""
 
-#: modules/competition-queries.php:26
+#: modules/competition-queries/competition-queries.php:26
 msgid "Find out how many pages contain the words in each query"
 msgstr ""
 
-#: modules/competition-queries.php:27
+#: modules/competition-queries/competition-queries.php:27
 msgid "Phrase Match"
 msgstr ""
 
-#: modules/competition-queries.php:27
+#: modules/competition-queries/competition-queries.php:27
 msgid ""
 "Find out how many &#8220;actual&#8221; pages are competing for each query"
 msgstr ""
 
-#: modules/competition-queries.php:28
+#: modules/competition-queries/competition-queries.php:28
 msgid "Allinanchor"
 msgstr ""
 
-#: modules/competition-queries.php:28
+#: modules/competition-queries/competition-queries.php:28
 msgid "Find out which sites have the most links for each query"
 msgstr ""
 
-#: modules/competition-queries.php:29
+#: modules/competition-queries/competition-queries.php:29
 msgid "Allintitle"
 msgstr ""
 
-#: modules/competition-queries.php:29
+#: modules/competition-queries/competition-queries.php:29
 msgid ""
 "Find out which sites have the highest relevance in the title for each query"
 msgstr ""
 
-#: modules/competition-queries.php:30
+#: modules/competition-queries/competition-queries.php:30
 msgid "Allintext"
 msgstr ""
 
-#: modules/competition-queries.php:30
+#: modules/competition-queries/competition-queries.php:30
 msgid "Find out which sites have the most relevant content/text on their pages"
 msgstr ""
 
-#: modules/competition-queries.php:31
+#: modules/competition-queries/competition-queries.php:31
 msgid "Allinurl"
 msgstr ""
 
-#: modules/competition-queries.php:31
+#: modules/competition-queries/competition-queries.php:31
 msgid ""
 "Find out which sites have the most relevant naming conventions for each "
 "keyword"
 msgstr ""
 
-#: modules/competition-queries.php:33
+#: modules/competition-queries/competition-queries.php:33
 msgid "URLs"
 msgstr ""
 
-#: modules/competition-queries.php:33
+#: modules/competition-queries/competition-queries.php:33
 msgid "Site"
 msgstr ""
 
-#: modules/competition-queries.php:33
+#: modules/competition-queries/competition-queries.php:33
 msgid "Find out how many pages are indexed for each domain"
 msgstr ""
 
-#: modules/competition-queries.php:34 modules/competition-queries.php:39
+#: modules/competition-queries/competition-queries.php:34
+#: modules/competition-queries/competition-queries.php:39
 msgid "Inbound Links"
 msgstr ""
 
-#: modules/competition-queries.php:34
+#: modules/competition-queries/competition-queries.php:34
 msgid "Find out how many sites link to the domains"
 msgstr ""
 
-#: modules/competition-queries.php:35 modules/competition-queries.php:39
+#: modules/competition-queries/competition-queries.php:35
+#: modules/competition-queries/competition-queries.php:39
 msgid "Outbound Links"
 msgstr ""
 
-#: modules/competition-queries.php:35
+#: modules/competition-queries/competition-queries.php:35
 msgid "Find out how many sites the domains link to"
 msgstr ""
 
-#: modules/competition-queries.php:57
+#: modules/competition-queries/competition-queries.php:57
 msgid "Step 2: Enter the <span id='methodtype'>Keywords</span> To Research"
 msgstr ""
 
-#: modules/competition-queries.php:59
+#: modules/competition-queries/competition-queries.php:59
 msgid "(Type in one per line)"
 msgstr ""
 
-#: modules/competition-queries.php:61
+#: modules/competition-queries/competition-queries.php:61
 msgid "Step 3: Set Options and Submit"
 msgstr ""
 
-#: modules/competition-queries.php:63
+#: modules/competition-queries/competition-queries.php:63
+#: modules/site-keyword-queries/site-keyword-queries.php:29
 msgid "Show 100 results per page"
 msgstr ""
 
-#: modules/competition-queries.php:65
+#: modules/competition-queries/competition-queries.php:65
+#: modules/site-keyword-queries/site-keyword-queries.php:31
 msgid "Use Google's minimal mode"
 msgstr ""
 
-#: modules/competition-queries.php:71
+#: modules/competition-queries/competition-queries.php:71
+#: modules/site-keyword-queries/site-keyword-queries.php:34
 msgid "Submit"
 msgstr ""
 
-#: modules/files.php:15
+#: modules/files/files.php:15
 msgid "File Editor"
 msgstr ""
 
-#: modules/files.php:53
+#: modules/files/files.php:53
 msgid ""
 "A .htaccess file exists, but it&#8217;s not writable. You can edit it here "
 "once the file permissions are corrected."
 msgstr ""
 
-#: modules/files.php:59
+#: modules/files/files.php:59
 msgid ""
 "WordPress won&#8217;t be able to display your robots.txt file because the "
 "default <a href=\"options-permalink.php\" target=\"_blank\">permalink "
 "structure</a> is in use."
 msgstr ""
 
-#: modules/files.php:66
+#: modules/files/files.php:66
 #, php-format
 msgid "robots.txt [<a href=\"%s\" target=\"_blank\">Open</a>]"
 msgstr ""
 
-#: modules/files.php:70
+#: modules/files/files.php:70
 msgid "Enable this custom robots.txt file and disable the default file"
 msgstr ""
 
-#: modules/files.php:71
+#: modules/files/files.php:71
 msgid "Let other plugins add rules to my custom robots.txt file"
 msgstr ""
 
-#: modules/files.php:72
+#: modules/files/files.php:72
 msgid "robots.txt Settings"
 msgstr ""
 
-#: modules/files.php:75
+#: modules/files/files.php:75
 msgid ""
 "Please realize that incorrectly editing your robots.txt file could block "
 "search engines from your site."
 msgstr ""
 
-#: modules/files.php:79
+#: modules/files/files.php:79
 msgid ".htaccess"
 msgstr ""
 
-#: modules/files.php:82
+#: modules/files/files.php:82
 msgid ""
 "Also, incorrectly editing your .htaccess file could disable your entire "
 "website. Edit with caution!"
 msgstr ""
 
-#: modules/files.php:132
+#: modules/files/files.php:132
 #, php-format
 msgid ""
 "Please note that your privacy settings won&#8217;t have any effect on your "
 "robots.txt file, since you&#8217;re using <a href=\"%s\">a custom one</a>."
 msgstr ""
 
-#: modules/files.php:141 modules/slugs.php:62
+#: modules/files/files.php:140
+msgid "Overview"
+msgstr ""
+
+#: modules/files/files.php:141
 msgid "FAQ"
 msgstr ""
 
-#: modules/files.php:146
+#: modules/files/files.php:146
 msgid ""
 "The File Editor module lets you edit system files that are of SEO value. "
 "Edit the files as desired, then click Save Changes. If you create a custom "
 "robots.txt file, be sure to enable it with the checkbox."
 msgstr ""
 
-#: modules/files.php:150
+#: modules/files/files.php:150
 msgid ""
 "\r\n"
 "<h6>Why do I get a &#8220;500 Server Error&#8221; after using the File "
@@ -538,947 +390,654 @@ msgid ""
 "you can try recovering your edits from there.</p>\r\n"
 msgstr ""
 
-#: modules/linkbox.php:13
+#: modules/linkbox/linkbox.php:13
 msgid "Linkbox Inserter"
 msgstr ""
 
-#: modules/linkbox.php:19
+#: modules/linkbox/linkbox.php:19
 msgid "Link to this post!"
 msgstr ""
 
-#: modules/linkbox.php:46
+#: modules/linkbox/linkbox.php:46
 msgid "At the end of posts"
 msgstr ""
 
-#: modules/linkbox.php:47
+#: modules/linkbox/linkbox.php:47
 msgid "At the end of pages"
 msgstr ""
 
-#: modules/linkbox.php:48
+#: modules/linkbox/linkbox.php:48
 msgid "When called by the su_linkbox hook"
 msgstr ""
 
-#: modules/linkbox.php:49
+#: modules/linkbox/linkbox.php:49
 msgid "Display linkboxes..."
 msgstr ""
 
-#: modules/linkbox.php:50
+#: modules/linkbox/linkbox.php:50
 msgid "Linkbox HTML"
 msgstr ""
 
-#: modules/linkbox.php:91 modules/meta.php:141 modules/noindex.php:95
-msgid "Settings Help"
+#: modules/meta/meta-settings.php:16
+msgid "Meta Editor Settings"
 msgstr ""
 
-#: modules/linkbox.php:96
-msgid ""
-"\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> Linkbox Inserter can add linkboxes "
-"to your posts/pages.</p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> Linkboxes contain HTML code that "
-"visitors can use to link to your site. This is a great way to encourage SEO-"
-"beneficial linking activity.</p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> Use the checkboxes to enable the "
-"Linkbox Inserter in various areas of your site. Customize the HTML if "
-"desired. Click &#8220;Save Changes&#8221; when finished.</p></li>\r\n"
-"</ul>\r\n"
+#: modules/meta/meta-settings.php:17
+msgid "Settings"
 msgstr ""
 
-#: modules/linkbox.php:106
-msgid ""
-"\r\n"
-"<p>Here&#8217;s information on the various settings:</p>\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>Display linkboxes...</strong></p>\r\n"
-"\t\t<ul>\r\n"
-"\t\t\t<li><p><strong>At the end of posts</strong> &mdash; Adds the linkbox "
-"HTML to the end of all posts \r\n"
-"\t\t\t\t(whether they&#8217;re displayed on the blog homepage, in archives, "
-"or by themselves).</p></li>\r\n"
-"\t\t\t<li><p><strong>At the end of pages</strong> &mdash; Adds the linkbox "
-"HTML to the end of all Pages.</p></li>\r\n"
-"\t\t\t<li><p><strong>When called by the su_linkbox hook</strong> &mdash; For "
-"more fine-tuned control over where linkboxes appear, \r\n"
-"\t\t\t\tenable this option and add <code>&lt;?php&nbsp;do_action"
-"('su_linkbox');&nbsp;?&gt;</code> to your theme. \r\n"
-"\t\t\t\tYou can also add an ID parameter to display the linkbox of a "
-"particular post/page; for example: \r\n"
-"\t\t\t\t<code>&lt;?php&nbsp;do_action('su_linkbox',&nbsp;123);&nbsp;?&gt;</"
-"code></p></li>\r\n"
-"\t\t</ul>\r\n"
-"\t</li>\r\n"
-"\t<li><p><strong>HTML</strong> &mdash; The HTML that will be outputted to "
-"display the linkboxes. The HTML field supports these variables:</p>\r\n"
-"\t\t<ul>\r\n"
-"\t\t\t<li>{id} &mdash; The ID of the current post/page, or the ID passed to "
-"the action hook call.</li>\r\n"
-"\t\t\t<li>{url} &mdash; The permalink URL of the post/page.</li>\r\n"
-"\t\t\t<li>{title} &mdash; The title of the post/page.</li>\r\n"
-"\t\t</ul>\r\n"
-"\t</li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/meta.php:13
-msgid "Meta Editor"
-msgstr ""
-
-#: modules/meta.php:30
+#: modules/meta/meta-settings.php:28
 msgid "Blog Homepage Meta Description"
 msgstr ""
 
-#: modules/meta.php:31
+#: modules/meta/meta-settings.php:29
 msgid "Blog Homepage Meta Keywords"
 msgstr ""
 
-#: modules/meta.php:34
+#: modules/meta/meta-settings.php:32
 msgid "Use this blog&#8217s tagline as the default homepage description."
 msgstr ""
 
-#: modules/meta.php:35
+#: modules/meta/meta-settings.php:33
 msgid "Default Values"
 msgstr ""
 
-#: modules/meta.php:37
+#: modules/meta/meta-settings.php:35
 msgid ""
 "Don&#8217t use this site&#8217s Open Directory description in search results."
 msgstr ""
 
-#: modules/meta.php:38
+#: modules/meta/meta-settings.php:36
 msgid ""
 "Don&#8217t use this site&#8217s Yahoo! Directory description in search "
 "results."
 msgstr ""
 
-#: modules/meta.php:39
+#: modules/meta/meta-settings.php:37
 msgid "Don&#8217t cache or archive this site."
 msgstr ""
 
-#: modules/meta.php:40
+#: modules/meta/meta-settings.php:38
 msgid "Spider Instructions"
 msgstr ""
 
-#: modules/meta.php:42
+#: modules/meta/meta-settings.php:40
 msgid "Google Webmaster Tools:"
 msgstr ""
 
-#: modules/meta.php:43
+#: modules/meta/meta-settings.php:41
 msgid "Yahoo! Site Explorer:"
 msgstr ""
 
-#: modules/meta.php:44
+#: modules/meta/meta-settings.php:42
 msgid "Bing Webmaster Center:"
 msgstr ""
 
-#: modules/meta.php:45
+#: modules/meta/meta-settings.php:43
 msgid "Verification Codes"
 msgstr ""
 
-#: modules/meta.php:46
+#: modules/meta/meta-settings.php:44
 msgid "Custom &lt;head&gt; HTML"
 msgstr ""
 
-#: modules/meta.php:55
+#: modules/meta/meta.php:13
+msgid "Meta Editor"
+msgstr ""
+
+#: modules/meta/meta.php:84
+msgid "Custom Header Code"
+msgstr ""
+
+#: modules/meta/meta.php:100
 msgid "Description:"
 msgstr ""
 
-#: modules/meta.php:58
+#: modules/meta/meta.php:103
 #, php-format
 msgid "You&#8217;ve entered %s characters. Most search engines use up to 160."
 msgstr ""
 
-#: modules/meta.php:60
+#: modules/meta/meta.php:105
 msgid "Keywords:<br /><em>(separate with commas)</em>"
 msgstr ""
 
-#: modules/meta.php:127
-msgid "Custom Header Code"
-msgstr ""
-
-#: modules/meta.php:146
-msgid ""
-"\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> Meta Editor lets you customize a "
-"wide variety of settings known as &#8220;meta data.&#8221;</p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> Using meta data, you can convey "
-"information to search engines, such as what text you want displayed by your "
-"site in search results, what your site is about, whether they can cache your "
-"site, etc.</p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> Adjust the settings as desired, and "
-"then click Save Changes. You can refer to the &#8220;Settings Help&#8221; "
-"tab for information on the settings available. You can also customize the "
-"meta data of an individual post or page by using the textboxes that Meta "
-"Editor adds to the post/page editors.</p></li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/meta.php:156
-msgid ""
-"\r\n"
-"<p>Here&#8217;s information on the various settings:</p>\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>Blog Homepage Meta Description</strong> &mdash; When your "
-"blog homepage appears in search results, it&#8217;ll have a title and a "
-"description. \r\n"
-"\t\tWhen you insert content into the description field below, the Meta "
-"Editor will add code to your blog homepage (the <code>&lt;meta&nbsp;"
-"name=&quot;description&quot;&nbsp;/&gt;</code> tag)\r\n"
-"\t\tthat asks search engines to use what you&#8217;ve entered as the "
-"homepage&#8217;s search results description.</p></li>\r\n"
-"\t<li><p><strong>Blog Homepage Meta Keywords</strong> &mdash; Here you can "
-"enter keywords that describe the overall subject matter of your entire blog. "
-"Use commas to separate keywords. \r\n"
-"\t\tYour keywords will be put in the <code>&lt;meta&nbsp;name=&quot;"
-"keywords&quot;&nbsp;/&gt;</code> tag on your blog homepage.</p></li>\r\n"
-"\t<li><p><strong>Default Values</strong></p>\r\n"
-"\t\t<ul>\r\n"
-"\t\t\t<li><p><strong>Use this blog&#8217;s tagline as the default homepage "
-"description.</strong> &mdash; \r\n"
-"\t\t\t\tIf this box is checked and if the Blog Homepage Meta Description "
-"field is empty, \r\n"
-"\t\t\t\tMeta Editor will use your blog&#8217;s <a href='options-general.php' "
-"target='_blank'>tagline</a> as the meta description.</p></li>\r\n"
-"\t\t</ul>\r\n"
-"\t</li>\r\n"
-"\t<li><p><strong>Spider Instructions</strong></p>\r\n"
-"\t\t<ul>\r\n"
-"\t\t\t<li><p><strong>Don&#8217;t use this site&#8217;s Open Directory / "
-"Yahoo! Directory description in search results.</strong> &mdash; \r\n"
-"\t\t\t\tIf your site is listed in the <a href='http://www.dmoz.org/' "
-"target='_blank'>Open Directory (DMOZ)</a> or \r\n"
-"\t\t\t\tthe <a href='http://dir.yahoo.com/' target='_blank'>Yahoo! "
-"Directory</a>, \r\n"
-"\t\t\t\tsome search engines may use your directory listing as the meta "
-"description. \r\n"
-"\t\t\t\tThese boxes tell search engines not to do that and will give you "
-"full control over your meta descriptions. \r\n"
-"\t\t\t\tThese settings have no effect if your site isn&#8217;t listed in the "
-"Open Directory or Yahoo! Directory respectively.</p></li>\r\n"
-"\t\t\t<li><p><strong>Don&#8217;t cache or archive this site.</strong> "
-"&mdash; \r\n"
-"\t\t\t\tWhen you check this box, Meta Editor will ask search engines "
-"(Google, Yahoo!, Bing, etc.) and archivers (Archive.org, etc.) \r\n"
-"\t\t\t\tto <em>not</em> make cached or archived &#8220;copies&#8221; of your "
-"site.</p></li>\r\n"
-"\t\t</ul>\r\n"
-"\t</li>\r\n"
-"\t<li><p><strong>Verification Codes</strong> &mdash; This section lets you "
-"enter in verification codes for the webmaster portals of the 3 leading "
-"search engines.</p></li>\r\n"
-"\t<li><p><strong>Custom &lt;head&gt; HTML</strong> &mdash; Just enter in raw "
-"HTML code here, and it&#8217;ll be entered into the &lt;head&gt; tag across "
-"your entire site.</p></li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/meta.php:191
+#: modules/meta/meta.php:112
 msgid ""
 "<strong>Description:</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
 "results. "
 msgstr ""
 
-#: modules/meta.php:193
+#: modules/meta/meta.php:114
 msgid ""
 "<strong>Keywords:</strong> &mdash; The value of the meta keywords tag. The "
 "keywords list gives search engines a hint as to what this post/page is "
 "about. "
 msgstr ""
 
-#: modules/modules.php:13
-msgid "Modules"
-msgstr ""
-
-#: modules/modules.php:14
+#: modules/modules/modules.php:13
 msgid "Module Manager"
 msgstr ""
 
-#: modules/modules.php:35
+#: modules/modules/modules.php:14
+msgid "Modules"
+msgstr ""
+
+#: modules/modules/modules.php:34
 msgid ""
 "SEO Ultimate&#8217;s features are located in groups called &#8220;modules."
 "&#8221; By default, most of these modules are listed in the &#8220;"
 "SEO&#8221; menu on the left. Whenever you&#8217;re working with a module, "
-"you can view documentation by clicking the &#8220;Help&#8221; tab in the "
-"upper-right-hand corner of your administration screen."
+"you can view documentation by clicking the tabs in the upper-right-hand "
+"corner of your administration screen."
 msgstr ""
 
-#: modules/modules.php:37
+#: modules/modules/modules.php:36
 msgid ""
 "The Module Manager lets you  disable or hide modules you don&#8217;t use. "
 "You can also silence modules from displaying bubble alerts on the menu."
 msgstr ""
 
-#: modules/modules.php:43
+#: modules/modules/modules.php:42
 msgid "Status"
 msgstr ""
 
-#: modules/modules.php:44
+#: modules/modules/modules.php:43
 msgid "Module"
 msgstr ""
 
-#: modules/modules.php:57
+#: modules/modules/modules.php:56
 msgid "Enabled"
 msgstr ""
 
-#: modules/modules.php:58
+#: modules/modules/modules.php:57
 msgid "Silenced"
 msgstr ""
 
-#: modules/modules.php:59
+#: modules/modules/modules.php:58
 msgid "Hidden"
 msgstr ""
 
-#: modules/modules.php:60
+#: modules/modules/modules.php:59
 msgid "Disabled"
 msgstr ""
 
-#: modules/modules.php:109
-msgid ""
-"\r\n"
-"<p>The Module Manager lets you customize the visibility and accessibility of "
-"each module; here are the options available:</p>\r\n"
-"<ul>\r\n"
-"\t<li><strong>Enabled</strong> &mdash; The default option. The module will "
-"be fully enabled and accessible.</li>\r\n"
-"\t<li><strong>Silenced</strong> &mdash; The module will be enabled and "
-"accessible, but it won&#8217;t be allowed to display numeric bubble alerts "
-"on the menu.</li>\r\n"
-"\t<li><strong>Hidden</strong> &mdash; The module&#8217;s functionality will "
-"be enabled, but the module won&#8217;t be visible on the SEO menu. You will "
-"still be able to access the module&#8217;s admin page by clicking on its "
-"title in the Module Manager table.</li>\r\n"
-"\t<li><strong>Disabled</strong> &mdash; The module will be completely "
-"disabled and inaccessible.</li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/more-links.php:13
+#: modules/more-links/more-links.php:13
 msgid "More Link Customizer"
 msgstr ""
 
-#: modules/more-links.php:28
+#: modules/more-links/more-links.php:28
 msgid "Default More Link Text"
 msgstr ""
 
-#: modules/more-links.php:46
+#: modules/more-links/more-links.php:46
 msgid "More Link Text:"
 msgstr ""
 
-#: modules/more-links.php:69
-msgid ""
-"\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> More Link Customizer lets you modify "
-"the anchor text of your posts&#8217; <a href='http://codex.wordpress.org/"
-"Customizing_the_Read_More' target='_blank'>&#8220;more&#8221; links</a>.</"
-"p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> On the typical WordPress setup, the "
-"&#8220;more link&#8221; always has the same anchor text (e.g. &#8220;Read "
-"more of this entry &raquo;&#8221;). Since internal anchor text conveys web "
-"page topicality to search engines, the &#8220;read more&#8221; phrase "
-"isn&#8217;t a desirable anchor phrase. More Link Customizer lets you replace "
-"the boilerplate text with a new anchor that, by default, integrates your "
-"post titles (which will ideally be keyword-oriented).</p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> On this page you can set the anchor "
-"text you&#8217;d like to use by default. The <code>{post}</code> variable "
-"will be replaced with the post&#8217;s title. HTML and encoded entities are "
-"supported. If instead you decide that you&#8217;d like to use the default "
-"anchor text specified by your currently-active theme, just erase the "
-"contents of the textbox. The anchor text can be overriden on a per-post "
-"basis via the &#8220;More Link Text&#8221; box in the &#8220;SEO "
-"Settings&#8221; section of the WordPress post editor.</p></li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/noindex.php:13
+#: modules/noindex/noindex.php:13
 msgid "Noindex Manager"
 msgstr ""
 
-#: modules/noindex.php:40
+#: modules/noindex/noindex.php:40
 msgid ""
 "Note: The current <a href='options-privacy.php'>privacy settings</a> will "
 "block indexing of the entire site, regardless of which options are set below."
 msgstr ""
 
-#: modules/noindex.php:43
+#: modules/noindex/noindex.php:43
 msgid "Prevent indexing of..."
 msgstr ""
 
-#: modules/noindex.php:44
+#: modules/noindex/noindex.php:44
 msgid "Administration back-end pages"
 msgstr ""
 
-#: modules/noindex.php:45
+#: modules/noindex/noindex.php:45
 msgid "Author archives"
 msgstr ""
 
-#: modules/noindex.php:46
+#: modules/noindex/noindex.php:46
 msgid "Blog search pages"
 msgstr ""
 
-#: modules/noindex.php:47
+#: modules/noindex/noindex.php:47
 msgid "Category archives"
 msgstr ""
 
-#: modules/noindex.php:48
+#: modules/noindex/noindex.php:48
 msgid "Comment feeds"
 msgstr ""
 
-#: modules/noindex.php:49
+#: modules/noindex/noindex.php:49
 msgid "Comment subpages"
 msgstr ""
 
-#: modules/noindex.php:50
+#: modules/noindex/noindex.php:50
 msgid "Date-based archives"
 msgstr ""
 
-#: modules/noindex.php:51
+#: modules/noindex/noindex.php:51
 msgid "Subpages of the homepage"
 msgstr ""
 
-#: modules/noindex.php:52
+#: modules/noindex/noindex.php:52
 msgid "Tag archives"
 msgstr ""
 
-#: modules/noindex.php:53
+#: modules/noindex/noindex.php:53
 msgid "User login/registration pages"
 msgstr ""
 
-#: modules/noindex.php:100
-msgid ""
-"\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> Noindex Manager lets you prohibit "
-"the search engine spiders from indexing certain pages on your blog using the "
-"&quot;meta robots noindex&quot; tag.</p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> This module lets you &#8220;"
-"noindex&#8221; pages that contain unimportant content (e.g. the login page), "
-"or pages that mostly contain duplicate content.</p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> Adjust the settings as desired, and "
-"then click Save Changes. You can refer to the &#8220;Settings Help&#8221; "
-"tab for information on the settings available.</p></li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/noindex.php:110
-msgid ""
-"\r\n"
-"<p>Here&#8217;s information on the various settings:</p>\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>Administration back-end pages</strong> &mdash; Tells "
-"spiders not to index the administration area (the part you&#8217;re in now),"
-"\r\n"
-"\t\tin the unlikely event a spider somehow gains access to the "
-"administration. Recommended.</p></li>\r\n"
-"\t<li><p><strong>Author archives</strong> &mdash; Tells spiders not to index "
-"author archives. Useful if your blog only has one author.</p></li>\r\n"
-"\t<li><p><strong>Blog search pages</strong> &mdash; Tells spiders not to "
-"index the result pages of WordPress&#8217;s blog search function. "
-"Recommended.</p></li>\r\n"
-"\t<li><p><strong>Category archives</strong> &mdash; Tells spiders not to "
-"index category archives. Recommended only if you don&#8217;t use categories."
-"</p></li>\r\n"
-"\t<li><p><strong>Comment feeds</strong> &mdash; Tells spiders not to index "
-"the RSS feeds that exist for every post&#8217;s comments.\r\n"
-"\t\t(These comment feeds are totally separate from your normal blog feeds.) "
-"Recommended.</p></li>\r\n"
-"\t<li><p><strong>Comment subpages</strong> &mdash; Tells spiders not to "
-"index posts' comment subpages.</p></li>\r\n"
-"\t<li><p><strong>Date-based archives</strong> &mdash; Tells spiders not to "
-"index day/month/year archives.\r\n"
-"\t\tRecommended, since these pages have little keyword value.</p></li>\r\n"
-"\t<li><p><strong>Subpages of the homepage</strong> &mdash; Tells spiders not "
-"to index the homepage's subpages (page 2, page 3, etc).\r\n"
-"\t\tRecommended.</p></li>\r\n"
-"\t<li><p><strong>Tag archives</strong> &mdash; Tells spiders not to index "
-"tag archives. Recommended only if you don&#8217;t use tags.</p></li>\r\n"
-"\t<li><p><strong>User login/registration pages</strong> &mdash; Tells "
-"spiders not to index WordPress&#8217;s user login and registration pages. "
-"Recommended.</p></li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/sds-blog.php:13
-msgid "SEO Design Solutions Whitepapers"
-msgstr ""
-
-#: modules/sds-blog.php:14
+#: modules/sds-blog/sds-blog.php:13
 msgid "Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (PACKAGE VERSION)  #-#-#-#-#
+#: modules/sds-blog/sds-blog.php:14
+msgid "SEO Design Solutions Whitepapers"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.5)  #-#-#-#-#
 #. Author of an extension
-#: modules/sds-blog.php:42
+#: modules/sds-blog/sds-blog.php:43
 msgid "SEO Design Solutions"
 msgstr ""
 
-#: modules/sds-blog.php:43
+#: modules/sds-blog/sds-blog.php:44
 msgid ""
 "Search engine optimization articles from the company behind the SEO Ultimate "
 "plugin."
 msgstr ""
 
-#: modules/sds-blog.php:94
+#: modules/sds-blog/sds-blog.php:95
 msgid ""
 "The articles below are loaded from the SEO Design Solutions website. Click "
 "on an article&#8217s title to read it."
 msgstr ""
 
-#: modules/settings.php:15
+#: modules/settings/settings.php:15 modules/settings/settings.php:96
+msgid "Plugin Settings"
+msgstr ""
+
+#: modules/settings/settings.php:16
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#: modules/settings.php:67
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.5)  #-#-#-#-#
+#. Plugin Name of an extension
+#: modules/settings/settings.php:17 plugin/class.seo-ultimate.php:759
+msgid "SEO Ultimate"
+msgstr ""
+
+#: modules/settings/settings.php:67
 msgid "Settings successfully imported."
 msgstr ""
 
-#: modules/settings.php:69
+#: modules/settings/settings.php:69
 msgid ""
 "The uploaded file is not in the proper format. Settings could not be "
 "imported."
 msgstr ""
 
-#: modules/settings.php:71
+#: modules/settings/settings.php:71
 msgid "The settings file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings.php:74
+#: modules/settings/settings.php:74
 msgid ""
 "Settings could not be imported because no settings file was selected. Please "
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings.php:82
+#: modules/settings/settings.php:82
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings.php:96
-msgid "Plugin Settings"
-msgstr ""
-
-#: modules/settings.php:98
+#: modules/settings/settings.php:98
 msgid "Enable attribution link"
 msgstr ""
 
-#: modules/settings.php:99
+#: modules/settings/settings.php:99
 msgid "Enable attribution link CSS styling"
 msgstr ""
 
-#: modules/settings.php:100
+#: modules/settings/settings.php:100
 msgid "Notify me about unnecessary active plugins"
 msgstr ""
 
-#: modules/settings.php:102
+#: modules/settings/settings.php:102
 msgid "Insert comments around HTML code insertions"
 msgstr ""
 
-#: modules/settings.php:103
+#: modules/settings/settings.php:103
 msgid "Allow modules to save visitor information to the database"
 msgstr ""
 
-#: modules/settings.php:104
+#: modules/settings/settings.php:104
 #, php-format
 msgid "Delete logged visitor information after %d days"
 msgstr ""
 
-#: modules/settings.php:109
+#: modules/settings/settings.php:109
 msgid "Manage Settings Data"
 msgstr ""
 
-#: modules/settings.php:113
+#: modules/settings/settings.php:113
 msgid ""
 "This section allows you to export, import, and reset the settings of the "
 "plugin and all its modules."
 msgstr ""
 
-#: modules/settings.php:115
+#: modules/settings/settings.php:115
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module, as well as the &#8220;Plugin Settings&#8221; section "
 "above. "
 msgstr ""
 
-#: modules/settings.php:124
+#: modules/settings/settings.php:124
 msgid "Export:"
 msgstr ""
 
-#: modules/settings.php:127
+#: modules/settings/settings.php:127
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings.php:132
+#: modules/settings/settings.php:132
 msgid "Import:"
 msgstr ""
 
-#: modules/settings.php:137
+#: modules/settings/settings.php:137
 msgid ""
 "Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings.php:138
+#: modules/settings/settings.php:138
 msgid "Import This Settings File"
 msgstr ""
 
-#: modules/settings.php:145
+#: modules/settings/settings.php:145
 msgid "Reset:"
 msgstr ""
 
-#: modules/settings.php:148
+#: modules/settings/settings.php:148
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings.php:149
+#: modules/settings/settings.php:149
 msgid "Restore Default Settings"
 msgstr ""
 
-#: modules/settings.php:173
-msgid ""
-"\r\n"
-"<p>The Settings module lets you manage settings related to the SEO Ultimate "
-"plugin as a whole.</p>\r\n"
-"<p>Here&#8217;s information on some of the settings:</p>\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>Enable attribution link</strong> &mdash; If enabled, the "
-"plugin will display an attribution link on your site.\r\n"
-"\t\tWe ask that you please leave this enabled.</p></li>\r\n"
-"\t<li><p><strong>Insert comments around HTML code insertions</strong> "
-"&mdash; If enabled, SEO Ultimate will use HTML comments to identify all code "
-"it inserts into your &lt;head&gt; tag.\r\n"
-"\t\tThis is useful if you&#8217;re trying to figure out whether or not SEO "
-"Ultimate is inserting a certain piece of header code.</p></li>\r\n"
-"\t<li><p><strong>Allow modules to save visitor information to the database</"
-"strong> &mdash; This allows enabled modules to record information about the "
-"people or robots that visit your website.\r\n"
-"\t\tThis information is stored in your WordPress database. This setting must "
-"be enabled in order for modules like the 404 Monitor to function.</p></li>"
-"\r\n"
-"\t<li><p><strong>Delete logged visitor information after ___ days</strong> "
-"&mdash; If enabled, SEO Ultimate will delete visitor information once it has "
-"been stored for more than a specified number of days.\r\n"
-"\t\t(The default value is 30.) Enable this setting if the visitor-logging "
-"functionality is making your database size unmanageable.\r\n"
-"\t\tPlease note that as soon as you enable this and click the Save button, "
-"your old visitor information will be irreversably purged accordingly.</p></"
-"li>\r\n"
-"</ul>\r\n"
+#: modules/settings/settings.php:165
+msgid "Import from Other Plugins"
 msgstr ""
 
-#: modules/slugs.php:13
+#: modules/settings/settings.php:167
+msgid ""
+"You can import settings and data from these plugins. Clicking a plugin&#8217;"
+"s name will take you to the importer page, where you can customize "
+"parameters and start the import."
+msgstr ""
+
+#: modules/site-keyword-queries/site-keyword-queries.php:13
+msgid "Internal Relevance Researcher"
+msgstr ""
+
+#: modules/site-keyword-queries/site-keyword-queries.php:14
+msgid "Int. Rel. Researcher"
+msgstr ""
+
+#: modules/site-keyword-queries/site-keyword-queries.php:22
+msgid "Step 1: Enter Keywords"
+msgstr ""
+
+#: modules/site-keyword-queries/site-keyword-queries.php:24
+msgid "(Type one keyword per line)"
+msgstr ""
+
+#: modules/site-keyword-queries/site-keyword-queries.php:26
+msgid "Step 2: Set Options and Submit"
+msgstr ""
+
+#: modules/site-keyword-queries/site-keyword-queries.php:28
+msgid "Put keywords in quotes"
+msgstr ""
+
+#: modules/slugs/slugs.php:13
 msgid "Slug Optimizer"
 msgstr ""
 
-#: modules/slugs.php:17
+#: modules/slugs/slugs.php:17
 msgid "Words to Remove"
 msgstr ""
 
-#: modules/slugs.php:67
-msgid ""
-"\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> Slug Optimizer removes common words "
-"from the portion of a post&#8217;s or Page&#8217;s URL that is based on its "
-"title. (This portion is also known as the &#8220;slug.&#8221;)</p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> Slug Optimizer increases keyword "
-"potency because there are fewer words in your URLs competing for relevance.</"
-"p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> Slug Optimizer goes to work when "
-"you&#8217;re editing a post or Page, with no action required on your part."
-"\r\n"
-"\t\tIf needed, you can use the textbox below to customize which words are "
-"removed.</p></li>\r\n"
-"</ul>\r\n"
+#: modules/titles/titles-formats.php:8
+msgid "Title Rewriter Formats"
 msgstr ""
 
-#: modules/slugs.php:78
-msgid ""
-"\r\n"
-"<h6>What's a slug?</h6>\r\n"
-"<p>The slug of a post or page is the portion of its URL that is based on its "
-"title.</p>\r\n"
-"<p>When you edit a post or Page in WordPress, the slug is the yellow-"
-"highlighted portion of the Permalink beneath the Title textbox.</p>\r\n"
-"\r\n"
-"<h6>Does the Slug Optimizer change my existing URLs?</h6>\r\n"
-"<p>No. Slug Optimizer will not relocate your content by changing existing "
-"URLs. Slug Optimizer only takes effect on new posts and pages.</p>\r\n"
-"\r\n"
-"<h6>How do I see Slug Optimizer in action?</h6>\r\n"
-"<ol>\r\n"
-"\t<li>Create a new post/Page in WordPress.</li>\r\n"
-"\t<li>Type in a title containing some common words.</li>\r\n"
-"\t<li>Click outside the Title box. WordPress will insert a URL labeled "
-"&#8220;Permalink&#8221; below the Title textbox. The Slug Optimizer will "
-"have removed the common words from the URL.</li>\r\n"
-"</ol>\r\n"
-"\r\n"
-"<h6>Why didn't the Slug Optimizer remove common words from my slug?</h6>\r\n"
-"<p>It's possible that every word in your post title is in the list of words "
-"to remove. In this case, Slug Optimizer doesn't remove the words, because if "
-"it did, you'd end up with a blank slug.</p>\r\n"
-"\r\n"
-"<h6>What if I want to include a common word in my slug?</h6>\r\n"
-"<p>When editing the post or page in question, just click the Edit button "
-"next to the permalink and change the slug as desired.</p>\r\n"
-"\r\n"
-"<h6>How do I revert back to the optimized slug after making changes?</h6>\r\n"
-"<p>When editing the post or page in question, just click the Edit button "
-"next to the permalink; a Save button will appear in its place. Next erase "
-"the contents of the textbox, and then click the aforementioned Save button.</"
-"p>\r\n"
-msgstr ""
-
-#: modules/titles.php:13
-msgid "Title Rewriter"
-msgstr ""
-
-#: modules/titles.php:26
-msgid "{blog}"
-msgstr ""
-
-#: modules/titles.php:27
-msgid "{post} | {blog}"
-msgstr ""
-
-#: modules/titles.php:28
-msgid "{page} | {blog}"
-msgstr ""
-
-#: modules/titles.php:29
-msgid "{category} | {blog}"
-msgstr ""
-
-#: modules/titles.php:30
-msgid "{tag} | {blog}"
-msgstr ""
-
-#: modules/titles.php:31
-msgid "Archives for {month} {day}, {year} | {blog}"
-msgstr ""
-
-#: modules/titles.php:32
-msgid "Archives for {month} {year} | {blog}"
-msgstr ""
-
-#: modules/titles.php:33
-msgid "Archives for {year} | {blog}"
-msgstr ""
-
-#: modules/titles.php:34
-msgid "Posts by {author} | {blog}"
-msgstr ""
-
-#: modules/titles.php:35
-msgid "Search Results for {query} | {blog}"
-msgstr ""
-
-#: modules/titles.php:36
-msgid "404 Not Found | {blog}"
-msgstr ""
-
-#: modules/titles.php:37
-msgid "{title} - Page {num}"
-msgstr ""
-
-#: modules/titles.php:43
-msgid "Blog Homepage Title"
-msgstr ""
-
-#: modules/titles.php:44
-msgid "Post Title Format"
-msgstr ""
-
-#: modules/titles.php:45
-msgid "Page Title Format"
-msgstr ""
-
-#: modules/titles.php:46
-msgid "Category Title Format"
-msgstr ""
-
-#: modules/titles.php:47
-msgid "Tag Title Format"
-msgstr ""
-
-#: modules/titles.php:48
-msgid "Day Archive Title Format"
-msgstr ""
-
-#: modules/titles.php:49
-msgid "Month Archive Title Format"
-msgstr ""
-
-#: modules/titles.php:50
-msgid "Year Archive Title Format"
-msgstr ""
-
-#: modules/titles.php:51
-msgid "Author Archive Title Format"
-msgstr ""
-
-#: modules/titles.php:52
-msgid "Search Title Format"
-msgstr ""
-
-#: modules/titles.php:53
-msgid "404 Title Format"
-msgstr ""
-
-#: modules/titles.php:54
-msgid "Pagination Title Format"
-msgstr ""
-
-#: modules/titles.php:61
+#: modules/titles/titles-formats.php:9
 msgid "Default Formats"
 msgstr ""
 
-#: modules/titles.php:62
+#: modules/titles/titles-posts.php:17
+msgid "Post Title Editor"
+msgstr ""
+
+#: modules/titles/titles-posts.php:24
 msgid "Posts"
 msgstr ""
 
-#: modules/titles.php:63
+#: modules/titles/titles-posts.php:25
 msgid "Pages"
 msgstr ""
 
-#: modules/titles.php:75
+#: modules/titles/titles-posts.php:26
+msgid "Attachments"
+msgstr ""
+
+#: modules/titles/titles-taxonomies.php:17
+msgid "Taxonomy Title Editor"
+msgstr ""
+
+#: modules/titles/titles-taxonomies.php:24
+msgid "Categories"
+msgstr ""
+
+#: modules/titles/titles-taxonomies.php:25
+msgid "Post Tags"
+msgstr ""
+
+#: modules/titles/titles.php:13
+msgid "Title Rewriter"
+msgstr ""
+
+#: modules/titles/titles.php:26
+msgid "{blog}"
+msgstr ""
+
+#: modules/titles/titles.php:27
+msgid "{post} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:28
+msgid "{page} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:29
+msgid "{category} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:30
+msgid "{tag} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:31
+msgid "Archives for {month} {day}, {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:32
+msgid "Archives for {month} {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:33
+msgid "Archives for {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:34
+msgid "Posts by {author} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:35
+msgid "Search Results for {query} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:36
+msgid "404 Not Found | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:37
+msgid "{title} - Page {num}"
+msgstr ""
+
+#: modules/titles/titles.php:43
+msgid "Blog Homepage Title"
+msgstr ""
+
+#: modules/titles/titles.php:44
+msgid "Post Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:45
+msgid "Page Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:46
+msgid "Category Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:47
+msgid "Tag Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:48
+msgid "Day Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:49
+msgid "Month Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:50
+msgid "Year Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:51
+msgid "Author Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:52
+msgid "Search Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:53
+msgid "404 Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:54
+msgid "Pagination Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:65
 msgid "Title Tag:"
 msgstr ""
 
-#: modules/titles.php:259
+#: modules/titles/titles.php:275
 msgid "Post"
 msgstr ""
 
-#: modules/titles.php:263
+#: modules/titles/titles.php:279
 msgid "Page"
 msgstr ""
 
-#: modules/titles.php:299
+#: modules/titles/titles.php:351
 msgid "ID"
 msgstr ""
 
-#: modules/titles.php:299
+#: modules/titles/titles.php:351
+msgid "Name"
+msgstr ""
+
+#: modules/titles/titles.php:351
 msgid "Title Tag"
 msgstr ""
 
-#: modules/titles.php:336
-msgid "Settings & Variables"
-msgstr ""
-
-#: modules/titles.php:341
-msgid ""
-"\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>What it does:</strong> Title Rewriter helps you customize "
-"the contents of your website&#8217;s <code>&lt;title&gt;</code> tags.\r\n"
-"\t\tThe tag contents are displayed in web browser title bars and in search "
-"engine result pages.</p></li>\r\n"
-"\t<li><p><strong>Why it helps:</strong> Proper title rewriting ensures that "
-"the keywords in your post/Page titles have greater prominence for search "
-"engine spiders and users.\r\n"
-"\t\tThis is an important foundation for WordPress SEO.</p></li>\r\n"
-"\t<li><p><strong>How to use it:</strong> Title Rewriter enables recommended "
-"settings automatically, so you shouldn&#8217;t need to change anything.\r\n"
-"\t\tIf you do wish to edit the rewriting formats, you can do so using the "
-"textboxes below (the &#8220;Settings Help&#8221; tab includes additional "
-"information on this).\r\n"
-"\t\tYou also have the option of overriding the <code>&lt;title&gt;</code> "
-"tag of an individual post or page by using the textboxes under the &#8220;"
-"Post&#8221; and &#8220;Page&#8221; tabs below, or by using the &#8220;Title "
-"Tag&#8221; textbox that Title Rewriter adds to the post/page editors.</p></"
-"li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/titles.php:355
-msgid ""
-"\r\n"
-"<p>Various variables, surrounded in {curly brackets}, are provided for use "
-"in the title formats.\r\n"
-"All settings support the {blog} variable, which is replaced with the name of "
-"the blog, \r\n"
-"and the {tagline} variable, which is replaced with the blog tagline as set "
-"under <a href='options-general.php' target='_blank'>General&nbsp;Settings</"
-"a>.</p>\r\n"
-"<p>Here&#8217;s information on each of the settings and its supported "
-"variables:</p>\r\n"
-"<ul>\r\n"
-"\t<li><p><strong>Blog Homepage Title</strong> &mdash; Displays on the main "
-"blog posts page.</p></li>\r\n"
-"\t<li><p><strong>Post Title Format</strong> &mdash; Displays on single-post "
-"pages. Supports these variables:</p>\r\n"
-"\t\t<ul>\r\n"
-"\t\t\t<li>{post} &mdash; The post&#8217;s title.</li>\r\n"
-"\t\t\t<li>{category} &mdash; The title of the post category with the lowest "
-"ID number.</li>\r\n"
-"\t\t\t<li>{categories} &mdash; A natural-language list of the post&#8217;s "
-"categories (e.g. &#8220;Category A, Category B, and Category C&#8221;).</li>"
-"\r\n"
-"\t\t\t<li>{tags} &mdash; A natural-language list of the post&#8217;s tags (e."
-"g. &#8220;Tag A, Tag B, and Tag C&#8221;).</li>\r\n"
-"\t\t\t<li>{author} &mdash; The Display Name of the post&#8217;s author.</li>"
-"\r\n"
-"\t\t\t<li>{author_username}, {author_firstname}, {author_lastname}, "
-"{author_nickname} &mdash; The username, first name, last name, and nickname "
-"of the post&#8217;s author, respectively, as set in his or her profile.</li>"
-"\r\n"
-"\t\t</ul>\r\n"
-"\t<li><p><strong>Page Title Format</strong> &mdash; Displays on WordPress "
-"Pages. The {page} variable is replaced with the Page&#8217;s title. Also "
-"supports the same author variables as the Post Title Format.</p></li>\r\n"
-"\t<li><p><strong>Category Title Format</strong> &mdash; Displays on category "
-"archives. The {category} variable is replaced with the name of the category, "
-"and {category_description} is replaced with its description.</p></li>\r\n"
-"\t<li><p><strong>Tag Title Format</strong> &mdash; Displays on tag archives. "
-"The {tag} variable is replaced with the name of the tag, and "
-"{tag_description} is replaced with its description.</p></li>\r\n"
-"\t<li><p><strong>Day Archive Title Format</strong> &mdash; Displays on day "
-"archives. Supports these variables:</p>\r\n"
-"\t\t<ul>\r\n"
-"\t\t\t<li>{day} &mdash; The day number, with ordinal suffix, e.g. 23rd</li>"
-"\r\n"
-"\t\t\t<li>{daynum} &mdash; The two-digit day number, e.g. 23</li>\r\n"
-"\t\t\t<li>{month} &mdash; The name of the month, e.g. April</li>\r\n"
-"\t\t\t<li>{monthnum} &mdash; The two-digit number of the month, e.g. 04</li>"
-"\r\n"
-"\t\t\t<li>{year} &mdash; The year, e.g. 2009</li>\r\n"
-"\t\t</ul></li>\r\n"
-"\t<li><p><strong>Month Archive Title Format</strong> &mdash; Displays on "
-"month archives. Supports {month}, {monthnum}, and {year}.</p></li>\r\n"
-"\t<li><p><strong>Year Archive Title Format</strong> &mdash; Displays on year "
-"archives. Supports the {year} variable.</p></li>\r\n"
-"\t<li><p><strong>Author Archive Title Format</strong> &mdash; Displays on "
-"author archives. Supports the same author variables as the Post Title Format "
-"box, \r\n"
-"\t\ti.e. {author}, {author_username}, {author_firstname}, {author_lastname}, "
-"and {author_nickname}.</p></li>\r\n"
-"\t<li><p><strong>Search Title Format</strong> &mdash; Displays on the result "
-"pages for WordPress&#8217;s blog search function.\r\n"
-"\t\tThe {query} variable is replaced with the search query as-is. The "
-"{ucwords} variable returns the search query with the first letter of each "
-"word capitalized.</p></li>\r\n"
-"\t<li><p><strong>404 Title Format</strong> &mdash; Displays whenever a URL "
-"doesn&#8217;t go anywhere.</p></li>\r\n"
-"\t<li><p><strong>Pagination Title Format</strong> &mdash; Displays whenever "
-"the visitor is on a subpage (page 2, page 3, etc). Supports these variables:"
-"</p>\r\n"
-"\t\t<ul>\r\n"
-"\t\t\t<li>{title} &mdash; The title that would normally be displayed on page "
-"1.</li>\r\n"
-"\t\t\t<li>{num} &mdash; The current page number (2, 3, etc).</li>\r\n"
-"\t\t\t<li>{max} &mdash; The total number of subpages available. Would "
-"usually be used like this: Page {num} of {max}</li>\r\n"
-"\t\t</ul></li>\r\n"
-"</ul>\r\n"
-msgstr ""
-
-#: modules/titles.php:400
+#: modules/titles/titles.php:424
 msgid ""
 "<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; "
 "tag. The title appears in visitors' title bars and in search engine result "
 "titles. "
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:759
+msgid "SEO"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:975
+msgid "SEO Settings Help"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:977
+msgid "The SEO Settings box lets you customize these settings:"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:979
+msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1034
+#, php-format
+msgid ""
+"SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
+"1$s to avoid plugin conflicts."
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1176
+msgid "SEO Settings"
+msgstr ""
+
+#: plugin/class.su-hitset.php:44
+msgid "Date"
+msgstr ""
+
+#: plugin/class.su-hitset.php:45
+msgid "IP Address"
+msgstr ""
+
+#: plugin/class.su-hitset.php:46
+msgid "User Agent"
+msgstr ""
+
+#: plugin/class.su-hitset.php:47
+msgid "URL Requested"
+msgstr ""
+
+#: plugin/class.su-hitset.php:48
+msgid "Redirected To"
+msgstr ""
+
+#: plugin/class.su-hitset.php:49
+msgid "Status Code"
+msgstr ""
+
+#: plugin/class.su-hitset.php:50
+msgid "Referring URL"
+msgstr ""
+
+#: plugin/class.su-hitset.php:82
+#, php-format
+msgid "%1$s<br />%2$s"
 msgstr ""
 
 #. Plugin URI of an extension
