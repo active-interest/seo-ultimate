@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
-Requires at least: 2.7
-Tested up to: 2.9.1
-Stable tag: 1.4.1
+Requires at least: 2.8
+Tested up to: 2.9
+Stable tag: 1.5
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -11,9 +11,9 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
+* Version 1.5 adds under-the-hood improvements and additional documentation
 * Version 1.4 adds the Internal Relevance Researcher module
 * Version 1.3 adds the More Link Customizer module
-* Version 1.2 adds the Competition Researcher module
 
 = Features =
 
@@ -76,10 +76,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Reset all settings back to "factory defaults" if something goes wrong.
 
 * **Additional features**
-	* Supports WordPress plugin translation. POT file is included in the zip file.
+	* Supports [WordPress plugin translation](http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/). POT file is included in the zip file.
 	* SEO Ultimate documentation is seamlessly integrated into the contextual help system of WordPress 2.7+ and is accessible via the dropdowns in the upper-right-hand corner of the admin screen. In-depth info, explanations, and FAQ are just a click away.
 	* Unlike certain other SEO plugins, SEO Ultimate sports a clean, simple, aesthetically-pleasing interface, with no ads or donation nags.
-	* SEO Ultimate cleanly integrates itself into WordPress without using plastering its name all over the interface.
+	* SEO Ultimate cleanly integrates itself into WordPress without plastering its name all over the interface.
 	* If you choose to delete SEO Ultimate from within the WordPress plugin manager, SEO Ultimate will remove all its settings from your database.
 	* Includes icon integration with the WordPress 2.7+ menu and the Ozh Admin Drop Down Menu plugin.
 	* Uses WordPress plugin security features like nonces, etc.
@@ -90,7 +90,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Automated internal linking.
 	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
 
-**[Download](http://downloads.wordpress.org/plugin/seo-ultimate.zip) your free copy of SEO Ultimate today.**
+[**Download**](http://downloads.wordpress.org/plugin/seo-ultimate.zip) **your free copy of SEO Ultimate today.**
 
 == Installation ==
 
@@ -464,11 +464,13 @@ Here's information on each of the settings and its supported variables:
 
 * **Year Archive Title Format** -- Displays on year archives. Supports the {year} variable.
 
-* **Author Archive Title Format** -- Displays on author archives. Supports the same author variables as the Post Title Format box, i.e. {author}, {author_username}, {author_firstname}, {author_lastname}, and {author_nickname}.
+* **Author Archive Title Format** -- Displays on author archives. Supports the same author variables as the Post Title Format box, i.e. {author}, {author\_username}, {author\_firstname}, {author\_lastname}, and {author\_nickname}.
 
 * **Search Title Format** -- Displays on the result pages for WordPress's blog search function. The {query} variable is replaced with the search query as-is. The {ucwords} variable returns the search query with the first letter of each word capitalized.
 
-* **404 Title Format** -- Displays whenever a URL doesn't go anywhere.
+* **404 Title Format** -- Displays whenever a URL doesn't go anywhere. Supports this variable:
+
+	* {url_words} -- The words used in the error-generating URL. The first letter of each word will be capitalized.
 
 * **Pagination Title Format** -- Displays whenever the visitor is on a subpage (page 2, page 3, etc). Supports these variables:
 
@@ -489,6 +491,30 @@ Here's information on each of the settings and its supported variables:
 * **Why isn't the Title Rewriter changing my `<title>` tags?**
 	Try disabling other SEO plugins, as they may be conflicting with SEO Ultimate. Also, check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
 
+
+== Plugin Settings ==
+
+= Overview =
+
+The Settings module lets you manage settings related to the SEO Ultimate plugin as a whole.
+
+= Settings =
+
+Here's information on some of the settings:
+
+* **Enable attribution link** -- If enabled, the plugin will display an attribution link on your site. We ask that you please leave this enabled.
+
+* **Insert comments around HTML code insertions** -- If enabled, SEO Ultimate will use HTML comments to identify all code it inserts into your `<head>` tag. This is useful if you&#8217;re trying to figure out whether or not SEO Ultimate is inserting a certain piece of header code.
+
+* **Allow modules to save visitor information to the database** -- This allows enabled modules to record information about the people or robots that visit your website. This information is stored in your WordPress database. This setting must be enabled in order for modules like the 404 Monitor to function.
+
+* **Delete logged visitor information after ___ days** -- If enabled, SEO Ultimate will delete visitor information once it has been stored for more than a specified number of days. (The default value is 30.) Enable this setting if the visitor-logging functionality is making your database size unmanageable. Please note that as soon as you enable this and click the Save button, your old visitor information will be irreversably purged accordingly.
+
+= FAQ =
+
+* **Why doesn't the settings exporter include all my data in an export?** -- The settings export/import system is designed to facilitate moving settings between sites. It is NOT a replacement for keeping your database backed up. The settings exporter doesn't include data that is specific to your site. For example, logged 404 errors are not included because those 404 errors only apply to your site, not another site. Also, post/page titles/meta are not included because the site into which you import the file could have totally different posts/pages located under the same ID numbers.
+	
+	If you're moving a site to a different server or restoring a crashed site, you should do so with database backup/restore.
 
 
 == Frequently Asked Questions ==
@@ -513,17 +539,8 @@ Here's information on each of the settings and its supported variables:
 * **How do I remove the attribution link?**
 	Because of the tremendous effort put into this plugin, we ask that you please leave the link enabled. If you must disable it, you can do so under `Settings > SEO Ultimate`.
 
-
-= Plugin Settings Page =
-
 * **Where is the Plugin Settings page?**
 	The plugin settings page is located under `Settings > SEO Ultimate`.
-
-* **Why doesn't the settings exporter include all my data in an export?**
-	The settings export/import system is designed to facilitate moving settings between sites. It is NOT a replacement for keeping your database backed up. The settings exporter doesn't include data that is specific to your site. For example, logged 404 errors are not included because those 404 errors only apply to your site, not another site. Also, post/page titles/meta are not included because the site into which you import the file could have totally different posts/pages located under the same ID numbers.
-  
-	If you're moving a site to a different server or restoring a crashed site, you should do so with database backup/restore.
-
 
 = "SEO Settings" box =
 
@@ -555,6 +572,16 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 1.5 (January 23, 2010) =
+* Major under-the-hood changes and improvements
+* Feature: Added new {url_words} title format variable to Title Rewriter
+* Bugfix: Fixed broken link in the "SEO Settings" contextual help dropdown
+* Improvement: Module documentation now loaded directly from the readme file (eliminates duplication)
+* Improvement: Much more documentation now available from within the plugin
+* Improvement: Module Manager now only shows the "Silenced" option for applicable modules
+* Improvement: Cleaned root folder (now includes only the readme, screenshots, plugin file, POT file, and blank index.php)
+* Improvement: Reduced database usage when saving post meta
 
 = Version 1.4.1 (January 11, 2010) =
 * Compatibility: Meta Editor now supports the new Google Webmaster Tools verification code
