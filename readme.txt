@@ -575,6 +575,7 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 = Version 1.5.1 (January 23, 2010) =
 * Bugfix: Stopped the included Markdown library from "helpfully" functioning as a WordPress plugin
+* Bugfix: Fixed error that appeared above changelog notices
 
 = Version 1.5 (January 23, 2010) =
 * Major under-the-hood changes and improvements
