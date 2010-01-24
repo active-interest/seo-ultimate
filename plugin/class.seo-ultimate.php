@@ -1047,7 +1047,7 @@ class SEO_Ultimate {
 	 */
 	function plugin_update_info($plugin_data, $r) {
 		if ($r && $r->new_version && !is_plugin_active('changelogger/changelogger.php')) {
-			$info = suwp::load_webpage("http://www.seodesignsolutions.com/apis/su/update-info/?ov=".urlencode(SU_VERSION)."&nv=".urlencode($r->new_version));
+			$info = suwp::load_webpage("http://www.seodesignsolutions.com/apis/su/update-info/?ov=".urlencode(SU_VERSION)."&nv=".urlencode($r->new_version), SU_USER_AGENT);
 			if ($info) {
 				$info = strip_tags($info, "<br><a><b><i><span>");
 				$info = str_replace('backup your database', '<a href="'.suwp::get_backup_url().'">backup your database</a>', $info);
