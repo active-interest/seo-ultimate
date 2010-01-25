@@ -127,6 +127,7 @@ function su_esc_editable_html($str) {
  */
 function su_uninstall() {
 	global $seo_ultimate;
+	if (!$seo_ultimate) $seo_ultimate =& new SEO_Ultimate(__FILE__);
 	$seo_ultimate->uninstall();
 }
 
