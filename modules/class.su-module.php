@@ -450,7 +450,7 @@ class SU_Module {
 		$filenames = array(
 			  $this->get_settings_key()
 			, $this->get_module_key()
-			, $this->get_parent_module_key()
+			, $this->get_parent_module()
 		);
 		
 		foreach ($filenames as $filename) {
@@ -1122,7 +1122,7 @@ class SU_Module {
 		
 		if (is_array($values)) {
 			
-			register_setting($this->get_module_key(), $name, 'intval');
+			register_setting($this->get_module_key(), $name);
 			$name = su_esc_attr($name);
 			
 			foreach ($values as $value => $desc) {

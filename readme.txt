@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -572,6 +572,11 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 1.5.3 (January 27, 2010) =
+* Bugfix: Fixed "get_parent_module_key" fatal error that appeared under limited circumstances
+* Bugfix: Fixed "load_rss" fatal error that appeared under some circumstances
+* Bugfix: Fixed broken image in the Whitepapers module
 
 = Version 1.5.2 (January 25, 2010) =
 * Bugfix: Uninstallation now works when the plugin is deactivated
