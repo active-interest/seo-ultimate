@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.5.3
+Stable tag: 1.6
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -11,9 +11,9 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
+* Version 1.6 adds an All in One SEO Pack importer
 * Version 1.5 adds under-the-hood improvements and additional documentation
 * Version 1.4 adds the Internal Relevance Researcher module
-* Version 1.3 adds the More Link Customizer module
 
 = Features =
 
@@ -76,6 +76,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Reset all settings back to "factory defaults" if something goes wrong.
 
 * **Additional features**
+	* Import post meta from All in One SEO Pack
 	* Supports [WordPress plugin translation](http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/). POT file is included in the zip file.
 	* SEO Ultimate documentation is seamlessly integrated into the contextual help system of WordPress 2.7+ and is accessible via the dropdowns in the upper-right-hand corner of the admin screen. In-depth info, explanations, and FAQ are just a click away.
 	* Unlike certain other SEO plugins, SEO Ultimate sports a clean, simple, aesthetically-pleasing interface, with no ads or donation nags.
@@ -85,9 +86,9 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Uses WordPress plugin security features like nonces, etc.
 	
 * **Features Coming Soon**
-	* The ability to import data from the All in One SEO Pack.
-	* The ability to add title tags and meta tags to posts while using Windows Live Writer.
-	* Automated internal linking.
+	* Nofollow options
+	* Automatic XHTML validation checking
+	* Automated internal linking
 	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
 
 [**Download**](http://downloads.wordpress.org/plugin/seo-ultimate.zip) **your free copy of SEO Ultimate today.**
@@ -572,6 +573,9 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 1.6 (January 30, 2010) =
+* Feature: Added All in One SEO Pack importer module
 
 = Version 1.5.3 (January 27, 2010) =
 * Bugfix: Fixed "get_parent_module_key" fatal error that appeared under limited circumstances
