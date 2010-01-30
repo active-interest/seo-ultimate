@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 1.5 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 1.6 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,15 +6,16 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 1.5\n"
+"Project-Id-Version: SEO Ultimate 1.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-01-23 20:08+0000\n"
+"POT-Creation-Date: 2010-01-30 17:27+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: includes/jlfunctions/str.php:76 plugin/su-functions.php:77
 #, php-format
@@ -390,6 +391,128 @@ msgid ""
 "you can try recovering your edits from there.</p>\r\n"
 msgstr ""
 
+#: modules/import-aiosp/import-aiosp.php:13
+msgid "Import from All in One SEO Pack"
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:14
+msgid "AIOSP Import"
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:16
+msgid "All in One SEO Pack"
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:17
+msgid "Import post data (custom title tags and meta tags)."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:29
+msgid ""
+"Here you can move post fields from the All in One SEO Pack (AIOSP) plugin to "
+"SEO Ultimate. AIOSP&#8217;s data remains in your WordPress database after "
+"AIOSP is deactivated or even uninstalled. This means that as long as AIOSP "
+"was active on this blog sometime in the past, AIOSP does <em>not</em> need "
+"to be currently installed or activated for the import to take place."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:31
+msgid ""
+"The import tool can only move over data from AIOSP version 1.6 or above. If "
+"you use an older version of AIOSP, you should update to the latest version "
+"first and run AIOSP&#8217;s upgrade process."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:36
+msgid "Import Post Fields"
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:37
+msgid ""
+"Post fields store the SEO data for your posts/pages (i.e. your custom title "
+"tags, meta descriptions, and meta keywords). If you provided custom titles/"
+"descriptions/keywords to All in One SEO Pack, this importer can move that "
+"data over to SEO Ultimate."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:40
+msgid "Conflict Resolution Mode"
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:41
+msgid ""
+"What should the import tool do if it tries to move over a post&#8217;s AIOSP "
+"data, but different data already exists in the corresponding SEO Ultimate "
+"fields?"
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:43
+msgid "Skip that post and leave all data as-is (default)."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:44
+msgid "Delete the SEO Ultimate data and replace it with the AIOSP data."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:45
+msgid "Keep the SEO Ultimate data and delete the AIOSP data."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:48
+msgid "Deletion Preference"
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:49
+msgid ""
+"When the migration tool successfully copies a post&#8217;s AIOSP data over "
+"to SEO Ultimate, what should it do with the old AIOSP data?"
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:51
+msgid "Delete the AIOSP data."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:52
+msgid "Leave behind the duplicate AIOSP data (default)."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:64
+msgid "Deactivated All in One SEO Pack."
+msgstr ""
+
+#: modules/import-aiosp/import-aiosp.php:126
+#, php-format
+msgid "Imported a total of %d fields for one post/page/revision."
+msgid_plural "Imported a total of %1$d fields for %2$d posts/pages/revisions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: modules/import-aiosp/import-aiosp.php:132
+#, php-format
+msgid "Skipped one post with disabled AIOSP data."
+msgid_plural "Skipped %d posts with disabled AIOSP data."
+msgstr[0] ""
+msgstr[1] ""
+
+#: modules/import-aiosp/import-aiosp.php:138
+#, php-format
+msgid ""
+"Overwrote one SEO Ultimate field with AIOSP data, as instructed by the "
+"settings you chose."
+msgid_plural ""
+"Overwrote %d SEO Ultimate fields with AIOSP data, as instructed by the "
+"settings you chose."
+msgstr[0] ""
+msgstr[1] ""
+
+#: modules/import-aiosp/import-aiosp.php:144
+#, php-format
+msgid "Deleted one AIOSP field, as instructed by the settings you chose."
+msgid_plural ""
+"Deleted %d AIOSP fields, as instructed by the settings you chose."
+msgstr[0] ""
+msgstr[1] ""
+
 #: modules/linkbox/linkbox.php:13
 msgid "Linkbox Inserter"
 msgstr ""
@@ -637,7 +760,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.6)  #-#-#-#-#
 #. Author of an extension
 #: modules/sds-blog/sds-blog.php:43
 msgid "SEO Design Solutions"
@@ -663,7 +786,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.6)  #-#-#-#-#
 #. Plugin Name of an extension
 #: modules/settings/settings.php:17 plugin/class.seo-ultimate.php:759
 msgid "SEO Ultimate"
@@ -835,18 +958,6 @@ msgstr ""
 
 #: modules/titles/titles-posts.php:26
 msgid "Attachments"
-msgstr ""
-
-#: modules/titles/titles-taxonomies.php:17
-msgid "Taxonomy Title Editor"
-msgstr ""
-
-#: modules/titles/titles-taxonomies.php:24
-msgid "Categories"
-msgstr ""
-
-#: modules/titles/titles-taxonomies.php:25
-msgid "Post Tags"
 msgstr ""
 
 #: modules/titles/titles.php:13
