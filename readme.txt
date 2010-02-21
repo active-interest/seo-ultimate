@@ -77,7 +77,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	
 * **Additional features**
 	* Lets you import post meta from All in One SEO Pack
-	* Displays admin notices if blog privacy settings are configured to blog search engines
+	* Displays admin notices if blog privacy settings are configured to block search engines
 	* Supports [WordPress plugin translation](http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/). POT file is included in the zip file.
 	* SEO Ultimate documentation is seamlessly integrated into the contextual help system of WordPress 2.7+ and is accessible via the dropdowns in the upper-right-hand corner of the admin screen. In-depth info, explanations, and FAQ are just a click away.
 	* Unlike certain other SEO plugins, SEO Ultimate sports a clean, simple, aesthetically-pleasing interface, with no ads or donation nags.
@@ -576,7 +576,7 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 == Changelog ==
 
 = Version 1.7 (February 20, 2010) =
-* Feature: Displays admin notices if blog privacy settings are configured to blog search engines
+* Feature: Displays admin notices if blog privacy settings are configured to block search engines
 
 = Version 1.6 (January 30, 2010) =
 * Feature: Added All in One SEO Pack importer module
