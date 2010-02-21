@@ -1,9 +1,7 @@
 <?php
 /*
 JLFunctions String Class
-Copyright (c)2009 John Lamansky
-All rights reserved
-May not be redistributed or used without express written permission.
+Copyright (c)2009-2010 John Lamansky
 */
 
 class sustr {

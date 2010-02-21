@@ -202,6 +202,14 @@ class SEO_Ultimate {
 		//Hook to remove other plugins' notices from our admin pages
 		add_action('admin_head', array(&$this, 'remove_admin_notices'));
 		
+		if (!get_option('blog_public')) {
+			//Add admin-wide notice
+			add_action('admin_notices', array(&$this, 'private_blog_admin_notice'));
+			
+			//Remove duplicate Robots Meta notice
+			suwp::remove_instance_action('admin_footer', 'RobotsMeta_Admin', 'blog_public_warning');
+		}
+		
 		//When loading the admin menu, call on our menu constructor function.
 		//For future-proofing purposes, we specifically state the default priority of 10,
 		//since some modules set a priority of 9 with the specific intention of running
@@ -1067,6 +1075,18 @@ class SEO_Ultimate {
 			remove_action('admin_notices', 'aioseop_activation_notice');
 			remove_action('admin_notices', 'akismet_warning');
 		}
+	}
+	
+	/**
+	 * Outputs a WordPress-esque admin notice regarding the privacy setting.
+	 * The setting must be checked *before* this function is hooked into WordPress.
+	 * 
+	 * @since 1.7
+	 */
+	function private_blog_admin_notice() {
+		echo "\n<div class='error'><p>";
+		_e("<strong>SEO Ultimate Notice:</strong> Your blog is configured to block search engine spiders. To resolve this, <a href='options-privacy.php' target='_blank'>go to your Privacy settings</a> and set your blog visible to everyone.", 'seo-ultimate');
+		echo "</p></div>";
 	}
 	
 	

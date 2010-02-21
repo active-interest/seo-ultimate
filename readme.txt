@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.6
+Stable tag: 1.7
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -11,9 +11,9 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
+* Version 1.7 adds a blog privacy setting checker
 * Version 1.6 adds an All in One SEO Pack importer
 * Version 1.5 adds under-the-hood improvements and additional documentation
-* Version 1.4 adds the Internal Relevance Researcher module
 
 = Features =
 
@@ -74,9 +74,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
 	* Move SEO Ultimate settings between blogs using the export/import functionality.
 	* Reset all settings back to "factory defaults" if something goes wrong.
-
+	
 * **Additional features**
-	* Import post meta from All in One SEO Pack
+	* Lets you import post meta from All in One SEO Pack
+	* Displays admin notices if blog privacy settings are configured to blog search engines
 	* Supports [WordPress plugin translation](http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/). POT file is included in the zip file.
 	* SEO Ultimate documentation is seamlessly integrated into the contextual help system of WordPress 2.7+ and is accessible via the dropdowns in the upper-right-hand corner of the admin screen. In-depth info, explanations, and FAQ are just a click away.
 	* Unlike certain other SEO plugins, SEO Ultimate sports a clean, simple, aesthetically-pleasing interface, with no ads or donation nags.
@@ -573,6 +574,9 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 1.7 (February 20, 2010) =
+* Feature: Displays admin notices if blog privacy settings are configured to blog search engines
 
 = Version 1.6 (January 30, 2010) =
 * Feature: Added All in One SEO Pack importer module
