@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 1.6 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 1.7 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 1.6\n"
+"Project-Id-Version: SEO Ultimate 1.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-01-30 17:27+0000\n"
+"POT-Creation-Date: 2010-02-21 00:19+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: includes/jlfunctions/str.php:76 plugin/su-functions.php:77
+#: includes/jlfunctions/str.php:74 plugin/su-functions.php:77
 #, php-format
 msgid "%s and %s"
 msgstr ""
 
-#: includes/jlfunctions/str.php:79 plugin/su-functions.php:80
+#: includes/jlfunctions/str.php:77 plugin/su-functions.php:80
 msgid ", "
 msgstr ""
 
-#: includes/jlfunctions/str.php:80 plugin/su-functions.php:81
+#: includes/jlfunctions/str.php:78 plugin/su-functions.php:81
 #, php-format
 msgid "%s, and %s"
 msgstr ""
@@ -760,7 +760,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.6)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.7)  #-#-#-#-#
 #. Author of an extension
 #: modules/sds-blog/sds-blog.php:43
 msgid "SEO Design Solutions"
@@ -786,9 +786,9 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.6)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.7)  #-#-#-#-#
 #. Plugin Name of an extension
-#: modules/settings/settings.php:17 plugin/class.seo-ultimate.php:759
+#: modules/settings/settings.php:17 plugin/class.seo-ultimate.php:767
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -1091,30 +1091,38 @@ msgid ""
 "titles. "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:759
+#: plugin/class.seo-ultimate.php:767
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:975
+#: plugin/class.seo-ultimate.php:983
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:977
+#: plugin/class.seo-ultimate.php:985
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:979
+#: plugin/class.seo-ultimate.php:987
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1034
+#: plugin/class.seo-ultimate.php:1042
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1176
+#: plugin/class.seo-ultimate.php:1088
+msgid ""
+"<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
+"search engine spiders. To resolve this, <a href='options-privacy.php' "
+"target='_blank'>go to your Privacy settings</a> and set your blog visible to "
+"everyone."
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1196
 msgid "SEO Settings"
 msgstr ""
 
