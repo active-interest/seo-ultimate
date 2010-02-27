@@ -2,7 +2,7 @@
 /**
  * SEO Ultimate Plugin Settings Module
  * 
- * @version 2.3
+ * @version 2.3.1
  * @since 0.2
  */
 
@@ -19,9 +19,7 @@ class SU_Settings extends SU_Module {
 	
 	function get_default_settings() {
 		return array(
-			  'attribution_link' => true
-			, 'attribution_link_css' => true
-			, 'plugin_notices' => true
+			  'plugin_notices' => true
 			, 'log_hits' => true
 			, 'delete_old_hits_value' => 30
 		);

@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.7
+Stable tag: 1.7.1
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -574,6 +574,17 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 1.7.1 (February 27, 2010) =
+* Bugfix: Fixed conflict with Flexibility theme
+* Bugfix: Comment administration no longer alters SEO Ultimate menu bubble counters
+* Bugfix: SEO Ultimate menu icon is no longer accidentially added to other plugins' menus
+* Bugfix: Disabling visitor logging now disables all related code as well
+* Bugfix: Module Manager: Fixed invalid HTML IDs
+* Bugfix: Module Manager: Module titles are now consistent between enabled and disabled states
+* Bugfix: Module Manager: The "Silenced" option no longer disappears when all modules that support it are disabled
+* Bugfix: Module Manager: The "Plugin Settings" module link no longer breaks when re-enabling that module
+* Improvement: Added blank index.php files to additional plugin directories
 
 = Version 1.7 (February 20, 2010) =
 * Feature: Displays admin notices if blog privacy settings are configured to block search engines

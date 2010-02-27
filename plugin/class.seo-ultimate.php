@@ -227,9 +227,11 @@ class SEO_Ultimate {
 		add_action('in_plugin_update_message-'.plugin_basename($this->plugin_file_path), array(&$this, 'plugin_update_info'), 10, 2);
 		
 		//Log this visitor!
-		add_filter('redirect_canonical', array(&$this, 'log_redirect_canonical'));
-		add_filter('wp_redirect', array(&$this, 'log_redirect'), 10, 2);
-		add_filter('status_header', array(&$this, 'log_hit'), 10, 2);
+		if ($this->get_setting('log_hits', true, 'settings')) {
+			add_filter('redirect_canonical', array(&$this, 'log_redirect_canonical'));
+			add_filter('wp_redirect', array(&$this, 'log_redirect'), 10, 2);
+			add_filter('status_header', array(&$this, 'log_hit'), 10, 2);
+		}
 	}
 	
 	/**
@@ -834,7 +836,7 @@ class SEO_Ultimate {
 	
 		//If we have alerts that need a bubble, then return the bubble HTML.
 		if ($count > 0)
-			return "&nbsp;<span id='awaiting-mod' class='count-$count'><span class='pending-count'>".number_format_i18n($count)."</span></span>";
+			return "&nbsp;<span class='update-plugins count-$count'><span class='plugin-count'>".number_format_i18n($count)."</span></span>";
 		else
 			return '';
 	}
@@ -1125,7 +1127,7 @@ class SEO_Ultimate {
 		if (isset($this->modules[$key]))
 			$obj =& $this->modules[$key];
 		elseif (isset($this->disabled_modules[$key]))
-			$obj = $key;
+			$obj = $this->disabled_modules[$key];
 		else
 			return false;
 		

@@ -2,7 +2,7 @@
 /**
  * Module Manager Module
  * 
- * @version 1.2
+ * @version 1.2.1
  * @since 0.7
  */
 
@@ -70,10 +70,12 @@ STR;
 		}
 		
 		foreach ($this->plugin->disabled_modules as $key => $class) {
-		
-			if (call_user_func(array($class, 'is_independent_module')))
-				$modules[$key] = call_user_func(array($class, 'get_module_title'));
-		
+			
+			if (call_user_func(array($class, 'is_independent_module'))) {
+				$title = call_user_func(array($class, 'get_page_title'));
+				if (!$title) $title = call_user_func(array($class, 'get_module_title'));
+				$modules[$key] = $title;
+			}
 		}
 		
 		asort($modules);
@@ -91,7 +93,7 @@ STR;
 			
 			$currentstatus = $this->plugin->dbdata['modules'][$key];
 			
-			echo "\t\t<tr>\n\t\t\t<td class='module-status' id='$key-module-status'>\n";
+			echo "\t\t<tr>\n\t\t\t<td class='module-status' id='module-status-$key'>\n";
 			echo "\t\t\t\t<input type='hidden' name='su-$key-module-status' id='su-$key-module-status' value='$currentstatus' />\n";
 			
 			foreach ($statuses as $statuscode => $statuslabel) {
@@ -177,8 +179,8 @@ STR;
 ?>
 
 function set_module_status(key, input_value, a_obj) {
-	var td_id = key+"-module-status";
-	var input_id = "su-"+td_id;
+	var td_id = "module-status-"+key;
+	var input_id = "su-"+key+"-module-status";
 	
 	jQuery("td#"+td_id+" a").removeClass("current");
 	document.getElementById(input_id).value = input_value;

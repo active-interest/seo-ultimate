@@ -110,7 +110,7 @@ class SU_Module {
 	 * 
 	 * @return string
 	 */
-	function get_module_subtitle() { return $this->get_module_title(); }
+	function get_module_subtitle() { return isset($this) ? $this->get_module_title() : ''; }
 	
 	/**
 	 * The title of the admin page, which is displayed in the <title> and <h2> tags.
@@ -120,7 +120,7 @@ class SU_Module {
 	 * 
 	 * @return string The title shown on this module's admin page.
 	 */
-	function get_page_title() { return $this->get_module_title(); }
+	function get_page_title() { return isset($this) ? $this->get_module_title() : ''; }
 	
 	/**
 	 * The title that appears on the administration navigation menu.
@@ -129,7 +129,7 @@ class SU_Module {
 	 * 
 	 * @return string The title shown on the admin menu.
 	 */
-	function get_menu_title() { return $this->get_module_title(); }
+	function get_menu_title() { return isset($this) ? $this->get_module_title() : ''; }
 	
 	/**
 	 * Determines where this module's admin page should appear relative to those of other modules.
@@ -399,7 +399,7 @@ class SU_Module {
 		}
 		
 		$basepage = 'admin.php';
-		if (isset($this->plugin->modules[$key]) && sustr::endswith($custom_basepage = $this->plugin->modules[$key]->get_menu_parent(), '.php'))
+		if ($this->plugin->call_module_func($key, 'get_menu_parent', $custom_basepage) && sustr::endswith($custom_basepage, '.php'))
 			$basepage = $custom_basepage;
 		
 		return admin_url($basepage.'?page='.$this->plugin->key_to_hook($key).$anchor);
