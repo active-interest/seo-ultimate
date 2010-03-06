@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -93,6 +93,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
 
 [**Download**](http://downloads.wordpress.org/plugin/seo-ultimate.zip) **your free copy of SEO Ultimate today.**
+
+[youtube http://www.youtube.com/watch?v=IE_10_nwe0c]
 
 == Installation ==
 
@@ -574,6 +576,9 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 1.7.2 (March 6, 2010) =
+* Bugfix: Fixed blank-admin-area bug in WordPress 3.0 alpha
 
 = Version 1.7.1 (February 27, 2010) =
 * Bugfix: Fixed conflict with Flexibility theme

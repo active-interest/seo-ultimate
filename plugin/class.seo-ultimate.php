@@ -968,6 +968,9 @@ class SEO_Ultimate {
 	 */
 	function admin_help($text, $screen) {
 		
+		//The $screen parameter changed to an object in WordPress 3.0 alpha
+		if (is_object($screen)) $screen = $screen->id;
+		
 		//If we're on the post or page editor...
 		if (strcmp($screen, 'post') == 0 || strcmp($screen, 'page') == 0) {
 		
