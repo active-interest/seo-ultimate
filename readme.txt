@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink
+Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.7.3
+Stable tag: 1.8
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -11,9 +11,9 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
+* Version 1.8 adds basic auto-linking functionality
 * Version 1.7 adds a blog privacy setting checker
 * Version 1.6 adds an All in One SEO Pack importer
-* Version 1.5 adds under-the-hood improvements and additional documentation
 
 = Features =
 
@@ -53,7 +53,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Slug Optimizer**
 	* Increase in-URL keyword potency by removing "filler words" (like "the," "with," "and," etc.) from post/page URLs.
 
-* **Competition Researcher** -- NEW in Version 1.2
+* **Competition Researcher**
 	* Investigate multiple keywords or URLs with quick access to search engine tools. Competition Researcher does this without illicit scraping/automation methods.
 	* Find out how many webpages are competing for the keywords you specify.
 	* Choose to analyze the keyword relevance in competing webpages' titles, body content, URLs, or anchor text.
@@ -69,6 +69,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Internal Relevance Researcher** -- NEW in Version 1.4
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
+
+* **More Link Customizer** -- NEW in Version 1.8
+	* Automatically link phrases in your posts/pages to given URLs
+	* Use the power of anchor text to boost your internal ranking paradigm
 
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
