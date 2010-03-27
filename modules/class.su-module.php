@@ -962,6 +962,35 @@ class SU_Module {
 	}
 	
 	/**
+	 * Begins a "widefat" WordPress table.
+	 * 
+	 * @since 1.8
+	 * 
+	 * @param $headers Array of (CSS class => Internationalized column title)
+	 */
+	function admin_wftable_start($headers) {
+		echo <<<STR
+<table class="widefat" cellspacing="0">
+	<thead><tr>
+
+STR;
+		foreach ($headers as $class => $header) {
+			$class = is_numeric($class) ? '' : " class='$class'";
+			echo "\t\t<th scope='col'$class>$header</th>\n";
+		}
+		
+		echo <<<STR
+	</tr></thead>
+	<tbody>
+
+STR;
+	}
+	
+	function admin_wftable_end() {
+		echo "\t</tbody>\n</table>\n";
+	}
+	
+	/**
 	 * Outputs the HTML that begins an admin form group.
 	 * 
 	 * @since 1.5
