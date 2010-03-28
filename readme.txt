@@ -581,6 +581,12 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 1.8.1 (March 28, 2010) =
+* Bugfix: Fixed Deeplink Juggernaut error
+
+= Version 1.8 (March 28, 2010) =
+* Feature: Added Deeplink Juggernaut beta module
+
 = Version 1.7.3 (March 11, 2010) =
 * Bugfix: Fixed variable name conflict introduced in 1.7.1 that disabled WordPress's plugin/theme editors
 
