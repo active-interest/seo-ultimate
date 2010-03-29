@@ -70,7 +70,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **More Link Customizer** -- NEW in Version 1.8
+* **Deeplink Juggernaut** -- NEW in Version 1.8
 	* Automatically link phrases in your posts/pages to given URLs
 	* Use the power of anchor text to boost your internal ranking paradigm
 
