@@ -119,6 +119,12 @@ class sustr {
 		return preg_replace("/[^{$filter}]/", '', $str);
 	}
 	
+	function preg_escape($str, $delim='%') {
+		$chars = "\^.$|()[]*+?{},".$delim;
+		foreach (str_split($chars) as $char)
+			$str = str_replace($char, '\\'.$char, $str);
+		return $str;
+	}
 }
 
 ?>

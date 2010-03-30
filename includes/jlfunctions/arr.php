@@ -54,6 +54,11 @@ class suarr {
 		}
 		return false;
 	}
+	
+	function vklrsort(&$arr, $valuekey) {
+		$valuekey = sustr::preg_filter('A-Za-z0-9', $valuekey);
+		uksort($arr, create_function('$a,$b', 'return strlen($b["'.$valuekey.'"]) - strlen($a["'.$valuekey.'"]);'));
+	}
 }
 
 ?>
