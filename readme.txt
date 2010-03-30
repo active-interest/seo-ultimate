@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.8.2
+Stable tag: 1.8.3
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -580,6 +580,9 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 1.8.3 (March 30, 2010) =
+* Bugfix: Fixed bug that caused disabled attribution link to display under certain circumstances
 
 = Version 1.8.2 (March 29, 2010) =
 * Bugfix: Fixed Deeplink Juggernaut error
