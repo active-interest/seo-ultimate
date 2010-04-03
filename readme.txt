@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks
+Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.8.3
+Stable tag: 1.9
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -11,9 +11,9 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
+* Version 1.9 adds title tag editing for categories
 * Version 1.8 adds basic auto-linking functionality
 * Version 1.7 adds a blog privacy setting checker
-* Version 1.6 adds an All in One SEO Pack importer
 
 = Features =
 
@@ -21,7 +21,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Title Rewriter**
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag where they belong.
-	* Easily override the entire `<title>` tag contents for any individual post or Page on your blog.
+	* Easily override the entire `<title>` tag contents for any individual post, Page, or category on your blog.
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
@@ -581,16 +581,19 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 1.9 (April 3, 2010) =
+* Feature: Title Rewriter can now edit the title tags of category archives
+
 = Version 1.8.3 (March 30, 2010) =
 * Bugfix: Fixed bug that caused disabled attribution link to display under certain circumstances
 
 = Version 1.8.2 (March 29, 2010) =
-* Bugfix: Fixed Deeplink Juggernaut error
+* Bugfix: Fixed front-end Deeplink Juggernaut error
 
-= Version 1.8.1 (March 28, 2010) =
-* Bugfix: Fixed Deeplink Juggernaut error
+= Version 1.8.1 (March 27, 2010) =
+* Bugfix: Fixed back-end Deeplink Juggernaut error
 
-= Version 1.8 (March 28, 2010) =
+= Version 1.8 (March 27, 2010) =
 * Feature: Added Deeplink Juggernaut beta module
 
 = Version 1.7.3 (March 11, 2010) =
