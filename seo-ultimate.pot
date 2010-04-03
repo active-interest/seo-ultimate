@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 1.7 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 1.9 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 1.7\n"
+"Project-Id-Version: SEO Ultimate 1.9\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-02-21 00:19+0000\n"
+"POT-Creation-Date: 2010-04-03 13:03+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,6 +82,29 @@ msgstr ""
 msgid "Delete Log Entry"
 msgstr ""
 
+#: modules/autolinks/autolinks.php:13
+msgid "Deeplink Juggernaut"
+msgstr ""
+
+#: modules/autolinks/autolinks.php:14
+msgid "Deeplink Juggernaut (Beta)"
+msgstr ""
+
+#: modules/autolinks/autolinks.php:47
+msgid ""
+"The Deeplink Juggernaut can automatically link post/page anchor text to "
+"given URLs. This is a preview beta version. More functionality will be added "
+"in future releases of SEO Ultimate."
+msgstr ""
+
+#: modules/autolinks/autolinks.php:68
+msgid "Anchor Text"
+msgstr ""
+
+#: modules/autolinks/autolinks.php:69
+msgid "URL"
+msgstr ""
+
 #: modules/canonical/canonical.php:13
 msgid "Canonicalizer"
 msgstr ""
@@ -145,13 +168,13 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1172
+#: modules/class.su-module.php:1201
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:1187
+#: modules/class.su-module.php:1216
 msgid "Reset"
 msgstr ""
 
@@ -760,8 +783,8 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.7)  #-#-#-#-#
-#. Author of an extension
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.9)  #-#-#-#-#
+#. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:43
 msgid "SEO Design Solutions"
 msgstr ""
@@ -778,7 +801,7 @@ msgid ""
 "on an article&#8217s title to read it."
 msgstr ""
 
-#: modules/settings/settings.php:15 modules/settings/settings.php:96
+#: modules/settings/settings.php:15 modules/settings/settings.php:94
 msgid "Plugin Settings"
 msgstr ""
 
@@ -786,118 +809,118 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.7)  #-#-#-#-#
-#. Plugin Name of an extension
-#: modules/settings/settings.php:17 plugin/class.seo-ultimate.php:767
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 1.9)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: modules/settings/settings.php:17 plugin/class.seo-ultimate.php:769
 msgid "SEO Ultimate"
 msgstr ""
 
-#: modules/settings/settings.php:67
+#: modules/settings/settings.php:65
 msgid "Settings successfully imported."
 msgstr ""
 
-#: modules/settings/settings.php:69
+#: modules/settings/settings.php:67
 msgid ""
 "The uploaded file is not in the proper format. Settings could not be "
 "imported."
 msgstr ""
 
-#: modules/settings/settings.php:71
+#: modules/settings/settings.php:69
 msgid "The settings file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings/settings.php:74
+#: modules/settings/settings.php:72
 msgid ""
 "Settings could not be imported because no settings file was selected. Please "
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings/settings.php:82
+#: modules/settings/settings.php:80
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings/settings.php:98
+#: modules/settings/settings.php:96
 msgid "Enable attribution link"
 msgstr ""
 
-#: modules/settings/settings.php:99
+#: modules/settings/settings.php:97
 msgid "Enable attribution link CSS styling"
 msgstr ""
 
-#: modules/settings/settings.php:100
+#: modules/settings/settings.php:98
 msgid "Notify me about unnecessary active plugins"
 msgstr ""
 
-#: modules/settings/settings.php:102
+#: modules/settings/settings.php:100
 msgid "Insert comments around HTML code insertions"
 msgstr ""
 
-#: modules/settings/settings.php:103
+#: modules/settings/settings.php:101
 msgid "Allow modules to save visitor information to the database"
 msgstr ""
 
-#: modules/settings/settings.php:104
+#: modules/settings/settings.php:102
 #, php-format
 msgid "Delete logged visitor information after %d days"
 msgstr ""
 
-#: modules/settings/settings.php:109
+#: modules/settings/settings.php:107
 msgid "Manage Settings Data"
 msgstr ""
 
-#: modules/settings/settings.php:113
+#: modules/settings/settings.php:111
 msgid ""
 "This section allows you to export, import, and reset the settings of the "
 "plugin and all its modules."
 msgstr ""
 
-#: modules/settings/settings.php:115
+#: modules/settings/settings.php:113
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module, as well as the &#8220;Plugin Settings&#8221; section "
 "above. "
 msgstr ""
 
-#: modules/settings/settings.php:124
+#: modules/settings/settings.php:122
 msgid "Export:"
 msgstr ""
 
-#: modules/settings/settings.php:127
+#: modules/settings/settings.php:125
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings/settings.php:132
+#: modules/settings/settings.php:130
 msgid "Import:"
 msgstr ""
 
-#: modules/settings/settings.php:137
+#: modules/settings/settings.php:135
 msgid ""
 "Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings.php:138
+#: modules/settings/settings.php:136
 msgid "Import This Settings File"
 msgstr ""
 
-#: modules/settings/settings.php:145
+#: modules/settings/settings.php:143
 msgid "Reset:"
 msgstr ""
 
-#: modules/settings/settings.php:148
+#: modules/settings/settings.php:146
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings/settings.php:149
+#: modules/settings/settings.php:147
 msgid "Restore Default Settings"
 msgstr ""
 
-#: modules/settings/settings.php:165
+#: modules/settings/settings.php:163
 msgid "Import from Other Plugins"
 msgstr ""
 
-#: modules/settings/settings.php:167
+#: modules/settings/settings.php:165
 msgid ""
 "You can import settings and data from these plugins. Clicking a plugin&#8217;"
 "s name will take you to the importer page, where you can customize "
@@ -958,6 +981,18 @@ msgstr ""
 
 #: modules/titles/titles-posts.php:26
 msgid "Attachments"
+msgstr ""
+
+#: modules/titles/titles-taxonomies.php:17
+msgid "Taxonomy Title Editor"
+msgstr ""
+
+#: modules/titles/titles-taxonomies.php:24
+msgid "Categories"
+msgstr ""
+
+#: modules/titles/titles-taxonomies.php:25
+msgid "Post Tags"
 msgstr ""
 
 #: modules/titles/titles.php:13
@@ -1091,30 +1126,30 @@ msgid ""
 "titles. "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:767
+#: plugin/class.seo-ultimate.php:769
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:983
+#: plugin/class.seo-ultimate.php:988
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:985
+#: plugin/class.seo-ultimate.php:990
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:987
+#: plugin/class.seo-ultimate.php:992
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1042
+#: plugin/class.seo-ultimate.php:1047
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1088
+#: plugin/class.seo-ultimate.php:1093
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href='options-privacy.php' "
@@ -1122,7 +1157,7 @@ msgid ""
 "everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1196
+#: plugin/class.seo-ultimate.php:1201
 msgid "SEO Settings"
 msgstr ""
 
@@ -1159,16 +1194,16 @@ msgstr ""
 msgid "%1$s<br />%2$s"
 msgstr ""
 
-#. Plugin URI of an extension
+#. Plugin URI of the plugin/theme
 msgid "http://www.seodesignsolutions.com/wordpress-seo/"
 msgstr ""
 
-#. Description of an extension
+#. Description of the plugin/theme
 msgid ""
 "This all-in-one SEO plugin gives you control over titles, noindex, meta "
 "data, slugs, canonical tags, \"more\" links, 404 error tracking, and more."
 msgstr ""
 
-#. Author URI of an extension
+#. Author URI of the plugin/theme
 msgid "http://www.seodesignsolutions.com/"
 msgstr ""
