@@ -71,8 +71,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
 * **Deeplink Juggernaut** -- NEW in Version 1.8
-	* Automatically link phrases in your posts/pages to given URLs
-	* Use the power of anchor text to boost your internal ranking paradigm
+	* Automatically link phrases in your posts/pages to given URLs.
+	* Use the power of anchor text to boost your internal ranking paradigm.
 
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
@@ -80,8 +80,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Reset all settings back to "factory defaults" if something goes wrong.
 	
 * **Additional features**
-	* Lets you import post meta from All in One SEO Pack
-	* Displays admin notices if blog privacy settings are configured to block search engines
+	* Lets you import post meta from All in One SEO Pack.
+	* Displays admin notices if blog privacy settings are configured to block search engines.
 	* Supports [WordPress plugin translation](http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/). POT file is included in the zip file.
 	* SEO Ultimate documentation is seamlessly integrated into the contextual help system of WordPress 2.7+ and is accessible via the dropdowns in the upper-right-hand corner of the admin screen. In-depth info, explanations, and FAQ are just a click away.
 	* Unlike certain other SEO plugins, SEO Ultimate sports a clean, simple, aesthetically-pleasing interface, with no ads or donation nags.
@@ -91,9 +91,9 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Uses WordPress plugin security features like nonces, etc.
 	
 * **Features Coming Soon**
-	* Nofollow options
 	* Automatic XHTML validation checking
-	* Automated internal linking
+	* Nofollow options
+	* Title tag editing for attachments and tag archives
 	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
 
 [**Download**](http://downloads.wordpress.org/plugin/seo-ultimate.zip) **your free copy of SEO Ultimate today.**
