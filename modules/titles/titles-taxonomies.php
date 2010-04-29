@@ -2,7 +2,7 @@
 /**
  * Taxonomy Title Editor Module
  * 
- * @version 1.0
+ * @version 1.1
  * @since 1.9
  */
 
@@ -18,7 +18,7 @@ class SU_TitlesTaxonomies extends SU_Module {
 	
 	function get_admin_page_tabs() {
 		
-		$type_keys = array('category');
+		$type_keys = array('category', 'post_tag');
 		
 		$type_labels = array(
 			  'category' => __('Categories')

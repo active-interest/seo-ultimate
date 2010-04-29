@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.9
+Stable tag: 2.0
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -11,9 +11,9 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
+* Version 2.0 adds title tag editing for post tags
 * Version 1.9 adds title tag editing for categories
 * Version 1.8 adds basic auto-linking functionality
-* Version 1.7 adds a blog privacy setting checker
 
 = Features =
 
@@ -21,7 +21,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Title Rewriter**
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag where they belong.
-	* Easily override the entire `<title>` tag contents for any individual post, Page, or category on your blog.
+	* Easily override the entire `<title>` tag contents for any individual post, Page, category, or post tag on your blog.
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
@@ -580,6 +580,9 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 2.0 (April 29, 2010) =
+* Feature: Title Rewriter can now edit the title tags of post tag archives
 
 = Version 1.9 (April 3, 2010) =
 * Feature: Title Rewriter can now edit the title tags of category archives

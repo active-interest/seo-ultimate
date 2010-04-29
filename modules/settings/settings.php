@@ -2,7 +2,7 @@
 /**
  * SEO Ultimate Plugin Settings Module
  * 
- * @version 2.3.2
+ * @version 2.3.3
  * @since 0.2
  */
 
@@ -19,7 +19,8 @@ class SU_Settings extends SU_Module {
 	
 	function get_default_settings() {
 		return array(
-			  'plugin_notices' => true
+			  'attribution_link' => false
+			, 'plugin_notices' => true
 			, 'log_hits' => true
 			, 'delete_old_hits_value' => 30
 		);
@@ -93,7 +94,7 @@ class SU_Settings extends SU_Module {
 		//Plugin Settings
 		$this->admin_form_start(__("Plugin Settings", 'seo-ultimate'));
 		$this->checkboxes(array(
-			  'attribution_link' => __("Enable attribution link", 'seo-ultimate')
+			  'attribution_link' => __("Enable nofollow&#8217;d attribution link", 'seo-ultimate')
 			, 'attribution_link_css' => __("Enable attribution link CSS styling", 'seo-ultimate')
 			, 'plugin_notices' => __("Notify me about unnecessary active plugins", 'seo-ultimate')
 			//, 'debug_mode' => __("Enable debug-mode logging", 'seo-ultimate')
@@ -181,7 +182,7 @@ class SU_Settings extends SU_Module {
 	}
 	
 	function meta_link() {
-		echo "<li><a href='http://www.seodesignsolutions.com/' title='Search engine optimization technology by SEO Design Solutions'>SEO</a></li>\n";
+		echo "<li><a href='http://www.seodesignsolutions.com/' title='Search engine optimization technology by SEO Design Solutions' rel='nofollow'>SEO</a></li>\n";
 		$this->wp_meta_called = true;
 	}
 	
@@ -192,7 +193,7 @@ class SU_Settings extends SU_Module {
 				$astyle = " style='color: inherit;'"; 
 			} else $pstyle = $astyle = '';
 			
-			echo "\n<p id='suattr'$pstyle>Search engine optimization by <a href='http://www.seodesignsolutions.com/'$astyle>SEO Design Solutions</a></a></p>\n";
+			echo "\n<p id='suattr'$pstyle>Search engine optimization by <a href='http://www.seodesignsolutions.com/' rel='nofollow'$astyle>SEO Design Solutions</a></a></p>\n";
 		}
 	}
 
