@@ -17,7 +17,7 @@ Text Domain: seo-ultimate
  */
 
 /*
-Copyright (c) 2009 John Lamansky
+Copyright (c) 2009-2010 John Lamansky
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
