@@ -40,12 +40,28 @@ class SU_Module {
 	var $module_url;
 	
 	/**
-	 * Stores the URL to the directory containing the module file's URL. Has trailing slash.
+	 * Stores the URL to the directory containing the module file. Has trailing slash.
 	 * 
 	 * @since 1.5
 	 * @var string
 	 */
 	var $module_dir_url;
+	
+	/**
+	 * Stores the module file's URL relative to the plugin directory.
+	 * 
+	 * @since 2.1
+	 * @var string
+	 */
+	var $module_rel_url;
+	
+	/**
+	 * Stores the URL to the directory containing the module file, relative to the plugin directory. Has trailing slash.
+	 * 
+	 * @since 2.1
+	 * @var string
+	 */
+	var $module_dir_rel_url;
 	
 	/**
 	 * Stores the module's plugin page hook (the full hook with seo_page_ prefix).
@@ -159,7 +175,13 @@ class SU_Module {
 	 * 
 	 * @return int The number that should be displayed.
 	 */
-	function get_menu_count() { return 0; }
+	function get_menu_count() {
+		$count = 0;
+		foreach ($this->modules as $key => $module) {
+			$count += $this->modules[$key]->get_menu_count();
+		}
+		return $count;
+	}
 	
 	/**
 	 * Whether or not the module will ever return a non-zero menu count.
@@ -276,6 +298,13 @@ class SU_Module {
 	function activate() { }
 	
 	/**
+	 * Called when SEO Ultimate has just been upgraded to a new version.
+	 * 
+	 * @since 2.1
+	 */
+	function upgrade() { }
+	
+	/**
 	 * Returns an array of default settings. The defaults will be saved in the database if the settings don't exist.
 	 * 
 	 * @since 0.1
@@ -294,6 +323,17 @@ class SU_Module {
 	}
 	
 	/**
+	 * Returns a list of possible admin table columns that should be registered in "Screen Options"
+	 * 
+	 * @since 2.1
+	 * 
+	 * @return array
+	 */
+	function get_admin_table_columns() {
+		return array();
+	}
+	
+	/**
 	 * Returns an array of custom contextual help dropdowns; internationalized titles are the array keys and contents are the array values.
 	 * 
 	 * @since 1.5
@@ -309,20 +349,22 @@ class SU_Module {
 		$paths = array($this->plugin->get_translated_readme_path(), $this->plugin->get_readme_path());
 		
 		foreach ($paths as $path) {
-			$readme = file_get_contents($path);
-			$sections = sumd::get_sections(sumd::get_section($readme, $this->get_module_title()));
-			if (count($sections)) {
-				
-				if (sustr::has($path, '/translations/') && preg_match("|\nStable tag: ([a-zA-Z0-9. ]+)|i", $readme, $matches)) {
-					$version = $matches[1];
-					if (version_compare($version, SU_VERSION, '<'))
-						$sections = suarr::aprintf(false, '%s<p><em>'
-							. __('(Note: This translated documentation was designed for an older version of SEO Ultimate and may be outdated.)', 'seo-ultimate')
-							. '</em></p>'
-						, $sections);
+			if (is_readable($path)) {
+				$readme = file_get_contents($path);
+				$sections = sumd::get_sections(sumd::get_section($readme, $this->get_module_title()));
+				if (count($sections)) {
+					
+					if (sustr::has($path, '/translations/') && preg_match("|\nStable tag: ([a-zA-Z0-9. ]+)|i", $readme, $matches)) {
+						$version = $matches[1];
+						if (version_compare($version, SU_VERSION, '<'))
+							$sections = suarr::aprintf(false, '%s<p><em>'
+								. __('(Note: This translated documentation was designed for an older version of SEO Ultimate and may be outdated.)', 'seo-ultimate')
+								. '</em></p>'
+							, $sections);
+					}
+					
+					return $sections;
 				}
-				
-				return $sections;
 			}
 		}
 		
@@ -374,6 +416,17 @@ class SU_Module {
 			return $this->module_key;
 		else
 			die(str_rot13('Zbqhyr ybnqrq sebz na rkgreany fbhepr!'));
+	}
+	
+	/**
+	 * Returns the key of the parent module if there is one; if not, the key of the current module.
+	 * 
+	 * @since 2.1
+	 * 
+	 * @return string
+	 */
+	function get_module_or_parent_key() {
+		return strlen($p = $this->get_parent_module()) ? $p : $this->get_module_key();
 	}
 	
 	/**
@@ -433,7 +486,7 @@ class SU_Module {
 	function is_module_admin_page() {
 		if (is_admin()) {
 			global $plugin_page;
-			if (strcmp($plugin_page, $this->plugin->key_to_hook($this->get_module_key())) == 0) return true;
+			if (strcmp($plugin_page, $this->plugin->key_to_hook($this->get_module_or_parent_key())) == 0) return true;
 		}
 		
 		return false;
@@ -496,9 +549,14 @@ class SU_Module {
 		foreach ($this->modules as $key => $x_module) {
 			$module =& $this->modules[$key];
 			$child_tabs = $module->get_admin_page_tabs();
+			
 			if (empty($child_tabs))
 				$child_tabs[$module->get_module_subtitle()] = array(&$module, 'admin_page_contents');
-			$tabs = array_merge($tabs, $child_tabs);
+			
+			foreach ($child_tabs as $title => $function) {
+				if (!is_array($function)) $function = array(&$module, $function);
+				$tabs[$title] = $function;
+			}
 		}
 		
 		return $tabs;
@@ -524,7 +582,7 @@ class SU_Module {
 		if (count($tabs = $this->get_children_admin_page_tabs())) {
 			$this->admin_form_start(false, false);
 			$this->admin_page_tabs($tabs);
-			$this->admin_form_end(false, false);
+			$this->admin_form_end(null, false);
 		}
 	}
 	
@@ -646,6 +704,37 @@ class SU_Module {
 	}
 	
 	/**
+	 * Gets a setting's value, deletes the setting, and returns the value.
+	 * 
+	 * @since 2.1
+	 * @uses get_settings_key()
+	 * 
+	 * @param string $key The name of the setting to retrieve/delete.
+	 * @param mixed $default What should be returned if the setting does not exist. Optional.
+	 * @param string|null $module The module to which the setting belongs. Defaults to the current module's settings key. Optional.
+	 * @return mixed The value of the setting, or the $default variable.
+	 */
+	function flush_setting($key, $default=null, $module=null) {
+		$setting = $this->get_setting($key, $default, $module); //We need to retrieve the setting before deleting it
+		$this->delete_setting($key, $module);
+		return $setting;
+	}
+	
+	/**
+	 * Deletes a module setting.
+	 * 
+	 * @since 2.1
+	 * @uses get_settings_key()
+	 * 
+	 * @param string $key The name of the setting to delete.
+	 * @param string|null $module The module to which the setting belongs. Defaults to the current module's settings key. Optional.
+	 */
+	function delete_setting($key, $module=null) {
+		if (!$module) $module = $this->get_settings_key();
+		unset($this->plugin->dbdata['settings'][$module][$key]);
+	}
+	
+	/**
 	 * Updates the value of more than one setting at a time.
 	 * 
 	 * @since 0.1
@@ -684,9 +773,11 @@ class SU_Module {
 	 * @uses admin_page_end()
 	 */
 	function admin_page() {
-		$this->admin_page_start();
-		$this->admin_page_contents();
-		$this->admin_page_end();
+		if (!apply_filters('su_custom_admin_page-'.$this->get_module_key(), false)) {
+			$this->admin_page_start();
+			$this->admin_page_contents();
+			$this->admin_page_end();
+		}
 	}
 	
 	/**
@@ -723,14 +814,14 @@ class SU_Module {
 	}
 	
 	/**
-	 * Outputs an administration page subheader (an <h3> tag).
+	 * Outputs an administration page subheader (an <h4> tag).
 	 * 
 	 * @since 0.1
 	 * 
 	 * @param string $title The text to output.
 	 */
 	function admin_subheader($title) {
-		echo "<h3 class='su-subheader'>$title</h3>\n";
+		echo "<h4 class='su-subheader'>$title</h4>\n";
 	}
 	
 	/**
@@ -774,7 +865,7 @@ class SU_Module {
 				
 				if ($c > 1) {
 					$id = preg_replace('/[^a-z0-9]/', '', strtolower($title));
-					echo "<fieldset id='$id'>\n<h3>$title</h3>\n";
+					echo "<fieldset id='su-$id'>\n<h3>$title</h3>\n<div class='su-tab-contents'>\n";
 				}
 				
 				if ($table) echo "<table class='form-table'>\n";
@@ -801,7 +892,7 @@ class SU_Module {
 				if ($table) echo "</table>";
 				
 				if ($c > 1)
-					echo "</fieldset>\n";
+					echo "</div>\n</fieldset>\n";
 			}
 			
 			if ($c > 1) {
@@ -836,7 +927,7 @@ class SU_Module {
 	 * Adds the module's custom screen meta, if present.
 	 * 
 	 * @since 0.9
-	 * @uses admin_dropdowns()
+	 * @uses get_admin_dropdowns()
 	 */
 	function screen_meta_filter($screen_meta) {
 		
@@ -849,7 +940,7 @@ class SU_Module {
 				$content  = "<div class='su-help'>\n";
 				
 				$header = sprintf(_c('%s %s|Dropdown Title', 'seo-ultimate'), $this->get_module_title(), $label);
-				$header = sustr::unique_words($header);
+				$header = sustr::remove_double_words($header);
 				
 				$text = wptexturize(Markdown($text));
 				$text = str_replace('<a ', '<a target="_blank" ', $text);
@@ -905,11 +996,11 @@ class SU_Module {
 	 * @param mixed $header The text of the subheader that should go right before the form. Optional.
 	 * @param boolean $table Whether or not to start a form table.
 	 */
-	function admin_form_start($header = false, $table = true) {
-		$hook = $this->plugin->key_to_hook($this->get_module_key());
+	function admin_form_start($header = false, $table = true, $form = true) {
+		$hook = $this->plugin->key_to_hook($this->get_module_or_parent_key());
 		if ($header) $this->admin_subheader($header);
 		
-		if (!$this->get_parent_module()) {
+		if ($form) {
 			if ($this->is_action('update')) $this->print_message('success', __('Settings updated.', 'seo-ultimate'));
 			echo "<form id='su-admin-form' method='post' action='?page=$hook'>\n";
 			settings_fields($hook);
@@ -929,11 +1020,11 @@ class SU_Module {
 	 * @param string|false $button The label of the submit button.
 	 * @param boolean $table Whether or not a form table should be ended.
 	 */
-	function admin_form_end($button = false, $table = true) {
-		if (!$button) $button = __('Save Changes'); //This string is used in normal WP, so we don't need a textdomain
+	function admin_form_end($button = null, $table = true) {
+		if ($button === null) $button = __('Save Changes'); //This string is used in normal WP, so we don't need a textdomain
 		if ($table) echo "</table>\n";
 		
-		if (!$this->get_parent_module()) {
+		if ($button !== false) {
 ?>
 <p class="submit">
 	<input type="submit" class="button-primary" value="<?php echo $button ?>" />
@@ -968,24 +1059,69 @@ class SU_Module {
 	 * 
 	 * @param $headers Array of (CSS class => Internationalized column title)
 	 */
-	function admin_wftable_start($headers) {
-		echo <<<STR
-<table class="widefat" cellspacing="0">
-	<thead><tr>
-
-STR;
-		foreach ($headers as $class => $header) {
-			$class = is_numeric($class) ? '' : " class='$class'";
-			echo "\t\t<th scope='col'$class>$header</th>\n";
+	function admin_wftable_start($headers = false) {
+		echo "\n<table class='widefat' cellspacing='0'>\n";
+		if ($headers)
+			$this->table_column_headers($headers);
+		else {
+			echo "\t<thead><tr>\n";
+			print_column_headers($this->plugin_page_hook);
+			echo "\t</tr></thead>\n";
+			echo "\t<tfoot><tr>\n";
+			print_column_headers($this->plugin_page_hook);
+			echo "\t</tr></tfoot>\n";
 		}
-		
-		echo <<<STR
-	</tr></thead>
-	<tbody>
-
-STR;
+		echo "\t<tbody>\n";
 	}
 	
+	/**
+	 * Outputs a <tr> of <th scope="col"></th> tags based on an array of column headers.
+	 * 
+	 * @since 2.1
+	 * 
+	 * @param $headers Array of (CSS class => Internationalized column title)
+	 */
+	function table_column_headers($headers) {
+		echo "\t<thead><tr>\n";
+		$mk = $this->get_module_key();
+		foreach ($headers as $class => $header) {
+			$class = is_numeric($class) ? '' : " class='su-$mk-$class'";
+			echo "\t\t<th scope='col'$class>$header</th>\n";
+		}
+		echo "\t</tr></thead>\n";
+	}
+	
+	/**
+	 * Outputs <td> tags based on an array of cell data.
+	 * 
+	 * @since 2.1
+	 * 
+	 * @param $headers Array of (CSS class => Cell data)
+	 */
+	function table_cells($cells) {
+		
+		if (count($this->get_admin_table_columns())) {
+			$columns = get_column_headers($this->plugin_page_hook);
+			$hidden = get_hidden_columns($this->plugin_page_hook);
+			foreach ( $columns as $column_name => $column_display_name ) {
+				$class = "class=\"$column_name column-$column_name\"";
+				$style = in_array($column_name, $hidden) ? ' style="display:none;"' : '';
+				echo "\t\t<td $class$style>".$cells[$column_name]."</td>\n";
+			}
+		} elseif (is_array($cells) && count($cells)) {
+			$mk = $this->get_module_key();
+			foreach ($cells as $class => $content) {
+				$class = is_numeric($class) ? '' : " class='su-$mk-$class'";
+				echo "\t\t<td$class>$content</td>\n";
+			}
+		}
+	}
+	
+	/**
+	 * Ends a "widefat" WordPress table.
+	 * 
+	 * @since 1.8
+	 */
 	function admin_wftable_end() {
 		echo "\t</tbody>\n</table>\n";
 	}
@@ -1154,14 +1290,22 @@ STR;
 			register_setting($this->get_module_key(), $name);
 			$name = su_esc_attr($name);
 			
+			$first = true;
 			foreach ($values as $value => $desc) {
 				
 				$value = su_esc_attr($value);
 				$id = "{$name}_{$value}";
 				
-				echo "<label for='$id'><input name='$name' id='$id' type='radio' value='$value'";
-				if (strcmp($this->get_setting($name), $value) == 0) echo " checked='checked'";
-				echo " /> $desc</label><br />\n";
+				$current = (strcmp($this->get_setting($name), $value) == 0);
+				$class = $first ? 'first' : ''; $first = false;
+				if ($current) $class .= ' current-setting';
+				$class = trim($class);
+				if ($class) $class = " class='$class'";
+				echo "<label for='$id'$class><input name='$name' id='$id' type='radio' value='$value'";
+				if ($current) echo " checked='checked'";
+				echo " /> $desc";
+				if (!sustr::has($desc, '</label>')) echo '</label><br />';
+				echo "\n";
 			}
 		}
 		
@@ -1310,7 +1454,7 @@ STR;
 		return (
 					(
 						   ( strcasecmp($_GET['page'], $this->plugin->key_to_hook($this->get_module_key())) == 0 ) //Is $this module being shown?
-						|| ( strlen($this->get_parent_module()) && strcasecmp($_GET['page'], $this->plugin->key_to_hook($this->get_parent_module())) == 0)
+						|| ( strlen($this->get_parent_module()) && strcasecmp($_GET['page'], $this->plugin->key_to_hook($this->get_parent_module())) == 0) //Is the parent module being shown?
 					)
 					&& ($_GET['action'] == $action || $_POST['action'] == $action) //Is this $action being executed?
 					&& $this->nonce_validates($action, $object) //Is the nonce valid?
@@ -1375,7 +1519,7 @@ STR;
 		$action = urlencode($action);
 		if ($object) $objectqs = '&object='.urlencode($object); else $objectqs = '';
 		
-		$hook = $this->plugin->key_to_hook($this->get_module_key());
+		$hook = $this->plugin->key_to_hook($this->get_module_or_parent_key());
 		
 		//We don't need to escape ampersands since wp_nonce_url will do that for us
 		return wp_nonce_url("?page=$hook&action=$action$objectqs",
@@ -1429,6 +1573,16 @@ STR;
 		}
 		
 		$this->messages = array();
+	}
+	
+	/**
+	 * Prints a mini-style message.
+	 * 
+	 * @since 2.1
+	 */
+	function print_mini_message($type, $message) {
+		$type = su_esc_attr($type);
+		echo "<div class='su-status su-$type'>$message</div>";
 	}
 	
 	/********** ADMIN POST META BOX FUNCTIONS **********/
@@ -1492,12 +1646,12 @@ STR;
 			$title = str_replace(' ', '&nbsp;', $title);
 			
 			$html .= "<tr class='textbox'>\n<th scope='row'><label for='$id'>$title</label></th>\n"
-					."<td><input name='$id' id='$id' type='text' value='$value' class='regular-text' /></td>\n</tr>\n";
+					."<td><input name='$id' id='$id' type='text' value='$value' class='regular-text' tabindex='2' /></td>\n</tr>\n";
 		}
 		
 		return $html;
 	}
-
+	
 	/**
 	 * Generates the HTML for a single post meta textbox.
 	 * 
@@ -1533,7 +1687,7 @@ STR;
 				$checked = ($this->get_postmeta($name) == 1);
 				$name = "_su_".su_esc_attr($name);
 				
-				$html .= "<label for='$name'><input name='$name' id='$name' type='checkbox' value='1'";
+				$html .= "<label for='$name'><input name='$name' id='$name' type='checkbox' tabindex='2' value='1'";
 				if ($checked) $html .= " checked='checked'";
 				$html .= " /> $desc</label><br />\n";
 			}

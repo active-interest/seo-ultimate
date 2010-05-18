@@ -2,7 +2,6 @@
 /**
  * AISOP Import Module
  * 
- * @version 1.0
  * @since 1.6
  */
 
@@ -148,27 +147,5 @@ class SU_ImportAIOSP extends SU_ImportModule {
 	}
 }
 
-} elseif (strcmp($_GET['css'], 'admin') == 0) {
-	header('Content-type: text/css');
-?>
-
-#su-import-aiosp tr.su-admin-form-checkbox td,
-#su-import-aiosp tr.su-admin-form-textblock td {
-	border-top: 3px solid #ccc;
-	padding-top: 1em;
-}
-
-#su-import-aiosp table.form-table {
-	border-bottom: 3px solid #ccc;
-}
-
-#su-import-aiosp td table tr.su-admin-form-checkbox td,
-#su-import-aiosp td table tr.su-admin-form-textblock td {
-	border-top: 0 none;
-	padding-top: 0;
-	padding-bottom: 0;
-}
-
-<?php
 }
 ?>

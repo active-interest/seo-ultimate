@@ -2,7 +2,6 @@
 /**
  * Deeplink Juggernaut Module
  * 
- * @version 0.1
  * @since 1.8
  */
 
@@ -76,19 +75,9 @@ class SU_Autolinks extends SU_Module {
 		}
 		
 		$this->admin_wftable_end();
-		$this->admin_form_end(false, false);
+		$this->admin_form_end(null, false);
 	}
 }
 
-} elseif ($_GET['css'] == 'admin') {
-	header('Content-type: text/css');
-?>
-
-#su-autolinks table.widefat,
-#su-autolinks table.widefat input {
-	width: 100%;
-}
-
-<?php
 }
 ?>

@@ -2,7 +2,6 @@
 /**
  * File Editor Module
  * 
- * @version 1.0.3
  * @since 0.8
  */
 
@@ -133,37 +132,6 @@ class SU_Files extends SU_Module {
 				admin_url('admin.php?page='.$this->plugin->key_to_hook($this->get_module_key()))
 			));
 		}
-	}
-	
-	function admin_dropdowns() {
-		return array(
-			  'overview' => __('Overview', 'seo-ultimate')
-			, 'faq' => __('FAQ', 'seo-ultimate')
-		);
-	}
-	
-	function admin_dropdown_overview() {
-		return '<p>'.__('The File Editor module lets you edit system files that are of SEO value. Edit the files as desired, then click Save Changes. If you create a custom robots.txt file, be sure to enable it with the checkbox.', 'seo-ultimate').'</p>';
-	}
-	
-	function admin_dropdown_faq() {
-		return __("
-<h6>Why do I get a &#8220;500 Server Error&#8221; after using the File Editor?</h6>
-
-<p>You may have inserted code into your .htaccess file that your web server can't understand. As the File Editor warns, incorrectly editing your .htaccess file can disable your entire website in this way. To restore your site, you'll need to use an FTP client (or your web host's File Manager) to edit or rename your .htaccess file. If you need help, please contact your web host.</p>
-
-<h6>Will my robots.txt edits remain if I disable the File Editor?</h6>
-
-<p>No. On a WordPress blog, the robots.txt file is dynamically generated just like your posts and Pages. If you disable the File Editor module or the entire SEO Ultimate plugin, the File Editor won't be able to insert your custom code into the robots.txt file anymore.</p>
-
-<h6>Will my .htaccess edits remain if I disable the File Editor?</h6>
-
-<p>Yes. The .htaccess file is static. Your edits will remain even if you disable SEO Ultimate or its File Editor module.</p>
-
-<h6>Where did my .htaccess edits go?</h6>
-
-<p>The .htaccess file is static, so SEO Ultimate doesn't have total control over it. It's possible that WordPress, another plugin, or other software may overwrite your .htaccess file. If you have a backup of your blog's files, you can try recovering your edits from there.</p>
-", 'seo-ultimate');
 	}
 }
 

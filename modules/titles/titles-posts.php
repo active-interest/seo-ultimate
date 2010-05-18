@@ -2,7 +2,6 @@
 /**
  * Post Title Editor Module
  * 
- * @version 1.0
  * @since 1.5
  */
 

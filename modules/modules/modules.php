@@ -2,7 +2,6 @@
 /**
  * Module Manager Module
  * 
- * @version 1.2.1
  * @since 0.7
  */
 
@@ -135,58 +134,9 @@ STR;
 		
 		echo "\t</tbody>\n</table>\n";
 		
-		$this->admin_form_end(false, false);
+		$this->admin_form_end(null, false);
 	}
 }
 
-} elseif ($_GET['css'] == 'admin') {
-	header('Content-type: text/css');
-?>
-
-#su-modules td.module-status {
-	padding-right: 2em;
-}
-
-#su-modules td.module-status input {
-	display: none;
-}
-
-#su-modules td.module-status a {
-	float: left;
-	display: block;
-	border: 1px solid white;
-	padding: 0.3em 0.5em;
-	color: #999;
-	margin-right: 0.2em;
-}
-
-#su-modules td.module-status a:hover {
-	border-color: #ccc #666 #666 #ccc;
-}
-
-#su-modules td.module-status a.current {
-	border-color: #666 #ccc #ccc #666;
-}
-
-#su-modules td.module-status .status-10 a.current { color: green; }
-#su-modules td.module-status .status-5  a.current { color: black; }
-#su-modules td.module-status .status-0 a.current  { color: darkorange; }
-#su-modules td.module-status .status-n10 a.current{ color: red; }
-
-<?php
-} elseif ($_GET['js'] == 'admin') {
-	header('Content-type: text/javascript');
-?>
-
-function set_module_status(key, input_value, a_obj) {
-	var td_id = "module-status-"+key;
-	var input_id = "su-"+key+"-module-status";
-	
-	jQuery("td#"+td_id+" a").removeClass("current");
-	document.getElementById(input_id).value = input_value;
-	a_obj.className += " current";
-}
-
-<?php
 }
 ?>

@@ -2,7 +2,6 @@
 /**
  * SEO Design Solutions Whitepapers Module
  * 
- * @version 1.0.6
  * @since 0.1
  */
 
@@ -23,52 +22,62 @@ class SU_SdsBlog extends SU_Module {
 		$this->cron('load_blog_rss', 'hourly');
 	}
 	
+	function upgrade() {
+		$this->delete_setting('rssitems');
+	}
+	
 	function get_default_settings() {
 		//Don't notify about new items when the plugin is just installed
 		return array('lastread' => time());
 	}
 	
 	function filter_export_array($settings) {
-		unset($settings[$this->get_module_key()]['rssitems']);
+		unset($settings[$this->get_module_key()]['rss_item_times']);
 		return $settings;
 	}
 	
 	function load_blog_rss() {
 		$rss = suwp::load_rss('http://feeds.seodesignsolutions.com/SeoDesignSolutionsBlog', SU_USER_AGENT);
-		if ($rss) $this->update_setting('rssitems', $rss->items);
+		if ($rss && $rss->items) {
+			$times = array();
+			foreach ($rss->items as $item) $times[] = $this->get_feed_item_date($item);
+			$this->update_setting('rss_item_times', $times);
+		}
 	}
 	
 	function admin_page_contents() {
-		global $seo_ultimate;
-		echo "<a href='http://www.seodesignsolutions.com'><img src='{$seo_ultimate->plugin_dir_url}plugin/images/sds-logo.png' alt='".__("SEO Design Solutions", 'seo-ultimate')."' id='sds-logo' /></a>";
-		echo "<p>".__("Search engine optimization articles from the company behind the SEO Ultimate plugin.", 'seo-ultimate')."</p>\n";
+		echo "<a href='http://www.seodesignsolutions.com'><img src='{$this->plugin->plugin_dir_url}plugin/images/sds-logo.png' alt='".__("SEO Design Solutions", 'seo-ultimate')."' id='sds-logo' /></a>";
+		echo "<p>".__("The search engine optimization articles below are loaded from the website of SEO Design Solutions, the company behind the SEO Ultimate plugin. Click on an article&#8217;s title to read it.", 'seo-ultimate')."</p>\n";
 		echo "<div class='rss-widget'>\n";
 		
 		add_filter('http_headers_useragent', 'su_get_user_agent');
+		add_filter('esc_html', array(&$this, 'truncate_at_ellipsis'));
 		wp_widget_rss_output( 'http://feeds.seodesignsolutions.com/SeoDesignSolutionsBlog', array('show_summary' => 1, 'show_date' => 1) );
+		remove_filter('esc_html', array(&$this, 'truncate_at_ellipsis'));
 		remove_filter('http_headers_useragent', 'su_get_user_agent');
 		
 		echo "</div>\n";
 		$this->update_setting('lastread', time());
 	}
 	
+	function truncate_at_ellipsis($content) {
+		$end = '[...]';
+		if (sustr::has($content, $end)) {
+			$content = sustr::truncate_at($content, $end);
+			$content = sustr::rtrim_substr($content, $end);
+		}
+		return sustr::endwith($content, '[&hellip;]');
+	}
+	
 	function get_unread_count() {
 		
-		$rss = $this->get_setting('rssitems');
-		
-		if ($rss) {
+		if (count($times = $this->get_setting('rss_item_times', array()))) {
 			$lastread = $this->get_setting('lastread');
-		
-			$new = 0;
-			foreach ($rss as $item) {
-				if ($this->get_feed_item_date($item) > $lastread) $new++;
-			}
-			
+			$new = 0; foreach ($times as $time) if ($time > $lastread) $new++;
 			return $new;
-			
-		} else {
-			return 0;
 		}
+		
+		return 0;
 	}
 	
 	function get_feed_item_date($item) {
@@ -90,55 +99,7 @@ class SU_SdsBlog extends SU_Module {
 		//Return a UNIX timestamp.
 		if ($date) return $date; else return 0;
 	}
-	
-	function admin_help() {
-		return "<p>".__("The articles below are loaded from the SEO Design Solutions website. Click on an article&#8217s title to read it.", 'seo-ultimate')."</p>";
-	}
-	
 }
 
-} elseif ($_GET['css'] == 'admin') {
-	header('Content-type: text/css');
-?>
-
-#su-sds-blog .rss-widget {
-	background-color: white;
-	border: 1px solid black;
-	padding: 2em;
-	margin: 2em 0;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-}
-
-#su-sds-blog a.rsswidget {
-	font-size: 13px;
-	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
-	line-height: 1.7em;
-}
-
-#su-sds-blog li a:visited {
-	color: purple;
-}
-
-#su-sds-blog span.rss-date {
-	margin-left: 3px;
-}
-
-#su-sds-blog li {
-	padding-bottom: 1em;
-}
-
-#su-sds-blog img#sds-logo {
-	float: right;
-	border: 1px solid black;
-	padding: 1em;
-	background-color: white;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-}
-
-<?php
 }
 ?>

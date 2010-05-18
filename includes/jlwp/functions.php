@@ -115,4 +115,5 @@ class suwp {
 		return false;
 	}
 }
+
 ?>

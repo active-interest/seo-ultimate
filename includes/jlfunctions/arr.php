@@ -59,6 +59,13 @@ class suarr {
 		$valuekey = sustr::preg_filter('A-Za-z0-9', $valuekey);
 		uksort($arr, create_function('$a,$b', 'return strlen($b["'.$valuekey.'"]) - strlen($a["'.$valuekey.'"]);'));
 	}
+	
+	function flatten_values($arr, $value_key = 0) {
+		if (!is_array($arr) || !count($arr)) return array();
+		$newarr = array();
+		foreach ($arr as $key => $array_value)  $newarr[$key] = $array_value[$value_key];
+		return $newarr;
+	}
 }
 
 ?>

@@ -2,7 +2,6 @@
 /**
  * Linkbox Inserter Module
  * 
- * @version 1.0.4
  * @since 0.6
  */
 

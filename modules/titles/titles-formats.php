@@ -1,4 +1,10 @@
 <?php
+/**
+ * Title Rewriter Formats Module
+ * 
+ * @since 1.5
+ */
+
 class SU_TitlesFormats extends SU_Module {
 
 	function get_parent_module() { return 'titles'; }

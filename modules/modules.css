@@ -4,7 +4,12 @@ div.su-module {
 	padding-bottom: 1em;
 }
 
-div.su-module h3.su-subheader {
+div.su-module h2 {
+	margin-bottom: 0.5em;
+}
+
+div.su-module h4.su-subheader {
+	font-size: 1.17em;
 	margin-top: 3em;
 	padding-top: 1em;
 	border-top: 3px solid #ccc;
@@ -25,8 +30,10 @@ div.su-module table.widefat td {
 	padding-right: 2em;
 }
 
-div.su-module table.widefat tr.new-hit td {
-	background-color: #DFFFE3;
+div.su-module table.widefat td ul {
+	list-style-type: disc;
+	margin-left: 1em;
+	padding-left: 1em;
 }
 
 div.su-module .form-table .regular-text {
@@ -102,7 +109,7 @@ div.su-module .su-tabs ul.ui-tabs-nav li a {
 	display: block;
 	float: left;
 	line-height: 28px;
-	padding: 1px 13px 0;
+	padding: 1px 10px 0;
 	position: relative;
 	text-decoration: none;
 }
@@ -118,7 +125,15 @@ div.su-module .su-tabs ul.ui-tabs-nav li.ui-tabs-selected a {
 	border-bottom-color: #f9f9f9;
 	color: #333333;
 	font-weight: normal;
-	padding: 0 12px;
+	padding: 0 9px;
+}
+
+div.su-module .su-tabs fieldset {
+	clear: left;
+}
+
+div.su-module .su-tabs .su-tab-contents {
+	margin-top: 1em;
 }
 
 /* IMPORT MODULES */

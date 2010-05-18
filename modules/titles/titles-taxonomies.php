@@ -2,7 +2,6 @@
 /**
  * Taxonomy Title Editor Module
  * 
- * @version 1.1
  * @since 1.9
  */
 

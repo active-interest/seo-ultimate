@@ -2,7 +2,6 @@
 /**
  * Slug Optimizer Module
  * 
- * @version 1.0.3
  * @since 0.9
  */
 

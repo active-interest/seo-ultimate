@@ -7,7 +7,7 @@ function su_init_tabs()
 {
 	/* if this is not the SEO Ultimate admin page, quit */
 	if (!jQuery("#su-tabset").length) return;		
-
+	
 	/* init markup for tabs */
 	jQuery('#su-tabset').prepend("<ul><\/ul>");
 	jQuery('#su-tabset > fieldset').each(function(i)
@@ -29,8 +29,8 @@ function su_init_tabs()
 		default:
 			jQuery("#su-tabset > ul").tabs(); 
 	}
-
-	/* handler for openeing the last tab after submit (compability version) */
+	
+	/* handler for opening the last tab after submit (compability version) */
 	jQuery('#su-tabset ul a').click(function(i){
 		var form   = jQuery('#su-admin-form');
 		var action = form.attr("action").split('#', 1) + jQuery(this).attr('href');

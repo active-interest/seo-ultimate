@@ -2,14 +2,13 @@
 /**
  * Meta Editor Settings Module
  * 
- * @version 1.0
  * @since 1.5
  */
 
 if (class_exists('SU_Module')) {
 
 class SU_MetaSettings extends SU_Module {
-
+	
 	function get_parent_module() { return 'meta'; }
 	function is_independent_module() { return false; }
 	

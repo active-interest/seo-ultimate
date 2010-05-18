@@ -2,7 +2,6 @@
 /**
  * Internal Relevance Researcher Module
  * 
- * @version 1.0.1
  * @since 1.4
  */
 

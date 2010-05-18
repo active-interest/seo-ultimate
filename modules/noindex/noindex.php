@@ -2,14 +2,13 @@
 /**
  * Noindex Manager Module
  * 
- * @version 1.1.2
  * @since 0.1
  */
 
 if (class_exists('SU_Module')) {
 
 class SU_Noindex extends SU_Module {
-
+	
 	function get_module_title() { return __('Noindex Manager', 'seo-ultimate'); }
 	
 	function init() {

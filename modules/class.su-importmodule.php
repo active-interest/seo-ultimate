@@ -3,7 +3,6 @@
  * Import Module
  * 
  * @abstract
- * @version 1.0
  * @since 1.5
  */
 
@@ -33,8 +32,8 @@ class SU_ImportModule extends SU_Module {
 		$this->admin_page_end();
 	}
 	
-	function admin_form_end($button = false, $table = true) {
-		if (!$button) $button = __("Import Now", 'seo-ultimate');
+	function admin_form_end($button = null, $table = true) {
+		if ($button === null) $button = __("Import Now", 'seo-ultimate');
 		parent::admin_form_end($button, $table);
 		
 		$this->print_message('warning', sprintf(__('The import cannot be undone. It is your responsibility to <a href="%s" target="_blank">backup your database</a> before proceeding!', 'seo-ultimate'), suwp::get_backup_url()));
@@ -66,10 +65,8 @@ class SU_ImportModule extends SU_Module {
 	}
 	
 	function import_status($type, $message) {
-		//echo "<tr><td class='image'><img src='{$this->import_status_image}' alt='' /></td><td class='message'>$message</td></tr>";
-		$type = su_esc_attr($type);
 		if (strcmp($type, 'error') == 0) $this->error = true;
-		echo "<div class='su-status su-$type'>$message</div>";
+		$this->print_mini_message($type, $message);
 	}
 	
 	function import_option($module, $key, $option) {

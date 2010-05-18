@@ -2,7 +2,6 @@
 /**
  * Meta Editor Module
  * 
- * @version 1.0.7
  * @since 0.3
  */
 
@@ -13,8 +12,6 @@ class SU_Meta extends SU_Module {
 	function get_module_title() { return __('Meta Editor', 'seo-ultimate'); }
 		
 	function init() {
-		$this->admin_page_tabs_init();
-		
 		add_filter('su_meta_robots', array(&$this, 'meta_robots'));
 		add_action('su_head', array(&$this, 'head_tag_output'));
 		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 20);
@@ -98,7 +95,7 @@ class SU_Meta extends SU_Module {
 		
 		$fields['20|description|keywords'] =
 			  "<tr class='textarea'>\n<th scope='row'><label for='$id'>".__("Description:", 'seo-ultimate')."</label></th>\n"
-			. "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='60' rows='3'"
+			. "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='60' rows='3' tabindex='2'"
 			. " onkeyup=\"javascript:document.getElementById('su_meta_description_charcount').innerHTML = document.getElementById('_su_description').value.length\">$value</textarea>"
 			. "<br />".sprintf(__("You&#8217;ve entered %s characters. Most search engines use up to 160.", 'seo-ultimate'), "<strong id='su_meta_description_charcount'>".strlen($value)."</strong>")
 			. "</td>\n</tr>\n"

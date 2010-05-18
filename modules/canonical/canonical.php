@@ -2,7 +2,6 @@
 /**
  * Canonicalizer Module
  * 
- * @version 1.1.2
  * @since 0.3
  */
 

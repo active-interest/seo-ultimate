@@ -2,7 +2,6 @@
 /**
  * Title Rewriter Module
  * 
- * @version 2.0.2
  * @since 0.1
  */
 
@@ -16,7 +15,6 @@ class SU_Titles extends SU_Module {
 		add_action('template_redirect', array(&$this, 'before_header'), 0);
 		add_action('wp_head', array(&$this, 'after_header'), 1000);
 		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 10);
-		$this->admin_page_tabs_init();
 	}
 	
 	function get_default_settings() {
@@ -59,11 +57,6 @@ class SU_Titles extends SU_Module {
 		echo "<table class='form-table'>\n";
 		$this->textboxes($this->get_supported_settings(), $this->get_default_settings());
 		echo "</table>";
-	}
-	
-	function postmeta_fields($fields) {
-		$fields['10|title'] = $this->get_postmeta_textbox('title', __('Title Tag:', 'seo-ultimate'));
-		return $fields;
 	}
 	
 	function get_title_format() {
@@ -420,36 +413,17 @@ STR;
 		return $tabs;
 	}
 	
+	function postmeta_fields($fields) {
+		$fields['10|title'] = $this->get_postmeta_textbox('title', __('Title Tag:', 'seo-ultimate'));
+		return $fields;
+	}
+	
 	function postmeta_help($help) {
 		$help[] = __("<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; tag. The title appears in visitors' title bars and in search engine result titles. ".
 			"If this box is left blank, then the <a href='admin.php?page=su-titles' target='_blank'>default post/page titles</a> are used.", 'seo-ultimate');
 		return $help;
 	}
-	
-	//Imports title tag data from other plugins
-	function import_op_titles($value) {
-		if (!strlen($value))
-			return $this->import_postmeta(array(
-				SU_AIOSP_PATH => array('_aioseop_title', 'title')
-			));
-		
-		return $value;
-	}
-
 }
 
-} elseif ($_GET['css'] == 'admin') {
-	header('Content-type: text/css');
-?>
-
-#su-titles table.widefat {
-	width: auto;
-}
-
-#su-titles table.widefat td input.regular-text {
-	width: 400px;
-}
-
-<?php
 }
 ?>

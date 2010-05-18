@@ -28,6 +28,13 @@ class sustr {
 	   return ( substr( $str, strlen( $str ) - strlen( $sub ) ) === $sub );
 	}
 	
+	function endwith( $str, $end ) {
+		if (!sustr::endswith($str, $end))
+			return $str.$end;
+		else
+			return $str;
+	}
+	
 	function has($str, $sub) {
 		return (strpos($str, $sub) !== false);
 	}
@@ -44,6 +51,13 @@ class sustr {
 			return substr( $str, 0, $maxlen - strlen($truncate) ) . $truncate;
 		
 		return $str;
+	}
+	
+	function truncate_at( $str, $end ) {
+		if ($endpos = strpos($str, $end))
+			return substr($str, 0, $endpos);
+		else
+			return $str;
 	}
 	
 	/**
@@ -99,6 +113,16 @@ class sustr {
 		return $str;
 	}
 	
+	function rtrim_substr($str, $totrim) {
+		for ($i = strlen($totrim); $i > 0; $i--) {
+			$totrimsub = substr($totrim, 0, $i);
+			if (sustr::endswith($str, $totrimsub))
+				return sustr::rtrim_str($str, $totrimsub);
+		}
+		
+		return $str;
+	}
+	
 	function batch_replace($search, $replace, $subjects) {
 		$subjects = array_unique((array)$subjects);
 		$results = array();
@@ -112,6 +136,12 @@ class sustr {
 		$str = explode(' ', $str);
 		$str = array_unique($str);
 		$str = implode(' ', $str);
+		return $str;
+	}
+	
+	function remove_double_words($str) {
+		$words = explode(' ', $str);
+		foreach ($words as $word) $str = str_replace("$word $word", $word, $str);
 		return $str;
 	}
 	

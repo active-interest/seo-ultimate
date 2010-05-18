@@ -2,7 +2,6 @@
 /**
  * More Link Customizer Module
  * 
- * @version 1.0.1
  * @since 1.3
  */
 

@@ -2,7 +2,6 @@
 /**
  * Competition Researcher Module
  * 
- * @version 1.0.2
  * @since 1.2
  */
 
@@ -77,19 +76,5 @@ class SU_CompetitionQueries extends SU_Module {
 	}
 }
 
-} elseif (strcmp($_GET['js'], 'admin') == 0) {
-	header('Content-type: text/javascript');
-?>
-
-function su_competition_queries_show_step2(type, showminimal) {
-	document.getElementById('methodtype').innerHTML=type;
-
-	if (showminimal)
-		document.getElementById('minimal-checkbox').style.visibility='visible';
-	else
-		document.getElementById('minimal-checkbox').style.visibility='hidden';
-}
-
-<?php
 }
 ?>

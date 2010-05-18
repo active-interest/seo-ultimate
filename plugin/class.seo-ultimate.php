@@ -81,6 +81,14 @@ class SEO_Ultimate {
 	var $plugin_dir_url;
 	
 	/**
+	 * The plugin file relative to the /wp-content/plugins/ directory.
+	 * Should be "seo-ultimate/seo-ultimate.php"
+	 * 
+	 * @since 2.1
+	 */
+	var $plugin_basename = '';
+	
+	/**
 	 * The array to be inserted into the hits table.
 	 * 
 	 * @since 0.9
@@ -133,8 +141,8 @@ class SEO_Ultimate {
 		$this->upgrade_to_08();
 		
 		//Save
-		add_action('shutdown', array(&$this, 'save_dbdata'));
 		add_action('shutdown', array(&$this, 'save_hit'));
+		add_action('shutdown', array(&$this, 'save_dbdata'));
 		
 		/********** CLASS CONSTRUCTION **********/
 		
@@ -181,9 +189,6 @@ class SEO_Ultimate {
 		//If we're deactivating the plugin, then call the deactivation function
 		register_deactivation_hook($this->plugin_file_path, array(&$this, 'deactivate'));
 		
-		//If we're uninstalling the plugin, then call the uninstallation function
-		register_uninstall_hook($this->plugin_file_path, 'su_uninstall');
-		
 		
 		/********** ACTION & FILTER HOOKS **********/
 		
@@ -193,44 +198,55 @@ class SEO_Ultimate {
 		//Hook to output all <head> code
 		add_action('wp_head', array(&$this, 'template_head'), 1);
 		
-		//Hook to include JavaScript and CSS
-		add_action('admin_head', array(&$this, 'admin_includes'));
-		
-		//Hook to add plugin notice actions
-		add_action('admin_head', array(&$this, 'plugin_page_notices'));
-		
-		//Hook to remove other plugins' notices from our admin pages
-		add_action('admin_head', array(&$this, 'remove_admin_notices'));
-		
-		if (!get_option('blog_public')) {
-			//Add admin-wide notice
-			add_action('admin_notices', array(&$this, 'private_blog_admin_notice'));
-			
-			//Remove duplicate Robots Meta notice
-			suwp::remove_instance_action('admin_footer', 'RobotsMeta_Admin', 'blog_public_warning');
-		}
-		
-		//When loading the admin menu, call on our menu constructor function.
-		//For future-proofing purposes, we specifically state the default priority of 10,
-		//since some modules set a priority of 9 with the specific intention of running
-		//before this main plugin's hook.
-		add_action('admin_menu', array(&$this, 'add_menus'), 10);
-		
-		//Hook to customize contextual help
-		add_filter('contextual_help', array(&$this, 'admin_help'), 10, 2);
-		
-		//Postmeta box hooks
-		add_action('admin_menu', array(&$this, 'add_postmeta_box'));
-		add_action('save_post',  array(&$this, 'save_postmeta_box'), 10, 2);
-		
-		//Display info on new versions
-		add_action('in_plugin_update_message-'.plugin_basename($this->plugin_file_path), array(&$this, 'plugin_update_info'), 10, 2);
-		
 		//Log this visitor!
 		if ($this->get_setting('log_hits', true, 'settings')) {
 			add_filter('redirect_canonical', array(&$this, 'log_redirect_canonical'));
 			add_filter('wp_redirect', array(&$this, 'log_redirect'), 10, 2);
 			add_filter('status_header', array(&$this, 'log_hit'), 10, 2);
+		}
+		
+		//Admin-only hooks
+		if (is_admin()) {
+			
+			//Hook to include JavaScript and CSS
+			add_action('admin_enqueue_scripts', array(&$this, 'admin_includes'));
+			
+			//Hook to add plugin notice actions
+			add_action('admin_head', array(&$this, 'plugin_page_notices'));
+			
+			//Hook to remove other plugins' notices from our admin pages
+			add_action('admin_head', array(&$this, 'remove_admin_notices'));
+			
+			if (!get_option('blog_public')) {
+				//Add admin-wide notice
+				add_action('admin_notices', array(&$this, 'private_blog_admin_notice'));
+				
+				//Remove duplicate Robots Meta notice
+				suwp::remove_instance_action('admin_footer', 'RobotsMeta_Admin', 'blog_public_warning');
+			}
+			
+			//When loading the admin menu, call on our menu constructor function.
+			//For future-proofing purposes, we specifically state the default priority of 10,
+			//since some modules set a priority of 9 with the specific intention of running
+			//before this main plugin's hook.
+			add_action('admin_menu', array(&$this, 'add_menus'), 10);
+			
+			//Hook to customize contextual help
+			add_filter('contextual_help', array(&$this, 'admin_help'), 10, 2);
+			
+			//Postmeta box hooks
+			add_action('admin_menu', array(&$this, 'add_postmeta_box'));
+			add_action('save_post',  array(&$this, 'save_postmeta_box'), 10, 2);
+			
+			//Display info on new versions
+			add_action("in_plugin_update_message-{$this->plugin_basename}", array(&$this, 'plugin_update_info'), 10, 2);
+			add_filter('transient_update_plugins', array(&$this, 'add_plugin_upgrade_notice'));
+			
+			//Add plugin action links
+			add_filter("plugin_action_links_{$this->plugin_basename}", array(&$this, 'plugin_action_links'));
+			
+			//Add module links to plugin listing
+			add_filter('plugin_row_meta', array(&$this, 'plugin_row_meta_filter'), 10, 2);
 		}
 	}
 	
@@ -255,9 +271,6 @@ class SEO_Ultimate {
 	 */
 	function install() {
 		
-		//Add the database table
-		$this->db_setup();
-		
 		//Load settings file if present
 		if (!isset($this->dbdata['settings']) && is_readable($settingsfile = $this->plugin_dir_path.'settings.txt')) {
 			$import = base64_decode(file_get_contents($settingsfile));
@@ -273,9 +286,7 @@ class SEO_Ultimate {
 	 * @param string $oldversion The version that was last installed.
 	 */
 	function upgrade($oldversion) {
-	
-		//Upgrade database schemas if needed
-		$this->db_setup();
+		define('SU_UPGRADE', true);
 	}
 	
 	/**
@@ -348,9 +359,6 @@ class SEO_Ultimate {
 		
 		//Stop the database data from being re-saved
 		remove_action('shutdown', array(&$this, 'save_dbdata'));
-		
-		//Delete the hits table
-		mysql_query("DROP TABLE IF EXISTS ".$this->get_table_name('hits'));
 	}
 	
 	
@@ -370,11 +378,11 @@ class SEO_Ultimate {
 	function load_plugin_data($plugin_path) {
 		
 		//Load plugin path/URL information
-		$filename = 'seo-ultimate.php';
-		$this->plugin_dir_path  = trailingslashit(dirname(trailingslashit(WP_PLUGIN_DIR).plugin_basename($plugin_path)));
-		$this->plugin_file_path = $this->plugin_dir_path.$filename;
-		$this->plugin_dir_url   = trailingslashit(plugins_url(dirname(plugin_basename($plugin_path))));
-		$this->plugin_file_url  = $this->plugin_dir_url.$filename;
+		$this->plugin_basename  = plugin_basename($plugin_path);
+		$this->plugin_dir_path  = trailingslashit(dirname(trailingslashit(WP_PLUGIN_DIR).$this->plugin_basename));
+		$this->plugin_file_path = trailingslashit(WP_PLUGIN_DIR).$this->plugin_basename;
+		$this->plugin_dir_url   = trailingslashit(plugins_url(dirname($this->plugin_basename)));
+		$this->plugin_file_url  = trailingslashit(plugins_url($this->plugin_basename));
 	}
 	
 	/**
@@ -457,7 +465,9 @@ class SEO_Ultimate {
 								$this->modules[$module]->module_key = $module;
 								
 								//Tell the module what its URL is
-								$this->modules[$module]->module_dir_url = $mdirurl = $this->plugin_dir_url."modules/$folder/";
+								$this->modules[$module]->module_dir_rel_url = $mdirrelurl = "modules/$folder/";
+								$this->modules[$module]->module_rel_url = $mdirrelurl . $file;
+								$this->modules[$module]->module_dir_url = $mdirurl = $this->plugin_dir_url . $mdirrelurl;
 								$this->modules[$module]->module_url		= $mdirurl . $file;
 								
 								/*
@@ -508,9 +518,9 @@ class SEO_Ultimate {
 		$this->remove_cron_jobs();
 		
 		//Tell the modules what their plugin page hooks are
-		foreach ($this->modules as $key => $module) 
+		foreach ($this->modules as $key => $module)
 			$this->modules[$key]->plugin_page_hook =
-				$this->modules[$key]->get_menu_parent_hook().'_page_'.$this->key_to_hook($key);
+				$this->modules[$key]->get_menu_parent_hook().'_page_'.$this->key_to_hook($this->modules[$key]->get_module_or_parent_key());
 		
 		if (!$this->module_exists($this->default_menu_module)) {
 			foreach ($this->modules as $key => $module) {
@@ -545,53 +555,12 @@ class SEO_Ultimate {
 		
 		//Only run init tasks after all other init functions are completed for all modules
 		foreach ($this->modules as $key => $module) {
+			if (count($this->modules[$key]->get_children_admin_page_tabs()))
+				$this->modules[$key]->admin_page_tabs_init();
+			if (defined('SU_UPGRADE'))
+				$this->modules[$key]->upgrade();
 			$this->modules[$key]->init();
 		}
-	}
-	
-	
-	/********** DATABASE FUNCTIONS **********/
-	
-	/**
-	 * Will create or update the database table.
-	 * 
-	 * @since 0.1
-	 * @uses get_table_name()
-	 */
-	function db_setup() {
-	
-		$sql = "CREATE TABLE " . $this->get_table_name('hits') . " (
-			id BIGINT NOT NULL AUTO_INCREMENT,
-			time INT NOT NULL ,
-			ip_address VARCHAR(255) NOT NULL,
-			user_agent VARCHAR(255) NOT NULL,
-			url TEXT NOT NULL,
-			redirect_url TEXT NOT NULL,
-			redirect_trigger VARCHAR(255) NOT NULL,
-			referer TEXT NOT NULL,
-			status_code SMALLINT(3) NOT NULL,
-			is_new BOOL NOT NULL,
-			PRIMARY KEY  (id)
-		);";
-		
-		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-		dbDelta($sql);
-	}
-	
-	/**
-	 * Returns a full, prefixed MySQL table name.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $shortname The non-prefixed table name.
-	 * @return string The full, prefixed table name.
-	 */
-	function get_table_name($shortname) {
-		global $wpdb;
-		if ($shortname == 'hits')
-			return $wpdb->prefix . "sds_hits";
-		else
-			return '';
 	}
 	
 	/**
@@ -650,9 +619,9 @@ class SEO_Ultimate {
 	 * @uses $hit
 	 */
 	function save_hit() {
-		global $wpdb;
-		if (!empty($this->hit) && $this->get_setting('log_hits', true, 'settings') && apply_filters('su_save_hit', false, $this->hit))
-			$wpdb->insert($this->get_table_name('hits'), $this->hit);
+		
+		if (!empty($this->hit) && $this->get_setting('log_hits', true, 'settings'))
+			do_action('su_save_hit', $this->hit);
 	}
 	
 	/**
@@ -671,14 +640,9 @@ class SEO_Ultimate {
 		
 		//Only log hits from non-logged-in users
 		if (!is_user_logged_in()) {
-			global $wpdb;
 			
 			//Get the current URL
 			$url = suurl::current();
-			
-			//Have we seen this URL before?
-			$table = $this->get_table_name('hits');
-			$is_new = (count($wpdb->get_results($wpdb->prepare("SELECT url FROM $table WHERE url = %s AND is_new = 0", $url))) == 0);
 			
 			//Put it all into an array
 			$data = array(
@@ -690,7 +654,6 @@ class SEO_Ultimate {
 				, 'redirect_trigger' => $this->hit_redirect_trigger
 				, 'referer' => $_SERVER['HTTP_REFERER']
 				, 'status_code' => $status_code
-				, 'is_new' => $is_new
 			);
 			
 			//We don't want to overwrite a redirect URL if it's already been logged
@@ -779,7 +742,7 @@ class SEO_Ultimate {
 			//Show a module on the menu only if it provides a menu title and it doesn't have a parent module
 			if ($module->get_menu_title() && !$module->get_parent_module()) {
 				
-				//If the module is hidden, put the module under a non-existant menu parent
+				//If the module is hidden, put the module under a non-existent menu parent
 				//(this will let the module's admin page be loaded, but it won't show up on the menu)
 				if ($this->dbdata['modules'][$key] > SU_MODULE_HIDDEN || !count($this->dbdata['modules']))
 					$parent = $module->get_menu_parent();
@@ -931,29 +894,87 @@ class SEO_Ultimate {
 	function admin_includes() {
 		
 		//Global CSS
-		echo "\n<link rel='stylesheet' type='text/css' href='".$this->plugin_dir_url."plugin/global.css?v=".SU_VERSION."' />\n";
+		$this->queue_css('plugin', 'global');
 		
 		//Figure out what plugin admin page we're on
 		global $plugin_page;
 		$pp = $this->hook_to_key($plugin_page);
 		
-		foreach ($this->modules as $key => $module) {
+		if (strlen($pp)) {
+			$outputted_module_files = false;
 			
-			//Does the current admin page belong to this module?
-			if (strcmp($key, $pp) == 0) {
+			foreach ($this->modules as $key => $module) {
 				
-				//We're viewing a module page, so print links to the CSS/JavaScript files loaded for all modules
-				echo "\n<link rel='stylesheet' type='text/css' href='".$this->plugin_dir_url."modules/modules.css?v=".SU_VERSION."' />\n";
-				echo "\n<script type='text/javascript' src='".$this->plugin_dir_url."modules/modules.js?v=".SU_VERSION."'></script>\n";
+				//Does the current admin page belong to this module?
+				if (strcmp($key, $pp) == 0)
+					//Output AJAX page var fix
+					echo "\n<script type='text/javascript'>pagenow = '".su_esc_attr($module->plugin_page_hook)."';</script>\n";
 				
-				//Print links to the module's CSS and JavaScript.
-				echo "\n<link rel='stylesheet' type='text/css' href='".$module->module_url."?css=admin&amp;v=".SU_VERSION."' />\n";
-				echo "\n<script type='text/javascript' src='".$module->module_url."?js=admin&amp;v=".SU_VERSION."'></script>\n";
-				
-				//The module has been found; mission accomplished.
-				return;
+				//Does the current admin page belong to this module or its parent?
+				if (strcmp($key, $pp) == 0 || strcmp($module->get_parent_module(), $pp) == 0) {
+					
+					//We're viewing a module page, so print links to the CSS/JavaScript files loaded for all modules
+					if (!$outputted_module_files) {
+						$this->queue_css('modules', 'modules');
+						$this->queue_js ('modules', 'modules');
+						$outputted_module_files = true;
+					}
+					
+					//Print links to the module's CSS and JavaScript.
+					$this->queue_css($module->module_dir_rel_url, $module->get_module_key());
+					$this->queue_js ($module->module_dir_rel_url, $module->get_module_key());
+					
+					//Queue up the module's columns, if any
+					if (count($columns = $module->get_admin_table_columns()))
+						register_column_headers($module->plugin_page_hook, $columns);
+				}
 			}
 		}
+	}
+	
+	/**
+	 * Output an HTML <link> to a CSS file if the CSS file exists.
+	 * Includes a version-based query string parameter to prevent caching old versions.
+	 * 
+	 * @since 2.1
+	 * @uses $plugin_dir_path
+	 * @uses $plugin_dir_url
+	 * @uses SU_VERSION
+	 * 
+	 * @param string $relurl The URL to the CSS file, relative to the plugin directory.
+	 */
+	function queue_css($reldir, $filename) {
+		$this->queue_file($reldir, $filename, '.css', 'wp_enqueue_style');
+	}
+	
+	/**
+	 * Output an HTML <script> tag if the corresponding JavaScript file exists.
+	 * Includes a version-based query string parameter to prevent caching old versions.
+	 * 
+	 * @since 2.1
+	 * @uses $plugin_dir_path
+	 * @uses $plugin_dir_url
+	 * @uses SU_VERSION
+	 * 
+	 * @param string $relurl The URL to the JavaScript file, relative to the plugin directory.
+	 */
+	function queue_js($reldir, $filename) {
+		$this->queue_file($reldir, $filename, '.js', 'wp_enqueue_script');
+	}
+	
+	/**
+	 * Queues a CSS/JS file with WordPress if the file exists.
+	 * 
+	 * @since 2.1
+	 */
+	function queue_file($reldir, $filename, $ext, $func) {
+		if (!function_exists($func)) return;
+		$reldir = untrailingslashit($reldir);
+		$dirid = str_replace('/', '-', $reldir);
+		$relurl = $reldir . '/';
+		$file = sustr::endwith($filename, $ext);
+		if (file_exists($this->plugin_dir_path.$relurl.$file))
+			$func("su-$dirid-$filename", $this->plugin_dir_url.$relurl.$file, array(), SU_VERSION);
 	}
 	
 	/**
@@ -1059,14 +1080,113 @@ class SEO_Ultimate {
 	 * @param obejct $r The response object from the WordPress Plugin Directory.
 	 */
 	function plugin_update_info($plugin_data, $r) {
-		if ($r && $r->new_version && !is_plugin_active('changelogger/changelogger.php')) {
-			$info = suwp::load_webpage("http://www.seodesignsolutions.com/apis/su/update-info/?ov=".urlencode(SU_VERSION)."&nv=".urlencode($r->new_version), SU_USER_AGENT);
-			if ($info) {
-				$info = strip_tags($info, "<br><a><b><i><span>");
-				$info = str_replace('backup your database', '<a href="'.suwp::get_backup_url().'">backup your database</a>', $info);
+		//If a new version is available...
+		if ($r && $r->new_version && !is_plugin_active('changelogger/changelogger.php'))
+			//If info on the new version is available...
+			if ($info = $this->get_plugin_update_info($r->new_version))
+				//Output the new-version info
 				echo "<span class='su-plugin-update-info'><br />$info</span>";
+	}
+	
+	/**
+	 * Loads new-version info and returns it as a string.
+	 * 
+	 * @since 2.1
+	 * 
+	 * @return string
+	 */
+	function get_plugin_update_info($nv) {
+		
+		$info = suwp::load_webpage("http://www.seodesignsolutions.com/apis/su/update-info/?ov=".urlencode(SU_VERSION)."&nv=".urlencode($nv), SU_USER_AGENT);
+		if ($info) {
+			$info = strip_tags($info, "<br><a><b><i><span>");
+			$info = str_replace('backup your database', '<a href="'.suwp::get_backup_url().'">backup your database</a>', $info);
+			return $info;
+		}
+		
+		return '';
+	}
+	
+	/**
+	 * Provides WordPress with SEO Ultimate's custom update info notices.
+	 * 
+	 * @since 2.1
+	 */
+	function add_plugin_upgrade_notice($current) {
+		if (isset($current->response[$this->plugin_basename]))
+			if (!strlen($current->response[$this->plugin_basename]->upgrade_notice))
+				$current->response[$this->plugin_basename]->upgrade_notice = $this->get_plugin_update_info($current->response[$this->plugin_basename]->new_version);
+		return $current;
+	}
+	
+	/**
+	 * Filters the list of plugin action links for SEO Ultimate and adds links to certain modules if those modules are enabled.
+	 * 
+	 * @since 2.1
+	 * 
+	 * @param array $actions The array of <a> links.
+	 * @return array The $actions array with additional links.
+	 */
+	function plugin_action_links($actions) {
+		$su_actions = array(
+			  'uninstall' => __("Uninstall", 'seo-ultimate')
+		);
+		
+		foreach ($su_actions as $module => $anchor) {
+			if ($this->module_exists($module)) {
+				$url = $this->modules[$module]->get_admin_url();
+				$actions[] = "<a href='$url'>$anchor</a>";
 			}
 		}
+		
+		return $actions;
+	}
+	
+	/**
+	 * Outputs a list of active modules on SEO Ultimate's plugin page listing.
+	 * 
+	 * @since 2.1
+	 */
+	function plugin_row_meta_filter($plugin_meta, $plugin_file) {
+		if ($plugin_file == $this->plugin_basename)
+			echo $this->get_module_links_list('<p id="su-active-modules-list">'.__('Active Modules: ', 'seo-ultimate'), ' | ', '</p>');
+		
+		return $plugin_meta;
+	}
+	
+	/**
+	 * Returns a list of links to active, independent modules.
+	 * 
+	 * @since 2.1
+	 */
+	function get_module_links_list($before = '', $between = ' | ', $after = '') {
+		
+		$list = '';
+		
+		if (count($this->modules)) {
+			
+			$modules = array();
+			foreach ($this->modules as $key => $x_module) {
+				$module =& $this->modules[$key];
+				if (strcasecmp(get_parent_class($module), 'SU_Module') == 0 && $module->is_independent_module()) {
+					$modules[$module->get_module_title()] = $module->get_admin_url();
+				}
+			}
+			
+			ksort($modules);
+			
+			$list = $before;
+			$first = true;
+			foreach ($modules as $title => $url) {
+				$url = su_esc_attr($url);
+				$title = str_replace(' ', '&nbsp;', su_esc_html($title));
+				if ($first) $first = false; else $list .= $between;
+				$list .= "<a href='$url'>$title</a>";
+			}
+			$list .= $after;
+		}
+		
+		return $list;
 	}
 	
 	/**

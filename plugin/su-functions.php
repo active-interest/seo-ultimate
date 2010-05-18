@@ -103,32 +103,24 @@ function su_esc_attr($str) {
 }
 
 /**
+ * Escapes HTML.
+ * 
+ * @since 2.1
+ */
+function su_esc_html($str) {
+	return wp_specialchars($str); //Yes, this is deprecated... will switch to esc_html later...
+}
+
+/**
  * Escapes HTML. Double-encodes existing entities (ideal for editable HTML).
  * 
- * @sincec 1.5
+ * @since 1.5
  * 
  * @param string $str The string that potentially contains HTML.
  * @return string The filtered string.
  */
 function su_esc_editable_html($str) {
 	return wp_specialchars($str, ENT_QUOTES, false, true);
-}
-
- 
-/********** CLASS FUNCTION ALIASES **********/
-
-/**
- * Launches the uninstallation process.
- * WordPress will call this when the plugin is uninstalled, as instructed by the register_uninstall_hook() call in {@link SEO_Ultimate::__construct()}.
- * 
- * @since 0.1
- * @uses $seo_ultimate
- * @uses SEO_Ultimate::uninstall()
- */
-function su_uninstall() {
-	global $seo_ultimate;
-	if (!$seo_ultimate) $seo_ultimate =& new SEO_Ultimate(__FILE__);
-	$seo_ultimate->uninstall();
 }
 
 ?>
