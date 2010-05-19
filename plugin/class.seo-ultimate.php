@@ -584,12 +584,10 @@ class SEO_Ultimate {
 	
 	/**
 	 * Saves settings data to the database.
-	 * Also deletes old hits, if that behavior is enabled.
 	 * 
 	 * @since 0.8
 	 * @uses $dbdata
 	 * @uses get_setting()
-	 * @uses get_table_name()
 	 */
 	function save_dbdata() {
 		
@@ -603,13 +601,6 @@ class SEO_Ultimate {
 		else
 			//Save our data to the database
 			update_option('seo_ultimate', $this->dbdata);
-		
-		//Delete old hits, if this behavior is enabled
-		if ($this->get_setting('delete_old_hits', false, 'settings')) {
-			global $wpdb;
-			$mintime = time() - (intval($this->get_setting('delete_old_hits_value', 30, 'settings')) * 24 * 60 * 60);
-			$wpdb->query($wpdb->prepare('DELETE FROM '.$this->get_table_name('hits').' WHERE `time` < %d', $mintime));
-		}
 	}
 	
 	/**

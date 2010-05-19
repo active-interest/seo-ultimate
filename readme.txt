@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 2.1
+Stable tag: 2.1.1
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -11,7 +11,7 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
-* Version 2.1 adds many 404 Monitor improvements
+* Version 2.1 adds a 404 Monitor overhaul and other improvements
 * Version 2.0 adds title tag editing for post tags
 * Version 1.9 adds title tag editing for categories
 
@@ -40,7 +40,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Go beyond the basic canonical tag functionality of WordPress 2.9+ with SEO Ultimate's support for category/tag/date/author archives.
 	* Redirect requests for non-existent pagination with a simple checkbox.
 
-* **404 Monitor**
+* **404 Monitor** -- UPDATED in Version 2.1
 	* Improve the visiting experience of users and spiders by keeping tabs on "page not found" errors. (Use a redirection plugin to point dead-end URLs to your content.)
 	* Find out what URLs are referring visitors to 404 errors.
 
@@ -62,7 +62,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Access competitors' incoming links profile.
 	* Find out what external websites your competitors are linking to.
 
-* **More Link Customizer** -- NEW in Version 1.3
+* **More Link Customizer**
 	* Optimize your posts' "read more" links by including the posts' keyword-rich titles in the anchor text.
 	* Override the "read more" link on a per-post basis.
 	* Include `<strong>` or `<em>` tags in the anchor text if so desired.
@@ -94,7 +94,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Features Coming Soon**
 	* Automatic XHTML validation checking
 	* Nofollow options
-	* Title tag editing for attachments and tag archives
+	* Title tag editing for attachments
 	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
 
 [**Download**](http://downloads.wordpress.org/plugin/seo-ultimate.zip) **your free copy of SEO Ultimate today.**
@@ -527,6 +527,9 @@ Here's information on some of the settings:
 
 = General FAQ =
 
+* **Why "SEO Ultimate" instead of "Ultimate SEO"?**
+	Because "SEO Ultimate" works better as a brand name.
+
 * **Where in WordPress does the plugin add itself?**
 	SEO Ultimate puts all its admin pages under a new "SEO" top-level menu. The only exception is the plugin settings page, which goes under `Settings > SEO Ultimate`.
 
@@ -534,9 +537,8 @@ Here's information on some of the settings:
 	SEO Ultimate's documentation is built into the plugin itself. Whenever you're viewing an SEO Ultimate page in your WordPress admin, you can click the "Help" tab in the upper-right-hand corner to view documentation for the area you're viewing.
 
 * **How do I uninstall SEO Ultimate?**
-	1. Go to the `Settings > SEO Ultimate` admin page.
-	2. Click the "Uninstall" tab.
-	3. Click the "Uninstall" button and click "Yes" to confirm. SEO Ultimate's files and database entries will be deleted.
+	1. Go to the `Settings > SEO Ultimate` admin page and click the "Uninstall" tab.
+	2. Click the "Uninstall Now" button and click "Yes" to confirm. SEO Ultimate's files and database entries will be deleted.
 
 * **Will all my settings be deleted if I delete SEO Ultimate in the Plugins manager?**
 	No. Your settings will be retained unless you uninstall SEO Ultimate under `Settings > SEO Ultimate > Uninstall`.
@@ -582,6 +584,10 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 2.1.1 (May 19, 2010) =
+* Bugfix: Fixed "get_table_name" fatal error that appeared when upgrading certain configurations
+* Bugfix: Restored missing success/error messages for import/reset functions
 
 = Version 2.1 (May 18, 2010) =
 * Improvement: Major 404 Monitor upgrade, featuring a new space-saving interface redesign

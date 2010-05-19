@@ -75,12 +75,11 @@ class SU_SettingsData extends SU_Module {
 			$this->plugin->dbdata['settings'] = array();
 			unset($this->plugin->dbdata['modules']);
 			$this->load_default_settings();
-			
-			$this->queue_message('success', __("All settings have been erased and defaults have been restored.", 'seo-ultimate'));
 		}
 	}
 	
 	function import_tab() {
+		$this->print_messages();
 		$this->admin_subheader(__('Import SEO Ultimate Settings File', 'seo-ultimate'));
 		$hook = $this->plugin->key_to_hook($this->get_module_or_parent_key());
 		echo "\n<p>";
@@ -135,6 +134,8 @@ class SU_SettingsData extends SU_Module {
 	}
 	
 	function reset_tab() {
+		if ($this->is_action('su-reset'))
+			$this->print_message('success', __("All settings have been erased and defaults have been restored.", 'seo-ultimate'));
 		echo "\n<p>";
 		_e("You can erase all your SEO Ultimate settings and restore them to &#8220;factory defaults&#8221; by clicking the button below.", 'seo-ultimate');
 		echo "</p>\n<p>";
