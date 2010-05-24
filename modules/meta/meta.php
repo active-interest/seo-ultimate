@@ -8,15 +8,15 @@
 if (class_exists('SU_Module')) {
 
 class SU_Meta extends SU_Module {
-
+	
 	function get_module_title() { return __('Meta Editor', 'seo-ultimate'); }
-		
+	
 	function init() {
 		add_filter('su_meta_robots', array(&$this, 'meta_robots'));
 		add_action('su_head', array(&$this, 'head_tag_output'));
 		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 20);
 	}
-		
+	
 	//Add the appropriate commands to the meta robots array
 	function meta_robots($commands) {
 		
@@ -88,7 +88,7 @@ class SU_Meta extends SU_Module {
 		}
 		
 	}
-		
+	
 	function postmeta_fields($fields) {
 		$id = "_su_description";
 		$value = attribute_escape($this->get_postmeta('description'));
@@ -112,7 +112,7 @@ class SU_Meta extends SU_Module {
 			"Be sure to separate keywords with commas, like so: <samp>one,two,three</samp>.", 'seo-ultimate');
 		return $help;
 	}
-
+	
 }
 
 }

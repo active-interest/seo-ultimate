@@ -30,13 +30,24 @@ function su_init_tabs()
 			jQuery("#su-tabset > ul").tabs(); 
 	}
 	
+	if (location.hash.length) {
+		jQuery(document).ready(function() {
+			su_hash_form(location.hash);
+		});
+		window.scrollTo(0,0);
+	}
+	
 	/* handler for opening the last tab after submit (compability version) */
 	jQuery('#su-tabset ul a').click(function(i){
-		var form   = jQuery('#su-admin-form');
-		var action = form.attr("action").split('#', 1) + jQuery(this).attr('href');
-		// an older bug pops up with some jQuery version(s), which makes it
-		// necessary to set the form's action attribute by standard javascript 
-		// node access:						
-		form.get(0).setAttribute("action", action);
+		su_hash_form(jQuery(this).attr('href'));
 	});
+}
+
+function su_hash_form(hash) {
+	var form   = jQuery('#su-admin-form');
+	var action = form.attr("action").split('#', 1) + hash;
+	// an older bug pops up with some jQuery version(s), which makes it
+	// necessary to set the form's action attribute by standard javascript 
+	// node access:						
+	form.get(0).setAttribute("action", action);
 }

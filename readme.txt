@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 2.1.1
+Stable tag: 2.2
 
 This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
 
@@ -11,9 +11,9 @@ This all-in-one SEO plugin gives you control over titles, noindex, meta data, sl
 
 = Recent Releases =
 
+* Version 2.2 adds a links-per-post limiter for Deeplink Juggernaut
 * Version 2.1 adds a 404 Monitor overhaul and other improvements
 * Version 2.0 adds title tag editing for post tags
-* Version 1.9 adds title tag editing for categories
 
 = Features =
 
@@ -71,9 +71,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut** -- NEW in Version 1.8
+* **Deeplink Juggernaut** -- UPDATED in Version 2.2
 	* Automatically link phrases in your posts/pages to given URLs.
 	* Use the power of anchor text to boost your internal ranking paradigm.
+	* Control the maximum number of autolinks added to each post/page.
 
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
@@ -585,6 +586,11 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 2.2 (May 25, 2010) =
+* Feature: Deeplink Juggernaut now has a links-per-post limiter option
+* Bugfix: The current tab is now maintained when submitting a tabbed form twice in a row
+* Bugfix: When a module page reloads after submitting a tabbed form, the screen no longer jumps part-way down the page
+
 = Version 2.1.1 (May 19, 2010) =
 * Bugfix: Fixed "get_table_name" fatal error that appeared when upgrading certain configurations
 * Bugfix: Restored missing success/error messages for import/reset functions
@@ -608,6 +614,7 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 * Improvement: Added blank index.php files to module directories to prevent indexing/snooping of directory listings
 * Feature: You can now hide 404 Monitor columns with the new "Screen Options" dropdown
 * Bugfix: Removed duplicate excerpt ellipses from Whitepapers module
+* Known Issue: If you had previously disabled 404 Monitor in version 2.0 or earlier, it will re-enable itself when upgrading to version 2.1 or later. The workaround is to re-disable 404 Monitor from the Module Manager after upgrading.
 
 = Version 2.0 (April 29, 2010) =
 * Feature: Title Rewriter can now edit the title tags of post tag archives

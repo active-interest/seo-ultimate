@@ -897,7 +897,7 @@ class SU_Module {
 			
 			if ($c > 1) {
 				echo "</div>\n";
-		
+				
 				echo '<script type="text/javascript" src="'.$this->plugin->plugin_dir_url.'includes/tabs.js?v='.SU_VERSION.'"></script>';
 			}
 		}
@@ -997,10 +997,10 @@ class SU_Module {
 	 * @param boolean $table Whether or not to start a form table.
 	 */
 	function admin_form_start($header = false, $table = true, $form = true) {
-		$hook = $this->plugin->key_to_hook($this->get_module_or_parent_key());
 		if ($header) $this->admin_subheader($header);
 		
 		if ($form) {
+			$hook = $this->plugin->key_to_hook($this->get_module_or_parent_key());
 			if ($this->is_action('update')) $this->print_message('success', __('Settings updated.', 'seo-ultimate'));
 			echo "<form id='su-admin-form' method='post' action='?page=$hook'>\n";
 			settings_fields($hook);

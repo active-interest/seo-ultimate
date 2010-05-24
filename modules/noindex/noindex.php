@@ -63,9 +63,9 @@ class SU_Noindex extends SU_Module {
 	}
 	
 	function should_noindex() {
-	
+		
 		$checks = array('author', 'search', 'category', 'date', 'tag');
-	
+		
 		foreach ($checks as $setting) {
 			if (call_user_func("is_$setting")) return $this->get_setting("noindex_$setting");
 		}
