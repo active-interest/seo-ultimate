@@ -586,7 +586,7 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
-= Version 2.2 (May 25, 2010) =
+= Version 2.2 (May 24, 2010) =
 * Feature: Deeplink Juggernaut now has a links-per-post limiter option
 * Bugfix: The current tab is now maintained when submitting a tabbed form twice in a row
 * Bugfix: When a module page reloads after submitting a tabbed form, the screen no longer jumps part-way down the page

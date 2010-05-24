@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 2.1 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 2.2 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 2.1\n"
+"Project-Id-Version: SEO Ultimate 2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-05-18 20:19+0000\n"
+"POT-Creation-Date: 2010-05-24 21:13+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,18 +150,39 @@ msgstr ""
 msgid "Deeplink Juggernaut (Beta)"
 msgstr ""
 
-#: modules/autolinks/autolinks.php:46
+#: modules/autolinks/content-autolinks-settings.php:16
+msgid "Content Deeplink Juggernaut Settings"
+msgstr ""
+
+#: modules/autolinks/content-autolinks-settings.php:17
+msgid "Content Link Settings"
+msgstr ""
+
+#: modules/autolinks/content-autolinks-settings.php:21
+#, php-format
+msgid "Don&#8217;t add any more than %d autolinks per post/page/etc."
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:16
+msgid "Content Deeplink Juggernaut"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:17
+msgid "Content Links"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:74
 msgid ""
 "The Deeplink Juggernaut can automatically link post/page anchor text to "
 "given URLs. This is a preview beta version. More functionality will be added "
 "in future releases of SEO Ultimate."
 msgstr ""
 
-#: modules/autolinks/autolinks.php:67
+#: modules/autolinks/content-autolinks.php:93
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/autolinks.php:68
+#: modules/autolinks/content-autolinks.php:94
 msgid "URL"
 msgstr ""
 
@@ -791,7 +812,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.1)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.2)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -832,7 +853,7 @@ msgstr ""
 msgid "Manage Settings Data"
 msgstr ""
 
-#: modules/settings/settings-data.php:21 modules/settings/settings-data.php:92
+#: modules/settings/settings-data.php:21 modules/settings/settings-data.php:91
 msgid "Import"
 msgstr ""
 
@@ -860,45 +881,41 @@ msgid ""
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings/settings-data.php:79
-msgid "All settings have been erased and defaults have been restored."
-msgstr ""
-
-#: modules/settings/settings-data.php:84
+#: modules/settings/settings-data.php:83
 msgid "Import SEO Ultimate Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:87
+#: modules/settings/settings-data.php:86
 msgid ""
 "You can use this form to upload and import an SEO Ultimate settings file "
 "stored on your computer. (Settings files can be created using the Export "
 "tool.)"
 msgstr ""
 
-#: modules/settings/settings-data.php:91
+#: modules/settings/settings-data.php:90
 msgid ""
 "Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:106
+#: modules/settings/settings-data.php:105
 msgid "Import from Other Plugins"
 msgstr ""
 
-#: modules/settings/settings-data.php:108
+#: modules/settings/settings-data.php:107
 msgid ""
 "You can import settings and data from these plugins. Clicking a plugin&#8217;"
 "s name will take you to the importer page, where you can customize "
 "parameters and start the import."
 msgstr ""
 
-#: modules/settings/settings-data.php:128
+#: modules/settings/settings-data.php:127
 msgid ""
 "You can use the export tool to download an SEO Ultimate settings file to "
 "your computer."
 msgstr ""
 
-#: modules/settings/settings-data.php:130
+#: modules/settings/settings-data.php:129
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module. It does NOT include site-specific data like logged 404s or "
@@ -906,22 +923,26 @@ msgid ""
 "database backup, however)."
 msgstr ""
 
-#: modules/settings/settings-data.php:133
+#: modules/settings/settings-data.php:132
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:139
+#: modules/settings/settings-data.php:138
+msgid "All settings have been erased and defaults have been restored."
+msgstr ""
+
+#: modules/settings/settings-data.php:140
 msgid ""
 "You can erase all your SEO Ultimate settings and restore them to &#8220;"
 "factory defaults&#8221; by clicking the button below."
 msgstr ""
 
-#: modules/settings/settings-data.php:142
+#: modules/settings/settings-data.php:143
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:143
+#: modules/settings/settings-data.php:144
 msgid "Restore Default Settings"
 msgstr ""
 
@@ -933,9 +954,9 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.1)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:732
+#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:723
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -943,7 +964,7 @@ msgstr ""
 msgid "Uninstaller"
 msgstr ""
 
-#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1132
+#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1123
 msgid "Uninstall"
 msgstr ""
 
@@ -1182,34 +1203,34 @@ msgid ""
 "titles. "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:732
+#: plugin/class.seo-ultimate.php:723
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1009
+#: plugin/class.seo-ultimate.php:1000
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1011
+#: plugin/class.seo-ultimate.php:1002
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1013
+#: plugin/class.seo-ultimate.php:1004
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1068
+#: plugin/class.seo-ultimate.php:1059
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1152
+#: plugin/class.seo-ultimate.php:1143
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1213
+#: plugin/class.seo-ultimate.php:1204
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href='options-privacy.php' "
@@ -1217,7 +1238,7 @@ msgid ""
 "everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1321
+#: plugin/class.seo-ultimate.php:1312
 msgid "SEO Settings"
 msgstr ""
 
@@ -1227,7 +1248,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"This all-in-one SEO plugin gives you control over titles, noindex, meta "
+"This all-in-one SEO plugin gives you control over title tags, noindex, meta "
 "data, slugs, canonical tags, \"more\" links, 404 error tracking, and more."
 msgstr ""
 
