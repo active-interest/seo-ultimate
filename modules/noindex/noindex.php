@@ -14,7 +14,7 @@ class SU_Noindex extends SU_Module {
 	function init() {
 		
 		//Hook into our wp_head() action
-		add_action('su_meta_robots', array(&$this, 'wphead_noindex'), 1);
+		add_action('su_meta_robots', array(&$this, 'wphead_meta_robots'), 1);
 		
 		//Now we'll hook into places where wp_head() is not called
 		
@@ -54,15 +54,21 @@ class SU_Noindex extends SU_Module {
 		$this->admin_form_end();
 	}
 	
-	function wphead_noindex($commands) {
-	
-		if ($this->should_noindex())
-			array_push($commands, 'noindex', 'nofollow');
-			
+	function wphead_meta_robots($commands) {
+		
+		$new = array(
+			  $this->should_noindex()  ? 'noindex'  : 'index'
+			, $this->should_nofollow() ? 'nofollow' : 'follow'
+		);
+		
+		if ($new != array('index', 'follow'))
+			$commands = array_merge($commands, $new);
+		
 		return $commands;
 	}
 	
 	function should_noindex() {
+		if ($this->get_postmeta('meta_robots_noindex')) return true;
 		
 		$checks = array('author', 'search', 'category', 'date', 'tag');
 		
@@ -80,12 +86,27 @@ class SU_Noindex extends SU_Module {
 		return false;
 	}
 	
+	function should_nofollow() {
+		if ($this->get_postmeta('meta_robots_nofollow')) return true;
+		
+		return false;
+	}
+	
 	function rss2_noindex_tag() {
 		echo "<xhtml:meta xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" name=\"robots\" content=\"noindex\" />\n";
 	}
 	
 	function xhtml_noindex_tag() {
 		echo "\t<meta name=\"robots\" content=\"noindex\" />\n";
+	}
+	
+	function postmeta_fields($fields) {
+		$fields['30|meta_robots_noindex|meta_robots_nofollow'] = $this->get_postmeta_checkboxes(array(
+			  'meta_robots_noindex' => __('Noindex: Tell search engines not to index this webpage.', 'seo-ultimate')
+			, 'meta_robots_nofollow' => __('Nofollow: Tell search engines not to spider links on this webpage.', 'seo-ultimate')
+		), __('Meta Robots Tag:', 'seo-ultimate'));
+		
+		return $fields;
 	}
 }
 

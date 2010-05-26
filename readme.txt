@@ -1,19 +1,19 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, noindex, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable
+Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 2.2
+Stable tag: 2.3
 
-This all-in-one SEO plugin gives you control over titles, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
+This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
 == Description ==
 
 = Recent Releases =
 
+* Version 2.3 adds per-post noindex/nofollow toggles
 * Version 2.2 adds a links-per-post limiter for Deeplink Juggernaut
 * Version 2.1 adds a 404 Monitor overhaul and other improvements
-* Version 2.0 adds title tag editing for post tags
 
 = Features =
 
@@ -21,12 +21,13 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Title Rewriter**
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag where they belong.
-	* Easily override the entire `<title>` tag contents for any individual post, Page, category, or post tag on your blog.
+	* Easily override the entire `<title>` tag contents for any individual post, page, category, or post tag on your blog.
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
-* **Noindex Manager**
-	* Add the `<meta name="robots" content="noindex" />` tag to archives, comment feeds, the login page, and more.
+* **Noindex Manager** -- UPDATED in Version 2.3
+	* Add the `<meta name="robots" content="noindex,follow" />` tag to archives, comment feeds, the login page, and more.
+	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post/page.
 	* Avoid duplicate content issues with the recommended settings.
 
 * **Meta Editor**
@@ -585,6 +586,10 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 2.3 (May 26, 2010) =
+* Feature: Meta robots tags (index/noindex and follow/nofollow) can now be set for each post or page via the "SEO Settings" box
+* Behavior Change: Since the Noindex Manager's advertised functionality is controlling the "noindex" attribute only, its behavior has been changed to output "noindex,follow" where it previously outputted "noindex,nofollow"
 
 = Version 2.2 (May 24, 2010) =
 * Feature: Deeplink Juggernaut now has a links-per-post limiter option

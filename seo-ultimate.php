@@ -2,8 +2,8 @@
 /*
 Plugin Name: SEO Ultimate
 Plugin URI: http://www.seodesignsolutions.com/wordpress-seo/
-Description: This all-in-one SEO plugin gives you control over title tags, noindex, meta data, slugs, canonical tags, "more" links, 404 error tracking, and more.
-Version: 2.2
+Description: This all-in-one SEO plugin gives you control over title tags, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
+Version: 2.3
 Author: SEO Design Solutions
 Author URI: http://www.seodesignsolutions.com/
 Text Domain: seo-ultimate
@@ -12,7 +12,7 @@ Text Domain: seo-ultimate
 /**
  * The main SEO Ultimate plugin file.
  * @package SeoUltimate
- * @version 2.2
+ * @version 2.3
  * @link http://www.seodesignsolutions.com/wordpress-seo/ SEO Ultimate Homepage
  */
 
@@ -38,10 +38,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //Reading plugin info from constants is faster than trying to parse it from the header above.
 define("SU_PLUGIN_NAME", "SEO Ultimate");
 define("SU_PLUGIN_URI", "http://www.seodesignsolutions.com/wordpress-seo/");
-define("SU_VERSION", "2.2");
+define("SU_VERSION", "2.3");
 define("SU_AUTHOR", "SEO Design Solutions");
 define("SU_AUTHOR_URI", "http://www.seodesignsolutions.com/");
-define("SU_USER_AGENT", "SeoUltimate/2.2");
+define("SU_USER_AGENT", "SeoUltimate/2.3");
 
 /********** INCLUDES **********/
 

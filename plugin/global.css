@@ -120,8 +120,12 @@ div.su-help h6 {
 	padding-right: 0.5em;
 }
 
-#su-postmeta-box table tr.textarea {
+#su-postmeta-box table tr {
 	vertical-align: top;
+}
+
+#su-postmeta-box table tr.textbox {
+	vertical-align: middle;
 }
 
 #su-postmeta-box table tr.textarea th label {

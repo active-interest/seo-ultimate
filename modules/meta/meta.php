@@ -94,12 +94,12 @@ class SU_Meta extends SU_Module {
 		$value = attribute_escape($this->get_postmeta('description'));
 		
 		$fields['20|description|keywords'] =
-			  "<tr class='textarea'>\n<th scope='row'><label for='$id'>".__("Description:", 'seo-ultimate')."</label></th>\n"
+			  "<tr class='textarea'>\n<th scope='row'><label for='$id'>".__('Meta Description:', 'seo-ultimate')."</label></th>\n"
 			. "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='60' rows='3' tabindex='2'"
 			. " onkeyup=\"javascript:document.getElementById('su_meta_description_charcount').innerHTML = document.getElementById('_su_description').value.length\">$value</textarea>"
 			. "<br />".sprintf(__("You&#8217;ve entered %s characters. Most search engines use up to 160.", 'seo-ultimate'), "<strong id='su_meta_description_charcount'>".strlen($value)."</strong>")
 			. "</td>\n</tr>\n"
-			. $this->get_postmeta_textbox('keywords', __('Keywords:<br /><em>(separate with commas)</em>', 'seo-ultimate'))
+			. $this->get_postmeta_textbox('keywords', __('Meta Keywords:<br /><em>(separate with commas)</em>', 'seo-ultimate'))
 		;
 		
 		return $fields;
