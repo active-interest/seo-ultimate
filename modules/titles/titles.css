@@ -1,0 +1,7 @@
+#su-titles table.widefat {
+	width: auto;
+}
+
+#su-titles table.widefat td input.regular-text {
+	width: 400px;
+}
