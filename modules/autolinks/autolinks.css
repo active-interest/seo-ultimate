@@ -1,4 +1,8 @@
 #su-autolinks table.widefat,
-#su-autolinks table.widefat input {
+#su-autolinks table.widefat td.text input {
 	width: 100%;
+}
+
+#su-autolinks table.widefat td.checkbox {
+	width: 7em;
 }

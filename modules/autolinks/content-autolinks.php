@@ -49,9 +49,12 @@ class SU_ContentAutolinks extends SU_Module {
 			$type = $data['to_type'];
 			
 			if ($type == 'url' && strlen(trim($anchor)) && strlen(trim($url))) {
+				
+				$relnofollow = $data['nofollow'] ? ' rel="nofollow"' : '';
+				
 				//Special thanks to the GPL-licensed "SEO Smart Links" plugin for the following find/replace code
 				//http://www.prelovac.com/vladimir/wordpress-plugins/seo-smart-links
-				$replace = "<a title=\"$1\" href=\"$url\">$1</a>";
+				$replace = "<a title=\"$1\" href=\"$url\"$relnofollow>$1</a>";
 				$reg = '/(?!(?:[^<\[]+[>\]]|[^>\]]+<\/a>))\b($name)\b/imsU';
 				$regexp = str_replace('$name', $anchor, $reg);
 				$content = preg_replace($regexp, $replace, $content, $limit_enabled ? 1 : -1, $count);
@@ -79,8 +82,14 @@ class SU_ContentAutolinks extends SU_Module {
 			for ($i=0; $i<20; $i++) {
 				$anchor = stripslashes($_POST["link_{$i}_anchor"]);
 				$url    = stripslashes($_POST["link_{$i}_url"]);
+				$nofollow = intval($_POST["link_{$i}_nofollow"]) == 1;
 				if (strlen($anchor) || strlen($url)) {
-					$links[] = array('anchor' => $anchor, 'to_type' => 'url', 'to_id' => $url);
+					$links[] = array(
+						  'anchor' => $anchor
+						, 'to_type' => 'url'
+						, 'to_id' => $url
+						, 'nofollow' => $nofollow
+					);
 				}
 			}
 			$this->update_setting('links', $links);
@@ -92,12 +101,17 @@ class SU_ContentAutolinks extends SU_Module {
 		$this->admin_wftable_start(array(
 			  'link-anchor' => __('Anchor Text', 'seo-ultimate')
 			, 'link-to_id' => __('URL', 'seo-ultimate')
+			, 'link-nofollow' => __('Options', 'seo-ultimate')
 		));
 		
 		for ($i=0; $i<20; $i++) {
 			$anchor = su_esc_attr($links[$i]['anchor']);
 			$url    = su_esc_attr($links[$i]['to_id']);
-			echo "\t\t<tr><td><input type='text' id='link_{$i}_anchor' name='link_{$i}_anchor' value='$anchor' /></td><td><input type='text' id='link_{$i}_url' name='link_{$i}_url' value='$url' /></td></tr>\n";
+			echo "\t\t<tr>\n";
+			echo "\t\t\t<td class='text'><input type='text' id='link_{$i}_anchor' name='link_{$i}_anchor' value='$anchor' /></td>\n";
+			echo "\t\t\t<td class='text'><input type='text' class='text' id='link_{$i}_url' name='link_{$i}_url' value='$url' /></td>\n";
+			echo "\t\t\t<td class='checkbox'><label for='link_{$i}_nofollow'><input type='checkbox' id='link_{$i}_nofollow' name='link_{$i}_nofollow' value='1'"; checked($links[$i]['nofollow']); echo " /> Nofollow</label></td>\n";
+			echo "\t\t</tr>\n";
 		}
 		
 		$this->admin_wftable_end();

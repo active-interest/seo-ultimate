@@ -1219,8 +1219,6 @@ class SU_Module {
 		if (is_array($checkboxes)) {
 			foreach ($checkboxes as $name => $desc) {
 				
-				//$desc = preg_replace_callback('/%d/', array(&$this, "insert_int_var_textboxes"), $desc);
-				
 				register_setting($this->get_module_key(), $name, 'intval');
 				$name = su_esc_attr($name);
 				
@@ -1434,6 +1432,19 @@ class SU_Module {
 	 */
 	function textarea($id, $title, $rows = 5, $cols = 30) {
 		$this->textareas(array($id => $title), $rows, $cols);
+	}
+	
+	/**
+	 * Outputs <option> tags.
+	 * 
+	 * @since 2.4
+	 */
+	function dropdown_options($options, $current = null) {
+		foreach ($options as $value => $label) {
+			echo "<option value='$value'";
+			selected($value, $current);
+			echo ">$label</option>";
+		}
 	}
 	
 	/********** ADMIN SECURITY FUNCTIONS **********/

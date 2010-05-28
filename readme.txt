@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 2.3
+Stable tag: 2.4
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
@@ -11,9 +11,9 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 2.4 adds a nofollow option for Deeplink Juggernaut links
 * Version 2.3 adds per-post noindex/nofollow toggles
 * Version 2.2 adds a links-per-post limiter for Deeplink Juggernaut
-* Version 2.1 adds a 404 Monitor overhaul and other improvements
 
 = Features =
 
@@ -72,10 +72,11 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut** -- UPDATED in Version 2.2
+* **Deeplink Juggernaut** -- UPDATED in Version 2.4
 	* Automatically link phrases in your posts/pages to given URLs.
 	* Use the power of anchor text to boost your internal ranking paradigm.
 	* Control the maximum number of autolinks added to each post/page.
+	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
 
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
@@ -586,6 +587,9 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 2.4 (May 28, 2010) =
+* Feature: Added nofollow option for Deeplink Juggernaut links
 
 = Version 2.3 (May 26, 2010) =
 * Feature: Meta robots tags (index/noindex and follow/nofollow) can now be set for each post or page via the "SEO Settings" box
