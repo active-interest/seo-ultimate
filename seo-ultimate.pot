@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 2.2 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 2.5 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 2.2\n"
+"Project-Id-Version: SEO Ultimate 2.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-05-24 21:13+0000\n"
+"POT-Creation-Date: 2010-06-01 14:30+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgstr ""
 #: includes/jlfunctions/str.php:92 plugin/su-functions.php:81
 #, php-format
 msgid "%s, and %s"
+msgstr ""
+
+#: includes/jlwp/functions.php:77
+msgid "backup your database"
 msgstr ""
 
 #: modules/404s/fofs-log.php:16
@@ -171,19 +175,23 @@ msgstr ""
 msgid "Content Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:74
+#: modules/autolinks/content-autolinks.php:77
 msgid ""
 "The Deeplink Juggernaut can automatically link post/page anchor text to "
 "given URLs. This is a preview beta version. More functionality will be added "
 "in future releases of SEO Ultimate."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:93
+#: modules/autolinks/content-autolinks.php:102
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:94
+#: modules/autolinks/content-autolinks.php:103
 msgid "URL"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:104
+msgid "Options"
 msgstr ""
 
 #: modules/canonical/canonical.php:12
@@ -231,21 +239,21 @@ msgid ""
 "SEO Ultimate and may be outdated.)"
 msgstr ""
 
-#: modules/class.su-module.php:942
+#: modules/class.su-module.php:944
 #, php-format
 msgid "%s %s|Dropdown Title"
 msgstr ""
 
-#: modules/class.su-module.php:970
+#: modules/class.su-module.php:972
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1004
+#: modules/class.su-module.php:1006
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1024
+#: modules/class.su-module.php:1026
 msgid "Save Changes"
 msgstr ""
 
@@ -665,7 +673,7 @@ msgid "Custom Header Code"
 msgstr ""
 
 #: modules/meta/meta.php:97
-msgid "Description:"
+msgid "Meta Description:"
 msgstr ""
 
 #: modules/meta/meta.php:100
@@ -674,7 +682,7 @@ msgid "You&#8217;ve entered %s characters. Most search engines use up to 160."
 msgstr ""
 
 #: modules/meta/meta.php:102
-msgid "Keywords:<br /><em>(separate with commas)</em>"
+msgid "Meta Keywords:<br /><em>(separate with commas)</em>"
 msgstr ""
 
 #: modules/meta/meta.php:109
@@ -804,6 +812,18 @@ msgstr ""
 msgid "User login/registration pages"
 msgstr ""
 
+#: modules/noindex/noindex.php:105
+msgid "Noindex: Tell search engines not to index this webpage."
+msgstr ""
+
+#: modules/noindex/noindex.php:106
+msgid "Nofollow: Tell search engines not to spider links on this webpage."
+msgstr ""
+
+#: modules/noindex/noindex.php:107
+msgid "Meta Robots Tag:"
+msgstr ""
+
 #: modules/sds-blog/sds-blog.php:12
 msgid "Whitepapers"
 msgstr ""
@@ -812,7 +832,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.5)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -843,6 +863,93 @@ msgstr ""
 
 #: modules/settings/global-settings.php:43
 msgid "Insert comments around HTML code insertions"
+msgstr ""
+
+#: modules/settings/install.php:18
+msgid "Upgrade/Downgrade/Reinstall"
+msgstr ""
+
+#: modules/settings/install.php:19
+msgid "Installer"
+msgstr ""
+
+#: modules/settings/install.php:23 modules/settings/install.php:47
+msgid "Upgrade"
+msgstr ""
+
+#: modules/settings/install.php:24 modules/settings/install.php:70
+msgid "Downgrade"
+msgstr ""
+
+#: modules/settings/install.php:41
+msgid ""
+"From the list below, select the version to which you would like to upgrade. "
+"Then click the &#8220;Upgrade&#8221; button at the bottom of the screen."
+msgstr ""
+
+#: modules/settings/install.php:50
+msgid "You are already running the latest version."
+msgstr ""
+
+#: modules/settings/install.php:52
+msgid ""
+"There was an error retrieving the list of available versions. Please try "
+"again later. You can also upgrade to the latest version of SEO Ultimate "
+"using the WordPress plugin upgrader."
+msgstr ""
+
+#: modules/settings/install.php:61
+msgid ""
+"Downgrading is provided as a convenience only and is not officially "
+"supported. Although unlikely, you may lose data in the downgrading process. "
+"It is your responsibility to backup your database before proceeding."
+msgstr ""
+
+#: modules/settings/install.php:64
+msgid ""
+"From the list below, select the version to which you would like to "
+"downgrade. Then click the &#8220;Downgrade&#8221; button at the bottom of "
+"the screen."
+msgstr ""
+
+#: modules/settings/install.php:73
+#, php-format
+msgid "Downgrading to versions earlier than %s is not supported."
+msgstr ""
+
+#: modules/settings/install.php:75
+msgid ""
+"There was an error retrieving the list of available versions. Please try "
+"again later."
+msgstr ""
+
+#: modules/settings/install.php:100
+msgid "Current Version"
+msgstr ""
+
+#: modules/settings/install.php:102
+msgid "Latest Version"
+msgstr ""
+
+#: modules/settings/install.php:122
+msgid ""
+"You do not have sufficient permissions to upgrade/downgrade plugins for this "
+"blog."
+msgstr ""
+
+#: modules/settings/install.php:132
+#, php-format
+msgid "Downgrade to SEO Ultimate %s"
+msgstr ""
+
+#: modules/settings/install.php:135
+#, php-format
+msgid "Reinstall SEO Ultimate %s"
+msgstr ""
+
+#: modules/settings/install.php:138
+#, php-format
+msgid "Upgrade to SEO Ultimate %s"
 msgstr ""
 
 #: modules/settings/settings-data.php:16
@@ -954,7 +1061,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:723
 msgid "SEO Ultimate"
@@ -1242,14 +1349,90 @@ msgstr ""
 msgid "SEO Settings"
 msgstr ""
 
+#: plugin/class.su-installer.php:9
+msgid "Package not available."
+msgstr ""
+
+#: plugin/class.su-installer.php:12
+msgid "Removing the current version of the plugin&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:13
+msgid "Could not remove the current version of the plugin."
+msgstr ""
+
+#: plugin/class.su-installer.php:17
+#, php-format
+msgid "Downloading old version from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:18
+msgid "Unpacking the downgrade&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:19
+msgid "Installing the downgrade&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:20
+msgid "Plugin downgrade failed."
+msgstr ""
+
+#: plugin/class.su-installer.php:21
+msgid "Plugin downgraded successfully."
+msgstr ""
+
+#: plugin/class.su-installer.php:24
+#, php-format
+msgid "Downloading from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:25
+msgid "Unpacking the reinstall&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:26
+msgid "Reinstalling the current version&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:27
+msgid "Plugin reinstallation failed."
+msgstr ""
+
+#: plugin/class.su-installer.php:28
+msgid "Plugin reinstalled successfully."
+msgstr ""
+
+#: plugin/class.su-installer.php:32
+#, php-format
+msgid "Downloading upgrade from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:33
+msgid "Unpacking the upgrade&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:34
+msgid "Installing the upgrade&#8230;"
+msgstr ""
+
+#: plugin/class.su-installer.php:35
+msgid "Plugin upgrade failed."
+msgstr ""
+
+#: plugin/class.su-installer.php:36
+msgid "Plugin upgraded successfully."
+msgstr ""
+
 #. Plugin URI of the plugin/theme
 msgid "http://www.seodesignsolutions.com/wordpress-seo/"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"This all-in-one SEO plugin gives you control over title tags, noindex, meta "
-"data, slugs, canonical tags, \"more\" links, 404 error tracking, and more."
+"This all-in-one SEO plugin gives you control over title tags, noindex/"
+"nofollow, meta tags, slugs, canonical tags, \"more\" links, 404 errors, and "
+"more."
 msgstr ""
 
 #. Author URI of the plugin/theme
