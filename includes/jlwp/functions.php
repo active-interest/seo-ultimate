@@ -73,6 +73,14 @@ class suwp {
 	/**
 	 * @return string
 	 */
+	function add_backup_url($text) {
+		$anchor = __('backup your database', 'seo-ultimate');
+		return str_replace($anchor, '<a href="'.suwp::get_backup_url().'" target="_blank">'.$anchor.'</a>', $text);
+	}
+	
+	/**
+	 * @return string
+	 */
 	function get_backup_url() {
 		if (is_plugin_active('wp-db-backup/wp-db-backup.php'))
 			return admin_url('tools.php?page=wp-db-backup');
@@ -93,6 +101,30 @@ class suwp {
 			return admin_url("categories.php?action=edit&amp;cat_ID=$id");
 		else
 			return get_edit_tag_link($id, $taxonomy);
+	}
+	
+	function get_all_the_terms($id = 0) {
+		
+		$id = (int)$id;
+		
+		if ($id) {
+			$post = get_post($id);
+			if (!$post) return false;
+		} else {
+			if (!in_the_loop()) return false;
+			global $post;
+			$id = (int)$post->ID;
+		}
+		
+		$taxonomies = get_object_taxonomies($post);
+		$terms = array();
+		
+		foreach ($taxonomies as $taxonomy) {
+			$newterms = get_the_terms($id, $taxonomy);
+			if ($newterms) $terms = array_merge($terms, $newterms);
+		}
+		
+		return $terms;
 	}
 	
 	function remove_instance_action($tag, $class, $function, $priority=10) {

@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable
+Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable, downgradable
 Requires at least: 2.8
-Tested up to: 2.9
-Stable tag: 2.4
+Tested up to: 3.0
+Stable tag: 2.5
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
@@ -11,9 +11,11 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 2.5 adds advanced plugin upgrade/downgrade functionality
 * Version 2.4 adds a nofollow option for Deeplink Juggernaut links
 * Version 2.3 adds per-post noindex/nofollow toggles
 * Version 2.2 adds a links-per-post limiter for Deeplink Juggernaut
+* Version 2.1 adds a 404 Monitor overhaul and many other improvements
 
 = Features =
 
@@ -93,11 +95,12 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* If you choose to delete SEO Ultimate from within the WordPress plugin manager, SEO Ultimate will remove all its settings from your database.
 	* Includes icon integration with the WordPress 2.7+ menu and the Ozh Admin Drop Down Menu plugin.
 	* Uses WordPress plugin security features like nonces, etc.
+	* Lets you upgrade/downgrade the plugin to versions of your choosing (starting with 2.5).
 	
 * **Features Coming Soon**
 	* Automatic XHTML validation checking
 	* Nofollow options
-	* Title tag editing for attachments
+	* Title rewriting for attachments and custom post types
 	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
 
 [**Download**](http://downloads.wordpress.org/plugin/seo-ultimate.zip) **your free copy of SEO Ultimate today.**
@@ -587,6 +590,10 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 2.5 (June 1, 2010) =
+* Feature: Users can now upgrade/downgrade SEO Ultimate to versions of their choosing starting with 2.5
+* Bugfix: Fixed "string offset" fatal error
 
 = Version 2.4 (May 28, 2010) =
 * Feature: Added nofollow option for Deeplink Juggernaut links

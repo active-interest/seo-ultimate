@@ -646,7 +646,9 @@ class SU_Module {
 	function get_setting($key, $default=null, $module=null) {
 		if (!$module) $module = $this->get_settings_key();
 		
-		if (isset($this->plugin->dbdata['settings'][$module][$key]))
+		if (isset($this->plugin->dbdata['settings']
+				, $this->plugin->dbdata['settings'][$module]
+				, $this->plugin->dbdata['settings'][$module][$key]))
 			$setting = $this->plugin->dbdata['settings'][$module][$key];
 		else
 			$setting = $default;
@@ -1434,19 +1436,6 @@ class SU_Module {
 		$this->textareas(array($id => $title), $rows, $cols);
 	}
 	
-	/**
-	 * Outputs <option> tags.
-	 * 
-	 * @since 2.4
-	 */
-	function dropdown_options($options, $current = null) {
-		foreach ($options as $value => $label) {
-			echo "<option value='$value'";
-			selected($value, $current);
-			echo ">$label</option>";
-		}
-	}
-	
 	/********** ADMIN SECURITY FUNCTIONS **********/
 	
 	/**
@@ -1656,7 +1645,7 @@ class SU_Module {
 			$id = "_su_".su_esc_attr($id);
 			$title = str_replace(' ', '&nbsp;', $title);
 			
-			$html .= "<tr class='textbox'>\n<th scope='row'><label for='$id'>$title</label></th>\n"
+			$html .= "<tr class='textbox' valign='middle'>\n<th scope='row'><label for='$id'>$title</label></th>\n"
 					."<td><input name='$id' id='$id' type='text' value='$value' class='regular-text' tabindex='2' /></td>\n</tr>\n";
 		}
 		
@@ -1689,7 +1678,8 @@ class SU_Module {
 	 */
 	function get_postmeta_checkboxes($checkboxes, $grouptext) {
 		
-		$html = "<tr>\n<th scope='row'>$grouptext</th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";
+		$valign = (is_array($checkboxes) && count($checkboxes)) ? 'top' : 'middle';
+		$html = "<tr class='checkboxes' valign='$valign'>\n<th scope='row'>$grouptext</th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";
 		
 		if (is_array($checkboxes)) {
 			foreach ($checkboxes as $name => $desc) {
@@ -1724,6 +1714,52 @@ class SU_Module {
 		return $this->get_postmeta_checkboxes(array($id => $title), $grouptext);
 	}
 	
+	/**
+	 * Generates the HTML for a single <select> post meta dropdown.
+	 * 
+	 * @since 2.5
+	 * @uses get_module_key()
+	 * @uses get_postmeta()
+	 * 
+	 * @param string $name The name of the <select> element.
+	 * @param array $options An array of options, where the array keys are the <option> values and the array values are the labels (<option> contents).
+	 * @param string $grouptext The text to display in a table cell to the left of the one containing the dropdown.
+	 * @return string $html
+	 */
+	function get_postmeta_dropdown($name, $options, $grouptext) {
+		
+		register_setting('seo-ultimate', $name);
+		$current = $this->get_postmeta($name);
+		$name = "_su_".su_esc_attr($name);
+		
+		$html = "<tr class='dropdown' valign='middle'>\n<th scope='row'>$grouptext</th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";
+		$html .= "<select name='$name' id='$name' onchange='javascript:su_toggle_select_children(this)'>";
+		$html .= suhtml::option_tags($options, $current);
+		$html .= "</select>\n";
+		$html .= "</fieldset></td>\n</tr>\n";
+		
+		return $html;
+	}
+	
+	/**
+	 * Turns a <tr> into a post meta subsection.
+	 * 
+	 * @since 2.5
+	 * @uses get_postmeta
+	 * 
+	 * @param string $field
+	 * @param string $value
+	 * @param string $html
+	 * @return string $html
+	 */
+	function get_postmeta_subsection($field, $value, $html) {
+		$hidden = ($this->get_postmeta($field) == $value) ? '' : ' hidden';
+		
+		$field = su_esc_attr($field);
+		$value = su_esc_attr($value);
+		$html = str_replace('<tr ', "<tr class='su_{$field}_{$value}_subsection$hidden' ", $html);
+		return $html;
+	}
 	
 	/********** CRON FUNCTION **********/
 	
