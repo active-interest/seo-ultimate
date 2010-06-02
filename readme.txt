@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable, downgradable
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 2.5
+Stable tag: 2.5.1
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
