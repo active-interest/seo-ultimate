@@ -733,7 +733,12 @@ class SU_Module {
 	 */
 	function delete_setting($key, $module=null) {
 		if (!$module) $module = $this->get_settings_key();
-		unset($this->plugin->dbdata['settings'][$module][$key]);
+		
+		if (isset($this->plugin->dbdata['settings']
+				, $this->plugin->dbdata['settings'][$module]
+				, $this->plugin->dbdata['settings'][$module][$key]))
+			//Some PHP setups will actually throw an error if we try to unset an array element that doesn't exist...
+			unset($this->plugin->dbdata['settings'][$module][$key]);
 	}
 	
 	/**

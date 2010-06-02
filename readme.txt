@@ -591,9 +591,12 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 2.5.1 (June 1, 2010) =
+* Bugfix: Fixed "string offset" fatal error that appears on certain setups
+
 = Version 2.5 (June 1, 2010) =
 * Feature: Users can now upgrade/downgrade SEO Ultimate to versions of their choosing starting with 2.5
-* Bugfix: Fixed "string offset" fatal error
+* Bugfix: Fixed "string offset" fatal error that appears on certain setups
 
 = Version 2.4 (May 28, 2010) =
 * Feature: Added nofollow option for Deeplink Juggernaut links
