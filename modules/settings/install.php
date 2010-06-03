@@ -7,7 +7,7 @@
 
 if (class_exists('SU_Module')) {
 
-define('SU_DOWNGRADE_LIMIT', '2.5');
+define('SU_DOWNGRADE_LIMIT', '2.6');
 
 class SU_Install extends SU_Module {
 	
@@ -132,11 +132,11 @@ class SU_Install extends SU_Module {
 		if ( ! current_user_can('update_plugins') )
 			wp_die(__('You do not have sufficient permissions to upgrade/downgrade plugins for this blog.', 'seo-ultimate'));		
 		
-		$nv = sustr::preg_filter('[0-9a-zA-Z .]', $_POST['version']);
+		$nv = sustr::preg_filter('0-9a-zA-Z .', $_POST['version']);
 		if (!strlen($nv)) return false;
 		
 		//Don't allow downgrading to anything below the minimum limit
-		if (version_compare(SU_DOWNGRADE_LIMIT, $nv)) return;
+		if (version_compare(SU_DOWNGRADE_LIMIT, $nv, '>')) return;
 		
 		switch (version_compare($nv, SU_VERSION)) {
 			case -1: //Downgrade
@@ -147,6 +147,9 @@ class SU_Install extends SU_Module {
 				break;
 			case 1: //Upgrade
 				$title = __('Upgrade to SEO Ultimate %s', 'seo-ultimate');
+				break;
+			default:
+				return;
 		}
 		
 		$title = sprintf($title, $nv);
