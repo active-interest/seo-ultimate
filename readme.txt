@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable, downgradable
+Tags: seo, google, yahoo, bing, search engines, admin, post, page, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, categories, uninstallable, reinstallable, downgradable
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 2.5.1
+Stable tag: 2.6
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 2.6 adds reinstallation support
 * Version 2.5 adds advanced plugin upgrade/downgrade functionality
 * Version 2.4 adds a nofollow option for Deeplink Juggernaut links
 * Version 2.3 adds per-post noindex/nofollow toggles
 * Version 2.2 adds a links-per-post limiter for Deeplink Juggernaut
-* Version 2.1 adds a 404 Monitor overhaul and many other improvements
 
 = Features =
 
@@ -591,12 +591,16 @@ Frequently asked questions, documentation, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 2.6 (June 3, 2010) =
+* Feature: Users can now reinstall a fresh copy of the plugin from within `Settings > SEO Ultimate > Reinstall`
+* Bugfix: SEO Ultimate now handles accidental double-serialization of the settings array
+
 = Version 2.5.1 (June 1, 2010) =
-* Bugfix: Fixed "string offset" fatal error that appears on certain setups
+* Bugfix: Fixed "string offset" fatal error that appeared on certain setups
 
 = Version 2.5 (June 1, 2010) =
 * Feature: Users can now upgrade/downgrade SEO Ultimate to versions of their choosing starting with 2.5
-* Bugfix: Fixed "string offset" fatal error that appears on certain setups
+* Bugfix: Fixed "string offset" fatal error that appeared on certain setups
 
 = Version 2.4 (May 28, 2010) =
 * Feature: Added nofollow option for Deeplink Juggernaut links

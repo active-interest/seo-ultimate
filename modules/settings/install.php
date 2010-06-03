@@ -22,6 +22,7 @@ class SU_Install extends SU_Module {
 		return array(
 			  __('Upgrade', 'seo-ultimate') => 'upgrade_tab'
 			, __('Downgrade', 'seo-ultimate') => 'downgrade_tab'
+			, __('Reinstall', 'seo-ultimate') => 'reinstall_tab'
 		);
 	}
 	
@@ -73,6 +74,16 @@ class SU_Install extends SU_Module {
 				$this->print_message('warning', sprintf(__("Downgrading to versions earlier than %s is not supported.", 'seo-ultimate'), SU_DOWNGRADE_LIMIT));
 		} else
 			$this->print_message('error', __("There was an error retrieving the list of available versions. Please try again later.", 'seo-ultimate'));
+	}
+	
+	function reinstall_tab() {
+		echo "\n<p>";
+		_e("To download and install a fresh copy of the SEO Ultimate version you are currently using, click the &#8220;Reinstall&#8221; button below.", 'seo-ultimate');
+		echo "</p>\n";
+		
+		$this->admin_form_start(false, false);
+		echo "<input type='hidden' name='version' id='version' value='".su_esc_attr(SU_VERSION)."' />\n";
+		$this->admin_form_end(__('Reinstall', 'seo-ultimate'), false);
 	}
 	
 	function get_version_radiobuttons($min, $max) {

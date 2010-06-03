@@ -137,7 +137,7 @@ class SEO_Ultimate {
 		/********** LOAD/SAVE DATABASE DATA **********/
 		
 		//Load
-		$this->dbdata = get_option('seo_ultimate', array());
+		$this->dbdata = maybe_unserialize(get_option('seo_ultimate', array()));
 		$this->upgrade_to_08();
 		
 		//Save
