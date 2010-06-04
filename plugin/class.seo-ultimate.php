@@ -137,7 +137,7 @@ class SEO_Ultimate {
 		/********** LOAD/SAVE DATABASE DATA **********/
 		
 		//Load
-		$this->dbdata = get_option('seo_ultimate', array());
+		$this->dbdata = maybe_unserialize(get_option('seo_ultimate', array()));
 		$this->upgrade_to_08();
 		
 		//Save
@@ -1454,7 +1454,7 @@ class SEO_Ultimate {
 	}
 	
 	/**
-	 * Marks code with comments identifying SEO Ultimate if the user has set this option.
+	 * Marks code with HTML comments identifying SEO Ultimate, if the user has set this option.
 	 * 
 	 * @since 2.7
 	 */
@@ -1491,22 +1491,32 @@ class SEO_Ultimate {
 	}
 	
 	/**
-	 * Returns the full server path to the main readme.txt file, or a translated readme.txt file if it exists for the current WPLANG.
+	 * Returns the full server path to the main documentation.txt file.
 	 * 
-	 * @since 1.5
+	 * @since 2.7
 	 * @return string
 	 */
-	function get_translated_readme_path() {
+	function get_mdoc_path() {
+		return $this->plugin_dir_path.'modules/documentation.txt';
+	}
+	
+	/**
+	 * Returns the full server path to the main documentation.txt file, or a translated documentation.txt file if it exists for the current WPLANG.
+	 * 
+	 * @since 2.7
+	 * @return string
+	 */
+	function get_translated_mdoc_path() {
 		if (defined('WPLANG') && strlen(WPLANG)) {
 			$wplang = sustr::preg_filter('a-zA-Z0-9_', WPLANG);
 			$langvars = array($wplang, array_shift(explode('_', $wplang)));
 			foreach ($langvars as $langvar) {
-				$path = $this->plugin_dir_path."translations/readme-$langvar.txt";
+				$path = $this->plugin_dir_path."translations/documentation-$langvar.txt";
 				if (is_readable($path)) return $path;
 			}
 		}
 		
-		return $this->plugin_dir_path.'readme.txt';
+		return $this->plugin_dir_path.'modules/documentation.txt';
 	}
 }
 ?>
