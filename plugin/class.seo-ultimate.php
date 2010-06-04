@@ -137,7 +137,7 @@ class SEO_Ultimate {
 		/********** LOAD/SAVE DATABASE DATA **********/
 		
 		//Load
-		$this->dbdata = maybe_unserialize(get_option('seo_ultimate', array()));
+		$this->dbdata = get_option('seo_ultimate', array());
 		$this->upgrade_to_08();
 		
 		//Save
@@ -884,8 +884,9 @@ class SEO_Ultimate {
 	 */
 	function admin_includes() {
 		
-		//Global CSS
+		//Global CSS/JS
 		$this->queue_css('plugin', 'global');
+		$this->queue_js ('plugin', 'global');
 		
 		//Figure out what plugin admin page we're on
 		global $plugin_page;
@@ -1120,7 +1121,7 @@ class SEO_Ultimate {
 	 */
 	function plugin_action_links($actions) {
 		$su_actions = array(
-			  'uninstall' => __("Uninstall", 'seo-ultimate')
+			  'uninstall' => __('Uninstall', 'seo-ultimate')
 		);
 		
 		foreach ($su_actions as $module => $anchor) {
@@ -1437,14 +1438,8 @@ class SEO_Ultimate {
 	 */
 	function template_head() {
 		
-		if (isset($this->modules['settings']))
-			$markcode = $this->modules['settings']->get_setting('mark_code');
-		else
-			$markcode = false;
-		
-		echo "\n";
-		
-		if ($markcode) echo "\n<!-- ".SU_PLUGIN_NAME." (".SU_PLUGIN_URI.") -->\n";
+		if ($markcode = $this->get_setting('mark_code', false, 'settings'))
+			echo "\n<!-- ".SU_PLUGIN_NAME." (".SU_PLUGIN_URI.") -->\n";
 		
 		//Let modules output head code.
 		do_action('su_head');
@@ -1456,6 +1451,30 @@ class SEO_Ultimate {
 		}
 		
 		if ($markcode) echo "<!-- /".SU_PLUGIN_NAME." -->\n\n";
+	}
+	
+	/**
+	 * Marks code with comments identifying SEO Ultimate if the user has set this option.
+	 * 
+	 * @since 2.7
+	 */
+	function mark_code($code, $info = '', $info_only = false) {
+		
+		if (!strlen($code)) return '';
+		
+		if ($this->get_setting('mark_code', false, 'settings')) {
+		
+			if ($info_only)
+				$start = $end = $info;
+			else {
+				if ($info) $info = " - $info";
+				$start = sprintf('%s (%s)%s', SU_PLUGIN_NAME, SU_PLUGIN_URI, $info);
+				$end = SU_PLUGIN_NAME;
+			}
+			
+			return "\n<!-- $start -->\n$code\n<!-- /$end -->\n\n";
+		}
+		return $code;
 	}
 	
 	

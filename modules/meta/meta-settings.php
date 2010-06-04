@@ -40,7 +40,6 @@ class SU_MetaSettings extends SU_Module {
 				, 'yahoo_verify' => __("Yahoo! Site Explorer:", 'seo-ultimate')
 				, 'microsoft_verify' => __("Bing Webmaster Center:", 'seo-ultimate')
 			), array(), __("Verification Codes", 'seo-ultimate'));
-		$this->textarea('custom_html', __("Custom &lt;head&gt; HTML", 'seo-ultimate'));
 		$this->admin_form_table_end();
 	}
 }

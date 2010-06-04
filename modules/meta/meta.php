@@ -72,21 +72,6 @@ class SU_Meta extends SU_Module {
 				echo "\t<meta name=\"$name\" content=\"$value\" />\n";
 			}
 		}
-		
-		//Display custom code if provided
-		if ($custom = $this->get_setting('custom_html')) {
-			
-			//Does the plugin user want us to surround code insertions with comments? If so, mark the custom code as such.
-			$mark_code = $this->get_setting('mark_code', false, 'settings');
-			$desc = __('Custom Header Code', 'seo-ultimate');
-			
-			echo "\n";
-			if ($mark_code) echo "\t<!-- $desc -->\n";
-			echo $custom;
-			if ($mark_code) echo "\n\t<!-- /$desc -->";
-			echo "\n\n";
-		}
-		
 	}
 	
 	function postmeta_fields($fields) {
@@ -94,7 +79,7 @@ class SU_Meta extends SU_Module {
 		$value = attribute_escape($this->get_postmeta('description'));
 		
 		$fields['20|description|keywords'] =
-			  "<tr class='textarea'>\n<th scope='row'><label for='$id'>".__('Meta Description:', 'seo-ultimate')."</label></th>\n"
+			  "<tr class='textarea' valign='top'>\n<th scope='row'><label for='$id'>".__('Meta Description:', 'seo-ultimate')."</label></th>\n"
 			. "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='60' rows='3' tabindex='2'"
 			. " onkeyup=\"javascript:document.getElementById('su_meta_description_charcount').innerHTML = document.getElementById('_su_description').value.length\">$value</textarea>"
 			. "<br />".sprintf(__("You&#8217;ve entered %s characters. Most search engines use up to 160.", 'seo-ultimate'), "<strong id='su_meta_description_charcount'>".strlen($value)."</strong>")

@@ -339,14 +339,14 @@ class SU_Module {
 	 * @since 1.5
 	 * @uses sumd::get_sections()
 	 * @uses sumd::get_section()
-	 * @uses SEO_Ultimate::get_translated_readme_path()
-	 * @uses SEO_Ultimate::get_readme_path()
+	 * @uses SEO_Ultimate::get_translated_mdoc_path()
+	 * @uses SEO_Ultimate::get_mdoc_path()
 	 * 
 	 * @return array
 	 */
 	function get_admin_dropdowns() {
 		
-		$paths = array($this->plugin->get_translated_readme_path(), $this->plugin->get_readme_path());
+		$paths = array($this->plugin->get_translated_mdoc_path(), $this->plugin->get_mdoc_path());
 		
 		foreach ($paths as $path) {
 			if (is_readable($path)) {
