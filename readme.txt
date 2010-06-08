@@ -1,0 +1,429 @@
+=== SEO Ultimate ===
+Contributors: SEO Design Solutions
+Tags: seo, google, yahoo, bing, search engines, admin, post, page, custom post types, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, categories, uninstallable, reinstallable, downgradable
+Requires at least: 2.8
+Tested up to: 3.0
+Stable tag: 2.8
+
+This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
+
+== Description ==
+
+= Recent Releases =
+
+* Version 2.8 adds custom post type editor to Title Rewriter
+* Version 2.7 adds the Code Inserter module
+* Version 2.6 adds reinstallation support
+* Version 2.5 adds advanced plugin upgrade/downgrade functionality
+* Version 2.4 adds a nofollow option for Deeplink Juggernaut links
+
+= Features =
+
+SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these powerful features:
+
+* **Title Rewriter** -- UPDATED in Version 2.8
+	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
+	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog. Also supports custom post types.
+	* Customize your homepage's `<title>` tag.
+	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
+
+* **Noindex Manager**
+	* Add the `<meta name="robots" content="noindex,follow" />` tag to archives, comment feeds, the login page, and more.
+	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post/page.
+	* Avoid duplicate content SEO issues with the recommended settings.
+
+* **Meta Editor**
+	* Edit the `<meta>` description/keyword tags for posts, pages, and the homepage.
+	* Influence search engine result snippets with the meta description editing functionality.
+	* Enter verification codes in the provided fields to access search engine webmaster tools.
+	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
+
+* **Canonicalizer**
+	* Point search engines to preferred content access points with `<link rel="canonical" />` SEO tags.
+	* Go beyond the basic canonical tag functionality of WordPress 2.9+ with SEO Ultimate's support for category/tag/date/author archives.
+	* Redirect requests for non-existent pagination with a simple checkbox.
+
+* **404 Monitor**
+	* Improve the visiting experience of users and spiders by keeping tabs on "page not found" errors. (Use a redirection plugin to point dead-end URLs to your content.)
+	* Find out what URLs are referring visitors to 404 errors.
+
+* **Linkbox Inserter**
+	* Encourage natural linkbuilding activity by adding textboxes to the end of your posts/pages that contain automatically-generated link HTML.
+
+* **File Editor**
+	* Implement advanced SEO strategies with the `.htaccess` editor.
+	* Give instructions to search engines via the `robots.txt` editor.
+
+* **Slug Optimizer**
+	* Increase in-URL keyword potency by removing "filler words" (like "the," "with," "and," etc.) from post/page URLs.
+
+* **Competition Researcher**
+	* Investigate multiple keywords or URLs with quick access to search engine tools. Competition Researcher does this without illicit scraping/automation methods.
+	* Find out how many webpages are competing for the keywords you specify.
+	* Choose to analyze the keyword relevance in competing webpages' titles, body content, URLs, or anchor text.
+	* Find out how many pages of a competing website are in Google's index.
+	* Access competitors' incoming links profile.
+	* Find out what external websites your competitors are linking to.
+
+* **More Link Customizer**
+	* SEO your posts' "read more" links by including the posts' keyword-rich titles in the anchor text.
+	* Override the "read more" link on a per-post basis.
+	* Include `<strong>` or `<em>` tags in the anchor text if so desired.
+
+* **Internal Relevance Researcher**
+	* Determine which of your webpages Google most strongly associates with the keywords you specify.
+	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
+
+* **Deeplink Juggernaut** -- UPDATED in Version 2.4
+	* Automatically link phrases in your posts/pages to given URLs.
+	* Use the power of anchor text to boost your internal ranking SEO paradigm.
+	* Control the maximum number of autolinks added to each post/page.
+	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
+
+* **Code Inserter** -- NEW in Version 2.7
+	* Easily insert custom HTML into your site's `<head>` tag, footer, or item content.
+	* Use to add Google Analytics, Feedburner FeedFlare, Google AdSense section targeting, and other SEO/SEM-enhancing code snippets.
+	* Code remains even when switching themes.
+
+* **Settings Manager**
+	* Export your SEO Ultimate settings to a file and re-import later if desired.
+	* Move SEO Ultimate settings between blogs using the export/import functionality.
+	* Reset all settings back to "factory defaults" if something goes wrong.
+
+* **Additional features**
+	* Lets you import post meta from All in One SEO Pack.
+	* Displays admin notices if blog privacy settings are configured to block search engines.
+	* Supports [WordPress plugin translation](http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/). POT file is included in the zip file.
+	* SEO Ultimate documentation is seamlessly integrated into the contextual help system of WordPress 2.7+ and is accessible via the dropdowns in the upper-right-hand corner of the admin screen. In-depth info, explanations, and FAQ are just a click away.
+	* Unlike certain other SEO plugins, SEO Ultimate sports a clean, simple, aesthetically-pleasing interface, with no ads or donation nags.
+	* SEO Ultimate cleanly integrates itself into WordPress without plastering its name all over the interface.
+	* Includes icon integration with the WordPress 2.7+ menu and the Ozh Admin Drop Down Menu plugin.
+	* Uses WordPress plugin security features like nonces, etc.
+	* Includes an uninstaller that can delete the plugin's files and database entries if desired.
+	* Lets you upgrade/downgrade the plugin to versions of your choosing (starting with 2.5).
+
+* **Features Coming Soon**
+	* Automatic XHTML validation checking
+	* Nofollow options
+	* Title rewriting for attachments and custom post types
+	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
+
+[**Download**](http://downloads.wordpress.org/plugin/seo-ultimate.zip) **your free copy of SEO Ultimate today.**
+
+[youtube http://www.youtube.com/watch?v=IE_10_nwe0c]
+
+== Installation ==
+
+To install the plugin automatically:
+
+1. Go to the [SEO Ultimate homepage](http://www.seodesignsolutions.com/wordpress-seo/)
+2. In the "Auto Installer" box on the right, enter your blog's URL and click "Launch Installer."
+3. Click "Install Now," then click "Activate this plugin."
+
+That's it! Now go to the new "SEO" menu and explore the modules of the SEO Ultimate plugin.
+
+
+To install the plugin manually:
+
+1. Download and unzip the plugin.
+2. Upload the `seo-ultimate` directory to `/wp-content/plugins/`.
+3. Activate the plugin through the 'Plugins' menu in WordPress.
+
+
+== Frequently Asked Questions ==
+
+= General FAQ =
+
+* **Why "SEO Ultimate" instead of "Ultimate SEO"?**
+	Because "SEO Ultimate" works better as a brand name.
+
+* **Where in WordPress does the plugin add itself?**
+	SEO Ultimate puts all its admin pages under a new "SEO" top-level menu. The only exception is the plugin settings page, which goes under `Settings > SEO Ultimate`.
+
+* **Where's the documentation?**
+	SEO Ultimate's documentation is built into the plugin itself. Whenever you're viewing an SEO Ultimate page in your WordPress admin, you can click the "Help" tab in the upper-right-hand corner to view documentation for the area you're viewing.
+
+* **How do I uninstall SEO Ultimate?**
+	1. Go to the `Settings > SEO Ultimate` admin page and click the "Uninstall" tab.
+	2. Click the "Uninstall Now" button and click "Yes" to confirm. SEO Ultimate's files and database entries will be deleted.
+
+* **Will all my settings be deleted if I delete SEO Ultimate in the Plugins manager?**
+	No. Your settings will be retained unless you uninstall SEO Ultimate under `Settings > SEO Ultimate > Uninstall`.
+
+* **Where is the Plugin Settings page?**
+	The plugin settings page is located under `Settings > SEO Ultimate`.
+
+= "SEO Settings" box =
+
+* **Where is the SEO Settings box located?**
+	The SEO Settings box is located on WordPress's post/page editor underneath the content area.
+
+* **How do I disable the "SEO Settings" box in the post/page editors?**
+	Open the editor, click the "Screen Options" tab in the upper-right-hand corner, and uncheck the "SEO Settings" checkbox. Note that the box's visibility is a per-user preference.
+
+* **Why did some of the textboxes disappear from the "SEO Settings" box?**
+	The "SEO Settings" fields are added by your modules. The "Title Tag" field is added by the Title Rewriter module, the "Description" and "Keywords" fields are added by the Meta Editor module, etc. If you disable a module using the Module Manager, its fields in the "SEO Settings" box will be disabled too. You can re-enable the field in question by re-enabling the corresponding module.
+
+
+= Module FAQ =
+
+Frequently asked questions, settings help, and troubleshooting tips for SEO Ultimate's modules can be found by clicking the help tabs in the upper-right-hand corner of the module admin pages themselves. The same documentation can also be found in the `seo-ultimate/modules/documentation.txt` file of the SEO Ultimate download.
+
+
+
+== Screenshots ==
+
+1. The Module Manager lets you enable/disable SEO Ultimate features
+2. The 404 Monitor log with "Screen Options" dropdown visible
+3. The Canonicalizer module helps avoid duplicate content SEO issues 
+4. The Competition Researcher module
+5. The Deeplink Juggernaut module
+6. The File Editor module lets you edit your robots.txt and .htaccess files
+7. The Internal Relevance Researcher module
+8. The Linkbox Inserter module encourages natural linkbuilding activity
+9. The Meta Editor module lets you edit important SEO data
+10. The Noindex Manager module
+11. The "Default Formats" tab of the Title Rewriter module
+12. The "Pages" tab of the Title Rewriter module lets you edit Pages' <title> tags
+13. The "Categories" tab of the Title Rewriter module lets you edit categories' <title> tags
+14. The "SEO Settings" box, which is visible on post & page editors
+15. The SEO Ultimate menu
+
+
+== Changelog ==
+
+= Version 2.8 (June 8, 2010) =
+* Feature: Title Rewriter now adds mass-editor tabs for custom post types
+* Feature: Title Rewriter can now edit the title tags of attachments
+* Improvement: Title Rewriter's mass-editors no longer display an empty table when no items of a particular type exist
+
+= Version 2.7 (June 4, 2010) =
+* Feature: Added Code Inserter module
+* Change: Meta Editor's "Custom HTML Code" field is now the "`<head>` Tag" field in the new Code Inserter module
+
+= Version 2.6 (June 3, 2010) =
+* Feature: Users can now reinstall a fresh copy of the plugin from within `Settings > SEO Ultimate > Reinstall` in case, for example, custom modifications go awry
+
+= Version 2.5.1 (June 1, 2010) =
+* Bugfix: Fixed "string offset" fatal error that appeared on certain setups
+
+= Version 2.5 (June 1, 2010) =
+* Feature: Users can now upgrade/downgrade SEO Ultimate to versions of their choosing starting with 2.5
+* Bugfix: Fixed "string offset" fatal error that appeared on certain setups
+
+= Version 2.4 (May 28, 2010) =
+* SEO Feature: Added nofollow option for Deeplink Juggernaut links
+
+= Version 2.3 (May 26, 2010) =
+* SEO Feature: Meta robots tags (index/noindex and follow/nofollow) can now be set for each post or page via the "SEO Settings" box
+* Behavior Change: Since the Noindex Manager's advertised functionality is controlling the "noindex" attribute only, its behavior has been changed to output "noindex,follow" where it previously outputted "noindex,nofollow"
+
+= Version 2.2 (May 24, 2010) =
+* SEO Feature: Deeplink Juggernaut now has a links-per-post limiter option
+* Bugfix: The current tab is now maintained when submitting a tabbed form twice in a row
+* Bugfix: When a module page reloads after submitting a tabbed form, the screen no longer jumps part-way down the page
+
+= Version 2.1.1 (May 19, 2010) =
+* Bugfix: Fixed "get_table_name" fatal error that appeared when upgrading certain configurations
+* Bugfix: Restored missing success/error messages for import/reset functions
+
+= Version 2.1 (May 18, 2010) =
+* Improvement: Major 404 Monitor upgrade, featuring a new space-saving interface redesign
+* Improvement: 404 Monitor now stores its 404 log in wp_options instead of its own database table
+* Improvement: 404 Monitor now ignores apple-touch-icon.png 404s
+* Improvement: Plugin now silently ignores a missing readme.txt instead of giving error
+* Improvement: CSS and JavaScript now exist in separate, static files instead of being outputted by PHP files
+* Improvement: SEO Ultimate settings now remain when plugin files are deleted; settings can now be deleted through new "Uninstall" function under `Settings > SEO Ultimate > Uninstall`
+* Improvement: Database usage for the Whitepapers module reduced more than 90%
+* Improvement: Users can now tab from a post's HTML editor directly into the "SEO Settings" fields
+* Improvement: Removed blank admin CSS/JS file references
+* Improvement: Added list of active modules to SEO Ultimate's plugin page listing
+* Improvement: Added an "Uninstall" link to SEO Ultimate's plugin page listing
+* Improvement: Update info notices now also visible under `Tools > Upgrade`
+* Improvement: Added some missing documentation
+* Improvement: Added/updated screenshots
+* Improvement: Removed unused code
+* Improvement: Added blank index.php files to module directories to prevent indexing/snooping of directory listings
+* Feature: You can now hide 404 Monitor columns with the new "Screen Options" dropdown
+* Bugfix: Removed duplicate excerpt ellipses from Whitepapers module
+* Known Issue: If you had previously disabled 404 Monitor in version 2.0 or earlier, it will re-enable itself when upgrading to version 2.1 or later. The workaround is to re-disable 404 Monitor from the Module Manager after upgrading.
+
+= Version 2.0 (April 29, 2010) =
+* SEO Feature: Title Rewriter can now edit the title tags of post tag archives
+
+= Version 1.9 (April 3, 2010) =
+* SEO Feature: Title Rewriter can now edit the title tags of category archives
+
+= Version 1.8.3 (March 30, 2010) =
+* Bugfix: Fixed bug that caused disabled attribution link to display under certain circumstances
+
+= Version 1.8.2 (March 29, 2010) =
+* Bugfix: Fixed front-end Deeplink Juggernaut error
+
+= Version 1.8.1 (March 27, 2010) =
+* Bugfix: Fixed back-end Deeplink Juggernaut error
+
+= Version 1.8 (March 27, 2010) =
+* SEO Feature: Added Deeplink Juggernaut beta module
+
+= Version 1.7.3 (March 11, 2010) =
+* Bugfix: Fixed variable name conflict introduced in 1.7.1 that disabled WordPress's plugin/theme editors
+
+= Version 1.7.2 (March 6, 2010) =
+* Bugfix: Fixed blank-admin-area bug in WordPress 3.0 alpha
+
+= Version 1.7.1 (February 27, 2010) =
+* Bugfix: Fixed conflict with Flexibility theme
+* Bugfix: Comment administration no longer alters SEO Ultimate menu bubble counters
+* Bugfix: SEO Ultimate menu icon is no longer accidentally added to other plugins' menus
+* Bugfix: Disabling visitor logging now disables all related code as well
+* Bugfix: Module Manager: Fixed invalid HTML IDs
+* Bugfix: Module Manager: Module titles are now consistent between enabled and disabled states
+* Bugfix: Module Manager: The "Silenced" option no longer disappears when all modules that support it are disabled
+* Bugfix: Module Manager: The "Plugin Settings" module link no longer breaks when re-enabling that module
+* Improvement: Added blank index.php files to additional plugin directories
+
+= Version 1.7 (February 20, 2010) =
+* SEO Feature: Displays admin notices if blog privacy settings are configured to block search engines
+
+= Version 1.6 (January 30, 2010) =
+* Feature: Added All in One SEO Pack importer module
+
+= Version 1.5.3 (January 27, 2010) =
+* Bugfix: Fixed "get_parent_module_key" fatal error that appeared under limited circumstances
+* Bugfix: Fixed "load_rss" fatal error that appeared under some circumstances
+* Bugfix: Fixed broken image in the Whitepapers module
+
+= Version 1.5.2 (January 25, 2010) =
+* Bugfix: Uninstallation now works when the plugin is deactivated
+
+= Version 1.5.1 (January 23, 2010) =
+* Bugfix: Stopped the included Markdown library from "helpfully" functioning as a WordPress plugin
+* Bugfix: Fixed error that appeared above changelog notices
+
+= Version 1.5 (January 23, 2010) =
+* Major under-the-hood changes and improvements
+* Feature: Added new {url_words} title format variable to Title Rewriter
+* Bugfix: Fixed broken link in the "SEO Settings" contextual help dropdown
+* Improvement: Module documentation now loaded directly from the readme file (eliminates duplication)
+* Improvement: Much more documentation now available from within the plugin
+* Improvement: Module Manager now only shows the "Silenced" option for applicable modules
+* Improvement: Cleaned root folder (now includes only the readme, screenshots, plugin file, POT file, and blank index.php)
+* Improvement: Reduced database usage when saving post meta
+
+= Version 1.4.1 (January 11, 2010) =
+* Compatibility: Meta Editor now supports the new Google Webmaster Tools verification code
+
+= Version 1.4 (December 16, 2009) =
+* SEO Feature: Added the Internal Relevance Researcher
+* Bugfix: Title Rewriter no longer rewrites XML `<title>` tags in feeds
+* Improvement: Copied all documentation to the readme.txt file
+
+= Version 1.3 (November 13, 2009) =
+* SEO Feature: Added the More Link Customizer module
+* Bugfix: Postmeta fields now handle HTML entities properly
+* Improvement: Made minor tweaks to the Competition Researcher
+
+= Version 1.2 (October 31, 2009) =
+* SEO Feature: Added the Competition Researcher module
+
+= Version 1.1.2 (October 9, 2009) =
+* Compatibility: Added PHP4 support
+
+= Version 1.1.1 (October 8, 2009) =
+* Bugfix: Fixed tab rendering bug
+
+= Version 1.1 (October 7, 2009) =
+* SEO Feature: You can now mass-edit post/page titles from the Title Rewriter module
+* Bugfix: Fixed logo background color in the Whitepapers module
+* Improvement: Title Rewriter now supports 10 additional title format variables
+* Improvement: Added internationalization support for admin menu notice numbers
+* Improvement: Certain third-party plugin notices are now removed from SEO Ultimate's admin pages
+
+= Version 1.0 (September 21, 2009) =
+* SEO Feature: Canonicalizer can now redirect requests for nonexistent pagination
+* Feature: Visitor logging can now be disabled completely from the Plugin Settings page
+* Feature: Logged visitor information can now be automatically deleted after a certain number of days
+* Feature: Added icon support for the Ozh Admin Drop Down Menu plugin
+* Bugfix: 404 Monitor notification count now consistent with new errors shown
+* Improvement: Canonicalizer now removes the duplicate canonical tags produced by WordPress 2.9-rare
+* Improvement: Inline changelogs now won't display if the Changelogger plugin is activated
+* Improvement: SEO Ultimate now selectively logs visitors based on which modules are enabled
+
+= Version 0.9.3 (August 1, 2009) =
+* Bugfix: Optimized slugs save with post
+* Bugfix: Slug Optimizer now treats words as case-insensitive
+* Bugfix: Slug Optimizer now handles words with apostrophes
+
+= Version 0.9.1 (August 1, 2009) =
+* Bugfix: Fixed PHP parse errors
+
+= Version 0.9 (August 1, 2009) =
+* SEO Feature: Added the Slug Optimizer module
+* SEO Feature: Noindex Manager now supports noindexing comment subpages
+* Bugfix: 404 Monitor's numeric notice now only includes new 404s
+* Bugfix: Linkbox Inserter now respects the "more" tag
+* Bugfix: Missing strings added to the POT file
+* Improvement: 404 Monitor now shows the referring URL for all 404 errors
+* Improvement: Reduced the number of database queries the plugin makes
+* Improvement: CSS and JavaScript are now only loaded when appropriate
+* Improvement: Added additional built-in documentation
+* Improvement: Divided built-in help into multiple tabs to reduce dropdown height
+* Improvement: Miscellaneous code efficiency improvements
+* Improvement: Many additional code comments added
+
+= Version 0.8 (July 22, 2009) =
+* SEO Feature: Added robots.txt editor (new File Editor module)
+* SEO Feature: Added .htaccess editor (new File Editor module)
+* Bugfix: 404 Monitor no longer uses the unreliable get_browser() function
+* Bugfix: 404 Monitor now ignores favicon requests
+* Bugfix: Fixed conflict with the WP Table Reloaded plugin
+* Bugfix: Fixed bug that caused Module Manager to appear blank on certain configurations
+* Bugfix: Fixed bug that caused multiple drafts to be saved per post
+* Bugfix: Post meta box no longer leaves behind empty postmeta database rows
+* Bugfix: Added missing Module Manager help
+* Bugfix: Fixed settings double-serialization bug
+* Bugfix: Fixed error that appeared when re-enabling disabled modules
+* Bugfix: Newlines and tabs now removed from HTML attributes
+* Improvement: SEO Ultimate now stores its wp_options data in 1 entry instead of 4
+* Improvement: The settings read/write process has been streamlined
+* Improvement: Drastically expanded the readme.txt FAQ section
+* Improvement: Plugin's directories now return 403 codes
+* Improvement: Settings importer now retains the settings of modules added after the export
+
+= Version 0.7 (July 16, 2009) =
+* Feature: Added the Module Manager
+* Feature: Modules can optionally display numeric notices in the menu
+
+= Version 0.6 (July 2, 2009) =
+* SEO Feature: Added the Linkbox Inserter module
+* Bugfix: Fixed plugin notices bug
+
+= Version 0.5 (June 25, 2009) =
+* Feature: Added settings exporter
+* Feature: Added settings importer
+* Feature: Added button that restores default settings
+* Bugfix: Fixed bug that decoded HTML entities in textboxes
+* Bugfix: Added internationalization support to some overlooked strings
+* Compatibility: Restores support for the WordPress 2.7 branch
+
+= Version 0.4 (June 18, 2009) =
+* Added the 404 Monitor module
+
+= Version 0.3 (June 11, 2009) =
+* Added the Canonicalizer module
+* Added alerts of possible plugin conflicts
+* Fixed a WordPress 2.8 compatibility issue
+* SEO Ultimate now requires WordPress 2.8 or above
+
+= Version 0.2 (June 4, 2009) =
+* Added the Meta Editor module
+* Fixed a double-escaping bug in the Title Rewriter
+* Fixed a bug that caused the Modules list to display twice on some installations
+
+= Version 0.1.1 (May 28, 2009) =
+* Fixed a bug that surfaced when other SEO plugins were installed
+* Fixed a bug that appeared on certain PHP setups
+
+= Version 0.1 (May 22, 2009) =
+* Initial release
