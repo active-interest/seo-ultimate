@@ -45,6 +45,33 @@ class suarr {
 			unset($array[$index]);
 	}
 	
+	/**
+	 * Returns whether or not any of the specified $needles are in the $haystack.
+	 * 
+	 * @param array $needles
+	 * @param array $haystack
+	 * @param bool $ci Whether or not the search should be case-insensitive.
+	 * 
+	 * @return bool
+	 */
+	function any_in_array($needles, $haystack, $ci = false) {
+		if ($ci) {
+			array_walk($needles, 'strtolower');
+			array_walk($haystack, 'strtolower');
+		}
+		
+		foreach ($needles as $needle)
+			if (in_array($needle, $haystack)) return true;
+		
+		return false;
+	}
+	
+	function explode_lines($lines) {
+		$lines = explode("\n", $lines);
+		array_walk($lines, 'trim'); //Remove any /r's
+		return $lines;
+	}
+	
 	//Based on recursive array search function from:
 	//http://www.php.net/manual/en/function.array-search.php#91365
 	function search_recursive($needle, $haystack) {
@@ -60,10 +87,24 @@ class suarr {
 		uksort($arr, create_function('$a,$b', 'return strlen($b["'.$valuekey.'"]) - strlen($a["'.$valuekey.'"]);'));
 	}
 	
-	function flatten_values($arr, $value_key = 0) {
+	function flatten_values($arr, $value_keys) {
+		foreach ((array)$value_keys as $key)
+			$arr = suarr::_flatten_values($arr, $key);
+		return $arr;
+	}
+	
+	function _flatten_values($arr, $value_key = 0) {
 		if (!is_array($arr) || !count($arr)) return array();
 		$newarr = array();
-		foreach ($arr as $key => $array_value)  $newarr[$key] = $array_value[$value_key];
+		foreach ($arr as $key => $array_value) {
+			if (is_array($array_value)) {
+				if (isset($array_value[$value_key]))
+					$newarr[$key] = $array_value[$value_key];
+			} elseif (is_object($array_value)) {
+				if (isset($array_value->$value_key))
+					$newarr[$key] = $array_value->$value_key;
+			}
+		}
 		return $newarr;
 	}
 }

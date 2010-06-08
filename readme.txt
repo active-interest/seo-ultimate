@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, custom post types, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, categories, uninstallable, reinstallable, downgradable
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 2.7
+Stable tag: 2.8
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
@@ -11,19 +11,19 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 2.8 adds custom post type editor to Title Rewriter
 * Version 2.7 adds the Code Inserter module
 * Version 2.6 adds reinstallation support
 * Version 2.5 adds advanced plugin upgrade/downgrade functionality
 * Version 2.4 adds a nofollow option for Deeplink Juggernaut links
-* Version 2.3 adds per-post noindex/nofollow toggles
 
 = Features =
 
 SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these powerful features:
 
-* **Title Rewriter**
+* **Title Rewriter** -- UPDATED in Version 2.8
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
-	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog.
+	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog. Also supports custom post types.
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
@@ -192,7 +192,12 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
-= Version 2.7 (June 5, 2010) =
+= Version 2.8 (June 8, 2010) =
+* Feature: Title Rewriter now adds mass-editor tabs for custom post types
+* Feature: Title Rewriter can now edit the title tags of attachments
+* Improvement: Title Rewriter's mass-editors no longer display an empty table when no items of a particular type exist
+
+= Version 2.7 (June 4, 2010) =
 * Feature: Added Code Inserter module
 * Change: Meta Editor's "Custom HTML Code" field is now the "`<head>` Tag" field in the new Code Inserter module
 

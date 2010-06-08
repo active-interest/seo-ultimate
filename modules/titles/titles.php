@@ -274,7 +274,8 @@ class SU_Titles extends SU_Module {
 	
 	function get_id_from_settings_key($key) {
 		$matches = array();
-		if (preg_match('/([a-z]+)_([0-9]+)_([a-z]+)/', $key, $matches))
+		//Custom post/taxonomy types must have alphanumeric names, or else this won't work
+		if (preg_match('/([a-z0-9]+)_([0-9]+)_([a-z]+)/', $key, $matches))
 			return (int)$matches[2];
 		
 		return false;
@@ -343,17 +344,6 @@ class SU_Titles extends SU_Module {
 		
 		$headers = array( __('ID'), __('Name'), __('Title Tag', 'seo-ultimate') );
 		
-		echo <<<STR
-<table class="widefat fullwidth" cellspacing="0">
-	<thead><tr>
-		<!--<th scope="col" class="$object_type-id">{$headers[0]}</th>-->
-		<th scope="col" class="$object_type-title">{$headers[1]}</th>
-		<th scope="col" class="$object_type-title-tag">{$headers[2]}</th>
-	</tr></thead>
-	<tbody>
-
-STR;
-		
 		/*if (strlen($num_varname) && strlen($offset_varname))
 			$args = "$num_varname=20&$offset_varname=0";
 		else
@@ -368,6 +358,22 @@ STR;
 		$objects = call_user_func_array($function, $args);
 		//$pagination_total = ceil(count($function()) / 2);
 		
+		if (!count($objects)) {
+			$this->print_message('info', __('Your site currently doesn&#8217;t have any public items of this type.', 'seo-ultimate'));
+			return false;
+		}
+		
+		echo <<<STR
+<table class="widefat fullwidth" cellspacing="0">
+	<thead><tr>
+		<!--<th scope="col" class="$object_type-id">{$headers[0]}</th>-->
+		<th scope="col" class="$object_type-title">{$headers[1]}</th>
+		<th scope="col" class="$object_type-title-tag">{$headers[2]}</th>
+	</tr></thead>
+	<tbody>
+
+STR;
+		
 		foreach ($objects as $object) {
 			$id = $object->$id_varname;
 			$editlink = call_user_func($edit_link_function, $id, $object_type);			
@@ -378,7 +384,8 @@ STR;
 		}
 		
 		echo "\t</tbody>\n</table>\n";
-	
+		
+		return true;
 	}
 	
 	function get_object_subtype_tabs($type, $keys, $labels, $callback) {
