@@ -41,7 +41,7 @@ class suwp {
 		global $wp_taxonomies;
 		$taxonomies = array();
 		foreach ($wp_taxonomies as $key => $taxonomy)
-			if ($taxonomy->object_type == 'post')
+			if (in_array('post', (array)$taxonomy->object_type))
 				$taxonomies[$key] = $taxonomy;
 		return $taxonomies;
 	}

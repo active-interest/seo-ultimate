@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, google, yahoo, bing, search engines, admin, post, page, custom post types, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, categories, uninstallable, reinstallable, downgradable
+Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 2.9
+Stable tag: 2.9.1
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
@@ -191,6 +191,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 2.9.1 (June 18, 2010) =
+* Bugfix: Restored support for editing the title tags of categories/tags/terms in WordPress 3.0
 
 = Version 2.9 (June 17, 2010) =
 * Feature: Title Rewriter now has mass-editor tabs for custom taxonomies
