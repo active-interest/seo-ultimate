@@ -17,7 +17,7 @@ div.su-module h4.su-subheader {
 
 div.su-module table.widefat {
 	width: auto;
-	margin: 2em 0;
+	/*margin: 2em 0;*/
 }
 
 div.su-module table.fullwidth,
@@ -135,6 +135,13 @@ div.su-module .su-tabs fieldset {
 div.su-module .su-tabs .su-tab-contents {
 	margin-top: 1em;
 }
+
+div.su-module .su-meta-edit-table table.widefat,
+div.su-module .su-meta-edit-table table.widefat .regular-text { width: 100%; }
+div.su-module .su-meta-edit-table table.widefat td.su-actions { width: 6em; }
+div.su-module .su-meta-edit-table table.widefat td.su-id { width: 2em; }
+div.su-module .su-meta-edit-table table.widefat td.su-name { width: 20em; }
+div.su-module .su-meta-edit-table table.widefat td { vertical-align: middle; }
 
 /* IMPORT MODULES */
 

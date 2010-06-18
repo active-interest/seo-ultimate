@@ -105,10 +105,6 @@ div.su-help h6 {
 
 /* POSTMETA BOX */
 
-#su-postmeta-box table tr {
-	vertical-align: middle;
-}
-
 #su-postmeta-box table th,
 #su-postmeta-box table td {
 	padding: 0.5em 0;
@@ -118,14 +114,6 @@ div.su-help h6 {
 	text-align: right;
 	font-weight: bold;
 	padding-right: 0.5em;
-}
-
-#su-postmeta-box table tr {
-	vertical-align: top;
-}
-
-#su-postmeta-box table tr.textbox {
-	vertical-align: middle;
 }
 
 #su-postmeta-box table tr.textarea th label {

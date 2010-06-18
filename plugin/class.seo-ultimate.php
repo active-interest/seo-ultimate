@@ -138,6 +138,7 @@ class SEO_Ultimate {
 		
 		//Load
 		$this->dbdata = maybe_unserialize(get_option('seo_ultimate', array()));
+		if (!is_array($this->dbdata)) $this->dbdata = array();
 		$this->upgrade_to_08();
 		
 		//Save

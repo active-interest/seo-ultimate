@@ -27,9 +27,23 @@ class suwp {
 	}
 	
 	function get_post_type_names() {
-		$types = get_post_types();
-		suarr::remove_value($types, 'revision');
-		return $types;
+		if (function_exists('get_post_types')) {
+			if ($types = get_post_types(array('public' => true), 'names'))
+				return $types;
+			else
+				return array('post', 'page', 'attachment');
+		}
+		
+		return array();
+	}
+	
+	function get_taxonomies() {
+		global $wp_taxonomies;
+		$taxonomies = array();
+		foreach ($wp_taxonomies as $key => $taxonomy)
+			if ($taxonomy->object_type == 'post')
+				$taxonomies[$key] = $taxonomy;
+		return $taxonomies;
 	}
 	
 	/**
@@ -88,15 +102,7 @@ class suwp {
 			return 'http://codex.wordpress.org/Backing_Up_Your_Database';
 	}
 	
-	function get_taxonomy_link($id, $taxonomy) {
-		switch ($taxonomy) {
-			case 'category': return get_category_link($id); break;
-			case 'post_tag': return get_tag_link($id); break;
-			default: return suwp::get_edit_taxonomy_link($id, $taxonomy); break;
-		}
-	}
-	
-	function get_edit_taxonomy_link($id, $taxonomy) {
+	function get_edit_term_link($id, $taxonomy) {
 		if ($taxonomy == 'category')
 			return admin_url("categories.php?action=edit&amp;cat_ID=$id");
 		else

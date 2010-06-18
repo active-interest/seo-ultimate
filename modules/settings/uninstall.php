@@ -28,7 +28,7 @@ class SU_Uninstall extends SU_Module {
 		echo "</p>\n";
 		$url = $this->get_nonce_url('su-uninstall');
 		$confirm = __("Are you sure you want to uninstall SEO Ultimate? This will permanently erase your SEO Ultimate settings and cannot be undone.", 'seo-ultimate');
-		echo "<a href='$url' class='button-primary' onclick=\"javascript:return confirm('$confirm')\">".__("Uninstall Now", 'seo-ultimate')."</a>";
+		echo "<p><a href='$url' class='button-primary' onclick=\"javascript:return confirm('$confirm')\">".__("Uninstall Now", 'seo-ultimate')."</a></p>";
 	}
 	
 	function enable_post_uninstall_page() {

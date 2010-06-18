@@ -17,6 +17,26 @@ class SU_Titles extends SU_Module {
 		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 10);
 	}
 	
+	function get_admin_page_tabs() {
+		return array_merge(
+			  array(
+				  __('Default Formats') => 'formats_tab'
+				)
+			, $this->get_meta_edit_tabs(array(
+				  'type' => 'textbox'
+				, 'name' => 'title'
+				, 'term_settings_key' => 'taxonomy_titles'
+				, 'label' => __('Title Tag', 'seo-ultimate')
+			))
+		);
+	}
+	
+	function formats_tab() {
+		echo "<table class='form-table'>\n";
+		$this->textboxes($this->get_supported_settings(), $this->get_default_settings());
+		echo "</table>";
+	}
+	
 	function get_default_settings() {
 	
 		//We internationalize even non-text formats (like "{post} | {blog}") to allow RTL languages to switch the order of the variables
@@ -51,12 +71,6 @@ class SU_Titles extends SU_Module {
 			, 'title_404' => __('404 Title Format', 'seo-ultimate')
 			, 'title_paged' => __('Pagination Title Format', 'seo-ultimate')
 		);
-	}
-	
-	function admin_page_formats_tab() {
-		echo "<table class='form-table'>\n";
-		$this->textboxes($this->get_supported_settings(), $this->get_default_settings());
-		echo "</table>";
 	}
 	
 	function get_title_format() {
@@ -118,8 +132,11 @@ class SU_Titles extends SU_Module {
 			return htmlspecialchars($this->get_title_paged($post_title));
 		
 		//Custom taxonomy title?
-		if ((is_category() || is_tag() || is_tax()) && $tax_title = $this->get_taxonomy_title('', $wp_query->get_queried_object_id()))
-			return htmlspecialchars($tax_title);
+		if (is_category() || is_tag() || is_tax()) {
+			$tax_titles = $this->get_setting('taxonomy_titles');
+			if ($tax_title = $tax_titles[$wp_query->get_queried_object_id()])
+				return htmlspecialchars($tax_title);
+		}
 		
 		//Load post/page titles
 		$post_id = 0;
@@ -262,162 +279,6 @@ class SU_Titles extends SU_Module {
 		$url = trim($url);
 		
 		return $url;
-	}
-	
-	function admin_page_posts_tab() {
-		$this->title_editing_table('post', __('Post'), 'get_posts');
-	}
-	
-	function admin_page_pages_tab() {
-		$this->title_editing_table('page', __('Page'), 'get_pages');
-	}
-	
-	function get_id_from_settings_key($key) {
-		$matches = array();
-		//Custom post/taxonomy types must have alphanumeric names, or else this won't work
-		if (preg_match('/([a-z0-9]+)_([0-9]+)_([a-z]+)/', $key, $matches))
-			return (int)$matches[2];
-		
-		return false;
-	}
-	
-	function get_singular_title($value, $key) {
-		if ($id = $this->get_id_from_settings_key($key))
-			return $this->get_postmeta('title', $id);
-		
-		return $value;
-	}
-	
-	function save_singular_title($unused, $value, $key) {
-		if ($id = $this->get_id_from_settings_key($key)) {
-			update_post_meta($id, '_su_title', $value);
-			return true;
-		}
-		
-		return false;
-	}
-	
-	function get_taxonomy_title($value, $key) {
-		return $this->get_title_from_settings('taxonomy', $value, $key);
-	}
-	
-	function save_taxonomy_title($unused, $value, $key) {
-		return $this->save_title_to_settings('taxonomy', $value, $key);
-	}
-	
-	function get_title_from_settings($type, $value, $key) {
-		if (is_int($key))
-			$id = $key;
-		else
-			$id = $this->get_id_from_settings_key($key);
-		
-		if ($id) {
-			$titles = $this->get_setting($type.'_titles', array());
-			return $titles[$id];
-		}
-		
-		return $value;
-	}
-	
-	function save_title_to_settings($type, $value, $key) {
-		if (is_int($key))
-			$id = $key;
-		else
-			$id = $this->get_id_from_settings_key($key);
-		
-		if ($id) {
-			$titles = $this->get_setting($type.'_titles', array());
-			$titles[$id] = $value;
-			$this->update_setting($type.'_titles', $titles);
-		}
-		
-		return false;
-	}
-	
-	function title_editing_table($object_type, $function, $args, $func_set = 'singular',
-			$id_varname = 'ID', $title_varname = 'post_title', $edit_link_function = 'get_edit_post_link') {
-		
-		$mk = $this->get_module_key();
-		
-		add_filter("su_get_setting-$mk", array(&$this, "get_{$func_set}_title"), 10, 2);
-		add_filter("su_custom_update_setting-$mk", array(&$this, "save_{$func_set}_title"), 10, 3);
-		
-		$headers = array( __('ID'), __('Name'), __('Title Tag', 'seo-ultimate') );
-		
-		/*if (strlen($num_varname) && strlen($offset_varname))
-			$args = "$num_varname=20&$offset_varname=0";
-		else
-			$args = '';*/
-		//$args = "$num_varname=1000";
-		$args = (array)$args;
-		foreach ($args as $arg_key => $arg) {
-			if (is_string($arg))
-				$args[$arg_key] = sprintf($arg, 1000, 0);
-		}
-		
-		$objects = call_user_func_array($function, $args);
-		//$pagination_total = ceil(count($function()) / 2);
-		
-		if (!count($objects)) {
-			$this->print_message('info', __('Your site currently doesn&#8217;t have any public items of this type.', 'seo-ultimate'));
-			return false;
-		}
-		
-		echo <<<STR
-<table class="widefat fullwidth" cellspacing="0">
-	<thead><tr>
-		<!--<th scope="col" class="$object_type-id">{$headers[0]}</th>-->
-		<th scope="col" class="$object_type-title">{$headers[1]}</th>
-		<th scope="col" class="$object_type-title-tag">{$headers[2]}</th>
-	</tr></thead>
-	<tbody>
-
-STR;
-		
-		foreach ($objects as $object) {
-			$id = $object->$id_varname;
-			$editlink = call_user_func($edit_link_function, $id, $object_type);			
-			$title = $object->$title_varname;
-			
-			if ($editlink) $label = "<a href='$editlink' target='_blank'>$title</a>"; else $label = $title;
-			$this->textbox("{$object_type}_{$id}_title", $label);
-		}
-		
-		echo "\t</tbody>\n</table>\n";
-		
-		return true;
-	}
-	
-	function get_object_subtype_tabs($type, $keys, $labels, $callback) {
-		
-		$labels = apply_filters("su_{$type}_tabs", $labels);
-		
-		$types = array();
-		foreach ($keys as $key) {
-			
-			$label = $labels[$key];
-			
-			if (!$label) {
-				//Rudimentary English pluralization; would turn "post" to "Posts"
-				//Can be internationalized later on
-				$label = ucwords($key);
-				if (sustr::endswith($label, 's'))
-					$label .= 'es';
-				else
-					$label .= 's';
-				
-				$label = __($label, 'seo-ultimate');
-			}
-			
-			$types[$key] = $label;
-		}
-		
-		$tabs = array();
-		foreach ($types as $key => $label) {
-			$tabs[$label] = array($callback, $key);
-		}
-		
-		return $tabs;
 	}
 	
 	function postmeta_fields($fields) {

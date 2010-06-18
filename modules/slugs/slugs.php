@@ -46,7 +46,7 @@ class SU_Slugs extends SU_Module {
 		$words = strtolower(stripslashes($this->get_setting('words_to_remove')));
 		
 		//Remove the stopwords from the slug
-		$newslug = implode("-", array_diff(explode(" ", $slug), explode("\n", $words)));
+		$newslug = implode("-", array_diff(explode(" ", $slug), suarr::explode_lines($words)));
 		
 		//Make sure we haven't removed too much!
 		if (empty($newslug))

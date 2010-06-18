@@ -74,17 +74,16 @@ class SU_FofsLog extends SU_Module {
 		
 		if ($hit['status_code'] == 404) {
 			
-			$exceptions = explode("\n", $this->get_setting('exceptions', ''));
+			$exceptions = suarr::explode_lines($this->get_setting('exceptions', ''));
 			foreach ($exceptions as $exception) {
-				$exception = trim($exception); //Remove any \r's
 				$exception = str_replace('*', '.*', $exception);
 				$regex = "@^$exception$@i";
 				$regex = str_replace(array('@^.*', '.*$@i'), array('@', '@i'), $regex);
-				if (preg_match($regex, $hit['url'])) return;
+				if (preg_match($regex, $hit['url'])) return $hit;
 			}
 			
 			$l = $this->get_setting('log', array());
-			while (count($l) >= $this->get_setting('max_log_size')) array_pop($l);
+			while (count($l) >= $this->get_setting('max_log_size', 1000)) array_pop($l);
 			
 			$u = $hit['url'];
 			if (!isset($l[$u])) {
@@ -108,6 +107,8 @@ class SU_FofsLog extends SU_Module {
 			
 			$this->update_setting('log', $l);
 		}
+		
+		return $hit;
 	}
 	
 	function get_admin_table_columns() {

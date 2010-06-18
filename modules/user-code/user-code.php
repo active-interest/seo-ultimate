@@ -46,6 +46,7 @@ class SU_UserCode extends SU_Module {
 	function get_usercode($field) {
 		
 		$code = $this->get_setting("global_$field", '');
+		if (is_front_page()) $code .= $this->get_setting("frontpage_$field", '');
 		
 		return $this->plugin->mark_code($code, __('Code Inserter module', 'seo-ultimate'), $field == 'wp_head');
 	}

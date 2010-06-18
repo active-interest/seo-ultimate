@@ -669,14 +669,18 @@ class SU_Module {
 	 * @param string $value The new value to assign to the setting.
 	 * @param string|null $module The module to which the setting belongs. Defaults to the current module's settings key. Optional.
 	 */
-	function update_setting($key, $value, $module=null) {
+	function update_setting($key, $value, $module=null, $array_key=null) {
 		if (!$module) $module = $this->get_settings_key();
 		
 		$use_custom  = 	apply_filters("su_custom_update_setting-$module-$key", false, $value, $key) ||
 						apply_filters("su_custom_update_setting-$module", false, $value, $key);
 		
-		if (!$use_custom)
-			$this->plugin->dbdata['settings'][$module][$key] = $value;
+		if (!$use_custom) {
+			if ($array_key)
+				$this->plugin->dbdata['settings'][$module][$key][$array_key] = $value;
+			else
+				$this->plugin->dbdata['settings'][$module][$key] = $value;
+		}
 	}
 	
 	/**
@@ -731,14 +735,18 @@ class SU_Module {
 	 * @param string $key The name of the setting to delete.
 	 * @param string|null $module The module to which the setting belongs. Defaults to the current module's settings key. Optional.
 	 */
-	function delete_setting($key, $module=null) {
+	function delete_setting($key, $module=null, $array_key = null) {
 		if (!$module) $module = $this->get_settings_key();
 		
 		if (isset($this->plugin->dbdata['settings']
 				, $this->plugin->dbdata['settings'][$module]
-				, $this->plugin->dbdata['settings'][$module][$key]))
+				, $this->plugin->dbdata['settings'][$module][$key])) {
 			//Some PHP setups will actually throw an error if we try to unset an array element that doesn't exist...
-			unset($this->plugin->dbdata['settings'][$module][$key]);
+			if ($array_key)
+				unset($this->plugin->dbdata['settings'][$module][$key][$array_key]);
+			else
+				unset($this->plugin->dbdata['settings'][$module][$key]);
+		}
 	}
 	
 	/**
@@ -871,7 +879,7 @@ class SU_Module {
 			foreach ($tabs as $title => $function) {
 				
 				if ($c > 1) {
-					$id = preg_replace('/[^a-z0-9]/', '', strtolower($title));
+					$id = sustr::preg_filter('a-z0-9', strtolower($title));
 					echo "<fieldset id='su-$id'>\n<h3>$title</h3>\n<div class='su-tab-contents'>\n";
 				}
 				
@@ -982,6 +990,296 @@ class SU_Module {
 		);
 		
 		echo "<br />";
+	}
+	
+	/**
+	 * Returns tabs for post/taxonomy meta editing tables.
+	 * 
+	 * @since 2.9
+	 * @uses get_postmeta_edit_tabs()
+	 * @uses get_taxmeta_edit_tabs()
+	 * 
+	 * @param array $fields The array of meta fields that the user can edit with the tables.
+	 */
+	function get_meta_edit_tabs($fields) {
+		return array_merge(
+			$this->get_postmeta_edit_tabs($fields)
+			,$this->get_taxmeta_edit_tabs($fields)
+		);
+	}
+	
+	/**
+	 * Returns tabs for post meta editing tables.
+	 * 
+	 * @since 2.9
+	 * 
+	 * @param array $fields The array of meta fields that the user can edit with the tables.
+	 */
+	function get_postmeta_edit_tabs($fields) {
+		
+		$types = array();
+		
+		//Custom post type support - requires WordPress 3.0 or above (won't work with 2.9 custom post types)
+		if (function_exists('get_post_types'))
+			$types = get_post_types(array('public' => true), 'objects');
+		
+		/*
+		if (function_exists('get_post_types'))
+			$types = suarr::flatten_values(get_post_types(array('public' => true), 'objects'), array('labels', 'name'));
+		*/
+		
+		//Legacy support for WordPress 2.9 and below
+		if (!count($types)) {
+			
+			$_types = array(
+				  array('post', __('Posts'), __('Post'))
+				, array('page', __('Pages'), __('Page'))
+				, array('attachment', __('Attachments'), __('Attachment'))
+			);
+			$types = array();
+			foreach ($_types as $_type) {
+				$type = new stdClass();
+				$type->name = $_type[0];
+				$type->labels->name = $_type[1];
+				$type->labels->singular_name = $_type[2];
+				$types[] = $type;
+			}
+		}
+		
+		//Turn the types array into a tabs array
+		$tabs = array();
+		foreach ($types as $type)
+			$tabs[$type->labels->name] = array('meta_edit_tab', 'post', sustr::preg_filter('a-z0-9', strtolower($type->labels->name)), $type->name, $type->labels->singular_name, $fields);
+		return $tabs;
+	}
+	
+	/**
+	 * Returns tabs for taxonomy meta editing tables.
+	 * 
+	 * @since 2.9
+	 * 
+	 * @param array $fields The array of meta fields that the user can edit with the tables.
+	 */
+	function get_taxmeta_edit_tabs($fields) {
+		$types = suwp::get_taxonomies();
+		
+		//Turn the types array into a tabs array
+		$tabs = array();
+		foreach ($types as $name => $type)
+			$tabs[$type->label] = array('meta_edit_tab', 'term', sustr::preg_filter('a-z0-9', strtolower($type->label)), $name, __('Name', 'seo-ultimate'), $fields);
+		return $tabs;
+	}
+	
+	/**
+	 * Outputs the contents of a meta editing tab.
+	 * 
+	 * @since 2.9
+	 */
+	function meta_edit_tab($genus, $tab, $type, $type_label, $fields) {
+		if (!$this->meta_edit_table($genus, $tab, $type, $type_label, $fields))
+			$this->print_message('info', __('Your site currently doesn&#8217;t have any public items of this type.', 'seo-ultimate'));
+	}
+	
+	/**
+	 * Outputs the contents of a meta editing table.
+	 * 
+	 * @since 2.9
+	 * 
+	 * @param string $genus The type of object being handled (either 'post' or 'term')
+	 * @param string $tab The ID of the current tab; used to generate a URL hash (e.g. #su-$tab)
+	 * @param string $type The type of post/taxonomy type being edited (examples: post, page, attachment, category, post_tag)
+	 * @param string $type_label The singular label for the post/taxonomy type (examples: Post, Page, Attachment, Category, Post Tag)
+	 * @param array $fields The array of meta fields that the user can edit with the tables. The data for each meta field are stored in an array with these elements: "type" (can be textbox, textarea, or checkbox), "name" (the meta field, e.g. title or description), "setting" (the key of the setting for cases when meta data are stored in the settings array, namely, for taxonomies), and "label" (the internationalized label of the field, e.g. "Meta Description" or "Title Tag")
+	 */
+	function meta_edit_table($genus, $tab, $type, $type_label, $fields) {
+		
+		//Pseudo-constant
+		$per_page = 100;
+		
+		//Sanitize parameters
+		if (!is_array($fields) || !count($fields)) return false;
+		if (!is_array($fields[0])) $fields = array($fields);
+		
+		//Get search query
+		$search = $_REQUEST[$type . '_s'];
+		
+		//Save meta if applicable
+		if ($is_update = ($this->is_action('update') && !strlen(trim($search))))
+			foreach ($_POST as $key => $value)
+				if (sustr::startswith($key, $genus.'_'))
+					foreach ($fields as $field)
+						if (preg_match("/{$genus}_([0-9]+)_{$field['name']}/", $key, $matches)) {
+							$id = (int)$matches[1];
+							switch ($genus) {
+								case 'post': update_post_meta($id, "_su_{$field['name']}", $_POST[$key]); break;
+								case 'term': $this->update_setting($field['term_settings_key'], $_POST[$key], null, $id); break;
+							}
+							continue 2; //Go to next $_POST item
+						}
+		
+		$pagenum = isset( $_GET[$type . '_paged'] ) ? absint( $_GET[$type . '_paged'] ) : 0;
+		if ( empty($pagenum) ) $pagenum = 1;
+		
+		//Load up the objects based on the genus
+		switch ($genus) {
+			case 'post':
+				
+				//Get the posts
+				wp(array(
+					  'post_type' => $type
+					, 'posts_per_page' => $per_page
+					, 'paged' => $pagenum
+					, 'order' => 'ASC'
+					, 'orderby' => 'title'
+					, 's' => $search
+				));
+				global $wp_query;
+				$objects = &$wp_query->posts;
+				
+				$num_pages = $wp_query->max_num_pages;
+				$total_objects = $wp_query->found_posts;
+				
+				break;
+				
+			case 'term':
+				$objects = get_terms($type, array('search' => $search));
+				$total_objects = count($objects);
+				$num_pages = ceil($total_objects / $per_page);
+				$objects = array_slice($objects, $per_page * ($pagenum-1), $per_page);
+				break;
+			default:
+				return false;
+				break;
+		}
+		
+		if ($total_objects < 1) return false;
+		
+		echo "\n<div class='su-meta-edit-table'>\n";
+		
+		$page_links = paginate_links( array(
+			  'base' => add_query_arg( $type . '_paged', '%#%' ) . '#su-' . $tab
+			, 'format' => ''
+			, 'prev_text' => __('&laquo;')
+			, 'next_text' => __('&raquo;')
+			, 'total' => $num_pages
+			, 'current' => $pagenum
+		));
+		
+		if ( $page_links ) {
+			$page_links_text = '<div class="tablenav"><div class="tablenav-pages">';
+			$page_links_text .= sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s' ) . '</span>%s',
+					number_format_i18n( ( $pagenum - 1 ) * $per_page + 1 ),
+					number_format_i18n( min( $pagenum * $per_page, $total_objects ) ),
+					number_format_i18n( $total_objects ),
+					$page_links
+					);
+			$page_links_text .= "</div></div>\n";
+			
+			echo $page_links_text;
+		} else $page_links_text = '';
+		
+		//Get object identification headers
+		$headers = array(
+			  'actions' => __('Actions', 'seo-ultimate')
+			, 'id' => __('ID', 'seo-ultimate')
+			, 'name' => $type_label
+		);
+		
+		//Get meta field headers
+		foreach ($fields as $field) {
+			$headers[$field['name']] = $field['label'];
+		}
+		
+		//Output all headers
+		$this->admin_wftable_start($headers);
+		
+		//Output rows
+		foreach ($objects as $object) {
+			
+			switch ($genus) {
+				case 'post':
+					$id = intval($object->ID);
+					$name = $object->post_title;
+					$view_url = get_permalink($id);
+					$edit_url = get_edit_post_link($id);
+					break;
+				case 'term':
+					$id = intval($object->term_id);
+					$name = $object->name;
+					$view_url = get_term_link($id, $type);
+					$edit_url = suwp::get_edit_term_link($id, $type);
+					break;
+				default: return false; break;
+			}
+			
+			$view_url = su_esc_attr($view_url);
+			$edit_url = su_esc_attr($edit_url);
+			$actions = sprintf('<a href="%s">%s</a> | <a href="%s">%s</a>', $view_url, __('View', 'seo-ultimate'), $edit_url, __('Edit', 'seo-ultimate'));
+			$cells = compact('actions', 'id', 'name');
+			
+			//Get meta field cells
+			foreach ($fields as $field) {
+				$inputid = "{$genus}_{$id}_{$field['name']}";
+				
+				switch ($genus) {
+					case 'post': $value = $this->get_postmeta($field['name'], $id); break;
+					case 'term': $value = $this->get_setting($field['term_settings_key'], array()); $value = $value[$id]; break;
+				}
+				
+				if ($is_update && $field['type'] == 'checkbox' && $value == '1' && !isset($_POST[$inputid]))
+					switch ($genus) {
+						case 'post': delete_post_meta($id, "_su_{$field['name']}"); $value = 0; break;
+						case 'term': $this->update_setting($field['term_settings_key'], false, null, $id); break;
+					}
+				
+				$cells[$field['name']] = $this->get_input_element(
+					  $field['type'] //Type
+					, $inputid
+					, $value
+				);
+			}
+			
+			//Output all cells
+			$this->table_row($cells, $id, $type);
+		}
+		
+		//End table
+		$this->admin_wftable_end();
+		
+		echo $page_links_text;
+		
+		echo "</div>\n";
+		
+		return true;
+	}
+	
+	/**
+	 * Returns the HTML for a given type of input element, without any surrounding <td> elements etc.
+	 * 
+	 * @since 2.9
+	 * 
+	 * @param string $type The type of input element (can be textbox, textarea, or checkbox)
+	 * @param string $inputid The name/ID of the input element
+	 * @param string $value The current value of the field
+	 */
+	function get_input_element($type, $inputid, $value) {
+		//Get HTML element
+		switch ($type) {
+			case 'textbox':
+				$value = su_esc_editable_html($value);
+				return "<input name='$inputid' id='$inputid' type='text' value='$value' class='regular-text' />";
+				break;
+			case 'textarea':
+				$value = su_esc_editable_html($value);
+				return "<textarea name='$inputid' id='$inputid' type='text' rows='3' cols='50' class='regular-text'>$value</textarea>";
+				break;
+			case 'checkbox':
+				$checked = $value ? " checked='checked'" : '';
+				return "<input name='$inputid' id='$inputid' type='checkbox' value='1'$checked />";
+				break;
+		}
+		
+		return '';
 	}
 	
 	
@@ -1116,11 +1414,71 @@ class SU_Module {
 				echo "\t\t<td $class$style>".$cells[$column_name]."</td>\n";
 			}
 		} elseif (is_array($cells) && count($cells)) {
-			$mk = $this->get_module_key();
 			foreach ($cells as $class => $content) {
-				$class = is_numeric($class) ? '' : " class='su-$mk-$class'";
+				$class = is_numeric($class) ? '' : " class='su-$class'";
 				echo "\t\t<td$class>$content</td>\n";
 			}
+		}
+	}
+	
+	/**
+	 * Outputs a <tr> tag with <td> children.
+	 * 
+	 * @since 2.9
+	 */
+	function table_row($cells, $id, $class) {
+		$mk = $this->get_module_key();
+		echo "\t<tr id='su-$mk-$id' class='su-$mk-$class'>\n";
+		$this->table_cells($cells);
+		echo "\t</tr>\n";
+	}
+	
+	/**
+	 * Outputs a <tr> tag with <td> children, and consolidates adjacent, identical <td> elements with the rowspan attribute.
+	 * 
+	 * @since 2.9
+	 */
+	function table_rows_consolidated($rows, $cols_to_consolidate = 999) {
+		$mk = $this->get_module_key();
+		
+		$rowspans = array();
+		
+		//Cycle through each row
+		foreach ($rows as $rowid => $row) {
+			
+			echo "<tr>";
+			
+			//Cycle through the row's cells
+			$cellid = 0;
+			foreach ($row as $class => $cell) {
+				
+				//If a rowspan is already in process for this cell...
+				if ($rowspans[$cellid] > 1)
+					$rowspans[$cellid]--;
+				else {
+					
+					//Find out if we should start a rowspan
+					$rowspanhtml = '';
+					if ($cellid < $cols_to_consolidate) {
+						$rowspan = 1;
+						for ($larowid = $rowid+1; $larowid < count($rows); $larowid++) {
+							$lacell = $rows[$larowid][$class];
+							if (strlen($lacell) && $cell == $lacell) $rowspan++; else break;
+						}
+						
+						if ($rowspan > 1) {
+							$rowspans[$cellid] = $rowspan;
+							$rowspanhtml = " rowspan='$rowspan'";
+						}
+					}
+					
+					echo "<td class='su-$mk-$class'$rowspanhtml>$cell</td>";
+				}
+				
+				$cellid++;
+			}
+			
+			echo "</tr>";
 		}
 	}
 	
@@ -1175,8 +1533,11 @@ class SU_Module {
 	 * @param string $hovertext The text that only displays upon row hover.
 	 * @return string The HTML to put in a hover-supporting table row.
 	 */
-	function hover_row($text, $hovertext) {
-		return "<div>$text</div>\n<div class='row-actions'>$hovertext</div>";
+	function hover_row($text, $hovertext, $inline = false) {
+		if ($inline)
+			return "<span>$text</span>\n<span class='row-actions'> &mdash; $hovertext</span>";
+		else
+			return "<div>$text</div>\n<div class='row-actions'>$hovertext</div>";
 	}
 	
 	/**

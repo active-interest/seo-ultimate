@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, google, yahoo, bing, search engines, admin, post, page, custom post types, modules, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, categories, uninstallable, reinstallable, downgradable
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 2.8
+Stable tag: 2.9
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
@@ -11,17 +11,17 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
-* Version 2.8 adds custom post type editor to Title Rewriter
+* Version 2.9 adds custom taxonomy support to Title Rewriter
+* Version 2.8 adds custom post type support to Title Rewriter
 * Version 2.7 adds the Code Inserter module
 * Version 2.6 adds reinstallation support
 * Version 2.5 adds advanced plugin upgrade/downgrade functionality
-* Version 2.4 adds a nofollow option for Deeplink Juggernaut links
 
 = Features =
 
 SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these powerful features:
 
-* **Title Rewriter** -- UPDATED in Version 2.8
+* **Title Rewriter** -- UPDATED in Version 2.9
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
 	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog. Also supports custom post types.
 	* Customize your homepage's `<title>` tag.
@@ -74,7 +74,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut** -- UPDATED in Version 2.4
+* **Deeplink Juggernaut**
 	* Automatically link phrases in your posts/pages to given URLs.
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Control the maximum number of autolinks added to each post/page.
@@ -192,8 +192,13 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 2.9 (June 17, 2010) =
+* Feature: Title Rewriter now has mass-editor tabs for custom taxonomies
+* Feature: Title Rewriter mass-editors now support pagination
+* Improvement: Upgrade/downgrade tabs now use official WordPress plugin API to obtain version info
+
 = Version 2.8 (June 8, 2010) =
-* Feature: Title Rewriter now adds mass-editor tabs for custom post types
+* Feature: Title Rewriter now has mass-editor tabs for custom post types
 * Feature: Title Rewriter can now edit the title tags of attachments
 * Improvement: Title Rewriter's mass-editors no longer display an empty table when no items of a particular type exist
 
@@ -212,14 +217,14 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Bugfix: Fixed "string offset" fatal error that appeared on certain setups
 
 = Version 2.4 (May 28, 2010) =
-* SEO Feature: Added nofollow option for Deeplink Juggernaut links
+* Feature: Added nofollow option for Deeplink Juggernaut links
 
 = Version 2.3 (May 26, 2010) =
-* SEO Feature: Meta robots tags (index/noindex and follow/nofollow) can now be set for each post or page via the "SEO Settings" box
+* Feature: Meta robots tags (index/noindex and follow/nofollow) can now be set for each post or page via the "SEO Settings" box
 * Behavior Change: Since the Noindex Manager's advertised functionality is controlling the "noindex" attribute only, its behavior has been changed to output "noindex,follow" where it previously outputted "noindex,nofollow"
 
 = Version 2.2 (May 24, 2010) =
-* SEO Feature: Deeplink Juggernaut now has a links-per-post limiter option
+* Feature: Deeplink Juggernaut now has a links-per-post limiter option
 * Bugfix: The current tab is now maintained when submitting a tabbed form twice in a row
 * Bugfix: When a module page reloads after submitting a tabbed form, the screen no longer jumps part-way down the page
 
@@ -249,10 +254,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Known Issue: If you had previously disabled 404 Monitor in version 2.0 or earlier, it will re-enable itself when upgrading to version 2.1 or later. The workaround is to re-disable 404 Monitor from the Module Manager after upgrading.
 
 = Version 2.0 (April 29, 2010) =
-* SEO Feature: Title Rewriter can now edit the title tags of post tag archives
+* Feature: Title Rewriter can now edit the title tags of post tag archives
 
 = Version 1.9 (April 3, 2010) =
-* SEO Feature: Title Rewriter can now edit the title tags of category archives
+* Feature: Title Rewriter can now edit the title tags of category archives
 
 = Version 1.8.3 (March 30, 2010) =
 * Bugfix: Fixed bug that caused disabled attribution link to display under certain circumstances
@@ -264,7 +269,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Bugfix: Fixed back-end Deeplink Juggernaut error
 
 = Version 1.8 (March 27, 2010) =
-* SEO Feature: Added Deeplink Juggernaut beta module
+* Feature: Added Deeplink Juggernaut beta module
 
 = Version 1.7.3 (March 11, 2010) =
 * Bugfix: Fixed variable name conflict introduced in 1.7.1 that disabled WordPress's plugin/theme editors
@@ -284,7 +289,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Improvement: Added blank index.php files to additional plugin directories
 
 = Version 1.7 (February 20, 2010) =
-* SEO Feature: Displays admin notices if blog privacy settings are configured to block search engines
+* Feature: Displays admin notices if blog privacy settings are configured to block search engines
 
 = Version 1.6 (January 30, 2010) =
 * Feature: Added All in One SEO Pack importer module
@@ -315,17 +320,17 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Compatibility: Meta Editor now supports the new Google Webmaster Tools verification code
 
 = Version 1.4 (December 16, 2009) =
-* SEO Feature: Added the Internal Relevance Researcher
+* Feature: Added the Internal Relevance Researcher
 * Bugfix: Title Rewriter no longer rewrites XML `<title>` tags in feeds
 * Improvement: Copied all documentation to the readme.txt file
 
 = Version 1.3 (November 13, 2009) =
-* SEO Feature: Added the More Link Customizer module
+* Feature: Added the More Link Customizer module
 * Bugfix: Postmeta fields now handle HTML entities properly
 * Improvement: Made minor tweaks to the Competition Researcher
 
 = Version 1.2 (October 31, 2009) =
-* SEO Feature: Added the Competition Researcher module
+* Feature: Added the Competition Researcher module
 
 = Version 1.1.2 (October 9, 2009) =
 * Compatibility: Added PHP4 support
@@ -334,14 +339,14 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Bugfix: Fixed tab rendering bug
 
 = Version 1.1 (October 7, 2009) =
-* SEO Feature: You can now mass-edit post/page titles from the Title Rewriter module
+* Feature: You can now mass-edit post/page titles from the Title Rewriter module
 * Bugfix: Fixed logo background color in the Whitepapers module
 * Improvement: Title Rewriter now supports 10 additional title format variables
 * Improvement: Added internationalization support for admin menu notice numbers
 * Improvement: Certain third-party plugin notices are now removed from SEO Ultimate's admin pages
 
 = Version 1.0 (September 21, 2009) =
-* SEO Feature: Canonicalizer can now redirect requests for nonexistent pagination
+* Feature: Canonicalizer can now redirect requests for nonexistent pagination
 * Feature: Visitor logging can now be disabled completely from the Plugin Settings page
 * Feature: Logged visitor information can now be automatically deleted after a certain number of days
 * Feature: Added icon support for the Ozh Admin Drop Down Menu plugin
@@ -359,8 +364,8 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Bugfix: Fixed PHP parse errors
 
 = Version 0.9 (August 1, 2009) =
-* SEO Feature: Added the Slug Optimizer module
-* SEO Feature: Noindex Manager now supports noindexing comment subpages
+* Feature: Added the Slug Optimizer module
+* Feature: Noindex Manager now supports noindexing comment subpages
 * Bugfix: 404 Monitor's numeric notice now only includes new 404s
 * Bugfix: Linkbox Inserter now respects the "more" tag
 * Bugfix: Missing strings added to the POT file
@@ -373,8 +378,8 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Improvement: Many additional code comments added
 
 = Version 0.8 (July 22, 2009) =
-* SEO Feature: Added robots.txt editor (new File Editor module)
-* SEO Feature: Added .htaccess editor (new File Editor module)
+* Feature: Added robots.txt editor (new File Editor module)
+* Feature: Added .htaccess editor (new File Editor module)
 * Bugfix: 404 Monitor no longer uses the unreliable get_browser() function
 * Bugfix: 404 Monitor now ignores favicon requests
 * Bugfix: Fixed conflict with the WP Table Reloaded plugin
@@ -396,7 +401,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Feature: Modules can optionally display numeric notices in the menu
 
 = Version 0.6 (July 2, 2009) =
-* SEO Feature: Added the Linkbox Inserter module
+* Feature: Added the Linkbox Inserter module
 * Bugfix: Fixed plugin notices bug
 
 = Version 0.5 (June 25, 2009) =
