@@ -155,6 +155,23 @@ class sustr {
 			$str = str_replace($char, '\\'.$char, $str);
 		return $str;
 	}
+	
+	function htmlsafe_str_replace($search, $replace, $subject, $limit, &$count) {
+		$search = sustr::preg_escape($search);
+		return sustr::htmlsafe_preg_replace($search, $replace, $subject, $limit, $count);
+	}
+	
+	function htmlsafe_preg_replace($search, $replace, $subject, $limit, &$count) {
+		
+		//Special thanks to the GPL-licensed "SEO Smart Links" plugin for the following find/replace regex
+		//http://www.prelovac.com/vladimir/wordpress-plugins/seo-smart-links
+		$reg = '/(?!(?:[^<\[]+[>\]]|[^>\]]+<\/a>))\b($name)\b/imsU';
+		
+		$search = str_replace('/', '\/', $search);
+		$search_regex = str_replace('$name', $search, $reg);
+		
+		return preg_replace($search_regex, $replace, $subject, $limit, $count);
+	}
 }
 
 ?>

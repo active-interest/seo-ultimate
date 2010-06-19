@@ -11,8 +11,8 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
-* Version 2.9 adds custom taxonomy support to Title Rewriter
-* Version 2.8 adds custom post type support to Title Rewriter
+* Version 2.9 adds custom taxonomy support to Title Tag Rewriter
+* Version 2.8 adds custom post type support to Title Tag Rewriter
 * Version 2.7 adds the Code Inserter module
 * Version 2.6 adds reinstallation support
 * Version 2.5 adds advanced plugin upgrade/downgrade functionality
@@ -21,7 +21,7 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these powerful features:
 
-* **Title Rewriter** -- UPDATED in Version 2.9
+* **Title Tag Rewriter** -- UPDATED in Version 2.9
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
 	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog. Also supports custom post types.
 	* Customize your homepage's `<title>` tag.
@@ -162,7 +162,7 @@ To install the plugin manually:
 	Open the editor, click the "Screen Options" tab in the upper-right-hand corner, and uncheck the "SEO Settings" checkbox. Note that the box's visibility is a per-user preference.
 
 * **Why did some of the textboxes disappear from the "SEO Settings" box?**
-	The "SEO Settings" fields are added by your modules. The "Title Tag" field is added by the Title Rewriter module, the "Description" and "Keywords" fields are added by the Meta Editor module, etc. If you disable a module using the Module Manager, its fields in the "SEO Settings" box will be disabled too. You can re-enable the field in question by re-enabling the corresponding module.
+	The "SEO Settings" fields are added by your modules. The "Title Tag" field is added by the Title Tag Rewriter module, the "Description" and "Keywords" fields are added by the Meta Editor module, etc. If you disable a module using the Module Manager, its fields in the "SEO Settings" box will be disabled too. You can re-enable the field in question by re-enabling the corresponding module.
 
 
 = Module FAQ =
@@ -183,14 +183,18 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 8. The Linkbox Inserter module encourages natural linkbuilding activity
 9. The Meta Editor module lets you edit important SEO data
 10. The Noindex Manager module
-11. The "Default Formats" tab of the Title Rewriter module
-12. The "Pages" tab of the Title Rewriter module lets you edit Pages' <title> tags
-13. The "Categories" tab of the Title Rewriter module lets you edit categories' <title> tags
+11. The "Default Formats" tab of the Title Tag Rewriter module
+12. The "Pages" tab of the Title Tag Rewriter module lets you edit Pages' <title> tags
+13. The "Categories" tab of the Title Tag Rewriter module lets you edit categories' <title> tags
 14. The "SEO Settings" box, which is visible on post & page editors
 15. The SEO Ultimate menu
 
 
 == Changelog ==
+
+= Version 3.0 (June 19, 2010) =
+* Feature: Added the Rich Snippet Creator module
+* Change: "Title Rewriter" has been renamed to "Title Tag Rewriter" to clarify that the module edits `<title>` tags, not post titles.
 
 = Version 2.9.1 (June 18, 2010) =
 * Bugfix: Restored support for editing the title tags of categories/tags/terms in WordPress 3.0

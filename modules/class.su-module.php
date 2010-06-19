@@ -1667,16 +1667,73 @@ class SU_Module {
 				if ($current) $class .= ' current-setting';
 				$class = trim($class);
 				if ($class) $class = " class='$class'";
-				echo "<label for='$id'$class><input name='$name' id='$id' type='radio' value='$value'";
+				
+				extract($this->insert_subfield_textboxes($name, $desc));
+				
+				echo "<div><label for='$id'$class><input name='$name' id='$id' type='radio' value='$value'";
 				if ($current) echo " checked='checked'";
-				echo " /> $desc";
-				if (!sustr::has($desc, '</label>')) echo '</label><br />';
-				echo "\n";
+				echo " /> $label";
+				
+				if (!sustr::has($label, '</label>')) echo '</label>';
+				//if (!sustr::has($desc,  '</label>')) echo '<br />';
+				echo "</div>\n";
 			}
 		}
 		
 		if ($grouptext) echo "</fieldset>";
 		echo "</td>\n</tr>\n";
+	}
+	
+	/**
+	 * Outputs a single radio button into an admin form and saves the set's value into the database after form submission.
+	 * 
+	 * @since 3.0
+	 * @uses radiobuttons()
+	 * 
+	 * @param string $name The name of the set of radio buttons.
+	 * @param string $value The value of this radio button.
+	 * @param string $label The label for this radio button.
+	 */
+	function radiobutton($name, $value, $label) {
+		$this->radiobuttons($name, array($value => $label));
+	}
+	
+	/**
+	 * @since 3.0
+	 */
+	function insert_subfield_textboxes($name, $label, $enabled = true) {
+		
+		$pattern = '/%(d|s)({([a-z0-9_-]+)})?/';
+		
+		if (preg_match($pattern, $label, $matches)) {
+			$is_int_field = ($matches[1] == 'd');
+			$sfname = $matches[3];
+			if (!$sfname) $sfname = $name.'_value';
+			
+			if ($this->is_action('update')) {
+				$sfvalue = stripslashes($_POST[$sfname]);
+				if ($is_int_field) $sfvalue = intval($sfvalue);
+				$this->update_setting($sfname, $sfvalue);
+			} else {
+				$sfvalue = $this->get_setting($sfname);
+				if ($is_int_field) $sfvalue = intval($sfvalue);
+			}
+			
+			if ($enabled) $disabled = ''; else $disabled = " readonly='readonly'";
+			
+			$esfvalue = su_esc_attr($sfvalue);
+			$field_html = "</label><input class='regular-text textbox subfield' name='$sfname' id='$sfname' type='text' value='$esfvalue'$disabled";
+			if ($is_int_field) $field_html .= " size='2' maxlength='3'";
+			$field_html .= " /><label for='$name'>";
+			
+			$label = preg_replace($pattern, $field_html, $label);
+			$label = preg_replace("@<label for='$name'>$@", '', $label);
+			
+			$onclick = " onclick=\"javascript:document.getElementById('$sfname').readOnly=!this.checked;\"";
+		} else
+			$onclick = '';
+		
+		return compact('label', 'onclick');
 	}
 	
 	/**
@@ -1780,7 +1837,8 @@ class SU_Module {
 			$value = su_esc_editable_html($this->get_setting($id));
 			$id = su_esc_attr($id);
 			
-			echo "<tr valign='top'>\n<th scope='row'><label for='$id'>$title</label></th>\n";
+			echo "<tr valign='top'>\n";
+			if ($title) echo "<th scope='row'><label for='$id'>$title</label></th>\n";
 			echo "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='$cols' rows='$rows'>$value</textarea>";
 			echo "</td>\n</tr>\n";
 		}
@@ -1798,7 +1856,7 @@ class SU_Module {
 	 * @param int $cols The value of the textarea's cols attribute.
 	 * @return string The HTML that would render the textarea.
 	 */
-	function textarea($id, $title, $rows = 5, $cols = 30) {
+	function textarea($id, $title = '', $rows = 5, $cols = 30) {
 		$this->textareas(array($id => $title), $rows, $cols);
 	}
 	
@@ -2096,6 +2154,7 @@ class SU_Module {
 		
 		register_setting('seo-ultimate', $name);
 		$current = $this->get_postmeta($name);
+		if ($current === '') $current = array_shift(array_keys($options));
 		$name = "_su_".su_esc_attr($name);
 		
 		$html = "<tr class='dropdown' valign='middle'>\n<th scope='row'>$grouptext</th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";

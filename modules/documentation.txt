@@ -286,6 +286,32 @@ Here's information on the various settings:
 
 
 
+== Rich Snippet Creator ==
+
+= Overview =
+
+* **What it does:** Rich Snippet Creator adds special code to your posts that asks Google to display special pertinent information (known as <a href="http://www.google.com/support/webmasters/bin/topic.py?hl=en&topic=219">Rich Snippets</a>) in search results for certain types of content. For example, if you've written a product review, you can use Rich Snippet Creator to ask Google to display the star rating that you gave the product in your review next to your review webpage when it appears in search results.
+
+* **Why it helps:** Rich Snippet Creator enhances the search engine results for your content by asking Google to add extra, eye-catching info that could help draw in more search engine visitors.
+
+* **How it works:** When editing one of your posts or pages, see if your content fits one of the available rich snippet types (for example, a review). If so, select that type from the "Rich Snippet Type" dropdown box. Once you select the applicable type, additional options will appear that vary based on the type selected. For example, a "Star Rating" field will appear if you select the "Review" type.
+
+	Once you save the post/page, Rich Snippet Creator will add the special code to it. You can remove this code at any time by selecting "None" from the "Rich Snippet Type" dropdown and resaving the post/page.
+
+= Settings Help =
+
+* **Data Format** -- This lets you select the "language" that Rich Snippet Creator uses to communicate the rich snippet data to Google. Google supports all three options. We recommend "Microformats" because it's compatible with the greatest number of HTML/XHTML variants. This option will likely be of interest only to advanced users.
+
+* **Categories/Tags That Indicate Reviews** -- If you haven't set the "Rich Snippet Type" setting for an old post or page, then Rich Snippet Creator will automatically set its default type to "Review" (instead of "None") if it has a category or tag whose name is in this list (the default list is "Reviews" and "Review"). Put one category/tag name per line.
+
+= Troubleshooting =
+
+* **Why aren't rich snippets showing up in Google search results for my site?** -- Enter the URL of your post/page into <a href="http://www.google.com/webmasters/tools/richsnippets">Google's testing tool</a> to make sure Google can find the rich snippet code on your site. If no code is found, check and make sure you've enabled rich snippets for that particular post/page.
+
+	Note that having the code on a post/page doesn't guarantee that Google will actually use it to create a rich snippet. If Google is able to read your code but isn't using it to generate rich snippets, you can ask Google to do so using <a href="http://www.google.com/support/webmasters/bin/request.py?contact_type=rich_snippets_feedback">this form</a>.
+
+
+
 == Slug Optimizer ==
 
 = Overview =
@@ -324,15 +350,15 @@ Here's information on the various settings:
 
 
 
-== Title Rewriter ==
+== Title Tag Rewriter ==
 
 = Overview =
 
-* **What it does:** Title Rewriter helps you customize the contents of your website's `<title>` tags. The tag contents are displayed in web browser title bars and in search engine result pages.
+* **What it does:** Title Tag Rewriter helps you customize the contents of your website's `<title>` tags. The tag contents are displayed in web browser title bars and in search engine result pages.
 
 * **Why it helps:** Proper title rewriting ensures that the keywords in your post/Page titles have greater prominence for search engine spiders and users. This is an important foundation for WordPress SEO.
 
-* **How to use it:** Title Rewriter enables recommended settings automatically, so you shouldn't need to change anything. If you do wish to edit the rewriting formats, you can do so using the textboxes below (the "Settings & Variables" tab includes additional information on this). You also have the option of overriding the `<title>` tag of an individual post or page by using the textboxes under the "Post" and "Page" tabs below, or by using the "Title Tag" textbox that Title Rewriter adds to the post/page editors.
+* **How to use it:** Title Tag Rewriter enables recommended settings automatically, so you shouldn't need to change anything. If you do wish to edit the rewriting formats, you can do so using the textboxes below (the "Settings & Variables" tab includes additional information on this). You also have the option of overriding the `<title>` tag of an individual post or page by using the textboxes under the "Post" and "Page" tabs below, or by using the "Title Tag" textbox that Title Tag Rewriter adds to the post/page editors.
 
 = Settings & Variables =
 
@@ -385,15 +411,15 @@ Here's information on each of the settings and its supported variables:
 
 = FAQ =
 
-* **Does the Title Rewriter edit my post/page titles?**
-	No. The Title Rewriter edits the `<title>` tags of your site, not your post/page titles.
+* **Does the Title Tag Rewriter edit my post/page titles?**
+	No. The Title Tag Rewriter edits the `<title>` tags of your site, not your post/page titles.
 
 * **What's the difference between the "title" and the "title tag" of a post/page?**
 	The "title" is the title of your post or page, and is displayed on your site and in your RSS feed. The title is also used in your `<title>` tag by default; however, you can override the value of just the `<title>` tag by using the "Title Tag" field in the "SEO Settings" box.
 
 = Troubleshooting =
 
-* **Why isn't the Title Rewriter changing my `<title>` tags?**
+* **Why isn't the Title Tag Rewriter changing my `<title>` tags?**
 	Try disabling other SEO plugins, as they may be conflicting with SEO Ultimate. Also, check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
 
 

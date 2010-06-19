@@ -112,15 +112,9 @@ class suwp {
 	function get_all_the_terms($id = 0) {
 		
 		$id = (int)$id;
-		
-		if ($id) {
-			$post = get_post($id);
-			if (!$post) return false;
-		} else {
-			if (!in_the_loop()) return false;
-			global $post;
-			$id = (int)$post->ID;
-		}
+		if (!$id) $id = suwp::get_post_id();
+		$post = get_post($id);
+		if (!$post) return false;
 		
 		$taxonomies = get_object_taxonomies($post);
 		$terms = array();

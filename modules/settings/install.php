@@ -116,7 +116,7 @@ class SU_Install extends SU_Module {
 					
 					$changes = wptexturize($changes);
 					if ($version == SU_VERSION)
-						$message = __('Current Version', 'seo-ultimate');
+						$message = __('Your Current Version', 'seo-ultimate');
 					elseif ($first)
 						$message = __('Latest Version', 'seo-ultimate');
 					else

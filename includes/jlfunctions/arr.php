@@ -50,25 +50,22 @@ class suarr {
 	 * 
 	 * @param array $needles
 	 * @param array $haystack
-	 * @param bool $ci Whether or not the search should be case-insensitive.
+	 * @param bool $case Whether or not the search should be case-sensitive.
 	 * 
 	 * @return bool
 	 */
-	function any_in_array($needles, $haystack, $ci = false) {
-		if ($ci) {
-			array_walk($needles, 'strtolower');
-			array_walk($haystack, 'strtolower');
+	function any_in_array($needles, $haystack, $case = true) {
+		if (!$case) {
+			$needles  = array_map('strtolower', $needles);
+			$haystack = array_map('strtolower', $haystack);
 		}
 		
-		foreach ($needles as $needle)
-			if (in_array($needle, $haystack)) return true;
-		
-		return false;
+		return count(array_intersect($needles, $haystack)) > 0;
 	}
 	
 	function explode_lines($lines) {
 		$lines = explode("\n", $lines);
-		array_walk($lines, 'trim'); //Remove any /r's
+		$lines = array_map('trim', $lines); //Remove any \r's
 		return $lines;
 	}
 	

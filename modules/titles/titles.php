@@ -1,6 +1,6 @@
 <?php
 /**
- * Title Rewriter Module
+ * Title Tag Rewriter Module
  * 
  * @since 0.1
  */
@@ -9,7 +9,7 @@ if (class_exists('SU_Module')) {
 
 class SU_Titles extends SU_Module {
 	
-	function get_module_title() { return __('Title Rewriter', 'seo-ultimate'); }
+	function get_module_title() { return __('Title Tag Rewriter', 'seo-ultimate'); }
 	
 	function init() {
 		add_action('template_redirect', array(&$this, 'before_header'), 0);

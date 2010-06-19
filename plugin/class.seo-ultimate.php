@@ -1029,7 +1029,7 @@ class SEO_Ultimate {
 		if ($pagenow == 'plugins.php') {
 		
 			$r_plugins = array(
-				  'all-in-one-seo-pack/all_in_one_seo_pack.php' //Title Rewriter, Meta Editor, Noindex Manager
+				  'all-in-one-seo-pack/all_in_one_seo_pack.php' //Title Tag Rewriter, Meta Editor, Noindex Manager
 				, 'another-wordpress-meta-plugin/another_wordpress_meta_plugin.php' //Meta Editor
 				, 'canonical/canonical.php' //Canonicalizer
 				, 'noindex-login/noindex-login.php' //Noindex Manager
