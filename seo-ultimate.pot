@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 2.5 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 3.0 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 2.5\n"
+"Project-Id-Version: SEO Ultimate 3.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-06-01 14:30+0000\n"
+"POT-Creation-Date: 2010-06-19 19:11+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s, and %s"
 msgstr ""
 
-#: includes/jlwp/functions.php:77
+#: includes/jlwp/functions.php:91
 msgid "backup your database"
 msgstr ""
 
@@ -43,90 +43,90 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:115
+#: modules/404s/fofs-log.php:116 modules/class.su-module.php:1183
 msgid "Actions"
 msgstr ""
 
-#: modules/404s/fofs-log.php:116
+#: modules/404s/fofs-log.php:117
 msgid "Hits"
 msgstr ""
 
-#: modules/404s/fofs-log.php:117
+#: modules/404s/fofs-log.php:118
 msgid "URL with 404 Error"
 msgstr ""
 
-#: modules/404s/fofs-log.php:118
+#: modules/404s/fofs-log.php:119
 msgid "Date of Most Recent Hit"
 msgstr ""
 
-#: modules/404s/fofs-log.php:119
+#: modules/404s/fofs-log.php:120
 msgid "Referers"
 msgstr ""
 
-#: modules/404s/fofs-log.php:120 modules/404s/fofs-log.php:223
+#: modules/404s/fofs-log.php:121 modules/404s/fofs-log.php:224
 msgid "User Agents"
 msgstr ""
 
-#: modules/404s/fofs-log.php:136
+#: modules/404s/fofs-log.php:137
 msgid ""
 "New 404 errors will not be recorded because 404 logging is disabled on the "
 "Settings tab."
 msgstr ""
 
-#: modules/404s/fofs-log.php:143
+#: modules/404s/fofs-log.php:144
 msgid "The log entry was successfully deleted."
 msgstr ""
 
-#: modules/404s/fofs-log.php:145
+#: modules/404s/fofs-log.php:146
 msgid "This log entry has already been deleted."
 msgstr ""
 
-#: modules/404s/fofs-log.php:154
+#: modules/404s/fofs-log.php:155
 msgid "The log was successfully cleared."
 msgstr ""
 
-#: modules/404s/fofs-log.php:158
+#: modules/404s/fofs-log.php:159
 msgid "No 404 errors in the log."
 msgstr ""
 
-#: modules/404s/fofs-log.php:182
+#: modules/404s/fofs-log.php:183
 msgid "Open URL in new window (will not be logged)"
 msgstr ""
 
-#: modules/404s/fofs-log.php:183
+#: modules/404s/fofs-log.php:184
 msgid "Query Google for cached version of URL (opens in new window)"
 msgstr ""
 
-#: modules/404s/fofs-log.php:184
+#: modules/404s/fofs-log.php:185
 msgid "Remove this URL from the log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:187
+#: modules/404s/fofs-log.php:188
 #, php-format
 msgid "%s at %s"
 msgstr ""
 
-#: modules/404s/fofs-log.php:191
+#: modules/404s/fofs-log.php:192
 msgid "View list of referring URLs"
 msgstr ""
 
-#: modules/404s/fofs-log.php:192
+#: modules/404s/fofs-log.php:193
 msgid "View list of user agents"
 msgstr ""
 
-#: modules/404s/fofs-log.php:202
+#: modules/404s/fofs-log.php:203
 msgid "Referring URLs"
 msgstr ""
 
-#: modules/404s/fofs-log.php:203 modules/404s/fofs-log.php:224
+#: modules/404s/fofs-log.php:204 modules/404s/fofs-log.php:225
 msgid "Hide list"
 msgstr ""
 
-#: modules/404s/fofs-log.php:254
+#: modules/404s/fofs-log.php:255
 msgid "Are you sure you want to delete all 404 log entries?"
 msgstr ""
 
-#: modules/404s/fofs-log.php:256
+#: modules/404s/fofs-log.php:257
 msgid "Clear Log"
 msgstr ""
 
@@ -239,31 +239,88 @@ msgid ""
 "SEO Ultimate and may be outdated.)"
 msgstr ""
 
-#: modules/class.su-module.php:944
+#: modules/class.su-module.php:957
 #, php-format
 msgid "%s %s|Dropdown Title"
 msgstr ""
 
-#: modules/class.su-module.php:972
+#: modules/class.su-module.php:985
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1006
+#: modules/class.su-module.php:1035
+msgid "Posts"
+msgstr ""
+
+#: modules/class.su-module.php:1035
+msgid "Post"
+msgstr ""
+
+#: modules/class.su-module.php:1036
+msgid "Pages"
+msgstr ""
+
+#: modules/class.su-module.php:1036
+msgid "Page"
+msgstr ""
+
+#: modules/class.su-module.php:1037
+msgid "Attachments"
+msgstr ""
+
+#: modules/class.su-module.php:1037
+msgid "Attachment"
+msgstr ""
+
+#: modules/class.su-module.php:1069
+msgid "Name"
+msgstr ""
+
+#: modules/class.su-module.php:1080
+msgid "Your site currently doesn&#8217;t have any public items of this type."
+msgstr ""
+
+#: modules/class.su-module.php:1162
+msgid "&laquo;"
+msgstr ""
+
+#: modules/class.su-module.php:1163
+msgid "&raquo;"
+msgstr ""
+
+#: modules/class.su-module.php:1170
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr ""
+
+#: modules/class.su-module.php:1184
+msgid "ID"
+msgstr ""
+
+#: modules/class.su-module.php:1217
+msgid "View"
+msgstr ""
+
+#: modules/class.su-module.php:1217
+msgid "Edit"
+msgstr ""
+
+#: modules/class.su-module.php:1309
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1026
+#: modules/class.su-module.php:1329
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1345
+#: modules/class.su-module.php:1768
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:1360 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:1783 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
@@ -660,39 +717,31 @@ msgstr ""
 msgid "Verification Codes"
 msgstr ""
 
-#: modules/meta/meta-settings.php:43
-msgid "Custom &lt;head&gt; HTML"
-msgstr ""
-
 #: modules/meta/meta.php:12
 msgid "Meta Editor"
 msgstr ""
 
-#: modules/meta/meta.php:81
-msgid "Custom Header Code"
-msgstr ""
-
-#: modules/meta/meta.php:97
+#: modules/meta/meta.php:82
 msgid "Meta Description:"
 msgstr ""
 
-#: modules/meta/meta.php:100
+#: modules/meta/meta.php:85
 #, php-format
 msgid "You&#8217;ve entered %s characters. Most search engines use up to 160."
 msgstr ""
 
-#: modules/meta/meta.php:102
+#: modules/meta/meta.php:87
 msgid "Meta Keywords:<br /><em>(separate with commas)</em>"
 msgstr ""
 
-#: modules/meta/meta.php:109
+#: modules/meta/meta.php:94
 msgid ""
 "<strong>Description:</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
 "results. "
 msgstr ""
 
-#: modules/meta/meta.php:111
+#: modules/meta/meta.php:96
 msgid ""
 "<strong>Keywords:</strong> &mdash; The value of the meta keywords tag. The "
 "keywords list gives search engines a hint as to what this post/page is "
@@ -824,6 +873,86 @@ msgstr ""
 msgid "Meta Robots Tag:"
 msgstr ""
 
+#: modules/rich-snippets/rich-snippets.php:12
+msgid "Rich Snippet Creator"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:17
+msgid ""
+"Reviews\n"
+"Review"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:28
+msgid "Data Format"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:29
+msgid "Categories/Tags That Indicate Reviews"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:37
+msgid "Microformats (recommended)"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:43
+msgid "HTML5 Microdata"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:49
+msgid "RDFa"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:62
+#: modules/rich-snippets/rich-snippets.php:218
+msgid "Review"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:70
+msgid "Star Rating"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:79
+msgid "Review Author"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:85
+msgid "Date Reviewed"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:217
+#: modules/rich-snippets/rich-snippets.php:223
+msgid "None"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:219
+msgid "Rich Snippet Type:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:224
+msgid "1 star"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:225
+msgid "2 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:226
+msgid "3 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:227
+msgid "4 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:228
+msgid "5 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:229
+msgid "Star Rating for Reviewed Item:"
+msgstr ""
+
 #: modules/sds-blog/sds-blog.php:12
 msgid "Whitepapers"
 msgstr ""
@@ -832,7 +961,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.0)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -873,81 +1002,91 @@ msgstr ""
 msgid "Installer"
 msgstr ""
 
-#: modules/settings/install.php:23 modules/settings/install.php:47
+#: modules/settings/install.php:23 modules/settings/install.php:48
 msgid "Upgrade"
 msgstr ""
 
-#: modules/settings/install.php:24 modules/settings/install.php:70
+#: modules/settings/install.php:24 modules/settings/install.php:71
 msgid "Downgrade"
 msgstr ""
 
-#: modules/settings/install.php:41
+#: modules/settings/install.php:25 modules/settings/install.php:86
+msgid "Reinstall"
+msgstr ""
+
+#: modules/settings/install.php:42
 msgid ""
 "From the list below, select the version to which you would like to upgrade. "
 "Then click the &#8220;Upgrade&#8221; button at the bottom of the screen."
 msgstr ""
 
-#: modules/settings/install.php:50
+#: modules/settings/install.php:51
 msgid "You are already running the latest version."
 msgstr ""
 
-#: modules/settings/install.php:52
+#: modules/settings/install.php:53
 msgid ""
 "There was an error retrieving the list of available versions. Please try "
 "again later. You can also upgrade to the latest version of SEO Ultimate "
 "using the WordPress plugin upgrader."
 msgstr ""
 
-#: modules/settings/install.php:61
+#: modules/settings/install.php:62
 msgid ""
 "Downgrading is provided as a convenience only and is not officially "
 "supported. Although unlikely, you may lose data in the downgrading process. "
 "It is your responsibility to backup your database before proceeding."
 msgstr ""
 
-#: modules/settings/install.php:64
+#: modules/settings/install.php:65
 msgid ""
 "From the list below, select the version to which you would like to "
 "downgrade. Then click the &#8220;Downgrade&#8221; button at the bottom of "
 "the screen."
 msgstr ""
 
-#: modules/settings/install.php:73
+#: modules/settings/install.php:74
 #, php-format
 msgid "Downgrading to versions earlier than %s is not supported."
 msgstr ""
 
-#: modules/settings/install.php:75
+#: modules/settings/install.php:76
 msgid ""
 "There was an error retrieving the list of available versions. Please try "
 "again later."
 msgstr ""
 
-#: modules/settings/install.php:100
-msgid "Current Version"
+#: modules/settings/install.php:81
+msgid ""
+"To download and install a fresh copy of the SEO Ultimate version you are "
+"currently using, click the &#8220;Reinstall&#8221; button below."
 msgstr ""
 
-#: modules/settings/install.php:102
+#: modules/settings/install.php:119
+msgid "Your Current Version"
+msgstr ""
+
+#: modules/settings/install.php:121
 msgid "Latest Version"
 msgstr ""
 
-#: modules/settings/install.php:122
+#: modules/settings/install.php:141
 msgid ""
 "You do not have sufficient permissions to upgrade/downgrade plugins for this "
 "blog."
 msgstr ""
 
-#: modules/settings/install.php:132
+#: modules/settings/install.php:151
 #, php-format
 msgid "Downgrade to SEO Ultimate %s"
 msgstr ""
 
-#: modules/settings/install.php:135
+#: modules/settings/install.php:154
 #, php-format
 msgid "Reinstall SEO Ultimate %s"
 msgstr ""
 
-#: modules/settings/install.php:138
+#: modules/settings/install.php:157
 #, php-format
 msgid "Upgrade to SEO Ultimate %s"
 msgstr ""
@@ -1061,9 +1200,9 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 2.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:723
+#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:724
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -1071,7 +1210,7 @@ msgstr ""
 msgid "Uninstaller"
 msgstr ""
 
-#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1123
+#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1125
 msgid "Uninstall"
 msgstr ""
 
@@ -1143,201 +1282,181 @@ msgstr ""
 msgid "Words to Remove"
 msgstr ""
 
-#: modules/titles/titles-formats.php:14
-msgid "Title Rewriter Formats"
+#: modules/titles/titles.php:12
+msgid "Title Tag Rewriter"
 msgstr ""
 
-#: modules/titles/titles-formats.php:15
+#: modules/titles/titles.php:23
 msgid "Default Formats"
 msgstr ""
 
-#: modules/titles/titles-posts.php:16
-msgid "Post Title Editor"
-msgstr ""
-
-#: modules/titles/titles-posts.php:23
-msgid "Posts"
-msgstr ""
-
-#: modules/titles/titles-posts.php:24
-msgid "Pages"
-msgstr ""
-
-#: modules/titles/titles-posts.php:25
-msgid "Attachments"
-msgstr ""
-
-#: modules/titles/titles-taxonomies.php:16
-msgid "Taxonomy Title Editor"
-msgstr ""
-
-#: modules/titles/titles-taxonomies.php:23
-msgid "Categories"
-msgstr ""
-
-#: modules/titles/titles-taxonomies.php:24
-msgid "Post Tags"
-msgstr ""
-
-#: modules/titles/titles.php:12
-msgid "Title Rewriter"
-msgstr ""
-
-#: modules/titles/titles.php:24
-msgid "{blog}"
-msgstr ""
-
-#: modules/titles/titles.php:25
-msgid "{post} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:26
-msgid "{page} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:27
-msgid "{category} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:28
-msgid "{tag} | {blog}"
-msgstr ""
-
 #: modules/titles/titles.php:29
-msgid "Archives for {month} {day}, {year} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:30
-msgid "Archives for {month} {year} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:31
-msgid "Archives for {year} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:32
-msgid "Posts by {author} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:33
-msgid "Search Results for {query} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:34
-msgid "404 Not Found | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:35
-msgid "{title} - Page {num}"
-msgstr ""
-
-#: modules/titles/titles.php:41
-msgid "Blog Homepage Title"
-msgstr ""
-
-#: modules/titles/titles.php:42
-msgid "Post Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:43
-msgid "Page Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:44
-msgid "Category Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:45
-msgid "Tag Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:46
-msgid "Day Archive Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:47
-msgid "Month Archive Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:48
-msgid "Year Archive Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:49
-msgid "Author Archive Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:50
-msgid "Search Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:51
-msgid "404 Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:52
-msgid "Pagination Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:268
-msgid "Post"
-msgstr ""
-
-#: modules/titles/titles.php:272
-msgid "Page"
-msgstr ""
-
-#: modules/titles/titles.php:344
-msgid "ID"
-msgstr ""
-
-#: modules/titles/titles.php:344
-msgid "Name"
-msgstr ""
-
-#: modules/titles/titles.php:344
 msgid "Title Tag"
 msgstr ""
 
-#: modules/titles/titles.php:417
+#: modules/titles/titles.php:44
+msgid "{blog}"
+msgstr ""
+
+#: modules/titles/titles.php:45
+msgid "{post} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:46
+msgid "{page} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:47
+msgid "{category} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:48
+msgid "{tag} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:49
+msgid "Archives for {month} {day}, {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:50
+msgid "Archives for {month} {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:51
+msgid "Archives for {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:52
+msgid "Posts by {author} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:53
+msgid "Search Results for {query} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:54
+msgid "404 Not Found | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:55
+msgid "{title} - Page {num}"
+msgstr ""
+
+#: modules/titles/titles.php:61
+msgid "Blog Homepage Title"
+msgstr ""
+
+#: modules/titles/titles.php:62
+msgid "Post Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:63
+msgid "Page Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:64
+msgid "Category Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:65
+msgid "Tag Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:66
+msgid "Day Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:67
+msgid "Month Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:68
+msgid "Year Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:69
+msgid "Author Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:70
+msgid "Search Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:71
+msgid "404 Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:72
+msgid "Pagination Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:285
 msgid "Title Tag:"
 msgstr ""
 
-#: modules/titles/titles.php:422
+#: modules/titles/titles.php:290
 msgid ""
 "<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; "
 "tag. The title appears in visitors' title bars and in search engine result "
 "titles. "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:723
+#: modules/user-code/user-code.php:12
+msgid "Code Inserter"
+msgstr ""
+
+#: modules/user-code/user-code.php:27
+msgid "Everywhere"
+msgstr ""
+
+#: modules/user-code/user-code.php:34
+msgid "&lt;head&gt; Tag"
+msgstr ""
+
+#: modules/user-code/user-code.php:35
+msgid "Before Item Content"
+msgstr ""
+
+#: modules/user-code/user-code.php:36
+msgid "After Item Content"
+msgstr ""
+
+#: modules/user-code/user-code.php:37
+msgid "Footer"
+msgstr ""
+
+#: modules/user-code/user-code.php:51
+msgid "Code Inserter module"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:724
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1000
+#: plugin/class.seo-ultimate.php:1002
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1002
+#: plugin/class.seo-ultimate.php:1004
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1004
+#: plugin/class.seo-ultimate.php:1006
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1059
+#: plugin/class.seo-ultimate.php:1061
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1143
+#: plugin/class.seo-ultimate.php:1145
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1204
+#: plugin/class.seo-ultimate.php:1206
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href='options-privacy.php' "
@@ -1345,7 +1464,7 @@ msgid ""
 "everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1312
+#: plugin/class.seo-ultimate.php:1314
 msgid "SEO Settings"
 msgstr ""
 
@@ -1431,8 +1550,8 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "This all-in-one SEO plugin gives you control over title tags, noindex/"
-"nofollow, meta tags, slugs, canonical tags, \"more\" links, 404 errors, and "
-"more."
+"nofollow, meta tags, rich snippets, slugs, canonical tags, \"more\" links, "
+"404 errors, and more."
 msgstr ""
 
 #. Author URI of the plugin/theme
