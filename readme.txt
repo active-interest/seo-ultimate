@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 2.9.1
+Stable tag: 3.0
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 3.0 adds the Rich Snippet Creator module
 * Version 2.9 adds custom taxonomy support to Title Tag Rewriter
 * Version 2.8 adds custom post type support to Title Tag Rewriter
 * Version 2.7 adds the Code Inserter module
 * Version 2.6 adds reinstallation support
-* Version 2.5 adds advanced plugin upgrade/downgrade functionality
 
 = Features =
 
@@ -84,6 +84,11 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Easily insert custom HTML into your site's `<head>` tag, footer, or item content.
 	* Use to add Google Analytics, Feedburner FeedFlare, Google AdSense section targeting, and other SEO/SEM-enhancing code snippets.
 	* Code remains even when switching themes.
+
+* **Rich Snippet Creator** -- NEW in Version 3.0
+	* Easily add rich snippet code to your review posts
+	* Attract more search traffic with eye-catching supplementary SERP data
+	* Can add code to old review posts automatically
 
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
