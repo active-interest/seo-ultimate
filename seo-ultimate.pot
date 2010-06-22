@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 3.0 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 3.1 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 3.0\n"
+"Project-Id-Version: SEO Ultimate 3.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-06-19 19:11+0000\n"
+"POT-Creation-Date: 2010-06-22 15:13+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,12 +146,8 @@ msgstr ""
 msgid "404 Monitor"
 msgstr ""
 
-#: modules/autolinks/autolinks.php:12
+#: modules/autolinks/autolinks.php:11
 msgid "Deeplink Juggernaut"
-msgstr ""
-
-#: modules/autolinks/autolinks.php:13
-msgid "Deeplink Juggernaut (Beta)"
 msgstr ""
 
 #: modules/autolinks/content-autolinks-settings.php:16
@@ -175,23 +171,38 @@ msgstr ""
 msgid "Content Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:77
+#: modules/autolinks/content-autolinks.php:76
 msgid ""
-"The Deeplink Juggernaut can automatically link post/page anchor text to "
-"given URLs. This is a preview beta version. More functionality will be added "
-"in future releases of SEO Ultimate."
+"The Content Links section of Deeplink Juggernaut lets you automatically link "
+"a certain word or phrase in your post/page content to a URL you specify."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:102
+#: modules/autolinks/content-autolinks.php:116
+msgid "Edit Existing Links"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:120
+msgid "Add a New Link"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:127
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:103
+#: modules/autolinks/content-autolinks.php:128
 msgid "URL"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:104
+#: modules/autolinks/content-autolinks.php:129
+msgid "Title Attribute"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:130
 msgid "Options"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:133
+msgid "Delete"
 msgstr ""
 
 #: modules/canonical/canonical.php:12
@@ -961,7 +972,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.0)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.1)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1062,31 +1073,31 @@ msgid ""
 "currently using, click the &#8220;Reinstall&#8221; button below."
 msgstr ""
 
-#: modules/settings/install.php:119
+#: modules/settings/install.php:108
 msgid "Your Current Version"
 msgstr ""
 
-#: modules/settings/install.php:121
+#: modules/settings/install.php:110
 msgid "Latest Version"
 msgstr ""
 
-#: modules/settings/install.php:141
+#: modules/settings/install.php:130
 msgid ""
 "You do not have sufficient permissions to upgrade/downgrade plugins for this "
 "blog."
 msgstr ""
 
-#: modules/settings/install.php:151
+#: modules/settings/install.php:140
 #, php-format
 msgid "Downgrade to SEO Ultimate %s"
 msgstr ""
 
-#: modules/settings/install.php:154
+#: modules/settings/install.php:143
 #, php-format
 msgid "Reinstall SEO Ultimate %s"
 msgstr ""
 
-#: modules/settings/install.php:157
+#: modules/settings/install.php:146
 #, php-format
 msgid "Upgrade to SEO Ultimate %s"
 msgstr ""
@@ -1200,7 +1211,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.0)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:724
 msgid "SEO Ultimate"
@@ -1210,7 +1221,7 @@ msgstr ""
 msgid "Uninstaller"
 msgstr ""
 
-#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1125
+#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1209
 msgid "Uninstall"
 msgstr ""
 
@@ -1452,11 +1463,57 @@ msgid ""
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1145
+#: plugin/class.seo-ultimate.php:1102
+msgid "new feature"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1102
+msgid "new features"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1103
+msgid "bugfix"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1103
+msgid "bugfixes"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1104
+msgid "improvement"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1104
+msgid "improvements"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1105
+msgid "security fix"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1105
+msgid "security fixes"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1136
+#, php-format
+msgid "%d %s"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1142
+#, php-format
+msgid "Upgrade now to get %s. %s."
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1144
+msgid "View changelog"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1229
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1206
+#: plugin/class.seo-ultimate.php:1290
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href='options-privacy.php' "
@@ -1464,7 +1521,7 @@ msgid ""
 "everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1314
+#: plugin/class.seo-ultimate.php:1398
 msgid "SEO Settings"
 msgstr ""
 
