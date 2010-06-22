@@ -1090,6 +1090,61 @@ class SEO_Ultimate {
 	 */
 	function get_plugin_update_info($nv) {
 		
+		$change_types = array(
+			  'Feature' => 'feature'
+			, 'SEO Feature' => 'feature'
+			, 'Bugfix' => 'bugfix'
+			, 'Improvement' => 'improvement'
+			, 'Security Fix' => 'security'
+		);
+		
+		$change_labels = array(
+			  'feature'     => array(__('new feature', 'seo-ultimate'), __('new features', 'seo-ultimate'))
+			, 'bugfix'      => array(__('bugfix', 'seo-ultimate'), __('bugfixes', 'seo-ultimate'))
+			, 'improvement' => array(__('improvement', 'seo-ultimate'), __('improvements', 'seo-ultimate'))
+			, 'security'    => array(__('security fix', 'seo-ultimate'), __('security fixes', 'seo-ultimate'))
+		);
+		
+		$changes = array();
+		
+		$versions = $this->download_changelog();
+		if (!is_array($versions) || !count($versions)) return '';
+		
+		foreach ($versions as $version_title => $version_changelog) {
+			if (preg_match('|Version ([0-9.]{3,9}) |', $version_title, $matches)) {
+				$version = $matches[1];
+				
+				//If we're running the same version or a newer version, continue
+				if (version_compare(SU_VERSION, $version, '>=')) continue;
+				
+				$version_changes = explode('</li>', $version_changelog);
+				foreach ($version_changes as $change) {
+					if (preg_match('|<li>([a-zA-Z ]+): |', $change, $matches2)) {
+						$change_type_label = $matches2[1];
+						if (isset($change_types[$change_type_label]))
+							$changes[$change_types[$change_type_label]]++;
+					}
+				}
+			}
+		}
+		
+		if (!count($changes)) return '';
+		
+		$nlchanges = array();
+		foreach ($changes as $change_type => $changes_count) {
+			if (is_string($change_type) && $changes_count > 0)
+				$nlchanges[] = sprintf(__('%d %s', 'seo-ultimate'),
+									number_format_i18n($changes_count),
+									_n($change_labels[$change_type][0], $change_labels[$change_type][1], $changes_count, 'seo-ultimate')
+								);
+		}
+		
+		return sprintf(__('Upgrade now to get %s. %s.', 'seo-ultimate')
+					, sustr::nl_implode($nlchanges)
+					, '<a href="plugin-install.php?tab=plugin-information&amp;plugin=seo-ultimate&amp;section=changelog&amp;TB_iframe=true&amp;width=640&amp;height=530" class="thickbox">' . __('View changelog', 'seo-ultimate') . '</a>'
+				);
+		
+		/*
 		$info = suwp::load_webpage("http://www.seodesignsolutions.com/apis/su/update-info/?ov=".urlencode(SU_VERSION)."&nv=".urlencode($nv), SU_USER_AGENT);
 		if ($info) {
 			$info = strip_tags($info, "<br><a><b><i><span>");
@@ -1098,6 +1153,32 @@ class SEO_Ultimate {
 		}
 		
 		return '';
+		*/
+	}
+	
+	/**
+	 * Downloads the plugin's changelog.
+	 * 
+	 * @since 3.1
+	 * 
+	 * @return array An array of changelog headers {Version X.X (Month Day, Year)} => <ul> lists of changes.
+	 */
+	function download_changelog() {
+		
+		include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+		
+		$plugin = plugins_api('plugin_information', array('slug' => 'seo-ultimate'));
+		if (is_wp_error($plugin)) return false;
+		$changelog = $plugin->sections['changelog'];
+		
+		$entries = explode('<h4>', $changelog);
+		$versions = array();
+		foreach ($entries as $entry) {
+			$item = explode('</h4>', $entry, 2);
+			if (count($item) == 2) $versions[$item[0]] = $item[1];
+		}
+		
+		return $versions;
 	}
 	
 	/**
@@ -1106,9 +1187,12 @@ class SEO_Ultimate {
 	 * @since 2.1
 	 */
 	function add_plugin_upgrade_notice($current) {
-		if (isset($current->response[$this->plugin_basename]))
-			if (!strlen($current->response[$this->plugin_basename]->upgrade_notice))
+		if (isset($current->response[$this->plugin_basename])) {
+			if (!strlen($current->response[$this->plugin_basename]->upgrade_notice)) {
 				$current->response[$this->plugin_basename]->upgrade_notice = $this->get_plugin_update_info($current->response[$this->plugin_basename]->new_version);
+				remove_filter('transient_update_plugins', array(&$this, 'add_plugin_upgrade_notice'));
+			}
+		}
 		return $current;
 	}
 	

@@ -3,6 +3,15 @@
 	width: 100%;
 }
 
-#su-autolinks table.widefat td.checkbox {
-	width: 7em;
+#su-autolinks table.widefat td.checkbox label {
+	margin-right: 1em;
+}
+
+#su-autolinks table.widefat td.su-link-options {
+	width: 17em;
+}
+
+#su-autolinks table.widefat td.su-link-delete {
+	width: 3em;
+	text-align: center;
 }

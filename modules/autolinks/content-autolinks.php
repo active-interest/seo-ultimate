@@ -50,14 +50,13 @@ class SU_ContentAutolinks extends SU_Module {
 			
 			if ($type == 'url' && strlen(trim($anchor)) && strlen(trim($url))) {
 				
-				$relnofollow = $data['nofollow'] ? ' rel="nofollow"' : '';
+				$rel	= $data['nofollow'] ? ' rel="nofollow"' : '';
+				$target	= ($data['target'] == 'blank') ? ' target="_blank"' : '';
+				$title	= strlen($titletext = $data['title']) ? " title=\"$titletext\"" : '';
 				
-				//Special thanks to the GPL-licensed "SEO Smart Links" plugin for the following find/replace code
-				//http://www.prelovac.com/vladimir/wordpress-plugins/seo-smart-links
-				$replace = "<a title=\"$1\" href=\"$url\"$relnofollow>$1</a>";
-				$reg = '/(?!(?:[^<\[]+[>\]]|[^>\]]+<\/a>))\b($name)\b/imsU';
-				$regexp = str_replace('$name', $anchor, $reg);
-				$content = preg_replace($regexp, $replace, $content, $limit_enabled ? 1 : -1, $count);
+				$link = "<a title=\"$1\" href=\"$url\"$title$rel$target>$1</a>";
+				
+				$content = sustr::htmlsafe_str_replace($anchor, $link, $content, $limit_enabled ? 1 : -1, $count);
 				
 				if ($limit_enabled) {
 					$limit -= $count;
@@ -74,44 +73,96 @@ class SU_ContentAutolinks extends SU_Module {
 	
 	function admin_page_contents() {
 		echo "\n<p>";
-		_e("The Deeplink Juggernaut can automatically link post/page anchor text to given URLs. This is a preview beta version. More functionality will be added in future releases of SEO Ultimate.", 'seo-ultimate');
+		_e('The Content Links section of Deeplink Juggernaut lets you automatically link a certain word or phrase in your post/page content to a URL you specify.', 'seo-ultimate');
 		echo "</p>\n";
 		
+		$links = $this->get_setting('links');
+		if (!is_array($links)) $links = array();
+		$num_links = count($links);
+		
 		if ($this->is_action('update')) {
+			
 			$links = array();
-			for ($i=0; $i<20; $i++) {
+			
+			for ($i=0; $i <= $num_links; $i++) {
+				
 				$anchor = stripslashes($_POST["link_{$i}_anchor"]);
 				$url    = stripslashes($_POST["link_{$i}_url"]);
+				$title  = stripslashes($_POST["link_{$i}_title"]);
+				
+				$target = stripslashes($_POST["link_{$i}_target"]);
+				if (!$target) $target = 'self';
+				
 				$nofollow = intval($_POST["link_{$i}_nofollow"]) == 1;
-				if (strlen($anchor) || strlen($url)) {
+				$delete = intval($_POST["link_{$i}_delete"]) == 1;
+				
+				if (!$delete && (strlen($anchor) || strlen($url))) {
 					$links[] = array(
 						  'anchor' => $anchor
 						, 'to_type' => 'url'
 						, 'to_id' => $url
+						, 'title' => $title
 						, 'nofollow' => $nofollow
+						, 'target' => $target
 					);
 				}
 			}
 			$this->update_setting('links', $links);
-		} else {
-			$links = $this->get_setting('links');
-			if (!$links) $links = array();
+			
+			$num_links = count($links);
 		}
 		
-		$this->admin_wftable_start(array(
+		if ($num_links > 0) {
+			$this->admin_subheader(__('Edit Existing Links', 'seo-ultimate'));
+			$this->content_links_form(0, $links);
+		}
+		
+		$this->admin_subheader(__('Add a New Link', 'seo-ultimate'));
+		$this->content_links_form($num_links, array(array()), false);
+	}
+	
+	function content_links_form($start_id = 0, $links, $delete_option = true) {
+		
+		$headers = array(
 			  'link-anchor' => __('Anchor Text', 'seo-ultimate')
 			, 'link-to_id' => __('URL', 'seo-ultimate')
-			, 'link-nofollow' => __('Options', 'seo-ultimate')
-		));
+			, 'link-title' => __('Title Attribute', 'seo-ultimate')
+			, 'link-options' => __('Options', 'seo-ultimate')
+		);
 		
-		for ($i=0; $i<20; $i++) {
-			$anchor = su_esc_attr($links[$i]['anchor']);
-			$url    = su_esc_attr($links[$i]['to_id']);
+		if ($delete_option) $headers['link-delete'] = __('Delete', 'seo-ultimate');
+		
+		$this->admin_wftable_start($headers);
+		
+		$i = $start_id;
+		foreach ($links as $link) {
+			$anchor = su_esc_attr($link['anchor']);
+			$url    = su_esc_attr($link['to_id']);
+			$title  = su_esc_attr($link['title']);
 			echo "\t\t<tr>\n";
-			echo "\t\t\t<td class='text'><input type='text' id='link_{$i}_anchor' name='link_{$i}_anchor' value='$anchor' /></td>\n";
-			echo "\t\t\t<td class='text'><input type='text' class='text' id='link_{$i}_url' name='link_{$i}_url' value='$url' /></td>\n";
-			echo "\t\t\t<td class='checkbox'><label for='link_{$i}_nofollow'><input type='checkbox' id='link_{$i}_nofollow' name='link_{$i}_nofollow' value='1'"; checked($links[$i]['nofollow']); echo " /> Nofollow</label></td>\n";
+			
+			$fields = array('anchor', 'to_id' => 'url', 'title');
+			foreach ($fields as $class => $field) {
+				if (is_numeric($class)) $class = $field;
+				echo "\t\t\t<td class='text su-link-$class'><input type='text' id='link_{$i}_$field' name='link_{$i}_$field' value='{$$field}' autocomplete='off' /></td>\n";
+			}
+			
+			echo "\t\t\t<td class='checkbox su-link-options'>";
+				echo "<label for='link_{$i}_nofollow'><input type='checkbox' id='link_{$i}_nofollow' name='link_{$i}_nofollow' value='1'"; checked($link['nofollow']); echo " /> Nofollow</label>";
+				echo "<label for='link_{$i}_target'><input type='checkbox' id='link_{$i}_target' name='link_{$i}_target' value='blank'"; checked($link['target'] == 'blank'); echo " /> New window</label>";
+			echo "</td>\n";
+			
+			if ($delete_option) echo "\t\t\t<td class='checkbox su-link-delete'><input type='checkbox' id='link_{$i}_delete' name='link_{$i}_delete' value='1' /></td>\n";
+			/*echo "\t\t\t<td class='dropdown'><select id='link_{$i}_target' name='link_{$i}_target'>";
+			echo suhtml::option_tags(array(
+				  'self' => __('Default', 'seo-ultimate')
+				, 'blank' => __('_blank (New window)', 'seo-ultimate')
+				, 'top' => __('_top (Same window, no frames)', 'seo-ultimate')
+				, 'parent' => __('_parent (Same window, parent frameset)', 'seo-ultimate')
+			));
+			echo "</select></td>\n";*/
 			echo "\t\t</tr>\n";
+			$i++;
 		}
 		
 		$this->admin_wftable_end();

@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 3.0
+Stable tag: 3.1
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 3.1 adds more Deeplink Juggernaut features
 * Version 3.0 adds the Rich Snippet Creator module
 * Version 2.9 adds custom taxonomy support to Title Tag Rewriter
 * Version 2.8 adds custom post type support to Title Tag Rewriter
 * Version 2.7 adds the Code Inserter module
-* Version 2.6 adds reinstallation support
 
 = Features =
 
@@ -74,7 +74,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut**
+* **Deeplink Juggernaut** -- UPDATED in Version 3.1
 	* Automatically link phrases in your posts/pages to given URLs.
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Control the maximum number of autolinks added to each post/page.
@@ -196,6 +196,14 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 3.1 (June 22, 2010) =
+* Feature: Deeplink Juggernaut now supports unlimited autolinks instead of just 20
+* Feature: Deeplink Juggernaut now supports custom title attributes for autolinks
+* Feature: Deeplink Juggernaut interface now has convenient checkboxes for deleting autolinks
+* Feature: Deeplink Juggernaut autolinks can now open in new windows if desired
+* Improvement: SEO Ultimate upgrade notices now use official WordPress plugin API
+* Bugfix: SEO Ultimate no longer slows down the "Plugins" admin page excessively
 
 = Version 3.0 (June 19, 2010) =
 * Feature: Added the Rich Snippet Creator module

@@ -88,20 +88,9 @@ class SU_Install extends SU_Module {
 	
 	function get_version_radiobuttons($min, $max) {
 		
-		include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-		
 		$this->update_setting('version', SU_VERSION);
 		
-		$plugin = plugins_api('plugin_information', array('slug' => 'seo-ultimate'));
-		if (is_wp_error($plugin)) return false;
-		$changelog = $plugin->sections['changelog'];
-		
-		$entries = explode('<h4>', $changelog);
-		$versions = array();
-		foreach ($entries as $entry) {
-			$item = explode('</h4>', $entry, 2);
-			if (count($item) == 2) $versions[$item[0]] = $item[1];
-		}
+		$versions = $this->plugin->download_changelog();
 		
 		if (count($versions)) {
 			

@@ -534,7 +534,7 @@ class SU_Module {
 		}
 		
 		if (count($this->modules) > 0)
-			uasort($this->modules, array(&$this, 'module_sort_callback'));
+			@uasort($this->modules, array(&$this, 'module_sort_callback'));
 	}
 	
 	/**
