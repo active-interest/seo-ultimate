@@ -108,7 +108,7 @@ function su_esc_attr($str) {
  * @since 2.1
  */
 function su_esc_html($str) {
-	return wp_specialchars($str); //Yes, this is deprecated... will switch to esc_html later...
+	return esc_html($str);
 }
 
 /**
@@ -120,7 +120,7 @@ function su_esc_html($str) {
  * @return string The filtered string.
  */
 function su_esc_editable_html($str) {
-	return wp_specialchars($str, ENT_QUOTES, false, true);
+	return _wp_specialchars($str, ENT_QUOTES, false, true);
 }
 
 ?>

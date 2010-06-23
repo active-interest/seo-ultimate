@@ -104,6 +104,44 @@ class suarr {
 		}
 		return $newarr;
 	}
+	
+	function key_replace($array, $key_changes, $recursive = true, $return_replaced_only = false) {
+		$newarray = array();
+		foreach ($array as $key => $value) {
+			$changed = false;
+			if ($recursive && is_array($value)) {
+				$oldvalue = $value;
+				$value = suarr::key_replace($value, $key_changes, true, $return_replaced_only);
+				if ($oldvalue != $value) $changed = true;
+			}
+			
+			if (isset($key_changes[$key])) {
+				$key = $key_changes[$key];
+				$changed = true;
+			}
+			
+			if ($changed || !$return_replaced_only)
+				$newarray[$key] = $value;
+		}
+		return $newarray;
+	}
+	
+	function value_replace($array, $value_changes, $recursive = true, $return_replaced_only = false) {
+		$newarray = array();
+		foreach ($array as $key => $value) {
+			
+			$oldvalue = $value;
+			
+			if ($recursive && is_array($value))
+				$value = suarr::value_replace($value, $value_changes, true);
+			elseif (isset($value_changes[$value]))
+				$value = $value_changes[$value];
+			
+			if ($value != $oldvalue || !$return_replaced_only)
+				$newarray[$key] = $value;
+		}
+		return $newarray;
+	}
 }
 
 ?>

@@ -3,7 +3,7 @@
 Plugin Name: SEO Ultimate
 Plugin URI: http://www.seodesignsolutions.com/wordpress-seo/
 Description: This all-in-one SEO plugin gives you control over title tags, noindex/nofollow, meta tags, rich snippets, slugs, canonical tags, "more" links, 404 errors, and more.
-Version: 3.1
+Version: 3.2
 Author: SEO Design Solutions
 Author URI: http://www.seodesignsolutions.com/
 Text Domain: seo-ultimate
@@ -12,7 +12,7 @@ Text Domain: seo-ultimate
 /**
  * The main SEO Ultimate plugin file.
  * @package SeoUltimate
- * @version 3.1
+ * @version 3.2
  * @link http://www.seodesignsolutions.com/wordpress-seo/ SEO Ultimate Homepage
  */
 
@@ -33,15 +33,24 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+if (!defined('ABSPATH')) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
+	die();
+}
+
 /********** CONSTANTS **********/
+
+//The minimum version of WordPress required
+define('SU_MINIMUM_WP_VER', '2.8');
 
 //Reading plugin info from constants is faster than trying to parse it from the header above.
 define("SU_PLUGIN_NAME", "SEO Ultimate");
 define("SU_PLUGIN_URI", "http://www.seodesignsolutions.com/wordpress-seo/");
-define("SU_VERSION", "3.1");
+define("SU_VERSION", "3.2");
 define("SU_AUTHOR", "SEO Design Solutions");
 define("SU_AUTHOR_URI", "http://www.seodesignsolutions.com/");
-define("SU_USER_AGENT", "SeoUltimate/3.1");
+define("SU_USER_AGENT", "SeoUltimate/3.2");
 
 /********** INCLUDES **********/
 
@@ -63,16 +72,18 @@ include 'modules/class.su-importmodule.php';
 
 /********** PLUGIN FILE LOAD HANDLER **********/
 
-//If we're running WordPress, then initialize the main class loaded above.
-//Or, show a blank page on direct load.
-
-global $seo_ultimate;
-if (defined('ABSPATH'))
+global $wp_version;
+if (version_compare($wp_version, SU_MINIMUM_WP_VER, '>=')) {
+	global $seo_ultimate;
 	$seo_ultimate =& new SEO_Ultimate(__FILE__);
-else {
-	header('Status: 403 Forbidden');
-	header('HTTP/1.1 403 Forbidden');
-	die();
+} else {
+	add_action('admin_notices', 'su_wp_incompat_notice');
+}
+
+function su_wp_incompat_notice() {
+	echo '<div class="error"><p>';
+	printf(__('SEO Ultimate requires WordPress %s or above. Please upgrade to the latest version of WordPress to enable SEO Ultimate on your blog, or deactivate SEO Ultimate to remove this notice.', 'seo-ultimate'), SU_MINIMUM_WP_VER);
+	echo "</p></div>\n";
 }
 
 ?>

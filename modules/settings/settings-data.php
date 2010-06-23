@@ -75,22 +75,119 @@ class SU_SettingsData extends SU_Module {
 			$this->plugin->dbdata['settings'] = array();
 			unset($this->plugin->dbdata['modules']);
 			$this->load_default_settings();
+			
+		} elseif ($this->is_action('dj-export')) {
+			header('Content-Disposition: attachment; filename="Deeplink Juggernaut Content Links ('.date('Y-m-d').').csv"');
+			
+			$djlinks = $this->get_setting('links', array(), 'autolinks');
+			$csv_headers = array(
+				  'anchor' => 'Anchor'
+				, 'to_type' => 'Destination Type'
+				, 'to_id' => 'Destination'
+				, 'title' => 'Title'
+				, 'nofollow' => 'Nofollow'
+				, 'target' => 'Target'
+			);
+			if (is_array($djlinks) && count($djlinks)) {
+				$djlinks = suarr::key_replace($djlinks, $csv_headers, true, true);
+				$djlinks = suarr::value_replace($djlinks, array(
+					  0 => 'No'
+					, 1 => 'Yes'
+					, 'url' => 'URL'
+				), true, false);
+			} else
+				$djlinks = array(array_fill_keys($csv_headers, ''));
+			
+			suio::export_csv($djlinks);
+			die();
+			
+		} elseif ($this->is_action('dj-import')) {
+			
+			if (strlen($_FILES['settingsfile']['name'])) {
+			
+				$file = $_FILES['settingsfile']['tmp_name'];			
+				if (is_uploaded_file($file)) {
+					$import = suio::import_csv($file);
+					if ($import === false)
+						$this->queue_message('error', __('The uploaded file is not in the proper format. Links could not be imported.', 'seo-ultimate'));
+					else {
+						$import = suarr::key_replace($import, array(
+							  'Anchor' => 'anchor'
+							, 'Destination Type' => 'to_type'
+							, 'Destination' => 'to_id'
+							, 'URL' => 'to_id'
+							, 'Title' => 'title'
+							, 'Nofollow' => 'nofollow'
+							, 'Target' => 'target'
+						), true, true);
+						$import = suarr::value_replace($import, array(
+							  'No' => false
+							, 'Yes' => true
+							, 'URL' => 'url'
+						), true, false);
+						
+						$djlinks = array();
+						foreach ($import as $link) {
+							
+							//Validate destination type
+							//Only one valid option at this time ('url'), so that makes this easy...
+							$link['to_type'] = 'url';
+							
+							//Validate nofollow
+							if (!is_bool($link['nofollow']))
+								$link['nofollow'] = false;
+							
+							//Validate target
+							$link['target'] = ltrim($link['target'], '_');
+							if (!in_array($link['target'], array('self', 'blank'))) //Only _self or _blank are supported  right now
+								$link['target'] = 'self';
+							
+							//Add link!
+							$djlinks[] = $link;
+						}
+						
+						$this->update_setting('links', $djlinks, 'autolinks');
+						
+						$this->queue_message('success', __('Links successfully imported.', 'seo-ultimate'));
+					}	
+				} else
+					$this->queue_message('error', __('The CSV file could not be uploaded successfully.', 'seo-ultimate'));
+					
+			} else
+				$this->queue_message('warning', __('Links could not be imported because no CSV file was selected. Please click the &#8220;Browse&#8221; button and select a file to import.', 'seo-ultimate'));
+			
 		}
 	}
 	
 	function import_tab() {
 		$this->print_messages();
-		$this->admin_subheader(__('Import SEO Ultimate Settings File', 'seo-ultimate'));
 		$hook = $this->plugin->key_to_hook($this->get_module_or_parent_key());
+		
+		//SEO Ultimate
+		$this->admin_subheader(__('Import SEO Ultimate Settings File', 'seo-ultimate'));
 		echo "\n<p>";
-		_e("You can use this form to upload and import an SEO Ultimate settings file stored on your computer. (Settings files can be created using the Export tool.)", 'seo-ultimate');
+		_e('You can use this form to upload and import an SEO Ultimate settings file stored on your computer. (These files can be created using the Export tool.) Note that importing a file will overwrite your existing settings with those in the file.', 'seo-ultimate');
 		echo "</p>\n";
-		echo "<form enctype='multipart/form-data' method='post' action='?page=$hook&amp;action=import#su-import'>\n";
+		echo "<form enctype='multipart/form-data' method='post' action='?page=$hook&amp;action=su-import#su-import'>\n";
 		echo "\t<input name='settingsfile' type='file' /> ";
-		$confirm = __("Are you sure you want to import this settings file? This will overwrite your current settings and cannot be undone.", 'seo-ultimate');
-		echo "<input type='submit' class='button-primary' value='".__("Import", 'seo-ultimate')."' onclick=\"javascript:return confirm('$confirm')\" />\n";
+		$confirm = __('Are you sure you want to import this settings file? This will overwrite your current settings and cannot be undone.', 'seo-ultimate');
+		echo "<input type='submit' class='button-primary' value='".__('Import Settings File', 'seo-ultimate')."' onclick=\"javascript:return confirm('$confirm')\" />\n";
 		wp_nonce_field($this->get_nonce_handle('su-import'));
 		echo "</form>\n";
+		
+		if ($this->plugin->module_exists('content-autolinks')) {
+			//Deeplink Juggernaut
+			$this->admin_subheader(__('Import Deeplink Juggernaut CSV File', 'seo-ultimate'));
+			echo "\n<p>";
+			_e('You can use this form to upload and import a Deeplink Juggernaut CSV file stored on your computer. (These files can be created using the Export tool.) Note that importing a file will overwrite your existing links with those in the file.', 'seo-ultimate');
+			echo "</p>\n";
+			echo "<form enctype='multipart/form-data' method='post' action='?page=$hook&amp;action=dj-import#su-import'>\n";
+			echo "\t<input name='settingsfile' type='file' /> ";
+			$confirm = __('Are you sure you want to import this CSV file? This will overwrite your current Deeplink Juggernaut links and cannot be undone.', 'seo-ultimate');
+			echo "<input type='submit' class='button-primary' value='".__('Import CSV File', 'seo-ultimate')."' onclick=\"javascript:return confirm('$confirm')\" />\n";
+			wp_nonce_field($this->get_nonce_handle('dj-import'));
+			echo "</form>\n";
+		}
 		
 		//Import from other plugins
 		$importmodules = array();
@@ -102,9 +199,9 @@ class SU_SettingsData extends SU_Module {
 		}
 		
 		if (count($importmodules)) {
-			$this->admin_subheader(__("Import from Other Plugins", 'seo-ultimate'));
+			$this->admin_subheader(__('Import from Other Plugins', 'seo-ultimate'));
 			echo "\n<p>";
-			_e("You can import settings and data from these plugins. Clicking a plugin&#8217;s name will take you to the importer page, where you can customize parameters and start the import.", 'seo-ultimate');
+			_e('You can import settings and data from these plugins. Clicking a plugin&#8217;s name will take you to the importer page, where you can customize parameters and start the import.', 'seo-ultimate');
 			echo "</p>\n";
 			echo "<table class='widefat'>\n";
 			
@@ -123,14 +220,27 @@ class SU_SettingsData extends SU_Module {
 	}
 	
 	function export_tab() {
+		//SEO Ultimate
+		$this->admin_subheader(__('Export SEO Ultimate Settings File', 'seo-ultimate'));
 		echo "\n<p>";
-		_e("You can use the export tool to download an SEO Ultimate settings file to your computer.", 'seo-ultimate');
+		_e('You can use this export tool to download an SEO Ultimate settings file to your computer.', 'seo-ultimate');
 		echo "</p>\n<p>";
-		_e("A settings file includes the data of every checkbox and textbox of every installed module. It does NOT include site-specific data like logged 404s or post/page title/meta data (this data would be included in a standard database backup, however).", 'seo-ultimate');
+		_e('A settings file includes the data of every checkbox and textbox of every installed module. It does NOT include site-specific data like logged 404s or post/page title/meta data (this data would be included in a standard database backup, however).', 'seo-ultimate');
 		echo "</p>\n<p>";
 		$url = $this->get_nonce_url('su-export');
-		echo "<a href='$url' class='button-primary'>".__("Download Settings File", 'seo-ultimate')."</a>";
+		echo "<a href='$url' class='button-primary'>".__('Download Settings File', 'seo-ultimate')."</a>";
 		echo "</p>\n";
+		
+		if ($this->plugin->module_exists('content-autolinks')) {
+			//Deeplink Juggernaut
+			$this->admin_subheader(__('Export Deeplink Juggernaut CSV File', 'seo-ultimate'));
+			echo "\n<p>";
+			_e('You can use this export tool to download a CSV file (comma-separated values file) that contains your Deeplink Juggernaut links. Once you download this file to your computer, you can edit it using your favorite spreadsheet program. When you&#8217;re done editing, you can re-upload the file using the Import tool.', 'seo-ultimate');
+			echo "</p>\n<p>";
+			$url = $this->get_nonce_url('dj-export');
+			echo "<a href='$url' class='button-primary'>".__('Download CSV File', 'seo-ultimate')."</a>";
+			echo "</p>\n";
+		}
 	}
 	
 	function reset_tab() {

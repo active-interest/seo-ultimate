@@ -92,7 +92,7 @@ class SU_Install extends SU_Module {
 		
 		$versions = $this->plugin->download_changelog();
 		
-		if (count($versions)) {
+		if (is_array($versions) && count($versions)) {
 			
 			$radiobuttons = array();
 			$first = true;
