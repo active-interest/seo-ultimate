@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 3.1 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 3.2 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 3.1\n"
+"Project-Id-Version: SEO Ultimate 3.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-06-22 15:13+0000\n"
+"POT-Creation-Date: 2010-06-23 15:10+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -972,7 +972,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.1)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.2)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1110,7 +1110,7 @@ msgstr ""
 msgid "Manage Settings Data"
 msgstr ""
 
-#: modules/settings/settings-data.php:21 modules/settings/settings-data.php:91
+#: modules/settings/settings-data.php:21
 msgid "Import"
 msgstr ""
 
@@ -1138,41 +1138,91 @@ msgid ""
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings/settings-data.php:83
+#: modules/settings/settings-data.php:112
+msgid ""
+"The uploaded file is not in the proper format. Links could not be imported."
+msgstr ""
+
+#: modules/settings/settings-data.php:151
+msgid "Links successfully imported."
+msgstr ""
+
+#: modules/settings/settings-data.php:154
+msgid "The CSV file could not be uploaded successfully."
+msgstr ""
+
+#: modules/settings/settings-data.php:157
+msgid ""
+"Links could not be imported because no CSV file was selected. Please click "
+"the &#8220;Browse&#8221; button and select a file to import."
+msgstr ""
+
+#: modules/settings/settings-data.php:167
 msgid "Import SEO Ultimate Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:86
+#: modules/settings/settings-data.php:169
 msgid ""
 "You can use this form to upload and import an SEO Ultimate settings file "
-"stored on your computer. (Settings files can be created using the Export "
-"tool.)"
+"stored on your computer. (These files can be created using the Export tool.) "
+"Note that importing a file will overwrite your existing settings with those "
+"in the file."
 msgstr ""
 
-#: modules/settings/settings-data.php:90
+#: modules/settings/settings-data.php:173
 msgid ""
 "Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:105
+#: modules/settings/settings-data.php:174
+msgid "Import Settings File"
+msgstr ""
+
+#: modules/settings/settings-data.php:180
+msgid "Import Deeplink Juggernaut CSV File"
+msgstr ""
+
+#: modules/settings/settings-data.php:182
+msgid ""
+"You can use this form to upload and import a Deeplink Juggernaut CSV file "
+"stored on your computer. (These files can be created using the Export tool.) "
+"Note that importing a file will overwrite your existing links with those in "
+"the file."
+msgstr ""
+
+#: modules/settings/settings-data.php:186
+msgid ""
+"Are you sure you want to import this CSV file? This will overwrite your "
+"current Deeplink Juggernaut links and cannot be undone."
+msgstr ""
+
+#: modules/settings/settings-data.php:187
+msgid "Import CSV File"
+msgstr ""
+
+#: modules/settings/settings-data.php:202
 msgid "Import from Other Plugins"
 msgstr ""
 
-#: modules/settings/settings-data.php:107
+#: modules/settings/settings-data.php:204
 msgid ""
 "You can import settings and data from these plugins. Clicking a plugin&#8217;"
 "s name will take you to the importer page, where you can customize "
 "parameters and start the import."
 msgstr ""
 
-#: modules/settings/settings-data.php:127
+#: modules/settings/settings-data.php:224
+msgid "Export SEO Ultimate Settings File"
+msgstr ""
+
+#: modules/settings/settings-data.php:226
 msgid ""
-"You can use the export tool to download an SEO Ultimate settings file to "
+"You can use this export tool to download an SEO Ultimate settings file to "
 "your computer."
 msgstr ""
 
-#: modules/settings/settings-data.php:129
+#: modules/settings/settings-data.php:228
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module. It does NOT include site-specific data like logged 404s or "
@@ -1180,26 +1230,43 @@ msgid ""
 "database backup, however)."
 msgstr ""
 
-#: modules/settings/settings-data.php:132
+#: modules/settings/settings-data.php:231
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:138
+#: modules/settings/settings-data.php:236
+msgid "Export Deeplink Juggernaut CSV File"
+msgstr ""
+
+#: modules/settings/settings-data.php:238
+msgid ""
+"You can use this export tool to download a CSV file (comma-separated values "
+"file) that contains your Deeplink Juggernaut links. Once you download this "
+"file to your computer, you can edit it using your favorite spreadsheet "
+"program. When you&#8217;re done editing, you can re-upload the file using "
+"the Import tool."
+msgstr ""
+
+#: modules/settings/settings-data.php:241
+msgid "Download CSV File"
+msgstr ""
+
+#: modules/settings/settings-data.php:248
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings/settings-data.php:140
+#: modules/settings/settings-data.php:250
 msgid ""
 "You can erase all your SEO Ultimate settings and restore them to &#8220;"
 "factory defaults&#8221; by clicking the button below."
 msgstr ""
 
-#: modules/settings/settings-data.php:143
+#: modules/settings/settings-data.php:253
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:144
+#: modules/settings/settings-data.php:254
 msgid "Restore Default Settings"
 msgstr ""
 
@@ -1211,7 +1278,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.1)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:724
 msgid "SEO Ultimate"
@@ -1598,6 +1665,14 @@ msgstr ""
 
 #: plugin/class.su-installer.php:36
 msgid "Plugin upgraded successfully."
+msgstr ""
+
+#: seo-ultimate.php:85
+#, php-format
+msgid ""
+"SEO Ultimate requires WordPress %s or above. Please upgrade to the latest "
+"version of WordPress to enable SEO Ultimate on your blog, or deactivate SEO "
+"Ultimate to remove this notice."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
