@@ -33,8 +33,11 @@ class SU_FofsLog extends SU_Module {
 	function get_default_settings() {
 		return array(
 			  'exceptions' => "*/favicon.ico\n*/apple-touch-icon.png"
-			, 'max_log_size' => 1000
+			, 'max_log_size' => 100
 			, 'log_enabled' => $this->flush_setting('log_hits', true, 'settings')
+			, 'restrict_logging' => true
+			, 'log_spiders' => true
+			, 'log_errors_with_referers' => true
 		);
 	}
 	
@@ -74,6 +77,16 @@ class SU_FofsLog extends SU_Module {
 		
 		if ($hit['status_code'] == 404) {
 			
+			if ($this->get_setting('restrict_logging', true)) {
+				if ($this->get_setting('log_spiders', true) && suweb::is_search_engine_ua($hit['user_agent'])) {
+					//Search engine; continue
+				} elseif ($this->get_setting('log_errors_with_referers', true) && strlen($hit['referer'])) {
+					//Has referer; continue
+				} else {
+					return $hit;
+				}
+			}
+			
 			$exceptions = suarr::explode_lines($this->get_setting('exceptions', ''));
 			foreach ($exceptions as $exception) {
 				$exception = str_replace('*', '.*', $exception);
@@ -83,7 +96,7 @@ class SU_FofsLog extends SU_Module {
 			}
 			
 			$l = $this->get_setting('log', array());
-			while (count($l) >= $this->get_setting('max_log_size', 1000)) array_pop($l);
+			while (count($l) >= absint($this->get_setting('max_log_size', 100))) array_pop($l);
 			
 			$u = $hit['url'];
 			if (!isset($l[$u])) {

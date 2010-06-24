@@ -44,6 +44,10 @@ div.su-module .form-table td div.field {
 	padding-bottom: 1em;
 }
 
+div.su-module .form-table label.su-indent {
+	padding-left: 3em;
+}
+
 div.su-module table.report {
 	border-collapse: collapse;
 	border-top: 1px solid #ccc;

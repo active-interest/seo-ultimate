@@ -1,5 +1,6 @@
 #su-fofs table.widefat {
 	width: 100%;
+	margin: 1em 0;
 }
 
 #su-fofs table tr.su-404s-hit-data td,

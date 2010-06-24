@@ -1587,6 +1587,13 @@ class SU_Module {
 		if (is_array($checkboxes)) {
 			foreach ($checkboxes as $name => $desc) {
 				
+				if (is_array($desc)) {
+					$indent = isset($desc['indent']) ? $desc['indent'] : false;
+					$desc = $desc['description'];
+				} else {
+					$indent = false;
+				}
+				
 				register_setting($this->get_module_key(), $name, 'intval');
 				$name = su_esc_attr($name);
 				
@@ -1601,7 +1608,8 @@ class SU_Module {
 					$onclick = " onclick=\"javascript:document.getElementById('$int_var_name').readOnly=!this.checked;\"";
 				}
 				
-				echo "<label for='$name'><input name='$name' id='$name' type='checkbox' value='1'";
+				if ($indent) $labelclass = " class='su-indent'"; else $labelclass = '';
+				echo "<label for='$name'$labelclass><input name='$name' id='$name' type='checkbox' value='1'";
 				if ($this->get_setting($name) === true) echo " checked='checked'";
 				echo "$onclick /> $desc</label><br />\n";
 			}
@@ -1619,10 +1627,11 @@ class SU_Module {
 	 * 
 	 * @param string $id The field/setting ID.
 	 * @param string $desc The checkbox's label.
+	 * @param mixed $grouptext The text to display in a table cell to the left of the one containing the checkbox. Optional.
 	 * @return string The HTML that would render the checkbox.
 	 */
-	function checkbox($id, $desc) {
-		$this->checkboxes(array($id => $desc));
+	function checkbox($id, $desc, $grouptext = false) {
+		$this->checkboxes(array($id => $desc), $grouptext);
 	}
 	
 	/**

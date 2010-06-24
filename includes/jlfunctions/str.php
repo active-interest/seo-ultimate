@@ -38,6 +38,12 @@ class sustr {
 	function has($str, $sub) {
 		return (strpos($str, $sub) !== false);
 	}
+	
+	function ihas($str, $sub) {
+		$str = strtolower($str);
+		$sub = strtolower($sub);
+		return (strpos($str, $sub) !== false);
+	}
 
 	/**
 	 * Truncates a string if it is longer than a given length.
