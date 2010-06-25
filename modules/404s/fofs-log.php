@@ -78,13 +78,9 @@ class SU_FofsLog extends SU_Module {
 		if ($hit['status_code'] == 404) {
 			
 			if ($this->get_setting('restrict_logging', true)) {
-				if ($this->get_setting('log_spiders', true) && suweb::is_search_engine_ua($hit['user_agent'])) {
-					//Search engine; continue
-				} elseif ($this->get_setting('log_errors_with_referers', true) && strlen($hit['referer'])) {
-					//Has referer; continue
-				} else {
-					return $hit;
-				}
+				if (!($this->get_setting('log_spiders', true) && suweb::is_search_engine_ua($hit['user_agent'])) &&
+					!($this->get_setting('log_errors_with_referers', true) && strlen($hit['referer'])))
+						return $hit;
 			}
 			
 			$exceptions = suarr::explode_lines($this->get_setting('exceptions', ''));
