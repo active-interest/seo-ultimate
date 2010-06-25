@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 3.3 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 3.4 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 3.3\n"
+"Project-Id-Version: SEO Ultimate 3.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-06-24 14:23+0000\n"
+"POT-Creation-Date: 2010-06-25 12:41+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,6 +160,14 @@ msgstr ""
 
 #: modules/404s/fofs-settings.php:27
 msgid "Log Restrictions"
+msgstr ""
+
+#: modules/404s/fofs-settings.php:28
+msgid "URLs to Ignore"
+msgstr ""
+
+#: modules/404s/fofs-settings.php:28
+msgid "(Use * as wildcard)"
 msgstr ""
 
 #: modules/404s/fofs.php:11
@@ -992,7 +1000,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.3)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.4)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1298,7 +1306,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.3)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.4)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:724
 msgid "SEO Ultimate"
