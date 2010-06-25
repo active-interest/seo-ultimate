@@ -32,7 +32,7 @@ class SU_FofsLog extends SU_Module {
 	
 	function get_default_settings() {
 		return array(
-			  'exceptions' => "*/favicon.ico\n*/apple-touch-icon.png"
+			  'exceptions' => "*/favicon.ico\n*/apple-touch-icon.png\n*/pingserver.php\n*/xmlrpc.php"
 			, 'max_log_size' => 100
 			, 'log_enabled' => $this->flush_setting('log_hits', true, 'settings')
 			, 'restrict_logging' => true
@@ -113,7 +113,7 @@ class SU_FofsLog extends SU_Module {
 				$l[$u]['is_new'] = true;
 			if ($hit['time'] > $l[$u]['last_hit_time'])
 				$l[$u]['last_hit_time'] = $hit['time'];
-			if (strlen($hit['referer']))
+			if (strlen($hit['referer']) && !in_array($hit['referer'], $l[$u]['referers']))
 				$l[$u]['referers'][] = $hit['referer'];
 			if (strlen($hit['user_agent']) && !in_array($hit['user_agent'], $l[$u]['user_agents']))
 				$l[$u]['user_agents'][] = $hit['user_agent'];
