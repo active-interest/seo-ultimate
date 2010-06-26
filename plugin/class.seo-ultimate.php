@@ -1001,9 +1001,9 @@ class SEO_Ultimate {
 				$text .= "<div class='su-help'>\n";
 				$text .= '<h5>'.__('SEO Settings Help', 'seo-ultimate')."</h5>\n";
 				$text .= "<div class='metabox-prefs'>\n";
-				$text .= "<p>".__("The SEO Settings box lets you customize these settings:", 'seo-ultimate')."</p>\n";
+				$text .= "<p>".__('The SEO Settings box lets you customize these settings:', 'seo-ultimate')."</p>\n";
 				$text .= "<ul>\n$customhelp\n</ul>";
-				$text .= "<p><em>".__("(The SEO Settings box is part of the SEO Ultimate plugin.)", 'seo-ultimate')."</em></p>\n";
+				$text .= "<p><em>".__('(The SEO Settings box is part of the SEO Ultimate plugin.)', 'seo-ultimate')."</em></p>\n";
 				$text .= "\n</div>\n</div>\n";
 				return $text;
 			}
@@ -1287,7 +1287,7 @@ class SEO_Ultimate {
 	 */
 	function private_blog_admin_notice() {
 		echo "\n<div class='error'><p>";
-		_e("<strong>SEO Ultimate Notice:</strong> Your blog is configured to block search engine spiders. To resolve this, <a href='options-privacy.php' target='_blank'>go to your Privacy settings</a> and set your blog visible to everyone.", 'seo-ultimate');
+		_e('<strong>SEO Ultimate Notice:</strong> Your blog is configured to block search engine spiders. To resolve this, <a href="options-privacy.php" target="_blank">go to your Privacy settings</a> and set your blog visible to everyone.', 'seo-ultimate');
 		echo "</p></div>";
 	}
 	

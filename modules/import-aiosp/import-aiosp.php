@@ -13,7 +13,7 @@ class SU_ImportAIOSP extends SU_ImportModule {
 	function get_menu_title() { return __('AIOSP Import', 'seo-ultimate'); }
 	
 	function get_op_title() { return __('All in One SEO Pack', 'seo-ultimate'); }
-	function get_import_desc() { return __("Import post data (custom title tags and meta tags).", 'seo-ultimate'); }
+	function get_import_desc() { return __('Import post data (custom title tags and meta tags).', 'seo-ultimate'); }
 	
 	function get_default_settings() {
 		return array(
@@ -25,30 +25,30 @@ class SU_ImportAIOSP extends SU_ImportModule {
 	
 	function admin_page_contents() {
 		echo "<p>";
-		_e("Here you can move post fields from the All in One SEO Pack (AIOSP) plugin to SEO Ultimate. AIOSP&#8217;s data remains in your WordPress database after AIOSP is deactivated or even uninstalled. This means that as long as AIOSP was active on this blog sometime in the past, AIOSP does <em>not</em> need to be currently installed or activated for the import to take place.", 'seo-ultimate');
+		_e('Here you can move post fields from the All in One SEO Pack (AIOSP) plugin to SEO Ultimate. AIOSP&#8217;s data remains in your WordPress database after AIOSP is deactivated or even uninstalled. This means that as long as AIOSP was active on this blog sometime in the past, AIOSP does <em>not</em> need to be currently installed or activated for the import to take place.', 'seo-ultimate');
 		echo "</p>\n<p>";
-		_e("The import tool can only move over data from AIOSP version 1.6 or above. If you use an older version of AIOSP, you should update to the latest version first and run AIOSP&#8217;s upgrade process.", 'seo-ultimate');
+		_e('The import tool can only move over data from AIOSP version 1.6 or above. If you use an older version of AIOSP, you should update to the latest version first and run AIOSP&#8217;s upgrade process.', 'seo-ultimate');
 		echo "</p>\n";
 		
 		$this->admin_form_start();
 		
 		$this->textblock('<strong>'.__('Import Post Fields', 'seo-ultimate').'</strong> &mdash; '.
-			__("Post fields store the SEO data for your posts/pages (i.e. your custom title tags, meta descriptions, and meta keywords). If you provided custom titles/descriptions/keywords to All in One SEO Pack, this importer can move that data over to SEO Ultimate.", 'seo-ultimate')
+			__('Post fields store the SEO data for your posts/pages (i.e. your custom title tags, meta descriptions, and meta keywords). If you provided custom titles/descriptions/keywords to All in One SEO Pack, this importer can move that data over to SEO Ultimate.', 'seo-ultimate')
 		);
 		$this->admin_form_indent_start();
 		$this->admin_form_group_start(__('Conflict Resolution Mode', 'seo-ultimate'));
-		$this->textblock(__("What should the import tool do if it tries to move over a post&#8217;s AIOSP data, but different data already exists in the corresponding SEO Ultimate fields?", 'seo-ultimate'));
+		$this->textblock(__('What should the import tool do if it tries to move over a post&#8217;s AIOSP data, but different data already exists in the corresponding SEO Ultimate fields?', 'seo-ultimate'));
 		$this->radiobuttons('postmeta_bothexist_action', array(
-			  'skip' => __("Skip that post and leave all data as-is (default).", 'seo-ultimate')
-			, 'delete_su' => __("Delete the SEO Ultimate data and replace it with the AIOSP data.", 'seo-ultimate')
-			, 'delete_op' => __("Keep the SEO Ultimate data and delete the AIOSP data.", 'seo-ultimate')
+			  'skip' => __('Skip that post and leave all data as-is (default).', 'seo-ultimate')
+			, 'delete_su' => __('Delete the SEO Ultimate data and replace it with the AIOSP data.', 'seo-ultimate')
+			, 'delete_op' => __('Keep the SEO Ultimate data and delete the AIOSP data.', 'seo-ultimate')
 		));
 		$this->admin_form_group_end();
 		$this->admin_form_group_start(__('Deletion Preference', 'seo-ultimate'));
-		$this->textblock(__("When the migration tool successfully copies a post&#8217;s AIOSP data over to SEO Ultimate, what should it do with the old AIOSP data?", 'seo-ultimate'));
+		$this->textblock(__('When the migration tool successfully copies a post&#8217;s AIOSP data over to SEO Ultimate, what should it do with the old AIOSP data?', 'seo-ultimate'));
 		$this->radiobuttons('after_post_import', array(
-			  'delete_op' => __("Delete the AIOSP data.", 'seo-ultimate')
-			, 'nothing' => __("Leave behind the duplicate AIOSP data (default).", 'seo-ultimate')
+			  'delete_op' => __('Delete the AIOSP data.', 'seo-ultimate')
+			, 'nothing' => __('Leave behind the duplicate AIOSP data (default).', 'seo-ultimate')
 		));
 		$this->admin_form_group_end();
 		$this->admin_form_indent_end();
@@ -64,7 +64,7 @@ class SU_ImportAIOSP extends SU_ImportModule {
 		}
 		
 		/*if (!$this->get_setting('import_postmeta') && !$this->get_setting('import_settings')) {
-			$this->import_status('warning', __("No import options selected.", 'seo-ultimate'));
+			$this->import_status('warning', __('No import options selected.', 'seo-ultimate'));
 			return;
 		}*/
 		

@@ -165,7 +165,7 @@ class SU_FofsLog extends SU_Module {
 		}
 		
 		if (!count($the404s))
-			$this->queue_message('success', __("No 404 errors in the log.", 'seo-ultimate'));
+			$this->queue_message('success', __('No 404 errors in the log.', 'seo-ultimate'));
 		
 		$this->print_messages();
 		
@@ -261,9 +261,9 @@ class SU_FofsLog extends SU_Module {
 	function clear_log_button() {
 		//Create the "Clear Log" button
 		$clearurl = $this->get_nonce_url('clear');
-		$confirm = __("Are you sure you want to delete all 404 log entries?", 'seo-ultimate');
+		$confirm = __('Are you sure you want to delete all 404 log entries?', 'seo-ultimate');
 		echo "<div class='su-404s-clear-log'><a href=\"$clearurl\" class=\"button-secondary\" onclick=\"javascript:return confirm('$confirm')\">";
-		_e("Clear Log", 'seo-ultimate');
+		_e('Clear Log', 'seo-ultimate');
 		echo "</a></div>";
 	}
 }

@@ -30,8 +30,8 @@ class SU_Canonical extends SU_Module {
 	function admin_page_contents() {
 		$this->admin_form_start();
 		$this->checkboxes(array(
-				  'link_rel_canonical' => __("Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags.", 'seo-ultimate')
-				, 'remove_nonexistent_pagination' => __("Redirect requests for nonexistent pagination.", 'seo-ultimate')
+				  'link_rel_canonical' => __('Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags.', 'seo-ultimate')
+				, 'remove_nonexistent_pagination' => __('Redirect requests for nonexistent pagination.', 'seo-ultimate')
 			));
 		
 		$this->admin_form_end();

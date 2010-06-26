@@ -37,10 +37,10 @@ class SU_GlobalSettings extends SU_Module {
 		//Plugin Settings
 		$this->admin_form_start();
 		$this->checkboxes(array(
-			  'attribution_link' => __("Enable nofollow&#8217;d attribution link", 'seo-ultimate')
-			, 'attribution_link_css' => __("Enable attribution link CSS styling", 'seo-ultimate')
-			, 'plugin_notices' => __("Notify me about unnecessary active plugins", 'seo-ultimate')
-			, 'mark_code' => __("Insert comments around HTML code insertions", 'seo-ultimate')
+			  'attribution_link' => __('Enable nofollow&#8217;d attribution link', 'seo-ultimate')
+			, 'attribution_link_css' => __('Enable attribution link CSS styling', 'seo-ultimate')
+			, 'plugin_notices' => __('Notify me about unnecessary active plugins', 'seo-ultimate')
+			, 'mark_code' => __('Insert comments around HTML code insertions', 'seo-ultimate')
 		));
 		$this->admin_form_end();
 	}

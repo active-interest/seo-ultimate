@@ -39,7 +39,7 @@ class SU_Install extends SU_Module {
 			if (count($radiobuttons) > 1) {
 				
 				echo "\n<p>";
-				_e("From the list below, select the version to which you would like to upgrade. Then click the &#8220;Upgrade&#8221; button at the bottom of the screen.", 'seo-ultimate');
+				_e('From the list below, select the version to which you would like to upgrade. Then click the &#8220;Upgrade&#8221; button at the bottom of the screen.', 'seo-ultimate');
 				echo "</p>\n";
 				
 				echo "<div class='su-xgrade'>\n";
@@ -48,9 +48,9 @@ class SU_Install extends SU_Module {
 				$this->admin_form_end(__('Upgrade', 'seo-ultimate'));
 				echo "</div>\n";
 			} else
-				$this->print_message('success', __("You are already running the latest version.", 'seo-ultimate'));
+				$this->print_message('success', __('You are already running the latest version.', 'seo-ultimate'));
 		} else
-			$this->print_message('error', __("There was an error retrieving the list of available versions. Please try again later. You can also upgrade to the latest version of SEO Ultimate using the WordPress plugin upgrader.", 'seo-ultimate'));
+			$this->print_message('error', __('There was an error retrieving the list of available versions. Please try again later. You can also upgrade to the latest version of SEO Ultimate using the WordPress plugin upgrader.', 'seo-ultimate'));
 	}
 	
 	function downgrade_tab() {
@@ -59,10 +59,10 @@ class SU_Install extends SU_Module {
 		if (is_array($radiobuttons)) {
 			if (count($radiobuttons) > 1) {
 				
-				$this->print_message('warning', suwp::add_backup_url(__("Downgrading is provided as a convenience only and is not officially supported. Although unlikely, you may lose data in the downgrading process. It is your responsibility to backup your database before proceeding.", 'seo-ultimate')));
+				$this->print_message('warning', suwp::add_backup_url(__('Downgrading is provided as a convenience only and is not officially supported. Although unlikely, you may lose data in the downgrading process. It is your responsibility to backup your database before proceeding.', 'seo-ultimate')));
 				
 				echo "\n<p>";
-				_e("From the list below, select the version to which you would like to downgrade. Then click the &#8220;Downgrade&#8221; button at the bottom of the screen.", 'seo-ultimate');
+				_e('From the list below, select the version to which you would like to downgrade. Then click the &#8220;Downgrade&#8221; button at the bottom of the screen.', 'seo-ultimate');
 				echo "</p>\n";
 				
 				echo "<div class='su-xgrade'>\n";
@@ -71,14 +71,14 @@ class SU_Install extends SU_Module {
 				$this->admin_form_end(__('Downgrade', 'seo-ultimate'));
 				echo "</div>\n";
 			} else
-				$this->print_message('warning', sprintf(__("Downgrading to versions earlier than %s is not supported.", 'seo-ultimate'), SU_DOWNGRADE_LIMIT));
+				$this->print_message('warning', sprintf(__('Downgrading to versions earlier than %s is not supported.', 'seo-ultimate'), SU_DOWNGRADE_LIMIT));
 		} else
-			$this->print_message('error', __("There was an error retrieving the list of available versions. Please try again later.", 'seo-ultimate'));
+			$this->print_message('error', __('There was an error retrieving the list of available versions. Please try again later.', 'seo-ultimate'));
 	}
 	
 	function reinstall_tab() {
 		echo "\n<p>";
-		_e("To download and install a fresh copy of the SEO Ultimate version you are currently using, click the &#8220;Reinstall&#8221; button below.", 'seo-ultimate');
+		_e('To download and install a fresh copy of the SEO Ultimate version you are currently using, click the &#8220;Reinstall&#8221; button below.', 'seo-ultimate');
 		echo "</p>\n";
 		
 		$this->admin_form_start(false, false);

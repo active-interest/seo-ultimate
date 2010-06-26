@@ -30,16 +30,16 @@ class SU_Modules extends SU_Module {
 	
 	function admin_page_contents() {
 		echo "<p>";
-		_e("SEO Ultimate&#8217;s features are located in groups called &#8220;modules.&#8221; By default, most of these modules are listed in the &#8220;SEO&#8221; menu on the left. Whenever you&#8217;re working with a module, you can view documentation by clicking the tabs in the upper-right-hand corner of your administration screen.", 'seo-ultimate');
+		_e('SEO Ultimate&#8217;s features are located in groups called &#8220;modules.&#8221; By default, most of these modules are listed in the &#8220;SEO&#8221; menu on the left. Whenever you&#8217;re working with a module, you can view documentation by clicking the tabs in the upper-right-hand corner of your administration screen.', 'seo-ultimate');
 		echo "</p><p>";
-		_e("The Module Manager lets you  disable or hide modules you don&#8217;t use. You can also silence modules from displaying bubble alerts on the menu.", 'seo-ultimate');
+		_e('The Module Manager lets you  disable or hide modules you don&#8217;t use. You can also silence modules from displaying bubble alerts on the menu.', 'seo-ultimate');
 		echo "</p>";
 		
 		$this->admin_form_start(false, false);
 		
 		$headers = array(
-			  __("Status", 'seo-ultimate')
-			, __("Module", 'seo-ultimate')
+			  __('Status', 'seo-ultimate')
+			, __('Module', 'seo-ultimate')
 		);
 		echo <<<STR
 <table class="widefat" cellspacing="0">

@@ -14,24 +14,24 @@ class SU_CompetitionQueries extends SU_Module {
 
 	function admin_page_contents() {
 		echo '<p>';
-		_e("The Competition Researcher provides you with easy access to various search engine tools which you can use to research multiple search queries or URLs.", 'seo-ultimate');
+		_e('The Competition Researcher provides you with easy access to various search engine tools which you can use to research multiple search queries or URLs.', 'seo-ultimate');
 		echo "</p>\n";
 ?>
 <form method="get" action="http://www.seodesignsolutions.com/blog/ultimate-seo-toolkit/result.php" target="_blank">
-<h3><?php _e("Step 1: Choose Your Research Tool", 'seo-ultimate'); ?></h3>
+<h3><?php _e('Step 1: Choose Your Research Tool', 'seo-ultimate'); ?></h3>
 <?php
 		
 		$methods = array(
-			__('Keywords', 'seo-ultimate') => array( __('Normal Search', 'seo-ultimate') => __("Find out how many pages contain the words in each query", 'seo-ultimate')
-													,__('Phrase Match', 'seo-ultimate') => __("Find out how many &#8220;actual&#8221; pages are competing for each query", 'seo-ultimate')
-													,__('Allinanchor', 'seo-ultimate') => __("Find out which sites have the most links for each query", 'seo-ultimate')
-													,__('Allintitle', 'seo-ultimate') => __("Find out which sites have the highest relevance in the title for each query", 'seo-ultimate')
-													,__('Allintext', 'seo-ultimate') => __("Find out which sites have the most relevant content/text on their pages", 'seo-ultimate')
-													,__('Allinurl', 'seo-ultimate') => __("Find out which sites have the most relevant naming conventions for each keyword", 'seo-ultimate')
+			__('Keywords', 'seo-ultimate') => array( __('Normal Search', 'seo-ultimate') => __('Find out how many pages contain the words in each query', 'seo-ultimate')
+													,__('Phrase Match', 'seo-ultimate') => __('Find out how many &#8220;actual&#8221; pages are competing for each query', 'seo-ultimate')
+													,__('Allinanchor', 'seo-ultimate') => __('Find out which sites have the most links for each query', 'seo-ultimate')
+													,__('Allintitle', 'seo-ultimate') => __('Find out which sites have the highest relevance in the title for each query', 'seo-ultimate')
+													,__('Allintext', 'seo-ultimate') => __('Find out which sites have the most relevant content/text on their pages', 'seo-ultimate')
+													,__('Allinurl', 'seo-ultimate') => __('Find out which sites have the most relevant naming conventions for each keyword', 'seo-ultimate')
 													),
-			__('URLs', 'seo-ultimate') => array( __('Site', 'seo-ultimate') => __("Find out how many pages are indexed for each domain", 'seo-ultimate')
-												,__('Inbound Links', 'seo-ultimate') => __("Find out how many sites link to the domains", 'seo-ultimate')
-												,__('Outbound Links', 'seo-ultimate') => __("Find out how many sites the domains link to", 'seo-ultimate')
+			__('URLs', 'seo-ultimate') => array( __('Site', 'seo-ultimate') => __('Find out how many pages are indexed for each domain', 'seo-ultimate')
+												,__('Inbound Links', 'seo-ultimate') => __('Find out how many sites link to the domains', 'seo-ultimate')
+												,__('Outbound Links', 'seo-ultimate') => __('Find out how many sites the domains link to', 'seo-ultimate')
 												)
 		);
 		
@@ -53,21 +53,21 @@ class SU_CompetitionQueries extends SU_Module {
 			}
 		}
 ?>
-<h3><?php _e("Step 2: Enter the <span id='methodtype'>Keywords</span> To Research", 'seo-ultimate'); ?></h3>
+<h3><?php _e('Step 2: Enter the <span id="methodtype">Keywords</span> To Research', 'seo-ultimate'); ?></h3>
 <div><textarea id="queries" name="queries" rows="10" cols="60"><?php echo htmlspecialchars($_GET['queries']); ?></textarea></div>
-<div><em><?php _e("(Type in one per line)", 'seo-ultimate'); ?></em></div>
+<div><em><?php _e('(Type in one per line)', 'seo-ultimate'); ?></em></div>
 
-<h3><?php _e("Step 3: Set Options and Submit", 'seo-ultimate'); ?></h3>
+<h3><?php _e('Step 3: Set Options and Submit', 'seo-ultimate'); ?></h3>
 <div>
-	<label><input type="checkbox" name="r100" value="1" /> <?php _e("Show 100 results per page", 'seo-ultimate'); ?></label><br />
+	<label><input type="checkbox" name="r100" value="1" /> <?php _e('Show 100 results per page', 'seo-ultimate'); ?></label><br />
 	<label id="minimal-checkbox"><input type="checkbox" name="minimal" value="1" /> <?php
-		_e("Use Google's minimal mode", 'seo-ultimate'); ?></label><br /><br />
+		_e('Use Google&#8217;s minimal mode', 'seo-ultimate'); ?></label><br /><br />
 </div>
 <input type="hidden" name="mixing" id="mixing" value="0" />
 <input type="hidden" name="showback" id="showback" value="0" />
 <input type="hidden" name="client" id="client" value="su-<?php echo SU_VERSION; ?>" />
 
-<div id="submit"><input type="submit" value="<?php _e("Submit", 'seo-ultimate'); ?>" class="button-primary" /></div>
+<div id="submit"><input type="submit" value="<?php _e('Submit', 'seo-ultimate'); ?>" class="button-primary" /></div>
 </form>
 
 <!--Load the blog's homepage so that it shows up as a purple link in Google's minimal mode-->

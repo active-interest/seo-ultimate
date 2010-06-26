@@ -327,6 +327,18 @@ Here's information on the various settings:
 
 
 
+== Sharing Facilitator ==
+
+= Overview =
+
+* **What it does:** Sharing Facilitator adds buttons to your posts/pages that make it easy for visitors to share your content.
+
+* **Why it helps:** When visitors share your content on social networking sites, this can build links to your site. Sharing Facilitator makes it easy for visitors to do this.
+
+* **How to use it:** Pick which button type you'd like to use (ShareThis or AddThis) and click Save Changes. Try enabling each button on your site and see which one you like better.
+
+
+
 == Slug Optimizer ==
 
 = Overview =

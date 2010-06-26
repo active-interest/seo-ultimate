@@ -61,14 +61,14 @@ class SU_SettingsData extends SU_Module {
 							$this->plugin->dbdata[$option] = array_merge($this->plugin->dbdata[$option], $import[$option]);
 						}
 						
-						$this->queue_message('success', __("Settings successfully imported.", 'seo-ultimate'));
+						$this->queue_message('success', __('Settings successfully imported.', 'seo-ultimate'));
 					} else
-						$this->queue_message('error', __("The uploaded file is not in the proper format. Settings could not be imported.", 'seo-ultimate'));
+						$this->queue_message('error', __('The uploaded file is not in the proper format. Settings could not be imported.', 'seo-ultimate'));
 				} else
-					$this->queue_message('error', __("The settings file could not be uploaded successfully.", 'seo-ultimate'));
+					$this->queue_message('error', __('The settings file could not be uploaded successfully.', 'seo-ultimate'));
 					
 			} else
-				$this->queue_message('warning', __("Settings could not be imported because no settings file was selected. Please click the &#8220;Browse&#8221; button and select a file to import.", 'seo-ultimate'));
+				$this->queue_message('warning', __('Settings could not be imported because no settings file was selected. Please click the &#8220;Browse&#8221; button and select a file to import.', 'seo-ultimate'));
 			
 		} elseif ($this->is_action('su-reset')) {
 			
@@ -245,90 +245,15 @@ class SU_SettingsData extends SU_Module {
 	
 	function reset_tab() {
 		if ($this->is_action('su-reset'))
-			$this->print_message('success', __("All settings have been erased and defaults have been restored.", 'seo-ultimate'));
+			$this->print_message('success', __('All settings have been erased and defaults have been restored.', 'seo-ultimate'));
 		echo "\n<p>";
-		_e("You can erase all your SEO Ultimate settings and restore them to &#8220;factory defaults&#8221; by clicking the button below.", 'seo-ultimate');
+		_e('You can erase all your SEO Ultimate settings and restore them to &#8220;factory defaults&#8221; by clicking the button below.', 'seo-ultimate');
 		echo "</p>\n<p>";
 		$url = $this->get_nonce_url('su-reset');
-		$confirm = __("Are you sure you want to erase all module settings? This cannot be undone.", 'seo-ultimate');
-		echo "<a href='$url#su-reset' class='button-primary' onclick=\"javascript:return confirm('$confirm')\">".__("Restore Default Settings", 'seo-ultimate')."</a>";
+		$confirm = __('Are you sure you want to erase all module settings? This cannot be undone.', 'seo-ultimate');
+		echo "<a href='$url#su-reset' class='button-primary' onclick=\"javascript:return confirm('$confirm')\">".__('Restore Default Settings', 'seo-ultimate')."</a>";
 		echo "</p>\n";
 	}
-	
-	/*
-	function admin_page_contents() {
-		
-		echo "<p>";
-		_e("Here you can export, import, and reset the settings of the plugin and all its modules.", 'seo-ultimate');
-		echo "</p><p>";
-		_e("A settings file includes the data of every checkbox and textbox of every installed module, as well as the &#8220;Plugin Settings&#8221; section above. It does NOT include site-specific data like logged 404s or post/page title/meta data (this data would be included in a standard database backup, however).", 'seo-ultimate');
-		echo "</p>";
-		
-		//Begin table
-		echo "<table id='manage-settings'>\n";
-		
-		//Export
-		echo "<tr><th scope='row'>";
-		_e("Export:", 'seo-ultimate');
-		echo "</th><td>";
-		$url = $this->get_nonce_url('su-export');
-		echo "<a href='$url' class='button-secondary'>".__("Download Settings File", 'seo-ultimate')."</a>";
-		echo "</td></tr>";
-		
-		//Import
-		echo "<tr><th scope='row'>";
-		_e("Import:", 'seo-ultimate');
-		echo "</th><td>";
-		$hook = $this->plugin->key_to_hook($this->get_module_key());
-		echo "<form enctype='multipart/form-data' method='post' action='?page=$hook&amp;action=import'>\n";
-		echo "\t<input name='settingsfile' type='file' /> ";
-		$confirm = __("Are you sure you want to import this settings file? This will overwrite your current settings and cannot be undone.", 'seo-ultimate');
-		echo "<input type='submit' class='button-secondary' value='".__("Import This Settings File", 'seo-ultimate')."' onclick=\"javascript:return confirm('$confirm')\" />\n";
-		wp_nonce_field($this->get_nonce_handle('su-import'));
-		echo "</form>\n";
-		echo "</td></tr>";
-		
-		//Reset
-		echo "<tr><th scope='row'>";
-		_e("Reset:", 'seo-ultimate');
-		echo "</th><td>";
-		$url = $this->get_nonce_url('su-reset');
-		$confirm = __("Are you sure you want to erase all module settings? This cannot be undone.", 'seo-ultimate');
-		echo "<a href='$url' class='button-secondary' onclick=\"javascript:return confirm('$confirm')\">".__("Restore Default Settings", 'seo-ultimate')."</a>";
-		echo "</td></tr>";
-		
-		//End table
-		echo "</table>";
-		
-		//Import from other plugins
-		$importmodules = array();
-		foreach ($this->plugin->modules as $key => $x_module) {
-			$module =& $this->plugin->modules[$key];
-			if (is_a($module, 'SU_ImportModule')) {
-				$importmodules[$key] =& $module;
-			}
-		}
-		
-		if (count($importmodules)) {
-			$this->admin_subheader(__("Import from Other Plugins", 'seo-ultimate'));
-			echo "\n<p>";
-			_e("You can import settings and data from these plugins. Clicking a plugin&#8217;s name will take you to the importer page, where you can customize parameters and start the import.", 'seo-ultimate');
-			echo "</p>\n";
-			echo "<table class='widefat'>\n";
-			
-			$class = '';
-			foreach ($importmodules as $key => $x_module) {
-				$module =& $importmodules[$key];
-				$title = $module->get_op_title();
-				$desc = $module->get_import_desc();
-				$url = $module->get_admin_url();
-				$class = ($class) ? '' : 'alternate';
-				echo "\t<tr class='$class'><td><a href='$url'>$title</a></td><td>$desc</td></tr>\n";
-			}
-			
-			echo "</table>\n";
-		}
-	}*/
 }
 
 }

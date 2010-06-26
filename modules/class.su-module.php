@@ -1774,7 +1774,7 @@ class SU_Module {
 			$value = su_esc_editable_html($this->get_setting($id));
 			$default = su_esc_editable_html($defaults[$id]);
 			$id = su_esc_attr($id);
-			$resetmessage = su_esc_attr(__("Are you sure you want to replace the textbox contents with this default value?", 'seo-ultimate'));
+			$resetmessage = su_esc_attr(__('Are you sure you want to replace the textbox contents with this default value?', 'seo-ultimate'));
 			
 			if ($grouptext)
 				echo "<div class='field'><label for='$id'>$title</label><br />\n";

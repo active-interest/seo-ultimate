@@ -24,7 +24,7 @@ class SU_MoreLinks extends SU_Module {
 	
 	function admin_page_contents() {
 		$this->admin_form_start();
-		$this->textbox('default', __("Default More Link Text", 'seo-ultimate'), $this->get_default_setting('default'));
+		$this->textbox('default', __('Default More Link Text', 'seo-ultimate'), $this->get_default_setting('default'));
 		$this->admin_form_end();
 	}
 	

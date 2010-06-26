@@ -3,19 +3,19 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 3.4.1
+Stable tag: 3.5
 
-This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, and more.
+This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, rich snippets, and more.
 
 == Description ==
 
 = Recent Releases =
 
+* Version 3.5 adds the Sharing Facilitator module
 * Version 3.4 adds the option to ignore 404s from specific URLs or wildcard URL patterns
 * Version 3.3 adds the option to only log 404s from search engines and/or referrers
 * Version 3.2 adds CSV import/export for Deeplink Juggernaut
 * Version 3.1 adds more Deeplink Juggernaut features
-* Version 3.0 adds the Rich Snippet Creator module
 
 = Features =
 
@@ -89,10 +89,15 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Code remains even when switching themes.
 
 * **Rich Snippet Creator** -- NEW in Version 3.0
-	* Easily add rich snippet code to your review posts
-	* Attract more search traffic with eye-catching supplementary SERP data
-	* Can add code to old review posts automatically
+	* Easily add rich snippet code to your review posts.
+	* Attract more search traffic with eye-catching supplementary SERP data.
+	* Can add code to old review posts automatically.
 
+* **Sharing Facilitator** -- NEW in Version 3.5
+	* Adds buttons that make it easy for visitors to share your content on social networking sites (thus building links to your site).
+	* Choose from either the ShareThis or the AddThis button.
+	* Unlike the official ShareThis plugin, SEO Ultimate doesn't require you to register at the ShareThis website before enabling the button -- just enable and go.
+	
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
 	* Move SEO Ultimate settings between blogs using the export/import functionality.
@@ -199,6 +204,11 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 3.5 (June 26, 2010) =
+* Feature: Added the Sharing Facilitator module
+* Feature: Rich Snippet Creator now supports half-star ratings (0.5, 1.5, 2.5, etc) for reviews
+* Improvement: Removed unnecessary double-quotes from code
 
 = Version 3.4.1 (June 25, 2010) =
 * Bugfix: Fixed fatal error on 404 pages

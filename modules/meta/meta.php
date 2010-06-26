@@ -82,7 +82,7 @@ class SU_Meta extends SU_Module {
 			  "<tr class='textarea' valign='top'>\n<th scope='row'><label for='$id'>".__('Meta Description:', 'seo-ultimate')."</label></th>\n"
 			. "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='60' rows='3' tabindex='2'"
 			. " onkeyup=\"javascript:document.getElementById('su_meta_description_charcount').innerHTML = document.getElementById('_su_description').value.length\">$value</textarea>"
-			. "<br />".sprintf(__("You&#8217;ve entered %s characters. Most search engines use up to 160.", 'seo-ultimate'), "<strong id='su_meta_description_charcount'>".strlen($value)."</strong>")
+			. "<br />".sprintf(__('You&#8217;ve entered %s characters. Most search engines use up to 160.', 'seo-ultimate'), "<strong id='su_meta_description_charcount'>".strlen($value)."</strong>")
 			. "</td>\n</tr>\n"
 			. $this->get_postmeta_textbox('keywords', __('Meta Keywords:<br /><em>(separate with commas)</em>', 'seo-ultimate'))
 		;
@@ -91,10 +91,8 @@ class SU_Meta extends SU_Module {
 	}
 	
 	function postmeta_help($help) {
-		$help[] = __("<strong>Description:</strong> &mdash; The value of the meta description tag. The description will often appear underneath the title in search engine results. ".
-			"Writing an accurate, attention-grabbing description for every post is important to ensuring a good search results clickthrough rate.", 'seo-ultimate');
-		$help[] = __("<strong>Keywords:</strong> &mdash; The value of the meta keywords tag. The keywords list gives search engines a hint as to what this post/page is about. ".
-			"Be sure to separate keywords with commas, like so: <samp>one,two,three</samp>.", 'seo-ultimate');
+		$help[] = __('<strong>Description:</strong> &mdash; The value of the meta description tag. The description will often appear underneath the title in search engine results. Writing an accurate, attention-grabbing description for every post is important to ensuring a good search results clickthrough rate.', 'seo-ultimate');
+		$help[] = __('<strong>Keywords:</strong> &mdash; The value of the meta keywords tag. The keywords list gives search engines a hint as to what this post/page is about. Be sure to separate keywords with commas, like so: <samp>one,two,three</samp>.', 'seo-ultimate');
 		return $help;
 	}
 	

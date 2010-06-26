@@ -287,8 +287,7 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function postmeta_help($help) {
-		$help[] = __("<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; tag. The title appears in visitors' title bars and in search engine result titles. ".
-			"If this box is left blank, then the <a href='admin.php?page=su-titles' target='_blank'>default post/page titles</a> are used.", 'seo-ultimate');
+		$help[] = __('<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; tag. The title appears in visitors&#8217; title bars and in search engine result titles. If this box is left blank, then the <a href="admin.php?page=su-titles" target="_blank">default post/page titles</a> are used.', 'seo-ultimate');
 		return $help;
 	}
 }

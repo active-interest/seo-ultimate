@@ -33,7 +33,7 @@ class SU_ImportModule extends SU_Module {
 	}
 	
 	function admin_form_end($button = null, $table = true) {
-		if ($button === null) $button = __("Import Now", 'seo-ultimate');
+		if ($button === null) $button = __('Import Now', 'seo-ultimate');
 		parent::admin_form_end($button, $table);
 		
 		$this->print_message('warning', sprintf(__('The import cannot be undone. It is your responsibility to <a href="%s" target="_blank">backup your database</a> before proceeding!', 'seo-ultimate'), suwp::get_backup_url()));
@@ -41,15 +41,13 @@ class SU_ImportModule extends SU_Module {
 	
 	function import_page_contents() {
 		
-		//echo "<table id='import-status'>\n";
 		echo "<div id='import-status'>\n";
 		$this->do_import();
 		
 		if (!$this->error)
-			$this->import_status('success', __("Import complete.", 'seo-ultimate'));
+			$this->import_status('success', __('Import complete.', 'seo-ultimate'));
 		
 		echo "</div>\n";
-		//echo "</table>\n";
 		
 		if ($this->error) {
 			echo '<p><a href="admin.php?page=su-import-aiosp" class="button-secondary">';

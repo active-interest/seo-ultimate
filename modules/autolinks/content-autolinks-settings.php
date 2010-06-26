@@ -18,7 +18,7 @@ class SU_ContentAutolinksSettings extends SU_Module {
 	
 	function admin_page_contents() {
 		$this->admin_form_table_start();
-		$this->checkbox('limit_lpp', __("Don&#8217;t add any more than %d autolinks per post/page/etc.", 'seo-ultimate'));
+		$this->checkbox('limit_lpp', __('Don&#8217;t add any more than %d autolinks per post/page/etc.', 'seo-ultimate'));
 		$this->admin_form_table_end();
 	}
 }

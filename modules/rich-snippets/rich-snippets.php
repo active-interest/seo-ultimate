@@ -151,7 +151,7 @@ class SU_RichSnippets extends SU_Module {
 		foreach ($type_data['properties'] as $property => $property_data) {
 			
 			//Get the current value for this property
-			$value = $this->get_postmeta("rich_snippet_{$type}_{$property}");
+			$value = strval($this->get_postmeta("rich_snippet_{$type}_{$property}"));
 			
 			//If a value is not set, look for a value-generating function
 			if (!strlen($value)) {
@@ -220,12 +220,17 @@ class SU_RichSnippets extends SU_Module {
 		
 		$fields['45|rich_snippet_review_rating'] = $this->get_postmeta_subsection('rich_snippet_type', 'review',
 			$this->get_postmeta_dropdown('rich_snippet_review_rating', array(
-				  0 => __('None', 'seo-ultimate')
-				, 1 => __('1 star', 'seo-ultimate')
-				, 2 => __('2 stars', 'seo-ultimate')
-				, 3 => __('3 stars', 'seo-ultimate')
-				, 4 => __('4 stars', 'seo-ultimate')
-				, 5 => __('5 stars', 'seo-ultimate')
+				  '0'   => __('None', 'seo-ultimate')
+				, '0.5' => __('0.5 stars', 'seo-ultimate')
+				, '1'   => __('1 star', 'seo-ultimate')
+				, '1.5' => __('1.5 stars', 'seo-ultimate')
+				, '2'   => __('2 stars', 'seo-ultimate')
+				, '2.5' => __('2.5 stars', 'seo-ultimate')
+				, '3'   => __('3 stars', 'seo-ultimate')
+				, '3.5' => __('3.5 stars', 'seo-ultimate')
+				, '4'   => __('4 stars', 'seo-ultimate')
+				, '4.5' => __('4.5 stars', 'seo-ultimate')
+				, '5'   => __('5 stars', 'seo-ultimate')
 			), __('Star Rating for Reviewed Item:', 'seo-ultimate'))
 		);
 		
