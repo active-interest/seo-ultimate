@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 3.4 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 3.5 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 3.4\n"
+"Project-Id-Version: SEO Ultimate 3.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-06-25 12:41+0000\n"
+"POT-Creation-Date: 2010-06-26 15:05+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,90 +43,90 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:129 modules/class.su-module.php:1183
+#: modules/404s/fofs-log.php:125 modules/class.su-module.php:1183
 msgid "Actions"
 msgstr ""
 
-#: modules/404s/fofs-log.php:130
+#: modules/404s/fofs-log.php:126
 msgid "Hits"
 msgstr ""
 
-#: modules/404s/fofs-log.php:131
+#: modules/404s/fofs-log.php:127
 msgid "URL with 404 Error"
 msgstr ""
 
-#: modules/404s/fofs-log.php:132
+#: modules/404s/fofs-log.php:128
 msgid "Date of Most Recent Hit"
 msgstr ""
 
-#: modules/404s/fofs-log.php:133
+#: modules/404s/fofs-log.php:129
 msgid "Referers"
 msgstr ""
 
-#: modules/404s/fofs-log.php:134 modules/404s/fofs-log.php:237
+#: modules/404s/fofs-log.php:130 modules/404s/fofs-log.php:233
 msgid "User Agents"
 msgstr ""
 
-#: modules/404s/fofs-log.php:150
+#: modules/404s/fofs-log.php:146
 msgid ""
 "New 404 errors will not be recorded because 404 logging is disabled on the "
 "Settings tab."
 msgstr ""
 
-#: modules/404s/fofs-log.php:157
+#: modules/404s/fofs-log.php:153
 msgid "The log entry was successfully deleted."
 msgstr ""
 
-#: modules/404s/fofs-log.php:159
+#: modules/404s/fofs-log.php:155
 msgid "This log entry has already been deleted."
 msgstr ""
 
-#: modules/404s/fofs-log.php:168
+#: modules/404s/fofs-log.php:164
 msgid "The log was successfully cleared."
 msgstr ""
 
-#: modules/404s/fofs-log.php:172
+#: modules/404s/fofs-log.php:168
 msgid "No 404 errors in the log."
 msgstr ""
 
-#: modules/404s/fofs-log.php:196
+#: modules/404s/fofs-log.php:192
 msgid "Open URL in new window (will not be logged)"
 msgstr ""
 
-#: modules/404s/fofs-log.php:197
+#: modules/404s/fofs-log.php:193
 msgid "Query Google for cached version of URL (opens in new window)"
 msgstr ""
 
-#: modules/404s/fofs-log.php:198
+#: modules/404s/fofs-log.php:194
 msgid "Remove this URL from the log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:201
+#: modules/404s/fofs-log.php:197
 #, php-format
 msgid "%s at %s"
 msgstr ""
 
-#: modules/404s/fofs-log.php:205
+#: modules/404s/fofs-log.php:201
 msgid "View list of referring URLs"
 msgstr ""
 
-#: modules/404s/fofs-log.php:206
+#: modules/404s/fofs-log.php:202
 msgid "View list of user agents"
 msgstr ""
 
-#: modules/404s/fofs-log.php:216
+#: modules/404s/fofs-log.php:212
 msgid "Referring URLs"
 msgstr ""
 
-#: modules/404s/fofs-log.php:217 modules/404s/fofs-log.php:238
+#: modules/404s/fofs-log.php:213 modules/404s/fofs-log.php:234
 msgid "Hide list"
 msgstr ""
 
-#: modules/404s/fofs-log.php:268
+#: modules/404s/fofs-log.php:264
 msgid "Are you sure you want to delete all 404 log entries?"
 msgstr ""
 
-#: modules/404s/fofs-log.php:270
+#: modules/404s/fofs-log.php:266
 msgid "Clear Log"
 msgstr ""
 
@@ -256,19 +256,19 @@ msgid ""
 "target=\"_blank\">backup your database</a> before proceeding!"
 msgstr ""
 
-#: modules/class.su-importmodule.php:49
+#: modules/class.su-importmodule.php:48
 msgid "Import complete."
 msgstr ""
 
-#: modules/class.su-importmodule.php:56
+#: modules/class.su-importmodule.php:54
 msgid "Return to import page"
 msgstr ""
 
-#: modules/class.su-importmodule.php:59
+#: modules/class.su-importmodule.php:57
 msgid "Return to settings page"
 msgstr ""
 
-#: modules/class.su-importmodule.php:62
+#: modules/class.su-importmodule.php:60
 msgid "Return to SEO page"
 msgstr ""
 
@@ -468,7 +468,7 @@ msgid "Find out how many sites the domains link to"
 msgstr ""
 
 #: modules/competition-queries/competition-queries.php:56
-msgid "Step 2: Enter the <span id='methodtype'>Keywords</span> To Research"
+msgid "Step 2: Enter the <span id=\"methodtype\">Keywords</span> To Research"
 msgstr ""
 
 #: modules/competition-queries/competition-queries.php:58
@@ -486,7 +486,7 @@ msgstr ""
 
 #: modules/competition-queries/competition-queries.php:64
 #: modules/site-keyword-queries/site-keyword-queries.php:30
-msgid "Use Google's minimal mode"
+msgid "Use Google&#8217;s minimal mode"
 msgstr ""
 
 #: modules/competition-queries/competition-queries.php:70
@@ -777,14 +777,16 @@ msgstr ""
 msgid ""
 "<strong>Description:</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
-"results. "
+"results. Writing an accurate, attention-grabbing description for every post "
+"is important to ensuring a good search results clickthrough rate."
 msgstr ""
 
-#: modules/meta/meta.php:96
+#: modules/meta/meta.php:95
 msgid ""
 "<strong>Keywords:</strong> &mdash; The value of the meta keywords tag. The "
 "keywords list gives search engines a hint as to what this post/page is "
-"about. "
+"about. Be sure to separate keywords with commas, like so: <samp>one,two,"
+"three</samp>."
 msgstr ""
 
 #: modules/modules/modules.php:12
@@ -852,7 +854,7 @@ msgstr ""
 
 #: modules/noindex/noindex.php:39
 msgid ""
-"Note: The current <a href='options-privacy.php'>privacy settings</a> will "
+"Note: The current <a href=\"options-privacy.php\">privacy settings</a> will "
 "block indexing of the entire site, regardless of which options are set below."
 msgstr ""
 
@@ -969,26 +971,46 @@ msgid "Rich Snippet Type:"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:224
-msgid "1 star"
+msgid "0.5 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:225
-msgid "2 stars"
+msgid "1 star"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:226
-msgid "3 stars"
+msgid "1.5 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:227
-msgid "4 stars"
+msgid "2 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:228
-msgid "5 stars"
+msgid "2.5 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:229
+msgid "3 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:230
+msgid "3.5 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:231
+msgid "4 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:232
+msgid "4.5 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:233
+msgid "5 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:234
 msgid "Star Rating for Reviewed Item:"
 msgstr ""
 
@@ -1000,7 +1022,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.4)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.5)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1306,7 +1328,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.4)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:724
 msgid "SEO Ultimate"
@@ -1354,6 +1376,34 @@ msgstr ""
 
 #: modules/settings/uninstall.php:56
 msgid "Uninstallation complete. Thanks for trying SEO Ultimate."
+msgstr ""
+
+#: modules/sharing-buttons/sharing-buttons.php:12
+msgid "Sharing Facilitator"
+msgstr ""
+
+#: modules/sharing-buttons/sharing-buttons.php:22
+msgid "Bookmark and Share"
+msgstr ""
+
+#: modules/sharing-buttons/sharing-buttons.php:28
+msgid "Providers"
+msgstr ""
+
+#: modules/sharing-buttons/sharing-buttons.php:34
+msgid "Which provider would you like to use for your sharing buttons?"
+msgstr ""
+
+#: modules/sharing-buttons/sharing-buttons.php:36
+msgid "None; disable sharing buttons"
+msgstr ""
+
+#: modules/sharing-buttons/sharing-buttons.php:37
+msgid "Use the ShareThis button"
+msgstr ""
+
+#: modules/sharing-buttons/sharing-buttons.php:38
+msgid "Use the AddThis button"
 msgstr ""
 
 #: modules/site-keyword-queries/site-keyword-queries.php:12
@@ -1503,8 +1553,9 @@ msgstr ""
 #: modules/titles/titles.php:290
 msgid ""
 "<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; "
-"tag. The title appears in visitors' title bars and in search engine result "
-"titles. "
+"tag. The title appears in visitors&#8217; title bars and in search engine "
+"result titles. If this box is left blank, then the <a href=\"admin.php?"
+"page=su-titles\" target=\"_blank\">default post/page titles</a> are used."
 msgstr ""
 
 #: modules/user-code/user-code.php:12
@@ -1611,9 +1662,9 @@ msgstr ""
 #: plugin/class.seo-ultimate.php:1290
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
-"search engine spiders. To resolve this, <a href='options-privacy.php' "
-"target='_blank'>go to your Privacy settings</a> and set your blog visible to "
-"everyone."
+"search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
+"target=\"_blank\">go to your Privacy settings</a> and set your blog visible "
+"to everyone."
 msgstr ""
 
 #: plugin/class.seo-ultimate.php:1398
@@ -1711,7 +1762,7 @@ msgstr ""
 msgid ""
 "This all-in-one SEO plugin gives you control over title tags, noindex/"
 "nofollow, meta tags, rich snippets, slugs, canonical tags, \"more\" links, "
-"404 errors, and more."
+"404 errors, rich snippets, and more."
 msgstr ""
 
 #. Author URI of the plugin/theme
