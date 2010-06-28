@@ -1346,6 +1346,7 @@ class SEO_Ultimate {
 	 * 
 	 * @since 0.1
 	 * @uses $modules
+	 * @uses get_postmeta_array();
 	 * 
 	 * @param string $screen The admin screen currently being viewed (post, page). Defaults to post. Optional.
 	 * @return string Concatenated <tr>(field)</tr> strings.

@@ -25,3 +25,7 @@
 #su-fofs .su-404s-clear-log {
 	float: right;
 }
+
+#su-fofs .form-table input#max_log_size {
+	width: 5em;
+}

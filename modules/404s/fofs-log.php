@@ -30,17 +30,6 @@ class SU_FofsLog extends SU_Module {
 		return $new;
 	}
 	
-	function get_default_settings() {
-		return array(
-			  'exceptions' => "*/favicon.ico\n*/apple-touch-icon.png\n*/pingserver.php\n*/xmlrpc.php"
-			, 'max_log_size' => 100
-			, 'log_enabled' => $this->flush_setting('log_hits', true, 'settings')
-			, 'restrict_logging' => true
-			, 'log_spiders' => true
-			, 'log_errors_with_referers' => true
-		);
-	}
-	
 	function init() {
 		add_action('admin_enqueue_scripts', array(&$this, 'queue_admin_scripts'));
 		add_action('su_save_hit', array(&$this, 'log_hit'));
@@ -92,7 +81,8 @@ class SU_FofsLog extends SU_Module {
 			}
 			
 			$l = $this->get_setting('log', array());
-			while (count($l) >= absint($this->get_setting('max_log_size', 100))) array_pop($l);
+			$max_log_size = absint(sustr::preg_filter('0-9', strval($this->get_setting('max_log_size', 100))));
+			while (count($l) >= $max_log_size) array_pop($l);
 			
 			$u = $hit['url'];
 			if (!isset($l[$u])) {
@@ -198,8 +188,8 @@ class SU_FofsLog extends SU_Module {
 						, date_i18n(get_option('date_format'), $data['last_hit_time'])
 						, date_i18n(get_option('time_format'), $data['last_hit_time'])
 						)
-					, 'referers' => number_format_i18n(count($data['referers'])) . (count($data['referers']) ? " <a href='#' onclick=\"su_toggle_blind('su-404s-hit-$md5url-referers')\";'><img src='{$this->module_dir_url}hit-details.png' title='".__('View list of referring URLs', 'seo-ultimate')."' /></a>" : '')
-					, 'user-agents' => number_format_i18n(count($data['user_agents'])) . (count($data['user_agents']) ? " <a href='#' onclick=\"su_toggle_blind('su-404s-hit-$md5url-user-agents')\";'><img src='{$this->module_dir_url}hit-details.png' title='".__('View list of user agents', 'seo-ultimate')."' /></a>" : '')
+					, 'referers' => number_format_i18n(count($data['referers'])) . (count($data['referers']) ? " <a href='#' onclick=\"return su_toggle_blind('su-404s-hit-$md5url-referers')\";'><img src='{$this->module_dir_url}hit-details.png' title='".__('View list of referring URLs', 'seo-ultimate')."' /></a>" : '')
+					, 'user-agents' => number_format_i18n(count($data['user_agents'])) . (count($data['user_agents']) ? " <a href='#' onclick=\"return su_toggle_blind('su-404s-hit-$md5url-user-agents')\";'><img src='{$this->module_dir_url}hit-details.png' title='".__('View list of user agents', 'seo-ultimate')."' /></a>" : '')
 				));
 				
 				echo "\t</tr>\n";
@@ -210,7 +200,7 @@ class SU_FofsLog extends SU_Module {
 					
 					echo "<div id='su-404s-hit-$md5url-referers' style='display: none;'>\n";
 					echo "\t\t\t<div><strong>".__('Referring URLs', 'seo-ultimate')."</strong> &mdash; ";
-					echo "<a href='#' onclick=\"Effect.BlindUp('su-404s-hit-$md5url-referers')\"; return false;'>".__('Hide list', 'seo-ultimate')."</a>";
+					echo "<a href='#' onclick=\"Effect.BlindUp('su-404s-hit-$md5url-referers'); return false;\">".__('Hide list', 'seo-ultimate')."</a>";
 					echo "</div>\n";
 					echo "\t\t\t<ul>\n";
 					
@@ -231,7 +221,7 @@ class SU_FofsLog extends SU_Module {
 				if (count($data['user_agents'])) {
 					echo "<div id='su-404s-hit-$md5url-user-agents' style='display: none;'>\n";
 					echo "\t\t\t<div><strong>".__('User Agents', 'seo-ultimate')."</strong> &mdash; ";
-					echo "<a href='#' onclick=\"Effect.BlindUp('su-404s-hit-$md5url-user-agents')\"; return false;'>".__('Hide list', 'seo-ultimate')."</a>";
+					echo "<a href='#' onclick=\"Effect.BlindUp('su-404s-hit-$md5url-user-agents'); return false;\">".__('Hide list', 'seo-ultimate')."</a>";
 					echo "</div>\n";
 					echo "\t\t\t<ul>\n";
 					

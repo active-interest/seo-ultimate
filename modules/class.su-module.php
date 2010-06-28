@@ -2166,7 +2166,7 @@ class SU_Module {
 		if ($current === '') $current = array_shift(array_keys($options));
 		$name = "_su_".su_esc_attr($name);
 		
-		$html = "<tr class='dropdown' valign='middle'>\n<th scope='row'>$grouptext</th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";
+		$html = "<tr class='dropdown' valign='middle'>\n<th scope='row'><label for='$name'>$grouptext</label></th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";
 		$html .= "<select name='$name' id='$name' onchange='javascript:su_toggle_select_children(this)'>";
 		$html .= suhtml::option_tags($options, $current);
 		$html .= "</select>\n";

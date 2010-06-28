@@ -156,8 +156,9 @@ class sustr {
 	}
 	
 	function preg_escape($str, $delim='%') {
-		$chars = "\^.$|()[]*+?{},".$delim;
-		foreach (str_split($chars) as $char)
+		$chars = "\ ^ . $ | ( ) [ ] * + ? { } , ".$delim;
+		$chars = explode(' ', $chars);
+		foreach ($chars as $char)
 			$str = str_replace($char, '\\'.$char, $str);
 		return $str;
 	}

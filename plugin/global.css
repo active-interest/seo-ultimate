@@ -126,10 +126,13 @@ div.su-help h6 {
 }
 
 #su-postmeta-box table,
-#su-postmeta-box table td,
 #su-postmeta-box table td input.regular-text,
 #su-postmeta-box table td textarea {
 	width: 100%;
+}
+
+#su-postmeta-box table th {
+	width: 12em;
 }
 
 /* PLUGIN NOTICES */
