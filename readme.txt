@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 3.6
+Stable tag: 3.7
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 3.7 adds the "SEO Settings" box to custom post type editors
 * Version 3.6 adds a maximum log size option to 404 Monitor
 * Version 3.5 adds the Sharing Facilitator module
 * Version 3.4 adds the option to ignore 404s from specific URLs or wildcard URL patterns
 * Version 3.3 adds the option to only log 404s from search engines and/or referrers
-* Version 3.2 adds CSV import/export for Deeplink Juggernaut
 
 = Features =
 
