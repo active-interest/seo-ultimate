@@ -179,6 +179,14 @@ class sustr {
 		
 		return preg_replace($search_regex, $replace, $subject, $limit, $count);
 	}
+	
+	function upto($str, $sub) {
+		$end = strpos($str, $sub);
+		if ($end === false)
+			return $str;
+		else
+			return substr($str, 0, $end);
+	}
 }
 
 ?>

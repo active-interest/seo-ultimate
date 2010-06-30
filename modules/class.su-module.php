@@ -847,7 +847,7 @@ class SU_Module {
 	 * @param string $title The text to output.
 	 */
 	function admin_form_subheader($title) {
-		echo "<th><strong>$title</strong></th>\n";
+		echo "<tr><th colspan='2'><strong>$title</strong></th></tr>\n";
 	}
 	
 	/**
@@ -1017,34 +1017,7 @@ class SU_Module {
 	 */
 	function get_postmeta_edit_tabs($fields) {
 		
-		$types = array();
-		
-		//Custom post type support - requires WordPress 3.0 or above (won't work with 2.9 custom post types)
-		if (function_exists('get_post_types'))
-			$types = get_post_types(array('public' => true), 'objects');
-		
-		/*
-		if (function_exists('get_post_types'))
-			$types = suarr::flatten_values(get_post_types(array('public' => true), 'objects'), array('labels', 'name'));
-		*/
-		
-		//Legacy support for WordPress 2.9 and below
-		if (!count($types)) {
-			
-			$_types = array(
-				  array('post', __('Posts'), __('Post'))
-				, array('page', __('Pages'), __('Page'))
-				, array('attachment', __('Attachments'), __('Attachment'))
-			);
-			$types = array();
-			foreach ($_types as $_type) {
-				$type = new stdClass();
-				$type->name = $_type[0];
-				$type->labels->name = $_type[1];
-				$type->labels->singular_name = $_type[2];
-				$types[] = $type;
-			}
-		}
+		$types = suwp::get_post_type_objects();
 		
 		//Turn the types array into a tabs array
 		$tabs = array();
@@ -1236,6 +1209,7 @@ class SU_Module {
 					  $field['type'] //Type
 					, $inputid
 					, $value
+					, isset($field['options']) ? $field['options'] : false
 				);
 			}
 			
@@ -1262,7 +1236,7 @@ class SU_Module {
 	 * @param string $inputid The name/ID of the input element
 	 * @param string $value The current value of the field
 	 */
-	function get_input_element($type, $inputid, $value) {
+	function get_input_element($type, $inputid, $value, $options=false) {
 		//Get HTML element
 		switch ($type) {
 			case 'textbox':
@@ -1276,6 +1250,10 @@ class SU_Module {
 			case 'checkbox':
 				$checked = $value ? " checked='checked'" : '';
 				return "<input name='$inputid' id='$inputid' type='checkbox' value='1'$checked />";
+				break;
+			case 'dropdown':
+				if (is_array($options))
+					return "<select name='$inputid' id='$inputid'>".suhtml::option_tags($options, $value)."</select>";
 				break;
 		}
 		
@@ -1708,6 +1686,46 @@ class SU_Module {
 	}
 	
 	/**
+	 * Outputs a dropdown into an admin form and saves the set's value into the database after form submission.
+	 * 
+	 * @since 3.7
+	 * @uses is_action()
+	 * @uses update_setting()
+	 * @uses admin_form_group_start()
+	 * @uses admin_form_group_end()
+	 * @uses su_esc_attr()
+	 * @uses get_setting()
+	 * 
+	 * @param string $name The name of the set of radio buttons.
+	 * @param array $values The keys of this array are the radio button values, and the array values are the label strings.
+	 * @param string|false $grouptext The text to display in a table cell to the left of the one containing the radio buttons. Optional.
+	 */
+	function dropdown($name, $values, $grouptext=false) {
+		
+		//Save dropdown setting after form submission
+		if ($this->is_action('update'))
+			$this->update_setting($name, $_POST[$name]);
+		
+		if ($grouptext)
+			$this->admin_form_group_start($grouptext, false);
+		else
+			echo "<tr valign='top' class='su-admin-form-dropdown'>\n<td colspan='2'>\n";
+		
+		if (is_array($values)) {
+			
+			register_setting($this->get_module_key(), $name);
+			
+			$name = su_esc_attr($name);
+			echo "<select name='$name' id='$name'>\n";
+			echo suhtml::option_tags($values, $this->get_setting($name));
+			echo "</select>";
+		}
+		
+		if ($grouptext) echo "</fieldset>";
+		echo "</td>\n</tr>\n";
+	}
+	
+	/**
 	 * @since 3.0
 	 */
 	function insert_subfield_textboxes($name, $label, $enabled = true) {
@@ -2076,7 +2094,7 @@ class SU_Module {
 			register_setting('seo-ultimate', $id);
 			$value = su_esc_editable_html($this->get_postmeta($id));
 			$id = "_su_".su_esc_attr($id);
-			$title = str_replace(' ', '&nbsp;', $title);
+			//$title = str_replace(' ', '&nbsp;', $title);
 			
 			$html .= "<tr class='textbox' valign='middle'>\n<th scope='row'><label for='$id'>$title</label></th>\n"
 					."<td><input name='$id' id='$id' type='text' value='$value' class='regular-text' tabindex='2' /></td>\n</tr>\n";
@@ -2167,7 +2185,7 @@ class SU_Module {
 		$name = "_su_".su_esc_attr($name);
 		
 		$html = "<tr class='dropdown' valign='middle'>\n<th scope='row'><label for='$name'>$grouptext</label></th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";
-		$html .= "<select name='$name' id='$name' onchange='javascript:su_toggle_select_children(this)'>";
+		$html .= "<select name='$name' id='$name' onchange='javascript:su_toggle_select_children(this)'>\n";
 		$html .= suhtml::option_tags($options, $current);
 		$html .= "</select>\n";
 		$html .= "</fieldset></td>\n</tr>\n";

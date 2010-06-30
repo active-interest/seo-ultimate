@@ -135,6 +135,16 @@ div.su-help h6 {
 	width: 12em;
 }
 
+#su-postmeta-box select optgroup,
+div.su-module select optgroup {
+	margin-top: 1em;
+}
+
+#su-postmeta-box select optgroup option,
+div.su-module select optgroup option {
+	margin-left: 1em;
+}
+
 /* PLUGIN NOTICES */
 
 #wpwrap .su-plugin-notice .update-message, #wpwrap .su-plugin-update-info {

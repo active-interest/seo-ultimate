@@ -27,14 +27,45 @@ class suwp {
 	}
 	
 	function get_post_type_names() {
-		if (function_exists('get_post_types')) {
-			if ($types = get_post_types(array('public' => true), 'names'))
-				return $types;
-			else
-				return array('post', 'page', 'attachment');
+		//If WP 2.9+ && WP 3.0+...
+		if (function_exists('get_post_types') && $types = get_post_types(array('public' => true), 'names'))
+			return $types;
+		
+		//WP 2.9 or less
+		return array('post', 'page', 'attachment');
+	}
+	
+	function get_post_type_objects() {
+		$types = array();
+		
+		//Custom post type support - requires WordPress 3.0 or above (won't work with 2.9 custom post types)
+		if (function_exists('get_post_types'))
+			$types = get_post_types(array('public' => true), 'objects');
+		
+		/*
+		if (function_exists('get_post_types'))
+			$types = suarr::flatten_values(get_post_types(array('public' => true), 'objects'), array('labels', 'name'));
+		*/
+		
+		//Legacy support for WordPress 2.9 and below
+		if (!count($types)) {
+			
+			$_types = array(
+				  array('post', __('Posts'), __('Post'))
+				, array('page', __('Pages'), __('Page'))
+				, array('attachment', __('Attachments'), __('Attachment'))
+			);
+			$types = array();
+			foreach ($_types as $_type) {
+				$type = new stdClass();
+				$type->name = $_type[0];
+				$type->labels->name = $_type[1];
+				$type->labels->singular_name = $_type[2];
+				$types[] = $type;
+			}
 		}
 		
-		return array();
+		return $types;
 	}
 	
 	function get_taxonomies() {

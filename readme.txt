@@ -204,11 +204,15 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 3.7 (June 30, 2010) =
+* Feature: "SEO Settings" box now added to editing screens for custom post types
+* Bugfix: Fixed invalid HTML in the admin interfaces of Noindex Manager and Sharing Facilitator
+
 = Version 3.6 (June 28, 2010) =
 * Feature: Users can now set the maximum number of log entries that 404 Monitor will keep at a time
 * Improvement: Fixed aesthetic issue that appeared in SEO Settings box under certain configurations
 * Bugfix: Browsers will no longer jump to the top of the screen when expanding/collapsing the Referer/User Agent lists in 404 Monitor
-* Bugfix: Fixed invalid HTML in 404 Monitor
+* Bugfix: Fixed invalid HTML in the admin interface of 404 Monitor
 * Bugfix: Fixed PHP4 error by removing usage of PHP5-only str_split function
 
 = Version 3.5 (June 26, 2010) =

@@ -987,7 +987,7 @@ class SEO_Ultimate {
 		
 		//If we're on the post or page editor...
 		if (strcmp($screen, 'post') == 0 || strcmp($screen, 'page') == 0) {
-		
+			
 			//Gather post meta help content
 			$helparray = apply_filters('su_postmeta_help', array());
 			
@@ -1392,8 +1392,9 @@ class SEO_Ultimate {
 	function add_postmeta_box() {
 		
 		//Add the metabox to posts and pages.
-		foreach (array('post', 'page') as $screen) {
-		
+		$posttypes = suwp::get_post_type_names();
+		foreach ($posttypes as $screen) {
+			
 			//Only show the meta box if there are fields to show.
 			if ($this->get_postmeta_fields($screen))
 				add_meta_box('su_postmeta', __('SEO Settings', 'seo-ultimate'), array(&$this, "show_{$screen}_postmeta_box"), $screen, 'normal', 'high');
@@ -1457,14 +1458,20 @@ class SEO_Ultimate {
 		
 		//Run preliminary permissions checks
 		if ( !wp_verify_nonce($_REQUEST['_su_wpnonce'], 'su-update-postmeta') ) return;
-		if ( 'page' == $_POST['post_type'] ) {
-			if ( !current_user_can( 'edit_page', $post_id )) return;
-		} elseif ( 'post' == $_POST['post_type'] ) {
-			if ( !current_user_can( 'edit_post', $post_id )) return;
-		} else return;
+		$post_type = isset($_POST['post_type']) ? $_POST['post_type'] : 'post';
+		if (function_exists('get_post_type_object')) { //If WP3.0+...
+			$post_type_object = get_post_type_object($post_type);
+			if (!current_user_can($post_type_object->cap->edit_posts)) return;
+		} else { //WP2.9 or below
+			if ( 'page' == $_POST['post_type'] ) {
+				if ( !current_user_can( 'edit_page', $post_id )) return;
+			} elseif ( 'post' == $_POST['post_type'] ) {
+				if ( !current_user_can( 'edit_post', $post_id )) return;
+			} else return;
+		}
 		
 		//Get an array of the postmeta fields
-		$keys = array_keys($this->get_postmeta_array($_POST['post_type']));
+		$keys = array_keys($this->get_postmeta_array($post_type));
 		$fields = array();
 		
 		foreach ($keys as $key) {
