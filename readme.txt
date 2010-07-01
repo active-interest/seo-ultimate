@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 3.7
+Stable tag: 3.7.1
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, rich snippets, and more.
 
@@ -203,6 +203,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 3.7.1 (July 1, 2010) =
+* Bugfix: Fixed fatal error on editor screens for custom post types
 
 = Version 3.7 (June 30, 2010) =
 * Feature: "SEO Settings" box now added to editing screens for custom post types

@@ -1397,28 +1397,8 @@ class SEO_Ultimate {
 			
 			//Only show the meta box if there are fields to show.
 			if ($this->get_postmeta_fields($screen))
-				add_meta_box('su_postmeta', __('SEO Settings', 'seo-ultimate'), array(&$this, "show_{$screen}_postmeta_box"), $screen, 'normal', 'high');
+				add_meta_box('su_postmeta', __('SEO Settings', 'seo-ultimate'), create_function('', 'global $seo_ultimate; $seo_ultimate->show_postmeta_box("'.$screen.'");'), $screen, 'normal', 'high');
 		}
-	}
-	
-	/**
-	 * Displays the inner contents of the post meta box when editing posts.
-	 * 
-	 * @since 0.1
-	 * @uses show_postmeta_box()
-	 */
-	function show_post_postmeta_box() {
-		$this->show_postmeta_box('post');
-	}
-	
-	/**
-	 * Displays the inner contents of the post meta box when editing Pages.
-	 * 
-	 * @since 0.1
-	 * @uses show_postmeta_box()
-	 */
-	function show_page_postmeta_box() {
-		$this->show_postmeta_box('page');
 	}
 	
 	/**
