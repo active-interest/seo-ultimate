@@ -161,7 +161,7 @@ class SEO_Ultimate {
 			$oldversion = $this->dbdata['version'];
 		else
 			$oldversion = get_option('su_version', false);
-
+		
 		//Or, if this is the first time the plugin is running, then install()			
 		if ($oldversion) {
 			
@@ -1187,10 +1187,12 @@ class SEO_Ultimate {
 	 * @since 2.1
 	 */
 	function add_plugin_upgrade_notice($current) {
+		static $info;
 		if (isset($current->response[$this->plugin_basename])) {
 			if (!strlen($current->response[$this->plugin_basename]->upgrade_notice)) {
-				$current->response[$this->plugin_basename]->upgrade_notice = $this->get_plugin_update_info($current->response[$this->plugin_basename]->new_version);
-				remove_filter('transient_update_plugins', array(&$this, 'add_plugin_upgrade_notice'));
+				if (!$info)
+					$info = $this->get_plugin_update_info($current->response[$this->plugin_basename]->new_version);
+				$current->response[$this->plugin_basename]->upgrade_notice = $info;
 			}
 		}
 		return $current;

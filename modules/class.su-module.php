@@ -1235,29 +1235,82 @@ class SU_Module {
 	 * @param string $type The type of input element (can be textbox, textarea, or checkbox)
 	 * @param string $inputid The name/ID of the input element
 	 * @param string $value The current value of the field
+	 * @return string
 	 */
-	function get_input_element($type, $inputid, $value, $options=false) {
+	function get_input_element($type, $name, $value=null, $extra=false, $inputid=true) {
+		if ($value === null) $value = $this->get_setting($name);
+		
+		if ($inputid === true) $inputid = $name;
+		if (strlen($inputid)) $inputid = " id='".su_esc_attr($inputid)."'";
+		
 		//Get HTML element
 		switch ($type) {
 			case 'textbox':
 				$value = su_esc_editable_html($value);
-				return "<input name='$inputid' id='$inputid' type='text' value='$value' class='regular-text' />";
+				return "<input name='$name'$inputid value='$value' type='text' class='textbox regular-text' />";
 				break;
 			case 'textarea':
 				$value = su_esc_editable_html($value);
-				return "<textarea name='$inputid' id='$inputid' type='text' rows='3' cols='50' class='regular-text'>$value</textarea>";
+				return "<textarea name='$name'$inputid type='text' rows='3' cols='50' class='textarea regular-text'>$value</textarea>";
 				break;
 			case 'checkbox':
 				$checked = $value ? " checked='checked'" : '';
-				return "<input name='$inputid' id='$inputid' type='checkbox' value='1'$checked />";
+				$html = "<input name='$name'$inputid value='1' type='checkbox' class='checkbox'$checked />";
+				if (is_string($extra)) {
+					$extra = su_esc_html($extra);
+					$html = "<label>$html&nbsp;$extra</label>";
+				}
+				return $html;
 				break;
 			case 'dropdown':
-				if (is_array($options))
-					return "<select name='$inputid' id='$inputid'>".suhtml::option_tags($options, $value)."</select>";
+				if (is_array($extra))
+					return "<select name='$name'$inputid onchange='javascript:su_toggle_select_children(this)' class='dropdown'>".suhtml::option_tags($extra, $value)."</select>";
 				break;
 		}
 		
 		return '';
+	}
+	
+	/**
+	 * Creates an admin form subsection.
+	 * 
+	 * @since 3.8
+	 * @uses get_setting()
+	 * @see get_input_element()
+	 * 
+	 * @param string $field
+	 * @param string|null $current_value
+	 * @param string $trigger_value
+	 * @param string $html
+	 * @return string
+	 */
+	function get_admin_form_subsection($field, $current_value, $trigger_value, $html) {
+		if ($current_value === null) $current_value = $this->get_setting($field);
+		$hidden = ($current_value == $trigger_value) ? '' : ' hidden';
+		
+		$field = su_esc_attr($field);
+		$trigger_value = su_esc_attr($trigger_value);
+		$html = "<div class='su_{$field}_{$trigger_value}_subsection$hidden'>$html</div>";
+		return $html;
+	}
+	
+	/**
+	 * Creates multiple admin form subsections.
+	 * 
+	 * @since 3.8
+	 * @uses get_admin_form_subsection()
+	 * @see get_input_element()
+	 * 
+	 * @param string $field
+	 * @param array $subsections Array of ($field => $trigger_value)
+	 * @return string
+	 */
+	function get_admin_form_subsections($field, $current_value, $subsections) {
+		$allhtml = '';
+		if (!in_array($current_value, $subsection_keys = array_keys($subsections))) $current_value = $subsection_keys[0];
+		foreach ($subsections as $trigger_value => $html)
+			$allhtml .= $this->get_admin_form_subsection($field, $current_value, $trigger_value, $html);
+		return $allhtml;
 	}
 	
 	

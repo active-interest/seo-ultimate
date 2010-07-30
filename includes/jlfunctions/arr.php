@@ -156,6 +156,12 @@ class suarr {
 		}
 		return $newarray;
 	}
+	
+	function simplify($arr, $keyloc, $valloc) {
+		$keys = suarr::flatten_values($arr, $keyloc);
+		$values = suarr::flatten_values($arr, $valloc);
+		return array_combine($keys, $values);
+	}
 }
 
 ?>

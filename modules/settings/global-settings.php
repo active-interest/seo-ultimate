@@ -57,7 +57,7 @@ class SU_GlobalSettings extends SU_Module {
 				$astyle = " style='color: inherit;'"; 
 			} else $pstyle = $astyle = '';
 			
-			echo "\n<p id='suattr'$pstyle><a href='http://www.seodesignsolutions.com/' rel='nofollow'$astyle>Optimized by SEO Ultimate</a></p>\n";
+			echo "\n<p id='suattr'$pstyle>Optimized by <a href='http://www.seodesignsolutions.com/' rel='nofollow'$astyle>SEO</a> Ultimate</p>\n";
 		}
 	}
 }

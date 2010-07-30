@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 3.7.1
+Stable tag: 3.8
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 3.8 adds direct post/page link support to Deeplink Juggernaut
 * Version 3.7 adds the "SEO Settings" box to custom post type editors
 * Version 3.6 adds a maximum log size option to 404 Monitor
 * Version 3.5 adds the Sharing Facilitator module
 * Version 3.4 adds the option to ignore 404s from specific URLs or wildcard URL patterns
-* Version 3.3 adds the option to only log 404s from search engines and/or referrers
 
 = Features =
 
@@ -76,8 +76,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut** -- UPDATED in Version 3.2
-	* Automatically link phrases in your posts/pages to given URLs.
+* **Deeplink Juggernaut** -- UPDATED in Version 3.8
+	* Automatically link phrases in your posts/pages to other posts/pages or to custom URLs.
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Control the maximum number of autolinks added to each post/page.
 	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
@@ -203,6 +203,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 3.8 (July 30, 2010) =
+* Feature: Deeplink Juggernaut can now link directly to posts/pages (and custom post types) in addition to arbitrary URLs
+* Bugfix: Readded SEO Ultimate upgrade info to the `Dashboard > Updates` (or `Tools > Upgrade`) page, fixing a feature regression introduced in version 3.1
 
 = Version 3.7.1 (July 1, 2010) =
 * Bugfix: Fixed fatal error on editor screens for custom post types

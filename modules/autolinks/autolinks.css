@@ -1,10 +1,19 @@
 #su-autolinks table.widefat,
-#su-autolinks table.widefat td.text input {
+#su-autolinks table.widefat input.textbox,
+#su-autolinks table.widefat td.su-link-to_id select {
 	width: 100%;
 }
 
-#su-autolinks table.widefat td.checkbox label {
+#su-autolinks table.widefat td.su-link-options label {
 	margin-right: 1em;
+}
+
+#su-autolinks table.widefat td.su-link-to_type {
+	width: 10em;
+}
+
+#su-autolinks table.widefat td.su-link-to_id {
+	width: 15em;
 }
 
 #su-autolinks table.widefat td.su-link-options {

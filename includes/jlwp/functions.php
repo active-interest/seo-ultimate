@@ -23,6 +23,7 @@ class suwp {
 	
 	function get_any_posts($args = null) {
 		$args['post_type'] = implode(',', suwp::get_post_type_names());
+		$args['numberposts'] = -1;
 		return get_posts($args);
 	}
 	

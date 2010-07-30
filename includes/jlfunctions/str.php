@@ -129,6 +129,13 @@ class sustr {
 		return $str;
 	}
 	
+	function ltrim_str($str, $totrim) {
+		if (strlen($str) > strlen($totrim) && sustr::startswith($str, $totrim))
+			return substr($str, strlen($totrim));
+		
+		return $str;
+	}
+	
 	function batch_replace($search, $replace, $subjects) {
 		$subjects = array_unique((array)$subjects);
 		$results = array();

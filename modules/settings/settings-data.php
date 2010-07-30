@@ -49,7 +49,7 @@ class SU_SettingsData extends SU_Module {
 		} elseif ($this->is_action('su-import')) {
 			
 			if (strlen($_FILES['settingsfile']['name'])) {
-			
+				
 				$file = $_FILES['settingsfile']['tmp_name'];			
 				if (is_uploaded_file($file)) {
 					$import = base64_decode(file_get_contents($file));
