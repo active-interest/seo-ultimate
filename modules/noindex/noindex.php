@@ -10,6 +10,11 @@ if (class_exists('SU_Module')) {
 class SU_Noindex extends SU_Module {
 	
 	function get_module_title() { return __('Noindex Manager', 'seo-ultimate'); }
+	function get_module_subtitle() { return __('Noindex', 'seo-ultimate'); }
+	
+	function get_parent_module() { return 'meta-robots'; }
+	function get_settings_key() { return 'noindex'; }
+	function is_independent_module() { return false; }
 	
 	function init() {
 		
@@ -38,7 +43,7 @@ class SU_Noindex extends SU_Module {
 			$this->queue_message('error',
 				__('Note: The current <a href="options-privacy.php">privacy settings</a> will block indexing of the entire site, regardless of which options are set below.', 'seo-ultimate') );
 		
-		$this->admin_form_start();
+		$this->admin_form_table_start();
 		$this->admin_form_subheader(__('Prevent indexing of...', 'seo-ultimate'));
 		$this->checkboxes(array('noindex_admin' => __('Administration back-end pages', 'seo-ultimate')
 							,	'noindex_author' => __('Author archives', 'seo-ultimate')
@@ -51,7 +56,7 @@ class SU_Noindex extends SU_Module {
 							,	'noindex_tag' => __('Tag archives', 'seo-ultimate')
 							,	'noindex_login' => __('User login/registration pages', 'seo-ultimate')
 		));
-		$this->admin_form_end();
+		$this->admin_form_table_end();
 	}
 	
 	function wphead_meta_robots($commands) {

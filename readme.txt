@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 3.9
+Stable tag: 4.0
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,31 +11,34 @@ This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta
 
 = Recent Releases =
 
+* Version 4.0 adds meta description mass-editor for posts, pages, attachments, and custom post types
 * Version 3.9 adds the ability to build internal links to posts from within the WordPress post editor (as well as other Deeplink Juggernaut improvements)
 * Version 3.8 adds direct post/page link support to Deeplink Juggernaut
 * Version 3.7 adds the "SEO Settings" box to custom post type editors
 * Version 3.6 adds a maximum log size option to 404 Monitor
-* Version 3.5 adds the Sharing Facilitator module
 
 = Features =
 
 SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these powerful features:
 
-* **Title Tag Rewriter** -- UPDATED in Version 2.9
+* **Title Tag Rewriter**
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
 	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog. Also supports custom post types.
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
-* **Noindex Manager**
+* **Meta Description Editor** -- UPDATED in Version 4.0
+	* Edit the `<meta>` description tags for posts, pages, and the homepage.
+	* Increase SERP clickthrough rates by influence search engine result snippets.
+	* Mass-editor makes it a cinch to go back and add descriptions to old posts.
+
+* **Meta Keywords Editor** -- UPDATED in Version 4.0
+	* Edit the `<meta>` keyword tags for posts, pages, and the homepage.
+
+* **Meta Robot Tags Editor** -- UPDATED in Version 4.0
 	* Add the `<meta name="robots" content="noindex,follow" />` tag to archives, comment feeds, the login page, and more.
 	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post/page.
-	* Avoid duplicate content SEO issues with the recommended settings.
-
-* **Meta Editor**
-	* Edit the `<meta>` description/keyword tags for posts, pages, and the homepage.
-	* Influence search engine result snippets with the meta description editing functionality.
-	* Enter verification codes in the provided fields to access search engine webmaster tools.
+	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
 	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
 
 * **Canonicalizer**
@@ -96,10 +99,13 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Attract more search traffic with eye-catching supplementary SERP data.
 	* Can add code to old review posts automatically.
 
-* **Sharing Facilitator** -- NEW in Version 3.5
+* **Sharing Facilitator**
 	* Adds buttons that make it easy for visitors to share your content on social networking sites (thus building links to your site).
 	* Choose from either the ShareThis or the AddThis button.
 	* Unlike the official ShareThis plugin, SEO Ultimate doesn't require you to register at the ShareThis website before enabling the button -- just enable and go.
+
+* **Webmaster Verification Assistant** -- UPDATED in Version 4.0
+	* Enter verification codes in the provided fields to access search engine webmaster tools.
 	
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
@@ -206,6 +212,12 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.0 (August 3, 2010) =
+* Feature: Added meta description mass-editor for posts, pages, attachments, and custom post types
+* Change: Meta Editor has been split into four new modules: Meta Descriptions, Meta Keywords, Meta Robot Tags, and Webmaster Verification
+* Change: The Noindex Manager module can now be found under new Meta Robot Tags module
+* Improvement: When entire `<meta>` tags are entered instead of verification codes, the Webmaster Verification Assistant will now output the tag properly
 
 = Version 3.9 (August 2, 2010) =
 * Feature: Added "Instant Post Propulsion" feature to Deeplink Juggernaut (new "Incoming Autolink Anchors" postmeta field)

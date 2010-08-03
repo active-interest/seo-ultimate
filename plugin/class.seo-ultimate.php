@@ -140,6 +140,7 @@ class SEO_Ultimate {
 		$this->dbdata = maybe_unserialize(get_option('seo_ultimate', array()));
 		if (!is_array($this->dbdata)) $this->dbdata = array();
 		$this->upgrade_to_08();
+		$this->upgrade_to_40();
 		
 		//Save
 		add_action('shutdown', array(&$this, 'save_hit'));
@@ -305,6 +306,32 @@ class SEO_Ultimate {
 				delete_option("su_$option");
 			}
 		}
+	}
+	
+	/**
+	 * Upgrades SEO Ultimate to version 4.0.
+	 * 
+	 * @since 4.0
+	 * @uses $dbdata
+	 */
+	function upgrade_to_40() {
+		$this->copy_module_states(array('meta' => array('meta-descriptions', 'meta-keywords', 'webmaster-verify'), 'noindex' => 'meta-robots'));
+	}
+	
+	/**
+	 * Copies the enabled/disabled/etc. states from one module to others.
+	 * 
+	 * @since 4.0
+	 * @uses $dbdata
+	 * 
+	 * @param array $copy
+	 */
+	function copy_module_states($copy) {
+		foreach ($copy as $from => $tos)
+			if (isset($this->dbdata['modules'][$from]))
+				foreach ((array)$tos as $to)
+					if (!isset($this->dbdata['modules'][$to]))
+						$this->dbdata['modules'][$to] = $this->dbdata['modules'][$from];
 	}
 	
 	/**
