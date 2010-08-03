@@ -220,6 +220,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Bugfix: Contextual help dropdowns are now styled correctly in WordPress 3.0+
 * Bugfix: Contextual help dropdowns no longer generate 404 errors in WordPress 3.0+
 * Bugfix: Fixed invalid HTML in admin interface
+* Bugfix: Fixed many warnings that appeared when WP_DEBUG was enabled
 
 = Version 3.8 (July 30, 2010) =
 * Feature: Deeplink Juggernaut can now link directly to posts/pages (and custom post types) in addition to arbitrary URLs
