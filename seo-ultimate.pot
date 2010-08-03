@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 3.9 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 4.0 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 3.9\n"
+"Project-Id-Version: SEO Ultimate 4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-08-03 01:40+0000\n"
+"POT-Creation-Date: 2010-08-03 17:03+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -158,7 +158,7 @@ msgstr ""
 msgid "404 Monitor Settings"
 msgstr ""
 
-#: modules/404s/fofs-settings.php:17 modules/meta/meta-settings.php:16
+#: modules/404s/fofs-settings.php:17
 msgid "Settings"
 msgstr ""
 
@@ -744,79 +744,44 @@ msgstr ""
 msgid "Linkbox HTML"
 msgstr ""
 
-#: modules/meta/meta-settings.php:15
-msgid "Meta Editor Settings"
+#: modules/meta/meta-descriptions.php:12
+msgid "Meta Description Editor"
 msgstr ""
 
-#: modules/meta/meta-settings.php:27
+#: modules/meta/meta-descriptions.php:13
+msgid "Meta Descriptions"
+msgstr ""
+
+#: modules/meta/meta-descriptions.php:24 modules/meta/meta-keywords.php:22
+msgid "Blog Homepage"
+msgstr ""
+
+#: modules/meta/meta-descriptions.php:30
+msgid "Meta Description"
+msgstr ""
+
+#: modules/meta/meta-descriptions.php:43
 msgid "Blog Homepage Meta Description"
 msgstr ""
 
-#: modules/meta/meta-settings.php:28
-msgid "Blog Homepage Meta Keywords"
-msgstr ""
-
-#: modules/meta/meta-settings.php:31
+#: modules/meta/meta-descriptions.php:45
 msgid "Use this blog&#8217s tagline as the default homepage description."
 msgstr ""
 
-#: modules/meta/meta-settings.php:32
-msgid "Default Values"
+#: modules/meta/meta-descriptions.php:46
+msgid "Default Value"
 msgstr ""
 
-#: modules/meta/meta-settings.php:34
-msgid ""
-"Don&#8217t use this site&#8217s Open Directory description in search results."
-msgstr ""
-
-#: modules/meta/meta-settings.php:35
-msgid ""
-"Don&#8217t use this site&#8217s Yahoo! Directory description in search "
-"results."
-msgstr ""
-
-#: modules/meta/meta-settings.php:36
-msgid "Don&#8217t cache or archive this site."
-msgstr ""
-
-#: modules/meta/meta-settings.php:37
-msgid "Spider Instructions"
-msgstr ""
-
-#: modules/meta/meta-settings.php:39
-msgid "Google Webmaster Tools:"
-msgstr ""
-
-#: modules/meta/meta-settings.php:40
-msgid "Yahoo! Site Explorer:"
-msgstr ""
-
-#: modules/meta/meta-settings.php:41
-msgid "Bing Webmaster Center:"
-msgstr ""
-
-#: modules/meta/meta-settings.php:42
-msgid "Verification Codes"
-msgstr ""
-
-#: modules/meta/meta.php:12
-msgid "Meta Editor"
-msgstr ""
-
-#: modules/meta/meta.php:82
+#: modules/meta/meta-descriptions.php:82
 msgid "Meta Description:"
 msgstr ""
 
-#: modules/meta/meta.php:85
+#: modules/meta/meta-descriptions.php:85
 #, php-format
 msgid "You&#8217;ve entered %s characters. Most search engines use up to 160."
 msgstr ""
 
-#: modules/meta/meta.php:87
-msgid "Meta Keywords:<br /><em>(separate with commas)</em>"
-msgstr ""
-
-#: modules/meta/meta.php:94
+#: modules/meta/meta-descriptions.php:93
 msgid ""
 "<strong>Description</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
@@ -824,12 +789,75 @@ msgid ""
 "is important to ensuring a good search results clickthrough rate."
 msgstr ""
 
-#: modules/meta/meta.php:95
+#: modules/meta/meta-keywords.php:12
+msgid "Meta Keywords Editor"
+msgstr ""
+
+#: modules/meta/meta-keywords.php:13
+msgid "Meta Keywords"
+msgstr ""
+
+#: modules/meta/meta-keywords.php:27
+msgid "Blog Homepage Meta Keywords"
+msgstr ""
+
+#: modules/meta/meta-keywords.php:58
+msgid "Meta Keywords:<br /><em>(separate with commas)</em>"
+msgstr ""
+
+#: modules/meta/meta-keywords.php:63
 msgid ""
 "<strong>Keywords</strong> &mdash; The value of the meta keywords tag. The "
 "keywords list gives search engines a hint as to what this post/page is "
 "about. Be sure to separate keywords with commas, like so: <samp>one,two,"
 "three</samp>."
+msgstr ""
+
+#: modules/meta/meta-robots.php:12
+msgid "Meta Robot Tags Editor"
+msgstr ""
+
+#: modules/meta/meta-robots.php:13
+msgid "Meta Robot Tags"
+msgstr ""
+
+#: modules/meta/meta-robots.php:21
+msgid "Spider Instructions"
+msgstr ""
+
+#: modules/meta/meta-robots.php:27
+msgid ""
+"Don&#8217t use this site&#8217s Open Directory description in search results."
+msgstr ""
+
+#: modules/meta/meta-robots.php:28
+msgid ""
+"Don&#8217t use this site&#8217s Yahoo! Directory description in search "
+"results."
+msgstr ""
+
+#: modules/meta/meta-robots.php:29
+msgid "Don&#8217t cache or archive this site."
+msgstr ""
+
+#: modules/meta/webmaster-verify.php:12
+msgid "Webmaster Verification Assistant"
+msgstr ""
+
+#: modules/meta/webmaster-verify.php:13
+msgid "W.M. Verification"
+msgstr ""
+
+#: modules/meta/webmaster-verify.php:45
+msgid "Google Webmaster Tools"
+msgstr ""
+
+#: modules/meta/webmaster-verify.php:46
+msgid "Yahoo! Site Explorer"
+msgstr ""
+
+#: modules/meta/webmaster-verify.php:47
+msgid "Bing Webmaster Center"
 msgstr ""
 
 #: modules/modules/modules.php:12
@@ -895,65 +923,69 @@ msgstr ""
 msgid "Noindex Manager"
 msgstr ""
 
-#: modules/noindex/noindex.php:39
+#: modules/noindex/noindex.php:13
+msgid "Noindex"
+msgstr ""
+
+#: modules/noindex/noindex.php:44
 msgid ""
 "Note: The current <a href=\"options-privacy.php\">privacy settings</a> will "
 "block indexing of the entire site, regardless of which options are set below."
 msgstr ""
 
-#: modules/noindex/noindex.php:42
+#: modules/noindex/noindex.php:47
 msgid "Prevent indexing of..."
 msgstr ""
 
-#: modules/noindex/noindex.php:43
+#: modules/noindex/noindex.php:48
 msgid "Administration back-end pages"
 msgstr ""
 
-#: modules/noindex/noindex.php:44
+#: modules/noindex/noindex.php:49
 msgid "Author archives"
 msgstr ""
 
-#: modules/noindex/noindex.php:45
+#: modules/noindex/noindex.php:50
 msgid "Blog search pages"
 msgstr ""
 
-#: modules/noindex/noindex.php:46
+#: modules/noindex/noindex.php:51
 msgid "Category archives"
 msgstr ""
 
-#: modules/noindex/noindex.php:47
+#: modules/noindex/noindex.php:52
 msgid "Comment feeds"
 msgstr ""
 
-#: modules/noindex/noindex.php:48
+#: modules/noindex/noindex.php:53
 msgid "Comment subpages"
 msgstr ""
 
-#: modules/noindex/noindex.php:49
+#: modules/noindex/noindex.php:54
 msgid "Date-based archives"
 msgstr ""
 
-#: modules/noindex/noindex.php:50
+#: modules/noindex/noindex.php:55
 msgid "Subpages of the homepage"
 msgstr ""
 
-#: modules/noindex/noindex.php:51
+#: modules/noindex/noindex.php:56
 msgid "Tag archives"
 msgstr ""
 
-#: modules/noindex/noindex.php:52
+#: modules/noindex/noindex.php:57
 msgid "User login/registration pages"
 msgstr ""
 
-#: modules/noindex/noindex.php:105
+#: modules/noindex/noindex.php:110
 msgid "Noindex: Tell search engines not to index this webpage."
 msgstr ""
 
-#: modules/noindex/noindex.php:106
+#: modules/noindex/noindex.php:111
 msgid "Nofollow: Tell search engines not to spider links on this webpage."
 msgstr ""
 
-#: modules/noindex/noindex.php:107
+#: modules/noindex/noindex.php:112
 msgid "Meta Robots Tag:"
 msgstr ""
 
@@ -1065,7 +1097,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.9)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.0)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1371,9 +1403,9 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.9)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:729
+#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:756
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -1381,7 +1413,7 @@ msgstr ""
 msgid "Uninstaller"
 msgstr ""
 
-#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1216
+#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1243
 msgid "Uninstall"
 msgstr ""
 
@@ -1629,80 +1661,80 @@ msgstr ""
 msgid "Code Inserter module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:729
+#: plugin/class.seo-ultimate.php:756
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1007
+#: plugin/class.seo-ultimate.php:1034
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1009
+#: plugin/class.seo-ultimate.php:1036
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1011
+#: plugin/class.seo-ultimate.php:1038
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1066
+#: plugin/class.seo-ultimate.php:1093
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1107
+#: plugin/class.seo-ultimate.php:1134
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1107
+#: plugin/class.seo-ultimate.php:1134
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1108
+#: plugin/class.seo-ultimate.php:1135
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1108
+#: plugin/class.seo-ultimate.php:1135
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1109
+#: plugin/class.seo-ultimate.php:1136
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1109
+#: plugin/class.seo-ultimate.php:1136
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1110
+#: plugin/class.seo-ultimate.php:1137
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1110
+#: plugin/class.seo-ultimate.php:1137
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1141
+#: plugin/class.seo-ultimate.php:1168
 #, php-format
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1147
+#: plugin/class.seo-ultimate.php:1174
 #, php-format
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1149
+#: plugin/class.seo-ultimate.php:1176
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1236
+#: plugin/class.seo-ultimate.php:1263
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1297
+#: plugin/class.seo-ultimate.php:1324
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -1710,7 +1742,7 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1407
+#: plugin/class.seo-ultimate.php:1434
 msgid "SEO Settings"
 msgstr ""
 
@@ -1804,8 +1836,8 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "This all-in-one SEO plugin gives you control over title tags, noindex/"
-"nofollow, meta tags, rich snippets, slugs, canonical tags, \"more\" links, "
-"404 errors, rich snippets, and more."
+"nofollow, meta tags, rich snippets, slugs, canonical tags, autolinks, 404 "
+"errors, rich snippets, and more."
 msgstr ""
 
 #. Author URI of the plugin/theme
