@@ -49,7 +49,7 @@ $screen_meta = array(
 <style type="text/css">
 .screen-meta-toggle {
 	float: right;
-<?php if (version_compare($wp_version, '3.0', '<')) { ?>
+<?php global $wp_version; if (version_compare($wp_version, '3.0', '<')) { ?>
 	background: transparent url( <?php bloginfo('wpurl'); ?>/wp-admin/images/screen-options-left.gif ) no-repeat 0 0;
 <?php } else { ?>
 	background: #e3e3e3;
