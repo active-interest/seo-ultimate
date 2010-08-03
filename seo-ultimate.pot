@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 3.8 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 3.9 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 3.8\n"
+"Project-Id-Version: SEO Ultimate 3.9\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-07-30 15:44+0000\n"
+"POT-Creation-Date: 2010-08-03 01:40+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,7 +67,7 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:115 modules/class.su-module.php:1156
+#: modules/404s/fofs-log.php:115 modules/class.su-module.php:1163
 msgid "Actions"
 msgstr ""
 
@@ -227,62 +227,77 @@ msgstr ""
 msgid "Content Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:84
+#: modules/autolinks/content-autolinks.php:94
 msgid ""
 "The Content Links section of Deeplink Juggernaut lets you automatically link "
 "a certain word or phrase in your post/page content to a URL you specify."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:117
+#: modules/autolinks/content-autolinks.php:127
 msgid "Edit Existing Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:121
+#: modules/autolinks/content-autolinks.php:131
 msgid "Add a New Link"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:129
+#: modules/autolinks/content-autolinks.php:139
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:130
+#: modules/autolinks/content-autolinks.php:140
 msgid "Destination Type"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:131
+#: modules/autolinks/content-autolinks.php:141
 msgid "Destination"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:132
+#: modules/autolinks/content-autolinks.php:142
 msgid "Title Attribute"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:133
+#: modules/autolinks/content-autolinks.php:143
 msgid "Options"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:135
+#: modules/autolinks/content-autolinks.php:145
 msgid "Delete"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:165
+#: modules/autolinks/content-autolinks.php:183
 msgid "Custom"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:165
+#: modules/autolinks/content-autolinks.php:183
 msgid "URL"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:166
+#: modules/autolinks/content-autolinks.php:184
 msgid "Content Items"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:173
+#: modules/autolinks/content-autolinks.php:191
 msgid "Nofollow"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:174
+#: modules/autolinks/content-autolinks.php:192
 msgid "New window"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:255
+msgid "Incoming Autolink Anchors:<br /><em>(one per line)</em>"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:260
+msgid ""
+"<strong>Incoming Autolink Anchors</strong> &mdash; When you enter anchors "
+"into this box, Deeplink Juggernaut will search for that anchor in all your "
+"other posts and link it to this post. For example, if the post you&#8217;re "
+"editing is about &#8220;blue widgets,&#8221; you could type &#8220;blue "
+"widgets&#8221; into the &#8220;Incoming Autolink Anchors&#8221; box and "
+"Deeplink Juggernaut will automatically build internal links to this post "
+"with that anchor text (assuming other posts contain that text)."
 msgstr ""
 
 #: modules/canonical/canonical.php:12
@@ -324,70 +339,70 @@ msgstr ""
 msgid "Return to SEO page"
 msgstr ""
 
-#: modules/class.su-module.php:361
+#: modules/class.su-module.php:368
 msgid ""
 "(Note: This translated documentation was designed for an older version of "
 "SEO Ultimate and may be outdated.)"
 msgstr ""
 
-#: modules/class.su-module.php:957
+#: modules/class.su-module.php:964
 #, php-format
 msgid "%s %s|Dropdown Title"
 msgstr ""
 
-#: modules/class.su-module.php:985
+#: modules/class.su-module.php:992
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1042
+#: modules/class.su-module.php:1049
 msgid "Name"
 msgstr ""
 
-#: modules/class.su-module.php:1053
+#: modules/class.su-module.php:1060
 msgid "Your site currently doesn&#8217;t have any public items of this type."
 msgstr ""
 
-#: modules/class.su-module.php:1135
+#: modules/class.su-module.php:1142
 msgid "&laquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1136
+#: modules/class.su-module.php:1143
 msgid "&raquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1143
+#: modules/class.su-module.php:1150
 #, php-format
 msgid "Displaying %s&#8211;%s of %s"
 msgstr ""
 
-#: modules/class.su-module.php:1157
+#: modules/class.su-module.php:1164
 msgid "ID"
 msgstr ""
 
-#: modules/class.su-module.php:1190
+#: modules/class.su-module.php:1197
 msgid "View"
 msgstr ""
 
-#: modules/class.su-module.php:1190
+#: modules/class.su-module.php:1197
 msgid "Edit"
 msgstr ""
 
-#: modules/class.su-module.php:1340
+#: modules/class.su-module.php:1350
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1360
+#: modules/class.su-module.php:1370
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1848
+#: modules/class.su-module.php:1858
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:1863 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:1873 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
@@ -526,53 +541,53 @@ msgstr ""
 msgid "File Editor"
 msgstr ""
 
-#: modules/files/files.php:52
+#: modules/files/files.php:53
 msgid ""
 "A .htaccess file exists, but it&#8217;s not writable. You can edit it here "
 "once the file permissions are corrected."
 msgstr ""
 
-#: modules/files/files.php:58
+#: modules/files/files.php:59
 msgid ""
 "WordPress won&#8217;t be able to display your robots.txt file because the "
 "default <a href=\"options-permalink.php\" target=\"_blank\">permalink "
 "structure</a> is in use."
 msgstr ""
 
-#: modules/files/files.php:65
+#: modules/files/files.php:66
 #, php-format
 msgid "robots.txt [<a href=\"%s\" target=\"_blank\">Open</a>]"
 msgstr ""
 
-#: modules/files/files.php:69
+#: modules/files/files.php:70
 msgid "Enable this custom robots.txt file and disable the default file"
 msgstr ""
 
-#: modules/files/files.php:70
+#: modules/files/files.php:71
 msgid "Let other plugins add rules to my custom robots.txt file"
 msgstr ""
 
-#: modules/files/files.php:71
+#: modules/files/files.php:72
 msgid "robots.txt Settings"
 msgstr ""
 
-#: modules/files/files.php:74
+#: modules/files/files.php:75
 msgid ""
 "Please realize that incorrectly editing your robots.txt file could block "
 "search engines from your site."
 msgstr ""
 
-#: modules/files/files.php:78
+#: modules/files/files.php:79
 msgid ".htaccess"
 msgstr ""
 
-#: modules/files/files.php:81
+#: modules/files/files.php:82
 msgid ""
 "Also, incorrectly editing your .htaccess file could disable your entire "
 "website. Edit with caution!"
 msgstr ""
 
-#: modules/files/files.php:131
+#: modules/files/files.php:132
 #, php-format
 msgid ""
 "Please note that your privacy settings won&#8217;t have any effect on your "
@@ -803,7 +818,7 @@ msgstr ""
 
 #: modules/meta/meta.php:94
 msgid ""
-"<strong>Description:</strong> &mdash; The value of the meta description tag. "
+"<strong>Description</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
 "results. Writing an accurate, attention-grabbing description for every post "
 "is important to ensuring a good search results clickthrough rate."
@@ -811,7 +826,7 @@ msgstr ""
 
 #: modules/meta/meta.php:95
 msgid ""
-"<strong>Keywords:</strong> &mdash; The value of the meta keywords tag. The "
+"<strong>Keywords</strong> &mdash; The value of the meta keywords tag. The "
 "keywords list gives search engines a hint as to what this post/page is "
 "about. Be sure to separate keywords with commas, like so: <samp>one,two,"
 "three</samp>."
@@ -1050,7 +1065,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.8)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.9)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1356,9 +1371,9 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.8)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 3.9)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:724
+#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:729
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -1366,7 +1381,7 @@ msgstr ""
 msgid "Uninstaller"
 msgstr ""
 
-#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1211
+#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1216
 msgid "Uninstall"
 msgstr ""
 
@@ -1614,80 +1629,80 @@ msgstr ""
 msgid "Code Inserter module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:724
+#: plugin/class.seo-ultimate.php:729
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1002
+#: plugin/class.seo-ultimate.php:1007
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1004
+#: plugin/class.seo-ultimate.php:1009
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1006
+#: plugin/class.seo-ultimate.php:1011
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1061
+#: plugin/class.seo-ultimate.php:1066
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1102
+#: plugin/class.seo-ultimate.php:1107
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1102
+#: plugin/class.seo-ultimate.php:1107
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1103
+#: plugin/class.seo-ultimate.php:1108
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1103
+#: plugin/class.seo-ultimate.php:1108
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1104
+#: plugin/class.seo-ultimate.php:1109
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1104
+#: plugin/class.seo-ultimate.php:1109
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1105
+#: plugin/class.seo-ultimate.php:1110
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1105
+#: plugin/class.seo-ultimate.php:1110
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1136
+#: plugin/class.seo-ultimate.php:1141
 #, php-format
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1142
+#: plugin/class.seo-ultimate.php:1147
 #, php-format
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1144
+#: plugin/class.seo-ultimate.php:1149
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1231
+#: plugin/class.seo-ultimate.php:1236
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1292
+#: plugin/class.seo-ultimate.php:1297
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -1695,7 +1710,7 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1402
+#: plugin/class.seo-ultimate.php:1407
 msgid "SEO Settings"
 msgstr ""
 
