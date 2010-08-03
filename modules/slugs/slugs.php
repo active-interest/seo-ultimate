@@ -22,7 +22,7 @@ class SU_Slugs extends SU_Module {
 		add_filter('name_save_pre', array(&$this, 'optimize_slug'), 0);
 		
 		//Only sanitize if a permalink is being requested via AJAX
-		if ($_POST['action'] == 'sample-permalink')
+		if (isset($_POST['action']) && $_POST['action'] == 'sample-permalink')
 			//The filter priority is very important to ensure our function runs before WordPress's sanitize_title_with_dashes() function
 			add_filter('sanitize_title', array(&$this, 'optimize_slug_ajax'), 9);
 	}

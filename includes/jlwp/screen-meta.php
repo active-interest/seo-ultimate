@@ -49,12 +49,22 @@ $screen_meta = array(
 <style type="text/css">
 .screen-meta-toggle {
 	float: right;
+<?php if (version_compare($wp_version, '3.0', '<')) { ?>
 	background: transparent url( <?php bloginfo('wpurl'); ?>/wp-admin/images/screen-options-left.gif ) no-repeat 0 0;
+<?php } else { ?>
+	background: #e3e3e3;
+<?php } ?>
 	font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
 	height: 22px;
 	padding: 0;
 	margin: 0 6px 0 0;
+	
+	-moz-border-radius-bottomleft: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
 }
+
 .screen-meta-wrap h5 {
 	margin: 8px 0;
 	font-size: 13px;

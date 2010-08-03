@@ -37,6 +37,7 @@ class SU_Files extends SU_Module {
 		
 		//Initialize variables
 		$exists = $writable = false;
+		$is_super_admin = !function_exists('is_super_admin') || !function_exists('is_multisite') || (is_multisite() && is_super_admin());
 		
 		//Does the server run Apache?
 		if ($is_apache) {
@@ -48,7 +49,7 @@ class SU_Files extends SU_Module {
 			$exists = file_exists($htaccess);
 			$writable = is_writable($htaccess);
 			
-			if ($exists && !$writable) $this->queue_message('warning',
+			if ($is_super_admin && $exists && !$writable) $this->queue_message('warning',
 				__('A .htaccess file exists, but it&#8217;s not writable. You can edit it here once the file permissions are corrected.', 'seo-ultimate'));	
 		}
 		
@@ -74,7 +75,7 @@ class SU_Files extends SU_Module {
 			__('Please realize that incorrectly editing your robots.txt file could block search engines from your site.', 'seo-ultimate'));
 		
 		//Of course, only bother with htaccess if we're running Apache.
-		if ($is_apache && ($writable || !$exists)) {
+		if ($is_super_admin && $is_apache && ($writable || !$exists)) {
 			$this->textarea('htaccess', __('.htaccess', 'seo-ultimate'));
 			
 			$this->queue_message('warning',

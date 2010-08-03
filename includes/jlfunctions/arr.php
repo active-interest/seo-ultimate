@@ -94,8 +94,8 @@ class suarr {
 	}
 	
 	function vklrsort(&$arr, $valuekey) {
-		$valuekey = sustr::preg_filter('A-Za-z0-9', $valuekey);
-		uksort($arr, create_function('$a,$b', 'return strlen($b["'.$valuekey.'"]) - strlen($a["'.$valuekey.'"]);'));
+		$valuekey = sustr::preg_filter('A-Za-z0-9 ', $valuekey);
+		uasort($arr, create_function('$a,$b', 'return strlen($b["'.$valuekey.'"]) - strlen($a["'.$valuekey.'"]);'));
 	}
 	
 	function flatten_values($arr, $value_keys) {

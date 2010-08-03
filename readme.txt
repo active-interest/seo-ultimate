@@ -3,19 +3,19 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 3.8
+Stable tag: 3.9
 
-This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, "more" links, 404 errors, rich snippets, and more.
+This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, autolinks, 404 errors, rich snippets, and more.
 
 == Description ==
 
 = Recent Releases =
 
+* Version 3.9 adds the ability to build internal links to posts from within the WordPress post editor (as well as other Deeplink Juggernaut improvements)
 * Version 3.8 adds direct post/page link support to Deeplink Juggernaut
 * Version 3.7 adds the "SEO Settings" box to custom post type editors
 * Version 3.6 adds a maximum log size option to 404 Monitor
 * Version 3.5 adds the Sharing Facilitator module
-* Version 3.4 adds the option to ignore 404s from specific URLs or wildcard URL patterns
 
 = Features =
 
@@ -76,12 +76,15 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut** -- UPDATED in Version 3.8
+* **Deeplink Juggernaut** -- UPDATED in Version 3.9
 	* Automatically link phrases in your posts/pages to other posts/pages or to custom URLs.
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Control the maximum number of autolinks added to each post/page.
 	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
 	* Import/export your links as CSV files.
+	* Create links pointing to draft posts that will auto-enable when the post is published!
+	* Build internal links to your posts from within the WordPress post editor!
+	* Use "Instant Post Propulsion" technology to automatically link your old posts to new ones.
 
 * **Code Inserter**
 	* Easily insert custom HTML into your site's `<head>` tag, footer, or item content.
@@ -203,6 +206,20 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 3.9 (August 2, 2010) =
+* Feature: Added "Instant Post Propulsion" feature to Deeplink Juggernaut (new "Incoming Autolink Anchors" postmeta field)
+* Improvement: File Editor now limits .htaccess editing to super admins on multisite installations
+* Improvement: Deeplink Juggernaut no longer links webpages to themselves
+* Improvement: Deeplink Juggernaut's post/page dropdowns now include drafts; now you can build links to in-progress posts that automatically enable when the post is published!
+* Improvement: When a post/page is sent to the trash, autolinks pointing to it no longer disappear from the Deeplink Juggernaut interface
+* Improvement: Added a workaround for Firefox so that "Destination Type" dropdowns in Deeplink Juggernaut no longer get "stuck" on the incorrect value
+* Improvement: Miscellaneous aesthetic changes
+* Bugfix: Removed duplicate "title" attribute from "Deeplink Juggernaut" links
+* Bugfix: Fixed bug that caused "New window" option to enable itself on Deeplink Juggernaut autolinks
+* Bugfix: Contextual help dropdowns are now styled correctly in WordPress 3.0+
+* Bugfix: Contextual help dropdowns no longer generate 404 errors in WordPress 3.0+
+* Bugfix: Fixed invalid HTML in admin interface
 
 = Version 3.8 (July 30, 2010) =
 * Feature: Deeplink Juggernaut can now link directly to posts/pages (and custom post types) in addition to arbitrary URLs

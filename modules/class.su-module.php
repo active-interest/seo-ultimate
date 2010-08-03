@@ -283,6 +283,13 @@ class SU_Module {
 	function is_menu_default() { return false; }
 	
 	/**
+	 * Called after the module has been constructed and its variables have been filled.
+	 * 
+	 * @since 3.9
+	 */
+	function load() {}
+	
+	/**
 	 * Called at WordPress's init hook.
 	 * 
 	 * @since 0.1
@@ -1266,6 +1273,9 @@ class SU_Module {
 				if (is_array($extra))
 					return "<select name='$name'$inputid onchange='javascript:su_toggle_select_children(this)' class='dropdown'>".suhtml::option_tags($extra, $value)."</select>";
 				break;
+			case 'hidden':
+				return "<input name='$name'$inputid value='$value' type='hidden' />";
+				break;
 		}
 		
 		return '';
@@ -1954,7 +1964,7 @@ class SU_Module {
 	 * @return bool Whether or not the action is being executed.
 	 */
 	function is_action($action) {
-		if (!($object = $_GET['object'])) $object = false;
+		if (!isset($_GET['object']) || !($object = $_GET['object'])) $object = false;
 		return (
 					(
 						   ( strcasecmp($_GET['page'], $this->plugin->key_to_hook($this->get_module_key())) == 0 ) //Is $this module being shown?
@@ -2168,6 +2178,46 @@ class SU_Module {
 	 */
 	function get_postmeta_textbox($id, $title) {
 		return $this->get_postmeta_textboxes(array($id => $title));
+	}
+	
+	/**
+	 * Generates the HTML for multiple post meta textareas.
+	 * 
+	 * @since 3.9
+	 * @uses get_postmeta()
+	 * 
+	 * @param array $textareas An array of textareas. (Field/setting IDs are the keys, and descriptions are the values.)
+	 * @return string The HTML that would render the textareas.
+	 */
+	function get_postmeta_textareas($textareas) {
+
+		$html = '';
+		
+		foreach ($textareas as $id => $title) {
+		
+			register_setting('seo-ultimate', $id);
+			$value = su_esc_editable_html($this->get_postmeta($id));
+			$id = "_su_".su_esc_attr($id);
+			
+			$html .= "<tr class='textarea' valign='top'>\n<th scope='row'><label for='$id'>$title</label></th>\n"
+					."<td><textarea name='$id' id='$id' class='regular-text' tabindex='2' cols='60' rows='3'>$value</textarea></td>\n</tr>\n";
+		}
+		
+		return $html;
+	}
+	
+	/**
+	 * Generates the HTML for a single post meta textarea.
+	 * 
+	 * @since 3.9
+	 * @uses get_postmeta_textareas()
+	 * 
+	 * @param string $id The ID of the HTML element.
+	 * @param string $title The label of the HTML element.
+	 * @return string The HTML that would render the textarea.
+	 */
+	function get_postmeta_textarea($id, $title) {
+		return $this->get_postmeta_textareas(array($id => $title));
 	}
 	
 	/**

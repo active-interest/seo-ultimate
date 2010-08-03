@@ -479,6 +479,9 @@ class SEO_Ultimate {
 								
 								//Give the module this plugin's object by reference
 								$this->modules[$module]->plugin =& $this;
+								
+								//Call post-construction function
+								$this->modules[$module]->load();
 							}
 						} //If this isn't a module, then the file will simply be included as-is
 					}
@@ -502,8 +505,10 @@ class SEO_Ultimate {
 				$this->modules[$key]->activate();
 				$newmodules[$key] = $this->modules[$key]->get_default_status();
 			}
-			
-			if ($module_parent = $this->modules[$key]->get_parent_module() && !$this->modules[$key]->is_independent_module())
+		}
+		
+		foreach ($this->modules as $key => $module) {
+			if (($module_parent = $this->modules[$key]->get_parent_module()) && !$this->modules[$key]->is_independent_module())
 				$newmodules[$key] = $newmodules[$module_parent];
 		}
 		
@@ -791,7 +796,7 @@ class SEO_Ultimate {
 	
 		//If we have alerts that need a bubble, then return the bubble HTML.
 		if ($count > 0)
-			return "&nbsp;<span class='update-plugins count-$count'><span class='plugin-count'>".number_format_i18n($count)."</span></span>";
+			return "<span class='update-plugins count-$count'><span class='plugin-count'>".number_format_i18n($count)."</span></span>";
 		else
 			return '';
 	}
@@ -1467,13 +1472,15 @@ class SEO_Ultimate {
 			
 			$metakey = "_su_$field";
 			
-			$value = $_POST[$metakey];
-			if (empty($value))
-				//Delete the old value
-				delete_post_meta($post_id, $metakey);
-			else
-				//Add the new value
-				update_post_meta($post_id, $metakey, $value);
+			$value = stripslashes($_POST[$metakey]);
+			if (!apply_filters("su_custom_update_postmeta-$field", false, $value, $metakey, $post)) {
+				if (empty($value))
+					//Delete the old value
+					delete_post_meta($post_id, $metakey);
+				else
+					//Add the new value
+					update_post_meta($post_id, $metakey, $value);
+			}
 		}
 	}
 	
