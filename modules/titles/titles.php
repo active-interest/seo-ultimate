@@ -21,6 +21,7 @@ class SU_Titles extends SU_Module {
 		return array_merge(
 			  array(
 				  __('Default Formats') => 'formats_tab'
+				, __('Settings') => 'settings_tab'
 				)
 			, $this->get_meta_edit_tabs(array(
 				  'type' => 'textbox'
@@ -35,6 +36,12 @@ class SU_Titles extends SU_Module {
 		echo "<table class='form-table'>\n";
 		$this->textboxes($this->get_supported_settings(), $this->get_default_settings());
 		echo "</table>";
+	}
+	
+	function settings_tab() {
+		$this->admin_form_table_start();
+		$this->checkbox('terms_ucwords', __('Convert lowercase category/tag names to title case when used in title tags.', 'seo-ultimate'), __('Title Tag Variables', 'seo-ultimate'));
+		$this->admin_form_table_end();
 	}
 	
 	function get_default_settings() {
@@ -53,6 +60,8 @@ class SU_Titles extends SU_Module {
 			, 'title_search' => __('Search Results for {query} | {blog}', 'seo-ultimate')
 			, 'title_404' => __('404 Not Found | {blog}', 'seo-ultimate')
 			, 'title_paged' => __('{title} - Page {num}', 'seo-ultimate')
+			
+			, 'terms_ucwords' => true
 		);
 	}
 	
@@ -173,12 +182,17 @@ class SU_Titles extends SU_Module {
 			$cat_title = $categories[0]->name;
 			$cat_desc = category_description($categories[0]->term_id);
 		}
+		if (strlen($cat_title) && $this->get_setting('terms_ucwords', true) && $cat_title == strtolower($cat_title))
+			$cat_title = ucwords($cat_title);
 		
 		//Load tag titles
 		$tag_title = $tag_desc = '';
 		if (is_tag()) {
 			$tag_title = single_tag_title('', false);
 			$tag_desc = tag_description();
+			
+			if ($this->get_setting('terms_ucwords', true) && $tag_title == strtolower($tag_title))
+				$tag_title = ucwords($tag_title);
 		}
 		
 		//Load author titles
