@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.0
+Stable tag: 4.0.1
 
 This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, autolinks, 404 errors, rich snippets, and more.
 
@@ -213,6 +213,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 4.0.1 (August 3, 2010) =
+* Improvement: Added admin page documentation for the Meta Description Editor, Meta Keywords Editor, Meta Robot Tags Editor, and Webmaster Verification Assistant modules
+
 = Version 4.0 (August 3, 2010) =
 * Feature: Added meta description mass-editor for posts, pages, attachments, and custom post types
 * Change: Meta Editor has been split into four new modules: Meta Descriptions, Meta Keywords, Meta Robot Tags, and Webmaster Verification
@@ -222,6 +225,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 = Version 3.9 (August 2, 2010) =
 * Feature: Added "Instant Post Propulsion" feature to Deeplink Juggernaut (new "Incoming Autolink Anchors" postmeta field)
 * Improvement: File Editor now limits .htaccess editing to super admins on multisite installations
+* Improvement: Deeplink Juggernaut now gives priority to links with longer anchor text
 * Improvement: Deeplink Juggernaut no longer links webpages to themselves
 * Improvement: Deeplink Juggernaut's post/page dropdowns now include drafts; now you can build links to in-progress posts that automatically enable when the post is published!
 * Improvement: When a post/page is sent to the trash, autolinks pointing to it no longer disappear from the Deeplink Juggernaut interface

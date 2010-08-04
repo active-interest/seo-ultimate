@@ -170,15 +170,15 @@ Here's information on the various settings:
 
 
 
-== Meta Editor ==
+== Meta Description Editor ==
 
 = Overview =
 
-* **What it does:** Meta Editor lets you customize a wide variety of settings known as "meta data."
+* **What it does:** Meta Descriptions Editor lets you customize the text that you want to appear under your webpages' titles in search results.
 
-* **Why it helps:** Using meta data, you can convey information to search engines, such as what text you want displayed by your site in search results, what your site is about, whether they can cache your site, etc.
+* **Why it helps:** Getting ranked isn't enough; once you're ranked, you need visitors to click on your site in the results. That's where meta descriptions can help. When you provide text that makes searchers want to visit your site, you can increase your SERP clickthrough rate and thus increase search traffic.
 
-* **How to use it:** Adjust the settings as desired, and then click Save Changes. You can refer to the "Settings Help" tab for information on the settings available. You can also customize the meta data of an individual post or page by using the textboxes that Meta Editor adds to the post/page editors.
+* **How to use it:** Enter meta descriptions for your homepage, posts, pages, etc. as desired, and then click Save Changes. You can also customize the meta data of an individual post or page by using the textboxes that Meta Editor adds to the post/page editors.
 
 = Settings Help =
 
@@ -186,28 +186,14 @@ Here's information on the various settings:
 
 * **Blog Homepage Meta Description** -- When your blog homepage appears in search results, it'll have a title and a description. When you insert content into the description field below, the Meta Editor will add code to your blog homepage (the `<meta name="description" />` tag) that asks search engines to use what you've entered as the homepage's search results description.
 
-* **Blog Homepage Meta Keywords** -- Here you can enter keywords that describe the overall subject matter of your entire blog. Use commas to separate keywords. Your keywords will be put in the `<meta name="keywords" />` tag on your blog homepage.
-
-* **Default Values**
-	
-	* **Use this blog's tagline as the default homepage description.** -- If this box is checked and if the Blog Homepage Meta Description field is empty, Meta Editor will use your blog's tagline as the meta description. You can edit the blog's tagline under `Settings > General`.
-	
-* **Spider Instructions**
-	
-	* **Don't use this site's Open Directory / Yahoo! Directory description in search results.** -- If your site is listed in the [Open Directory (DMOZ)](http://www.dmoz.org/) or the [Yahoo! Directory](http://dir.yahoo.com/), some search engines may use your directory listing as the meta description. These boxes tell search engines not to do that and will give you full control over your meta descriptions. These settings have no effect if your site isn't listed in the Open Directory or Yahoo! Directory respectively.
-
-	* **Don't cache or archive this site.** -- When you check this box, Meta Editor will ask search engines (Google, Yahoo!, Bing, etc.) and archivers (Archive.org, etc.) to _not_ make cached or archived "copies" of your site.
-
-* **Verification Codes** -- This section lets you enter in verification codes for the webmaster portals of the 3 leading search engines.
-
-* **Custom `<head>` HTML** -- Just enter in raw HTML code here, and it'll be entered into the `<head>` tag across your entire site.
+* **Use this blog's tagline as the default homepage description.** -- If this box is checked and if the Blog Homepage Meta Description field is empty, Meta Editor will use your blog's tagline as the meta description. You can edit the blog's tagline under `Settings > General`.
 
 = FAQ =
 
-* **How do I edit the meta tags of my homepage?**
-	If you are using a "blog homepage" (the default option of showing your blog posts on your homepage), go to `SEO > Meta Editor` and use the Blog Homepage fields.
+* **How do I edit the meta description of my homepage?**
+	If you are using a "blog homepage" (the default option of showing your blog posts on your homepage), just use the Blog Homepage field.
   
-	If you have configured your `Settings > Reading` section to use a "frontpage" (i.e. a Page as your homepage), just edit that Page under `Pages > Edit` and use the "Description" and "Keywords" fields in the "SEO Settings" box.
+	If you have configured your `Settings > Reading` section to use a "frontpage" (i.e. a Page as your homepage), just edit that Page's meta description on the "Pages" tab.
 
 = Troubleshooting =
 
@@ -217,6 +203,90 @@ Here's information on the various settings:
 	If the problem persists, try disabling other SEO plugins that may be generating meta tags.
   
 	Troubleshooting tip: Go to `Settings > SEO Ultimate` and enable the "Insert comments around HTML code insertions" option. This will mark SEO Ultimate's meta tags with comments, allowing you to see which meta tags are generated by SEO Ultimate and which aren't.
+
+
+
+== Meta Keywords Editor ==
+
+= Overview =
+
+Meta Keywords Editor lets you tell search engines what keywords are associated with the various pages on your site. Most modern search engines don't give meta keywords much weight, but the option is there if you want to use it. You can customize the meta keywords of an individual post or page by using the textboxes that Meta Editor adds to the post/page editors.
+
+= Settings Help =
+
+* **Blog Homepage Meta Keywords** -- Here you can enter keywords that describe the overall subject matter of your entire blog. Use commas to separate keywords. Your keywords will be put in the `<meta name="keywords" />` tag on your blog homepage.
+
+= FAQ =
+
+* **How do I edit the meta keywords of my homepage?**
+	If you are using a "blog homepage" (the default option of showing your blog posts on your homepage), just use the Blog Homepage field.
+	
+	If you have configured your `Settings > Reading` section to use a "frontpage" (i.e. a Page as your homepage), just edit that Page under `Pages > Edit` and use the "Meta Keywords" field in the "SEO Settings" box.
+
+= Troubleshooting =
+
+* **What do I do if my site has multiple meta tags?**
+	First, try removing your theme's built-in meta tags if it has them. Go to `Appearance > Editor` and edit `header.php`. Delete or comment-out any `<meta>` tags.
+  
+	If the problem persists, try disabling other SEO plugins that may be generating meta tags.
+  
+	Troubleshooting tip: Go to `Settings > SEO Ultimate` and enable the "Insert comments around HTML code insertions" option. This will mark SEO Ultimate's meta tags with comments, allowing you to see which meta tags are generated by SEO Ultimate and which aren't.
+
+
+
+
+== Meta Robot Tags Editor ==
+
+= Overview =
+
+* **What it does:** Meta Robot Tags Editor lets you convey instructions to search engine spiders, as well as prohibit the spiders from indexing certain pages on your blog using the `<meta name="robots" content="noindex" />` tag.
+
+* **Why it helps:** The "Spider Instructions" tab lets you stop DMOZ or Yahoo! Directory from overriding your custom meta descriptions, as well as prevent spiders from caching your site if you so desire. The "Noindex" tab lets you deindex pages that contain unimportant content (e.g. the login page), or pages that mostly contain duplicate content.
+
+* **How to use it:** Adjust the settings as desired, and then click Save Changes. You can refer to the "Settings Help" tab for information on the settings available. You can also customize the noindex/nofollow robots meta statuses of an individual post or page by using the textboxes that Meta Editor adds to the post/page editors.
+
+
+= Settings Help =
+
+Here's information on the various settings:
+
+* **Spider Instructions**
+	
+	* **Don't use this site's Open Directory / Yahoo! Directory description in search results.** -- If your site is listed in the [Open Directory (DMOZ)](http://www.dmoz.org/) or the [Yahoo! Directory](http://dir.yahoo.com/), some search engines may use your directory listing as the meta description. These boxes tell search engines not to do that and will give you full control over your meta descriptions. These settings have no effect if your site isn't listed in the Open Directory or Yahoo! Directory respectively.
+
+	* **Don't cache or archive this site.** -- When you check this box, Meta Editor will ask search engines (Google, Yahoo!, Bing, etc.) and archivers (Archive.org, etc.) to _not_ make cached or archived "copies" of your site.
+
+* **Noindex**
+
+	* **Administration back-end pages** -- Tells spiders not to index the administration area (the part you're in now), in the unlikely event a spider somehow gains access to the administration. Recommended.
+
+	* **Author archives** -- Tells spiders not to index author archives. Useful if your blog only has one author.
+
+	* **Blog search pages** -- Tells spiders not to index the result pages of WordPress's blog search function. Recommended.
+
+	* **Category archives** -- Tells spiders not to index category archives. Recommended only if you don't use categories.
+
+	* **Comment feeds** -- Tells spiders not to index the RSS feeds that exist for every post's comments. (These comment feeds are totally separate from your normal blog feeds.)
+
+	* **Comment subpages** -- Tells spiders not to index posts' comment subpages.
+
+	* **Date-based archives** -- Tells spiders not to index day/month/year archives. Recommended, since these pages have little keyword value.
+
+	* **Subpages of the homepage** -- Tells spiders not to index the homepage's subpages (page 2, page 3, etc). Recommended.
+
+	* **Tag archives** -- Tells spiders not to index tag archives. Recommended only if you don't use tags.
+
+	* **User login/registration pages** -- Tells spiders not to index WordPress's user login and registration pages. Recommended.
+
+= Troubleshooting =
+
+* **What do I do if my site has multiple meta tags?**
+	First, try removing your theme's built-in meta tags if it has them. Go to `Appearance > Editor` and edit `header.php`. Delete or comment-out any `<meta>` tags.
+  
+	If the problem persists, try disabling other SEO plugins that may be generating meta tags.
+  
+	Troubleshooting tip: Go to `Settings > SEO Ultimate` and enable the "Insert comments around HTML code insertions" option. This will mark SEO Ultimate's meta tags with comments, allowing you to see which meta tags are generated by SEO Ultimate and which aren't.
+
 
 
 
@@ -267,41 +337,6 @@ The Module Manager lets you customize the visibility and accessibility of each m
 
 	If you've already specified custom anchors via WordPress's method, SEO Ultimate will import those anchors automatically into the More Link Customizer.
 
-
-
-== Noindex Manager ==
-
-= Overview =
-
-* **What it does:** Noindex Manager lets you prohibit the search engine spiders from indexing certain pages on your blog using the `<meta name="robots" content="noindex" />` tag.
-
-* **Why it helps:** This module lets you "noindex" pages that contain unimportant content (e.g. the login page), or pages that mostly contain duplicate content.
-
-* **How to use it:** Adjust the settings as desired, and then click Save Changes. You can refer to the "Settings Help" tab for information on the settings available.
-
-= Settings Help =
-
-Here's information on the various settings:
-
-* **Administration back-end pages** -- Tells spiders not to index the administration area (the part you're in now), in the unlikely event a spider somehow gains access to the administration. Recommended.
-
-* **Author archives** -- Tells spiders not to index author archives. Useful if your blog only has one author.
-
-* **Blog search pages** -- Tells spiders not to index the result pages of WordPress's blog search function. Recommended.
-
-* **Category archives** -- Tells spiders not to index category archives. Recommended only if you don't use categories.
-
-* **Comment feeds** -- Tells spiders not to index the RSS feeds that exist for every post's comments. (These comment feeds are totally separate from your normal blog feeds.)
-
-* **Comment subpages** -- Tells spiders not to index posts' comment subpages.
-
-* **Date-based archives** -- Tells spiders not to index day/month/year archives. Recommended, since these pages have little keyword value.
-
-* **Subpages of the homepage** -- Tells spiders not to index the homepage's subpages (page 2, page 3, etc). Recommended.
-
-* **Tag archives** -- Tells spiders not to index tag archives. Recommended only if you don't use tags.
-
-* **User login/registration pages** -- Tells spiders not to index WordPress's user login and registration pages. Recommended.
 
 
 
@@ -452,6 +487,19 @@ Here's information on each of the settings and its supported variables:
 
 * **Why isn't the Title Tag Rewriter changing my `<title>` tags?**
 	Try disabling other SEO plugins, as they may be conflicting with SEO Ultimate. Also, check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
+
+
+
+== Webmaster Verification Assistant ==
+
+= Overview =
+
+* **What it does:** Webmaster Verification Assistant lets you enter in verification codes for the webmaster portals of the 3 leading search engines.
+
+* **Why it helps:** Webmaster Verification Assistant assists you in obtaining access to webmaster portals, which can provide you with valuable SEO tools.
+
+* **How to use it:** Use a search engine to locate the webmaster portal you're interested in, sign up at the portal, and then obtain a verification code. Once you have the code, you can paste it in here, click Save Changes, then return to the portal to verify that you own the site. Once that's done, you'll have access to the portal's SEO tools.
+
 
 
 == Plugin Settings ==
