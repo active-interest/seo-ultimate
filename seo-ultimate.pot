@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 4.0 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 4.2 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 4.0\n"
+"Project-Id-Version: SEO Ultimate 4.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-08-03 17:03+0000\n"
+"POT-Creation-Date: 2010-08-05 14:41+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -158,7 +158,7 @@ msgstr ""
 msgid "404 Monitor Settings"
 msgstr ""
 
-#: modules/404s/fofs-settings.php:17
+#: modules/404s/fofs-settings.php:17 modules/titles/titles.php:24
 msgid "Settings"
 msgstr ""
 
@@ -227,69 +227,77 @@ msgstr ""
 msgid "Content Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:94
+#: modules/autolinks/content-autolinks.php:96
 msgid ""
 "The Content Links section of Deeplink Juggernaut lets you automatically link "
 "a certain word or phrase in your post/page content to a URL you specify."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:127
+#: modules/autolinks/content-autolinks.php:129
 msgid "Edit Existing Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:131
+#: modules/autolinks/content-autolinks.php:133
 msgid "Add a New Link"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:139
+#: modules/autolinks/content-autolinks.php:141
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:140
+#: modules/autolinks/content-autolinks.php:142
 msgid "Destination Type"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:141
+#: modules/autolinks/content-autolinks.php:143
 msgid "Destination"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:142
+#: modules/autolinks/content-autolinks.php:144
 msgid "Title Attribute"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:143
+#: modules/autolinks/content-autolinks.php:145
 msgid "Options"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:145
+#: modules/autolinks/content-autolinks.php:147
 msgid "Delete"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:183
+#: modules/autolinks/content-autolinks.php:185
 msgid "Custom"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:183
+#: modules/autolinks/content-autolinks.php:185
 msgid "URL"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:184
+#: modules/autolinks/content-autolinks.php:186
 msgid "Content Items"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:191
+#: modules/autolinks/content-autolinks.php:193
 msgid "Nofollow"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:192
+#: modules/autolinks/content-autolinks.php:194
 msgid "New window"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:255
+#: modules/autolinks/content-autolinks.php:257
 msgid "Incoming Autolink Anchors:<br /><em>(one per line)</em>"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:260
+#: modules/autolinks/content-autolinks.php:258
+msgid "Don&#8217;t add autolinks to anchor texts found in this post."
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:258
+msgid "Autolink Exclusion:"
+msgstr ""
+
+#: modules/autolinks/content-autolinks.php:263
 msgid ""
 "<strong>Incoming Autolink Anchors</strong> &mdash; When you enter anchors "
 "into this box, Deeplink Juggernaut will search for that anchor in all your "
@@ -1097,7 +1105,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.0)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.2)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1403,7 +1411,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.0)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:756
 msgid "SEO Ultimate"
@@ -1521,111 +1529,120 @@ msgstr ""
 msgid "Default Formats"
 msgstr ""
 
-#: modules/titles/titles.php:29
+#: modules/titles/titles.php:30
 msgid "Title Tag"
 msgstr ""
 
-#: modules/titles/titles.php:44
-msgid "{blog}"
+#: modules/titles/titles.php:43
+msgid ""
+"Convert lowercase category/tag names to title case when used in title tags."
 msgstr ""
 
-#: modules/titles/titles.php:45
-msgid "{post} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:46
-msgid "{page} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:47
-msgid "{category} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:48
-msgid "{tag} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:49
-msgid "Archives for {month} {day}, {year} | {blog}"
-msgstr ""
-
-#: modules/titles/titles.php:50
-msgid "Archives for {month} {year} | {blog}"
+#: modules/titles/titles.php:43
+msgid "Title Tag Variables"
 msgstr ""
 
 #: modules/titles/titles.php:51
-msgid "Archives for {year} | {blog}"
+msgid "{blog}"
 msgstr ""
 
 #: modules/titles/titles.php:52
-msgid "Posts by {author} | {blog}"
+msgid "{post} | {blog}"
 msgstr ""
 
 #: modules/titles/titles.php:53
-msgid "Search Results for {query} | {blog}"
+msgid "{page} | {blog}"
 msgstr ""
 
 #: modules/titles/titles.php:54
-msgid "404 Not Found | {blog}"
+msgid "{category} | {blog}"
 msgstr ""
 
 #: modules/titles/titles.php:55
-msgid "{title} - Page {num}"
+msgid "{tag} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:56
+msgid "Archives for {month} {day}, {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:57
+msgid "Archives for {month} {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:58
+msgid "Archives for {year} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:59
+msgid "Posts by {author} | {blog}"
+msgstr ""
+
+#: modules/titles/titles.php:60
+msgid "Search Results for {query} | {blog}"
 msgstr ""
 
 #: modules/titles/titles.php:61
-msgid "Blog Homepage Title"
+msgid "404 Not Found | {blog}"
 msgstr ""
 
 #: modules/titles/titles.php:62
-msgid "Post Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:63
-msgid "Page Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:64
-msgid "Category Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:65
-msgid "Tag Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:66
-msgid "Day Archive Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:67
-msgid "Month Archive Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:68
-msgid "Year Archive Title Format"
-msgstr ""
-
-#: modules/titles/titles.php:69
-msgid "Author Archive Title Format"
+msgid "{title} - Page {num}"
 msgstr ""
 
 #: modules/titles/titles.php:70
-msgid "Search Title Format"
+msgid "Blog Homepage Title"
 msgstr ""
 
 #: modules/titles/titles.php:71
-msgid "404 Title Format"
+msgid "Post Title Format"
 msgstr ""
 
 #: modules/titles/titles.php:72
+msgid "Page Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:73
+msgid "Category Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:74
+msgid "Tag Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:75
+msgid "Day Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:76
+msgid "Month Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:77
+msgid "Year Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:78
+msgid "Author Archive Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:79
+msgid "Search Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:80
+msgid "404 Title Format"
+msgstr ""
+
+#: modules/titles/titles.php:81
 msgid "Pagination Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:285
+#: modules/titles/titles.php:299
 msgid "Title Tag:"
 msgstr ""
 
-#: modules/titles/titles.php:290
+#: modules/titles/titles.php:304
 msgid ""
 "<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; "
 "tag. The title appears in visitors&#8217; title bars and in search engine "
