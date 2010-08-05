@@ -33,6 +33,8 @@ class SU_ContentAutolinks extends SU_Module {
 	
 	function autolink_content($content) {
 		
+		if ($this->get_postmeta('disable_autolinks')) return $content;
+		
 		$links = $this->get_setting('links', array());
 		if (!count($links)) return $content;
 		
@@ -253,6 +255,7 @@ class SU_ContentAutolinks extends SU_Module {
 	
 	function postmeta_fields($fields) {
 		$fields['35|autolinks'] = $this->get_postmeta_textarea('autolinks', __('Incoming Autolink Anchors:<br /><em>(one per line)</em>', 'seo-ultimate'));
+		$fields['38|disable_autolinks'] = $this->get_postmeta_checkbox('disable_autolinks', __('Don&#8217;t add autolinks to anchor texts found in this post.', 'seo-ultimate'), __('Autolink Exclusion:', 'seo-ultimate'));
 		return $fields;
 	}
 	

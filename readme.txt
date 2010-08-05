@@ -3,19 +3,19 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.1
+Stable tag: 4.2
 
-This all-in-one SEO plugin gives you control over titles, noindex/nofollow, meta tags, slugs, canonical tags, autolinks, 404 errors, rich snippets, and more.
+This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
 == Description ==
 
 = Recent Releases =
 
+* Version 4.2 adds the option to exclude specific posts/pages from being autolinked
 * Version 4.1 adds tag title capitalization for title tags
 * Version 4.0 adds meta description mass-editor for posts, pages, attachments, and custom post types
 * Version 3.9 adds the ability to build internal links to posts from within the WordPress post editor (as well as other Deeplink Juggernaut improvements)
 * Version 3.8 adds direct post/page link support to Deeplink Juggernaut
-* Version 3.7 adds the "SEO Settings" box to custom post type editors
 
 = Features =
 
@@ -79,8 +79,9 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut** -- UPDATED in Version 3.9
+* **Deeplink Juggernaut** -- UPDATED in Version 4.2
 	* Automatically link phrases in your posts/pages to other posts/pages or to custom URLs.
+	* Exclude specific posts/pages from having links added to them, if desired (e.g. contact pages, the homepage, etc.).
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Control the maximum number of autolinks added to each post/page.
 	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
@@ -212,6 +213,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.2 (August 5, 2010) =
+* Feature: Users can now stop autolinks from being added to specific posts/pages
 
 = Version 4.1 (August 4, 2010) =
 * Feature: Title Tag Rewriter now automatically converts lowercase category/tag names into title case when used in title tags (can be adjusted under the new "Settings" tab of Title Tag Rewriter)
