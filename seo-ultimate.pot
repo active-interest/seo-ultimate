@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 4.2 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 4.3 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 4.2\n"
+"Project-Id-Version: SEO Ultimate 4.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-08-05 14:41+0000\n"
+"POT-Creation-Date: 2010-08-06 23:37+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -760,36 +760,44 @@ msgstr ""
 msgid "Meta Descriptions"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:24 modules/meta/meta-keywords.php:22
+#: modules/meta/meta-descriptions.php:24 modules/titles/titles.php:23
+msgid "Default Formats"
+msgstr ""
+
+#: modules/meta/meta-descriptions.php:25 modules/meta/meta-keywords.php:22
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:30
+#: modules/meta/meta-descriptions.php:31
 msgid "Meta Description"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:43
+#: modules/meta/meta-descriptions.php:46
+msgid "Post Description Format"
+msgstr ""
+
+#: modules/meta/meta-descriptions.php:53
 msgid "Blog Homepage Meta Description"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:45
+#: modules/meta/meta-descriptions.php:55
 msgid "Use this blog&#8217s tagline as the default homepage description."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:46
+#: modules/meta/meta-descriptions.php:56
 msgid "Default Value"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:82
+#: modules/meta/meta-descriptions.php:95
 msgid "Meta Description:"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:85
+#: modules/meta/meta-descriptions.php:98
 #, php-format
 msgid "You&#8217;ve entered %s characters. Most search engines use up to 160."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:93
+#: modules/meta/meta-descriptions.php:106
 msgid ""
 "<strong>Description</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
@@ -1105,7 +1113,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.3)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1411,7 +1419,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:756
 msgid "SEO Ultimate"
@@ -1523,10 +1531,6 @@ msgstr ""
 
 #: modules/titles/titles.php:12
 msgid "Title Tag Rewriter"
-msgstr ""
-
-#: modules/titles/titles.php:23
-msgid "Default Formats"
 msgstr ""
 
 #: modules/titles/titles.php:30
