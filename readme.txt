@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.2
+Stable tag: 4.3
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 4.3 adds the ability to use the post's excerpt as its default meta description
 * Version 4.2 adds the option to exclude specific posts/pages from being autolinked
 * Version 4.1 adds tag title capitalization for title tags
 * Version 4.0 adds meta description mass-editor for posts, pages, attachments, and custom post types
 * Version 3.9 adds the ability to build internal links to posts from within the WordPress post editor (as well as other Deeplink Juggernaut improvements)
-* Version 3.8 adds direct post/page link support to Deeplink Juggernaut
 
 = Features =
 
@@ -27,7 +27,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
-* **Meta Description Editor** -- UPDATED in Version 4.0
+* **Meta Description Editor** -- UPDATED in Version 4.3
 	* Edit the `<meta>` description tags for posts, pages, and the homepage.
 	* Increase SERP clickthrough rates by influence search engine result snippets.
 	* Mass-editor makes it a cinch to go back and add descriptions to old posts.
@@ -213,6 +213,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.3 (August 6, 2010) =
+* Feature: Added new meta description format field for posts (allows you to set a default post meta description incorporating the post's excerpt)
 
 = Version 4.2 (August 5, 2010) =
 * Feature: Users can now stop autolinks from being added to specific posts/pages

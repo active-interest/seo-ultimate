@@ -21,7 +21,8 @@ class SU_MetaDescriptions extends SU_Module {
 	function get_admin_page_tabs() {
 		return array_merge(
 			  array(
-				  __('Blog Homepage') => 'home_tab'
+				  __('Default Formats', 'seo-ultimate') => 'formats_tab'
+				, __('Blog Homepage', 'seo-ultimate') => 'home_tab'
 				)
 			, $this->get_postmeta_edit_tabs(array(
 				  'type' => 'textarea'
@@ -34,8 +35,17 @@ class SU_MetaDescriptions extends SU_Module {
 	
 	function get_default_settings() {
 		return array(
-			'home_description_tagline_default' => true
+			  'home_description_tagline_default' => true
+			, 'description_posttype_post' => '{excerpt}'
 		);
+	}
+	
+	function formats_tab() {
+		$this->admin_form_table_start();
+		$this->textboxes(array(
+			  'description_posttype_post' => __('Post Description Format', 'seo-ultimate')			
+		));
+		$this->admin_form_table_end();
 	}
 	
 	function home_tab() {
@@ -59,6 +69,9 @@ class SU_MetaDescriptions extends SU_Module {
 		//If we're viewing a post or page, look for its meta data.
 		} elseif (is_singular()) {
 			$desc = $this->get_postmeta('description');
+			
+			if (!trim($desc) && !post_password_required() && $format = $this->get_setting('description_posttype_'.get_post_type()))
+				$desc = str_replace('{excerpt}', get_the_excerpt(), $format);
 		
 		//If we're viewing a term, look for its meta data.
 		} elseif (is_category() || is_tag() || is_tax()) {
