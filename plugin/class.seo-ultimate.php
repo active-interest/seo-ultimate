@@ -747,6 +747,7 @@ class SEO_Ultimate {
 			if (	($this->dbdata['modules'][$key] > SU_MODULE_SILENCED || !count($this->dbdata['modules']))
 					&& $module->get_menu_count() > 0
 					&& $module->get_menu_parent() == 'seo'
+					&& $module->is_independent_module()
 					)
 				$count += $module->get_menu_count();
 		}

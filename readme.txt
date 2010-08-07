@@ -221,6 +221,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Improvement: Meta Keywords Editor now fixes keywords that are incorrectly separated with newlines instead of commas
 * Improvement: Meta Keywords Editor now removes extra spaces from the keywords list
 * Improvement: Title Tag Rewriter can now rewrite empty `<title></title>` tags
+* Bugfix: The SEO menu no longer doubles the alert count of modules
 
 = Version 4.3 (August 6, 2010) =
 * Feature: Added new meta description format field for posts (allows you to set a default post meta description incorporating the post's excerpt)
