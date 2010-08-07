@@ -19,7 +19,16 @@ class SU_MetaKeywords extends SU_Module {
 	}
 	
 	function get_admin_page_tabs() {
-		return array(__('Blog Homepage') => 'home_tab');
+		return array(
+			  __('Default Values', 'seo-ultimate') => 'defaults_tab'
+			, __('Blog Homepage', 'seo-ultimate') => 'home_tab'
+		);
+	}
+	
+	function defaults_tab() {
+		$this->admin_form_table_start();
+		$this->textarea('global_keywords', __('Sitewide Keywords', 'seo-ultimate') . '<br /><small><em>' . __('(Separate with commas)', 'seo-ultimate') . '</em></small>');
+		$this->admin_form_table_end();
 	}
 	
 	function home_tab() {
@@ -46,6 +55,18 @@ class SU_MetaKeywords extends SU_Module {
 			$tax_keywords = $this->get_setting('taxonomy_keywords');
 			$kw = $tax_keywords[$wp_query->get_queried_object_id()];
 		}
+		
+		if ($globals = $this->get_setting('global_keywords')) {
+			if (strlen($kw)) $kw .= ',';
+			$kw .= $globals;
+		}
+		
+		$kw = str_replace(array("\r\n", "\n"), ',', $kw);
+		$kw = explode(',', $kw);
+		$kw = array_map('trim', $kw); //Remove extra spaces from beginning/end of keywords
+		$kw = array_filter($kw); //Remove blank keywords
+		$kw = array_unique($kw); //Remove duplicate keywords
+		$kw = implode(',', $kw);
 		
 		//Do we have keywords? If so, output them.
 		if ($kw) {

@@ -214,7 +214,9 @@ Meta Keywords Editor lets you tell search engines what keywords are associated w
 
 = Settings Help =
 
-* **Blog Homepage Meta Keywords** -- Here you can enter keywords that describe the overall subject matter of your entire blog. Use commas to separate keywords. Your keywords will be put in the `<meta name="keywords" />` tag on your blog homepage.
+* **Sitewide Keywords** -- Here you can enter keywords that describe the overall subject matter of your entire blog. Use commas to separate keywords. These keywords will be put in the `<meta name="keywords" />` tags of all webpages on the site (homepage, posts, pages, archives, etc.).
+
+* **Blog Homepage Meta Keywords** -- These keywords will be applied only to the _blog_ homepage. Note that if you've specified a "front page" under `Settings > Reading`, you'll need to edit your frontpage and set your frontpage keywords there.
 
 = FAQ =
 
@@ -223,6 +225,10 @@ Meta Keywords Editor lets you tell search engines what keywords are associated w
 	
 	If you have configured your `Settings > Reading` section to use a "frontpage" (i.e. a Page as your homepage), just edit that Page under `Pages > Edit` and use the "Meta Keywords" field in the "SEO Settings" box.
 
+* **What happens if I add a global keyword that I previously assigned to individual posts or pages?**
+	Don't worry; Meta Keywords Editor will remove duplicate keywords automatically.
+	
+	
 = Troubleshooting =
 
 * **What do I do if my site has multiple meta tags?**

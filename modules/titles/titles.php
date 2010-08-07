@@ -102,7 +102,7 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function should_rewrite_title() {
-		return (!is_feed() && strlen(strval($this->get_title_format())) > 0);
+		return (!is_admin() && !is_feed() && strlen(strval($this->get_title_format())) > 0);
 	}
 	
 	function before_header() {
@@ -126,7 +126,7 @@ class SU_Titles extends SU_Module {
 		if (!$title) return $head;
 		
 		//Replace the old title with the new and return
-		return eregi_replace('<title>[^<]+</title>', '<title>'.$title.'</title>', $head);
+		return eregi_replace('<title>[^<]*</title>', '<title>'.$title.'</title>', $head);
 	}
 	
 	function get_title() {
