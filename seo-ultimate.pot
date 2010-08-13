@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin SEO Ultimate 4.4 by SEO Design Solutions.
+# Translation of the WordPress plugin SEO Ultimate 4.5 by SEO Design Solutions.
 # Copyright (C) 2010 SEO Design Solutions
 # This file is distributed under the same license as the SEO Ultimate package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 4.4\n"
+"Project-Id-Version: SEO Ultimate 4.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-08-07 15:38+0000\n"
+"POT-Creation-Date: 2010-08-13 16:31+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,7 +67,7 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:115 modules/class.su-module.php:1163
+#: modules/404s/fofs-log.php:115 modules/class.su-module.php:1208
 msgid "Actions"
 msgstr ""
 
@@ -233,71 +233,71 @@ msgid ""
 "a certain word or phrase in your post/page content to a URL you specify."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:129
+#: modules/autolinks/content-autolinks.php:130
 msgid "Edit Existing Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:133
+#: modules/autolinks/content-autolinks.php:134
 msgid "Add a New Link"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:141
+#: modules/autolinks/content-autolinks.php:142
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:142
+#: modules/autolinks/content-autolinks.php:143
 msgid "Destination Type"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:143
+#: modules/autolinks/content-autolinks.php:144
 msgid "Destination"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:144
+#: modules/autolinks/content-autolinks.php:145
 msgid "Title Attribute"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:145
+#: modules/autolinks/content-autolinks.php:146
 msgid "Options"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:147
+#: modules/autolinks/content-autolinks.php:148
 msgid "Delete"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:185
+#: modules/autolinks/content-autolinks.php:192
 msgid "Custom"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:185
+#: modules/autolinks/content-autolinks.php:192
 msgid "URL"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:186
+#: modules/autolinks/content-autolinks.php:193
 msgid "Content Items"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:193
+#: modules/autolinks/content-autolinks.php:200
 msgid "Nofollow"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:194
+#: modules/autolinks/content-autolinks.php:201
 msgid "New window"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:257
+#: modules/autolinks/content-autolinks.php:265
 msgid "Incoming Autolink Anchors:<br /><em>(one per line)</em>"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:258
+#: modules/autolinks/content-autolinks.php:266
 msgid "Don&#8217;t add autolinks to anchor texts found in this post."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:258
+#: modules/autolinks/content-autolinks.php:266
 msgid "Autolink Exclusion:"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:263
+#: modules/autolinks/content-autolinks.php:271
 msgid ""
 "<strong>Incoming Autolink Anchors</strong> &mdash; When you enter anchors "
 "into this box, Deeplink Juggernaut will search for that anchor in all your "
@@ -353,64 +353,64 @@ msgid ""
 "SEO Ultimate and may be outdated.)"
 msgstr ""
 
-#: modules/class.su-module.php:964
+#: modules/class.su-module.php:1007
 #, php-format
 msgid "%s %s|Dropdown Title"
 msgstr ""
 
-#: modules/class.su-module.php:992
+#: modules/class.su-module.php:1035
 #, php-format
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1049
+#: modules/class.su-module.php:1092
 msgid "Name"
 msgstr ""
 
-#: modules/class.su-module.php:1060
+#: modules/class.su-module.php:1103
 msgid "Your site currently doesn&#8217;t have any public items of this type."
 msgstr ""
 
-#: modules/class.su-module.php:1142
+#: modules/class.su-module.php:1187
 msgid "&laquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1143
+#: modules/class.su-module.php:1188
 msgid "&raquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1150
+#: modules/class.su-module.php:1195
 #, php-format
 msgid "Displaying %s&#8211;%s of %s"
 msgstr ""
 
-#: modules/class.su-module.php:1164
+#: modules/class.su-module.php:1209
 msgid "ID"
 msgstr ""
 
-#: modules/class.su-module.php:1197
+#: modules/class.su-module.php:1242
 msgid "View"
 msgstr ""
 
-#: modules/class.su-module.php:1197
+#: modules/class.su-module.php:1242
 msgid "Edit"
 msgstr ""
 
-#: modules/class.su-module.php:1350
+#: modules/class.su-module.php:1397
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1370
+#: modules/class.su-module.php:1421
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1858
+#: modules/class.su-module.php:1909
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:1873 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:1924 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
@@ -1125,7 +1125,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.4)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.5)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1431,9 +1431,9 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.4)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:757
+#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:760
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -1441,7 +1441,7 @@ msgstr ""
 msgid "Uninstaller"
 msgstr ""
 
-#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1244
+#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1247
 msgid "Uninstall"
 msgstr ""
 
@@ -1694,80 +1694,80 @@ msgstr ""
 msgid "Code Inserter module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:757
+#: plugin/class.seo-ultimate.php:760
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1035
+#: plugin/class.seo-ultimate.php:1038
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1037
+#: plugin/class.seo-ultimate.php:1040
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1039
+#: plugin/class.seo-ultimate.php:1042
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1094
+#: plugin/class.seo-ultimate.php:1097
 #, php-format
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1135
+#: plugin/class.seo-ultimate.php:1138
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1135
+#: plugin/class.seo-ultimate.php:1138
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1136
+#: plugin/class.seo-ultimate.php:1139
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1136
+#: plugin/class.seo-ultimate.php:1139
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1137
+#: plugin/class.seo-ultimate.php:1140
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1137
+#: plugin/class.seo-ultimate.php:1140
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1138
+#: plugin/class.seo-ultimate.php:1141
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1138
+#: plugin/class.seo-ultimate.php:1141
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1169
+#: plugin/class.seo-ultimate.php:1172
 #, php-format
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1175
+#: plugin/class.seo-ultimate.php:1178
 #, php-format
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1177
+#: plugin/class.seo-ultimate.php:1180
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1264
+#: plugin/class.seo-ultimate.php:1267
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1325
+#: plugin/class.seo-ultimate.php:1328
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -1775,7 +1775,7 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1435
+#: plugin/class.seo-ultimate.php:1438
 msgid "SEO Settings"
 msgstr ""
 
@@ -1854,7 +1854,7 @@ msgstr ""
 msgid "Plugin upgraded successfully."
 msgstr ""
 
-#: seo-ultimate.php:85
+#: seo-ultimate.php:89
 #, php-format
 msgid ""
 "SEO Ultimate requires WordPress %s or above. Please upgrade to the latest "
