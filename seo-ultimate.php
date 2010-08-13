@@ -3,7 +3,7 @@
 Plugin Name: SEO Ultimate
 Plugin URI: http://www.seodesignsolutions.com/wordpress-seo/
 Description: This all-in-one SEO plugin gives you control over title tags, noindex/nofollow, meta tags, rich snippets, slugs, canonical tags, autolinks, 404 errors, rich snippets, and more.
-Version: 4.4
+Version: 4.5
 Author: SEO Design Solutions
 Author URI: http://www.seodesignsolutions.com/
 Text Domain: seo-ultimate
@@ -12,7 +12,7 @@ Text Domain: seo-ultimate
 /**
  * The main SEO Ultimate plugin file.
  * @package SeoUltimate
- * @version 4.4
+ * @version 4.5
  * @link http://www.seodesignsolutions.com/wordpress-seo/ SEO Ultimate Homepage
  */
 
@@ -47,18 +47,22 @@ define('SU_MINIMUM_WP_VER', '2.8');
 //Reading plugin info from constants is faster than trying to parse it from the header above.
 define('SU_PLUGIN_NAME', 'SEO Ultimate');
 define('SU_PLUGIN_URI', 'http://www.seodesignsolutions.com/wordpress-seo/');
-define('SU_VERSION', '4.4');
+define('SU_VERSION', '4.5');
 define('SU_AUTHOR', 'SEO Design Solutions');
 define('SU_AUTHOR_URI', 'http://www.seodesignsolutions.com/');
-define('SU_USER_AGENT', 'SeoUltimate/4.4');
+define('SU_USER_AGENT', 'SeoUltimate/4.5');
 
 /********** INCLUDES **********/
 
 //Libraries
 include 'includes/jlfunctions/jlfunctions.php';
 include 'includes/jlwp/jlwp.php';
-if (!class_exists('Markdown'))
+
+function su_load_markdown() {
+if (!class_exists('Markdown') && !class_exists('Markdown_Parser'))
 	include_once 'includes/markdown/markdown.php';
+}
+add_action('plugins_loaded', 'su_load_markdown');
 
 //Plugin files
 include 'plugin/su-constants.php';

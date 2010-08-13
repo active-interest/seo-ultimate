@@ -400,11 +400,15 @@ class SU_Module {
 	 */
 	function load_default_settings() {
 		
+		$save = false;
 		$defaults = $this->get_default_settings();
 		foreach ($defaults as $setting => $default) {
-			if ($this->get_setting($setting, "{reset}") === "{reset}")
-				$this->update_setting($setting, $default);
+			if ($this->get_setting($setting, "{reset}") === "{reset}") {
+				$this->update_setting($setting, $default, null, null, false);
+				$save = true;
+			}
 		}
+		if ($save) $this->plugin->save_dbdata();
 	}
 	
 	
@@ -676,7 +680,7 @@ class SU_Module {
 	 * @param string $value The new value to assign to the setting.
 	 * @param string|null $module The module to which the setting belongs. Defaults to the current module's settings key. Optional.
 	 */
-	function update_setting($key, $value, $module=null, $array_key=null) {
+	function update_setting($key, $value, $module=null, $array_key=null, $save=true) {
 		if (!$module) $module = $this->get_settings_key();
 		
 		$use_custom  = 	apply_filters("su_custom_update_setting-$module-$key", false, $value, $key) ||
@@ -688,6 +692,8 @@ class SU_Module {
 			else
 				$this->plugin->dbdata['settings'][$module][$key] = $value;
 		}
+		
+		if ($save && !$this->is_action('update')) $this->plugin->save_dbdata();
 	}
 	
 	/**
@@ -753,6 +759,8 @@ class SU_Module {
 				unset($this->plugin->dbdata['settings'][$module][$key][$array_key]);
 			else
 				unset($this->plugin->dbdata['settings'][$module][$key]);
+			
+			$this->plugin->save_dbdata();
 		}
 	}
 	
@@ -766,7 +774,8 @@ class SU_Module {
 	 */
 	function update_settings($settings) {
 		foreach ($settings as $key => $value)
-			update_setting($key, $value);
+			update_setting($key, $value, null, null, false);
+		$this->plugin->save_dbdata();
 	}
 	
 	/**
@@ -781,6 +790,40 @@ class SU_Module {
 	function get_default_setting($key) {
 		$defaults = $this->get_default_settings();
 		return $defaults[$key];
+	}
+	
+	
+	/********** LOG FUNCTIONS **********/
+	
+	/**
+	 * Retrieves the module's log.
+	 * 
+	 * @since 4.5
+	 * @uses get_settings_key()
+	 * 
+	 * @return array
+	 */
+	function get_log() {
+		$module = $this->get_settings_key();
+		
+		if (isset($this->plugin->dbdata['logs']
+				, $this->plugin->dbdata['logs'][$module]))
+			return $this->plugin->dbdata['settings'][$module][$key];
+		
+		return array();
+	}
+	
+	/**
+	 * Updates the module's log array.
+	 * 
+	 * @since 4.5
+	 * @uses get_settings_key()
+	 * 
+	 * @param string $value The entirety of the log to be updated.
+	 */
+	function update_log($value) {
+		$module = $this->get_settings_key();
+		$this->plugin->dbdata['logs'][$module] = $value;
 	}
 	
 	
@@ -931,7 +974,7 @@ class SU_Module {
 	 * @since 0.8
 	 */
 	function admin_page_tabs_init() {
-		add_action('admin_print_scripts', array(&$this, 'admin_page_tabs_js'));
+		add_action('admin_enqueue_scripts', array(&$this, 'admin_page_tabs_js'));
 	}
 	
 	/**
@@ -1084,7 +1127,7 @@ class SU_Module {
 		$search = $_REQUEST[$type . '_s'];
 		
 		//Save meta if applicable
-		if ($is_update = ($this->is_action('update') && !strlen(trim($search))))
+		if ($is_update = ($this->is_action('update') && !strlen(trim($search)))) {
 			foreach ($_POST as $key => $value)
 				if (sustr::startswith($key, $genus.'_'))
 					foreach ($fields as $field)
@@ -1092,10 +1135,12 @@ class SU_Module {
 							$id = (int)$matches[1];
 							switch ($genus) {
 								case 'post': update_post_meta($id, "_su_{$field['name']}", $_POST[$key]); break;
-								case 'term': $this->update_setting($field['term_settings_key'], $_POST[$key], null, $id); break;
+								case 'term': $this->update_setting($field['term_settings_key'], $_POST[$key], null, $id, false); break;
 							}
 							continue 2; //Go to next $_POST item
 						}
+			if ($genus == 'term') $this->plugin->save_dbdata();
+		}
 		
 		$pagenum = isset( $_GET[$type . '_paged'] ) ? absint( $_GET[$type . '_paged'] ) : 0;
 		if ( empty($pagenum) ) $pagenum = 1;
@@ -1270,8 +1315,10 @@ class SU_Module {
 				return $html;
 				break;
 			case 'dropdown':
-				if (is_array($extra))
-					return "<select name='$name'$inputid onchange='javascript:su_toggle_select_children(this)' class='dropdown'>".suhtml::option_tags($extra, $value)."</select>";
+				$html = "<select name='$name'$inputid onchange='javascript:su_toggle_select_children(this)' class='dropdown'>";
+				if (is_array($extra)) $html .= suhtml::option_tags($extra, $value); else $html .= $extra;
+				$html .= "</select>";
+				return $html;
 				break;
 			case 'hidden':
 				return "<input name='$name'$inputid value='$value' type='hidden' />";
@@ -1367,6 +1414,10 @@ class SU_Module {
 	 * @param boolean $table Whether or not a form table should be ended.
 	 */
 	function admin_form_end($button = null, $table = true) {
+		
+		if ($this->is_action('update'))
+			$this->plugin->save_dbdata();
+		
 		if ($button === null) $button = __('Save Changes'); //This string is used in normal WP, so we don't need a textdomain
 		if ($table) echo "</table>\n";
 		
@@ -2343,6 +2394,7 @@ class SU_Module {
 			
 			//Make a record of it
 			$this->plugin->dbdata['cron'][$mk][$function] = array($hook, $start, $recurrance);
+			$this->plugin->save_dbdata();
 			
 			//Run the event now
 			call_user_func(array($this, $function));

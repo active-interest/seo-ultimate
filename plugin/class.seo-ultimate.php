@@ -144,7 +144,6 @@ class SEO_Ultimate {
 		
 		//Save
 		add_action('shutdown', array(&$this, 'save_hit'));
-		add_action('shutdown', array(&$this, 'save_dbdata'));
 		
 		/********** CLASS CONSTRUCTION **********/
 		
@@ -175,7 +174,7 @@ class SEO_Ultimate {
 		
 		//Store the current version in the database.
 		$this->dbdata['version'] = $version;
-		
+		if ($oldversion != $version) $this->save_dbdata();
 		
 		/********** INITIALIZATION **********/
 		
@@ -277,6 +276,7 @@ class SEO_Ultimate {
 		if (!isset($this->dbdata['settings']) && is_readable($settingsfile = $this->plugin_dir_path.'settings.txt')) {
 			$import = base64_decode(file_get_contents($settingsfile));
 			if (is_serialized($import)) $this->dbdata['settings'] = unserialize($import);
+			$this->save_dbdata();
 		}
 	}
 	
@@ -306,6 +306,7 @@ class SEO_Ultimate {
 				delete_option("su_$option");
 			}
 		}
+		$this->save_dbdata();
 	}
 	
 	/**
@@ -327,11 +328,15 @@ class SEO_Ultimate {
 	 * @param array $copy
 	 */
 	function copy_module_states($copy) {
+		$save = false;
 		foreach ($copy as $from => $tos)
 			if (isset($this->dbdata['modules'][$from]))
 				foreach ((array)$tos as $to)
-					if (!isset($this->dbdata['modules'][$to]))
+					if (!isset($this->dbdata['modules'][$to])) {
 						$this->dbdata['modules'][$to] = $this->dbdata['modules'][$from];
+						$save = true;
+					}
+		if ($save) $this->save_dbdata();
 	}
 	
 	/**
@@ -384,9 +389,6 @@ class SEO_Ultimate {
 		//Delete all database data
 		$this->dbdata = array();
 		delete_option('seo_ultimate');
-		
-		//Stop the database data from being re-saved
-		remove_action('shutdown', array(&$this, 'save_dbdata'));
 	}
 	
 	
@@ -546,6 +548,7 @@ class SEO_Ultimate {
 		
 		//Save the new modules list
 		$this->dbdata['modules'] = $newmodules;
+		if ($newmodules != $oldmodules) $this->save_dbdata();
 		
 		//Remove the cron jobs of deleted modules
 		$this->remove_cron_jobs();
@@ -1535,6 +1538,8 @@ class SEO_Ultimate {
 			}
 			
 			$this->dbdata['cron'] = $newcrondata;
+			
+			$this->save_dbdata();
 		}
 	}
 	

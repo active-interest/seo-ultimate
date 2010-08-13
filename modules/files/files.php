@@ -37,7 +37,7 @@ class SU_Files extends SU_Module {
 		
 		//Initialize variables
 		$exists = $writable = false;
-		$is_super_admin = !function_exists('is_super_admin') || !function_exists('is_multisite') || (is_multisite() && is_super_admin());
+		$is_super_admin = !function_exists('is_super_admin') || !function_exists('is_multisite') || !is_multisite() || is_super_admin();
 		
 		//Does the server run Apache?
 		if ($is_apache) {

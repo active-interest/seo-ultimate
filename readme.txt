@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.4
+Stable tag: 4.5
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 4.5 adds bugfixes
 * Version 4.4 adds a new field for entering sitewide meta keywords
 * Version 4.3 adds the ability to use the post's excerpt as its default meta description
 * Version 4.2 adds the option to exclude specific posts/pages from being autolinked
 * Version 4.1 adds tag title capitalization for title tags
-* Version 4.0 adds meta description mass-editor for posts, pages, attachments, and custom post types
 
 = Features =
 
@@ -214,6 +214,13 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.5 (August 13, 2010) =
+* Improvement: SEO Ultimate now only saves database data when its settings are updated
+* Bugfix: Fixed array_combine() error when importing CSV files
+* Bugfix: Restored htaccess editing for non-multisite installations, fixing a feature regression introduced in version 3.9
+* Bugfix: The "new window" option no longer checks itself by default in Deeplink Juggernaut
+* Bugfix: Fixed conflict with the "Markdown for WordPress and bbPress" plugin
 
 = Version 4.4 (August 7, 2010) =
 * Feature: Added new "Global Keywords" textbox to Meta Keywords Editor, which allows sitewide keywords to be specified

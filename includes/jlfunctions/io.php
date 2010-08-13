@@ -41,6 +41,14 @@ class suio {
 		
 		//Get the rows
 		while (($row = fgetcsv($handle, 99999, ',')) !== false) {
+			
+			if (count($row) > count($headers))
+				//Too long
+				$row = array_slice($row, 0, count($headers));
+			elseif (count($row) < count($headers))
+				//Too short
+				$row = array_pad($row, count($headers), '');
+			
 			$new = array_combine($headers, $row);
 			if ($new !== false) $result[] = $new;
 		}

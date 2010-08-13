@@ -103,9 +103,10 @@ class SU_ContentAutolinks extends SU_Module {
 			
 			$links = array();
 			
+			$guid = stripslashes($_POST['_link_guid']);
+			
 			for ($i=0; $i <= $num_links; $i++) {
 				
-				$guid   = stripslashes($_POST['_link_guid']);
 				$anchor = stripslashes($_POST["link_{$i}_anchor"]);
 				$to_type= stripslashes($_POST["link_{$i}_to_type__{$guid}"]);
 				$to_id  = stripslashes($_POST["link_{$i}_to_id_{$to_type}__{$guid}"]);
@@ -151,8 +152,7 @@ class SU_ContentAutolinks extends SU_Module {
 		
 		//Get post options
 		$posttypeobjs = suwp::get_post_type_objects();
-		$posttypes = array();
-		$posts = array();
+		$posttypes = $posts = $postoptions = array();
 		foreach ($posttypeobjs as $posttypeobj) {
 			
 			$stati = get_available_post_statuses($posttypeobj->name);
@@ -162,7 +162,8 @@ class SU_ContentAutolinks extends SU_Module {
 			$typeposts = get_posts("post_status=$stati&numberposts=-1&post_type=".$posttypeobj->name);
 			if (count($typeposts)) {
 				$posttypes['posttype_'.$posttypeobj->name] = $posttypeobj->labels->singular_name;
-				$posts['posttype_'.$posttypeobj->name] = suarr::simplify($typeposts, 'ID', 'post_title');
+				$posts['posttype_'.$posttypeobj->name] = $typeposts_array = array_slice(suarr::simplify($typeposts, 'ID', 'post_title'), 0, 1000, true); //Let's not go too crazy with post dropdowns; cut it off at 1000
+				//$postoptions['posttype_'.$posttypeobj->name] = suhtml::option_tags(array(0 => '') + $typeposts_array, null); //Maintains numeric array keys, unlike array_unshift or array_merge
 			}
 		}
 		
@@ -176,11 +177,17 @@ class SU_ContentAutolinks extends SU_Module {
 			foreach ($posts as $posttype => $typeposts) {
 				$typeposts = array(0 => '') + $typeposts; //Maintains numeric array keys, unlike array_unshift or array_merge
 				$postdropdowns[$posttype] = $this->get_input_element('dropdown', "link_{$i}_to_id_{$posttype}__$guid", $link['to_id'], $typeposts);
+				
+				/*
+				//$typeposts = array(0 => '') + $typeposts; 
+				$postdropdowns[$posttype] = $this->get_input_element('dropdown', "link_{$i}_to_id_{$posttype}__$guid", $link['to_id'],
+					str_replace("<option value='{$link['to_id']}'>", "<option value='{$link['to_id']}' selected='selected'>", $postoptions[$posttype])
+				);
+				*/
 			}
 			
 			$cells = array(
-				  'link-anchor' => $this->get_input_element('hidden', '_link_guid', $guid)
-								 . $this->get_input_element('textbox', "link_{$i}_anchor", $link['anchor'])
+				  'link-anchor' => $this->get_input_element('textbox', "link_{$i}_anchor", $link['anchor'])
 				, 'link-to_type' => $this->get_input_element('dropdown', "link_{$i}_to_type__$guid", $link['to_type'], array(
 						  __('Custom', 'seo-ultimate') => array('url' => __('URL', 'seo-ultimate'))
 						, __('Content Items', 'seo-ultimate') => $posttypes
@@ -191,7 +198,7 @@ class SU_ContentAutolinks extends SU_Module {
 				, 'link-title' => $this->get_input_element('textbox', "link_{$i}_title", $link['title'])
 				, 'link-options' =>
 					 $this->get_input_element('checkbox', "link_{$i}_nofollow", $link['nofollow'], __('Nofollow', 'seo-ultimate'))
-					.$this->get_input_element('checkbox', "link_{$i}_target", $link['target'] != 'self', __('New window', 'seo-ultimate'))
+					.$this->get_input_element('checkbox', "link_{$i}_target", $link['target'] == 'blank', __('New window', 'seo-ultimate'))
 			);
 			if ($delete_option)
 				$cells['link-delete'] = $this->get_input_element('checkbox', "link_{$i}_delete");
@@ -202,6 +209,7 @@ class SU_ContentAutolinks extends SU_Module {
 		}
 		
 		$this->admin_wftable_end();
+		echo $this->get_input_element('hidden', '_link_guid', $guid);
 	}
 	
 	function get_post_autolinks($value, $key, $post) {
