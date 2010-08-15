@@ -193,7 +193,7 @@ class SU_ContentAutolinks extends SU_Module {
 						, __('Content Items', 'seo-ultimate') => $posttypes
 					))
 				, 'link-to_id' => $this->get_admin_form_subsections("link_{$i}_to_type__$guid", $link['to_type'] ? $link['to_type'] : 'url', array_merge(array(
-						  'url' => $this->get_input_element('textbox', "link_{$i}_to_id_url", ($link['to_type'] == 'url') ? $link['to_id'] : '')
+						  'url' => $this->get_input_element('textbox', "link_{$i}_to_id_url__$guid", ($link['to_type'] == 'url') ? $link['to_id'] : '')
 					), $postdropdowns))
 				, 'link-title' => $this->get_input_element('textbox', "link_{$i}_title", $link['title'])
 				, 'link-options' =>
