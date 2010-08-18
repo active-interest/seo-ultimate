@@ -126,16 +126,18 @@ class SU_ContentAutolinks extends SU_Module {
 			$num_links = count($links);
 		}
 		
+		$guid = substr(md5(time()), 0, 10);
+		
 		if ($num_links > 0) {
 			$this->admin_subheader(__('Edit Existing Links', 'seo-ultimate'));
-			$this->content_links_form(0, $links);
+			$this->content_links_form($guid, 0, $links);
 		}
 		
 		$this->admin_subheader(__('Add a New Link', 'seo-ultimate'));
-		$this->content_links_form($num_links, array(array()), false);
+		$this->content_links_form($guid, $num_links, array(array()), false);
 	}
 	
-	function content_links_form($start_id = 0, $links, $delete_option = true) {
+	function content_links_form($guid, $start_id = 0, $links, $delete_option = true) {
 		
 		//Set headers
 		$headers = array(
@@ -168,7 +170,6 @@ class SU_ContentAutolinks extends SU_Module {
 		}
 		
 		//Cycle through links
-		$guid = substr(md5(time()), 0, 10);
 		$i = $start_id;
 		foreach ($links as $link) {
 			
