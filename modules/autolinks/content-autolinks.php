@@ -168,10 +168,9 @@ class SU_ContentAutolinks extends SU_Module {
 		}
 		
 		//Cycle through links
+		$guid = substr(md5(time()), 0, 10);
 		$i = $start_id;
 		foreach ($links as $link) {
-			
-			$guid = substr(md5(time()), 0, 10);
 			
 			$postdropdowns = array();
 			foreach ($posts as $posttype => $typeposts) {
