@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.5.4
+Stable tag: 4.6
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 4.6 adds a meta keywords mass-editor
 * Version 4.5 adds bugfixes
 * Version 4.4 adds a new field for entering sitewide meta keywords
 * Version 4.3 adds the ability to use the post's excerpt as its default meta description
 * Version 4.2 adds the option to exclude specific posts/pages from being autolinked
-* Version 4.1 adds tag title capitalization for title tags
 
 = Features =
 
@@ -32,9 +32,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Increase SERP clickthrough rates by influence search engine result snippets.
 	* Mass-editor makes it a cinch to go back and add descriptions to old posts.
 
-* **Meta Keywords Editor** -- UPDATED in Version 4.4
+* **Meta Keywords Editor** -- UPDATED in Version 4.6
 	* Edit the `<meta>` keyword tags for posts, pages, and the homepage.
 	* Easily specify global keywords that are applied across the entire site.
+	* Go back and edit old posts' keywords with the mass-editor.
 
 * **Meta Robot Tags Editor** -- UPDATED in Version 4.0
 	* Add the `<meta name="robots" content="noindex,follow" />` tag to archives, comment feeds, the login page, and more.
@@ -214,6 +215,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.6 (December 23, 2010) =
+* Feature: Added meta keywords mass-editor for posts, pages, attachments, and custom post types
 
 = Version 4.5.4 (December 22, 2010) =
 * Bugfix: "New window" checkboxes now stay checked in Deeplink Juggernaut

@@ -117,8 +117,9 @@ STR;
 				echo "<a href='javascript:void(0)' onclick=\"javascript:set_module_status('$key', $statuscode, this)\" class='$current'>$statuslabel</a></span>\n";
 			}
 			
-			if ($currentstatus > SU_MODULE_DISABLED) {
-				$cellcontent = "<a href='".$this->get_admin_url($key)."'>$name</a>";
+			$admin_url = $this->get_admin_url($key);
+			if ($currentstatus > SU_MODULE_DISABLED && $admin_url) {
+				$cellcontent = "<a href='{$admin_url}'>$name</a>";
 			} else
 				$cellcontent = $name;
 			

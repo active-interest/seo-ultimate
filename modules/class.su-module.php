@@ -462,6 +462,9 @@ class SU_Module {
 			}
 		}
 		
+		if (!$this->plugin->call_module_func($key, 'get_menu_title', $menu_title) || !$menu_title)
+			return false;
+		
 		$basepage = 'admin.php';
 		if ($this->plugin->call_module_func($key, 'get_menu_parent', $custom_basepage) && sustr::endswith($custom_basepage, '.php'))
 			$basepage = $custom_basepage;
