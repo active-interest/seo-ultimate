@@ -162,6 +162,10 @@ class suarr {
 		$values = suarr::flatten_values($arr, $valloc);
 		return array_combine($keys, $values);
 	}
+	
+	function has_keys($array, $keys) {
+		return count(array_diff($keys, array_keys($array))) == 0;
+	}
 }
 
 ?>

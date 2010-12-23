@@ -194,6 +194,10 @@ class sustr {
 		else
 			return substr($str, 0, $end);
 	}
+	
+	function str2func($varval) {
+		return create_function('', 'return "'.addcslashes((string)$varval, '"').'";');
+	}
 }
 
 ?>

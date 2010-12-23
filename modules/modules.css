@@ -162,3 +162,20 @@ div.su-module .su-meta-edit-table table.widefat td { vertical-align: middle; }
 .su-module table#import-status td {
 	padding: 0 0.5em 1em 0;
 }
+
+.su-importmodule tr.su-admin-form-checkbox td,
+.su-importmodule tr.su-admin-form-textblock td {
+	border-top: 3px solid #ccc;
+	padding-top: 1em;
+}
+
+.su-importmodule table.form-table {
+	border-bottom: 3px solid #ccc;
+}
+
+.su-importmodule td table tr.su-admin-form-checkbox td,
+.su-importmodule td table tr.su-admin-form-textblock td {
+	border-top: 0 none;
+	padding-top: 0;
+	padding-bottom: 0;
+}

@@ -105,23 +105,24 @@ div.su-help h6 {
 
 /* POSTMETA BOX */
 
-#su-postmeta-box table th,
-#su-postmeta-box table td {
+#su-postmeta-box table th.su,
+#su-postmeta-box table td.su {
 	padding: 0.5em 0;
 }
 
-#su-postmeta-box table th {
+#su-postmeta-box table th.su {
 	text-align: right;
 	font-weight: bold;
 	padding-right: 0.5em;
+	width: 12em;
 }
 
-#su-postmeta-box table tr.textarea th label {
+#su-postmeta-box table tr.textarea th.su label {
 	display: block;
 	margin-top: 5px;
 }
 
-#su-postmeta-box table th em {
+#su-postmeta-box table th.su em {
 	font-weight: normal;
 }
 
@@ -129,10 +130,6 @@ div.su-help h6 {
 #su-postmeta-box table td input.regular-text,
 #su-postmeta-box table td textarea {
 	width: 100%;
-}
-
-#su-postmeta-box table th {
-	width: 12em;
 }
 
 #su-postmeta-box select optgroup,
@@ -144,6 +141,15 @@ div.su-module select optgroup {
 div.su-module select optgroup option {
 	margin-left: 1em;
 }
+
+#su-postmeta-box table.widefat {
+	width: auto;
+}
+
+#su-postmeta-box table.widefat td {
+	vertical-align: middle;
+}
+
 
 /* PLUGIN NOTICES */
 

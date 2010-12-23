@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.5.3
+Stable tag: 4.5.4
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -214,6 +214,11 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.5.4 (December 22, 2010) =
+* Bugfix: "New window" checkboxes now stay checked in Deeplink Juggernaut
+* Bugfix: Fixed textdomain path
+* Improvement: Post destination options in Deeplink Juggernaut are now sorted by title, making it easier to find the target post
 
 = Version 4.5.3 (August 18, 2010) =
 * Bugfix: A third fix for Deeplink Juggernaut URL-loss problem

@@ -113,7 +113,7 @@ class SU_ContentAutolinks extends SU_Module {
 				$title  = stripslashes($_POST["link_{$i}_title"]);
 				
 				$target = stripslashes($_POST["link_{$i}_target"]);
-				if (!$target) $target = 'self';
+				$target = $target ? 'blank' : 'self';
 				
 				$nofollow = intval($_POST["link_{$i}_nofollow"]) == 1;
 				$delete = intval($_POST["link_{$i}_delete"]) == 1;
@@ -161,7 +161,7 @@ class SU_ContentAutolinks extends SU_Module {
 			suarr::remove_value($stati, 'auto-draft');
 			$stati = implode(',', $stati);
 			
-			$typeposts = get_posts("post_status=$stati&numberposts=-1&post_type=".$posttypeobj->name);
+			$typeposts = get_posts("orderby=title&order=ASC&post_status=$stati&numberposts=-1&post_type=".$posttypeobj->name);
 			if (count($typeposts)) {
 				$posttypes['posttype_'.$posttypeobj->name] = $posttypeobj->labels->singular_name;
 				$posts['posttype_'.$posttypeobj->name] = $typeposts_array = array_slice(suarr::simplify($typeposts, 'ID', 'post_title'), 0, 1000, true); //Let's not go too crazy with post dropdowns; cut it off at 1000

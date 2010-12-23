@@ -2204,14 +2204,14 @@ class SU_Module {
 		$html = '';
 		
 		foreach ($textboxes as $id => $title) {
-		
+			
 			register_setting('seo-ultimate', $id);
 			$value = su_esc_editable_html($this->get_postmeta($id));
 			$id = "_su_".su_esc_attr($id);
 			//$title = str_replace(' ', '&nbsp;', $title);
 			
-			$html .= "<tr class='textbox' valign='middle'>\n<th scope='row'><label for='$id'>$title</label></th>\n"
-					."<td><input name='$id' id='$id' type='text' value='$value' class='regular-text' tabindex='2' /></td>\n</tr>\n";
+			$html .= "<tr class='su textbox' valign='middle'>\n<th scope='row' class='su'><label for='$id'>$title</label></th>\n"
+					."<td class='su'><input name='$id' id='$id' type='text' value='$value' class='regular-text' tabindex='2' /></td>\n</tr>\n";
 		}
 		
 		return $html;
@@ -2250,8 +2250,8 @@ class SU_Module {
 			$value = su_esc_editable_html($this->get_postmeta($id));
 			$id = "_su_".su_esc_attr($id);
 			
-			$html .= "<tr class='textarea' valign='top'>\n<th scope='row'><label for='$id'>$title</label></th>\n"
-					."<td><textarea name='$id' id='$id' class='regular-text' tabindex='2' cols='60' rows='3'>$value</textarea></td>\n</tr>\n";
+			$html .= "<tr class='su textarea' valign='top'>\n<th scope='row' class='su'><label for='$id'>$title</label></th>\n"
+					."<td class='su'><textarea name='$id' id='$id' class='regular-text' tabindex='2' cols='60' rows='3'>$value</textarea></td>\n</tr>\n";
 		}
 		
 		return $html;
@@ -2284,7 +2284,7 @@ class SU_Module {
 	function get_postmeta_checkboxes($checkboxes, $grouptext) {
 		
 		$valign = (is_array($checkboxes) && count($checkboxes)) ? 'top' : 'middle';
-		$html = "<tr class='checkboxes' valign='$valign'>\n<th scope='row'>$grouptext</th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";
+		$html = "<tr class='su checkboxes' valign='$valign'>\n<th scope='row' class='su'>$grouptext</th>\n<td class='su'><fieldset><legend class='hidden'>$grouptext</legend>\n";
 		
 		if (is_array($checkboxes)) {
 			foreach ($checkboxes as $name => $desc) {
@@ -2338,7 +2338,7 @@ class SU_Module {
 		if ($current === '') $current = array_shift(array_keys($options));
 		$name = "_su_".su_esc_attr($name);
 		
-		$html = "<tr class='dropdown' valign='middle'>\n<th scope='row'><label for='$name'>$grouptext</label></th>\n<td><fieldset><legend class='hidden'>$grouptext</legend>\n";
+		$html = "<tr class='su dropdown' valign='middle'>\n<th scope='row' class='su'><label for='$name'>$grouptext</label></th>\n<td class='su'><fieldset><legend class='hidden'>$grouptext</legend>\n";
 		$html .= "<select name='$name' id='$name' onchange='javascript:su_toggle_select_children(this)'>\n";
 		$html .= suhtml::option_tags($options, $current);
 		$html .= "</select>\n";

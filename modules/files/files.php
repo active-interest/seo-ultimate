@@ -96,6 +96,8 @@ class SU_Files extends SU_Module {
 		//Should we allow plugins to add custom rules?
 		if ($this->get_setting('enable_do_robotstxt_action'))
 			do_action('do_robotstxt');
+		else
+			do_action('su_do_robotstxt');
 		
 		//Print the custom robots.txt file
 		echo $this->get_setting('robotstxt');

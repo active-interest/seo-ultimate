@@ -6,10 +6,6 @@
  */
 class SEO_Ultimate {
 	
-	//Note: Throughout this class and the rest of the plugin, you may notice the occasional code segment that is apparently unused by any of this plugin's modules.
-	//The core SEO Ultimate classes form a module development framework; for compatibility reasons, I develop both existing modules and upcoming modules off of the same framework.
-	//This is why you may see new code in the SEO Ultimate framework some time before I bundle modules that use it.
-	
 	/********** VARIABLES **********/
 	
 	/**
@@ -580,7 +576,7 @@ class SEO_Ultimate {
 	function init() {
 		
 		//Allow translation of this plugin
-		load_plugin_textdomain('seo-ultimate', '', plugin_basename($this->plugin_file_path));
+		load_plugin_textdomain('seo-ultimate', '', plugin_basename($this->plugin_dir_path));
 		
 		//Load default module settings and run modules' init tasks
 		foreach ($this->modules as $key => $module) {
@@ -1503,7 +1499,7 @@ class SEO_Ultimate {
 			
 			$metakey = "_su_$field";
 			
-			$value = stripslashes($_POST[$metakey]);
+			$value = stripslashes_deep($_POST[$metakey]);
 			if (!apply_filters("su_custom_update_postmeta-$field", false, $value, $metakey, $post)) {
 				if (empty($value))
 					//Delete the old value

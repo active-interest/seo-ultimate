@@ -21,8 +21,9 @@ class suwp {
 		return false;
 	}
 	
-	function get_any_posts($args = null) {
-		$args['post_type'] = implode(',', suwp::get_post_type_names());
+	function get_any_posts($args = array()) {
+		if (!is_array($args)) $args = array();
+		$args['post_type'] = suwp::get_post_type_names(); //...as opposed to "any" because then get_posts() will remove search-excluded post types
 		$args['numberposts'] = -1;
 		return get_posts($args);
 	}
@@ -76,6 +77,11 @@ class suwp {
 			if (in_array('post', (array)$taxonomy->object_type))
 				$taxonomies[$key] = $taxonomy;
 		return $taxonomies;
+	}
+	
+	function get_any_terms($args = array()) {
+		$taxonomies = get_taxonomies(array('public' => true));
+		return get_terms($taxonomies, $args);
 	}
 	
 	/**
