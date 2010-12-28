@@ -28,7 +28,10 @@ class SU_MoreLinks extends SU_Module {
 		$this->admin_form_end();
 	}
 	
-	function more_link_filter($link, $text) {
+	function more_link_filter($link, $text=false) {
+		
+		if ($text === false) return $link; //Can't do it without $text parameter
+		
 		$default = $this->get_setting('default');
 		
 		if (strlen($newtext = trim($this->get_postmeta('morelinktext'))) || strlen(trim($newtext = $default))) {

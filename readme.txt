@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions
-Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV
+Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.6
+Stable tag: 4.7
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,17 +11,17 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 4.7 adds the Link Mask Generator module
 * Version 4.6 adds a meta keywords mass-editor
 * Version 4.5 adds bugfixes
 * Version 4.4 adds a new field for entering sitewide meta keywords
 * Version 4.3 adds the ability to use the post's excerpt as its default meta description
-* Version 4.2 adds the option to exclude specific posts/pages from being autolinked
 
 = Features =
 
 SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these powerful features:
 
-* **Title Tag Rewriter** -- UPDATED in Version 4.1
+* **Title Tag Rewriter**
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
 	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog. Also supports custom post types.
 	* Customize your homepage's `<title>` tag.
@@ -37,7 +37,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Easily specify global keywords that are applied across the entire site.
 	* Go back and edit old posts' keywords with the mass-editor.
 
-* **Meta Robot Tags Editor** -- UPDATED in Version 4.0
+* **Meta Robot Tags Editor**
 	* Add the `<meta name="robots" content="noindex,follow" />` tag to archives, comment feeds, the login page, and more.
 	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post/page.
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
@@ -63,6 +63,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Slug Optimizer**
 	* Increase in-URL keyword potency by removing "filler words" (like "the," "with," "and," etc.) from post/page URLs.
+	* Lets you customize the "filler words" list as desired.
 
 * **Competition Researcher**
 	* Investigate multiple keywords or URLs with quick access to search engine tools. Competition Researcher does this without illicit scraping/automation methods.
@@ -81,7 +82,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut** -- UPDATED in Version 4.2
+* **Deeplink Juggernaut**
 	* Automatically link phrases in your posts/pages to other posts/pages or to custom URLs.
 	* Exclude specific posts/pages from having links added to them, if desired (e.g. contact pages, the homepage, etc.).
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
@@ -107,8 +108,14 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Choose from either the ShareThis or the AddThis button.
 	* Unlike the official ShareThis plugin, SEO Ultimate doesn't require you to register at the ShareThis website before enabling the button -- just enable and go.
 
-* **Webmaster Verification Assistant** -- UPDATED in Version 4.0
+* **Webmaster Verification Assistant**
 	* Enter verification codes in the provided fields to access search engine webmaster tools.
+
+* **Link Mask Generator**
+	* Lets you generate robots.txt-blocked "link masks" (e.g. `www.example.com/go/google/`) that pass-through to an external URL.
+	* Lets you mask links on a per-link, per-post basis so you can exert fine-tuned control over your posts' linkflow.
+	* Link masks provide a modern replacement for the deprecated, nofollow-based "PageRank Sculpting" technique.
+	* Perfect for affiliate marketers and SEO-savvy bloggers.
 	
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
@@ -127,10 +134,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Includes an uninstaller that can delete the plugin's files and database entries if desired.
 	* Lets you upgrade/downgrade the plugin to versions of your choosing (starting with 2.5).
 
-* **Features Coming Soon**
-	* Automatic XHTML validation checking
-	* Nofollow options
-	* ...And much, much more! Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
+* **More Features In the Works**
+There are many additional features in development. Install SEO Ultimate today and use WordPress's automatic plugin updater to get new features as they're released.
 
 [**Download**](http://downloads.wordpress.org/plugin/seo-ultimate.zip) **your free copy of SEO Ultimate today.**
 
@@ -167,6 +172,9 @@ To install the plugin manually:
 * **Where's the documentation?**
 	SEO Ultimate's documentation is built into the plugin itself. Whenever you're viewing an SEO Ultimate page in your WordPress admin, you can click the "Help" tab in the upper-right-hand corner to view documentation for the area you're viewing.
 
+* **How do I disable the attribution link?**
+	The attribution link is disabled by default. It only appears if you enable it. You can re-disable it the same place you enabled it: under `Settings > SEO Ultimate`.
+	
 * **How do I uninstall SEO Ultimate?**
 	1. Go to the `Settings > SEO Ultimate` admin page and click the "Uninstall" tab.
 	2. Click the "Uninstall Now" button and click "Yes" to confirm. SEO Ultimate's files and database entries will be deleted.
@@ -215,6 +223,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.7 (December 28, 2010) =
+* Feature: Added the Link Mask Generator module
+* Bugfix: More Link Customizer now fails silently if only 1 parameter is passed to the `the_content_more_link` filter.
 
 = Version 4.6 (December 23, 2010) =
 * Feature: Added meta keywords mass-editor for posts, pages, attachments, and custom post types
