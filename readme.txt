@@ -227,6 +227,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 = Version 4.7 (December 28, 2010) =
 * Feature: Added the Link Mask Generator module
 * Bugfix: More Link Customizer now fails silently if only 1 parameter is passed to the `the_content_more_link` filter.
+* Bugfix: Fixed array_combine() errors by adding PHP4 back-compatibility function
 
 = Version 4.6 (December 23, 2010) =
 * Feature: Added meta keywords mass-editor for posts, pages, attachments, and custom post types

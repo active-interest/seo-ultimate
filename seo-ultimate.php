@@ -55,6 +55,7 @@ define('SU_USER_AGENT', 'SeoUltimate/4.7');
 /********** INCLUDES **********/
 
 //Libraries
+include 'includes/backcompat.php';
 include 'includes/jlfunctions/jlfunctions.php';
 include 'includes/jlwp/jlwp.php';
 
