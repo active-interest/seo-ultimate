@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.7
+Stable tag: 4.7.1
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -223,6 +223,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.7.1 (December 30, 2010) =
+* Bugfix: Editing link mask slugs now removes the old link mask instead of just adding a second one
+* Bugfix: Link Mask Generator now runs before WordPress' canonical function in order to stop WordPress from overriding a link mask
 
 = Version 4.7 (December 28, 2010) =
 * Feature: Added the Link Mask Generator module

@@ -5,7 +5,7 @@ class SU_InternalLinkAliases extends SU_Module {
 	function init() {
 		add_filter('su_custom_update_postmeta-aliases', array(&$this, 'save_post_aliases'), 10, 4);
 		add_filter('the_content', array(&$this, 'apply_aliases'));
-		add_action('template_redirect', array(&$this, 'redirect_aliases'));
+		add_action('template_redirect', array(&$this, 'redirect_aliases'), 0);
 		add_action('do_robotstxt', array(&$this, 'block_aliases_dir'));
 		add_action('su_do_robotstxt', array(&$this, 'block_aliases_dir'));
 	}
@@ -58,15 +58,15 @@ class SU_InternalLinkAliases extends SU_Module {
 	function save_post_aliases($false, $saved_aliases, $metakey, $post) {
 		if ($post->post_type == 'revision' || !is_array($saved_aliases)) return true;
 		
-		$all_aliases = $this->get_setting('aliases', array());
+		$aliases = $this->get_setting('aliases', array());
 		
 		$posts = array($post->ID);
-		$new_aliases = array();
-		foreach ($saved_aliases as $from => $to)
-			$new_aliases[] = compact('from', 'to', 'posts');
+		foreach ($saved_aliases as $from => $to) {
+			$id = md5($from . serialize($posts));
+			$aliases[$id] = compact('from', 'to', 'posts');
+		}
 		
-		$all_aliases = array_merge($all_aliases, $new_aliases);
-		$this->update_setting('aliases', $all_aliases);
+		$this->update_setting('aliases', $aliases);
 		
 		return true;
 	}
@@ -74,6 +74,7 @@ class SU_InternalLinkAliases extends SU_Module {
 	function apply_aliases($content) {
 		$id = suwp::get_post_id();
 		$aliases = $this->get_setting('aliases', array());
+		$aliases = array_reverse($aliases, true); //Just in case we have duplicate aliases, make sure the most recent ones are applied first
 		foreach ($aliases as $alias) {
 			$from = $alias['from'];
 			$to = $alias['to'];
