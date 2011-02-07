@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 4.7\n"
+"Project-Id-Version: SEO Ultimate 4.8\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2010-12-28 18:13:25+00:00\n"
+"POT-Creation-Date: 2011-02-07 19:43:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgid ""
 "Ultimate to remove this notice."
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.7)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.8)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: plugin/class.seo-ultimate.php:756 modules/settings/settings.php:14
 msgid "SEO Ultimate"
@@ -215,7 +215,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.7)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 4.8)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1583,7 +1583,7 @@ msgid "Link Masks"
 msgstr ""
 
 #: modules/internal-link-aliases/internal-link-aliases.php:28
-#: modules/autolinks/content-autolinks.php:192
+#: modules/autolinks/content-autolinks.php:196
 msgid "URL"
 msgstr ""
 
@@ -1597,8 +1597,12 @@ msgid ""
 "its URL."
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:99
-msgid "Added by Link Alias Generator module"
+#: modules/internal-link-aliases/internal-link-aliases.php:100
+msgid "Added by Link Alias Generator (LAG) module"
+msgstr ""
+
+#: modules/internal-link-aliases/internal-link-aliases.php:109
+msgid "End LAG"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:12
@@ -1742,7 +1746,17 @@ msgid "Content Link Settings"
 msgstr ""
 
 #: modules/autolinks/content-autolinks-settings.php:21
+msgid "Allow posts to link to themselves."
+msgstr ""
+
+#: modules/autolinks/content-autolinks-settings.php:22
 msgid "Don&#8217;t add any more than %d autolinks per post/page/etc."
+msgstr ""
+
+#: modules/autolinks/content-autolinks-settings.php:23
+msgid ""
+"Don&#8217;t link the same anchor text any more than %d times per post/page/"
+"etc."
 msgstr ""
 
 #: modules/autolinks/content-autolinks.php:16
@@ -1753,73 +1767,73 @@ msgstr ""
 msgid "Content Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:96
+#: modules/autolinks/content-autolinks.php:100
 msgid ""
 "The Content Links section of Deeplink Juggernaut lets you automatically link "
 "a certain word or phrase in your post/page content to a URL you specify."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:132
+#: modules/autolinks/content-autolinks.php:136
 msgid "Edit Existing Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:136
+#: modules/autolinks/content-autolinks.php:140
 msgid "Add a New Link"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:144
+#: modules/autolinks/content-autolinks.php:148
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:145
+#: modules/autolinks/content-autolinks.php:149
 msgid "Destination Type"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:146
+#: modules/autolinks/content-autolinks.php:150
 msgid "Destination"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:147
+#: modules/autolinks/content-autolinks.php:151
 msgid "Title Attribute"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:148
+#: modules/autolinks/content-autolinks.php:152
 msgid "Options"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:150
+#: modules/autolinks/content-autolinks.php:154
 msgid "Delete"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:192
+#: modules/autolinks/content-autolinks.php:196
 msgid "Custom"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:193
+#: modules/autolinks/content-autolinks.php:197
 msgid "Content Items"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:200
+#: modules/autolinks/content-autolinks.php:204
 msgid "Nofollow"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:201
+#: modules/autolinks/content-autolinks.php:205
 msgid "New window"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:265
+#: modules/autolinks/content-autolinks.php:269
 msgid "Incoming Autolink Anchors:<br /><em>(one per line)</em>"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:266
+#: modules/autolinks/content-autolinks.php:270
 msgid "Don&#8217;t add autolinks to anchor texts found in this post."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:266
+#: modules/autolinks/content-autolinks.php:270
 msgid "Autolink Exclusion:"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:271
+#: modules/autolinks/content-autolinks.php:275
 msgid ""
 "<strong>Incoming Autolink Anchors</strong> &mdash; When you enter anchors "
 "into this box, Deeplink Juggernaut will search for that anchor in all your "
