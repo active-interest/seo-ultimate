@@ -97,13 +97,17 @@ class SU_InternalLinkAliases extends SU_Module {
 	
 	function block_aliases_dir() {
 		echo '# ';
-		_e('Added by Link Alias Generator module', 'seo-ultimate');
+		_e('Added by Link Alias Generator (LAG) module', 'seo-ultimate');
 		echo "\n";
 		
 		$urlinfo = parse_url(get_bloginfo('url'));
 		$path = $urlinfo['path'];
 		echo "User-agent: *\n";
-		echo "Disallow: $path/go/\n\n";
+		echo "Disallow: $path/go/\n";
+		
+		echo '# ';
+		_e('End LAG', 'seo-ultimate');
+		echo "\n\n";
 	}
 
 }

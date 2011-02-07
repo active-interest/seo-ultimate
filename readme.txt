@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 4.7.1
+Stable tag: 4.8
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 4.8 adds Deeplink Juggernaut features
 * Version 4.7 adds the Link Mask Generator module
 * Version 4.6 adds a meta keywords mass-editor
 * Version 4.5 adds bugfixes
 * Version 4.4 adds a new field for entering sitewide meta keywords
-* Version 4.3 adds the ability to use the post's excerpt as its default meta description
 
 = Features =
 
@@ -27,7 +27,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
-* **Meta Description Editor** -- UPDATED in Version 4.3
+* **Meta Description Editor**
 	* Edit the `<meta>` description tags for posts, pages, and the homepage.
 	* Increase SERP clickthrough rates by influence search engine result snippets.
 	* Mass-editor makes it a cinch to go back and add descriptions to old posts.
@@ -82,7 +82,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
 
-* **Deeplink Juggernaut**
+* **Deeplink Juggernaut** -- UPDATED in Version 4.8
 	* Automatically link phrases in your posts/pages to other posts/pages or to custom URLs.
 	* Exclude specific posts/pages from having links added to them, if desired (e.g. contact pages, the homepage, etc.).
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
@@ -223,6 +223,11 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.8 (February 7, 2011) =
+* Feature: Deeplink Juggernaut now lets you limit the number of times per post the same anchor text is linked
+* Feature: Deeplink Juggernaut now lets you toggle whether posts can link to themselves
+* Improvement: When configured to prevent posts from linking to themselves, Deeplink Juggernaut now does so across the whole site, not just on the post's own single page
 
 = Version 4.7.1 (December 30, 2010) =
 * Bugfix: Editing link mask slugs now removes the old link mask instead of just adding a second one
