@@ -130,11 +130,8 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function get_title() {
-		if (!$this->should_rewrite_title()) return '';
 		
 		global $wp_query, $wp_locale;
-		
-		$format = $this->get_title_format();
 		
 		//Custom post/page title?
 		if ($post_title = $this->get_postmeta('title'))
@@ -146,6 +143,10 @@ class SU_Titles extends SU_Module {
 			if ($tax_title = $tax_titles[$wp_query->get_queried_object_id()])
 				return htmlspecialchars($tax_title);
 		}
+		
+		//Get format
+		if (!$this->should_rewrite_title()) return '';
+		$format = $this->get_title_format();
 		
 		//Load post/page titles
 		$post_id = 0;

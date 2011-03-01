@@ -2,8 +2,8 @@
 Contributors: SEO Design Solutions
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 2.8
-Tested up to: 3.0
-Stable tag: 4.8
+Tested up to: 3.1
+Stable tag: 4.8.1
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -15,7 +15,6 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 * Version 4.7 adds the Link Mask Generator module
 * Version 4.6 adds a meta keywords mass-editor
 * Version 4.5 adds bugfixes
-* Version 4.4 adds a new field for entering sitewide meta keywords
 
 = Features =
 
@@ -223,6 +222,11 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 4.8.1 (March 1, 2011) =
+* Improvement: Deeplink Juggernaut no longer inserts links within `<code>`, `<pre>`, and `<kbd>` elements
+* Bugfix: Link Mask Generator can now properly mask URLs with ampersands
+* Bugfix: Title Tag Rewriter now properly rewrites custom taxonomy term pages
 
 = Version 4.8 (February 7, 2011) =
 * Feature: Deeplink Juggernaut now lets you limit the number of times per post the same anchor text is linked
