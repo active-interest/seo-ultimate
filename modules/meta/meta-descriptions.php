@@ -59,6 +59,8 @@ class SU_MetaDescriptions extends SU_Module {
 	
 	function head_tag_output() {
 		
+		global $post;
+		
 		$desc = false;
 		
 		//If we're viewing the homepage, look for homepage meta data.
@@ -70,8 +72,23 @@ class SU_MetaDescriptions extends SU_Module {
 		} elseif (is_singular()) {
 			$desc = $this->get_postmeta('description');
 			
+			//Enable the get_the_excerpt() and wp_trim_excerpt() functions
+			setup_postdata($post);
+			
+			//Get rid of the [...] or whatever else the current theme may try to add
+			add_filter('excerpt_more', '__return_false', 100);
+			
+			//Autogenerate the excerpt if needed
+			$auto_excerpt = strip_tags(wp_trim_excerpt(get_the_excerpt()));
+			
+			//Restore normal excerpts
+			remove_filter('excerpt_more', '__return_false', 100);
+			
 			if (!trim($desc) && !post_password_required() && $format = $this->get_setting('description_posttype_'.get_post_type()))
-				$desc = str_replace('{excerpt}', get_the_excerpt(), $format);
+				$desc = str_replace(
+					  array('{excerpt::autogen}', '{excerpt}')
+					, array($auto_excerpt, strip_tags($post->post_excerpt))
+					, $format);
 		
 		//If we're viewing a term, look for its meta data.
 		} elseif (is_category() || is_tag() || is_tax()) {

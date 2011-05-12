@@ -13,7 +13,7 @@ class suurl {
 	 */
 	function current() {
 		$url = 'http';
-		if ($_SERVER["HTTPS"] == "on") $url .= "s";
+		if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") $url .= "s";
 		$url .= "://";
 		
 		if ($_SERVER["SERVER_PORT"] != "80")

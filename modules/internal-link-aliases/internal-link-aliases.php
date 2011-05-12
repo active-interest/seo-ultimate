@@ -18,7 +18,12 @@ class SU_InternalLinkAliases extends SU_Module {
 	}
 	
 	function get_module_title() { return __('Link Mask Generator', 'seo-ultimate'); }
-	function get_menu_title() { return false; }
+	
+	function admin_page_contents() {
+		$this->admin_form_start();
+		$this->textbox('alias_dir', __('Alias Directory', 'seo-ultimate'));
+		$this->admin_form_end();
+	}
 	
 	function filter_alias_dir($alias_dir) {
 		return trim(sustr::preg_filter('a-zA-Z0-9_/', $alias_dir), '/');
