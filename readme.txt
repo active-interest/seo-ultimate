@@ -226,9 +226,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
-= Version 4.9 =
+= Version 4.9 (May 12, 2011) =
 * Feature: You can now change the Link Mask Generator's alias directory to something other than `/go/`
-* Feature: You can now use the `{excerpt::autogen}` variable in the Meta Description Editor to auto-generate an excerpt if the post doesn't have one (à la the `the_excerpt()` template tag)
+* Feature: You can now use the `{excerpt::autogen}` variable in the Meta Description Editor to auto-generate an excerpt if the post doesn't have one (a la the `the_excerpt()` template tag)
 * Compatibility: SEO Ultimate now requires WordPress 3.0 or above
 
 = Version 4.8.1 (March 1, 2011) =
