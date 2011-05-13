@@ -34,15 +34,26 @@ class SU_SettingsData extends SU_Module {
 			header('Content-Type: application/octet-stream');
 			header('Content-Disposition: attachment; filename="SEO Ultimate Settings ('.date('Y-m-d').').dat"');
 			
-			$options = $this->portable_options();
 			$export = array();
-			foreach ($options as $option) {
-				$data = $this->plugin->dbdata[$option];
-				$data = apply_filters("su_{$option}_export_array", $data);
-				$export[$option] = $data;
+			
+			$psdata = (array)get_option('seo_ultimate', array());
+			
+			//Module statuses
+			$export['modules'] = apply_filters("su_modules_export_array", $psdata['modules']);
+			
+			//Module settings
+			$modules = array_keys($psdata['modules']);
+			$module_settings = array();
+			foreach($modules as $module) {
+				$msdata = (array)get_option("su_$module", array());
+				if ($msdata) $module_settings[$module] = $msdata;
 			}
+			$export['settings'] = apply_filters("su_settings_export_array", $module_settings);
+			
+			//Encode
 			$export = base64_encode(serialize($export));
 			
+			//Output
 			echo $export;
 			die();
 			
@@ -56,9 +67,16 @@ class SU_SettingsData extends SU_Module {
 					if (is_serialized($import)) {
 						$import = unserialize($import);
 						
-						$options = $this->portable_options();
-						foreach ($options as $option) {
-							$this->plugin->dbdata[$option] = array_merge($this->plugin->dbdata[$option], $import[$option]);
+						//Module statuses
+						$psdata = (array)get_option('seo_ultimate', array());
+						$psdata['modules'] = array_merge($psdata['modules'], $import['modules']);
+						update_option('seo_ultimate', $psdata);
+						
+						//Module settings
+						foreach ($import['settings'] as $module => $module_settings) {
+							$msdata = (array)get_option("seo_ultimate_module_$module", array());
+							$msdata = array_merge($msdata, $module_settings);
+							update_option("seo_ultimate_module_$module", $msdata);
 						}
 						
 						$this->queue_message('success', __('Settings successfully imported.', 'seo-ultimate'));
@@ -72,8 +90,12 @@ class SU_SettingsData extends SU_Module {
 			
 		} elseif ($this->is_action('su-reset')) {
 			
-			$this->plugin->dbdata['settings'] = array();
-			unset($this->plugin->dbdata['modules']);
+			$psdata = (array)get_option('seo_ultimate', array());
+			$modules = array_keys($psdata['modules']);
+			foreach ($modules as $module) delete_option("su_$module");
+			unset($psdata['modules']);
+			update_option('seo_ultimate', $psdata);
+			
 			$this->load_default_settings();
 			
 		} elseif ($this->is_action('dj-export')) {
@@ -130,8 +152,8 @@ class SU_SettingsData extends SU_Module {
 						foreach ($import as $link) {
 							
 							//Validate destination type
-							//Only one valid option at this time ('url'), so that makes this easy...
-							$link['to_type'] = 'url';
+							if ($link['to_type'] != 'url' && !sustr::startswith($link['to_type'], 'posttype_'))
+								$link['to_type'] = 'url';
 							
 							//Validate nofollow
 							if (!is_bool($link['nofollow']))

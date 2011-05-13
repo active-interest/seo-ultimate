@@ -400,15 +400,12 @@ class SU_Module {
 	 */
 	function load_default_settings() {
 		
-		$save = false;
 		$defaults = $this->get_default_settings();
 		foreach ($defaults as $setting => $default) {
 			if ($this->get_setting($setting, "{reset}") === "{reset}") {
-				$this->update_setting($setting, $default, null, null, false);
-				$save = true;
+				$this->update_setting($setting, $default, null, null);
 			}
 		}
-		if ($save) $this->plugin->save_dbdata();
 	}
 	
 	
@@ -660,10 +657,10 @@ class SU_Module {
 	function get_setting($key, $default=null, $module=null) {
 		if (!$module) $module = $this->get_settings_key();
 		
-		if (isset($this->plugin->dbdata['settings']
-				, $this->plugin->dbdata['settings'][$module]
-				, $this->plugin->dbdata['settings'][$module][$key]))
-			$setting = $this->plugin->dbdata['settings'][$module][$key];
+		$msdata = (array)get_option("seo_ultimate_module_$module", array());
+		
+		if (isset($msdata[$key]))
+			$setting = $msdata[$key];
 		else
 			$setting = $default;
 		
@@ -683,20 +680,22 @@ class SU_Module {
 	 * @param string $value The new value to assign to the setting.
 	 * @param string|null $module The module to which the setting belongs. Defaults to the current module's settings key. Optional.
 	 */
-	function update_setting($key, $value, $module=null, $array_key=null, $save=true) {
+	function update_setting($key, $value, $module=null, $array_key=null) {
 		if (!$module) $module = $this->get_settings_key();
+		
+		$msdata = (array)get_option("seo_ultimate_module_$module", array());
 		
 		$use_custom  = 	apply_filters("su_custom_update_setting-$module-$key", false, $value, $key) ||
 						apply_filters("su_custom_update_setting-$module", false, $value, $key);
 		
 		if (!$use_custom) {
 			if ($array_key)
-				$this->plugin->dbdata['settings'][$module][$key][$array_key] = $value;
+				$msdata[$key][$array_key] = $value;
 			else
-				$this->plugin->dbdata['settings'][$module][$key] = $value;
+				$msdata[$key] = $value;
 		}
 		
-		if ($save && !$this->is_action('update')) $this->plugin->save_dbdata();
+		update_option("seo_ultimate_module_$module", $msdata);
 	}
 	
 	/**
@@ -754,16 +753,13 @@ class SU_Module {
 	function delete_setting($key, $module=null, $array_key = null) {
 		if (!$module) $module = $this->get_settings_key();
 		
-		if (isset($this->plugin->dbdata['settings']
-				, $this->plugin->dbdata['settings'][$module]
-				, $this->plugin->dbdata['settings'][$module][$key])) {
-			//Some PHP setups will actually throw an error if we try to unset an array element that doesn't exist...
+		$msdata = (array)get_option("seo_ultimate_module_$module", array());
+		
+		if (isset($msdata[$key])) {
 			if ($array_key)
-				unset($this->plugin->dbdata['settings'][$module][$key][$array_key]);
+				unset($msdata[$key][$array_key]);
 			else
-				unset($this->plugin->dbdata['settings'][$module][$key]);
-			
-			$this->plugin->save_dbdata();
+				unset($msdata[$key]);
 		}
 	}
 	
@@ -777,8 +773,7 @@ class SU_Module {
 	 */
 	function update_settings($settings) {
 		foreach ($settings as $key => $value)
-			update_setting($key, $value, null, null, false);
-		$this->plugin->save_dbdata();
+			update_setting($key, $value, null, null);
 	}
 	
 	/**
@@ -793,40 +788,6 @@ class SU_Module {
 	function get_default_setting($key) {
 		$defaults = $this->get_default_settings();
 		return $defaults[$key];
-	}
-	
-	
-	/********** LOG FUNCTIONS **********/
-	
-	/**
-	 * Retrieves the module's log.
-	 * 
-	 * @since 4.5
-	 * @uses get_settings_key()
-	 * 
-	 * @return array
-	 */
-	function get_log() {
-		$module = $this->get_settings_key();
-		
-		if (isset($this->plugin->dbdata['logs']
-				, $this->plugin->dbdata['logs'][$module]))
-			return $this->plugin->dbdata['settings'][$module][$key];
-		
-		return array();
-	}
-	
-	/**
-	 * Updates the module's log array.
-	 * 
-	 * @since 4.5
-	 * @uses get_settings_key()
-	 * 
-	 * @param string $value The entirety of the log to be updated.
-	 */
-	function update_log($value) {
-		$module = $this->get_settings_key();
-		$this->plugin->dbdata['logs'][$module] = $value;
 	}
 	
 	
@@ -1138,11 +1099,10 @@ class SU_Module {
 							$id = (int)$matches[1];
 							switch ($genus) {
 								case 'post': update_post_meta($id, "_su_{$field['name']}", $_POST[$key]); break;
-								case 'term': $this->update_setting($field['term_settings_key'], $_POST[$key], null, $id, false); break;
+								case 'term': $this->update_setting($field['term_settings_key'], $_POST[$key], null, $id); break;
 							}
 							continue 2; //Go to next $_POST item
 						}
-			if ($genus == 'term') $this->plugin->save_dbdata();
 		}
 		
 		$pagenum = isset( $_GET[$type . '_paged'] ) ? absint( $_GET[$type . '_paged'] ) : 0;
@@ -1417,9 +1377,6 @@ class SU_Module {
 	 * @param boolean $table Whether or not a form table should be ended.
 	 */
 	function admin_form_end($button = null, $table = true) {
-		
-		if ($this->is_action('update'))
-			$this->plugin->save_dbdata();
 		
 		if ($button === null) $button = __('Save Changes'); //This string is used in normal WP, so we don't need a textdomain
 		if ($table) echo "</table>\n";
@@ -2396,8 +2353,9 @@ class SU_Module {
 			wp_schedule_event($start, $recurrance, $hook);
 			
 			//Make a record of it
-			$this->plugin->dbdata['cron'][$mk][$function] = array($hook, $start, $recurrance);
-			$this->plugin->save_dbdata();
+			$psdata = (array)get_option('seo_ultimate', array());
+			$psdata['cron'][$mk][$function] = array($hook, $start, $recurrance);
+			update_option('seo_ultimate', $psdata);
 			
 			//Run the event now
 			call_user_func(array($this, $function));

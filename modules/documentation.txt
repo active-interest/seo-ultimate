@@ -449,7 +449,12 @@ Here's information on each of the settings and its supported variables:
 	* {author} -- The Display Name of the post's author.
 	* {author\_username}, {author\_firstname}, {author\_lastname}, {author\_nickname} -- The username, first name, last name, and nickname of the post's author, respectively, as set in his or her profile.
 
-* **Page Title Format** -- Displays on WordPress Pages. The {page} variable is replaced with the Page's title. Also supports the same author variables as the Post Title Format.
+* **Page Title Format** -- Displays on WordPress Pages. Supports these variables:
+
+	* {page} -- The page's title.
+	* {page_parent} -- The title of the page's parent page.
+	* {author} -- The Display Name of the page's author.
+	* {author\_username}, {author\_firstname}, {author\_lastname}, {author\_nickname} -- The username, first name, last name, and nickname of the page's author, respectively, as set in his or her profile.
 
 * **Category Title Format** -- Displays on category archives. The {category} variable is replaced with the name of the category, and {category\_description} is replaced with its description.
 

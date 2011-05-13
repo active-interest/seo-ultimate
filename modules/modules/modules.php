@@ -17,14 +17,18 @@ class SU_Modules extends SU_Module {
 	function init() {
 		if ($this->is_action('update')) {
 			
+			$psdata = (array)get_option('seo_ultimate', array());
+			
 			foreach ($_POST as $key => $value) {
 				if (substr($key, 0, 3) == 'su-') {
 					$key = str_replace(array('su-', '-module-status'), '', $key);
 					$value = intval($value);
 					
-					$this->plugin->dbdata['modules'][$key] = $value;
+					$psdata['modules'][$key] = $value;
 				}
 			}
+			
+			update_option('seo_ultimate', $psdata);
 		}
 	}
 	
@@ -88,9 +92,11 @@ STR;
 			}
 		}
 		
+		$psdata = (array)get_option('seo_ultimate', array());
+		
 		foreach ($modules as $key => $name) {
 			
-			$currentstatus = $this->plugin->dbdata['modules'][$key];
+			$currentstatus = $psdata['modules'][$key];
 			
 			echo "\t\t<tr>\n\t\t\t<td class='module-status' id='module-status-$key'>\n";
 			echo "\t\t\t\t<input type='hidden' name='su-$key-module-status' id='su-$key-module-status' value='$currentstatus' />\n";

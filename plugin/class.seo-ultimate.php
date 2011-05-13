@@ -33,14 +33,6 @@ class SEO_Ultimate {
 	var $default_menu_module = 'modules';
 	
 	/**
-	 * Stores all database data.
-	 * 
-	 * @since 0.8
-	 * @var array
-	 */
-	var $dbdata = array();
-	
-	/**
 	 * The server path of the main plugin file.
 	 * Example: /home/user/public_html/wp-content/plugins/seo-ultimate/seo-ultimate.php
 	 * 
@@ -107,8 +99,6 @@ class SEO_Ultimate {
 	 * PHP5-style constructor.
 	 * 
 	 * @since 0.1
-	 * @uses $dbdata
-	 * @uses save_dbdata() Hooked into WordPress's "shutdown" action.
 	 * @uses save_hit() Hooked into WordPress's "shutdown" action.
 	 * @uses load_plugin_data()
 	 * @uses SU_VERSION
@@ -130,15 +120,12 @@ class SEO_Ultimate {
 	 */
 	function __construct($plugin_file) {
 		
-		/********** LOAD/SAVE DATABASE DATA **********/
-		
-		//Load
-		$this->dbdata = maybe_unserialize(get_option('seo_ultimate', array()));
-		if (!is_array($this->dbdata)) $this->dbdata = array();
+		//Upgrade
 		$this->upgrade_to_08();
 		$this->upgrade_to_40();
+		$this->upgrade_to_50();
 		
-		//Save
+		//Save hit data
 		add_action('shutdown', array(&$this, 'save_hit'));
 		
 		/********** CLASS CONSTRUCTION **********/
@@ -149,12 +136,15 @@ class SEO_Ultimate {
 		
 		/********** VERSION CHECKING **********/
 		
+		$psdata = get_option('seo_ultimate', array());
+		if (!is_array($psdata)) $psdata = array();
+		
 		//Get the current version
 		$version = SU_VERSION;
 		
 		//Get the version when the plugin last ran.
-		if (isset($this->dbdata['version']))
-			$oldversion = $this->dbdata['version'];
+		if (isset($psdata['version']))
+			$oldversion = $psdata['version'];
 		else
 			$oldversion = get_option('su_version', false);
 		
@@ -169,8 +159,8 @@ class SEO_Ultimate {
 		}
 		
 		//Store the current version in the database.
-		$this->dbdata['version'] = $version;
-		if ($oldversion != $version) $this->save_dbdata();
+		$psdata['version'] = $version;
+		if ($oldversion != $version) update_option('seo_ultimate', $psdata);
 		
 		/********** INITIALIZATION **********/
 		
@@ -266,15 +256,7 @@ class SEO_Ultimate {
 	 * 
 	 * @since 0.1
 	 */
-	function install() {
-		
-		//Load settings file if present
-		if (!isset($this->dbdata['settings']) && is_readable($settingsfile = $this->plugin_dir_path.'settings.txt')) {
-			$import = base64_decode(file_get_contents($settingsfile));
-			if (is_serialized($import)) $this->dbdata['settings'] = unserialize($import);
-			$this->save_dbdata();
-		}
-	}
+	function install() { }
 	
 	/**
 	 * This will be called if the plugin's version has increased since the last run.
@@ -289,50 +271,76 @@ class SEO_Ultimate {
 	
 	/**
 	 * Upgrades SEO Ultimate to version 0.8.
-	 * Version 0.8 uses 1 wp_options entry instead of 4.
 	 * 
 	 * @since 0.8
-	 * @uses $dbdata
 	 */
 	function upgrade_to_08() {
+		$psdata = (array)get_option('seo_ultimate', array());
+		
 		$options = array('cron', 'modules', 'settings', 'version');
+		$save = false;
 		foreach ($options as $option) {
 			if (($value = get_option("su_$option", false)) !== false) {
-				$this->dbdata[$option] = maybe_unserialize($value);
+				
+				if ('settings' == $option) {
+					foreach ((array)$value as $module => $module_data)
+						update_option("seo_ultimate_module_$module", $module_data);
+				} else {
+					$psdata[$option] = $value;
+					$save = true;
+				}
+				
 				delete_option("su_$option");
 			}
 		}
-		$this->save_dbdata();
+		if ($save) update_option('seo_ultimate', $psdata);
 	}
 	
 	/**
 	 * Upgrades SEO Ultimate to version 4.0.
 	 * 
 	 * @since 4.0
-	 * @uses $dbdata
 	 */
 	function upgrade_to_40() {
 		$this->copy_module_states(array('meta' => array('meta-descriptions', 'meta-keywords', 'webmaster-verify'), 'noindex' => 'meta-robots'));
 	}
 	
 	/**
+	 * Upgrades SEO Ultimate to version 5.0.
+	 * 
+	 * @since 5.0
+	 */
+	function upgrade_to_50() {
+		$psdata = (array)get_option('seo_ultimate', array());
+		
+		if ($psdata && isset($psdata['settings']) && is_array($psdata['settings'])) {
+			
+			foreach ($psdata['settings'] as $module => $module_data)
+				update_option("seo_ultimate_module_$module", $module_data);
+			
+			unset($psdata['settings']);
+			update_option('seo_ultimate', $psdata);
+		}
+	}
+	
+	/**
 	 * Copies the enabled/disabled/etc. states from one module to others.
 	 * 
 	 * @since 4.0
-	 * @uses $dbdata
 	 * 
 	 * @param array $copy
 	 */
 	function copy_module_states($copy) {
+		$psdata = (array)get_option('seo_ultimate', array());
 		$save = false;
 		foreach ($copy as $from => $tos)
-			if (isset($this->dbdata['modules'][$from]))
+			if (isset($psdata['modules'][$from]))
 				foreach ((array)$tos as $to)
-					if (!isset($this->dbdata['modules'][$to])) {
-						$this->dbdata['modules'][$to] = $this->dbdata['modules'][$from];
+					if (!isset($psdata['modules'][$to])) {
+						$psdata['modules'][$to] = $psdata['modules'][$from];
 						$save = true;
 					}
-		if ($save) $this->save_dbdata();
+		if ($save) update_option('seo_ultimate', array());
 	}
 	
 	/**
@@ -359,14 +367,10 @@ class SEO_Ultimate {
 		//Unschedule all cron jobs		
 		$this->remove_cron_jobs(true);
 		
-		//Delete module records, so that modules are re-activated if the plugin is.
-		unset($this->dbdata['modules']);
-		
 		//Delete all cron job records, since the jobs no longer exist
-		unset($this->dbdata['cron']);
-		
-		//Save to database
-		$this->save_dbdata();
+		$psdata = (array)get_option('seo_ultimate', array());
+		unset($psdata['cron']);
+		update_option('seo_ultimate', $psdata);
 	}
 	
 	/**
@@ -383,7 +387,6 @@ class SEO_Ultimate {
 		do_action('su_uninstall');
 		
 		//Delete all database data
-		$this->dbdata = array();
 		delete_option('seo_ultimate');
 	}
 	
@@ -419,7 +422,6 @@ class SEO_Ultimate {
 	 * 
 	 * @since 0.1
 	 * @uses $plugin_dir_path
-	 * @uses $dbdata
 	 * @uses $modules Stores module classes in this array.
 	 * @uses $disabled_modules
 	 * @uses module_sort_callback() Passes this function to uasort() to sort the $modules array.
@@ -429,15 +431,17 @@ class SEO_Ultimate {
 	 */
 	function load_modules() {
 		
+		$psdata = (array)get_option('seo_ultimate', array());
+		
 		//The plugin_dir_path variable must be set before calling this function!
 		if (!$this->plugin_dir_path) return false;
 		
 		//If no modules list is found, then create a new, empty list.
-		if (!isset($this->dbdata['modules']))
-			$this->dbdata['modules'] = array();
+		if (!isset($psdata['modules']))
+			$psdata['modules'] = array();
 		
 		//Get the modules list from last time the plugin was loaded.
-		$oldmodules = $this->dbdata['modules'];
+		$oldmodules = $psdata['modules'];
 		
 		//The modules are in the "modules" subdirectory of the plugin folder.
 		$dirpath = $this->plugin_dir_path.'modules';
@@ -543,8 +547,8 @@ class SEO_Ultimate {
 		}
 		
 		//Save the new modules list
-		$this->dbdata['modules'] = $newmodules;
-		if ($newmodules != $oldmodules) $this->save_dbdata();
+		$psdata['modules'] = $newmodules;
+		if ($newmodules != $oldmodules) update_option('seo_ultimate', $psdata);
 		
 		//Remove the cron jobs of deleted modules
 		$this->remove_cron_jobs();
@@ -612,27 +616,6 @@ class SEO_Ultimate {
 			return $this->modules[$module]->get_setting($key, $default);
 		else
 			return $default;
-	}
-	
-	/**
-	 * Saves settings data to the database.
-	 * 
-	 * @since 0.8
-	 * @uses $dbdata
-	 * @uses get_setting()
-	 */
-	function save_dbdata() {
-		
-		//If we don't clear the cache, we sometimes end up with multiple seo_ultimate options entries
-		wp_cache_delete('seo_ultimate', 'options');
-		wp_cache_delete('notoptions', 'options');
-		
-		if (empty($this->dbdata))
-			//If we don't have any data to save, then delete the option instead of saving an empty array
-			delete_option('seo_ultimate');
-		else
-			//Save our data to the database
-			update_option('seo_ultimate', $this->dbdata);
 	}
 	
 	/**
@@ -740,10 +723,12 @@ class SEO_Ultimate {
 	 */
 	function add_menus() {
 		
+		$psdata = (array)get_option('seo_ultimate', array());
+		
 		//If subitems have numeric bubbles, then add them up and show the total by the main menu item
 		$count = 0;
 		foreach ($this->modules as $key => $module) {
-			if (	($this->dbdata['modules'][$key] > SU_MODULE_SILENCED || !count($this->dbdata['modules']))
+			if (	($psdata['modules'][$key] > SU_MODULE_SILENCED || !count($psdata['modules']))
 					&& $module->get_menu_count() > 0
 					&& $module->get_menu_parent() == 'seo'
 					&& $module->is_independent_module()
@@ -768,12 +753,12 @@ class SEO_Ultimate {
 				
 				//If the module is hidden, put the module under a non-existent menu parent
 				//(this will let the module's admin page be loaded, but it won't show up on the menu)
-				if ($this->dbdata['modules'][$key] > SU_MODULE_HIDDEN || !count($this->dbdata['modules']))
+				if ($psdata['modules'][$key] > SU_MODULE_HIDDEN || !count($psdata['modules']))
 					$parent = $module->get_menu_parent();
 				else
 					$parent = 'su-hidden-modules';
 				
-				if ($this->dbdata['modules'][$key] > SU_MODULE_SILENCED || !count($this->dbdata['modules']))
+				if ($psdata['modules'][$key] > SU_MODULE_SILENCED || !count($psdata['modules']))
 					$count_code = $this->get_menu_count_code($module->get_menu_count());
 				else
 					$count_code = '';
@@ -1522,7 +1507,10 @@ class SEO_Ultimate {
 	 * @param bool $remove_all Whether to remove all cron jobs. Optional.
 	 */
 	function remove_cron_jobs($remove_all = false) {
-		$crondata = $this->dbdata['cron'];
+		
+		$psdata = (array)get_option('seo_ultimate', array());
+		$crondata = $psdata['cron'];
+		
 		if (is_array($crondata)) {
 			$newcrondata = $crondata;
 			
@@ -1533,9 +1521,9 @@ class SEO_Ultimate {
 				}
 			}
 			
-			$this->dbdata['cron'] = $newcrondata;
+			$psdata['cron'] = $newcrondata;
 			
-			$this->save_dbdata();
+			update_option('seo_ultimate', $psdata);
 		}
 	}
 	

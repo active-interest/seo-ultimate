@@ -7,7 +7,7 @@
 
 if (class_exists('SU_Module')) {
 
-define('SU_DOWNGRADE_LIMIT', '2.6');
+define('SU_DOWNGRADE_LIMIT', '5.0');
 
 class SU_Install extends SU_Module {
 	
@@ -71,7 +71,7 @@ class SU_Install extends SU_Module {
 				$this->admin_form_end(__('Downgrade', 'seo-ultimate'));
 				echo "</div>\n";
 			} else
-				$this->print_message('warning', sprintf(__('Downgrading to versions earlier than %s is not supported.', 'seo-ultimate'), SU_DOWNGRADE_LIMIT));
+				$this->print_message('warning', sprintf(__('Downgrading to versions earlier than %s is not supported because doing so will result in data loss.', 'seo-ultimate'), SU_DOWNGRADE_LIMIT));
 		} else
 			$this->print_message('error', __('There was an error retrieving the list of available versions. Please try again later.', 'seo-ultimate'));
 	}

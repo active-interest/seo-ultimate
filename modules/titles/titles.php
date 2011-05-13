@@ -151,10 +151,16 @@ class SU_Titles extends SU_Module {
 		//Load post/page titles
 		$post_id = 0;
 		$post_title = '';
+		$parent_title = '';
 		if (is_singular()) {
 			$post = $wp_query->get_queried_object();
 			$post_title = strip_tags( apply_filters( 'single_post_title', $post->post_title ) );
 			$post_id = $post->ID;
+			
+			if ($parent = $post->post_parent) {
+				$parent = &get_post($parent);
+				$parent_title = strip_tags( apply_filters( 'single_post_title', $parent->post_title ) );
+			}
 		}
 		
 		//Load date-based archive titles
@@ -221,6 +227,7 @@ class SU_Titles extends SU_Module {
 			, '{tagline}' => get_bloginfo('description')
 			, '{post}' => $post_title
 			, '{page}' => $post_title
+			, '{page_parent}' => $parent_title
 			, '{category}' => $cat_title
 			, '{categories}' => $cat_titles
 			, '{category_description}' => $cat_desc
