@@ -52,10 +52,14 @@ class sustr {
 	 * @param int $maxlen The desired maximum length of the string.
 	 * @param str $truncate The string that should be added to the end of a truncated string.
 	 */
-	function truncate( $str, $maxlen, $truncate = '...' ) {
-		if ( strlen($str) > $maxlen )
-			return substr( $str, 0, $maxlen - strlen($truncate) ) . $truncate;
+	function truncate( $str, $maxlen, $truncate = '...', $maintain_words=false ) {
 		
+		if ( strlen($str) > $maxlen ) {
+			$str = substr( $str, 0, $maxlen - strlen($truncate) );
+			if ($maintain_words) $str = preg_replace('/ ([^ ]+)$/', '', $str);
+			$str .= $truncate;
+		}
+			
 		return $str;
 	}
 	
@@ -161,6 +165,10 @@ class sustr {
 	function preg_filter($filter, $str) {
 		$filter = str_replace('/', '\\/', $filter);
 		return preg_replace("/[^{$filter}]/", '', $str);
+	}
+	
+	function to_int($str) {
+		return intval(sustr::preg_filter('0-9', strval($str)));
 	}
 	
 	function preg_escape($str, $delim='%') {

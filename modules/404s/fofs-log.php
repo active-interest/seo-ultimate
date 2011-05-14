@@ -74,7 +74,8 @@ class SU_FofsLog extends SU_Module {
 			
 			$exceptions = suarr::explode_lines($this->get_setting('exceptions', ''));
 			foreach ($exceptions as $exception) {
-				$exception = str_replace('*', '.*', $exception);
+				$exception = sustr::preg_escape($exception, '@');
+				$exception = str_replace('\\*', '.*', $exception);
 				$regex = "@^$exception$@i";
 				$regex = str_replace(array('@^.*', '.*$@i'), array('@', '@i'), $regex);
 				if (preg_match($regex, $hit['url'])) return $hit;

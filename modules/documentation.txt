@@ -37,7 +37,7 @@ The following options are available on the Settings tab:
 
 * **Maximum Log Entries** -- Here you can set the maximum number of log entries that 404 Monitor will keep at a time. Setting this to a reasonable number will help keep database usage under control. If you change this setting, it will take effect the next time a 404 is logged.
 
-* **URLs to Ignore** -- URLs entered here will be ignored whenever they generate 404 errors in the future. You can use astericks (*) as wildcards.
+* **URLs to Ignore** -- URLs entered here will be ignored whenever they generate 404 errors in the future. You can use asterisks (*) as wildcards.
 
 = Troubleshooting =
 

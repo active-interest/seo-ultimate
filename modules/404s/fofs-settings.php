@@ -28,6 +28,10 @@ class SU_FofsSettings extends SU_Module {
 		);
 	}
 	
+	function init() {
+		add_filter('su_get_setting-404s-max_log_size', array('sustr', 'to_int'));
+	}
+	
 	function admin_page_contents() {
 		$this->admin_form_start();
 		$this->checkbox('log_enabled', __('Continue monitoring for new 404 errors', 'seo-ultimate'), __('Monitoring Settings', 'seo-ultimate'));
