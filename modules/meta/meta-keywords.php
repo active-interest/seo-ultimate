@@ -35,7 +35,26 @@ class SU_MetaKeywords extends SU_Module {
 	
 	function defaults_tab() {
 		$this->admin_form_table_start();
+		
+		$posttypenames = suwp::get_post_type_names();
+		foreach ($posttypenames as $posttypename) {
+			$posttype = get_post_type_object($posttypename);
+			$posttypelabel = $posttype->labels->name;
+			
+			$checkboxes = array();
+			$taxnames = get_object_taxonomies($posttypename);
+			
+			foreach ($taxnames as $taxname) {
+				$taxonomy = get_taxonomy($taxname);
+				$checkboxes["auto_keywords_posttype_{$posttypename}_tax_{$taxname}"] = $taxonomy->labels->name;
+			}
+			
+			if ($checkboxes)
+				$this->checkboxes($checkboxes, $posttypelabel);
+		}
+		
 		$this->textarea('global_keywords', __('Sitewide Keywords', 'seo-ultimate') . '<br /><small><em>' . __('(Separate with commas)', 'seo-ultimate') . '</em></small>');
+		
 		$this->admin_form_table_end();
 	}
 	
@@ -53,10 +72,25 @@ class SU_MetaKeywords extends SU_Module {
 		if (is_home()) {
 			$kw = $this->get_setting('home_keywords');
 		
-		//If we're viewing a post or page, look for its meta data.
+		//If we're viewing a post or page...
 		} elseif (is_singular()) {
+			
+			//...look for its meta data
 			$kw = $this->get_postmeta('keywords');	
-		
+			
+			//...and add default values
+			if ($posttypename = get_post_type()) {
+				$taxnames = get_object_taxonomies($posttypename);
+				
+				foreach ($taxnames as $taxname)
+					if ($this->get_setting("auto_keywords_posttype_{$posttypename}_tax_{$taxname}", false)) {
+						$terms = get_the_terms(0, $taxname);
+						$terms = suarr::flatten_values($terms, 'name');
+						$terms = implode(',', $terms);
+						$kw .= ',' . $terms;
+					}
+			}
+			
 		//If we're viewing a term, look for its meta data.
 		} elseif (is_category() || is_tag() || is_tax()) {
 			global $wp_query;
