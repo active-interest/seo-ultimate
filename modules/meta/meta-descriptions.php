@@ -24,7 +24,7 @@ class SU_MetaDescriptions extends SU_Module {
 				  __('Default Formats', 'seo-ultimate') => 'formats_tab'
 				, __('Blog Homepage', 'seo-ultimate') => 'home_tab'
 				)
-			, $this->get_postmeta_edit_tabs(array(
+			, $this->get_meta_edit_tabs(array(
 				  'type' => 'textarea'
 				, 'name' => 'description'
 				, 'term_settings_key' => 'taxonomy_descriptions'
