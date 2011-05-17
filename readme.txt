@@ -147,7 +147,7 @@ There are many additional features in development. Install SEO Ultimate today an
 
 To install the plugin automatically:
 
-1. Go to the [SEO Ultimate homepage](http://www.seodesignsolutions.com/wordpress-seo/)
+1. Go to the [SEO Ultimate homepage](http://www.seodesignsolutions.com/wordpress-seo/).
 2. In the "Auto Installer" box on the right, enter your blog's URL and click "Launch Installer."
 3. Click "Install Now," then click "Activate this plugin."
 
