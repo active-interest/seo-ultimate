@@ -28,6 +28,13 @@ class sustr {
 	   return ( substr( $str, strlen( $str ) - strlen( $sub ) ) === $sub );
 	}
 	
+	function startwith( $str, $start ) {
+		if (!sustr::startswith($str, $start))
+			return $start.$str;
+		else
+			return $str;
+	}
+	
 	function endwith( $str, $end ) {
 		if (!sustr::endswith($str, $end))
 			return $str.$end;

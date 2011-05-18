@@ -18,6 +18,14 @@ class SU_MetaKeywords extends SU_Module {
 		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 20);
 	}
 	
+	function get_default_settings() {
+		return array(
+			  'auto_keywords_posttype_post_words_value' => 3
+			, 'auto_keywords_posttype_page_words_value' => 3
+			, 'auto_keywords_posttype_attachment_words_value' => 3
+		);
+	}
+	
 	function get_admin_page_tabs() {
 		return array_merge(
 			  array(
@@ -42,6 +50,10 @@ class SU_MetaKeywords extends SU_Module {
 			$posttypelabel = $posttype->labels->name;
 			
 			$checkboxes = array();
+			
+			if (post_type_supports($posttypename, 'editor'))
+				$checkboxes["auto_keywords_posttype_{$posttypename}_words"] = __('The %d most commonly-used words', 'seo-ultimate');
+			
 			$taxnames = get_object_taxonomies($posttypename);
 			
 			foreach ($taxnames as $taxname) {
@@ -65,6 +77,7 @@ class SU_MetaKeywords extends SU_Module {
 	}
 	
 	function head_tag_output() {
+		global $post;
 		
 		$kw = false;
 		
@@ -82,13 +95,27 @@ class SU_MetaKeywords extends SU_Module {
 			if ($posttypename = get_post_type()) {
 				$taxnames = get_object_taxonomies($posttypename);
 				
-				foreach ($taxnames as $taxname)
+				foreach ($taxnames as $taxname) {
 					if ($this->get_setting("auto_keywords_posttype_{$posttypename}_tax_{$taxname}", false)) {
 						$terms = get_the_terms(0, $taxname);
 						$terms = suarr::flatten_values($terms, 'name');
 						$terms = implode(',', $terms);
 						$kw .= ',' . $terms;
 					}
+				}
+				
+				if ($this->get_setting("auto_keywords_posttype_{$posttypename}_words", false)) {
+					$words = preg_split("/[\W+]/", strip_tags($post->post_content), null, PREG_SPLIT_NO_EMPTY);
+					$words = array_count_values($words);
+					arsort($words);
+					$words = array_filter($words, array(&$this, 'filter_word_counts'));
+					$words = array_keys($words);
+					$stopwords = suarr::explode_lines($this->get_setting('words_to_remove', array(), 'slugs'));
+					$words = array_diff($words, $stopwords);
+					$words = array_slice($words, 0, $this->get_setting("auto_keywords_posttype_{$posttypename}_words_value"));
+					$words = implode(',', $words);
+					$kw .= ',' . $words;
+				}
 			}
 			
 		//If we're viewing a term, look for its meta data.
@@ -107,7 +134,7 @@ class SU_MetaKeywords extends SU_Module {
 		$kw = explode(',', $kw);
 		$kw = array_map('trim', $kw); //Remove extra spaces from beginning/end of keywords
 		$kw = array_filter($kw); //Remove blank keywords
-		$kw = array_unique($kw); //Remove duplicate keywords
+		$kw = suarr::array_unique_i($kw); //Remove duplicate keywords
 		$kw = implode(',', $kw);
 		
 		//Do we have keywords? If so, output them.
@@ -115,6 +142,10 @@ class SU_MetaKeywords extends SU_Module {
 			$kw = su_esc_attr($kw);
 			echo "\t<meta name=\"keywords\" content=\"$kw\" />\n";
 		}
+	}
+	
+	function filter_word_counts($count) {
+		return $count > 1;
 	}
 	
 	function postmeta_fields($fields) {	

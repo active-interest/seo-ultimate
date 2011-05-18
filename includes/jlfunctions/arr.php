@@ -166,6 +166,25 @@ class suarr {
 	function has_keys($array, $keys) {
 		return count(array_diff($keys, array_keys($array))) == 0;
 	}
+	
+	//Function based on http://php.net/manual/en/function.array-unique.php#82508
+	function in_array_i($str, $a) {
+		foreach($a as $v){
+			if (strcasecmp($str, $v)==0)
+				return true;
+		}
+		return false;
+	}
+
+	//Function based on http://php.net/manual/en/function.array-unique.php#82508
+	function array_unique_i($a) {
+		$n = array();
+		foreach($a as $k=>$v) {
+			if (!suarr::in_array_i($v, $n))
+				$n[$k] = $v;
+		}
+		return $n;
+	}
 }
 
 ?>
