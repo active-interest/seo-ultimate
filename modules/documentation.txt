@@ -245,24 +245,24 @@ Meta Keywords Editor lets you tell search engines what keywords are associated w
 
 = Overview =
 
-* **What it does:** Meta Robot Tags Editor lets you convey instructions to search engine spiders, as well as prohibit the spiders from indexing certain pages on your blog using the `<meta name="robots" content="noindex" />` tag.
+* **What it does:** Meta Robot Tags Editor lets you convey instructions to search engine spiders, as well as prohibit the spiders from indexing certain webpages on your blog using the `<meta name="robots" content="noindex" />` tag.
 
-* **Why it helps:** The "Spider Instructions" tab lets you stop DMOZ or Yahoo! Directory from overriding your custom meta descriptions, as well as prevent spiders from caching your site if you so desire. The "Noindex" tab lets you deindex pages that contain unimportant content (e.g. the login page), or pages that mostly contain duplicate content.
+* **Why it helps:** The "Global" tab lets you stop DMOZ or Yahoo! Directory from overriding your custom meta descriptions, as well as prevent spiders from caching your site if you so desire. The "Default Values" tab lets you deindex entire sections of your site that contain content unimportant to visitors (e.g. the administration section), or sections of your site that mostly contain duplicate content (e.g. date archives). The editor tabs can do something similar, but for individual content items. By removing webpages from search results that visitors find unhelpful, you can help increase the focus on your more useful content.
 
-* **How to use it:** Adjust the settings as desired, and then click Save Changes. You can refer to the "Settings Help" tab for information on the settings available. You can also customize the noindex/nofollow robots meta statuses of an individual post or page by using the textboxes that Meta Editor adds to the post/page editors.
+* **How to use it:** Adjust the settings as desired, and then click Save Changes. You can refer to the "Settings Help" tab for information on the settings available. You can also use the editor tabs to deindex individual content items on your site as well as enable the "nofollow" meta parameter that will nullify all outgoing links on a specific webpage.
 
 
 = Settings Help =
 
 Here's information on the various settings:
 
-* **Spider Instructions**
+* **Global: Spider Instructions**
 	
 	* **Don't use this site's Open Directory / Yahoo! Directory description in search results.** -- If your site is listed in the [Open Directory (DMOZ)](http://www.dmoz.org/) or the [Yahoo! Directory](http://dir.yahoo.com/), some search engines may use your directory listing as the meta description. These boxes tell search engines not to do that and will give you full control over your meta descriptions. These settings have no effect if your site isn't listed in the Open Directory or Yahoo! Directory respectively.
 
 	* **Don't cache or archive this site.** -- When you check this box, Meta Editor will ask search engines (Google, Yahoo!, Bing, etc.) and archivers (Archive.org, etc.) to _not_ make cached or archived "copies" of your site.
 
-* **Noindex**
+* **Default Values: Prevent indexing of...**
 
 	* **Administration back-end pages** -- Tells spiders not to index the administration area (the part you're in now), in the unlikely event a spider somehow gains access to the administration. Recommended.
 
@@ -283,6 +283,12 @@ Here's information on the various settings:
 	* **Tag archives** -- Tells spiders not to index tag archives. Recommended only if you don't use tags.
 
 	* **User login/registration pages** -- Tells spiders not to index WordPress's user login and registration pages. Recommended.
+
+* **Editor Tabs (Posts/Pages/etc.)**
+
+	* **Noindex** -- Checking this for an item will ask search engines to remove that item's webpage from their indices. Use this to remove pages that you don't want showing up in search results (such as a Privacy Policy page, for example).
+	
+	* **Nofollow** -- Checking this for an item will tell search engines to ignore the links to other webpages that are on that item's webpage. Note: this is page-level "meta nofollow," not to be confused with link-level "rel nofollow."
 
 = Troubleshooting =
 

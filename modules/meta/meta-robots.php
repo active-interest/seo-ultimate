@@ -18,11 +18,12 @@ class SU_MetaRobots extends SU_Module {
 	}
 	
 	function get_admin_page_tabs() {
-		return array(__('Spider Instructions') => 'global_tab');
+		return array(__('Global') => 'global_tab');
 	}
 	
 	function global_tab() {
 		$this->admin_form_table_start();
+		$this->admin_form_subheader(__('Spider Instructions', 'seo-ultimate'));
 		$this->checkboxes(array(
 				  'noodp' => __('Don&#8217t use this site&#8217s Open Directory description in search results.', 'seo-ultimate')
 				, 'noydir' => __('Don&#8217t use this site&#8217s Yahoo! Directory description in search results.', 'seo-ultimate')

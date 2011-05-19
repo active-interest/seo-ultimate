@@ -36,7 +36,28 @@ class SU_Noindex extends SU_Module {
 			add_action('login_head', array(&$this, 'xhtml_noindex_tag'));
 	}
 	
-	function admin_page_contents() {
+	function get_admin_page_tabs() {
+		
+		return array_merge(
+			  array(
+				  __('Default Values') => 'defaults_tab'
+				)
+			, $this->get_postmeta_edit_tabs(array(
+				  array(
+					  'type' => 'checkbox'
+					, 'name' => 'meta_robots_noindex'
+					, 'label' => __('Noindex', 'seo-ultimate')
+					)
+				, array(
+					  'type' => 'checkbox'
+					, 'name' => 'meta_robots_nofollow'
+					, 'label' => __('Nofollow', 'seo-ultimate')
+					)
+			))
+		);
+	}
+	
+	function defaults_tab() {
 		
 		//If global noindex tags are enabled, these settings will be moot, so notify the user.
 		if (!get_option('blog_public'))
@@ -75,6 +96,11 @@ class SU_Noindex extends SU_Module {
 	function should_noindex() {
 		if ($this->get_postmeta('meta_robots_noindex')) return true;
 		
+		switch ($this->get_termmeta('meta_robots_noindex', false, 'meta')) {
+			case 1: return true; break;
+			case -1: return false; break;
+		}
+		
 		$checks = array('author', 'search', 'category', 'date', 'tag');
 		
 		foreach ($checks as $setting) {
@@ -93,6 +119,11 @@ class SU_Noindex extends SU_Module {
 	
 	function should_nofollow() {
 		if ($this->get_postmeta('meta_robots_nofollow')) return true;
+		
+		switch ($this->get_termmeta('meta_robots_nofollow', false, 'meta')) {
+			case 1: return true; break;
+			case 0: case -1: return false; break;
+		}
 		
 		return false;
 	}

@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 5.3
+Stable tag: 5.4
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 5.4 adds noindex/nofollow mass-editing for posts/pages
 * Version 5.3 adds meta keyword auto-generation from frequently-used words
 * Version 5.2 adds meta description mass-editing for categories/tags/terms
 * Version 5.1 adds meta keyword auto-generation from categories/tags/terms
 * Version 5.0 increases database usage efficiency
-* Version 4.9 adds auto-generated meta descriptions
 
 = Features =
 
@@ -39,7 +39,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Go back and edit old posts' keywords with the mass-editor.
 	* Automatically generate meta keywords based on categories, tags, custom taxonomy terms, and frequently-used words.
 
-* **Meta Robot Tags Editor**
+* **Meta Robot Tags Editor** -- UPDATED in Version 5.4
 	* Add the `<meta name="robots" content="noindex,follow" />` tag to archives, comment feeds, the login page, and more.
 	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post/page.
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
@@ -113,7 +113,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Webmaster Verification Assistant**
 	* Enter verification codes in the provided fields to access search engine webmaster tools.
 
-* **Link Mask Generator** -- UPDATED in Version 4.9
+* **Link Mask Generator**
 	* Lets you generate robots.txt-blocked "link masks" (e.g. `www.example.com/go/google/`) that pass-through to an external URL.
 	* Lets you mask links on a per-link, per-post basis so you can exert fine-tuned control over your posts' linkflow.
 	* Lets you change `/go/` to a directory of your choosing.
@@ -227,12 +227,15 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 5.4 (May 19, 2011) =
+* Feature: Meta Robot Tags Editor now has a noindex/nofollow mass-editor for posts, pages, and custom post types
+
 = Version 5.3 (May 18, 2011) =
 * Feature: Meta Keywords Editor now lets you auto-generate keywords based on the words most commonly used in your posts, pages, and custom post types
 * Improvement: Meta Keywords Editor now removes duplicate keywords case-insensitively
 
 = Version 5.2 (May 17, 2011) =
-* Feature: Added meta description mass-editor for categories, tags, and custom taxonomy terms
+* Feature: Meta Description Editor now has a mass-editor for categories, tags, and custom taxonomy terms
 
 = Version 5.1 (May 16, 2011) =
 * Feature: Meta Keywords Editor can now auto-generate keywords for posts and custom post types using categories, tags, and custom taxonomy terms

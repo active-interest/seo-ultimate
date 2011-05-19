@@ -1076,7 +1076,7 @@ class SU_Module {
 	 * @param string $tab The ID of the current tab; used to generate a URL hash (e.g. #su-$tab)
 	 * @param string $type The type of post/taxonomy type being edited (examples: post, page, attachment, category, post_tag)
 	 * @param string $type_label The singular label for the post/taxonomy type (examples: Post, Page, Attachment, Category, Post Tag)
-	 * @param array $fields The array of meta fields that the user can edit with the tables. The data for each meta field are stored in an array with these elements: "type" (can be textbox, textarea, or checkbox), "name" (the meta field, e.g. title or description), "setting" (the key of the setting for cases when meta data are stored in the settings array, namely, for taxonomies), and "label" (the internationalized label of the field, e.g. "Meta Description" or "Title Tag")
+	 * @param array $fields The array of meta fields that the user can edit with the tables. The data for each meta field are stored in an array with these elements: "type" (can be textbox, textarea, or checkbox), "name" (the meta field, e.g. title or description), "term_settings_key" (the key of the setting for cases when term meta data are stored in the settings array), and "label" (the internationalized label of the field, e.g. "Meta Description" or "Title Tag")
 	 */
 	function meta_edit_table($genus, $tab, $type, $type_label, $fields) {
 		
@@ -2110,7 +2110,7 @@ class SU_Module {
 		echo "<div class='su-status su-$type'>$message</div>";
 	}
 	
-	/********** ADMIN POST META BOX FUNCTIONS **********/
+	/********** ADMIN META FUNCTIONS **********/
 	
 	/**
 	 * Gets a specified meta value of the current post (i.e. the post currently being edited in the admin,
@@ -2325,6 +2325,33 @@ class SU_Module {
 		$value = su_esc_attr($value);
 		$html = str_replace('<tr ', "<tr class='su_{$field}_{$value}_subsection$hidden' ", $html);
 		return $html;
+	}
+	
+	/**
+	 * Gets a specified meta value of the current term.
+	 * 
+	 * @since 5.4
+	 * 
+	 * @param string $key The database setting where the metadata is stored. The function will add a "taxonomy_" prefix.
+	 * @param mixed $id The ID number of the post/page.
+	 * @return string The meta value requested.
+	 */
+	function get_termmeta($key, $id=false, $module=false) {
+		
+		global $wp_query;
+		
+		if (!$id && (is_category() || is_tag() || is_tax()))
+			$id = $wp_query->get_queried_object_id();
+		
+		if (!$id)
+			return null;
+		
+		$tax_meta = $this->get_setting(sustr::startwith($key, 'taxonomy_'), array(), $module);
+		
+		if (is_array($tax_meta) && isset($tax_meta[$id]))
+			return $tax_meta[$id];
+		
+		return null;
 	}
 	
 	/********** CRON FUNCTION **********/
