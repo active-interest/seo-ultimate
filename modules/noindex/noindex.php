@@ -54,6 +54,30 @@ class SU_Noindex extends SU_Module {
 					, 'label' => __('Nofollow', 'seo-ultimate')
 					)
 			))
+			, $this->get_taxmeta_edit_tabs(array(
+				  array(
+					  'type' => 'dropdown'
+					, 'name' => 'meta_robots_noindex'
+					, 'options' => array(
+						  0 => __('Use default', 'seo-ultimate')
+						, 1 => __('noindex', 'seo-ultimate')
+						, -1 => __('index', 'seo-ultimate')
+					)
+					, 'term_settings_key' => 'taxonomy_meta_robots_noindex'
+					, 'label' => __('Noindex', 'seo-ultimate')
+					)
+				, array(
+					  'type' => 'dropdown'
+					, 'name' => 'meta_robots_nofollow'
+					, 'options' => array(
+						  0 => __('Use default', 'seo-ultimate')
+						, 1 => __('nofollow', 'seo-ultimate')
+						, -1 => __('follow', 'seo-ultimate')
+					)
+					, 'term_settings_key' => 'taxonomy_meta_robots_nofollow'
+					, 'label' => __('Nofollow', 'seo-ultimate')
+					)
+			))
 		);
 	}
 	
