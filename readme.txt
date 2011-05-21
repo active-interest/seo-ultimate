@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 5.5
+Stable tag: 5.5.1
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -226,6 +226,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 5.5.1 (May 21, 2011) =
+* Bugfix: Link Mask Generator can now mask links that are created in the Visual Editor and whose URLs contain ampersands
+* Improvement: When the "Convert lowercase category/tag names to title case when used in title tags" option was checked and a term title had some capitalization, Title Tag Rewriter used to leave the entire term title alone; now it title-cases just the words without capitalization and leaves the capitalized words alone (so with the option enabled, the "iPod tips" category now becomes "iPod Tips" when used in title tags, for example)
 
 = Version 5.5 (May 20, 2011) =
 * Feature: Meta Robot Tags Editor now has a noindex/nofollow mass-editor for categories, tags, and custom taxonomy terms

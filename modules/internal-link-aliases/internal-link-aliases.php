@@ -100,8 +100,15 @@ class SU_InternalLinkAliases extends SU_Module {
 			
 			if (in_array($id, $alias['posts']) && $to) {
 				$from = $alias['from'];
+				$h_from = esc_html($from);
 				$to = get_bloginfo('url') . "/$alias_dir/$to/";
-				$content = str_replace(array(" href='$from'", " href=\"$from\""), array(" href='$to'", " href=\"$to\""), $content);
+				$replace = array(
+					  " href='$from'" => " href='$to'"
+					, " href='$h_from'" => " href='$to'"
+					, " href=\"$from\"" => " href=\"$to\""
+					, " href=\"$h_from\"" => " href=\"$to\""
+				);
+				$content = str_replace(array_keys($replace), array_values($replace), $content);
 			}
 		}
 		return $content;

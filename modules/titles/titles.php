@@ -189,8 +189,8 @@ class SU_Titles extends SU_Module {
 			$cat_title = $categories[0]->name;
 			$cat_desc = category_description($categories[0]->term_id);
 		}
-		if (strlen($cat_title) && $this->get_setting('terms_ucwords', true) && $cat_title == strtolower($cat_title))
-			$cat_title = ucwords($cat_title);
+		if (strlen($cat_title) && $this->get_setting('terms_ucwords', true))
+			$cat_title = sustr::tclcwords($cat_title);
 		
 		//Load tag titles
 		$tag_title = $tag_desc = '';
@@ -198,8 +198,8 @@ class SU_Titles extends SU_Module {
 			$tag_title = single_tag_title('', false);
 			$tag_desc = tag_description();
 			
-			if ($this->get_setting('terms_ucwords', true) && $tag_title == strtolower($tag_title))
-				$tag_title = ucwords($tag_title);
+			if ($this->get_setting('terms_ucwords', true))
+				$tag_title = sustr::tclcwords($tag_title);
 		}
 		
 		//Load author titles

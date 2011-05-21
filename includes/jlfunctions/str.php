@@ -220,6 +220,18 @@ class sustr {
 	function str2func($varval) {
 		return create_function('', 'return "'.addcslashes((string)$varval, '"').'";');
 	}
+	
+	function tclcwords($str) {
+		$words = explode(' ', $str);
+		$new_words = array();
+		foreach ($words as $word) {
+			if (strtolower($word) == $word)
+				$new_words[] = ucwords($word);
+			else
+				$new_words[] = $word;
+		}
+		return implode(' ', $new_words);
+	}
 }
 
 ?>
