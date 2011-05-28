@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 5.5.1
+Stable tag: 5.6
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,17 +11,17 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 5.6 adds the Nofollow Manager module
 * Version 5.5 adds noindex/nofollow mass-editing for categories/tags/terms
 * Version 5.4 adds noindex/nofollow mass-editing for posts/pages
 * Version 5.3 adds meta keyword auto-generation from frequently-used words
 * Version 5.2 adds meta description mass-editing for categories/tags/terms
-* Version 5.1 adds meta keyword auto-generation from categories/tags/terms
 
 = Features =
 
 SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these powerful features:
 
-* **Title Tag Rewriter** -- UPDATED in Version 5.0
+* **Title Tag Rewriter**
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
 	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog. Also supports custom post types.
 	* Customize your homepage's `<title>` tag.
@@ -119,6 +119,9 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Lets you change `/go/` to a directory of your choosing.
 	* Link masks provide a modern replacement for the deprecated, nofollow-based "PageRank Sculpting" technique.
 	* Perfect for affiliate marketers and SEO-savvy bloggers.
+	
+* **Nofollow Manager**
+	* Lets you maintain `rel="nofollow"` settings when migrating from other SEO plugins
 	
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
@@ -226,6 +229,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 5.6 (May 27, 2011) =
+* Feature: Added the Nofollow Manager module (hidden by default)
 
 = Version 5.5.1 (May 21, 2011) =
 * Bugfix: Link Mask Generator can now mask links that are created in the Visual Editor and whose URLs contain ampersands

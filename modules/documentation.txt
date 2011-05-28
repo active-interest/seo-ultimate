@@ -351,6 +351,16 @@ The Module Manager lets you customize the visibility and accessibility of each m
 
 
 
+== Nofollow Manager ==
+
+= Overview =
+
+* **What it does:** Nofollow Manager adds the `rel="nofollow"` attribute to types of links that you specify. The `rel="nofollow"` attribute prevents a link from passing PageRank.
+
+* **Why it helps:** If you're migrating to SEO Ultimate from another plugin, Nofollow Manager can help you maintain your existing settings (as part of an "if it ain't broke don't fix it" strategy). In other cases, however, we recommend not using the Nofollow Manager because in 2008 Google disabled the ability to use the `rel="nofollow"` attribute for PageRank sculpting.
+
+* **How it works:** Select the types of links you'd like to nofollow, then click Save Changes. You can also nofollow links to individual Pages using the checkbox that Nofollow Manager adds to the "SEO Settings" box below the Page editor.
+
 
 == Rich Snippet Creator ==
 
