@@ -231,7 +231,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 == Changelog ==
 
 = Version 5.6 (May 27, 2011) =
-* Feature: Added the Nofollow Manager module (hidden by default)
+* Feature: Added the Nofollow Manager module (disabled by default)
 
 = Version 5.5.1 (May 21, 2011) =
 * Bugfix: Link Mask Generator can now mask links that are created in the Visual Editor and whose URLs contain ampersands
