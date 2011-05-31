@@ -245,8 +245,8 @@ class SU_Titles extends SU_Module {
 			, '{author_firstname}' => $author['firstname']
 			, '{author_lastname}' => $author['lastname']
 			, '{author_nickname}' => $author['nickname']
-			, '{query}' => attribute_escape(get_search_query())
-			, '{ucquery}' => attribute_escape(ucwords(get_search_query()))
+			, '{query}' => su_esc_attr(get_search_query())
+			, '{ucquery}' => su_esc_attr(ucwords(get_search_query()))
 			, '{url_words}' => $this->get_url_words($_SERVER['REQUEST_URI'])
 		);
 		

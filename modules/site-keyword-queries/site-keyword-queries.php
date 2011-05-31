@@ -16,7 +16,7 @@ class SU_SiteKeywordQueries extends SU_Module {
 ?>
 <form method="get" action="http://www.seodesignsolutions.com/blog/ultimate-linkbuilding-toolkit/result.php" target="_blank">
 <input type="hidden" id="showback" name="showback" value="0" />
-<input type="hidden" id="queries" name="queries" value="<?php echo attribute_escape(trailingslashit(get_bloginfo('url'))); ?>" />
+<input type="hidden" id="queries" name="queries" value="<?php echo su_esc_attr(trailingslashit(get_bloginfo('url'))); ?>" />
 
 <h3><?php _e('Step 1: Enter Keywords', 'seo-ultimate'); ?></h3>
 <div><textarea id="queries2" name="queries2" rows="10" cols="60"></textarea></div>

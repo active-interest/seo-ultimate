@@ -102,7 +102,7 @@ class SU_MetaDescriptions extends SU_Module {
 	
 	function postmeta_fields($fields) {
 		$id = "_su_description";
-		$value = attribute_escape($this->get_postmeta('description'));
+		$value = su_esc_attr($this->get_postmeta('description'));
 		
 		$fields['20|description'] =
 			  "<tr class='textarea' valign='top'>\n<th scope='row'><label for='$id'>".__('Meta Description:', 'seo-ultimate')."</label></th>\n"

@@ -10,7 +10,7 @@ class suwp {
 	 */
 	function get_post_id() {
 		if (is_admin())
-			return intval($_REQUEST['post']);
+			return empty($_REQUEST['post']) ? false : intval($_REQUEST['post']);
 		elseif (in_the_loop())
 			return intval(get_the_ID());
 		elseif (is_singular()) {

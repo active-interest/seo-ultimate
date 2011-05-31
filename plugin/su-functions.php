@@ -99,7 +99,7 @@ function su_lang_implode($items, $var=false, $ucwords=false) {
 function su_esc_attr($str) {
 	if (!is_string($str)) return $str;
 	$str = str_replace(array("\t", "\r\n", "\n"), ' ', $str);
-	$str = attribute_escape($str);
+	$str = esc_attr($str);
 	return $str;
 }
 

@@ -1977,10 +1977,12 @@ class SU_Module {
 	function is_action($action) {
 		if (!isset($_GET['object']) || !($object = $_GET['object'])) $object = false;
 		return (
-					(
+					!empty($_GET['page'])
+					&& (
 						   ( strcasecmp($_GET['page'], $this->plugin->key_to_hook($this->get_module_key())) == 0 ) //Is $this module being shown?
 						|| ( strlen($this->get_parent_module()) && strcasecmp($_GET['page'], $this->plugin->key_to_hook($this->get_parent_module())) == 0) //Is the parent module being shown?
 					)
+					&& !empty($_GET['action'])
 					&& ($_GET['action'] == $action || $_POST['action'] == $action) //Is this $action being executed?
 					&& $this->nonce_validates($action, $object) //Is the nonce valid?
 		);
@@ -2127,7 +2129,7 @@ class SU_Module {
 		if (!$id) {
 			//This code is different from suwp::get_post_id();
 			if (is_admin()) {
-				$id = intval($_REQUEST['post']);
+				$id = empty($_REQUEST['post']) ? false : intval($_REQUEST['post']);
 				global $post;
 			} elseif (in_the_loop()) {
 				$id = intval(get_the_ID());
@@ -2139,13 +2141,12 @@ class SU_Module {
 			}
 		}
 		
-		if ($id)
+		if ($id && $post) {
 			$value = get_post_meta($id, "_su_$key", true);
-		else
+			$value = apply_filters("su_get_postmeta", $value, $key, $post);
+			$value = apply_filters("su_get_postmeta-$key", $value, $key, $post);
+		} else
 			$value = '';
-		
-		$value = apply_filters("su_get_postmeta", $value, $key, $post);
-		$value = apply_filters("su_get_postmeta-$key", $value, $key, $post);
 		
 		return $value;
 	}

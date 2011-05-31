@@ -1509,10 +1509,9 @@ class SEO_Ultimate {
 	function remove_cron_jobs($remove_all = false) {
 		
 		$psdata = (array)get_option('seo_ultimate', array());
-		$crondata = $psdata['cron'];
 		
-		if (is_array($crondata)) {
-			$newcrondata = $crondata;
+		if (isset($psdata['cron']) && is_array($psdata['cron'])) {
+			$newcrondata = $crondata = $psdata['cron'];
 			
 			foreach ($crondata as $key => $crons) {
 				if ($remove_all || !isset($this->modules[$key])) {
