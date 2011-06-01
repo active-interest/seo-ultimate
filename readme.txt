@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 5.6.1
+Stable tag: 5.6.2
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -229,6 +229,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 5.6.2 (June 1, 2011) =
+* Bugfix: Fixed bug that stopped settings from being saved (introduced in 5.6.1)
+* Bugfix: Fixed more errors that appeared when WP_DEBUG mode was enabled
 
 = Version 5.6.1 (May 31, 2011) =
 * Bugfix: Fixed many errors that appeared when WP_DEBUG mode was enabled

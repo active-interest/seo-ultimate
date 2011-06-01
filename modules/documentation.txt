@@ -77,7 +77,7 @@ The following options are available on the Settings tab:
 
 =  Troubleshooting =
 
-* **Why doesn't my code appear on my site?** It's possible that your theme doesn't have the proper "hooks," which are pieces of code that let WordPress plugins insert custom HTML into your theme. [Click here](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/) for information on how to check your theme and add the hooks if needed.
+* **Why doesn't my code appear on my site?** It's possible that your theme doesn't have the proper "hooks," which are pieces of code that let WordPress plugins insert custom HTML into your theme. [Click here](http://johnlamansky.com/wordpress/theme-plugin-hooks/) for information on how to check your theme and add the hooks if needed.
 
 
 == Competition Researcher ==
@@ -513,7 +513,7 @@ Here's information on each of the settings and its supported variables:
 = Troubleshooting =
 
 * **Why isn't the Title Tag Rewriter changing my `<title>` tags?**
-	Try disabling other SEO plugins, as they may be conflicting with SEO Ultimate. Also, check to make sure your theme is [plugin-friendly](http://wordpress.jdwebdev.com/blog/theme-plugin-hooks/).
+	Try disabling other SEO plugins, as they may be conflicting with SEO Ultimate. Also, check to make sure your theme is [plugin-friendly](http://johnlamansky.com/wordpress/theme-plugin-hooks/).
 
 
 

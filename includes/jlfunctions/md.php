@@ -72,8 +72,8 @@ class sumd {
 		$preg_sections = array_chunk($preg_sections, 2);
 		
 		foreach ($preg_sections as $preg_section) {
-			$header  = trim($preg_section[0]);
-			$content = trim($preg_section[1]);
+			$header  = isset($preg_section[0]) ? trim($preg_section[0]) : '';
+			$content = isset($preg_section[1]) ? trim($preg_section[1]) : '';
 			if (strlen($header))
 				$sections[$header] = $content;
 		}

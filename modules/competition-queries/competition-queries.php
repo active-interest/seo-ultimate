@@ -37,7 +37,8 @@ class SU_CompetitionQueries extends SU_Module {
 		
 		$nominimal = array(__('Inbound Links', 'seo-ultimate'), __('Outbound Links', 'seo-ultimate'));
 		
-		$first=true; foreach ($methods as $type => $tools) {
+		$first=true; $i=0;
+		foreach ($methods as $type => $tools) {
 			foreach ($tools as $title => $desc) {
 				$value = strtolower(str_replace(array(' ', '-'), '', $title));
 
@@ -54,7 +55,7 @@ class SU_CompetitionQueries extends SU_Module {
 		}
 ?>
 <h3><?php _e('Step 2: Enter the <span id="methodtype">Keywords</span> To Research', 'seo-ultimate'); ?></h3>
-<div><textarea id="queries" name="queries" rows="10" cols="60"><?php echo htmlspecialchars($_GET['queries']); ?></textarea></div>
+<div><textarea id="queries" name="queries" rows="10" cols="60"></textarea></div>
 <div><em><?php _e('(Type in one per line)', 'seo-ultimate'); ?></em></div>
 
 <h3><?php _e('Step 3: Set Options and Submit', 'seo-ultimate'); ?></h3>

@@ -450,13 +450,12 @@ class SU_Module {
 	 */
 	function get_admin_url($key = false) {
 		
+		$anchor = '';
 		if ($key === false) {
-			if ($key = $this->get_parent_module()) {
+			if ($key = $this->get_parent_module())
 				$anchor = '#'.$this->plugin->key_to_hook($this->get_module_key());
-			} else {
+			else
 				$key = $this->get_module_key();
-				$anchor = '';
-			}
 		}
 		
 		if (!$this->plugin->call_module_func($key, 'get_menu_title', $menu_title) || !$menu_title)
@@ -968,7 +967,7 @@ class SU_Module {
 				$label = htmlspecialchars($label);
 				$content  = "<div class='su-help'>\n";
 				
-				$header = sprintf(_c('%s %s|Dropdown Title', 'seo-ultimate'), $this->get_module_title(), $label);
+				$header = sprintf(_x('%s %s|Dropdown Title', 'seo-ultimate'), $this->get_module_title(), $label);
 				$header = sustr::remove_double_words($header);
 				
 				$text = wptexturize(Markdown($text));
@@ -1085,10 +1084,11 @@ class SU_Module {
 		
 		//Sanitize parameters
 		if (!is_array($fields) || !count($fields)) return false;
-		if (!is_array($fields[0])) $fields = array($fields);
+		if (!isset($fields[0]) || !is_array($fields[0])) $fields = array($fields);
 		
 		//Get search query
-		$search = $_REQUEST[$type . '_s'];
+		$type_s = $type . '_s';
+		$search = isset($_REQUEST[$type_s]) ? $_REQUEST[$type_s] : '';
 		
 		//Save meta if applicable
 		if ($is_update = ($this->is_action('update') && !strlen(trim($search)))) {
@@ -1210,8 +1210,13 @@ class SU_Module {
 				$inputid = "{$genus}_{$id}_{$field['name']}";
 				
 				switch ($genus) {
-					case 'post': $value = $this->get_postmeta($field['name'], $id); break;
-					case 'term': $value = $this->get_setting($field['term_settings_key'], array()); $value = $value[$id]; break;
+					case 'post':
+						$value = $this->get_postmeta($field['name'], $id);
+						break;
+					case 'term':
+						$value = $this->get_setting($field['term_settings_key'], array());
+						$value = isset($value[$id]) ? $value[$id] : null;
+						break;
 				}
 				
 				if ($is_update && $field['type'] == 'checkbox' && $value == '1' && !isset($_POST[$inputid]))
@@ -1864,7 +1869,6 @@ class SU_Module {
 		foreach ($textboxes as $id => $title) {
 			register_setting($this->get_module_key(), $id);
 			$value = su_esc_editable_html($this->get_setting($id));
-			$default = su_esc_editable_html($defaults[$id]);
 			$id = su_esc_attr($id);
 			$resetmessage = su_esc_attr(__('Are you sure you want to replace the textbox contents with this default value?', 'seo-ultimate'));
 			
@@ -1877,6 +1881,7 @@ class SU_Module {
 			
 			echo "<input name='$id' id='$id' type='text' value='$value' class='regular-text' ";
 			if (isset($defaults[$id])) {
+				$default = su_esc_editable_html($defaults[$id]);
 				echo "onkeyup=\"javascript:su_textbox_value_changed(this, '$default', '{$id}_reset')\" />";
 				echo "&nbsp;<a href=\"javascript:void(0)\" id=\"{$id}_reset\" onclick=\"javascript:su_reset_textbox('$id', '$default', '$resetmessage', this)\"";
 				if ($default == $value) echo ' class="hidden"';
@@ -1982,8 +1987,10 @@ class SU_Module {
 						   ( strcasecmp($_GET['page'], $this->plugin->key_to_hook($this->get_module_key())) == 0 ) //Is $this module being shown?
 						|| ( strlen($this->get_parent_module()) && strcasecmp($_GET['page'], $this->plugin->key_to_hook($this->get_parent_module())) == 0) //Is the parent module being shown?
 					)
-					&& !empty($_GET['action'])
-					&& ($_GET['action'] == $action || $_POST['action'] == $action) //Is this $action being executed?
+					&& (
+						   (!empty($_GET['action']) && $_GET['action'] == $action)
+						|| (!empty($_POST['action']) && $_POST['action'] == $action)
+					) //Is this $action being executed?
 					&& $this->nonce_validates($action, $object) //Is the nonce valid?
 		);
 	}
@@ -2141,10 +2148,16 @@ class SU_Module {
 			}
 		}
 		
-		if ($id && $post) {
+		if ($id) {
+			
+			if (isset($post) && $post)
+				$_post = $post;
+			else
+				$_post = get_post($id);
+			
 			$value = get_post_meta($id, "_su_$key", true);
-			$value = apply_filters("su_get_postmeta", $value, $key, $post);
-			$value = apply_filters("su_get_postmeta-$key", $value, $key, $post);
+			$value = apply_filters("su_get_postmeta", $value, $key, $_post);
+			$value = apply_filters("su_get_postmeta-$key", $value, $key, $_post);
 		} else
 			$value = '';
 		
