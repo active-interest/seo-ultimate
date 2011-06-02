@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 5.6.2
+Stable tag: 5.7
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 5.7 adds mass-editing for post format archives
 * Version 5.6 adds the Nofollow Manager module
 * Version 5.5 adds noindex/nofollow mass-editing for categories/tags/terms
 * Version 5.4 adds noindex/nofollow mass-editing for posts/pages
 * Version 5.3 adds meta keyword auto-generation from frequently-used words
-* Version 5.2 adds meta description mass-editing for categories/tags/terms
 
 = Features =
 
@@ -23,25 +23,25 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Title Tag Rewriter**
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
-	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, or post tag on your blog. Also supports custom post types.
+	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, post tag, or post format archive on your blog. Also supports custom post types and custom taxonomies.
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
-* **Meta Description Editor** -- UPDATED in Version 5.2
-	* Edit the `<meta>` description tags for posts, pages, and the homepage.
-	* Increase SERP clickthrough rates by influence search engine result snippets.
+* **Meta Description Editor**
+	* Edit the `<meta>` description tags for posts, pages, attachments, categories, tags, post format archives, and the homepage.
+	* Increase SERP clickthrough rates by influencing search engine result snippets.
 	* Mass-editor makes it a cinch to go back and add descriptions to old posts.
 	* Use the `{excerpt::autogen}` variable to auto-generate meta descriptions if desired.
 
 * **Meta Keywords Editor** -- UPDATED in Version 5.3
 	* Edit the `<meta>` keyword tags for posts, pages, and the homepage.
 	* Easily specify global keywords that are applied across the entire site.
-	* Go back and edit old posts' keywords with the mass-editor.
+	* Go back and edit old posts' and pages' keywords with the mass-editor.
 	* Automatically generate meta keywords based on categories, tags, custom taxonomy terms, and frequently-used words.
 
 * **Meta Robot Tags Editor** -- UPDATED in Version 5.5
 	* Add the `<meta name="robots" content="noindex,follow" />` tag to archives, comment feeds, the login page, and more.
-	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post/page.
+	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post, page, category, tag, and post type archive on your blog. Also supports custom post types and custom taxonomies.
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
 	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
 
@@ -88,12 +88,11 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Automatically link phrases in your posts/pages to other posts/pages or to custom URLs.
 	* Exclude specific posts/pages from having links added to them, if desired (e.g. contact pages, the homepage, etc.).
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
-	* Control the maximum number of autolinks added to each post/page.
+	* Control the maximum number of autolinks added to each post/page as well as the number of times an anchor is linked per page.
 	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
 	* Import/export your links as CSV files.
 	* Create links pointing to draft posts that will auto-enable when the post is published!
-	* Build internal links to your posts from within the WordPress post editor!
-	* Use "Instant Post Propulsion" technology to automatically link your old posts to new ones.
+	* Build internal links to your posts from within the WordPress post editor! Use "Instant Post Propulsion" technology to automatically link your old posts to new ones.
 
 * **Code Inserter**
 	* Easily insert custom HTML into your site's `<head>` tag, footer, or item content.
@@ -120,7 +119,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Link masks provide a modern replacement for the deprecated, nofollow-based "PageRank Sculpting" technique.
 	* Perfect for affiliate marketers and SEO-savvy bloggers.
 	
-* **Nofollow Manager**
+* **Nofollow Manager** -- NEW in Version 5.6
 	* Lets you maintain `rel="nofollow"` settings when migrating from other SEO plugins
 	
 * **Settings Manager**
@@ -230,8 +229,18 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 5.7 (June 2, 2011) =
+* Feature: Title Tag Rewriter, Meta Descriptions Editor, and Meta Robot Tags Editor now officially support mass-editing post format archives (requires WordPress 3.1 or later)
+* Feature: SEO Ultimate now alerts users when they're about to leave a module admin page that has unsaved changes
+* Improvement: Custom taxonomy mass-editors now support taxonomies that are registered only with pages or custom post types
+* Improvement: Taxonomies registered without `show_ui` support no longer have "Edit" links in the mass-editors
+* Bugfix: Fixed the mass-editors' category edit links, which broke starting with WordPress 3.0
+* Bugfix: Fixed a bug that hindered Title Tag Rewriter from rewriting custom taxonomy archives' `<title>` tags
+* Bugfix: Fixed more errors that appeared when WP_DEBUG mode was enabled
+
 = Version 5.6.2 (June 1, 2011) =
 * Bugfix: Fixed bug that stopped settings from being saved (introduced in 5.6.1)
+* Bugfix: Fixed bug that disabled mass-editors (introduced in 5.6.1)
 * Bugfix: Fixed more errors that appeared when WP_DEBUG mode was enabled
 
 = Version 5.6.1 (May 31, 2011) =

@@ -2,6 +2,7 @@ function su_reset_textbox(id, d, m, e) {
 	if (confirm(m+"\n\n"+d)) {
 		document.getElementById(id).value=d;
 		e.className='hidden';
+		su_enable_unload_confirm();
 	}
 }
 
@@ -22,3 +23,20 @@ function su_toggle_blind(id) {
 	
 	return false;
 }
+
+function su_enable_unload_confirm() {
+	window.onbeforeunload = su_confirm_unload_message;
+}
+
+function su_disable_unload_confirm() {
+	window.onbeforeunload = null;
+}
+
+function su_confirm_unload_message() {
+	return suModulesModulesL10n.unloadConfirmMessage;
+}
+
+jQuery(document).ready(function() {
+	jQuery('input, textarea, select', 'div.su-module').change(su_enable_unload_confirm);
+	jQuery('form#su-admin-form').submit(su_disable_unload_confirm);
+});

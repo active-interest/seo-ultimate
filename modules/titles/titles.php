@@ -102,7 +102,7 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function should_rewrite_title() {
-		return (!is_admin() && !is_feed() && strlen(strval($this->get_title_format())) > 0);
+		return (!is_admin() && !is_feed());
 	}
 	
 	function before_header() {
@@ -146,7 +146,7 @@ class SU_Titles extends SU_Module {
 		
 		//Get format
 		if (!$this->should_rewrite_title()) return '';
-		$format = $this->get_title_format();
+		if (!($format = $this->get_title_format())) return '';
 		
 		//Load post/page titles
 		$post_id = 0;

@@ -1047,12 +1047,21 @@ class SU_Module {
 	 * @param array $fields The array of meta fields that the user can edit with the tables.
 	 */
 	function get_taxmeta_edit_tabs($fields) {
-		$types = suwp::get_taxonomies();
+		$types = get_taxonomies(array('public' => true), 'objects');
 		
 		//Turn the types array into a tabs array
 		$tabs = array();
-		foreach ($types as $name => $type)
-			$tabs[$type->label] = array('meta_edit_tab', 'term', sustr::preg_filter('a-z0-9', strtolower($type->label)), $name, __('Name', 'seo-ultimate'), $fields);
+		foreach ($types as $name => $type) {
+			if ($type->labels->name) {
+				
+				$label = $type->labels->name;
+				if ($label == _x( 'Format', 'post format' ))
+					$label = __('Post Format Archives', 'seo-ultimate');
+				
+				$tabs[$label] = array('meta_edit_tab', 'term', sustr::preg_filter('a-z0-9', strtolower($label)), $name, $type->labels->singular_name, $fields);
+				
+			}
+		}
 		return $tabs;
 	}
 	
@@ -1202,7 +1211,12 @@ class SU_Module {
 			
 			$view_url = su_esc_attr($view_url);
 			$edit_url = su_esc_attr($edit_url);
-			$actions = sprintf('<a href="%s">%s</a> | <a href="%s">%s</a>', $view_url, __('View', 'seo-ultimate'), $edit_url, __('Edit', 'seo-ultimate'));
+			
+			$actions = array(sprintf('<a href="%s">%s</a>', $view_url, __('View', 'seo-ultimate')));
+			if ($edit_url)
+				$actions[] = sprintf('<a href="%s">%s</a>', $edit_url, __('Edit', 'seo-ultimate'));
+			$actions = implode(' | ', $actions);
+			
 			$cells = compact('actions', 'id', 'name');
 			
 			//Get meta field cells
@@ -1627,7 +1641,10 @@ class SU_Module {
 		//Save checkbox settings after form submission
 		if ($this->is_action('update')) {
 			foreach ($checkboxes as $name => $desc) {
-				$this->update_setting($name, $_POST[$name] == '1');
+				$new_value = isset($_POST[$name]) ? ($_POST[$name] == '1') : false;
+				$this->update_setting($name, $new_value);
+				
+				if (is_array($desc)) $desc = isset($desc['description']) ? $desc['description'] : '';
 				
 				if (strpos($desc, '%d') !== false) {
 					$name .= '_value';
@@ -1883,7 +1900,7 @@ class SU_Module {
 			if (isset($defaults[$id])) {
 				$default = su_esc_editable_html($defaults[$id]);
 				echo "onkeyup=\"javascript:su_textbox_value_changed(this, '$default', '{$id}_reset')\" />";
-				echo "&nbsp;<a href=\"javascript:void(0)\" id=\"{$id}_reset\" onclick=\"javascript:su_reset_textbox('$id', '$default', '$resetmessage', this)\"";
+				echo "&nbsp;<a href=\"#\" id=\"{$id}_reset\" onclick=\"javascript:su_reset_textbox('$id', '$default', '$resetmessage', this); return false;\"";
 				if ($default == $value) echo ' class="hidden"';
 				echo ">";
 				_e('Reset', 'seo-ultimate');

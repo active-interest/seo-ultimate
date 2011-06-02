@@ -79,6 +79,18 @@ class suwp {
 		return $taxonomies;
 	}
 	
+	function get_object_taxonomies($post_type) {
+		$taxonomies = get_object_taxonomies($post_type, 'objects');
+		$taxonomies = wp_filter_object_list($taxonomies, array('public' => true, 'show_ui' => true));
+		return $taxonomies;
+	}
+	
+	function get_object_taxonomy_names($post_type) {
+		$taxonomies = get_object_taxonomies($post_type, 'objects');
+		$taxonomies = wp_filter_object_list($taxonomies, array('public' => true, 'show_ui' => true), 'and', 'name');
+		return $taxonomies;
+	}
+	
 	function get_any_terms($args = array()) {
 		$taxonomies = get_taxonomies(array('public' => true));
 		return get_terms($taxonomies, $args);
@@ -141,10 +153,11 @@ class suwp {
 	}
 	
 	function get_edit_term_link($id, $taxonomy) {
-		if ($taxonomy == 'category')
-			return admin_url("categories.php?action=edit&amp;cat_ID=$id");
-		else
+		$tax_obj = get_taxonomy($taxonomy);
+		if ($tax_obj->show_ui)
 			return get_edit_tag_link($id, $taxonomy);
+		else
+			return false;
 	}
 	
 	function get_all_the_terms($id = 0) {

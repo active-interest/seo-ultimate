@@ -90,7 +90,8 @@ class SU_MetaDescriptions extends SU_Module {
 		} elseif (is_category() || is_tag() || is_tax()) {
 			global $wp_query;
 			$tax_descriptions = $this->get_setting('taxonomy_descriptions');
-			$desc = $tax_descriptions[$wp_query->get_queried_object_id()];
+			$tax_id = $wp_query->get_queried_object_id();
+			$desc = isset($tax_descriptions[$tax_id]) ? $tax_descriptions[$tax_id] : '';
 		}
 		
 		//Do we have a description? If so, output it.

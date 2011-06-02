@@ -232,6 +232,17 @@ class sustr {
 		}
 		return implode(' ', $new_words);
 	}
+	
+	function camel_case($string) {
+		$string = strtolower($string);
+		$string = preg_replace('@[^a-z0-9]@', ' ', $string);
+		$words = array_filter(explode(' ', $string));
+		$first = array_shift($words);
+		$words = array_map('ucwords', $words);
+		$words = implode('', $words);
+		$string = $first . $words;
+		return $string;
+	}
 }
 
 ?>

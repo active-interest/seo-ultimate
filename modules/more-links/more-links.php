@@ -35,7 +35,7 @@ class SU_MoreLinks extends SU_Module {
 		$default = $this->get_setting('default');
 		
 		if (strlen($newtext = trim($this->get_postmeta('morelinktext'))) || strlen(trim($newtext = $default))) {
-			$newtext = str_replace('{post}', wp_specialchars(get_the_title()), $newtext);
+			$newtext = str_replace('{post}', su_esc_html(get_the_title()), $newtext);
 			$link = str_replace("$text</a>", "$newtext</a>", $link);
 		}
 		

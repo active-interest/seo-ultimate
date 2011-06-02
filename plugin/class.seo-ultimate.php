@@ -653,17 +653,17 @@ class SEO_Ultimate {
 			//Put it all into an array
 			$data = array(
 				  'time' => time()
-				, 'ip_address' => $_SERVER['REMOTE_ADDR']
-				, 'user_agent' => $_SERVER['HTTP_USER_AGENT']
+				, 'ip_address' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : ''
+				, 'user_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : ''
 				, 'url' => $url
 				, 'redirect_url' => $redirect_url
 				, 'redirect_trigger' => $this->hit_redirect_trigger
-				, 'referer' => $_SERVER['HTTP_REFERER']
+				, 'referer' => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''
 				, 'status_code' => $status_code
 			);
 			
 			//We don't want to overwrite a redirect URL if it's already been logged
-			if (strlen($this->hit['redirect_url']))
+			if (!empty($this->hit['redirect_url']))
 				$data['redirect_url'] = $this->hit['redirect_url'];
 			
 			//Put the hit data into our variable.
@@ -926,7 +926,9 @@ class SEO_Ultimate {
 					//We're viewing a module page, so print links to the CSS/JavaScript files loaded for all modules
 					if (!$outputted_module_files) {
 						$this->queue_css('modules', 'modules');
-						$this->queue_js ('modules', 'modules');
+						$this->queue_js ('modules', 'modules', array('jquery'), array(
+							'unloadConfirmMessage' => __("It looks like you made changes to the settings of this SEO Ultimate module. If you leave before saving, those changes will be lost.", 'seo-ultimate')
+						));
 						$outputted_module_files = true;
 					}
 					
@@ -968,8 +970,8 @@ class SEO_Ultimate {
 	 * 
 	 * @param string $relurl The URL to the JavaScript file, relative to the plugin directory.
 	 */
-	function queue_js($reldir, $filename) {
-		$this->queue_file($reldir, $filename, '.js', 'wp_enqueue_script');
+	function queue_js($reldir, $filename, $deps=array(), $l10n=array()) {
+		$this->queue_file($reldir, $filename, '.js', 'wp_enqueue_script', $deps, $l10n);
 	}
 	
 	/**
@@ -977,14 +979,17 @@ class SEO_Ultimate {
 	 * 
 	 * @since 2.1
 	 */
-	function queue_file($reldir, $filename, $ext, $func) {
+	function queue_file($reldir, $filename, $ext, $func, $deps=array(), $l10n=array()) {
 		if (!function_exists($func)) return;
 		$reldir = untrailingslashit($reldir);
 		$dirid = str_replace('/', '-', $reldir);
 		$relurl = $reldir . '/';
 		$file = sustr::endwith($filename, $ext);
 		if (file_exists($this->plugin_dir_path.$relurl.$file))
-			$func("su-$dirid-$filename", $this->plugin_dir_url.$relurl.$file, array(), SU_VERSION);
+			$func("su-$dirid-$filename", $this->plugin_dir_url.$relurl.$file, $deps, SU_VERSION);
+		
+		if (count($l10n))
+			wp_localize_script("su-$dirid-$filename", sustr::camel_case("su $dirid $filename l10n"), $l10n);
 	}
 	
 	/**
