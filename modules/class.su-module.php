@@ -155,7 +155,7 @@ class SU_Module {
 	 * 
 	 * @return int The menu position index.
 	 */
-	function get_menu_pos()   { return 999; }
+	function get_menu_pos()   { return 10; }
 	
 	/**
 	 * Determines where this module's admin contents should appear on the parent page relative to those of other sibling modules.
@@ -371,6 +371,26 @@ class SU_Module {
 					}
 					
 					return $sections;
+					
+				} elseif (count($this->modules)) {
+					$sections = array();
+					foreach ($this->modules as $key => $x_module) {
+						$module_title = $this->modules[$key]->get_module_title();
+						$section = trim(sumd::get_section($readme, $module_title));
+						
+						if ($section) {
+							$section_html = '';
+							$subsections = sumd::get_sections($section);
+							foreach ($subsections as $subsection_header => $subsection) {
+								$section_html .= '<h6>' . trim($subsection_header, "\r\n= ") . "</h6>\n" . $subsection . "\n\n";
+							}
+							
+							$sections[$module_title] = $section_html;
+						}
+					}
+					
+					if (count($sections))
+						return $sections;
 				}
 			}
 		}
@@ -434,7 +454,7 @@ class SU_Module {
 	 * @return string
 	 */
 	function get_module_or_parent_key() {
-		return strlen($p = $this->get_parent_module()) ? $p : $this->get_module_key();
+		return (strlen($p = $this->get_parent_module()) && $this->plugin->module_exists($p)) ? $p : $this->get_module_key();
 	}
 	
 	/**
@@ -452,7 +472,7 @@ class SU_Module {
 		
 		$anchor = '';
 		if ($key === false) {
-			if ($key = $this->get_parent_module())
+			if (($key = $this->get_parent_module()) && $this->plugin->module_exists($key))
 				$anchor = '#'.$this->plugin->key_to_hook($this->get_module_key());
 			else
 				$key = $this->get_module_key();
@@ -576,7 +596,6 @@ class SU_Module {
 	 * Outputs this module's admin tabs plus those of its children.
 	 * 
 	 * @since 1.5
-	 * @return array
 	 */
 	function children_admin_page_tabs() {
 		if (count($tabs = $this->get_children_admin_page_tabs()))
@@ -603,6 +622,7 @@ class SU_Module {
 	 */
 	function children_admin_pages() {
 		foreach ($this->modules as $key => $x_module) {
+			$this->modules[$key]->admin_subheader($this->modules[$key]->get_module_subtitle());
 			$this->modules[$key]->admin_page_contents();
 		}
 	}
@@ -613,9 +633,12 @@ class SU_Module {
 	 * @since 1.5
 	 */
 	function children_admin_pages_form() {
-		$this->admin_form_start();
-		$this->children_admin_pages();
-		$this->admin_form_end();
+		if (count($this->modules)) {
+			$this->admin_form_start();
+			$this->children_admin_pages();
+			$this->admin_form_end();
+		} else
+			$this->print_message('warning', sprintf(__('All the modules on this page have been disabled. You can re-enable them using the <a href="%s">Module Manager</a>.', 'seo-ultimate'), $this->get_admin_url('modules')));
 	}
 	
 	/**
@@ -967,7 +990,7 @@ class SU_Module {
 				$label = htmlspecialchars($label);
 				$content  = "<div class='su-help'>\n";
 				
-				$header = sprintf(_x('%s %s|Dropdown Title', 'seo-ultimate'), $this->get_module_title(), $label);
+				$header = sprintf(_x('%s &mdash; %s', 'Dropdown Title', 'seo-ultimate'), $this->get_module_title(), $label);
 				$header = sustr::remove_double_words($header);
 				
 				$text = wptexturize(Markdown($text));
@@ -1047,19 +1070,13 @@ class SU_Module {
 	 * @param array $fields The array of meta fields that the user can edit with the tables.
 	 */
 	function get_taxmeta_edit_tabs($fields) {
-		$types = get_taxonomies(array('public' => true), 'objects');
+		$types = suwp::get_taxonomies();
 		
 		//Turn the types array into a tabs array
 		$tabs = array();
 		foreach ($types as $name => $type) {
 			if ($type->labels->name) {
-				
-				$label = $type->labels->name;
-				if ($label == _x( 'Format', 'post format' ))
-					$label = __('Post Format Archives', 'seo-ultimate');
-				
-				$tabs[$label] = array('meta_edit_tab', 'term', sustr::preg_filter('a-z0-9', strtolower($label)), $name, $type->labels->singular_name, $fields);
-				
+				$tabs[$type->labels->name] = array('meta_edit_tab', 'term', sustr::preg_filter('a-z0-9', strtolower($type->labels->name)), $name, $type->labels->singular_name, $fields);
 			}
 		}
 		return $tabs;
@@ -1372,6 +1389,7 @@ class SU_Module {
 	 * @param boolean $table Whether or not to start a form table.
 	 */
 	function admin_form_start($header = false, $table = true, $form = true) {
+		
 		if ($header) $this->admin_subheader($header);
 		
 		if ($form) {
@@ -1426,6 +1444,26 @@ class SU_Module {
 	 */
 	function admin_form_table_end() {
 		echo "</table>\n";
+	}
+	
+	/**
+	 * @since 5.8
+	 */
+	function child_admin_form_start() {
+		if ($this->get_parent_module() && $this->plugin->module_exists($this->get_parent_module()))
+			$this->admin_form_table_start();
+		else
+			$this->admin_form_start();
+	}
+	
+	/**
+	 * @since 5.8
+	 */
+	function child_admin_form_end() {
+		if ($this->get_parent_module() && $this->plugin->module_exists($this->get_parent_module()))
+			$this->admin_form_table_end();
+		else
+			$this->admin_form_end();
 	}
 	
 	/**
@@ -2041,7 +2079,7 @@ class SU_Module {
 	function get_nonce_handle($action, $id = false) {
 		
 		$key = $this->get_parent_module();
-		if (!$key) $key = $this->get_module_key();
+		if (!$key || !$this->plugin->module_exists($key)) $key = $this->get_module_key();
 		
 		$hook = $this->plugin->key_to_hook($key);
 		

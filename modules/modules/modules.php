@@ -11,10 +11,11 @@ class SU_Modules extends SU_Module {
 	
 	function get_module_title() { return __('Module Manager', 'seo-ultimate'); }
 	function get_menu_title() { return __('Modules', 'seo-ultimate'); }
-	function get_menu_pos()   { return 10; }
+	function get_menu_pos()   { return 0; }
 	function is_menu_default(){ return true; }
 	
 	function init() {
+		
 		if ($this->is_action('update')) {
 			
 			$psdata = (array)get_option('seo_ultimate', array());
@@ -29,6 +30,9 @@ class SU_Modules extends SU_Module {
 			}
 			
 			update_option('seo_ultimate', $psdata);
+			
+			wp_redirect(add_query_arg('su-modules-updated', '1', suurl::current()), 301);
+			exit;
 		}
 	}
 	
@@ -38,6 +42,9 @@ class SU_Modules extends SU_Module {
 		echo "</p><p>";
 		_e('The Module Manager lets you  disable or hide modules you don&#8217;t use. You can also silence modules from displaying bubble alerts on the menu.', 'seo-ultimate');
 		echo "</p>";
+		
+		if (!empty($_GET['su-modules-updated']))
+			$this->print_message('success', __('Modules updated.', 'seo-ultimate'));
 		
 		$this->admin_form_start(false, false);
 		
@@ -69,16 +76,13 @@ STR;
 			
 			//On some setups, get_parent_class() returns the class name in lowercase
 			if (strcasecmp(get_parent_class($module), 'SU_Module') == 0 && !in_array($key, array('modules')) && $module->is_independent_module())
-				$modules[$key] = $module->get_page_title();
+				$modules[$key] = $module->get_module_title();
 		}
 		
 		foreach ($this->plugin->disabled_modules as $key => $class) {
 			
-			if (call_user_func(array($class, 'is_independent_module'))) {
-				$title = call_user_func(array($class, 'get_page_title'));
-				if (!$title) $title = call_user_func(array($class, 'get_module_title'));
-				$modules[$key] = $title;
-			}
+			if (call_user_func(array($class, 'is_independent_module')))
+				$modules[$key] = call_user_func(array($class, 'get_module_title'));
 		}
 		
 		asort($modules);
@@ -123,7 +127,9 @@ STR;
 				echo "<a href='javascript:void(0)' onclick=\"javascript:set_module_status('$key', $statuscode, this)\" class='$current'>$statuslabel</a></span>\n";
 			}
 			
-			$admin_url = $this->get_admin_url($key);
+			if (!$this->plugin->module_exists($key) || !$this->plugin->call_module_func($key, 'get_admin_url', $admin_url))
+				$admin_url = false;
+			
 			if ($currentstatus > SU_MODULE_DISABLED && $admin_url) {
 				$cellcontent = "<a href='{$admin_url}'>$name</a>";
 			} else

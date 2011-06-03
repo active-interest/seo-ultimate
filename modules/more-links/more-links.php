@@ -11,6 +11,9 @@ class SU_MoreLinks extends SU_Module {
 	
 	function get_module_title() { return __('More Link Customizer', 'seo-ultimate'); }
 	
+	function get_parent_module() { return 'misc'; }
+	function get_settings_key() { return 'more-links'; }
+	
 	function get_default_settings() {
 		return array(
 			  'default' => 'Continue reading &#8220;{post}&#8221; &raquo;'
@@ -23,9 +26,9 @@ class SU_MoreLinks extends SU_Module {
 	}
 	
 	function admin_page_contents() {
-		$this->admin_form_start();
+		$this->child_admin_form_start();
 		$this->textbox('default', __('Default More Link Text', 'seo-ultimate'), $this->get_default_setting('default'));
-		$this->admin_form_end();
+		$this->child_admin_form_end();
 	}
 	
 	function more_link_filter($link, $text=false) {

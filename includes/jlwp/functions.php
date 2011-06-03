@@ -1,5 +1,9 @@
 <?php
 
+define('SUWP_QUERY_PERMALINKS', 0);
+define('SUWP_INDEX_PERMALINKS', 1);
+define('SUWP_PRETTY_PERMALINKS', 2);
+
 class suwp {
 
 	/**
@@ -71,12 +75,14 @@ class suwp {
 	}
 	
 	function get_taxonomies() {
-		global $wp_taxonomies;
-		$taxonomies = array();
-		foreach ($wp_taxonomies as $key => $taxonomy)
-			if (in_array('post', (array)$taxonomy->object_type))
-				$taxonomies[$key] = $taxonomy;
+		$taxonomies = get_taxonomies(array('public' => true), 'objects');
+		if (isset($taxonomies['post_format']) && $taxonomies['post_format']->labels->name == _x( 'Format', 'post format' ))
+			$taxonomies['post_format']->labels->name = __('Post Format Archives', 'seo-ultimate');
 		return $taxonomies;
+	}
+	
+	function get_taxonomy_names() {
+		return get_taxonomies(array('public' => true), 'names');
 	}
 	
 	function get_object_taxonomies($post_type) {
@@ -178,6 +184,29 @@ class suwp {
 		return $terms;
 	}
 	
+	function get_term_slug($term_obj) {
+		$tax_name = $term_obj->taxonomy;
+		$tax_obj = get_taxonomy($tax_name);
+		if ($tax_obj->rewrite['hierarchical']) {
+			$hierarchical_slugs = array();
+			$ancestors = get_ancestors($term_obj->term_id, $tax_name);
+			foreach ( (array)$ancestors as $ancestor ) {
+				$ancestor_term = get_term($ancestor, $tax_name);
+				$hierarchical_slugs[] = $ancestor_term->slug;
+			}
+			$hierarchical_slugs = array_reverse($hierarchical_slugs);
+			$hierarchical_slugs[] = $term_obj->slug;
+			$term_slug = implode('/', $hierarchical_slugs);
+		} else {
+			$term_slug = $term_obj->slug;
+		}
+		
+		if ('post_format' == $tax_name)
+			$term_slug = str_replace('post-format-', '', $term_slug);
+		
+		return $term_slug;
+	}
+	
 	function remove_instance_action($tag, $class, $function, $priority=10) {
 		return suwp::remove_instance_filter($tag, $class, $function, $priority);
 	}
@@ -196,6 +225,16 @@ class suwp {
 		}
 		
 		return false;
+	}
+	
+	function permalink_mode() {
+		if (strlen($struct = get_option('permalink_structure'))) {
+			if (sustr::startswith($struct, '/index.php/'))
+				return SUWP_INDEX_PERMALINKS;
+			else
+				return SUWP_PRETTY_PERMALINKS;
+		} else
+			return SUWP_QUERY_PERMALINKS;
 	}
 }
 

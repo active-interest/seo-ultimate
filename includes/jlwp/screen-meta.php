@@ -100,12 +100,12 @@ jQuery(function($) {
 		var link = $(this);
 		$(link.attr('href')).slideToggle('fast', function() {
 			if (link.hasClass('screen-meta-shown')) {
-				link.css({'backgroundImage':'url("images/screen-options-right.gif")'}).removeClass('screen-meta-shown');
+				link.css({'background-position':'right top'}).removeClass('screen-meta-shown');
 				$('.screen-meta-toggle').css('visibility', 'visible');
 			}
 			else {
 				$('.screen-meta-toggle').css('visibility', 'hidden');
-				link.css({'backgroundImage':'url("images/screen-options-right-up.gif")'}).addClass('screen-meta-shown').parent().css('visibility', 'visible');
+				link.css({'background-position':'right bottom'}).addClass('screen-meta-shown').parent().css('visibility', 'visible');
 			}
 		});
 		return false;

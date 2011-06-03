@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions, JohnLamansky
-Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
+Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 5.7
+Stable tag: 5.8
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 5.8 adds the Permalink Tweaker module
 * Version 5.7 adds mass-editing for post format archives
 * Version 5.6 adds the Nofollow Manager module
 * Version 5.5 adds noindex/nofollow mass-editing for categories/tags/terms
 * Version 5.4 adds noindex/nofollow mass-editing for posts/pages
-* Version 5.3 adds meta keyword auto-generation from frequently-used words
 
 = Features =
 
@@ -33,7 +33,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Mass-editor makes it a cinch to go back and add descriptions to old posts.
 	* Use the `{excerpt::autogen}` variable to auto-generate meta descriptions if desired.
 
-* **Meta Keywords Editor** -- UPDATED in Version 5.3
+* **Meta Keywords Editor**
 	* Edit the `<meta>` keyword tags for posts, pages, and the homepage.
 	* Easily specify global keywords that are applied across the entire site.
 	* Go back and edit old posts' and pages' keywords with the mass-editor.
@@ -121,7 +121,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	
 * **Nofollow Manager** -- NEW in Version 5.6
 	* Lets you maintain `rel="nofollow"` settings when migrating from other SEO plugins
-	
+
+* **Permalink Tweaker** -- NEW in Version 5.8
+	* Lets you remove the permalink base for categories, tags, and/or custom taxonomies. For example, enable category base removal to convert `http://example.com/category/example` into `http://example.com/example`, and then pair that with a `/%category%/%postname%/` permalink to enable some serious SEO siloing action.
+
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
 	* Move SEO Ultimate settings between blogs using the export/import functionality.
@@ -228,6 +231,14 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 5.8 (June 3, 2011) =
+* Feature: Added the Permalink Tweaker module, which lets you remove permalink bases for categories, tags, and/or custom taxonomies
+* Improvement: Module pages with few settings have been grouped into a new "Miscellaneous" admin page (to turn off this behavior, disable the Miscellaneous module in the Module Manager)
+* Bugfix: Module Manager changes are now reflected immediately after clicking "Save Changes"
+* Bugfix: Removed the "|Dropdown Title" that appeared at the end of contextual help dropdown titles
+* Bugfix: Updated contextual help dropdown styling to work with WordPress 3.1
+* Bugfix: Fixed errors that appeared when saving posts with WP_DEBUG mode enabled
 
 = Version 5.7 (June 2, 2011) =
 * Feature: Title Tag Rewriter, Meta Descriptions Editor, and Meta Robot Tags Editor now officially support mass-editing post format archives (requires WordPress 3.1 or later)

@@ -11,6 +11,9 @@ class SU_Canonical extends SU_Module {
 
 	function get_module_title() { return __('Canonicalizer', 'seo-ultimate'); }
 	
+	function get_parent_module() { return 'misc'; }
+	function get_settings_key() { return 'canonical'; }
+	
 	function init() {
 		//If the canonical tags are enabled, then...
 		if ($this->get_setting('link_rel_canonical')) {
@@ -28,13 +31,13 @@ class SU_Canonical extends SU_Module {
 	}
 	
 	function admin_page_contents() {
-		$this->admin_form_start();
+		$this->child_admin_form_start();
 		$this->checkboxes(array(
 				  'link_rel_canonical' => __('Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags.', 'seo-ultimate')
 				, 'remove_nonexistent_pagination' => __('Redirect requests for nonexistent pagination.', 'seo-ultimate')
 			));
 		
-		$this->admin_form_end();
+		$this->child_admin_form_end();
 	}
 	
 	function link_rel_canonical_tag() {

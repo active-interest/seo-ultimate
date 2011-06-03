@@ -125,7 +125,7 @@ class sustr {
 	 */
 	function rtrim_str($str, $totrim) {
 		if (strlen($str) > strlen($totrim) && sustr::endswith($str, $totrim))
-			return substr($str, -strlen($totrim));
+			return substr($str, 0, -strlen($totrim));
 		
 		return $str;
 	}

@@ -11,6 +11,9 @@ class SU_SharingButtons extends SU_Module {
 	
 	function get_module_title() { return __('Sharing Facilitator', 'seo-ultimate'); }
 	
+	function get_parent_module() { return 'misc'; }
+	function get_settings_key() { return 'sharing-buttons'; }
+	
 	function init() {
 		add_filter('the_content', array(&$this, 'add_sharing_buttons'));
 	}
@@ -23,21 +26,23 @@ class SU_SharingButtons extends SU_Module {
 		);
 	}
 	
+	/*
 	function get_admin_page_tabs() {
 		return array(
 			  __('Providers', 'seo-ultimate') => 'providers_tab'
 		);
 	}
+	*/
 	
-	function providers_tab() {
-		$this->admin_form_table_start();
+	function admin_page_contents() {
+		$this->child_admin_form_start();
 		$this->admin_form_subheader(__('Which provider would you like to use for your sharing buttons?', 'seo-ultimate'));
 		$this->radiobuttons('provider', array(
 			  'none' => __('None; disable sharing buttons', 'seo-ultimate')
 			, 'sharethis' => __('Use the ShareThis button', 'seo-ultimate') //: %s{sharethis_code}
 			, 'addthis' => __('Use the AddThis button', 'seo-ultimate') //: %s{addthis_code}
 		));
-		$this->admin_form_table_end();
+		$this->child_admin_form_end();
 	}
 	
 	function add_sharing_buttons($content) {

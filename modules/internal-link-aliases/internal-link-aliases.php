@@ -19,10 +19,13 @@ class SU_InternalLinkAliases extends SU_Module {
 	
 	function get_module_title() { return __('Link Mask Generator', 'seo-ultimate'); }
 	
+	function get_parent_module() { return 'misc'; }
+	function get_settings_key() { return 'internal-link-aliases'; }
+	
 	function admin_page_contents() {
-		$this->admin_form_start();
-		$this->textbox('alias_dir', __('Alias Directory', 'seo-ultimate'));
-		$this->admin_form_end();
+		$this->child_admin_form_start();
+		$this->textbox('alias_dir', __('Alias Directory', 'seo-ultimate'), $this->get_default_setting('alias_dir'));
+		$this->child_admin_form_end();
 	}
 	
 	function filter_alias_dir($alias_dir) {

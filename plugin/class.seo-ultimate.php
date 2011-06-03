@@ -431,6 +431,9 @@ class SEO_Ultimate {
 	 */
 	function load_modules() {
 		
+		$this->disabled_modules = array();
+		$this->modules = array();
+		
 		$psdata = (array)get_option('seo_ultimate', array());
 		
 		//The plugin_dir_path variable must be set before calling this function!
@@ -469,14 +472,16 @@ class SEO_Ultimate {
 						//Figure out the module's array key and class name
 						$module = strval(strtolower(substr($file, 0, -4)));
 						$class = 'SU_'.str_replace(' ', '', ucwords(str_replace('-', ' ', $module)));
-												
+						
 						//Load the module's code
 						include_once $filepath;
 						
 						//If this is actually a module...
 						if (class_exists($class)) {
 							
-							if ($module_parent = call_user_func(array($class, 'get_parent_module')))
+							if (	   ($module_parent = call_user_func(array($class, 'get_parent_module')))
+									&& !call_user_func(array($class, 'is_independent_module'))
+								)
 								$module_disabled = ($oldmodules[$module_parent] == SU_MODULE_DISABLED);
 							else
 								$module_disabled = ($oldmodules[$module] == SU_MODULE_DISABLED);
@@ -494,7 +499,7 @@ class SEO_Ultimate {
 								//We must tell the module what its key is so that it can save settings
 								$this->modules[$module]->module_key = $module;
 								
-								//Tell the module what its URL is
+								//Tell the module what its URLs are
 								$this->modules[$module]->module_dir_rel_url = $mdirrelurl = "modules/$folder/";
 								$this->modules[$module]->module_rel_url = $mdirrelurl . $file;
 								$this->modules[$module]->module_dir_url = $mdirurl = $this->plugin_dir_url . $mdirrelurl;
@@ -748,8 +753,8 @@ class SEO_Ultimate {
 		foreach ($this->modules as $key => $x_module) {
 			$module =& $this->modules[$key];
 			
-			//Show a module on the menu only if it provides a menu title and it doesn't have a parent module
-			if ($module->get_menu_title() && !$module->get_parent_module()) {
+			//Show a module on the menu only if it provides a menu title and it doesn't have an enabled parent module
+			if ($module->get_menu_title() && (!$module->get_parent_module() || !$this->module_exists($module->get_parent_module()))) {
 				
 				//If the module is hidden, put the module under a non-existent menu parent
 				//(this will let the module's admin page be loaded, but it won't show up on the menu)
@@ -1324,7 +1329,7 @@ class SEO_Ultimate {
 	 * @since 1.5
 	 * 
 	 * @param string $key The key of the module to check.
-	 * @return boolean Whether the module is loaded into SEO Ultimate.
+	 * @return boolean Whether the module is enabled.
 	 */
 	function module_exists($key) {
 		return isset($this->modules[$key]);
@@ -1489,7 +1494,7 @@ class SEO_Ultimate {
 			
 			$metakey = "_su_$field";
 			
-			$value = stripslashes_deep($_POST[$metakey]);
+			$value = isset($_POST[$metakey]) ? stripslashes_deep($_POST[$metakey]) : '';
 			if (!apply_filters("su_custom_update_postmeta-$field", false, $value, $metakey, $post)) {
 				if (empty($value))
 					//Delete the old value

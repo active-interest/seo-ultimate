@@ -11,6 +11,8 @@ class SU_WebmasterVerify extends SU_Module {
 	
 	function get_module_title() { return __('Webmaster Verification Assistant', 'seo-ultimate'); }
 	function get_menu_title() { return __('W.M. Verification', 'seo-ultimate'); }
+	
+	function get_parent_module() { return 'misc'; }
 	function get_settings_key() { return 'meta'; }
 	
 	function init() {
@@ -40,13 +42,13 @@ class SU_WebmasterVerify extends SU_Module {
 	}
 	
 	function admin_page_contents() {
-		$this->admin_form_start();
+		$this->child_admin_form_start();
 		$this->textboxes(array(
 				  'google_verify' => __('Google Webmaster Tools', 'seo-ultimate')
 				, 'yahoo_verify' => __('Yahoo! Site Explorer', 'seo-ultimate')
 				, 'microsoft_verify' => __('Bing Webmaster Center', 'seo-ultimate')
 			));
-		$this->admin_form_end();
+		$this->child_admin_form_end();
 	}
 }
 
