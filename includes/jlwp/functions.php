@@ -132,6 +132,7 @@ class suwp {
 	 * @return object $rss The RSS object.
 	 */
 	function load_rss($url, $ua) {
+		$ua = addslashes($ua);
 		$uafunc = create_function('', "return '$ua';");
 		add_filter('http_headers_useragent', $uafunc);
 		require_once (ABSPATH . WPINC . '/rss.php');

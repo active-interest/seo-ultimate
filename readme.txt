@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 5.8
+Stable tag: 5.9
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 5.9 adds default category/tag meta description formats
 * Version 5.8 adds the Permalink Tweaker module
 * Version 5.7 adds mass-editing for post format archives
 * Version 5.6 adds the Nofollow Manager module
 * Version 5.5 adds noindex/nofollow mass-editing for categories/tags/terms
-* Version 5.4 adds noindex/nofollow mass-editing for posts/pages
 
 = Features =
 
@@ -27,7 +27,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
-* **Meta Description Editor**
+* **Meta Description Editor** -- UPDATED in Version 5.9
 	* Edit the `<meta>` description tags for posts, pages, attachments, categories, tags, post format archives, and the homepage.
 	* Increase SERP clickthrough rates by influencing search engine result snippets.
 	* Mass-editor makes it a cinch to go back and add descriptions to old posts.
@@ -231,6 +231,12 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 5.9 (June 17, 2011) =
+* Feature: Meta Description Editor now supports default formats for category/tag archives, starting with support for the `{description}` variable.
+* Feature: Meta Keywords Editor now has mass-editors for categories, tags, post format archives, and custom taxonomy term archives
+* Improvement: Added "Reset" links to the format textboxes in Meta Description Editor
+* Bugfix: Fixed Whitepapers module errors that appeared with WP_DEBUG mode enabled
 
 = Version 5.8 (June 3, 2011) =
 * Feature: Added the Permalink Tweaker module, which lets you remove permalink bases for categories, tags, and/or custom taxonomies

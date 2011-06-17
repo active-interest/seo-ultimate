@@ -83,15 +83,15 @@ class SU_SdsBlog extends SU_Module {
 	function get_feed_item_date($item) {
 		
 		//Is there an Atom date? If so, parse it.
-		if ($atom_date = $item['issued'])
+		if (isset($item['issued']) && $atom_date = $item['issued'])
 			$date = parse_w3cdtf($atom_date);
 		
 		//Or is there an RSS2 date? If so, parse it.
-		elseif ($rss_2_date = $item['pubdate'])
+		elseif (isset($item['pubdate']) && $rss_2_date = $item['pubdate'])
 			$date = strtotime($rss_2_date);
 		
 		//Or is there an RSS1 date? If so, parse it.
-		elseif ($rss_1_date = $item['dc']['date'])
+		elseif (isset($item['dc']['date']) && $rss_1_date = $item['dc']['date'])
 			$date = parse_w3cdtf($rss_1_date);
 			
 		else $date = null;

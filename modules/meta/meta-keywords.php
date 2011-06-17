@@ -32,7 +32,7 @@ class SU_MetaKeywords extends SU_Module {
 				  __('Default Values', 'seo-ultimate') => 'defaults_tab'
 				, __('Blog Homepage', 'seo-ultimate') => 'home_tab'
 				)
-			, $this->get_postmeta_edit_tabs(array(
+			, $this->get_meta_edit_tabs(array(
 				  'type' => 'textbox'
 				, 'name' => 'keywords'
 				, 'term_settings_key' => 'taxonomy_keywords'

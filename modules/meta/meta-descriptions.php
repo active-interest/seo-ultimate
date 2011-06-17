@@ -37,14 +37,18 @@ class SU_MetaDescriptions extends SU_Module {
 		return array(
 			  'home_description_tagline_default' => true
 			, 'description_posttype_post' => '{excerpt}'
+			, 'description_taxonomy_category' => '{description}'
+			, 'description_taxonomy_post_tag' => '{description}'
 		);
 	}
 	
 	function formats_tab() {
 		$this->admin_form_table_start();
 		$this->textboxes(array(
-			  'description_posttype_post' => __('Post Description Format', 'seo-ultimate')			
-		));
+			  'description_posttype_post' => __('Post Description Format', 'seo-ultimate')
+			, 'description_taxonomy_category' => __('Category Description Format', 'seo-ultimate')
+			, 'description_taxonomy_post_tag' => __('Post Tag Description Format', 'seo-ultimate')
+		), $this->get_default_settings());
 		$this->admin_form_table_end();
 	}
 	
@@ -90,8 +94,17 @@ class SU_MetaDescriptions extends SU_Module {
 		} elseif (is_category() || is_tag() || is_tax()) {
 			global $wp_query;
 			$tax_descriptions = $this->get_setting('taxonomy_descriptions');
-			$tax_id = $wp_query->get_queried_object_id();
-			$desc = isset($tax_descriptions[$tax_id]) ? $tax_descriptions[$tax_id] : '';
+			$term_id  = $wp_query->get_queried_object_id();
+			$term_obj = $wp_query->get_queried_object();
+			$desc = isset($tax_descriptions[$term_id]) ? $tax_descriptions[$term_id] : '';
+			
+			if (!trim($desc) && $format = $this->get_setting('description_taxonomy_'.$term_obj->taxonomy)) {
+				
+				$desc = str_replace(
+					  array('{description}')
+					, array($term_obj->description)
+					, $format);
+			}
 		}
 		
 		//Do we have a description? If so, output it.
