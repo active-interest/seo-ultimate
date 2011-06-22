@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 5.8\n"
+"Project-Id-Version: SEO Ultimate 6.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2011-06-03 20:49:34+00:00\n"
+"POT-Creation-Date: 2011-06-22 01:41:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,93 +19,93 @@ msgid ""
 "Ultimate to remove this notice."
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 5.8)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: plugin/class.seo-ultimate.php:746 modules/settings/settings.php:14
+#: plugin/class.seo-ultimate.php:767 modules/settings/settings.php:14
 msgid "SEO Ultimate"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:746
+#: plugin/class.seo-ultimate.php:767
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:935
+#: plugin/class.seo-ultimate.php:956
 msgid ""
 "It looks like you made changes to the settings of this SEO Ultimate module. "
 "If you leave before saving, those changes will be lost."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1029
+#: plugin/class.seo-ultimate.php:1050
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1031
+#: plugin/class.seo-ultimate.php:1052
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1033
+#: plugin/class.seo-ultimate.php:1054
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1088
+#: plugin/class.seo-ultimate.php:1109
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate %"
 "1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1129
+#: plugin/class.seo-ultimate.php:1150
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1129
+#: plugin/class.seo-ultimate.php:1150
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1130
+#: plugin/class.seo-ultimate.php:1151
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1130
+#: plugin/class.seo-ultimate.php:1151
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1131
+#: plugin/class.seo-ultimate.php:1152
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1131
+#: plugin/class.seo-ultimate.php:1152
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1132
+#: plugin/class.seo-ultimate.php:1153
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1132
+#: plugin/class.seo-ultimate.php:1153
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1163
+#: plugin/class.seo-ultimate.php:1184
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1169
+#: plugin/class.seo-ultimate.php:1190
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1171
+#: plugin/class.seo-ultimate.php:1192
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1238 modules/settings/uninstall.php:18
+#: plugin/class.seo-ultimate.php:1259 modules/settings/uninstall.php:18
 msgid "Uninstall"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1258
+#: plugin/class.seo-ultimate.php:1279
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1319
+#: plugin/class.seo-ultimate.php:1340
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -113,7 +113,7 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1429
+#: plugin/class.seo-ultimate.php:1450
 msgid "SEO Settings"
 msgstr ""
 
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Post Format Archives"
 msgstr ""
 
-#: includes/jlwp/functions.php:147
+#: includes/jlwp/functions.php:148
 msgid "backup your database"
 msgstr ""
 
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:116 modules/class.su-module.php:1197
+#: modules/404s/fofs-log.php:116 modules/class.su-module.php:1204
 msgid "Actions"
 msgstr ""
 
@@ -404,7 +404,7 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-#: modules/settings/settings-data.php:23 modules/class.su-module.php:1944
+#: modules/settings/settings-data.php:23 modules/class.su-module.php:1951
 msgid "Reset"
 msgstr ""
 
@@ -433,25 +433,25 @@ msgid ""
 "The uploaded file is not in the proper format. Links could not be imported."
 msgstr ""
 
-#: modules/settings/settings-data.php:173
+#: modules/settings/settings-data.php:175
 msgid "Links successfully imported."
 msgstr ""
 
-#: modules/settings/settings-data.php:176
+#: modules/settings/settings-data.php:178
 msgid "The CSV file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings/settings-data.php:179
+#: modules/settings/settings-data.php:181
 msgid ""
 "Links could not be imported because no CSV file was selected. Please click "
 "the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings/settings-data.php:189
+#: modules/settings/settings-data.php:191
 msgid "Import SEO Ultimate Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:191
+#: modules/settings/settings-data.php:193
 msgid ""
 "You can use this form to upload and import an SEO Ultimate settings file "
 "stored on your computer. (These files can be created using the Export tool.) "
@@ -459,21 +459,21 @@ msgid ""
 "in the file."
 msgstr ""
 
-#: modules/settings/settings-data.php:195
+#: modules/settings/settings-data.php:197
 msgid ""
 "Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:196
+#: modules/settings/settings-data.php:198
 msgid "Import Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:202
+#: modules/settings/settings-data.php:204
 msgid "Import Deeplink Juggernaut CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:204
+#: modules/settings/settings-data.php:206
 msgid ""
 "You can use this form to upload and import a Deeplink Juggernaut CSV file "
 "stored on your computer. (These files can be created using the Export tool.) "
@@ -481,38 +481,38 @@ msgid ""
 "the file."
 msgstr ""
 
-#: modules/settings/settings-data.php:208
+#: modules/settings/settings-data.php:210
 msgid ""
 "Are you sure you want to import this CSV file? This will overwrite your "
 "current Deeplink Juggernaut links and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:209
+#: modules/settings/settings-data.php:211
 msgid "Import CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:224
+#: modules/settings/settings-data.php:226
 msgid "Import from Other Plugins"
 msgstr ""
 
-#: modules/settings/settings-data.php:226
+#: modules/settings/settings-data.php:228
 msgid ""
 "You can import settings and data from these plugins. Clicking a plugin&#8217;"
 "s name will take you to the importer page, where you can customize "
 "parameters and start the import."
 msgstr ""
 
-#: modules/settings/settings-data.php:246
+#: modules/settings/settings-data.php:248
 msgid "Export SEO Ultimate Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:248
+#: modules/settings/settings-data.php:250
 msgid ""
 "You can use this export tool to download an SEO Ultimate settings file to "
 "your computer."
 msgstr ""
 
-#: modules/settings/settings-data.php:250
+#: modules/settings/settings-data.php:252
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module. It does NOT include site-specific data like logged 404s or "
@@ -520,15 +520,15 @@ msgid ""
 "database backup, however)."
 msgstr ""
 
-#: modules/settings/settings-data.php:253
+#: modules/settings/settings-data.php:255
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:258
+#: modules/settings/settings-data.php:260
 msgid "Export Deeplink Juggernaut CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:260
+#: modules/settings/settings-data.php:262
 msgid ""
 "You can use this export tool to download a CSV file (comma-separated values "
 "file) that contains your Deeplink Juggernaut links. Once you download this "
@@ -537,26 +537,26 @@ msgid ""
 "the Import tool."
 msgstr ""
 
-#: modules/settings/settings-data.php:263
+#: modules/settings/settings-data.php:265
 msgid "Download CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:270
+#: modules/settings/settings-data.php:272
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings/settings-data.php:272
+#: modules/settings/settings-data.php:274
 msgid ""
 "You can erase all your SEO Ultimate settings and restore them to &#8220;"
 "factory defaults&#8221; by clicking the button below."
 msgstr ""
 
-#: modules/settings/settings-data.php:275
+#: modules/settings/settings-data.php:277
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:276
+#: modules/settings/settings-data.php:278
 msgid "Restore Default Settings"
 msgstr ""
 
@@ -922,79 +922,62 @@ msgstr ""
 msgid "Content Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:100
+#: modules/autolinks/content-autolinks.php:143
 msgid ""
 "The Content Links section of Deeplink Juggernaut lets you automatically link "
 "a certain word or phrase in your post/page content to a URL you specify."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:136
+#: modules/autolinks/content-autolinks.php:191
 msgid "Edit Existing Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:140
+#: modules/autolinks/content-autolinks.php:195
 msgid "Add a New Link"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:148
+#: modules/autolinks/content-autolinks.php:203
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:149
-msgid "Destination Type"
-msgstr ""
-
-#: modules/autolinks/content-autolinks.php:150
+#: modules/autolinks/content-autolinks.php:204
 msgid "Destination"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:151
+#: modules/autolinks/content-autolinks.php:205
 msgid "Title Attribute"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:152
+#: modules/autolinks/content-autolinks.php:206
 msgid "Options"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:154
+#: modules/autolinks/content-autolinks.php:208
 msgid "Delete"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:196
-msgid "Custom"
-msgstr ""
-
-#: modules/autolinks/content-autolinks.php:196
-#: modules/internal-link-aliases/internal-link-aliases.php:49
-msgid "URL"
-msgstr ""
-
-#: modules/autolinks/content-autolinks.php:197
-msgid "Content Items"
-msgstr ""
-
-#: modules/autolinks/content-autolinks.php:204 modules/noindex/noindex.php:54
+#: modules/autolinks/content-autolinks.php:229 modules/noindex/noindex.php:54
 #: modules/noindex/noindex.php:78
 msgid "Nofollow"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:205
+#: modules/autolinks/content-autolinks.php:230
 msgid "New window"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:269
+#: modules/autolinks/content-autolinks.php:294
 msgid "Incoming Autolink Anchors:<br /><em>(one per line)</em>"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:270
+#: modules/autolinks/content-autolinks.php:295
 msgid "Don&#8217;t add autolinks to anchor texts found in this post."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:270
+#: modules/autolinks/content-autolinks.php:295
 msgid "Autolink Exclusion:"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:275
+#: modules/autolinks/content-autolinks.php:300
 msgid ""
 "<strong>Incoming Autolink Anchors</strong> &mdash; When you enter anchors "
 "into this box, Deeplink Juggernaut will search for that anchor in all your "
@@ -1007,6 +990,16 @@ msgstr ""
 
 #: modules/autolinks/autolinks.php:11
 msgid "Deeplink Juggernaut"
+msgstr ""
+
+#: modules/autolinks/autolinks.php:18
+msgid ""
+"Deeplink Juggernaut requires PHP 5.2 or above in SEO Ultimate 6.0 and later. "
+"(Note that WordPress itself will soon require PHP 5.2 as well, starting with "
+"WordPress 3.2.) If you aren&#8217;t sure how to upgrade PHP, please ask your "
+"webhost. In the meantime, you can return to an older version of Deeplink "
+"Juggernaut that supports your version of PHP by <a href=\"%s\">downgrading</"
+"a> to SEO Ultimate 5.9."
 msgstr ""
 
 #: modules/autolinks/content-autolinks-settings.php:16
@@ -1126,67 +1119,79 @@ msgstr ""
 msgid "Meta Robots Tag:"
 msgstr ""
 
-#: modules/class.su-module.php:368
+#: modules/class.su-module.php:375
 msgid ""
 "(Note: This translated documentation was designed for an older version of "
 "SEO Ultimate and may be outdated.)"
 msgstr ""
 
-#: modules/class.su-module.php:641
+#: modules/class.su-module.php:648
 msgid ""
 "All the modules on this page have been disabled. You can re-enable them "
 "using the <a href=\"%s\">Module Manager</a>."
 msgstr ""
 
-#: modules/class.su-module.php:993
+#: modules/class.su-module.php:1000
 msgctxt "Dropdown Title"
 msgid "%s &mdash; %s"
 msgstr ""
 
-#: modules/class.su-module.php:1021
+#: modules/class.su-module.php:1028
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1092
+#: modules/class.su-module.php:1099
 msgid "Your site currently doesn&#8217;t have any public items of this type."
 msgstr ""
 
-#: modules/class.su-module.php:1176
+#: modules/class.su-module.php:1183
 msgid "&laquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1177
+#: modules/class.su-module.php:1184
 msgid "&raquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1184
+#: modules/class.su-module.php:1191
 msgid "Displaying %s&#8211;%s of %s"
 msgstr ""
 
-#: modules/class.su-module.php:1198
+#: modules/class.su-module.php:1205
 msgid "ID"
 msgstr ""
 
-#: modules/class.su-module.php:1232
+#: modules/class.su-module.php:1239
 msgid "View"
 msgstr ""
 
-#: modules/class.su-module.php:1234
+#: modules/class.su-module.php:1241
 msgid "Edit"
 msgstr ""
 
-#: modules/class.su-module.php:1397
+#: modules/class.su-module.php:1404
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1418
+#: modules/class.su-module.php:1425
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1928
+#: modules/class.su-module.php:1935
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
+msgstr ""
+
+#: modules/class.su-module.php:2557
+msgid "Type a URL or start typing the name of the item you want to link to"
+msgstr ""
+
+#: modules/class.su-module.php:2569
+msgid "Remove this destination"
+msgstr ""
+
+#: modules/class.su-module.php:2569
+msgid "X"
 msgstr ""
 
 #: modules/meta/webmaster-verify.php:12
@@ -1260,31 +1265,39 @@ msgstr ""
 msgid "Meta Description"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:46
+#: modules/meta/meta-descriptions.php:48
 msgid "Post Description Format"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:53
+#: modules/meta/meta-descriptions.php:49
+msgid "Category Description Format"
+msgstr ""
+
+#: modules/meta/meta-descriptions.php:50
+msgid "Post Tag Description Format"
+msgstr ""
+
+#: modules/meta/meta-descriptions.php:57
 msgid "Blog Homepage Meta Description"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:55
+#: modules/meta/meta-descriptions.php:59
 msgid "Use this blog&#8217s tagline as the default homepage description."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:56
+#: modules/meta/meta-descriptions.php:60
 msgid "Default Value"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:109
+#: modules/meta/meta-descriptions.php:122
 msgid "Meta Description:"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:112
-msgid "You&#8217;ve entered %s characters. Most search engines use up to 160."
+#: modules/meta/meta-descriptions.php:125
+msgid "You&#8217;ve entered %s characters. Most search engines use up to 140."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:120
+#: modules/meta/meta-descriptions.php:133
 msgid ""
 "<strong>Description</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
@@ -1448,7 +1461,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 5.8)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.0)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1471,6 +1484,10 @@ msgstr ""
 
 #: modules/internal-link-aliases/internal-link-aliases.php:46
 msgid "Link Masks"
+msgstr ""
+
+#: modules/internal-link-aliases/internal-link-aliases.php:49
+msgid "URL"
 msgstr ""
 
 #: modules/internal-link-aliases/internal-link-aliases.php:49
@@ -1834,7 +1851,7 @@ msgid "RDFa"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:62
-#: modules/rich-snippets/rich-snippets.php:218
+#: modules/rich-snippets/rich-snippets.php:220
 msgid "Review"
 msgstr ""
 
@@ -1850,56 +1867,56 @@ msgstr ""
 msgid "Date Reviewed"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:217
-#: modules/rich-snippets/rich-snippets.php:223
+#: modules/rich-snippets/rich-snippets.php:219
+#: modules/rich-snippets/rich-snippets.php:225
 msgid "None"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:219
+#: modules/rich-snippets/rich-snippets.php:221
 msgid "Rich Snippet Type:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:224
+#: modules/rich-snippets/rich-snippets.php:226
 msgid "0.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:225
+#: modules/rich-snippets/rich-snippets.php:227
 msgid "1 star"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:226
+#: modules/rich-snippets/rich-snippets.php:228
 msgid "1.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:227
+#: modules/rich-snippets/rich-snippets.php:229
 msgid "2 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:228
+#: modules/rich-snippets/rich-snippets.php:230
 msgid "2.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:229
+#: modules/rich-snippets/rich-snippets.php:231
 msgid "3 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:230
+#: modules/rich-snippets/rich-snippets.php:232
 msgid "3.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:231
+#: modules/rich-snippets/rich-snippets.php:233
 msgid "4 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:232
+#: modules/rich-snippets/rich-snippets.php:234
 msgid "4.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:233
+#: modules/rich-snippets/rich-snippets.php:235
 msgid "5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:234
+#: modules/rich-snippets/rich-snippets.php:236
 msgid "Star Rating for Reviewed Item:"
 msgstr ""
 
