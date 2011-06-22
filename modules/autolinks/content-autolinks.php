@@ -54,6 +54,17 @@ class SU_ContentAutolinks extends SU_Module {
 		$lpa_limit_enabled = $this->get_setting('limit_lpa', false);
 		$lpa_limit = $lpa_limit_enabled ? $this->get_setting('limit_lpa_value', 5) : -1;
 		
+		$from_post_type = get_post_type();
+		$dest_limit = $from_post_type ? (bool)$this->get_setting('dest_limit_' . $from_post_type, false) : false;
+		$dest_limit_taxonomies = array();
+		if ($dest_limit) {
+			$from_post_type_taxonomies = suwp::get_object_taxonomy_names($from_post_type);
+			foreach ($from_post_type_taxonomies as $from_post_type_taxonomy) {
+				if ($this->get_setting('dest_limit_' . $from_post_type . '_within_' . $from_post_type_taxonomy, false))
+					$dest_limit_taxonomies[] = $from_post_type_taxonomy;
+			}
+		}
+		
 		foreach ($links as $data) {
 			$anchor = $data['anchor'];
 			$to_id = su_esc_attr($data['to_id']);
@@ -62,12 +73,39 @@ class SU_ContentAutolinks extends SU_Module {
 				
 				$type = $data['to_type'];
 				
-				if ($type == 'url')
+				if ($type == 'url') {
 					$url = $to_id;
-				elseif (($posttype = sustr::ltrim_str($type, 'posttype_')) != $type) {
+				} elseif (sustr::startswith($type, 'posttype_')) {
 					$to_id = (int)$to_id;
+					$to_post = get_post($to_id);
+					
 					if (get_post_status($to_id) != 'publish') continue;
+					
+					if (count($dest_limit_taxonomies)) {
+						$shares_term = false;
+						foreach ($dest_limit_taxonomies as $dest_limit_taxonomy) {
+							$from_terms = suarr::flatten_values(get_the_terms(null, $dest_limit_taxonomy), 'term_id');
+							
+							if (is_object_in_taxonomy($to_post, $dest_limit_taxonomy))
+								$to_terms = suarr::flatten_values(get_the_terms($to_id, $dest_limit_taxonomy), 'term_id');
+							else
+								$to_terms = array();
+							
+							if (count(array_intersect($from_terms, $to_terms))) {
+								$shares_term = true;
+								break;
+							}
+						}
+						
+						if (!$shares_term)
+							continue;
+					}
+					
 					$url = get_permalink($to_id);
+				} elseif (sustr::startswith($type, 'taxonomy_')) {
+					$taxonomy = sustr::ltrim_str($type, 'taxonomy_');
+					$to_id = (int)$to_id;
+					$url = get_term_link($to_id, $taxonomy);
 				} else
 					continue;
 				
@@ -95,7 +133,12 @@ class SU_ContentAutolinks extends SU_Module {
 		return $content;
 	}
 	
+	function admin_page_init() {
+		$this->jlsuggest_init();
+	}
+	
 	function admin_page_contents() {
+		
 		echo "\n<p>";
 		_e('The Content Links section of Deeplink Juggernaut lets you automatically link a certain word or phrase in your post/page content to a URL you specify.', 'seo-ultimate');
 		echo "</p>\n";
@@ -112,15 +155,27 @@ class SU_ContentAutolinks extends SU_Module {
 			for ($i=0; $i <= $num_links; $i++) {
 				
 				$anchor = stripslashes($_POST["link_{$i}_anchor"]);
-				$to_type= stripslashes($_POST["link_{$i}_to_type__{$guid}"]);
-				$to_id  = stripslashes($_POST["link_{$i}_to_id_{$to_type}__{$guid}"]);
+				
+				$to	= stripslashes($_POST["link_{$i}_to"]);
+				if (sustr::startswith($to, 'obj_')) {
+					$to = sustr::ltrim_str($to, 'obj_');
+					$to = explode('/', $to);
+					if (count($to) == 2) {
+						$to_type = $to[0];
+						$to_id = $to[1];
+					} else
+						continue;
+				} else {
+					$to_type = 'url';
+					$to_id = $to;
+				}
+				
 				$title  = stripslashes($_POST["link_{$i}_title"]);
 				
-				$target = stripslashes($_POST["link_{$i}_target"]);
-				$target = $target ? 'blank' : 'self';
+				$target = empty($_POST["link_{$i}_target"]) ? 'self' : 'blank';				
 				
-				$nofollow = intval($_POST["link_{$i}_nofollow"]) == 1;
-				$delete = intval($_POST["link_{$i}_delete"]) == 1;
+				$nofollow = isset($_POST["link_{$i}_nofollow"]) ? (intval($_POST["link_{$i}_nofollow"]) == 1) : false;
+				$delete = isset($_POST["link_{$i}_delete"]) ? (intval($_POST["link_{$i}_delete"]) == 1) : false;
 				
 				if (!$delete && (strlen($anchor) || $to_id))
 					$links[] = compact('anchor', 'to_type', 'to_id', 'title', 'nofollow', 'target');
@@ -146,8 +201,7 @@ class SU_ContentAutolinks extends SU_Module {
 		//Set headers
 		$headers = array(
 			  'link-anchor' => __('Anchor Text', 'seo-ultimate')
-			, 'link-to_type' => __('Destination Type', 'seo-ultimate')
-			, 'link-to_id' => __('Destination', 'seo-ultimate')
+			, 'link-to' => __('Destination', 'seo-ultimate')
 			, 'link-title' => __('Title Attribute', 'seo-ultimate')
 			, 'link-options' => __('Options', 'seo-ultimate')
 		);
@@ -156,49 +210,20 @@ class SU_ContentAutolinks extends SU_Module {
 		//Begin table; output headers
 		$this->admin_wftable_start($headers);
 		
-		//Get post options
-		$posttypeobjs = suwp::get_post_type_objects();
-		$posttypes = $posts = $postoptions = array();
-		foreach ($posttypeobjs as $posttypeobj) {
-			
-			$stati = get_available_post_statuses($posttypeobj->name);
-			suarr::remove_value($stati, 'auto-draft');
-			$stati = implode(',', $stati);
-			
-			$typeposts = get_posts("orderby=title&order=ASC&post_status=$stati&numberposts=-1&post_type=".$posttypeobj->name);
-			if (count($typeposts)) {
-				$posttypes['posttype_'.$posttypeobj->name] = $posttypeobj->labels->singular_name;
-				$posts['posttype_'.$posttypeobj->name] = $typeposts_array = array_slice(suarr::simplify($typeposts, 'ID', 'post_title'), 0, 1000, true); //Let's not go too crazy with post dropdowns; cut it off at 1000
-				//$postoptions['posttype_'.$posttypeobj->name] = suhtml::option_tags(array(0 => '') + $typeposts_array, null); //Maintains numeric array keys, unlike array_unshift or array_merge
-			}
-		}
-		
 		//Cycle through links
 		$i = $start_id;
 		foreach ($links as $link) {
 			
-			$postdropdowns = array();
-			foreach ($posts as $posttype => $typeposts) {
-				$typeposts = array(0 => '') + $typeposts; //Maintains numeric array keys, unlike array_unshift or array_merge
-				$postdropdowns[$posttype] = $this->get_input_element('dropdown', "link_{$i}_to_id_{$posttype}__$guid", $link['to_id'], $typeposts);
-				
-				/*
-				//$typeposts = array(0 => '') + $typeposts; 
-				$postdropdowns[$posttype] = $this->get_input_element('dropdown', "link_{$i}_to_id_{$posttype}__$guid", $link['to_id'],
-					str_replace("<option value='{$link['to_id']}'>", "<option value='{$link['to_id']}' selected='selected'>", $postoptions[$posttype])
-				);
-				*/
-			}
+			if (!isset($link['anchor']))	$link['anchor'] = '';
+			if (!isset($link['to_id']))		$link['to_id'] = '';
+			if (!isset($link['to_type']))	$link['to_type'] = 'url';
+			if (!isset($link['title']))		$link['title'] = '';
+			if (!isset($link['nofollow']))	$link['nofollow'] = false;
+			if (!isset($link['target']))	$link['target'] = '';
 			
 			$cells = array(
 				  'link-anchor' => $this->get_input_element('textbox', "link_{$i}_anchor", $link['anchor'])
-				, 'link-to_type' => $this->get_input_element('dropdown', "link_{$i}_to_type__$guid", $link['to_type'], array(
-						  __('Custom', 'seo-ultimate') => array('url' => __('URL', 'seo-ultimate'))
-						, __('Content Items', 'seo-ultimate') => $posttypes
-					))
-				, 'link-to_id' => $this->get_admin_form_subsections("link_{$i}_to_type__$guid", $link['to_type'] ? $link['to_type'] : 'url', array_merge(array(
-						  'url' => $this->get_input_element('textbox', "link_{$i}_to_id_url__$guid", ($link['to_type'] == 'url') ? $link['to_id'] : '')
-					), $postdropdowns))
+				, 'link-to' => $this->get_jlsuggest_box("link_{$i}_to", array($link['to_type'], $link['to_id']))
 				, 'link-title' => $this->get_input_element('textbox', "link_{$i}_title", $link['title'])
 				, 'link-options' =>
 					 $this->get_input_element('checkbox', "link_{$i}_nofollow", $link['nofollow'], __('Nofollow', 'seo-ultimate'))

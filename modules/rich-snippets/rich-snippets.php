@@ -157,8 +157,10 @@ class SU_RichSnippets extends SU_Module {
 			if (!strlen($value)) {
 				if (isset($property_data['value_function'])) {
 					$valfunc = (array)$property_data['value_function'];
-					if (is_callable($valfunc[0]))
-						$value = call_user_func_array($valfunc[0], (array)$valfunc[1]);
+					if (is_callable($valfunc[0])) {
+						$valfunc_args = isset($valfunc[1]) ? (array)$valfunc[1] : array();
+						$value = call_user_func_array($valfunc[0], $valfunc_args);
+					}
 				}
 			}
 			
@@ -192,7 +194,7 @@ class SU_RichSnippets extends SU_Module {
 			
 			//Is the value in the content, and are we allowed to search/replace the content for this value?
 			$count = 0;
-			if (!$property_data['always_hidden']) {
+			if (empty($property_data['always_hidden'])) {
 				for ($i=0; $i<count($values); $i++) {
 					$content = sustr::htmlsafe_str_replace($values[$i], $markedup_values[$i], $content, 1, $count);
 					if ($count > 0) break;

@@ -321,6 +321,13 @@ class SU_Module {
 	function get_default_settings() { return array(); }
 	
 	/**
+	 * Is called at WordPress' admin_init hook when this module's admin page is showing.
+	 * 
+	 * @since 6.0
+	 */
+	function admin_page_init() { }
+	
+	/**
 	 * The contents of the administration page.
 	 * 
 	 * @since 0.1
@@ -2458,6 +2465,142 @@ class SU_Module {
 		}
 		
 		add_action($hook, array(&$this, $function));
+	}
+	
+	/********** JLSUGGEST **********/
+	
+	/**
+	 * Initializes JLSuggest.
+	 * Must be called in the admin_page_init() function of the module that wants to use JLSuggest.
+	 * 
+	 * @since 6.0
+	 * @uses jlsuggest_xml_ns()
+	 * @uses SEO_Ultimate::queue_js()
+	 * @uses SEO_Ultimate::queue_css()
+	 */
+	function jlsuggest_init() {
+		add_action('admin_xml_ns', array(&$this, 'jlsuggest_xml_ns'));
+		$this->plugin->queue_js ('includes/jlsuggest', 'jlsuggest');
+		$this->plugin->queue_css('includes/jlsuggest', 'jlsuggest');
+	}
+	
+	/**
+	 * Outputs the SEO Ultimate XMLNS used by JLSuggest.
+	 * 
+	 * @since 6.0
+	 */
+	function jlsuggest_xml_ns() {
+		echo ' xmlns:su="http://johnlamansky.com/xmlns/seo-ultimate" ';
+	}
+	
+	/**
+	 * Explodes a JLSuggest database string into an array with the destination type and the destination ID.
+	 * 
+	 * @since 6.0
+	 * 
+	 * @param $valstr The database string, e.g. http://example.com or obj_posttype_post_1
+	 * @return array
+	 */
+	function jlsuggest_value_explode($valstr) {
+		
+		if (is_array($valstr)) {
+			return $valstr;
+			
+		} elseif (is_string($valstr)) {
+			
+			if (sustr::startswith($valstr, 'obj_')) {
+				$valstr = sustr::ltrim_str($valstr, 'obj_');
+				$valstr = explode('/', $valstr);
+				if (count($valstr) == 2)
+					return $valstr;
+			} else {
+				return array('url', $valstr);
+			}
+		}
+		
+		return array('url', '');
+	}
+	
+	/**
+	 * Returns the HTML code for a JLSuggest textbox
+	 * 
+	 * @since 6.0
+	 * 
+	 * @param string $name The value of the textbox's name/ID attributes
+	 * @param string $value The current database string associated with this textbox
+	 */
+	function get_jlsuggest_box($name, $value) {
+		
+		list($to_type, $to_id) = $this->jlsuggest_value_explode($value);
+		
+		$text_dest = '';
+		if (!empty($to_type)) {
+			if (sustr::startswith($to_type, 'posttype_')) {
+				$selected_post = get_post($to_id);
+				$selected_post_type = get_post_type_object($selected_post->post_type);
+				$text_dest = $selected_post->post_title . '<span class="type">&nbsp;&mdash;&nbsp;'.$selected_post_type->labels->singular_name.'</span>';
+				
+			} elseif (sustr::startswith($to_type, 'taxonomy_')) {
+				$selected_taxonomy = get_taxonomy(sustr::ltrim_str($to_type, 'taxonomy_'));
+				$selected_term = get_term($to_id, $selected_taxonomy->name);
+				$text_dest = $selected_term->name . '<span class="type">&nbsp;&mdash;&nbsp;'.$selected_taxonomy->labels->singular_name.'</span>';				
+			}
+		}
+		
+		$is_url = (('url' == $to_type) && !$text_dest);
+		
+		//URL textbox
+		//(hide if object is selected)
+		$html = "<input name='$name' id='$name' value='";
+		$html .= su_esc_editable_html($is_url ? $to_id : 'obj_' . $to_type . '/' . $to_id);
+		$html .= "' type='text' class='textbox regular-text jlsuggest'";
+		$html .= ' title="' . __('Type a URL or start typing the name of the item you want to link to', 'seo-ultimate') . '"';
+		$html .= $is_url ? '' : ' style="display:none;" ';
+		$html .= ' />';
+		
+		//Object box
+		//(hide if URL is entered)
+		$html .= '<div class="jls_text_dest"';
+		$html .= $is_url ? ' style="display:none;" ' : '';
+		$html .= '>';
+		$html .= '<span class="jls_text_dest_text">';
+		$html .= $text_dest;
+		$html .= '</span>';
+		$html .= '<a href="#" onclick="javascript:return false;" class="jls_text_dest_close" title="'.__('Remove this destination', 'seo-ultimate').'">'.__('X', 'seo-ultimate').'</a>';
+		$html .= '</div>';
+		
+		return $html;
+	}
+	
+	/**
+	 * Converts a JLSuggest database string into a URL.
+	 * 
+	 * @since 6.0
+	 * 
+	 * @param string $value The JLSuggest database string to convert.
+	 * @return string The URL of the referenced destination
+	 */
+	function jlsuggest_value_to_url($value) {
+		
+		list($to_type, $to_id) = $this->jlsuggest_value_explode($value);
+		
+		if ($to_type == 'url') {
+			return $to_id;
+			
+		} elseif (sustr::startswith($to_type, 'posttype_')) {
+			$to_id = (int)$to_id;
+			$to_post = get_post($to_id);
+			if (get_post_status($to_id) != 'publish') continue;
+			return get_permalink($to_id);
+			
+		} elseif (sustr::startswith($to_type, 'taxonomy_')) {
+			$taxonomy = sustr::ltrim_str($to_type, 'taxonomy_');
+			$to_id = (int)$to_id;
+			return get_term_link($to_id, $taxonomy);
+			
+		}
+		
+		return false;
 	}
 }
 ?>

@@ -212,6 +212,8 @@ class SEO_Ultimate {
 				suwp::remove_instance_action('admin_footer', 'RobotsMeta_Admin', 'blog_public_warning');
 			}
 			
+			add_action('admin_init', array(&$this, 'admin_init'));
+			
 			//When loading the admin menu, call on our menu constructor function.
 			//For future-proofing purposes, we specifically state the default priority of 10,
 			//since some modules set a priority of 9 with the specific intention of running
@@ -234,6 +236,9 @@ class SEO_Ultimate {
 			
 			//Add module links to plugin listing
 			add_filter('plugin_row_meta', array(&$this, 'plugin_row_meta_filter'), 10, 2);
+			
+			//JLSuggest AJAX
+			add_action('wp_ajax_su-jlsuggest-autocomplete', array(&$this, 'jlsuggest_autocomplete'));
 		}
 	}
 	
@@ -601,6 +606,22 @@ class SEO_Ultimate {
 			if (defined('SU_UPGRADE'))
 				$this->modules[$key]->upgrade();
 			$this->modules[$key]->init();
+		}
+	}
+	
+	/**
+	 * Attached to WordPress' admin_init hook.
+	 * Calls the admin_page_init() function of the current module(s).
+	 * 
+	 * @since 6.0
+	 * @uses $modules
+	 * @uses SU_Module::is_module_admin_page()
+	 * @uses SU_Module::admin_page_init()
+	 */
+	function admin_init() {
+		foreach ($this->modules as $key => $x_module) {
+			if ($this->modules[$key]->is_module_admin_page())
+				$this->modules[$key]->admin_page_init();
 		}
 	}
 	
@@ -1625,6 +1646,74 @@ class SEO_Ultimate {
 		}
 		
 		return $this->plugin_dir_path.'modules/documentation.txt';
+	}
+	
+	/********** JLSUGGEST **********/
+	
+	/**
+	 * Outputs a JSON-encoded list of posts and terms on the blog.
+	 * 
+	 * @since 6.0
+	 */
+	function jlsuggest_autocomplete() {
+		
+		if ( !function_exists('json_encode') ) die();
+		if ( !current_user_can( 'manage_options' ) ) die();
+		
+		$items = array();
+		
+		$posttypeobjs = suwp::get_post_type_objects();
+		foreach ($posttypeobjs as $posttypeobj) {
+			
+			$stati = get_available_post_statuses($posttypeobj->name);
+			suarr::remove_value($stati, 'auto-draft');
+			$stati = implode(',', $stati);
+			
+			$posts = get_posts(array(
+				  'orderby' => 'title'
+				, 'order' => 'ASC'
+				, 'post_status' => $stati
+				, 'numberposts' => -1
+				, 'post_type' => $posttypeobj->name
+				, 'sentence' => 1
+				, 's' => $_GET['q']
+			));
+			
+			if (count($posts)) {
+				
+				$items[] = array('text' => $posttypeobj->labels->name, 'isheader' => true);
+				
+				foreach ($posts as $post)
+					$items[] = array(
+						  'text' => $post->post_title
+						, 'value' => 'obj_posttype_' . $posttypeobj->name . '/' . $post->ID
+						, 'selectedtext' => $post->post_title . '<span class="type">&nbsp;&mdash;&nbsp;'.$posttypeobj->labels->singular_name.'</span>'
+					);
+			}
+		}
+		
+		$taxonomyobjs = suwp::get_taxonomies();
+		foreach ($taxonomyobjs as $taxonomyobj) {
+			
+			$terms = get_terms($taxonomyobj->name, array(
+				'search' => esc_sql($_GET['q']) //The esc_sql() is very important: get_terms does NOT sanitize the "search" variable for SQL queries prior to 3.1.3
+			));
+			
+			if (count($terms)) {
+				
+				$items[] = array('text' => $taxonomyobj->labels->name, 'isheader' => true);
+				
+				foreach ($terms as $term)
+					$items[] = array(
+						  'text' => $term->name
+						, 'value' => 'obj_taxonomy_' . $taxonomyobj->name . '/' . $term->term_id
+						, 'selectedtext' => $term->name . '<span class="type"> &mdash; '.$taxonomyobj->labels->singular_name.'</span>'
+					);
+			}
+		}
+		
+		echo json_encode($items);
+		die();
 	}
 }
 ?>

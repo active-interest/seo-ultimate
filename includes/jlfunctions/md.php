@@ -80,6 +80,10 @@ class sumd {
 		
 		return $sections;
 	}
+	
+	function convert_headers($md, $h) {
+		return trim(preg_replace('|\r\n=+ ([^=]+) =+\r\n|', "<$h>\\1</$h>", "\r\n$md\r\n"));
+	}
 }
 
 ?>

@@ -152,7 +152,9 @@ class SU_SettingsData extends SU_Module {
 						foreach ($import as $link) {
 							
 							//Validate destination type
-							if ($link['to_type'] != 'url' && !sustr::startswith($link['to_type'], 'posttype_'))
+							if ($link['to_type'] != 'url'
+									&& !sustr::startswith($link['to_type'], 'posttype_')
+									&& !sustr::startswith($link['to_type'], 'taxonomy_'))
 								$link['to_type'] = 'url';
 							
 							//Validate nofollow

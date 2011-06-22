@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 5.9
+Stable tag: 6.0
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
  
 = Recent Releases =
 
+* Version 6.0 features Deeplink Juggernaut 2.0
 * Version 5.9 adds default category/tag meta description formats
 * Version 5.8 adds the Permalink Tweaker module
 * Version 5.7 adds mass-editing for post format archives
 * Version 5.6 adds the Nofollow Manager module
-* Version 5.5 adds noindex/nofollow mass-editing for categories/tags/terms
 
 = Features =
 
@@ -34,7 +34,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Use the `{excerpt::autogen}` variable to auto-generate meta descriptions if desired.
 
 * **Meta Keywords Editor**
-	* Edit the `<meta>` keyword tags for posts, pages, and the homepage.
+	* Edit the `<meta>` keyword tags for posts, pages, categories, terms, and the homepage.
 	* Easily specify global keywords that are applied across the entire site.
 	* Go back and edit old posts' and pages' keywords with the mass-editor.
 	* Automatically generate meta keywords based on categories, tags, custom taxonomy terms, and frequently-used words.
@@ -44,7 +44,19 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post, page, category, tag, and post type archive on your blog. Also supports custom post types and custom taxonomies.
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
 	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
-
+	
+* **Deeplink Juggernaut** -- REVAMPED in Version 6.0
+	* Use the power of anchor text to boost your internal ranking SEO paradigm.
+	* Searches your site's content for anchor texts you specify and automatically links them to a destination of your choosing. Lets you easily build internal links to URLs, posts, pages, attachments, custom post type items, categories, terms, post format archives, and custom taxonomy term archives.
+	* Easily select autolink destinations using autocomplete textboxes that scour your site's content and taxonomy terms to find the link destination you're looking for.
+	* Autolinks point to the objects themselves, not to their URLs, so if you change the URL of a post or category on your site, the autolinks automatically adjust.
+	* Control the maximum number of autolinks added to each post/page as well as the number of times an anchor is linked per page.
+	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
+	* Exclude specific posts/pages from having links added to them, if desired (e.g. contact pages, the homepage, etc.).
+	* Import/export your links as CSV files.
+	* Create links pointing to draft posts that will auto-enable when the post is published!
+	* Build internal links to your posts from within the WordPress post editor! Use "Instant Post Propulsion" technology to automatically link your old posts to new ones.
+	
 * **Canonicalizer**
 	* Point search engines to preferred content access points with `<link rel="canonical" />` SEO tags.
 	* Go beyond the basic canonical tag functionality of WordPress 2.9+ with SEO Ultimate's support for category/tag/date/author archives.
@@ -83,16 +95,6 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Internal Relevance Researcher**
 	* Determine which of your webpages Google most strongly associates with the keywords you specify.
 	* Use the information to determine ideal targets for incoming links or ideal sources of outgoing links.
-
-* **Deeplink Juggernaut**
-	* Automatically link phrases in your posts/pages to other posts/pages or to custom URLs.
-	* Exclude specific posts/pages from having links added to them, if desired (e.g. contact pages, the homepage, etc.).
-	* Use the power of anchor text to boost your internal ranking SEO paradigm.
-	* Control the maximum number of autolinks added to each post/page as well as the number of times an anchor is linked per page.
-	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
-	* Import/export your links as CSV files.
-	* Create links pointing to draft posts that will auto-enable when the post is published!
-	* Build internal links to your posts from within the WordPress post editor! Use "Instant Post Propulsion" technology to automatically link your old posts to new ones.
 
 * **Code Inserter**
 	* Easily insert custom HTML into your site's `<head>` tag, footer, or item content.
@@ -231,6 +233,15 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 6.0 (June 21, 2011) =
+* Feature: Deeplink Juggernaut's "Destination Type" dropdowns have been replaced with snazzy autocomplete textboxes that let you link to a content item on your blog by typing the first few letters of its title
+* Feature: Deeplink Juggernaut now lets you autolink to categories, tags, post format archives, and custom taxonomy term archives
+* Improvement: The meta description field of the "SEO Settings" post box now indicates search engines use around 140 characters instead of 160, to better reflect current search engine trends
+* Improvement: Improved layout of Meta Robot Tags mass-editors
+* Bugfix: Deeplink Juggernaut's admin page no longer overruns memory limits on sites with lots of content
+* Bugfix: Fixed errors that appeared on Deeplink Juggernaut's admin page when WP_DEBUG mode was enabled
+* Bugfix: Fixed errors generated by Rich Snippet Creator when WP_DEBUG mode was enabled
 
 = Version 5.9 (June 17, 2011) =
 * Feature: Meta Description Editor now supports default formats for category/tag archives, starting with support for the `{description}` variable.
