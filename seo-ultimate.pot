@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 6.0\n"
+"Project-Id-Version: SEO Ultimate 6.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2011-06-22 01:41:48+00:00\n"
+"POT-Creation-Date: 2011-06-23 15:54:04+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgid ""
 "Ultimate to remove this notice."
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.0)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: plugin/class.seo-ultimate.php:767 modules/settings/settings.php:14
 msgid "SEO Ultimate"
@@ -1461,7 +1461,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.0)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.1)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1482,29 +1482,37 @@ msgstr ""
 msgid "Alias Directory"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:46
-msgid "Link Masks"
+#: modules/internal-link-aliases/internal-link-aliases.php:29
+msgid "Nofollow aliased links"
+msgstr ""
+
+#: modules/internal-link-aliases/internal-link-aliases.php:29
+msgid "Link Attributes"
 msgstr ""
 
 #: modules/internal-link-aliases/internal-link-aliases.php:49
+msgid "Link Masks:"
+msgstr ""
+
+#: modules/internal-link-aliases/internal-link-aliases.php:52
 msgid "URL"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:49
+#: modules/internal-link-aliases/internal-link-aliases.php:52
 msgid "Mask URL"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:69
+#: modules/internal-link-aliases/internal-link-aliases.php:83
 msgid ""
 "You can stop search engines from following a link by typing in a mask for "
 "its URL."
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:132
+#: modules/internal-link-aliases/internal-link-aliases.php:160
 msgid "Added by Link Alias Generator (LAG) module"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:143
+#: modules/internal-link-aliases/internal-link-aliases.php:171
 msgid "End LAG"
 msgstr ""
 
