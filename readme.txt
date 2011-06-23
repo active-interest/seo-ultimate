@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 6.0
+Stable tag: 6.1
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 6.1 fixes Link Mask Generator issues
 * Version 6.0 features Deeplink Juggernaut 2.0
 * Version 5.9 adds default category/tag meta description formats
 * Version 5.8 adds the Permalink Tweaker module
 * Version 5.7 adds mass-editing for post format archives
-* Version 5.6 adds the Nofollow Manager module
 
 = Features =
 
@@ -39,7 +39,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Go back and edit old posts' and pages' keywords with the mass-editor.
 	* Automatically generate meta keywords based on categories, tags, custom taxonomy terms, and frequently-used words.
 
-* **Meta Robot Tags Editor** -- UPDATED in Version 5.5
+* **Meta Robot Tags Editor**
 	* Add the `<meta name="robots" content="noindex,follow" />` tag to archives, comment feeds, the login page, and more.
 	* Set meta robots tags (index/noindex and follow/nofollow) for each individual post, page, category, tag, and post type archive on your blog. Also supports custom post types and custom taxonomies.
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
@@ -114,14 +114,14 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Webmaster Verification Assistant**
 	* Enter verification codes in the provided fields to access search engine webmaster tools.
 
-* **Link Mask Generator**
+* **Link Mask Generator** -- UPDATED in Version 6.1
 	* Lets you generate robots.txt-blocked "link masks" (e.g. `www.example.com/go/google/`) that pass-through to an external URL.
 	* Lets you mask links on a per-link, per-post basis so you can exert fine-tuned control over your posts' linkflow.
 	* Lets you change `/go/` to a directory of your choosing.
 	* Link masks provide a modern replacement for the deprecated, nofollow-based "PageRank Sculpting" technique.
 	* Perfect for affiliate marketers and SEO-savvy bloggers.
 	
-* **Nofollow Manager** -- NEW in Version 5.6
+* **Nofollow Manager**
 	* Lets you maintain `rel="nofollow"` settings when migrating from other SEO plugins
 
 * **Permalink Tweaker** -- NEW in Version 5.8
@@ -233,6 +233,11 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 6.1 (June 23, 2011) =
+* Feature: Added option to add the `rel="nofollow"` attribute to all masked links
+* Bugfix: Fixed bug that caused some link masks to disappear when the post is saved
+* Bugfix: Fixed an issue with masking links with ampersands
 
 = Version 6.0 (June 21, 2011) =
 * Feature: Deeplink Juggernaut's "Destination Type" dropdowns have been replaced with snazzy autocomplete textboxes that let you link to a content item on your blog by typing the first few letters of its title

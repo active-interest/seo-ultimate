@@ -25,6 +25,8 @@ class SU_InternalLinkAliases extends SU_Module {
 	function admin_page_contents() {
 		$this->child_admin_form_start();
 		$this->textbox('alias_dir', __('Alias Directory', 'seo-ultimate'), $this->get_default_setting('alias_dir'));
+		if ($this->plugin->module_exists('link-nofollow'))
+			$this->checkbox('nofollow_aliased_links', __('Nofollow aliased links', 'seo-ultimate'), __('Link Attributes'));
 		$this->child_admin_form_end();
 	}
 	
@@ -34,7 +36,8 @@ class SU_InternalLinkAliases extends SU_Module {
 	
 	function postmeta_fields($fields) {
 		
-		$post = get_post(suwp::get_post_id());
+		$post_id = suwp::get_post_id();
+		$post = get_post($post_id);
 		if (!$post) return;
 		$content = $post->post_content;
 		
@@ -43,7 +46,7 @@ class SU_InternalLinkAliases extends SU_Module {
 		if ($content && preg_match_all('@ href=["\']([^"\']+)["\']@', $content, $matches)) {
 			$urls = $matches[1];
 			
-			$html = "<tr valign='top'>\n<th scope='row'>".__('Link Masks', 'seo-ultimate')."</th>\n<td>\n";
+			$html = "<tr valign='top'>\n<th scope='row' class='su'>".__('Link Masks:', 'seo-ultimate')."</th>\n<td>\n";
 			
 			$html .= "<table class='widefat'><thead>\n";
 			$headers = array(__('URL', 'seo-ultimate'), '', __('Mask URL', 'seo-ultimate'));
@@ -58,10 +61,21 @@ class SU_InternalLinkAliases extends SU_Module {
 			}
 			
 			foreach ($urls as $url) {
-				$a_url = esc_attr($url);
+				$a_url = su_esc_attr($url);
+				$un_h_url = htmlspecialchars_decode($url);
 				$ht_url = esc_html(sustr::truncate($url, 30));
-				$a_alias = esc_attr($post_aliases[$url]);
-				$html .= "<tr><td><a href='$a_url' title='$a_url' target='_blank'>$ht_url</a></td>\n<td>&rArr;</td><td>/$alias_dir/<input type='text' name='_su_aliases[$a_url]' value='$a_alias' /></td></tr>\n";
+				
+				if (isset($post_aliases[$url]))
+					$alias_to = $post_aliases[$url];
+				elseif (isset($post_aliases[$un_h_url]))
+					$alias_to = $post_aliases[$un_h_url];
+				else
+					$alias_to = '';
+				
+				$a_alias_to = esc_attr($alias_to);
+				
+				$alias_id = md5($url . serialize(array($post_id)));
+				$html .= "<tr><td><a href='$a_url' title='$a_url' target='_blank'>$ht_url</a><input type='hidden' name='_su_aliases[$alias_id][from]' value='$a_url' /></td>\n<td>&rArr;</td><td>/$alias_dir/<input type='text' name='_su_aliases[$alias_id][to]' value='$a_alias_to' /></td></tr>\n";
 			}
 			
 			$html .= "</tbody>\n</table>\n";
@@ -81,10 +95,10 @@ class SU_InternalLinkAliases extends SU_Module {
 		
 		$aliases = $this->get_setting('aliases', array());
 		
-		$posts = array($post->ID);
-		foreach ($saved_aliases as $from => $to) {
-			$id = md5($from . serialize($posts));
-			$aliases[$id] = compact('from', 'to', 'posts');
+		foreach ($saved_aliases as $id => $data) {
+			$aliases[$id]['from']  = $data['from'];
+			$aliases[$id]['to']    = $data['to'];
+			$aliases[$id]['posts'] = array($post->ID);
 		}
 		
 		$this->update_setting('aliases', $aliases);
@@ -93,10 +107,20 @@ class SU_InternalLinkAliases extends SU_Module {
 	}
 	
 	function apply_aliases($content) {
+		return preg_replace_callback('@<a ([^>]*)href=(["\'])([^"\']+)(["\'])([^>]*)>@', array(&$this, 'apply_aliases_callback'), $content);
+	}
+	
+	function apply_aliases_callback($matches) {
 		$id = suwp::get_post_id();
-		$aliases = $this->get_setting('aliases', array());
-		$aliases = array_reverse($aliases, true); //Just in case we have duplicate aliases, make sure the most recent ones are applied first
-		$alias_dir = $this->get_setting('alias_dir', 'go');
+		
+		static $aliases = false;
+		//Just in case we have duplicate aliases, make sure the most recent ones are applied first
+		if ($aliases === false) $aliases = array_reverse($this->get_setting('aliases', array()), true);
+		
+		static $alias_dir = false;
+		if ($alias_dir === false) $alias_dir = $this->get_setting('alias_dir', 'go');
+		
+		$new_url = $old_url = $matches[3];
 		
 		foreach ($aliases as $alias) {
 			$to = $alias['to'];
@@ -105,16 +129,20 @@ class SU_InternalLinkAliases extends SU_Module {
 				$from = $alias['from'];
 				$h_from = esc_html($from);
 				$to = get_bloginfo('url') . "/$alias_dir/$to/";
-				$replace = array(
-					  " href='$from'" => " href='$to'"
-					, " href='$h_from'" => " href='$to'"
-					, " href=\"$from\"" => " href=\"$to\""
-					, " href=\"$h_from\"" => " href=\"$to\""
-				);
-				$content = str_replace(array_keys($replace), array_values($replace), $content);
+				
+				if ($from == $old_url || $h_from == $old_url) {
+					$new_url = $to;
+					break;
+				}
 			}
 		}
-		return $content;
+		
+		$attrs = "{$matches[1]}href={$matches[2]}{$new_url}{$matches[4]}{$matches[5]}";
+		
+		if ($this->get_setting('nofollow_aliased_links', false) && $this->plugin->module_exists('link-nofollow'))
+			$this->plugin->call_module_func('link-nofollow', 'nofollow_attributes_string', $attrs, $attrs);
+		
+		return "<a $attrs>";
 	}
 	
 	function redirect_aliases() {
