@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 6.1
+Stable tag: 6.2
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 6.2 adds Silo Linking to Deeplink Juggernaut
 * Version 6.1 fixes Link Mask Generator issues
 * Version 6.0 features Deeplink Juggernaut 2.0
 * Version 5.9 adds default category/tag meta description formats
 * Version 5.8 adds the Permalink Tweaker module
-* Version 5.7 adds mass-editing for post format archives
 
 = Features =
 
@@ -45,7 +45,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
 	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
 	
-* **Deeplink Juggernaut** -- REVAMPED in Version 6.0
+* **Deeplink Juggernaut** -- UPDATED in Version 6.2
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Searches your site's content for anchor texts you specify and automatically links them to a destination of your choosing. Lets you easily build internal links to URLs, posts, pages, attachments, custom post type items, categories, terms, post format archives, and custom taxonomy term archives.
 	* Easily select autolink destinations using autocomplete textboxes that scour your site's content and taxonomy terms to find the link destination you're looking for.
@@ -56,6 +56,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Import/export your links as CSV files.
 	* Create links pointing to draft posts that will auto-enable when the post is published!
 	* Build internal links to your posts from within the WordPress post editor! Use "Instant Post Propulsion" technology to automatically link your old posts to new ones.
+	* Lets you enable "Silo Linking" mode so that posts only link to other posts in the same category
 	
 * **Canonicalizer**
 	* Point search engines to preferred content access points with `<link rel="canonical" />` SEO tags.
@@ -234,9 +235,12 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 6.2 (June 24, 2011) =
+* Feature: Added a "Silo Linking" mode to Deeplink Juggernaut that lets you confine autolinks to posts of the same category (or tag/term)
+
 = Version 6.1 (June 23, 2011) =
-* Feature: Added option to add the `rel="nofollow"` attribute to all masked links
-* Bugfix: Fixed bug that caused some link masks to disappear when the post is saved
+* Feature: Added an option to insert the `rel="nofollow"` attribute into all masked links
+* Bugfix: Fixed bug that caused some link masks to disappear when the post was saved
 * Bugfix: Fixed an issue with masking links with ampersands
 
 = Version 6.0 (June 21, 2011) =
