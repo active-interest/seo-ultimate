@@ -25,6 +25,9 @@ class SU_Canonical extends SU_Module {
 			add_action('su_head', array(&$this, 'link_rel_canonical_tag'));
 		}
 		
+		if ($this->get_setting('http_link_rel_canonical'))
+			add_action('template_redirect', array(&$this, 'http_link_rel_canonical'), 11, 0);
+		
 		//Should we remove nonexistent pagination?
 		if ($this->get_setting('remove_nonexistent_pagination'))
 			add_action('template_redirect', array(&$this, 'remove_nonexistent_pagination'), 11);
@@ -33,7 +36,8 @@ class SU_Canonical extends SU_Module {
 	function admin_page_contents() {
 		$this->child_admin_form_start();
 		$this->checkboxes(array(
-				  'link_rel_canonical' => __('Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags.', 'seo-ultimate')
+				  'link_rel_canonical' => __('Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> meta tags.', 'seo-ultimate')
+				, 'http_link_rel_canonical' => __('Send <code>rel=&quot;canonical&quot;</code> HTTP headers.', 'seo-ultimate')
 				, 'remove_nonexistent_pagination' => __('Redirect requests for nonexistent pagination.', 'seo-ultimate')
 			));
 		
@@ -45,6 +49,16 @@ class SU_Canonical extends SU_Module {
 		if ($url = $this->get_canonical_url()) {
 			$url = su_esc_attr($url);
 			echo "\t<link rel=\"canonical\" href=\"$url\" />\n";
+		}
+	}
+	
+	function http_link_rel_canonical() {
+		if (headers_sent())
+			return;
+		
+		if ($url = $this->get_canonical_url()) {
+			$url = su_esc_attr($url);
+			header("Link: <$url>; rel=\"canonical\"", false);
 		}
 	}
 	

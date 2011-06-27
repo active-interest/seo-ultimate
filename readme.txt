@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions, JohnLamansky
-Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
+Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 6.2
+Stable tag: 6.3
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 6.3 adds support for the new `rel="canonical"` HTTP headers
 * Version 6.2 adds Silo Linking to Deeplink Juggernaut
 * Version 6.1 fixes Link Mask Generator issues
 * Version 6.0 features Deeplink Juggernaut 2.0
 * Version 5.9 adds default category/tag meta description formats
-* Version 5.8 adds the Permalink Tweaker module
 
 = Features =
 
@@ -58,8 +58,8 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Build internal links to your posts from within the WordPress post editor! Use "Instant Post Propulsion" technology to automatically link your old posts to new ones.
 	* Lets you enable "Silo Linking" mode so that posts only link to other posts in the same category
 	
-* **Canonicalizer**
-	* Point search engines to preferred content access points with `<link rel="canonical" />` SEO tags.
+* **Canonicalizer** -- UPDATED in Version 6.3
+	* Point search engines to preferred content access points with `<link rel="canonical" />` head tags and/or `Link: <url>; rel="canonical"` HTTP headers.
 	* Go beyond the basic canonical tag functionality of WordPress 2.9+ with SEO Ultimate's support for category/tag/date/author archives.
 	* Redirect requests for non-existent pagination with a simple checkbox.
 
@@ -125,7 +125,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Nofollow Manager**
 	* Lets you maintain `rel="nofollow"` settings when migrating from other SEO plugins
 
-* **Permalink Tweaker** -- NEW in Version 5.8
+* **Permalink Tweaker**
 	* Lets you remove the permalink base for categories, tags, and/or custom taxonomies. For example, enable category base removal to convert `http://example.com/category/example` into `http://example.com/example`, and then pair that with a `/%category%/%postname%/` permalink to enable some serious SEO siloing action.
 
 * **Settings Manager**
@@ -234,6 +234,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 6.3 (June 27, 2011) =
+* Feature: Canonicalizer can now send Google's newly-supported `Link: <url>; rel="canonical"` HTTP headers
 
 = Version 6.2 (June 24, 2011) =
 * Feature: Added a "Silo Linking" mode to Deeplink Juggernaut that lets you confine autolinks to posts of the same category (or tag/term)
