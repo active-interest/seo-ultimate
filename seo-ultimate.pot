@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 6.2\n"
+"Project-Id-Version: SEO Ultimate 6.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2011-06-24 21:28:33+00:00\n"
+"POT-Creation-Date: 2011-06-27 16:19:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -824,7 +824,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.3)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -1357,7 +1357,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 6.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:767
 msgid "SEO Ultimate"
@@ -1839,11 +1839,16 @@ msgstr ""
 msgid "Canonicalizer"
 msgstr ""
 
-#: modules/canonical/canonical.php:36
-msgid "Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> tags."
+#: modules/canonical/canonical.php:39
+msgid ""
+"Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> meta tags."
 msgstr ""
 
-#: modules/canonical/canonical.php:37
+#: modules/canonical/canonical.php:40
+msgid "Send <code>rel=&quot;canonical&quot;</code> HTTP headers."
+msgstr ""
+
+#: modules/canonical/canonical.php:41
 msgid "Redirect requests for nonexistent pagination."
 msgstr ""
 
