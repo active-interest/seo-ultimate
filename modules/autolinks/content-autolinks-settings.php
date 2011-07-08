@@ -16,6 +16,16 @@ class SU_ContentAutolinksSettings extends SU_Module {
 	function get_module_title() { return __('Content Deeplink Juggernaut Settings', 'seo-ultimate'); }
 	function get_module_subtitle() { return __('Content Link Settings', 'seo-ultimate'); }
 	
+	function get_default_settings() {
+		return array(
+			  'enable_self_links' => false
+			, 'limit_lpp_value' => 5
+			, 'limit_lpa_value' => 2
+			, 'limit_sitewide_lpa_value' => 50
+			, 'linkfree_tags' => 'code,pre,kbd,h1,h2,h3,h4,h5,h6'
+		);
+	}
+	
 	function admin_page_contents() {
 		$this->admin_form_table_start();
 		
@@ -24,7 +34,10 @@ class SU_ContentAutolinksSettings extends SU_Module {
 		$this->checkboxes(array(
 			  'limit_lpp' => __('Don&#8217;t add any more than %d autolinks per post/page/etc.', 'seo-ultimate')
 			, 'limit_lpa' => __('Don&#8217;t link the same anchor text any more than %d times per post/page/etc.', 'seo-ultimate')
+			, 'limit_sitewide_lpa' => __('Don&#8217;t link the same anchor text any more than %d times across my entire site.', 'seo-ultimate')
 		), __('Quantity Restrictions', 'seo-ultimate'));
+		
+		$this->textbox('linkfree_tags', __('Don&#8217;t add autolinks to text within these HTML tags <em>(separate with commas)</em>:', 'seo-ultimate'), $this->get_default_setting('linkfree_tags'), __('Tag Restrictions', 'seo-ultimate'));
 		
 		$siloing_checkboxes = array();
 		$post_types = get_post_types(array('public' => true), 'objects');

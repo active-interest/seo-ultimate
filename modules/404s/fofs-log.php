@@ -74,16 +74,13 @@ class SU_FofsLog extends SU_Module {
 			
 			$exceptions = suarr::explode_lines($this->get_setting('exceptions', ''));
 			foreach ($exceptions as $exception) {
-				$exception = sustr::preg_escape($exception, '@');
-				$exception = str_replace('\\*', '.*', $exception);
-				$regex = "@^$exception$@i";
-				$regex = str_replace(array('@^.*', '.*$@i'), array('@', '@i'), $regex);
-				if (preg_match($regex, $hit['url'])) return $hit;
+				if (preg_match(sustr::wildcards_to_regex($exception), $hit['url']))
+					return $hit;
 			}
 			
 			$l = $this->get_setting('log', array());
 			$max_log_size = absint(sustr::preg_filter('0-9', strval($this->get_setting('max_log_size', 100))));
-			while (count($l) >= $max_log_size) array_pop($l);
+			while (count($l) > $max_log_size) array_pop($l);
 			
 			$u = $hit['url'];
 			if (!isset($l[$u])) {
@@ -172,19 +169,19 @@ class SU_FofsLog extends SU_Module {
 			foreach ($the404s as $url => $data) {
 				$new = $data['is_new'] ? ' su-404s-new-hit' : '';
 				
-				$escurl = su_esc_attr($url);
-				$encurl = urlencode($escurl);
+				$a_url = su_esc_attr($url);
+				$ae_url = su_esc_attr(urlencode($url));
 				$md5url = md5($url);
 				
 				echo "\t<tr id='su-404s-hit-$md5url-data' class='su-404s-hit-data$new'>\n";
 				
 				$this->table_cells(array(
 					  'actions' =>
-							  "<span class='su-404s-hit-open'><a href='$escurl' target='_blank'><img src='{$this->module_dir_url}hit-open.png' title='".__('Open URL in new window (will not be logged)', 'seo-ultimate')."' /></a></span>"
-							. "<span class='su-404s-hit-cache'><a href='http://www.google.com/search?q=cache%3A$encurl' target='_blank'><img src='{$this->module_dir_url}hit-cache.png' title='".__('Query Google for cached version of URL (opens in new window)', 'seo-ultimate')."' /></a></span>"
+							  "<span class='su-404s-hit-open'><a href='$a_url' target='_blank'><img src='{$this->module_dir_url}hit-open.png' title='".__('Open URL in new window (will not be logged)', 'seo-ultimate')."' /></a></span>"
+							. "<span class='su-404s-hit-cache'><a href='http://www.google.com/search?q=cache%3A{$ae_url}' target='_blank'><img src='{$this->module_dir_url}hit-cache.png' title='".__('Query Google for cached version of URL (opens in new window)', 'seo-ultimate')."' /></a></span>"
 							. "<span class='su-404s-hit-delete'><a href='".$this->get_nonce_url('delete', $url)."'><img src='{$this->module_dir_url}hit-delete.png' title='".__('Remove this URL from the log', 'seo-ultimate')."' /></a></span>"
 					, 'hit-count' => $data['hit_count']
-					, 'url' => $url
+					, 'url' => "<attr title='$a_url'>" . esc_html(sustr::truncate($url, 100)) . '</attr>'
 					, 'last-hit-time' => sprintf(__('%s at %s', 'seo-ultimate')
 						, date_i18n(get_option('date_format'), $data['last_hit_time'])
 						, date_i18n(get_option('time_format'), $data['last_hit_time'])

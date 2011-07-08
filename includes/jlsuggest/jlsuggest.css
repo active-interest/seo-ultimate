@@ -4,6 +4,12 @@ input.jlsuggest,
 	width: 100%;
 }
 
+input.jls_loading {
+	background-image: url(loading.gif);
+	background-repeat: no-repeat;
+	background-position: 98% center;
+}
+
 .jls_text_dest {
 	border: 1px solid #C0CDFF;
 	border-radius: 4px;

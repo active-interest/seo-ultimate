@@ -20,9 +20,9 @@ class SU_Install extends SU_Module {
 	
 	function get_admin_page_tabs() {
 		return array(
-			  __('Upgrade', 'seo-ultimate') => 'upgrade_tab'
-			, __('Downgrade', 'seo-ultimate') => 'downgrade_tab'
-			, __('Reinstall', 'seo-ultimate') => 'reinstall_tab'
+			  array('title' => __('Upgrade', 'seo-ultimate'),   'id' => 'su-upgrade',   'callback' => 'upgrade_tab')
+			, array('title' => __('Downgrade', 'seo-ultimate'), 'id' => 'su-downgrade', 'callback' => 'downgrade_tab')
+			, array('title' => __('Reinstall', 'seo-ultimate'), 'id' => 'su-reinstall', 'callback' => 'reinstall_tab')
 		);
 	}
 	

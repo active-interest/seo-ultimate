@@ -50,7 +50,7 @@ jQuery(document).ready( function($) {
 			$input.keydown(processKey);		// onkeydown repeats arrow keys in IE/Safari
 		
 		$('.' + options.textDestCloseClass).click(function() {
-			$(this).siblings('.' + options.textDestTextClass + ':first').text('').parent().hide().siblings('input:first').val('').show().focus()
+			$(this).parent().siblings('.' + options.textDestTextClass + ':first').text('').parent().hide().siblings('input:first').val('').show().focus()
 		});
 		
 		
@@ -101,12 +101,21 @@ jQuery(document).ready( function($) {
 				}
 
 			} else if ($input.val().length != prevLength) {
-			
+				
 				if (timeout)
-					clearTimeout(timeout);
-				timeout = setTimeout(suggest, options.delay);
+						clearTimeout(timeout);
+				
+				if ($input.val().length >= options.minchars && (!options.noUrls || ($input.val().substring(0, 7) != 'http://' && $input.val().substring(0, 8) != 'https://' && $input.val().indexOf('/') == '-1'))) {
+					$input.addClass(options.timeoutClass);
+					
+					timeout = setTimeout(suggest, options.delay);
+				} else {
+					$results.hide();
+					$input.removeClass(options.timeoutClass);
+				}
+				
 				prevLength = $input.val().length;
-			
+				
 			}
 		
 		
@@ -117,10 +126,13 @@ jQuery(document).ready( function($) {
 			
 			var q = $.trim($input.val()), multipleSepPos, items;
 			
+			/*
 			if (options.noUrls && (q.substring(0, 7) == 'http://' || q.substring(0, 8) == 'https://')) {
 				$results.hide();
+				$input.removeClass(options.timeoutClass);
 				return;
 			}
+			*/
 			
 			if ( options.multiple ) {
 				multipleSepPos = q.lastIndexOf(options.multipleSep);
@@ -154,7 +166,7 @@ jQuery(document).ready( function($) {
 			} else {
 
 				$results.hide();
-
+				$input.removeClass(options.timeoutClass);
 			}
 
 		}
@@ -193,9 +205,10 @@ jQuery(document).ready( function($) {
 			var i;
 			if (!items)
 				return;
-
+			
 			if (!items.length) {
 				$results.hide();
+				$input.removeClass(options.timeoutClass);
 				return;
 			}
 
@@ -214,7 +227,8 @@ jQuery(document).ready( function($) {
 					e.stopPropagation();
 					selectCurrentResult();
 				});
-
+			
+			$input.removeClass(options.timeoutClass);
 		}
 
 		function parseTxt(txt, q) {
@@ -353,6 +367,7 @@ jQuery(document).ready( function($) {
 		options.textDestClass = options.textDestClass || 'jls_text_dest';
 		options.textDestTextClass = options.textDestTextClass || 'jls_text_dest_text';
 		options.textDestCloseClass = options.textDestCloseClass || 'jls_text_dest_close';
+		options.timeoutClass = options.timeoutClass || 'jls_loading';
 		
 		this.each(function() {
 			new $.jlsuggest(this, options);

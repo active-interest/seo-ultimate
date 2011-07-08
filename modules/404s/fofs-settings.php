@@ -41,7 +41,7 @@ class SU_FofsSettings extends SU_Module {
 			, 'log_errors_with_referers' => array('description' => __('404s with referring URLs', 'seo-ultimate'), 'indent' => true)
 		), __('Log Restrictions', 'seo-ultimate'));
 		$this->textbox('max_log_size', __('Maximum Log Entries', 'seo-ultimate'), $this->get_default_setting('max_log_size'));
-		$this->textarea('exceptions', __('URLs to Ignore', 'seo-ultimate') . '<br /><small><em>' . __('(Use * as wildcard)', 'seo-ultimate') . '</em></small>');
+		$this->textarea('exceptions', __('URLs to Ignore', 'seo-ultimate') . '<br /><small><em>' . __('(Use * as wildcard)', 'seo-ultimate') . '</em></small>', 15);
 		$this->admin_form_end();
 	}
 }

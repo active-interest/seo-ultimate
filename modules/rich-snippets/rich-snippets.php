@@ -66,14 +66,18 @@ class SU_RichSnippets extends SU_Module {
 					, 'rdfa' => 'Review'
 				)
 				, 'properties' => array(
-					  'rating' => array(
+					  'item' => array(
+						  'label' => __('Item Reviewed', 'seo-ultimate')
+						, 'tags' => array(
+							  'mf' => array('item', 'fn')
+							, 'md' => 'itemreviewed'
+							, 'rdfa' => 'itemreviewed'
+						)
+					)
+					, 'rating' => array(
 						  'label' => __('Star Rating', 'seo-ultimate')
 						, 'value_format' => array('%s star', '%s stars', '%s-star', '%s-stars')
-						, 'tags' => array(
-							  'mf' => 'rating'
-							, 'md' => 'rating'
-							, 'rdfa' => 'rating'
-						)
+						, 'tags' => 'rating'
 					)
 					, 'reviewer' => array(
 						  'label' => __('Review Author', 'seo-ultimate')
@@ -220,8 +224,11 @@ class SU_RichSnippets extends SU_Module {
 			, 'review' => __('Review', 'seo-ultimate')
 		), __('Rich Snippet Type:', 'seo-ultimate'));
 		
-		$fields['45|rich_snippet_review_rating'] = $this->get_postmeta_subsection('rich_snippet_type', 'review',
-			$this->get_postmeta_dropdown('rich_snippet_review_rating', array(
+		$fields['45|rich_snippet_review_item|rich_snippet_review_rating'] = $this->get_postmeta_subsection('rich_snippet_type', 'review',
+			
+			  $this->get_postmeta_textbox('rich_snippet_review_item', __('Name of Reviewed Item:', 'seo-ultimate'))
+			
+			. $this->get_postmeta_dropdown('rich_snippet_review_rating', array(
 				  '0'   => __('None', 'seo-ultimate')
 				, '0.5' => __('0.5 stars', 'seo-ultimate')
 				, '1'   => __('1 star', 'seo-ultimate')

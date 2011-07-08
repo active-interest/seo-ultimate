@@ -24,7 +24,7 @@ class SU_UserCode extends SU_Module {
 	
 	function get_admin_page_tabs() {
 		return array(
-			  __('Everywhere', 'seo-ultimate') => array('usercode_admin_tab', 'global')
+			  array('title' => __('Everywhere', 'seo-ultimate'), 'id' => 'su-everywhere', 'callback' => array('usercode_admin_tab', 'global'))
 		);
 	}
 	

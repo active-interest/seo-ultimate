@@ -12,6 +12,7 @@ class SU_MetaKeywords extends SU_Module {
 	function get_module_title() { return __('Meta Keywords Editor', 'seo-ultimate'); }
 	function get_menu_title()   { return __('Meta Keywords', 'seo-ultimate'); }
 	function get_settings_key() { return 'meta'; }
+	function get_default_status() { return SU_MODULE_DISABLED; }
 	
 	function init() {
 		add_action('su_head', array(&$this, 'head_tag_output'));
@@ -29,8 +30,8 @@ class SU_MetaKeywords extends SU_Module {
 	function get_admin_page_tabs() {
 		return array_merge(
 			  array(
-				  __('Default Values', 'seo-ultimate') => 'defaults_tab'
-				, __('Blog Homepage', 'seo-ultimate') => 'home_tab'
+				  array('title' => __('Default Values', 'seo-ultimate'), 'id' => 'su-default-values', 'callback' => 'defaults_tab')
+				, array('title' => __('Blog Homepage', 'seo-ultimate'), 'id' => 'su-blog-homepage', 'callback' => 'home_tab')
 				)
 			, $this->get_meta_edit_tabs(array(
 				  'type' => 'textbox'

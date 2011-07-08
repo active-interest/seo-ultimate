@@ -18,9 +18,9 @@ class SU_SettingsData extends SU_Module {
 	
 	function get_admin_page_tabs() {
 		return array(
-			  __('Import', 'seo-ultimate') => 'import_tab'
-			, __('Export', 'seo-ultimate') => 'export_tab'
-			, __('Reset', 'seo-ultimate') => 'reset_tab'
+			  array('title' => __('Import', 'seo-ultimate'), 'id' => 'su-import', 'callback' => 'import_tab')
+			, array('title' => __('Export', 'seo-ultimate'), 'id' => 'su-export', 'callback' => 'export_tab')
+			, array('title' => __('Reset', 'seo-ultimate'),  'id' => 'su-reset',  'callback' => 'reset_tab')
 		);
 	}
 	

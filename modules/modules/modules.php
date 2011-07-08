@@ -116,8 +116,12 @@ STR;
 						if ($currentstatus == SU_MODULE_SILENCED && !$hmc) $is_current = true;
 						break;
 					case SU_MODULE_SILENCED:
-						if (!$any_hmc) continue 2;
+						if (!$any_hmc) continue 2; //break out of switch and foreach
 						if (!$hmc) $style = " style='visibility: hidden;'";
+						break;
+					case SU_MODULE_HIDDEN:
+						if (!$this->plugin->call_module_func($key, 'get_menu_title', $module_menu_title) || !$module_menu_title)
+							$style = " style='visibility: hidden;'";
 						break;
 				}
 				

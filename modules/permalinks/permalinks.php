@@ -5,6 +5,9 @@
  * @since 5.8
  */
 
+//Permalink base removal code based on code from WP No Category Base plugin
+//http://wordpress.org/extend/plugins/wp-no-category-base/
+
 if (class_exists('SU_Module')) {
 
 class SU_Permalinks extends SU_Module {

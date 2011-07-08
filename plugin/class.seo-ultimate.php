@@ -487,9 +487,9 @@ class SEO_Ultimate {
 							if (	   ($module_parent = call_user_func(array($class, 'get_parent_module')))
 									&& !call_user_func(array($class, 'is_independent_module'))
 								)
-								$module_disabled = ($oldmodules[$module_parent] == SU_MODULE_DISABLED);
+								$module_disabled = (isset($oldmodules[$module_parent]) && $oldmodules[$module_parent] == SU_MODULE_DISABLED);
 							else
-								$module_disabled = ($oldmodules[$module] == SU_MODULE_DISABLED);
+								$module_disabled = (isset($oldmodules[$module]) && $oldmodules[$module] == SU_MODULE_DISABLED);
 							
 							//If this module is disabled...
 							if ($module_disabled) {
@@ -1139,7 +1139,8 @@ class SEO_Ultimate {
 	function get_plugin_update_info($nv) {
 		
 		$change_types = array(
-			  'Feature' => 'feature'
+			  'New Module' => 'module'
+			, 'Feature' => 'feature'
 			, 'SEO Feature' => 'feature'
 			, 'Bugfix' => 'bugfix'
 			, 'Improvement' => 'improvement'
@@ -1147,7 +1148,8 @@ class SEO_Ultimate {
 		);
 		
 		$change_labels = array(
-			  'feature'     => array(__('new feature', 'seo-ultimate'), __('new features', 'seo-ultimate'))
+			  'module'   => array(__('new module', 'seo-ultimate'), __('new modules', 'seo-ultimate'))
+			, 'feature'     => array(__('new feature', 'seo-ultimate'), __('new features', 'seo-ultimate'))
 			, 'bugfix'      => array(__('bugfix', 'seo-ultimate'), __('bugfixes', 'seo-ultimate'))
 			, 'improvement' => array(__('improvement', 'seo-ultimate'), __('improvements', 'seo-ultimate'))
 			, 'security'    => array(__('security fix', 'seo-ultimate'), __('security fixes', 'seo-ultimate'))
@@ -1191,17 +1193,6 @@ class SEO_Ultimate {
 					, sustr::nl_implode($nlchanges)
 					, '<a href="plugin-install.php?tab=plugin-information&amp;plugin=seo-ultimate&amp;section=changelog&amp;TB_iframe=true&amp;width=640&amp;height=530" class="thickbox">' . __('View changelog', 'seo-ultimate') . '</a>'
 				);
-		
-		/*
-		$info = suwp::load_webpage("http://www.seodesignsolutions.com/apis/su/update-info/?ov=".urlencode(SU_VERSION)."&nv=".urlencode($nv), SU_USER_AGENT);
-		if ($info) {
-			$info = strip_tags($info, "<br><a><b><i><span>");
-			$info = str_replace('backup your database', '<a href="'.suwp::get_backup_url().'">backup your database</a>', $info);
-			return $info;
-		}
-		
-		return '';
-		*/
 	}
 	
 	/**
@@ -1386,6 +1377,18 @@ class SEO_Ultimate {
 			return true;
 		}
 		
+		return false;
+	}
+	
+	/**
+	 * @since 6.4
+	 */
+	function set_module_var($key, $var, $value) {
+		
+		if (isset($this->modules[$key]) && property_exists($this->modules[$key], $var)) {
+			$this->modules[$key]->$var = $value;
+			return true;
+		}
 		return false;
 	}
 	
@@ -1661,6 +1664,11 @@ class SEO_Ultimate {
 		if ( !current_user_can( 'manage_options' ) ) die();
 		
 		$items = array();
+		
+		if (sustr::ihas($_GET['q'], 'home')) {
+			$items[] = array('text' => __('Home', 'seo-ultimate'), 'isheader' => true);
+			$items[] = array('text' => __('Blog Homepage', 'seo-ultimate'), 'value' => 'obj_home', 'selectedtext' => __('Blog Homepage', 'seo-ultimate'));
+		}
 		
 		$posttypeobjs = suwp::get_post_type_objects();
 		foreach ($posttypeobjs as $posttypeobj) {

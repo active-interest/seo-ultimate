@@ -12,10 +12,10 @@ function screen_meta_html($meta) {
 		$content = $content();
 	}
 	echo '
-<div id="screen-meta-'.$key.'-wrap" class="screen-meta-wrap hidden">
+<div id="screen-meta-'.$key.'-wrap" class="jlwp-screen-meta-content screen-meta-wrap hidden">
 	<div class="screen-meta-content">'.$content.'</div>
 </div>
-<div id="screen-meta-'.$key.'-link-wrap" class="hide-if-no-js screen-meta-toggle cf">
+<div id="screen-meta-'.$key.'-link-wrap" class="jlwp-screen-meta-toggle hide-if-no-js screen-meta-toggle cf">
 <a href="#screen-meta-'.$key.'-wrap" id="screen-meta-'.$key.'-link" class="show-settings">'.$label.'</a>
 </div>
 	';
@@ -49,20 +49,11 @@ $screen_meta = array(
 <style type="text/css">
 .screen-meta-toggle {
 	float: right;
-<?php global $wp_version; if (version_compare($wp_version, '3.0', '<')) { ?>
-	background: transparent url( <?php bloginfo('wpurl'); ?>/wp-admin/images/screen-options-left.gif ) no-repeat 0 0;
-<?php } else { ?>
-	background: #e3e3e3;
-<?php } ?>
-	font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
 	height: 22px;
 	padding: 0;
-	margin: 0 6px 0 0;
-	
-	-moz-border-radius-bottomleft: 3px;
-	-moz-border-radius-bottomright: 3px;
-	-webkit-border-bottom-left-radius: 3px;
-	-webkit-border-bottom-right-radius: 3px;
+	margin: 0 0 0 6px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 .screen-meta-wrap h5 {
@@ -96,16 +87,24 @@ jQuery(function($) {
 // end hacks
 
 // simplified generic code to handle all screen meta tabs
+	
 	$('#screen-meta-links a.show-settings').unbind().click(function() {
 		var link = $(this);
-		$(link.attr('href')).slideToggle('fast', function() {
-			if (link.hasClass('screen-meta-shown')) {
-				link.css({'background-position':'right top'}).removeClass('screen-meta-shown');
-				$('.screen-meta-toggle').css('visibility', 'visible');
-			}
-			else {
-				$('.screen-meta-toggle').css('visibility', 'hidden');
-				link.css({'background-position':'right bottom'}).addClass('screen-meta-shown').parent().css('visibility', 'visible');
+		
+		var content;
+		if ($(link.attr('href') + '-wrap').length)
+			content = $(link.attr('href') + '-wrap');
+		else
+			content = $(link.attr('href'));
+		
+		content.slideToggle('fast', function() {
+			if (link.parents('.screen-meta-toggle').hasClass('screen-meta-active')) {
+				link.parents('.screen-meta-toggle').removeClass('screen-meta-active');
+				$('a.show-settings').parents('.screen-meta-toggle').not('.screen-meta-active').animate({opacity: 1});
+			} else {
+				link.parents('.screen-meta-toggle').addClass('screen-meta-active');
+				link.css('visibility', 'visible');
+				$('a.show-settings').parents('.screen-meta-toggle').not('.screen-meta-active').animate({opacity: 0});
 			}
 		});
 		return false;
@@ -115,6 +114,13 @@ jQuery(function($) {
 	$('.screen-meta-wrap').css({
 		'background-color': copy.css('background-color'),
 		'border-color': copy.css('border-bottom-color')
+	});
+	
+	var linkcopy = $('#contextual-help-link-wrap');
+	$('.screen-meta-toggle').css({
+		'background-color': linkcopy.css('background-color'),
+		'background-image': linkcopy.css('background-image'),
+		'font-family': linkcopy.css('font-family'),
 	});
 	
 });

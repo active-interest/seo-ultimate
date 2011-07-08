@@ -1,9 +1,9 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
-Requires at least: 3.0
-Tested up to: 3.1
-Stable tag: 6.3
+Requires at least: 3.2
+Tested up to: 3.2
+Stable tag: 6.4
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 6.4 adds 3 more features to Deeplink Juggernaut
 * Version 6.3 adds support for the new `rel="canonical"` HTTP headers
 * Version 6.2 adds Silo Linking to Deeplink Juggernaut
 * Version 6.1 fixes Link Mask Generator issues
 * Version 6.0 features Deeplink Juggernaut 2.0
-* Version 5.9 adds default category/tag meta description formats
 
 = Features =
 
@@ -27,7 +27,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Customize your homepage's `<title>` tag.
 	* Format the `<title>` tags of posts, pages, categories, tags, archives, search results, and more!
 
-* **Meta Description Editor** -- UPDATED in Version 5.9
+* **Meta Description Editor**
 	* Edit the `<meta>` description tags for posts, pages, attachments, categories, tags, post format archives, and the homepage.
 	* Increase SERP clickthrough rates by influencing search engine result snippets.
 	* Mass-editor makes it a cinch to go back and add descriptions to old posts.
@@ -45,12 +45,12 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
 	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
 	
-* **Deeplink Juggernaut** -- UPDATED in Version 6.2
+* **Deeplink Juggernaut** -- UPDATED in Version 6.4
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Searches your site's content for anchor texts you specify and automatically links them to a destination of your choosing. Lets you easily build internal links to URLs, posts, pages, attachments, custom post type items, categories, terms, post format archives, and custom taxonomy term archives.
 	* Easily select autolink destinations using autocomplete textboxes that scour your site's content and taxonomy terms to find the link destination you're looking for.
 	* Autolinks point to the objects themselves, not to their URLs, so if you change the URL of a post or category on your site, the autolinks automatically adjust.
-	* Control the maximum number of autolinks added to each post/page as well as the number of times an anchor is linked per page.
+	* Avoid over-optimization penalties by controlling the maximum number of autolinks added to each post/page, the maximum number of times an anchor is linked per post/page, and/or the maximum number of times an anchor is linked across your entire site.
 	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
 	* Exclude specific posts/pages from having links added to them, if desired (e.g. contact pages, the homepage, etc.).
 	* Import/export your links as CSV files.
@@ -216,24 +216,57 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Screenshots ==
 
-1. The Module Manager lets you enable/disable SEO Ultimate features
-2. The 404 Monitor log with "Screen Options" dropdown visible
-3. The Canonicalizer module helps avoid duplicate content SEO issues 
-4. The Competition Researcher module
-5. The Deeplink Juggernaut module
-6. The File Editor module lets you edit your robots.txt and .htaccess files
-7. The Internal Relevance Researcher module
-8. The Linkbox Inserter module encourages natural linkbuilding activity
-9. The Meta Editor module lets you edit important SEO data
-10. The Noindex Manager module
-11. The "Default Formats" tab of the Title Tag Rewriter module
-12. The "Pages" tab of the Title Tag Rewriter module lets you edit Pages' <title> tags
-13. The "Categories" tab of the Title Tag Rewriter module lets you edit categories' <title> tags
-14. The "SEO Settings" box, which is visible on post & page editors
-15. The SEO Ultimate menu
+1. Module Manager lets you enable, disable, or hide SEO Ultimate features
+2. 404 Monitor logs attempts to access non-existent webpages
+3. 404 Monitor settings
+4. Code Inserter lets you insert custom HTML in various locations on your site
+5. Competition Researcher lets you run investigative search queries
+6. Deeplink Juggernaut lets you build autolinks to content on your site and/or external URLs
+7. Deeplink Juggernaut settings
+8. File Editor lets you customize your robots.txt or .htaccess
+9. Internal Relevance Researcher lets you see which of your site's pages rank best for given keywords
+10. Linkbox Inserter encourages natural linkbuilding activity with link code boxes below your posts/pages
+11. Meta Description Editor lets you specify defaults for different types of pages
+12. The Blog Homepage tab in Meta Description Editor
+13. Meta Description Editor lets you set your meta descriptions all at once
+14. Meta Keywords Editor lets you auto-generate keyword tags for your site
+15. Meta Robot Tags Editor lets you send various instructions to search engine spiders
+16. Meta Robot Tags Editor lets you "noindex" desired parts of your site
+17. Meta Robot Tags Editor lets you "noindex" and/or "nofollow" individual pages on your site
+18. Nofollow Manager lets you add the nofollow attribute to various types of links
+19. Rich Snippet Creator's settings page
+20. Slug Optimizer removes common, keyword-impoverished words from your post URLs
+21. Title Tag Rewriter lets you set default <title> formats for various parts of your site
+22. SEO Ultimate plugin settings
+23. SEO Ultimate lets you import settings from exported files or from other plugins
+24. SEO Ultimate lets you export your settings so you can transfer them to another site
+25. If you ever run into problems with a new version of SEO Ultimate, use the downgrade feature to revert to a version of your choosing
+26. SEO Ultimate puts its modules in the SEO menu and its plugin options under "Settings"
 
 
 == Changelog ==
+
+= Version 6.4 (July 8, 2011) =
+* Feature: Deeplink Juggernaut can now limit the number of times an anchor is autolinked across your entire site
+* Feature: Deeplink Juggernaut's autocomplete textboxes now include a "Blog Homepage" option
+* Feature: Rich Snippet Creator now supports a "Name of Reviewed Item" field for reviews
+* Feature: Deeplink Juggernaut now lets you stop autolinks from being added within HTML tags of your choosing
+* Improvement: By default, Deeplink Juggernaut no longer adds autolinks inside h1/h2/h3/h4/h5/h6 tags
+* Improvement: Added activity indicators to Deeplink Juggernaut autocomplete textboxes
+* Improvement: 404 Monitor now truncates long URLs (hold your mouse over a truncated URL to view it in its entirety)
+* Improvement: Tweaked the Deeplink Juggernaut interface to better fit a 1024x768 screen resolution
+* Updated WordPress.org plugin page screenshots
+* Bugfix: 404 Monitor now adheres to the maximum log size instead of 1 less than the specified max size
+* Bugfix: SEO menu icon now properly colorizes when the menu is active
+* Bugfix: Fixed aesthetic issue in Deeplink Juggernaut
+* Bugfix: Fixed problem with quotes in Deeplink Juggernaut URLs and title attributes
+* Bugfix: Module Manager's anchor links to sections of the "Miscellaneous" page now work
+* Bugfix: Fixed more errors that appeared when WP_DEBUG mode was enabled
+* Security Fix: Fixed potential vulnerability in 404 Monitor
+* Change: Meta Keywords Editor is now disabled by default for new SEO Ultimate users
+* Change: Deeplink Juggernaut now treats all destinations with slashes as URLs
+* Compatibility: SEO Ultimate now supports and requires WordPress 3.2
+* Known Issue: The "Screen Options" tab in 404 Monitor no longer works in WordPress 3.1; upgrade to WordPress 3.2 to resolve the issue
 
 = Version 6.3 (June 27, 2011) =
 * Feature: Canonicalizer can now send Google's newly-supported `Link: <url>; rel="canonical"` HTTP headers
@@ -242,7 +275,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 * Feature: Added a "Silo Linking" mode to Deeplink Juggernaut that lets you confine autolinks to posts of the same category (or tag/term)
 
 = Version 6.1 (June 23, 2011) =
-* Feature: Added an option to insert the `rel="nofollow"` attribute into all masked links
+* Feature: Link Mask Generator now lets you add the `rel="nofollow"` attribute to all masked links
 * Bugfix: Fixed bug that caused some link masks to disappear when the post was saved
 * Bugfix: Fixed an issue with masking links with ampersands
 

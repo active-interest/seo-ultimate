@@ -1,7 +1,7 @@
 <?php
 /*
 JLFunctions Array Class
-Copyright (c)2009-2010 John Lamansky
+Copyright (c)2009-2011 John Lamansky
 */
 
 class suarr {
@@ -91,6 +91,11 @@ class suarr {
 		}
 		
 		return false;
+	}
+	
+	function vksort(&$arr, $valuekey) {
+		$valuekey = sustr::preg_filter('A-Za-z0-9 ', $valuekey);
+		uasort($arr, create_function('$a,$b', 'return strcasecmp($a["'.$valuekey.'"], $b["'.$valuekey.'"]);'));
 	}
 	
 	function vklrsort(&$arr, $valuekey) {

@@ -1,7 +1,7 @@
 <?php
 /*
 JLFunctions String Class
-Copyright (c)2009-2010 John Lamansky
+Copyright (c)2009-2011 John Lamansky
 */
 
 class sustr {
@@ -242,6 +242,14 @@ class sustr {
 		$words = implode('', $words);
 		$string = $first . $words;
 		return $string;
+	}
+	
+	function wildcards_to_regex($wcstr) {
+		$wcstr = sustr::preg_escape($wcstr, '@');
+		$wcstr = str_replace('\\*', '.*', $wcstr);
+		$regex = "@^$wcstr$@i";
+		$regex = str_replace(array('@^.*', '.*$@i'), array('@', '@i'), $regex);
+		return $regex;
 	}
 }
 

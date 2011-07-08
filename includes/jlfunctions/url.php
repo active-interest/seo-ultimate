@@ -1,7 +1,7 @@
 <?php
 /*
 JLFunctions URL Class
-Copyright (c)2009-2010 John Lamansky
+Copyright (c)2009-2011 John Lamansky
 */
 
 class suurl {

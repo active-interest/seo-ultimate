@@ -479,9 +479,15 @@ class SU_Module {
 		
 		$anchor = '';
 		if ($key === false) {
-			if (($key = $this->get_parent_module()) && $this->plugin->module_exists($key))
-				$anchor = '#'.$this->plugin->key_to_hook($this->get_module_key());
-			else
+			if (($key = $this->get_parent_module()) && $this->plugin->module_exists($key)) {
+				
+				if (count($tabs = $this->get_admin_page_tabs())) {
+					$first_tab = reset($tabs);
+					$anchor = '#' . $first_tab['id'];
+				} else {
+					$anchor = '#' . $this->plugin->key_to_hook($this->get_module_key());
+				}
+			} else
 				$key = $this->get_module_key();
 		}
 		
@@ -588,11 +594,15 @@ class SU_Module {
 			$child_tabs = $module->get_admin_page_tabs();
 			
 			if (empty($child_tabs))
-				$child_tabs[$module->get_module_subtitle()] = array(&$module, 'admin_page_contents');
+				$child_tabs[] = array(
+					  'title' => $module->get_module_subtitle()
+					, 'id' => $this->plugin->key_to_hook($key)
+					, 'callback' => array(&$module, 'admin_page_contents')
+				);
 			
-			foreach ($child_tabs as $title => $function) {
-				if (!is_array($function)) $function = array(&$module, $function);
-				$tabs[$title] = $function;
+			foreach ($child_tabs as $child_tab) {
+				if (is_array($child_tab) && !is_array($child_tab['callback'])) $child_tab['callback'] = array(&$module, $child_tab['callback']);
+				$tabs[] = $child_tab;
 			}
 		}
 		
@@ -629,7 +639,7 @@ class SU_Module {
 	 */
 	function children_admin_pages() {
 		foreach ($this->modules as $key => $x_module) {
-			$this->modules[$key]->admin_subheader($this->modules[$key]->get_module_subtitle());
+			$this->modules[$key]->admin_subheader($this->modules[$key]->get_module_subtitle(), $this->plugin->key_to_hook($key));
 			$this->modules[$key]->admin_page_contents();
 		}
 	}
@@ -878,8 +888,9 @@ class SU_Module {
 	 * 
 	 * @param string $title The text to output.
 	 */
-	function admin_subheader($title) {
-		echo "<h4 class='su-subheader'>$title</h4>\n";
+	function admin_subheader($title, $id=false) {
+		if ($id) $id = ' id="' . su_esc_attr($id) . '"';
+		echo "<h4 class='su-subheader'$id>$title</h4>\n";
 	}
 	
 	/**
@@ -919,11 +930,15 @@ class SU_Module {
 			if ($c > 1)
 				echo "\n\n<div id='su-tabset' class='su-tabs'>\n";
 			
-			foreach ($tabs as $title => $function) {
+			foreach ($tabs as $tab) {
+				
+				if (isset($tab['title']))	$title	  = $tab['title'];	  else return;
+				if (isset($tab['id']))		$id		  = $tab['id'];		  else return;
+				if (isset($tab['callback']))$function = $tab['callback']; else return;
 				
 				if ($c > 1) {
-					$id = sustr::preg_filter('a-z0-9', strtolower($title));
-					echo "<fieldset id='su-$id'>\n<h3>$title</h3>\n<div class='su-tab-contents'>\n";
+					//$id = 'su-' . sustr::preg_filter('a-z0-9', strtolower($title));
+					echo "<fieldset id='$id'>\n<h3>$title</h3>\n<div class='su-tab-contents'>\n";
 				}
 				
 				if ($table) echo "<table class='form-table'>\n";
@@ -1065,7 +1080,11 @@ class SU_Module {
 		//Turn the types array into a tabs array
 		$tabs = array();
 		foreach ($types as $type)
-			$tabs[$type->labels->name] = array('meta_edit_tab', 'post', sustr::preg_filter('a-z0-9', strtolower($type->labels->name)), $type->name, $type->labels->singular_name, $fields);
+			$tabs[] = array(
+				  'title' => $type->labels->name
+				, 'id' => 'su-' . $type->name
+				, 'callback' => array('meta_edit_tab', 'post', 'su-' . $type->name, $type->name, $type->labels->singular_name, $fields)
+			);
 		return $tabs;
 	}
 	
@@ -1083,7 +1102,11 @@ class SU_Module {
 		$tabs = array();
 		foreach ($types as $name => $type) {
 			if ($type->labels->name) {
-				$tabs[$type->labels->name] = array('meta_edit_tab', 'term', sustr::preg_filter('a-z0-9', strtolower($type->labels->name)), $name, $type->labels->singular_name, $fields);
+				$tabs[] = array(
+					  'title' => $type->labels->name
+					, 'id' => 'su-' . $name
+					, 'callback' => array('meta_edit_tab', 'term', 'su-' . $name, $name, $type->labels->singular_name, $fields)
+				);
 			}
 		}
 		return $tabs;
@@ -1105,7 +1128,7 @@ class SU_Module {
 	 * @since 2.9
 	 * 
 	 * @param string $genus The type of object being handled (either 'post' or 'term')
-	 * @param string $tab The ID of the current tab; used to generate a URL hash (e.g. #su-$tab)
+	 * @param string $tab The ID of the current tab; used to generate a URL hash (e.g. #$tab)
 	 * @param string $type The type of post/taxonomy type being edited (examples: post, page, attachment, category, post_tag)
 	 * @param string $type_label The singular label for the post/taxonomy type (examples: Post, Page, Attachment, Category, Post Tag)
 	 * @param array $fields The array of meta fields that the user can edit with the tables. The data for each meta field are stored in an array with these elements: "type" (can be textbox, textarea, or checkbox), "name" (the meta field, e.g. title or description), "term_settings_key" (the key of the setting for cases when term meta data are stored in the settings array), and "label" (the internationalized label of the field, e.g. "Meta Description" or "Title Tag")
@@ -1178,7 +1201,7 @@ class SU_Module {
 		echo "\n<div class='su-meta-edit-table'>\n";
 		
 		$page_links = paginate_links( array(
-			  'base' => add_query_arg( $type . '_paged', '%#%' ) . '#su-' . $tab
+			  'base' => add_query_arg( $type . '_paged', '%#%' ) . '#' . $tab
 			, 'format' => ''
 			, 'prev_text' => __('&laquo;')
 			, 'next_text' => __('&raquo;')
@@ -1771,7 +1794,7 @@ class SU_Module {
 	function radiobuttons($name, $values, $grouptext=false) {
 		
 		//Save radio button setting after form submission
-		if ($this->is_action('update'))
+		if ($this->is_action('update') && isset($_POST[$name]))
 			$this->update_setting($name, $_POST[$name]);
 		
 		if ($grouptext)
@@ -1844,7 +1867,7 @@ class SU_Module {
 	function dropdown($name, $values, $grouptext=false) {
 		
 		//Save dropdown setting after form submission
-		if ($this->is_action('update'))
+		if ($this->is_action('update') && isset($_POST[$name]))
 			$this->update_setting($name, $_POST[$name]);
 		
 		if ($grouptext)
@@ -1922,7 +1945,8 @@ class SU_Module {
 		
 		if ($this->is_action('update')) {
 			foreach ($textboxes as $id => $title) {
-				$this->update_setting($id, stripslashes($_POST[$id]));
+				if (isset($_POST[$id]))
+					$this->update_setting($id, stripslashes($_POST[$id]));
 			}
 		}
 		
@@ -1974,9 +1998,9 @@ class SU_Module {
 	 * @param string|false $default The default textbox value. Setting this will trigger a "Reset" link. Optional.
 	 * @return string The HTML that would render the textbox.
 	 */
-	function textbox($id, $title, $default=false) {
+	function textbox($id, $title, $default=false, $grouptext=false) {
 		if ($default === false) $default = array(); else $default = array($id => $default);
-		$this->textboxes(array($id => $title), $default);
+		$this->textboxes(array($id => $title), $default, $grouptext);
 	}
 	
 	/**
@@ -1996,7 +2020,8 @@ class SU_Module {
 		
 		if ($this->is_action('update')) {
 			foreach ($textareas as $id => $title) {
-				$this->update_setting($id, stripslashes($_POST[$id]));
+				if (isset($_POST[$id]))
+					$this->update_setting($id, stripslashes($_POST[$id]));
 			}
 		}
 		
@@ -2498,27 +2523,36 @@ class SU_Module {
 	 * 
 	 * @since 6.0
 	 * 
-	 * @param $valstr The database string, e.g. http://example.com or obj_posttype_post_1
+	 * @param $valstr The database string, e.g. http://example.com or obj_posttype_post/1
 	 * @return array
 	 */
 	function jlsuggest_value_explode($valstr) {
 		
 		if (is_array($valstr)) {
-			return $valstr;
+			
+			if (count($valstr) == 3)
+				return $valstr;
 			
 		} elseif (is_string($valstr)) {
 			
 			if (sustr::startswith($valstr, 'obj_')) {
 				$valstr = sustr::ltrim_str($valstr, 'obj_');
-				$valstr = explode('/', $valstr);
-				if (count($valstr) == 2)
-					return $valstr;
+				
+				if ($valstr == 'home')
+					return array('home', null, null);
+				
+				$valarr = explode('/', $valstr);
+				if (count($valarr) == 2) {
+					$valarr_type = explode('_', $valarr[0], 2);
+					if (count($valarr_type) == 2)
+						return array($valarr_type[0], $valarr_type[1], $valarr[1]);
+				}
 			} else {
-				return array('url', $valstr);
+				return array('url', null, $valstr);
 			}
 		}
 		
-		return array('url', '');
+		return array('url', null, '');
 	}
 	
 	/**
@@ -2531,28 +2565,33 @@ class SU_Module {
 	 */
 	function get_jlsuggest_box($name, $value) {
 		
-		list($to_type, $to_id) = $this->jlsuggest_value_explode($value);
+		list($to_genus, $to_type, $to_id) = $this->jlsuggest_value_explode($value);
 		
 		$text_dest = '';
-		if (!empty($to_type)) {
-			if (sustr::startswith($to_type, 'posttype_')) {
+		
+		switch ($to_genus) {
+			
+			case 'posttype':
 				$selected_post = get_post($to_id);
 				$selected_post_type = get_post_type_object($selected_post->post_type);
 				$text_dest = $selected_post->post_title . '<span class="type">&nbsp;&mdash;&nbsp;'.$selected_post_type->labels->singular_name.'</span>';
-				
-			} elseif (sustr::startswith($to_type, 'taxonomy_')) {
-				$selected_taxonomy = get_taxonomy(sustr::ltrim_str($to_type, 'taxonomy_'));
+				break;
+			case 'taxonomy':
+				$selected_taxonomy = get_taxonomy($to_type);
 				$selected_term = get_term($to_id, $selected_taxonomy->name);
-				$text_dest = $selected_term->name . '<span class="type">&nbsp;&mdash;&nbsp;'.$selected_taxonomy->labels->singular_name.'</span>';				
-			}
-		}
+				$text_dest = $selected_term->name . '<span class="type">&nbsp;&mdash;&nbsp;'.$selected_taxonomy->labels->singular_name.'</span>';
+				break;
+			case 'home':
+				$text_dest = __('Blog Homepage', 'seo-ultimate');
+				break;
+		}		
 		
-		$is_url = (('url' == $to_type) && !$text_dest);
+		$is_url = (('url' == $to_genus) && !$text_dest);
 		
 		//URL textbox
 		//(hide if object is selected)
 		$html = "<input name='$name' id='$name' value='";
-		$html .= su_esc_editable_html($is_url ? $to_id : 'obj_' . $to_type . '/' . $to_id);
+		$html .= su_esc_editable_html($is_url ? $to_id : "obj_{$to_genus}_{$to_type}/{$to_id}");
 		$html .= "' type='text' class='textbox regular-text jlsuggest'";
 		$html .= ' title="' . __('Type a URL or start typing the name of the item you want to link to', 'seo-ultimate') . '"';
 		$html .= $is_url ? '' : ' style="display:none;" ';
@@ -2563,10 +2602,10 @@ class SU_Module {
 		$html .= '<div class="jls_text_dest"';
 		$html .= $is_url ? ' style="display:none;" ' : '';
 		$html .= '>';
-		$html .= '<span class="jls_text_dest_text">';
+		$html .= '<div class="jls_text_dest_text">';
 		$html .= $text_dest;
-		$html .= '</span>';
-		$html .= '<a href="#" onclick="javascript:return false;" class="jls_text_dest_close" title="'.__('Remove this destination', 'seo-ultimate').'">'.__('X', 'seo-ultimate').'</a>';
+		$html .= '</div>';
+		$html .= '<div><a href="#" onclick="javascript:return false;" class="jls_text_dest_close" title="'.__('Remove this destination', 'seo-ultimate').'">'.__('X', 'seo-ultimate').'</a></div>';
 		$html .= '</div>';
 		
 		return $html;
@@ -2582,22 +2621,21 @@ class SU_Module {
 	 */
 	function jlsuggest_value_to_url($value) {
 		
-		list($to_type, $to_id) = $this->jlsuggest_value_explode($value);
+		list($to_genus, $to_type, $to_id) = $this->jlsuggest_value_explode($value);
 		
-		if ($to_type == 'url') {
-			return $to_id;
-			
-		} elseif (sustr::startswith($to_type, 'posttype_')) {
-			$to_id = (int)$to_id;
-			$to_post = get_post($to_id);
-			if (get_post_status($to_id) != 'publish') continue;
-			return get_permalink($to_id);
-			
-		} elseif (sustr::startswith($to_type, 'taxonomy_')) {
-			$taxonomy = sustr::ltrim_str($to_type, 'taxonomy_');
-			$to_id = (int)$to_id;
-			return get_term_link($to_id, $taxonomy);
-			
+		switch ($to_genus) {
+			case 'url':
+				return $to_id; break;
+			case 'posttype':
+				$to_id = (int)$to_id;
+				$to_post = get_post($to_id);
+				if (get_post_status($to_id) != 'publish') continue;
+				return get_permalink($to_id); break;
+			case 'taxonomy':
+				$to_id = (int)$to_id;
+				return get_term_link($to_id, $to_type); break;
+			case 'home':
+				return suwp::get_blog_home_url(); break;
 		}
 		
 		return false;

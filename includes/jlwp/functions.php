@@ -74,6 +74,14 @@ class suwp {
 		return $types;
 	}
 	
+	function is_tax($taxonomy, $term='') {
+		switch ($taxonomy) {
+			case 'category': return is_category($term); break;
+			case 'post_tag': return is_tag($term); break;
+			default: return is_tax($taxonomy, $term); break;
+		}
+	}
+	
 	function get_taxonomies() {
 		$taxonomies = get_taxonomies(array('public' => true), 'objects');
 		if (isset($taxonomies['post_format']) && $taxonomies['post_format']->labels->name == _x( 'Format', 'post format' ))
@@ -236,6 +244,13 @@ class suwp {
 				return SUWP_PRETTY_PERMALINKS;
 		} else
 			return SUWP_QUERY_PERMALINKS;
+	}
+	
+	function get_blog_home_url() {
+		if ('page' == get_option('show_on_front') && $page_id = (int)get_option('page_for_posts'))
+			return get_permalink($page_id);
+		
+		return home_url('/');
 	}
 }
 

@@ -21,8 +21,8 @@ class SU_MetaDescriptions extends SU_Module {
 	function get_admin_page_tabs() {
 		return array_merge(
 			  array(
-				  __('Default Formats', 'seo-ultimate') => 'formats_tab'
-				, __('Blog Homepage', 'seo-ultimate') => 'home_tab'
+				  array('title' => __('Default Formats', 'seo-ultimate'), 'id' => 'su-default-formats', 'callback' => 'formats_tab')
+				, array('title' => __('Blog Homepage', 'seo-ultimate'), 'id' => 'su-blog-homepage', 'callback' => 'home_tab')
 				)
 			, $this->get_meta_edit_tabs(array(
 				  'type' => 'textarea'
