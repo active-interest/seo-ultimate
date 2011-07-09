@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.2
 Tested up to: 3.2
-Stable tag: 6.4
+Stable tag: 6.5
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 6.5 features Deeplink Juggernaut 3.0
 * Version 6.4 adds 3 more features to Deeplink Juggernaut
 * Version 6.3 adds support for the new `rel="canonical"` HTTP headers
 * Version 6.2 adds Silo Linking to Deeplink Juggernaut
 * Version 6.1 fixes Link Mask Generator issues
-* Version 6.0 features Deeplink Juggernaut 2.0
 
 = Features =
 
@@ -45,9 +45,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
 	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
 	
-* **Deeplink Juggernaut** -- UPDATED in Version 6.4
+* **Deeplink Juggernaut** -- UPDATED in Version 6.5
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Searches your site's content for anchor texts you specify and automatically links them to a destination of your choosing. Lets you easily build internal links to URLs, posts, pages, attachments, custom post type items, categories, terms, post format archives, and custom taxonomy term archives.
+	* Lets you customize footer links for your entire site and/or on a page-by-page basis.
 	* Easily select autolink destinations using autocomplete textboxes that scour your site's content and taxonomy terms to find the link destination you're looking for.
 	* Autolinks point to the objects themselves, not to their URLs, so if you change the URL of a post or category on your site, the autolinks automatically adjust.
 	* Avoid over-optimization penalties by controlling the maximum number of autolinks added to each post/page, the maximum number of times an anchor is linked per post/page, and/or the maximum number of times an anchor is linked across your entire site.
@@ -245,6 +246,12 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 6.5 (July 9, 2011) =
+* Feature: Added "Footer Links" functionality to Deeplink Juggernaut
+* Feature: Deeplink Juggernaut's autocomplete textboxes now include author archives
+* Bugfix: Fixed broken "Blog Homepage" option in Deeplink Juggernaut
+* Bugfix: Replaced a deprecated function call in Canonicalizer that generated a warning in WP_DEBUG mode
 
 = Version 6.4 (July 8, 2011) =
 * Feature: Deeplink Juggernaut can now limit the number of times an anchor is autolinked across your entire site

@@ -76,16 +76,14 @@ class SU_ContentAutolinks extends SU_Module {
 			$anchor = $data['anchor'];
 			$to_id = su_esc_attr($data['to_id']);
 			
-			if (strlen(trim($anchor)) && strlen(trim((string)$to_id)) && $to_id !== 0 && $to_id != 'http://') {
+			if (strlen(trim($anchor)) && $to_id !== 0 && $to_id != 'http://') {
 				
 				if (isset($data['max_post_date']) && $data['max_post_date'] !== false && $post && sudate::gmt_to_unix($post->post_date_gmt) > sudate::gmt_to_unix($data['max_post_date']))
 					continue;
 				
 				$type = $data['to_type'];
 				
-				if ($type == 'url') {
-					$url = $to_id;
-				} elseif (sustr::startswith($type, 'posttype_')) {
+				if (sustr::startswith($type, 'posttype_')) {
 					$to_id = (int)$to_id;
 					$to_post = get_post($to_id);
 					
@@ -112,12 +110,8 @@ class SU_ContentAutolinks extends SU_Module {
 					}
 					
 					$url = get_permalink($to_id);
-				} elseif (sustr::startswith($type, 'taxonomy_')) {
-					$taxonomy = sustr::ltrim_str($type, 'taxonomy_');
-					$to_id = (int)$to_id;
-					$url = get_term_link($to_id, $taxonomy);
 				} else
-					continue;
+					$url = $this->jlsuggest_value_to_url($to_id ? "obj_$type/$to_id" : "obj_$type");
 				
 				if (!$this->get_setting('enable_self_links', false) && ($url == suurl::current() || $url == get_permalink()))
 					continue;

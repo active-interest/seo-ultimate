@@ -1,6 +1,9 @@
 jQuery(document).ready( function($) {
-	$('input.jlsuggest', '.su-module').jlsuggest(ajaxurl + '?action=su-jlsuggest-autocomplete',
-		{ delay: 500, minchars: 2, multiple: false, textDest: true, noUrls: true } );
+	$('input.jlsuggest', '.su-module').each(function() {
+		var params = $(this).attr('su:params') ? '&' + $(this).attr('su:params') : '';
+		$(this).jlsuggest(ajaxurl + '?action=su-jlsuggest-autocomplete' + params,
+			{ delay: 500, minchars: 2, multiple: false, textDest: true, noUrls: true } );
+	});
 } );
 
 

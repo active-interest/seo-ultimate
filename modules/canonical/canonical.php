@@ -106,7 +106,7 @@ class SU_Canonical extends SU_Module {
 		} elseif ($wp_query->is_author && $haspost) {
 			$author = get_userdata(get_query_var('author'));
 			if ($author === false) return false;
-			$link = get_author_link(false, $author->ID, $author->user_nicename);
+			$link = get_author_posts_url($author->ID, $author->user_nicename);
 			
 		//Category archives
 		} elseif ($wp_query->is_category && $haspost) {

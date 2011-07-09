@@ -2538,15 +2538,15 @@ class SU_Module {
 			if (sustr::startswith($valstr, 'obj_')) {
 				$valstr = sustr::ltrim_str($valstr, 'obj_');
 				
-				if ($valstr == 'home')
-					return array('home', null, null);
-				
 				$valarr = explode('/', $valstr);
 				if (count($valarr) == 2) {
 					$valarr_type = explode('_', $valarr[0], 2);
 					if (count($valarr_type) == 2)
 						return array($valarr_type[0], $valarr_type[1], $valarr[1]);
-				}
+					else
+						return array($valarr[0], null, $valarr[1]);
+				} else
+					return array($valstr, null, null);
 			} else {
 				return array('url', null, $valstr);
 			}
@@ -2563,7 +2563,7 @@ class SU_Module {
 	 * @param string $name The value of the textbox's name/ID attributes
 	 * @param string $value The current database string associated with this textbox
 	 */
-	function get_jlsuggest_box($name, $value) {
+	function get_jlsuggest_box($name, $value, $params='') {
 		
 		list($to_genus, $to_type, $to_id) = $this->jlsuggest_value_explode($value);
 		
@@ -2584,15 +2584,28 @@ class SU_Module {
 			case 'home':
 				$text_dest = __('Blog Homepage', 'seo-ultimate');
 				break;
-		}		
+			case 'author':
+				$selected_author = get_userdata($to_id);
+				$text_dest = $selected_author->user_login . '<span class="type">&nbsp;&mdash;&nbsp;'.__('Author', 'seo-ultimate').'</span>';
+		}
 		
 		$is_url = (('url' == $to_genus) && !$text_dest);
+		
+		$to_genus_type = implode('_', array_filter(array($to_genus, $to_type)));
+		$obj = 'obj_' . implode('/', array_filter(array($to_genus_type, $to_id)));
 		
 		//URL textbox
 		//(hide if object is selected)
 		$html = "<input name='$name' id='$name' value='";
-		$html .= su_esc_editable_html($is_url ? $to_id : "obj_{$to_genus}_{$to_type}/{$to_id}");
-		$html .= "' type='text' class='textbox regular-text jlsuggest'";
+		$html .= su_esc_editable_html($is_url ? $to_id : $obj);
+		$html .= "'";
+		
+		if ($params) {
+			$e_params = su_esc_attr($params);
+			$html .= " su:params='$e_params'";
+		}
+		
+		$html .= " type='text' class='textbox regular-text jlsuggest'";
 		$html .= ' title="' . __('Type a URL or start typing the name of the item you want to link to', 'seo-ultimate') . '"';
 		$html .= $is_url ? '' : ' style="display:none;" ';
 		$html .= ' />';
@@ -2636,6 +2649,9 @@ class SU_Module {
 				return get_term_link($to_id, $to_type); break;
 			case 'home':
 				return suwp::get_blog_home_url(); break;
+			case 'author':
+				$to_id = (int)$to_id;
+				return get_author_posts_url($to_id); break;
 		}
 		
 		return false;

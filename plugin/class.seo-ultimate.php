@@ -1665,13 +1665,18 @@ class SEO_Ultimate {
 		
 		$items = array();
 		
-		if (sustr::ihas($_GET['q'], 'home')) {
+		$include = empty($_GET['types']) ? array() : explode(',', $_GET['types']);
+		
+		if ((!$include || in_array('home', $include)) && sustr::ihas($_GET['q'], 'home')) {
 			$items[] = array('text' => __('Home', 'seo-ultimate'), 'isheader' => true);
 			$items[] = array('text' => __('Blog Homepage', 'seo-ultimate'), 'value' => 'obj_home', 'selectedtext' => __('Blog Homepage', 'seo-ultimate'));
 		}
 		
 		$posttypeobjs = suwp::get_post_type_objects();
 		foreach ($posttypeobjs as $posttypeobj) {
+			
+			if ($include && !in_array('posttype_' . $posttypeobj->name, $include) && !in_array('post', $include))
+				continue;
 			
 			$stati = get_available_post_statuses($posttypeobj->name);
 			suarr::remove_value($stati, 'auto-draft');
@@ -1703,6 +1708,9 @@ class SEO_Ultimate {
 		$taxonomyobjs = suwp::get_taxonomies();
 		foreach ($taxonomyobjs as $taxonomyobj) {
 			
+			if ($include && !in_array('taxonomy_' . $posttypeobj->name, $include) && !in_array('taxonomy', $include))
+				continue;
+			
 			$terms = get_terms($taxonomyobj->name, array(
 				'search' => esc_sql($_GET['q']) //The esc_sql() is very important: get_terms does NOT sanitize the "search" variable for SQL queries prior to 3.1.3
 			));
@@ -1716,6 +1724,26 @@ class SEO_Ultimate {
 						  'text' => $term->name
 						, 'value' => 'obj_taxonomy_' . $taxonomyobj->name . '/' . $term->term_id
 						, 'selectedtext' => $term->name . '<span class="type"> &mdash; '.$taxonomyobj->labels->singular_name.'</span>'
+					);
+			}
+		}
+		
+		if (!$include || in_array('author', $include)) {
+			
+			$authors = get_users(array(
+				  'search' => $_GET['q']
+				, 'fields' => array('ID', 'user_login')
+			));
+			
+			if (count($authors)) {
+				
+				$items[] = array('text' => __('Author Archives', 'seo-ultimate'), 'isheader' => true);
+				
+				foreach ($authors as $author)
+					$items[] = array(
+						  'text' => $author->user_login
+						, 'value' => 'obj_author/' . $author->ID
+						, 'selectedtext' => $author->user_login . '<span class="type"> &mdash; '.__('Author', 'seo-ultimate').'</span>'
 					);
 			}
 		}
