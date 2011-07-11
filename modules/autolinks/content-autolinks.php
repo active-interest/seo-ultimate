@@ -84,7 +84,7 @@ class SU_ContentAutolinks extends SU_Module {
 				$type = $data['to_type'];
 				
 				if (sustr::startswith($type, 'posttype_')) {
-					$to_id = (int)$to_id;
+					$to_id = intval($to_id);
 					$to_post = get_post($to_id);
 					
 					if (get_post_status($to_id) != 'publish') continue;
@@ -110,7 +110,9 @@ class SU_ContentAutolinks extends SU_Module {
 					}
 					
 					$url = get_permalink($to_id);
-				} else
+				} elseif ($type == 'url')
+					$url = $to_id;
+				else
 					$url = $this->jlsuggest_value_to_url($to_id ? "obj_$type/$to_id" : "obj_$type");
 				
 				if (!$this->get_setting('enable_self_links', false) && ($url == suurl::current() || $url == get_permalink()))

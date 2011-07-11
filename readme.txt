@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.2
 Tested up to: 3.2
-Stable tag: 6.5
+Stable tag: 6.5.1
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -116,7 +116,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Webmaster Verification Assistant**
 	* Enter verification codes in the provided fields to access search engine webmaster tools.
 
-* **Link Mask Generator** -- UPDATED in Version 6.1
+* **Link Mask Generator**
 	* Lets you generate robots.txt-blocked "link masks" (e.g. `www.example.com/go/google/`) that pass-through to an external URL.
 	* Lets you mask links on a per-link, per-post basis so you can exert fine-tuned control over your posts' linkflow.
 	* Lets you change `/go/` to a directory of your choosing.
@@ -246,6 +246,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 6.5.1 (July 11, 2011) =
+* Bugfix: Restored Deeplink Juggernaut's ability to link to arbitrary URLs
 
 = Version 6.5 (July 9, 2011) =
 * Feature: Added "Footer Links" functionality to Deeplink Juggernaut
