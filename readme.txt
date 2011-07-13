@@ -248,10 +248,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 == Changelog ==
 
 = Version 6.5.2 (July 13, 2011) =
-* Bugfix: Restored access to the "Global" tab of Meta Robot Tags Editor
+* Bugfix: Restored access to the "Global" tab of Meta Robot Tags Editor (broke in 6.4)
 
 = Version 6.5.1 (July 11, 2011) =
-* Bugfix: Restored Deeplink Juggernaut's ability to link to arbitrary URLs
+* Bugfix: Restored Deeplink Juggernaut's ability to link to arbitrary URLs (broke in 6.5)
 
 = Version 6.5 (July 9, 2011) =
 * Feature: Added "Footer Links" functionality to Deeplink Juggernaut
