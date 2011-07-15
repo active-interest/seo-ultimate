@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.2
 Tested up to: 3.2
-Stable tag: 6.5.2
+Stable tag: 6.6
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 6.6 adds the SEO Ultimate Widgets module
 * Version 6.5 features Deeplink Juggernaut 3.0
 * Version 6.4 adds 3 more features to Deeplink Juggernaut
 * Version 6.3 adds support for the new `rel="canonical"` HTTP headers
 * Version 6.2 adds Silo Linking to Deeplink Juggernaut
-* Version 6.1 fixes Link Mask Generator issues
 
 = Features =
 
@@ -128,6 +128,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Permalink Tweaker**
 	* Lets you remove the permalink base for categories, tags, and/or custom taxonomies. For example, enable category base removal to convert `http://example.com/category/example` into `http://example.com/example`, and then pair that with a `/%category%/%postname%/` permalink to enable some serious SEO siloing action.
+
+* **SEO Ultimate Widgets** -- NEW in Version 6.6
+	* Lets you output your Deeplink Juggernaut Footer Links in a widget
+	* The Siloed Categories widget makes it drag-and-drop-easy to construct siloed navigation on your site
 
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
@@ -246,6 +250,11 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 6.6 (July 15, 2011) =
+* New Module: SEO Ultimate Widgets
+* Feature: The new "Footer Links" widget lets you display your Deeplink Juggernaut Footer Links in a widgetized footer or sidebar
+* Feature: The new "Siloed Categories" widget lets you create a navigation section that's siloed around a taxonomy of your choosing
 
 = Version 6.5.2 (July 13, 2011) =
 * Bugfix: Restored access to the "Global" tab of Meta Robot Tags Editor (broke in 6.4)

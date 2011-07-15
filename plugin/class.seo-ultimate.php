@@ -1712,7 +1712,7 @@ class SEO_Ultimate {
 				continue;
 			
 			$terms = get_terms($taxonomyobj->name, array(
-				'search' => esc_sql($_GET['q']) //The esc_sql() is very important: get_terms does NOT sanitize the "search" variable for SQL queries prior to 3.1.3
+				'search' => $_GET['q'] //NOTE: get_terms does NOT sanitize the "search" variable for SQL queries prior to WordPress 3.1.3, which is why this plugin will refuse to run on versions prior to 3.1.3
 			));
 			
 			if (count($terms)) {
