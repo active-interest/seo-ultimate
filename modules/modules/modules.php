@@ -120,7 +120,7 @@ STR;
 						if (!$hmc) $style = " style='visibility: hidden;'";
 						break;
 					case SU_MODULE_HIDDEN:
-						if (!$this->plugin->call_module_func($key, 'get_menu_title', $module_menu_title) || !$module_menu_title)
+						if ($this->plugin->call_module_func($key, 'get_menu_title', $module_menu_title) && $module_menu_title === false)
 							$style = " style='visibility: hidden;'";
 						break;
 				}

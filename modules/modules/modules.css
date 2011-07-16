@@ -9,7 +9,7 @@
 #su-modules td.module-status a {
 	float: left;
 	display: block;
-	border: 1px solid white;
+	border: 1px solid transparent;
 	padding: 0.3em 0.5em;
 	color: #999;
 	margin-right: 0.2em;

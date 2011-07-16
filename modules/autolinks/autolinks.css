@@ -21,6 +21,10 @@
 	width: 20em;
 }
 
+#su-autolinks table.widefat td.su-link-sitewide-lpa {
+	width: 5em;
+}
+
 #su-autolinks table.widefat td.su-link-options {
 	width: 8em;
 }

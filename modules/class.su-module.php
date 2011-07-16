@@ -693,12 +693,14 @@ class SU_Module {
 	 * @param string|null $module The module to which the setting belongs. Defaults to the current module's settings key. Optional.
 	 * @return mixed The value of the setting, or the $default variable.
 	 */
-	function get_setting($key, $default=null, $module=null) {
+	function get_setting($key, $default=null, $module=null, $sneakpeak=false) {
 		if (!$module) $module = $this->get_settings_key();
 		
 		$msdata = (array)get_option("seo_ultimate_module_$module", array());
 		
-		if (isset($msdata[$key]))
+		if ($sneakpeak && $this->is_action('update'))
+			$setting = stripslashes(isset($_POST[$key]) ? $_POST[$key] : null);
+		elseif (isset($msdata[$key]))
 			$setting = $msdata[$key];
 		else
 			$setting = $default;
@@ -1328,7 +1330,8 @@ class SU_Module {
 		switch ($type) {
 			case 'textbox':
 				$value = su_esc_editable_html($value);
-				return "<input name='$name'$inputid value='$value' type='text' class='textbox regular-text' />";
+				$placeholder = $extra ? " placeholder='" . su_esc_attr($extra) . "'" : '';
+				return "<input name='$name'$inputid value='$value'$placeholder type='text' class='textbox regular-text' />";
 				break;
 			case 'textarea':
 				$value = su_esc_editable_html($value);

@@ -19,8 +19,10 @@ class SU_ContentAutolinksSettings extends SU_Module {
 	function get_default_settings() {
 		return array(
 			  'enable_self_links' => false
+			, 'enable_current_url_links' => $this->get_setting('enable_self_links', false)
 			, 'limit_lpp_value' => 5
 			, 'limit_lpa_value' => 2
+			, 'limit_lpu_value' => 1
 			, 'limit_sitewide_lpa_value' => 50
 			, 'linkfree_tags' => 'code,pre,kbd,h1,h2,h3,h4,h5,h6'
 		);
@@ -29,12 +31,17 @@ class SU_ContentAutolinksSettings extends SU_Module {
 	function admin_page_contents() {
 		$this->admin_form_table_start();
 		
-		$this->checkbox('enable_self_links', __('Allow posts to link to themselves.', 'seo-ultimate'), __('Self-Linking', 'seo-ultimate'));
+		$this->checkboxes(array(
+			  'enable_self_links' => __('Allow posts to link to themselves.', 'seo-ultimate')
+			, 'enable_current_url_links' => __('Allow posts to link to the URL by which the visitor is accessing the post.', 'seo-ultimate')
+		), __('Self-Linking', 'seo-ultimate'));
 		
 		$this->checkboxes(array(
-			  'limit_lpp' => __('Don&#8217;t add any more than %d autolinks per post/page/etc.', 'seo-ultimate')
+			  'enable_link_limits' => __('Enable per-link customization of quantity limits.', 'seo-ultimate')
+			, 'limit_lpp' => __('Don&#8217;t add any more than %d autolinks per post/page/etc.', 'seo-ultimate')
 			, 'limit_lpa' => __('Don&#8217;t link the same anchor text any more than %d times per post/page/etc.', 'seo-ultimate')
 			, 'limit_sitewide_lpa' => __('Don&#8217;t link the same anchor text any more than %d times across my entire site.', 'seo-ultimate')
+			, 'limit_lpu' => __('Don&#8217;t link to the same destination any more than %d times per post/page/etc.', 'seo-ultimate')
 		), __('Quantity Restrictions', 'seo-ultimate'));
 		
 		$this->textbox('linkfree_tags', __('Don&#8217;t add autolinks to text within these HTML tags <em>(separate with commas)</em>:', 'seo-ultimate'), $this->get_default_setting('linkfree_tags'), __('Tag Restrictions', 'seo-ultimate'));

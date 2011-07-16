@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.2
 Tested up to: 3.2
-Stable tag: 6.6
+Stable tag: 6.7
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 6.7 adds 3 more features to Deeplink Juggernaut
 * Version 6.6 adds the SEO Ultimate Widgets module
 * Version 6.5 features Deeplink Juggernaut 3.0
 * Version 6.4 adds 3 more features to Deeplink Juggernaut
 * Version 6.3 adds support for the new `rel="canonical"` HTTP headers
-* Version 6.2 adds Silo Linking to Deeplink Juggernaut
 
 = Features =
 
@@ -45,13 +45,15 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
 	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
 	
-* **Deeplink Juggernaut** -- UPDATED in Version 6.5
+* **Deeplink Juggernaut** -- UPDATED in Version 6.7
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Searches your site's content for anchor texts you specify and automatically links them to a destination of your choosing. Lets you easily build internal links to URLs, posts, pages, attachments, custom post type items, categories, terms, post format archives, and custom taxonomy term archives.
-	* Lets you customize footer links for your entire site and/or on a page-by-page basis.
+	* Customize footer links for your entire site and/or on a page-by-page basis.
 	* Easily select autolink destinations using autocomplete textboxes that scour your site's content and taxonomy terms to find the link destination you're looking for.
 	* Autolinks point to the objects themselves, not to their URLs, so if you change the URL of a post or category on your site, the autolinks automatically adjust.
-	* Avoid over-optimization penalties by controlling the maximum number of autolinks added to each post/page, the maximum number of times an anchor is linked per post/page, and/or the maximum number of times an anchor is linked across your entire site.
+	* Avoid over-optimization penalties by controlling the maximum number of autolinks added to each post/page, the maximum number of times an anchor is linked per post/page, and/or the maximum number of times a post/page can link to the same destination.
+	* Decide how many times each anchor is linked across your entire site, on a per-link or global basis.
+	* Choose whether or not posts can link to themselves and/or to the current URL with a few simple checkboxes.
 	* Apply the nofollow attribute on a per-link basis. (Perfect for automatic affiliate links.)
 	* Exclude specific posts/pages from having links added to them, if desired (e.g. contact pages, the homepage, etc.).
 	* Import/export your links as CSV files.
@@ -250,6 +252,14 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 6.7 (July 16, 2011) =
+* Feature: Deeplink Juggernaut now lets you specify per-link sitewide quantity caps (just go to "Content Link Settings," check "Enable per-link customization of quantity limits," click "Save Changes," and then edit "Site Cap" fields under "Content Links")
+* Feature: Deeplink Juggernaut now lets you limit the number of times a post can link to the same destination
+* Feature: Deeplink Juggernaut now lets you decide whether to allow posts to link to the URL by which the visitor is accessing the post
+* Bugfix: Deeplink Juggernaut's sitewide link quantity restriction now takes into account the "Autolink Exclusion" checkbox in the "SEO Settings" post meta box
+* Bugfix: Restored "Hidden" option for disabled modules in Module Manager (broke in 6.4)
+* Bugfix: Fixed minor aesthetic issue in Module Manager that appears in WordPress 3.2
 
 = Version 6.6 (July 15, 2011) =
 * New Module: SEO Ultimate Widgets
