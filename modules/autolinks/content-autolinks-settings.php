@@ -17,7 +17,7 @@ class SU_ContentAutolinksSettings extends SU_Module {
 	function get_module_subtitle() { return __('Content Link Settings', 'seo-ultimate'); }
 	
 	function get_default_settings() {
-		return array(
+		$defaults = array(
 			  'enable_self_links' => false
 			, 'enable_current_url_links' => $this->get_setting('enable_self_links', false)
 			, 'limit_lpp_value' => 5
@@ -26,10 +26,18 @@ class SU_ContentAutolinksSettings extends SU_Module {
 			, 'limit_sitewide_lpa_value' => 50
 			, 'linkfree_tags' => 'code,pre,kbd,h1,h2,h3,h4,h5,h6'
 		);
+		
+		$defaults = array_merge($defaults, array_fill_keys(suarr::aprintf(false, 'autolink_posttype_%s', get_post_types(array('public' => true), 'names')), true));
+		
+		return $defaults;
 	}
 	
 	function admin_page_contents() {
 		$this->admin_form_table_start();
+		
+		$this->checkboxes(
+			suarr::aprintf('autolink_posttype_%s', false, suarr::simplify(get_post_types(array('public' => true), 'objects'), 'name', array('labels', 'name')))
+		, __('Add Autolinks to...', 'seo-ultimate'));
 		
 		$this->checkboxes(array(
 			  'enable_self_links' => __('Allow posts to link to themselves.', 'seo-ultimate')

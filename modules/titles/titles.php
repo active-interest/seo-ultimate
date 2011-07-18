@@ -12,8 +12,18 @@ class SU_Titles extends SU_Module {
 	function get_module_title() { return __('Title Tag Rewriter', 'seo-ultimate'); }
 	
 	function init() {
-		add_action('template_redirect', array(&$this, 'before_header'), 0);
-		add_action('wp_head', array(&$this, 'after_header'), 1000);
+		
+		switch ($this->get_setting('rewrite_method', 'ob')) {
+			case 'filter':
+				add_filter('wp_title', array(&$this, 'get_title'));
+				break;
+			case 'ob':
+			default:
+				add_action('template_redirect', array(&$this, 'before_header'), 0);
+				add_action('wp_head', array(&$this, 'after_header'), 1000);
+				break;
+		}
+		
 		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 10);
 	}
 	
@@ -41,6 +51,10 @@ class SU_Titles extends SU_Module {
 	function settings_tab() {
 		$this->admin_form_table_start();
 		$this->checkbox('terms_ucwords', __('Convert lowercase category/tag names to title case when used in title tags.', 'seo-ultimate'), __('Title Tag Variables', 'seo-ultimate'));
+		$this->radiobuttons('rewrite_method', array(
+			  'ob' => __('Use output buffering &mdash; no configuration required, but slower (default)', 'seo-ultimate')
+			, 'filter' => __('Use filtering &mdash; faster, but configuration required (see the &#8220;Settings Help&#8221; dropdown for details)', 'seo-ultimate')
+		), __('Rewrite Method', 'seo-ultimate'));
 		$this->admin_form_table_end();
 	}
 	
@@ -62,6 +76,7 @@ class SU_Titles extends SU_Module {
 			, 'title_paged' => __('{title} - Page {num}', 'seo-ultimate')
 			
 			, 'terms_ucwords' => true
+			, 'rewrite_method' => 'ob'
 		);
 	}
 	
@@ -220,7 +235,13 @@ class SU_Titles extends SU_Module {
 				, 'nickname' => get_the_author_meta('nickname',   $author_obj->ID)
 			);
 		else
-			$author = array();
+			$author = array(
+				  'username' => ''
+				, 'name' => ''
+				, 'firstname' => ''
+				, 'lastname' => ''
+				, 'nickname' => ''
+			);
 		
 		$variables = array(
 			  '{blog}' => get_bloginfo('name')

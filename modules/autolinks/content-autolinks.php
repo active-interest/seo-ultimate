@@ -62,10 +62,15 @@ class SU_ContentAutolinks extends SU_Module {
 			$i++;
 		}
 		
-		if ($this->get_postmeta('disable_autolinks', $id)) return $content;
+		if (!$this->get_setting('autolink_posttype_' . get_post_type($id)))
+			return $content;
+		
+		if ($this->get_postmeta('disable_autolinks', $id))
+			return $content;
 		
 		$limit_enabled = $this->get_setting('limit_lpp', false);
-		if ($limit_enabled && $limit < 1) return $content;
+		if ($limit_enabled && $limit < 1)
+			return $content;
 		$oldlimit = $limit;
 		
 		$lpa_limit_enabled = $this->get_setting('limit_lpa', false);
@@ -424,8 +429,13 @@ class SU_ContentAutolinks extends SU_Module {
 	}
 	
 	function postmeta_fields($fields) {
+		$id = suwp::get_post_id();
+		
 		$fields['35|autolinks'] = $this->get_postmeta_textarea('autolinks', __('Incoming Autolink Anchors:<br /><em>(one per line)</em>', 'seo-ultimate'));
-		$fields['38|disable_autolinks'] = $this->get_postmeta_checkbox('disable_autolinks', __('Don&#8217;t add autolinks to anchor texts found in this post.', 'seo-ultimate'), __('Autolink Exclusion:', 'seo-ultimate'));
+		
+		if ($id && $this->get_setting('autolink_posttype_' . get_post_type($id)))
+			$fields['38|disable_autolinks'] = $this->get_postmeta_checkbox('disable_autolinks', __('Don&#8217;t add autolinks to anchor texts found in this post.', 'seo-ultimate'), __('Autolink Exclusion:', 'seo-ultimate'));
+		
 		return $fields;
 	}
 	

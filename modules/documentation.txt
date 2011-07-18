@@ -448,7 +448,7 @@ The Module Manager lets you customize the visibility and accessibility of each m
 
 * **How to use it:** Title Tag Rewriter enables recommended settings automatically, so you shouldn't need to change anything. If you do wish to edit the rewriting formats, you can do so using the textboxes below (the "Settings & Variables" tab includes additional information on this). You also have the option of overriding the `<title>` tag of an individual post or page by using the textboxes under the "Post" and "Page" tabs below, or by using the "Title Tag" textbox that Title Tag Rewriter adds to the post/page editors.
 
-= Settings & Variables =
+= Formats & Variables =
 
 Various variables, surrounded in {curly brackets}, are provided for use in the title formats. All settings support the {blog} variable, which is replaced with the name of the blog, and the {tagline} variable, which is replaced with the blog tagline as set under `Settings > General`.
 
@@ -502,6 +502,24 @@ Here's information on each of the settings and its supported variables:
 	* {num} -- The current page number (2, 3, etc).
 	* {max} -- The total number of subpages available. Would usually be used like this: Page {num} of {max}
 
+= Settings Help =
+
+Here's documentation for the options on the "Settings" tab.
+
+* **Rewrite Method** -- This setting controls the method by which Title Tag Rewriter edits your site's `<title>` tags.
+	
+	* **Use output buffering** -- This is the "traditional" method that most SEO plugins use. With this method, SEO Ultimate will intercept your site's `<head>` tag section as it's being outputted, locate the `<title>` tag, edit its value, and then output the `<head>` data. The good thing about this method is that you don't have to edit your theme in any way, as SEO Ultimate will overwrite whatever your theme puts in your `<title>` tag. The bad thing is that this output interception takes a few extra milliseconds to complete. If you are concerned about performance, are comfortable editing your theme's `header.php` file, and will remember to edit the `header.php` file of any new themes you activate, you may want to try the filtering rewrite method.
+	
+	* **Use filtering** -- With this method, SEO Ultimate will register itself with WordPress and will replace WordPress's `<title>` tag output with its own. This method can only edit the text that WordPress itself generates for the `<title>` tag; the filtering method can't edit anything extra your theme may add. For this reason, you need to edit your theme to make sure it's only pulling `<title>` tag data from WordPress and is not adding anything else.
+		
+		Here's how to set up filtering:
+		1. Click "Editor" under the "Appearance" menu (if you don't see this option, you may be on a WordPress multi-site environment and may not be able to use the filtering rewrite method)
+		2. Click "Header (header.php)"
+		3. Look for the `<title>` start tag and the `</title>` end tag
+		4. Edit the text in between those tags so that it looks like this: `<title><?php wp_title(''); ?></title>`.
+		5. Click "Update File"
+		6. Return to the "Settings" tab of Title Tag Rewriter, select "Use filtering," and click "Save Changes"
+
 = FAQ =
 
 * **Does the Title Tag Rewriter edit my post/page titles?**
@@ -509,11 +527,11 @@ Here's information on each of the settings and its supported variables:
 
 * **What's the difference between the "title" and the "title tag" of a post/page?**
 	The "title" is the title of your post or page, and is displayed on your site and in your RSS feed. The title is also used in your `<title>` tag by default; however, you can override the value of just the `<title>` tag by using the "Title Tag" field in the "SEO Settings" box.
-
+	
 = Troubleshooting =
 
-* **Why isn't the Title Tag Rewriter changing my `<title>` tags?**
-	Try disabling other SEO plugins, as they may be conflicting with SEO Ultimate. Also, check to make sure your theme is [plugin-friendly](http://johnlamansky.com/wordpress/theme-plugin-hooks/).
+* **Why isn't Title Tag Rewriter changing my `<title>` tags?**
+	Try disabling other SEO plugins, as they may be conflicting with SEO Ultimate. If you're using the default "output buffering" rewrite method, check to make sure your theme is [plugin-friendly](http://johnlamansky.com/wordpress/theme-plugin-hooks/). If you're using the "filtering" rewrite method, check your theme's `header.php` file and make sure the `<title>` tag looks like this: `<title><?php wp_title(''); ?></title>`.
 
 
 
