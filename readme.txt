@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.2
 Tested up to: 3.2
-Stable tag: 6.8
+Stable tag: 6.9
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 6.9 adds the Settings Monitor module
 * Version 6.8 adds rewrite method selection for Title Tag Rewriter
 * Version 6.7 adds 3 more features to Deeplink Juggernaut
 * Version 6.6 adds the SEO Ultimate Widgets module
 * Version 6.5 features Deeplink Juggernaut 3.0
-* Version 6.4 adds 3 more features to Deeplink Juggernaut
 
 = Features =
 
@@ -136,6 +136,9 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Lets you output your Deeplink Juggernaut Footer Links in a widget
 	* The Siloed Categories widget makes it drag-and-drop-easy to construct siloed navigation on your site
 
+* **Settings Monitor** - NEW in Version 6.9
+	* Keep tabs on the SEO-friendliness of your site's settings with a dashboard of green/yellow/red indicators
+
 * **Settings Manager**
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
 	* Move SEO Ultimate settings between blogs using the export/import functionality.
@@ -253,6 +256,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 6.9 (July 20, 2011) =
+* New Module: Settings Monitor
+* Bugfix: Deeplink Juggernaut CSV import/export now maintains Site Cap values
 
 = Version 6.8 (July 18, 2011) =
 * Feature: Title Tag Rewriter now supports `wp_title` filtering in addition to output buffering. A new Settings field lets you choose between the two rewrite methods.
