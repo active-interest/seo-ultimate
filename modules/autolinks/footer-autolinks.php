@@ -20,10 +20,6 @@ class SU_FooterAutolinks extends SU_Module {
 	
 	function init() {
 		add_action('wp_footer', array(&$this, 'autolink_footer'));
-		
-		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 35);
-		add_filter('su_get_postmeta-footer_autolinks', array(&$this, 'get_post_footer_autolinks'), 10, 3);
-		add_filter('su_custom_update_postmeta-footer_autolinks', array(&$this, 'save_post_footer_autolinks'), 10, 4);
 	}
 	
 	function autolink_footer($args=array()) {
