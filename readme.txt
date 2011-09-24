@@ -8,7 +8,7 @@ Stable tag: 6.9.6
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
 == Description ==
- 
+
 = Recent Releases =
 
 * Version 6.9 adds the Settings Monitor module
