@@ -26,7 +26,7 @@ class SU_ContentAutolinks extends SU_Module {
 		if ($this->is_action('update'))
 			add_action('admin_footer', array(&$this, 'outdate_max_post_dates'));
 		add_action('save_post', array(&$this, 'outdate_max_post_dates'));
-		$this->cron(array(&$this, 'update_max_post_dates'), 'hourly');
+		$this->cron('update_max_post_dates', 'hourly');
 		
 		add_filter('su_get_setting-autolinks-linkfree_tags', array(&$this, 'filter_linkfree_tags'));
 	}
