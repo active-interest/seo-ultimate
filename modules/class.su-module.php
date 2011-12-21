@@ -880,7 +880,7 @@ class SU_Module {
 	 * @uses get_admin_url()
 	 * @uses SEO_Ultimate::plugin_dir_url
 	 * 
-	 * @param array $tabs The internationalized tab titles are the array keys, and the references to the functions that display the tab contents are the array values.
+	 * @param array $tabs Array (id => __, title => __, callback => __)
 	 * @param bool $table Whether or not the tab contents should be wrapped in a form table.
 	 */
 	function admin_page_tabs($tabs = array(), $table=false) {
@@ -2465,6 +2465,7 @@ class SU_Module {
 	 */
 	function jlsuggest_init() {
 		add_action('admin_xml_ns', array(&$this, 'jlsuggest_xml_ns'));
+		$this->plugin->queue_js ('includes', 'encoder');
 		$this->plugin->queue_js ('includes/jlsuggest', 'jlsuggest');
 		$this->plugin->queue_css('includes/jlsuggest', 'jlsuggest');
 	}
@@ -2547,6 +2548,19 @@ class SU_Module {
 			case 'author':
 				$selected_author = get_userdata($to_id);
 				$text_dest = $selected_author->user_login . '<span class="type">&nbsp;&mdash;&nbsp;'.__('Author', 'seo-ultimate').'</span>';
+				break;
+			case 'internal-link-alias':
+				$alias_dir = $this->get_setting('alias_dir', 'go', 'internal-link-aliases');
+				$aliases = $this->get_setting('aliases', array(), 'internal-link-aliases');
+				
+				if (isset($aliases[$to_id]['to'])) {
+					$h_alias_to = su_esc_html($aliases[$to_id]['to']);
+					$text_dest = "/$alias_dir/$h_alias_to/" . '<span class="type">&nbsp;&mdash;&nbsp;'.__('Link Mask', 'seo-ultimate').'</span>';
+				} else {
+					$to_genus = 'url';
+					$to_id = '';
+				}
+				break;
 		}
 		
 		$is_url = (('url' == $to_genus) && !$text_dest);
@@ -2578,7 +2592,7 @@ class SU_Module {
 		$html .= '<div class="jls_text_dest_text">';
 		$html .= $text_dest;
 		$html .= '</div>';
-		$html .= '<div><a href="#" onclick="javascript:return false;" class="jls_text_dest_close" title="'.__('Remove this destination', 'seo-ultimate').'">'.__('X', 'seo-ultimate').'</a></div>';
+		$html .= '<div><a href="#" onclick="javascript:return false;" class="jls_text_dest_close" title="'.__('Remove this location from this textbox', 'seo-ultimate').'">'.__('X', 'seo-ultimate').'</a></div>';
 		$html .= '</div>';
 		
 		return $html;
@@ -2612,6 +2626,17 @@ class SU_Module {
 			case 'author':
 				$to_id = (int)$to_id;
 				return get_author_posts_url($to_id); break;
+			case 'internal-link-alias':
+				$alias_dir = $this->get_setting('alias_dir', 'go', 'internal-link-aliases');
+				$aliases   = $this->get_setting('aliases', array(),'internal-link-aliases');
+				
+				if (isset($aliases[$to_id]['to'])) {
+					$u_alias_to = urlencode($aliases[$to_id]['to']);
+					return get_bloginfo('url') . "/$alias_dir/$u_alias_to/";
+				}
+				
+				return false;
+				break;
 		}
 		
 		return false;
