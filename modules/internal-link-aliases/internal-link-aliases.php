@@ -32,10 +32,15 @@ class SU_InternalLinkAliases extends SU_Module {
 		);
 	}
 	
+	function remove_empty_aliases($alias) {
+		return !empty($alias['to']);
+	}
+	
 	function editor_tab() {
 		
 		$aliases = $this->get_setting('aliases', array());
 		$aliases = array_map('unserialize', array_unique(array_map('serialize', $aliases)));
+		$aliases = array_filter($aliases, array(&$this, 'remove_empty_aliases'));
 		$num_aliases = count($aliases);
 		
 		if ($this->is_action('update')) {
@@ -58,7 +63,7 @@ class SU_InternalLinkAliases extends SU_Module {
 				
 				$delete = isset($_POST["alias_{$i}_delete"]) ? (intval($_POST["alias_{$i}_delete"]) == 1) : false;
 				
-				if (!$delete && $from)
+				if (!$delete && $from && $to)
 					$aliases[$id] = compact('from', 'to', 'posts');
 			}
 			$this->update_setting('aliases', $aliases);
@@ -214,8 +219,13 @@ class SU_InternalLinkAliases extends SU_Module {
 		foreach ($saved_aliases as $saved_id => $saved_data) {
 			
 			if (isset($aliases[$saved_id])) {
-				$aliases[$saved_id]['to'] = $saved_data['to'];
-			} else {
+				
+				if ($saved_data['to'])
+					$aliases[$saved_id]['to'] = $saved_data['to'];
+				else
+					unset($aliases[$saved_id]);
+				
+			} elseif ($saved_data['to']) {
 				$aliases[$saved_id]['from'] = $saved_data['from'];
 				$aliases[$saved_id]['to'] = $saved_data['to'];
 				$aliases[$saved_id]['posts'] = array($post->ID);
