@@ -601,10 +601,8 @@ class SU_Module {
 	 */
 	function children_admin_pages() {
 		foreach ($this->modules as $key => $x_module) {
-			echo "<div id='" . $this->plugin->key_to_hook($key) . "'>\n";
-			$this->modules[$key]->admin_subheader($this->modules[$key]->get_module_subtitle());
+			$this->modules[$key]->admin_subheader($this->modules[$key]->get_module_subtitle(), $this->plugin->key_to_hook($key));
 			$this->modules[$key]->admin_page_contents();
-			echo "</div>\n";
 		}
 	}
 	
@@ -615,9 +613,9 @@ class SU_Module {
 	 */
 	function children_admin_pages_form() {
 		if (count($this->modules)) {
-			$this->admin_form_start(false, false);
+			$this->admin_form_start();
 			$this->children_admin_pages();
-			$this->admin_form_end(null, false);
+			$this->admin_form_end();
 		} else
 			$this->print_message('warning', sprintf(__('All the modules on this page have been disabled. You can re-enable them using the <a href="%s">Module Manager</a>.', 'seo-ultimate'), $this->get_admin_url('modules')));
 	}
@@ -1570,8 +1568,7 @@ class SU_Module {
 	 * @param bool $newtable Whether to open a new <table> element.
 	 */
 	function admin_form_group_start($title, $newtable=true) {
-		$class = $newtable ? ' class="su-admin-form-group"' : '';
-		echo "<tr valign='top'$class>\n<th scope='row'>$title</th>\n<td><fieldset><legend class='hidden'>$title</legend>\n";
+		echo "<tr valign='top'>\n<th scope='row'>$title</th>\n<td><fieldset><legend class='hidden'>$title</legend>\n";
 		if ($newtable) echo "<table>\n";
 	}
 	
@@ -1636,11 +1633,7 @@ class SU_Module {
 	 * @param array $checkboxes An array of checkboxes. (Field/setting IDs are the keys, and descriptions are the values.)
 	 * @param mixed $grouptext The text to display in a table cell to the left of the one containing the checkboxes. Optional.
 	 */
-	function checkboxes($checkboxes, $grouptext=false, $args=array()) {
-		
-		extract(wp_parse_args($args, array(
-			  'output_tr' => true
-		)));
+	function checkboxes($checkboxes, $grouptext=false) {
 		
 		//Save checkbox settings after form submission
 		if ($this->is_action('update')) {
@@ -1659,7 +1652,7 @@ class SU_Module {
 		
 		if ($grouptext)
 			$this->admin_form_group_start($grouptext, false);
-		elseif ($output_tr)
+		else
 			echo "<tr valign='top' class='su-admin-form-checkbox'>\n<td colspan='2'>\n";
 		
 		if (is_array($checkboxes)) {
@@ -1693,12 +1686,8 @@ class SU_Module {
 			}
 		}
 		
-		if ($grouptext) {
-			echo "</fieldset>";
-			$this->admin_form_group_end();
-		} elseif ($output_tr) {
-			echo "</td>\n</tr>\n";
-		}
+		if ($grouptext) echo "</fieldset>";
+		echo "</td>\n</tr>\n";
 	}
 	
 	/**
@@ -1712,8 +1701,8 @@ class SU_Module {
 	 * @param mixed $grouptext The text to display in a table cell to the left of the one containing the checkbox. Optional.
 	 * @return string The HTML that would render the checkbox.
 	 */
-	function checkbox($id, $desc, $grouptext = false, $args=array()) {
-		$this->checkboxes(array($id => $desc), $grouptext, $args);
+	function checkbox($id, $desc, $grouptext = false) {
+		$this->checkboxes(array($id => $desc), $grouptext);
 	}
 	
 	/**
@@ -1804,7 +1793,7 @@ class SU_Module {
 	 * @param array $values The keys of this array are the radio button values, and the array values are the label strings.
 	 * @param string|false $grouptext The text to display in a table cell to the left of the one containing the radio buttons. Optional.
 	 */
-	function dropdown($name, $values, $grouptext=false, $text='%s') {
+	function dropdown($name, $values, $grouptext=false) {
 		
 		//Save dropdown setting after form submission
 		if ($this->is_action('update') && isset($_POST[$name]))
@@ -1820,10 +1809,9 @@ class SU_Module {
 			register_setting($this->get_module_key(), $name);
 			
 			$name = su_esc_attr($name);
-			$dropdown =   "<select name='$name' id='$name'>\n"
-						. suhtml::option_tags($values, $this->get_setting($name))
-						. "</select>";
-			printf($text, $dropdown);
+			echo "<select name='$name' id='$name'>\n";
+			echo suhtml::option_tags($values, $this->get_setting($name));
+			echo "</select>";
 		}
 		
 		if ($grouptext) echo "</fieldset>";
