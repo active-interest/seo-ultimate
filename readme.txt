@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.3
 Tested up to: 3.3
-Stable tag: 7.1
+Stable tag: 7.2
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 7.2 updates Permalink Tweaker
 * Version 7.1 adds new Link Mask Generator features
 * Version 7.0 adds meta description pagination and WP 3.3 compatibility
 * Version 6.9 adds the Settings Monitor module
 * Version 6.8 adds rewrite method selection for Title Tag Rewriter
-* Version 6.7 adds 3 more features to Deeplink Juggernaut
 
 = Features =
 
@@ -46,7 +46,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Avoid duplicate content SEO issues with the recommended noindex settings (see built-in module documentation for details).
 	* Give instructions to search engine spiders if desired (`noodp`, `noydir`, and `noarchive`).
 
-* **Deeplink Juggernaut** -- UPDATED in Version 6.7
+* **Deeplink Juggernaut**
 	* Use the power of anchor text to boost your internal ranking SEO paradigm.
 	* Searches your site's content for anchor texts you specify and automatically links them to a destination of your choosing. Lets you easily build internal links to URLs, posts, pages, attachments, custom post type items, categories, terms, post format archives, and custom taxonomy term archives.
 	* Customize footer links for your entire site and/or on a page-by-page basis.
@@ -118,8 +118,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 * **Nofollow Manager**
 	* Lets you maintain `rel="nofollow"` settings when migrating from other SEO plugins
 
-* **Permalink Tweaker**
-	* Lets you remove the permalink base for categories, tags, and/or custom taxonomies. For example, enable category base removal to convert `http://example.com/category/example` into `http://example.com/example`, and then pair that with a `/%category%/%postname%/` permalink to enable some serious SEO siloing action.
+* **Permalink Tweaker** -- UPDATED in Version 7.2
+	* Lets you remove the permalink base for categories, tags, and/or custom taxonomies.
+	* For example, enable category base removal to convert `http://example.com/category/example` into `http://example.com/example`, and then pair that with a `/%category%/%postname%/` permalink to enable some serious SEO siloing action.
+	* The "URL Conflict Resolution" setting lets you arbitrate between pages/terms when taxonomy base removal causes their URLs to conflict
 
 * **SEO Ultimate Widgets**
 	* Lets you output your Deeplink Juggernaut Footer Links in a widget
@@ -258,6 +260,11 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.2 (December 22, 2011) =
+* Feature: Added "URL Conflict Resolution" setting to Permalink Tweaker that lets you arbitrate between pages/terms when taxonomy base removal causes their URLs to conflict
+* Improvement: Cleaned up the Permalink Tweaker config interface
+* Bugfix: Fixed stray `">` that appeared on some posts due to malformed HTML that Rich Snippet Creator generated when set on Microformats mode
 
 = Version 7.1 (December 21, 2011) =
 * Feature: Link Mask Generator now lets you edit all your link masks from a new interface on its admin page
