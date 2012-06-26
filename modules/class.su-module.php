@@ -1584,7 +1584,7 @@ class SU_Module {
 	 */
 	function admin_form_group_end($newtable=true) {
 		if ($newtable) echo "</table>\n";
-		echo "</td>\n</tr>\n";
+		echo "</fieldset>\n</td>\n</tr>\n";
 	}
 	
 	function admin_form_indent_start() {
