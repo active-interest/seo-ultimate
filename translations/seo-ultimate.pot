@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.2.2\n"
+"Project-Id-Version: SEO Ultimate 7.2.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-06-15 20:51:29+00:00\n"
+"POT-Creation-Date: 2012-06-29 21:39:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:113 modules/class.su-module.php:1157
+#: modules/404s/fofs-log.php:113 modules/class.su-module.php:1205
 msgid "Actions"
 msgstr ""
 
@@ -212,7 +212,7 @@ msgstr ""
 #: modules/meta/webmaster-verify.php:58 modules/more-links/more-links.php:104
 #: modules/more-links/more-links.php:111
 #: modules/rich-snippets/rich-snippets.php:258
-#: modules/settings/settings.php:22
+#: modules/settings/settings.php:63
 #: modules/sharing-buttons/sharing-buttons.php:72 modules/slugs/slugs.php:76
 #: modules/titles/titles.php:341 modules/user-code/user-code.php:70
 msgid "Overview"
@@ -347,7 +347,7 @@ msgstr ""
 #: modules/autolinks/autolinks.php:18
 msgid ""
 "Deeplink Juggernaut requires PHP 5.2 or above in SEO Ultimate 6.0 and later. "
-"(Note that WordPress itself will soon require PHP 5.2 as well, starting with "
+"(Note that WordPress itself requires PHP 5.2 as well, starting with "
 "WordPress 3.2.) If you aren&#8217;t sure how to upgrade PHP, please ask your "
 "webhost. In the meantime, you can return to an older version of Deeplink "
 "Juggernaut that supports your version of PHP by <a href=\"%s\">downgrading</"
@@ -547,7 +547,7 @@ msgstr ""
 msgid "Footer Deeplink Juggernaut"
 msgstr ""
 
-#: modules/autolinks/footer-autolinks.php:17 modules/widgets/widgets.php:164
+#: modules/autolinks/footer-autolinks.php:17 modules/widgets/widgets.php:170
 msgid "Footer Links"
 msgstr ""
 
@@ -725,108 +725,108 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/class.su-module.php:622
+#: modules/class.su-module.php:670
 msgid ""
 "All the modules on this page have been disabled. You can re-enable them "
 "using the <a href=\"%s\">Module Manager</a>."
 msgstr ""
 
-#: modules/class.su-module.php:971
+#: modules/class.su-module.php:1019
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1050
+#: modules/class.su-module.php:1098
 msgid "Your site currently doesn&#8217;t have any public items of this type."
 msgstr ""
 
-#: modules/class.su-module.php:1136
+#: modules/class.su-module.php:1184
 msgid "&laquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1137
+#: modules/class.su-module.php:1185
 msgid "&raquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1144
+#: modules/class.su-module.php:1192
 msgid "Displaying %s&#8211;%s of %s"
 msgstr ""
 
-#: modules/class.su-module.php:1158
+#: modules/class.su-module.php:1206
 msgid "ID"
 msgstr ""
 
-#: modules/class.su-module.php:1192
+#: modules/class.su-module.php:1240
 msgid "View"
 msgstr ""
 
-#: modules/class.su-module.php:1194
+#: modules/class.su-module.php:1242
 msgid "Edit"
 msgstr ""
 
-#: modules/class.su-module.php:1358
+#: modules/class.su-module.php:1412
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1379
+#: modules/class.su-module.php:1433
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1920
+#: modules/class.su-module.php:1974
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:1939 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:1993 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
-#: modules/class.su-module.php:2557 modules/class.su-module.php:2569
+#: modules/class.su-module.php:2708 modules/class.su-module.php:2720
 msgid "A Deleted %s"
 msgstr ""
 
-#: modules/class.su-module.php:2559
+#: modules/class.su-module.php:2710
 msgid "A Deleted Post"
 msgstr ""
 
-#: modules/class.su-module.php:2574
+#: modules/class.su-module.php:2725
 msgid "A Deleted Term"
 msgstr ""
 
-#: modules/class.su-module.php:2580 modules/meta/meta-descriptions.php:25
-#: modules/meta/meta-keywords.php:34 plugin/class.seo-ultimate.php:1671
+#: modules/class.su-module.php:2731 modules/meta/meta-descriptions.php:25
+#: modules/meta/meta-keywords.php:34 plugin/class.seo-ultimate.php:1735
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2585 plugin/class.seo-ultimate.php:1749
+#: modules/class.su-module.php:2736 plugin/class.seo-ultimate.php:1813
 msgid "Author"
 msgstr ""
 
-#: modules/class.su-module.php:2587
+#: modules/class.su-module.php:2738
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2602 plugin/class.seo-ultimate.php:1779
+#: modules/class.su-module.php:2753 plugin/class.seo-ultimate.php:1843
 msgid "Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2604
+#: modules/class.su-module.php:2755
 msgid "Link Mask (Disabled)"
 msgstr ""
 
-#: modules/class.su-module.php:2609
+#: modules/class.su-module.php:2760
 msgid "A Deleted Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2634
+#: modules/class.su-module.php:2790
 msgid "Type a URL or start typing the name of an item on your site"
 msgstr ""
 
-#: modules/class.su-module.php:2647
+#: modules/class.su-module.php:2803
 msgid "Remove this location from this textbox"
 msgstr ""
 
-#: modules/class.su-module.php:2647
+#: modules/class.su-module.php:2803
 msgid "X"
 msgstr ""
 
@@ -906,7 +906,7 @@ msgstr ""
 #: modules/files/files.php:155 modules/meta/meta-descriptions.php:197
 #: modules/meta/meta-keywords.php:183 modules/modules/modules.php:174
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
-#: modules/settings/settings.php:41 modules/slugs/slugs.php:87
+#: modules/settings/settings.php:82 modules/slugs/slugs.php:87
 #: modules/titles/titles.php:442
 msgid "FAQ"
 msgstr ""
@@ -2099,7 +2099,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.5)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2112,23 +2112,23 @@ msgid ""
 "an article&#8217;s title to read it."
 msgstr ""
 
-#: modules/settings/global-settings.php:18 modules/settings/settings.php:29
+#: modules/settings/global-settings.php:18 modules/settings/settings.php:70
 msgid "Global Settings"
 msgstr ""
 
-#: modules/settings/global-settings.php:40
+#: modules/settings/global-settings.php:41
 msgid "Enable nofollow&#8217;d attribution link"
 msgstr ""
 
-#: modules/settings/global-settings.php:41
+#: modules/settings/global-settings.php:42
 msgid "Enable attribution link CSS styling"
 msgstr ""
 
-#: modules/settings/global-settings.php:42
+#: modules/settings/global-settings.php:43
 msgid "Notify me about unnecessary active plugins"
 msgstr ""
 
-#: modules/settings/global-settings.php:43
+#: modules/settings/global-settings.php:44
 msgid "Insert comments around HTML code insertions"
 msgstr ""
 
@@ -2140,90 +2140,98 @@ msgstr ""
 msgid "Installer"
 msgstr ""
 
-#: modules/settings/install.php:23 modules/settings/install.php:48
+#: modules/settings/install.php:26 modules/settings/install.php:97
 msgid "Upgrade"
 msgstr ""
 
-#: modules/settings/install.php:24 modules/settings/install.php:71
+#: modules/settings/install.php:29 modules/settings/install.php:125
 msgid "Downgrade"
 msgstr ""
 
-#: modules/settings/install.php:25 modules/settings/install.php:86
+#: modules/settings/install.php:32 modules/settings/install.php:146
 msgid "Reinstall"
 msgstr ""
 
-#: modules/settings/install.php:42
+#: modules/settings/install.php:82 modules/settings/install.php:218
+msgid "You do not have sufficient permissions to upgrade plugins on this site."
+msgstr ""
+
+#: modules/settings/install.php:91
 msgid ""
 "From the list below, select the version to which you would like to upgrade. "
 "Then click the &#8220;Upgrade&#8221; button at the bottom of the screen."
 msgstr ""
 
-#: modules/settings/install.php:51
+#: modules/settings/install.php:100
 msgid "You are already running the latest version."
 msgstr ""
 
-#: modules/settings/install.php:53
+#: modules/settings/install.php:102
 msgid ""
 "There was an error retrieving the list of available versions. Please try "
 "again later. You can also upgrade to the latest version of SEO Ultimate "
 "using the WordPress plugin upgrader."
 msgstr ""
 
-#: modules/settings/install.php:62
+#: modules/settings/install.php:108 modules/settings/install.php:200
+msgid ""
+"You do not have sufficient permissions to downgrade plugins on this site."
+msgstr ""
+
+#: modules/settings/install.php:116
 msgid ""
 "Downgrading is provided as a convenience only and is not officially "
 "supported. Although unlikely, you may lose data in the downgrading process. "
 "It is your responsibility to backup your database before proceeding."
 msgstr ""
 
-#: modules/settings/install.php:65
+#: modules/settings/install.php:119
 msgid ""
 "From the list below, select the version to which you would like to "
 "downgrade. Then click the &#8220;Downgrade&#8221; button at the bottom of "
 "the screen."
 msgstr ""
 
-#: modules/settings/install.php:74
+#: modules/settings/install.php:128
 msgid ""
 "Downgrading to versions earlier than %s is not supported because doing so "
 "will result in data loss."
 msgstr ""
 
-#: modules/settings/install.php:76
+#: modules/settings/install.php:130
 msgid ""
 "There was an error retrieving the list of available versions. Please try "
 "again later."
 msgstr ""
 
-#: modules/settings/install.php:81
+#: modules/settings/install.php:136 modules/settings/install.php:209
+msgid ""
+"You do not have sufficient permissions to reinstall plugins on this site."
+msgstr ""
+
+#: modules/settings/install.php:141
 msgid ""
 "To download and install a fresh copy of the SEO Ultimate version you are "
 "currently using, click the &#8220;Reinstall&#8221; button below."
 msgstr ""
 
-#: modules/settings/install.php:108
+#: modules/settings/install.php:168
 msgid "Your Current Version"
 msgstr ""
 
-#: modules/settings/install.php:110
+#: modules/settings/install.php:170
 msgid "Latest Version"
 msgstr ""
 
-#: modules/settings/install.php:130
-msgid ""
-"You do not have sufficient permissions to upgrade/downgrade plugins for this "
-"blog."
-msgstr ""
-
-#: modules/settings/install.php:140
+#: modules/settings/install.php:197
 msgid "Downgrade to SEO Ultimate %s"
 msgstr ""
 
-#: modules/settings/install.php:143
+#: modules/settings/install.php:206
 msgid "Reinstall SEO Ultimate %s"
 msgstr ""
 
-#: modules/settings/install.php:146
+#: modules/settings/install.php:215
 msgid "Upgrade to SEO Ultimate %s"
 msgstr ""
 
@@ -2395,28 +2403,36 @@ msgstr ""
 msgid "Restore Default Settings"
 msgstr ""
 
-#: modules/settings/settings.php:12
+#: modules/settings/settings.php:14
+msgid "Plugin Management"
+msgstr ""
+
+#: modules/settings/settings.php:16
 msgid "Plugin Settings"
 msgstr ""
 
-#: modules/settings/settings.php:13
-msgid "SEO Ultimate Plugin Settings"
-msgstr ""
-
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.2)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: modules/settings/settings.php:14 plugin/class.seo-ultimate.php:791
-msgid "SEO Ultimate"
+#: modules/settings/settings.php:21
+msgid "SEO Ultimate Plugin Management"
 msgstr ""
 
 #: modules/settings/settings.php:23
+msgid "SEO Ultimate Plugin Settings"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.5)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:851
+msgid "SEO Ultimate"
+msgstr ""
+
+#: modules/settings/settings.php:64
 msgid ""
 "\r\n"
 "<p>The Settings module lets you manage settings related to the SEO Ultimate "
 "plugin as a whole.</p>\r\n"
 msgstr ""
 
-#: modules/settings/settings.php:30
+#: modules/settings/settings.php:71
 msgid ""
 "\r\n"
 "<p>Here&#8217;s information on some of the settings:</p>\r\n"
@@ -2435,7 +2451,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/settings/settings.php:42
+#: modules/settings/settings.php:83
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2459,43 +2475,48 @@ msgstr ""
 msgid "Uninstaller"
 msgstr ""
 
-#: modules/settings/uninstall.php:18 plugin/class.seo-ultimate.php:1278
+#: modules/settings/uninstall.php:18 modules/settings/uninstall.php:22
+#: plugin/class.seo-ultimate.php:1334
 msgid "Uninstall"
 msgstr ""
 
-#: modules/settings/uninstall.php:27
+#: modules/settings/uninstall.php:61 modules/settings/uninstall.php:81
+msgid "You do not have sufficient permissions to delete plugins on this site."
+msgstr ""
+
+#: modules/settings/uninstall.php:66
 msgid ""
 "Uninstalling SEO Ultimate will delete your settings and the plugin&#8217;s "
 "files."
 msgstr ""
 
-#: modules/settings/uninstall.php:30
+#: modules/settings/uninstall.php:69
 msgid ""
 "Are you sure you want to uninstall SEO Ultimate? This will permanently erase "
 "your SEO Ultimate settings and cannot be undone."
 msgstr ""
 
-#: modules/settings/uninstall.php:31
+#: modules/settings/uninstall.php:70
 msgid "Uninstall Now"
 msgstr ""
 
-#: modules/settings/uninstall.php:35 modules/settings/uninstall.php:42
+#: modules/settings/uninstall.php:74 modules/settings/uninstall.php:85
 msgid "Uninstall SEO Ultimate"
 msgstr ""
 
-#: modules/settings/uninstall.php:46
+#: modules/settings/uninstall.php:89
 msgid "Deleted settings."
 msgstr ""
 
-#: modules/settings/uninstall.php:53
+#: modules/settings/uninstall.php:96
 msgid "An error occurred while deleting files."
 msgstr ""
 
-#: modules/settings/uninstall.php:55
+#: modules/settings/uninstall.php:98
 msgid "Deleted files."
 msgstr ""
 
-#: modules/settings/uninstall.php:56
+#: modules/settings/uninstall.php:99
 msgid "Uninstallation complete. Thanks for trying SEO Ultimate."
 msgstr ""
 
@@ -3047,53 +3068,53 @@ msgstr ""
 msgid "SEO Ultimate Widgets"
 msgstr ""
 
-#: modules/widgets/widgets.php:36
+#: modules/widgets/widgets.php:42
 msgid ""
 "On category archives, displays a list of child categories and/or posts in "
 "the category. Displays a list of top-level categories everywhere else. "
 "Powered by the SEO Ultimate plugin."
 msgstr ""
 
-#: modules/widgets/widgets.php:37
+#: modules/widgets/widgets.php:43
 msgid "Siloed Categories"
 msgstr ""
 
-#: modules/widgets/widgets.php:51
+#: modules/widgets/widgets.php:57
 msgid "Tags"
 msgstr ""
 
-#: modules/widgets/widgets.php:130
+#: modules/widgets/widgets.php:136
 msgid "Title:"
 msgstr ""
 
-#: modules/widgets/widgets.php:134
+#: modules/widgets/widgets.php:140
 msgid "Show post counts"
 msgstr ""
 
-#: modules/widgets/widgets.php:136
+#: modules/widgets/widgets.php:142
 msgid "Use term descriptions in title attributes"
 msgstr ""
 
-#: modules/widgets/widgets.php:138
+#: modules/widgets/widgets.php:144
 msgid "Taxonomy:"
 msgstr ""
 
-#: modules/widgets/widgets.php:163
+#: modules/widgets/widgets.php:169
 msgid ""
 "Add this widget to display Deeplink Juggernaut&#8217;s Footer Links in a "
 "widget area of your choosing rather than the default wp_footer section. "
 "Powered by the SEO Ultimate plugin."
 msgstr ""
 
-#: modules/widgets/widgets.php:217
+#: modules/widgets/widgets.php:223
 msgid "Title: <em>(optional)</em>"
 msgstr ""
 
-#: modules/widgets/widgets.php:221
+#: modules/widgets/widgets.php:227
 msgid "Display as a list"
 msgstr ""
 
-#: modules/widgets/widgets.php:224
+#: modules/widgets/widgets.php:230
 msgid "Use my <a href=\"%s\" target=\"_blank\">footer link HTML formats</a>"
 msgstr ""
 
@@ -3174,107 +3195,107 @@ msgstr ""
 msgid "Go to setting &raquo;"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:791
+#: plugin/class.seo-ultimate.php:851
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:980
+#: plugin/class.seo-ultimate.php:1036
 msgid ""
 "It looks like you made changes to the settings of this SEO Ultimate module. "
 "If you leave before saving, those changes will be lost."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1074
+#: plugin/class.seo-ultimate.php:1130
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1076
+#: plugin/class.seo-ultimate.php:1132
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1078
+#: plugin/class.seo-ultimate.php:1134
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1133
+#: plugin/class.seo-ultimate.php:1189
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate "
 "%1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1177
+#: plugin/class.seo-ultimate.php:1233
 msgid "new module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1177
+#: plugin/class.seo-ultimate.php:1233
 msgid "new modules"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1178
+#: plugin/class.seo-ultimate.php:1234
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1178
+#: plugin/class.seo-ultimate.php:1234
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1179
+#: plugin/class.seo-ultimate.php:1235
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1179
+#: plugin/class.seo-ultimate.php:1235
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1180
+#: plugin/class.seo-ultimate.php:1236
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1180
+#: plugin/class.seo-ultimate.php:1236
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1181
+#: plugin/class.seo-ultimate.php:1237
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1181
+#: plugin/class.seo-ultimate.php:1237
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1182
+#: plugin/class.seo-ultimate.php:1238
 msgid "new language pack"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1182
+#: plugin/class.seo-ultimate.php:1238
 msgid "new language packs"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1183
+#: plugin/class.seo-ultimate.php:1239
 msgid "language pack update"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1183
+#: plugin/class.seo-ultimate.php:1239
 msgid "language pack updates"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1214
+#: plugin/class.seo-ultimate.php:1270
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1220
+#: plugin/class.seo-ultimate.php:1276
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1222
+#: plugin/class.seo-ultimate.php:1278
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1298
+#: plugin/class.seo-ultimate.php:1355
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1359
+#: plugin/class.seo-ultimate.php:1422
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -3282,91 +3303,91 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1481
+#: plugin/class.seo-ultimate.php:1544
 msgid "SEO Settings"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1670
+#: plugin/class.seo-ultimate.php:1734
 msgid "Home"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1743
+#: plugin/class.seo-ultimate.php:1807
 msgid "Author Archives"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1772
+#: plugin/class.seo-ultimate.php:1836
 msgid "Link Masks"
 msgstr ""
 
-#: plugin/class.su-installer.php:9
+#: plugin/class.su-installer.php:11
 msgid "Package not available."
 msgstr ""
 
-#: plugin/class.su-installer.php:12
+#: plugin/class.su-installer.php:14
 msgid "Removing the current version of the plugin&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:13
+#: plugin/class.su-installer.php:15
 msgid "Could not remove the current version of the plugin."
 msgstr ""
 
-#: plugin/class.su-installer.php:17
+#: plugin/class.su-installer.php:19
 msgid "Downloading old version from <span class=\"code\">%s</span>&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:18
+#: plugin/class.su-installer.php:20
 msgid "Unpacking the downgrade&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:19
+#: plugin/class.su-installer.php:21
 msgid "Installing the downgrade&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:20
+#: plugin/class.su-installer.php:22
 msgid "Plugin downgrade failed."
 msgstr ""
 
-#: plugin/class.su-installer.php:21
+#: plugin/class.su-installer.php:23
 msgid "Plugin downgraded successfully."
 msgstr ""
 
-#: plugin/class.su-installer.php:24
+#: plugin/class.su-installer.php:26
 msgid "Downloading from <span class=\"code\">%s</span>&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:25
+#: plugin/class.su-installer.php:27
 msgid "Unpacking the reinstall&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:26
+#: plugin/class.su-installer.php:28
 msgid "Reinstalling the current version&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:27
+#: plugin/class.su-installer.php:29
 msgid "Plugin reinstallation failed."
 msgstr ""
 
-#: plugin/class.su-installer.php:28
+#: plugin/class.su-installer.php:30
 msgid "Plugin reinstalled successfully."
 msgstr ""
 
-#: plugin/class.su-installer.php:32
+#: plugin/class.su-installer.php:34
 msgid "Downloading upgrade from <span class=\"code\">%s</span>&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:33
+#: plugin/class.su-installer.php:35
 msgid "Unpacking the upgrade&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:34
+#: plugin/class.su-installer.php:36
 msgid "Installing the upgrade&#8230;"
 msgstr ""
 
-#: plugin/class.su-installer.php:35
+#: plugin/class.su-installer.php:37
 msgid "Plugin upgrade failed."
 msgstr ""
 
-#: plugin/class.su-installer.php:36
+#: plugin/class.su-installer.php:38
 msgid "Plugin upgraded successfully."
 msgstr ""
 
