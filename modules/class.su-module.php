@@ -222,6 +222,26 @@ class SU_Module {
 	function get_menu_parent_hook() { return $this->get_menu_parent(); }
 	
 	/**
+	 * @since 7.2.5
+	 */
+	function belongs_in_admin($admin_scope = null) {
+		
+		if ($admin_scope === null)
+			$admin_scope = suwp::get_admin_scope();
+		
+		switch ($admin_scope) {
+			case 'blog':
+				return true;
+				break;
+			case 'network':
+			case 'user':
+			default:
+				return false;
+				break;
+		}
+	}
+	
+	/**
 	 * The status (enabled/silenced/hidden) of the module when the module is newly added to the plugin.
 	 * 
 	 * @since 1.5
@@ -326,6 +346,13 @@ class SU_Module {
 	 * @since 6.0
 	 */
 	function admin_page_init() { }
+	
+	/**
+	 * Is called at WordPress' admin_init hook when the post editor is loaded.
+	 * 
+	 * @since 7.3
+	 */
+	function editor_init() { }
 	
 	/**
 	 * The contents of the administration page.
@@ -443,7 +470,11 @@ class SU_Module {
 		if ($key === false) {
 			if (($key = $this->get_parent_module()) && $this->plugin->module_exists($key)) {
 				
-				if (count($tabs = $this->get_admin_page_tabs())) {
+				$tabs = $this->get_admin_page_tabs();
+				if (!is_array($tabs))
+					return false;
+				
+				if (count($tabs)) {
 					$first_tab = reset($tabs);
 					$anchor = '#' . $first_tab['id'];
 				} else {
@@ -453,6 +484,9 @@ class SU_Module {
 				$key = $this->get_module_key();
 		}
 		
+		if (!$this->plugin->call_module_func($key, 'belongs_in_admin', $belongs_in_admin) || !$belongs_in_admin)
+			return false;
+		
 		if (!$this->plugin->call_module_func($key, 'get_menu_title', $menu_title) || !$menu_title)
 			return false;
 		
@@ -460,7 +494,12 @@ class SU_Module {
 		if ($this->plugin->call_module_func($key, 'get_menu_parent', $custom_basepage) && sustr::endswith($custom_basepage, '.php'))
 			$basepage = $custom_basepage;
 		
-		return admin_url($basepage.'?page='.$this->plugin->key_to_hook($key).$anchor);
+		if (is_network_admin() && $this->belongs_in_admin('network'))
+			$admin_url = 'network_admin_url';
+		else
+			$admin_url = 'admin_url';
+		
+		return $admin_url($basepage.'?page='.$this->plugin->key_to_hook($key).$anchor);
 	}
 	
 	/**
@@ -550,21 +589,30 @@ class SU_Module {
 	 */
 	function get_children_admin_page_tabs() {
 		$tabs = $this->get_admin_page_tabs();
+		if (!is_array($tabs)) $tabs = array();
 		
 		foreach ($this->modules as $key => $x_module) {
 			$module =& $this->modules[$key];
-			$child_tabs = $module->get_admin_page_tabs();
 			
-			if (empty($child_tabs))
-				$child_tabs[] = array(
-					  'title' => $module->get_module_subtitle()
-					, 'id' => $this->plugin->key_to_hook($key)
-					, 'callback' => array(&$module, 'admin_page_contents')
-				);
-			
-			foreach ($child_tabs as $child_tab) {
-				if (is_array($child_tab) && !is_array($child_tab['callback'])) $child_tab['callback'] = array(&$module, $child_tab['callback']);
-				$tabs[] = $child_tab;
+			if ($module->belongs_in_admin()) {
+				$child_tabs = $module->get_admin_page_tabs();
+				
+				if (is_array($child_tabs)) {
+				
+					if (empty($child_tabs))
+						$child_tabs[] = array(
+							  'title' => $module->get_module_subtitle()
+							, 'id' => $this->plugin->key_to_hook($key)
+							, 'callback' => array(&$module, 'admin_page_contents')
+						);
+					
+					foreach ($child_tabs as $child_tab) {
+						if (is_array($child_tab) && !is_array($child_tab['callback']))
+							$child_tab['callback'] = array(&$module, $child_tab['callback']);
+						
+						$tabs[] = $child_tab;
+					}
+				}
 			}
 		}
 		
@@ -1282,6 +1330,12 @@ class SU_Module {
 				break;
 			case 'hidden':
 				return "<input name='$name'$inputid value='$value' type='hidden' />";
+				break;
+			case 'jlsuggest':
+				$params = isset($extra['params']) ? $extra['params'] : '';
+				$placeholder = isset($extra['placeholder']) ? $extra['placeholder'] : '';
+				
+				return $this->get_jlsuggest_box($name, $value, $params, $placeholder);
 				break;
 		}
 		
@@ -2026,6 +2080,53 @@ class SU_Module {
 		$this->textareas(array($id => $title), $rows, $cols);
 	}
 	
+	/**
+	 * @since 7.3
+	 */
+	function jlsuggest_boxes($jls_boxes) {
+		
+		if ($this->is_action('update')) {
+			foreach ($jls_boxes as $jls_box) {
+				
+				if (!isset($jls_box['id']))
+					continue;
+				
+				$id = $jls_box['id'];
+				
+				if (isset($_POST[$id]))
+					$this->update_setting($id, stripslashes($_POST[$id]));
+			}
+		}
+		
+		foreach ($jls_boxes as $jls_box) {
+			
+			if (!isset($jls_box['id']))
+				continue;
+			
+			$jls_box = wp_parse_args($jls_box, array(
+				  'title' => ''
+				, 'params' => ''
+			));
+			
+			extract($jls_box, EXTR_SKIP);
+			
+			register_setting($this->get_module_key(), $id);
+			
+			echo "<tr valign='top'>\n";
+			if ($title) echo "<th scope='row'><label for='$id'>$title</label></th>\n";
+			echo "<td>";
+			echo $this->get_jlsuggest_box($id, $this->get_setting($id));
+			echo "</td>\n</tr>\n";
+		}
+	}
+	
+	/**
+	 * @since 7.3
+	 */
+	function jlsuggest_box($id, $title, $params='') {
+		$this->jlsuggest_boxes(array(compact('id', 'title', 'params')));
+	}
+	
 	/********** ADMIN SECURITY FUNCTIONS **********/
 	
 	/**
@@ -2382,6 +2483,56 @@ class SU_Module {
 	}
 	
 	/**
+	 * Generates the HTML for multiple post meta JLSuggest boxes.
+	 * 
+	 * @since 7.3
+	 * 
+	 * @param array $jls_boxes An array of JLSuggest boxes. (Field/setting IDs are the keys, and descriptions are the values.)
+	 * @return string The HTML for the JLSuggest boxes.
+	 */
+	function get_postmeta_jlsuggest_boxes($jls_boxes) {
+		
+		$html = '';
+		
+		foreach ($jls_boxes as $jls_box) {
+			
+			if (!isset($jls_box['id']) || !isset($jls_box['title']))
+				continue;
+			
+			$id = $jls_box['id'];
+			$title = $jls_box['title'];
+			$params = isset($jls_box['params']) ? $jls_box['params'] : false;
+			
+			register_setting('seo-ultimate', $id);
+			$value = su_esc_editable_html($this->get_postmeta($id));
+			$id = "_su_".su_esc_attr($id);
+			
+			$html .= "<tr class='su jlsuggestbox' valign='middle'>\n<th scope='row' class='su'><label for='$id'>$title</label></th>\n"
+					."<td class='su'>";
+			$html .= $this->get_jlsuggest_box($id, $value, $params);
+			$html .= "</td>\n</tr>\n";
+		}
+		
+		return $html;
+	}
+	
+	/**
+	 * Generates the HTML for a single post meta JLSuggest box.
+	 * 
+	 * @since 7.3
+	 * @uses get_postmeta_jlsuggest_boxes()
+	 * 
+	 * @param string $id The ID of the HTML element.
+	 * @param string $title The label of the HTML element.
+	 * @param string $params The value of the su:params attribute of the JLSuggest box (optional).
+	 * @return string The HTML that would render the JLSuggest box.
+	 */
+	function get_postmeta_jlsuggest_box($id, $title, $params=false) {
+		$jls_box = compact('id', 'title', 'params');
+		return $this->get_postmeta_jlsuggest_boxes(array($jls_box));
+	}
+	
+	/**
 	 * Turns a <tr> into a post meta subsection.
 	 * 
 	 * @since 2.5
@@ -2537,7 +2688,7 @@ class SU_Module {
 	 * @param string $name The value of the textbox's name/ID attributes
 	 * @param string $value The current database string associated with this textbox
 	 */
-	function get_jlsuggest_box($name, $value, $params='') {
+	function get_jlsuggest_box($name, $value, $params='', $placeholder='') {
 		
 		list($to_genus, $to_type, $to_id) = $this->jlsuggest_value_explode($value);
 		
@@ -2630,6 +2781,11 @@ class SU_Module {
 			$html .= " su:params='$e_params'";
 		}
 		
+		if ($placeholder) {
+			$e_placeholder = su_esc_attr($placeholder);
+			$html .= " placeholder='$e_placeholder'";
+		}
+		
 		$html .= " type='text' class='textbox regular-text jlsuggest'";
 		$html .= ' title="' . __('Type a URL or start typing the name of an item on your site', 'seo-ultimate') . '"';
 		$html .= $is_url ? '' : ' style="display:none;" ';
@@ -2656,9 +2812,10 @@ class SU_Module {
 	 * @since 6.0
 	 * 
 	 * @param string $value The JLSuggest database string to convert.
+	 * @param bool $get_src_if_media Whether to get the URL to the actual media item rather than the URL to its WP-powered singular page, if the item is an attachment.
 	 * @return string The URL of the referenced destination
 	 */
-	function jlsuggest_value_to_url($value) {
+	function jlsuggest_value_to_url($value, $get_src_if_media=false) {
 		
 		list($to_genus, $to_type, $to_id) = $this->jlsuggest_value_explode($value);
 		
@@ -2669,6 +2826,9 @@ class SU_Module {
 				$to_id = (int)$to_id;
 				switch (get_post_status($to_id)) {
 					case 'publish':
+						if ($get_src_if_media && 'attachment' == get_post_type($to_id))
+							return wp_get_attachment_url($to_id);
+						
 						return get_permalink($to_id);
 					case false: //Post doesn't exist
 					default: //Post exists but isn't published

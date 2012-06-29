@@ -2,8 +2,8 @@
 Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.3
-Tested up to: 3.4
-Stable tag: 7.2.4
+Tested up to: 3.4.1
+Stable tag: 7.2.5
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -127,7 +127,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Lets you output your Deeplink Juggernaut Footer Links in a widget
 	* The Siloed Categories widget makes it drag-and-drop-easy to construct siloed navigation on your site
 
-* **Settings Monitor** - NEW in Version 6.9
+* **Settings Monitor** -- NEW in Version 6.9
 	* Keep tabs on the SEO-friendliness of your site's settings with a dashboard of green/yellow/red indicators
 
 * **Settings Manager**
@@ -258,6 +258,14 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.2.5 (June 29, 2012) =
+* Improvement: The Upgrade/Downgrade/Reinstall/Uninstall tabs have been moved from the site admin to the network admin in cases where the plugin is network-activated on multisite setups
+* Security Fix: The Uninstall tool now checks for the delete_plugins capability (whereas previously, any user with the manage_options capability could uninstall)
+* Security Fix: The Downgrade and Reinstall tools now check for the install_plugins capability instead of the update_plugins capability
+* Security Fix: The Upgrade/Downgrade/Reinstall/Uninstall tools now check for super admin status on multisite setups
+* Bugfix: SEO Ultimate now hides the Upgrade/Downgrade/Reinstall/Uninstall tabs from users who lack the proper capabilities, rather than merely aborting those functions when attempted by unauthorized users
+* Change: The "Plugin Settings" module can no longer be disabled by site admins when SEO Ultimate is network-activated on a multisite setup
 
 = Version 7.2.4 (June 25, 2012) =
 * Bugfix: Icons no longer disappear from the WordPress admin menu on the Module Manager admin page
