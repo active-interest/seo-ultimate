@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.2.5\n"
+"Project-Id-Version: SEO Ultimate 7.2.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-06-29 21:39:39+00:00\n"
+"POT-Creation-Date: 2012-07-03 18:47:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,15 +61,15 @@ msgstr ""
 msgid "backup your database"
 msgstr ""
 
-#: modules/404s/fofs-log.php:16
+#: modules/404s/fofs-log.php:22
 msgid "404 Monitor Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:17
+#: modules/404s/fofs-log.php:23
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:113 modules/class.su-module.php:1205
+#: modules/404s/fofs-log.php:113 modules/class.su-module.php:1214
 msgid "Actions"
 msgstr ""
 
@@ -161,7 +161,7 @@ msgstr ""
 
 #: modules/404s/fofs-settings.php:17
 #: modules/internal-link-aliases/internal-link-aliases.php:31
-#: modules/titles/titles.php:34
+#: modules/titles/titles.php:40
 msgid "Settings"
 msgstr ""
 
@@ -207,14 +207,14 @@ msgstr ""
 
 #: modules/404s/fofs.php:19 modules/canonical/canonical.php:201
 #: modules/files/files.php:144 modules/link-nofollow/link-nofollow.php:130
-#: modules/linkbox/linkbox.php:91 modules/meta/meta-descriptions.php:174
-#: modules/meta/meta-keywords.php:166 modules/meta/meta-robots.php:53
-#: modules/meta/webmaster-verify.php:58 modules/more-links/more-links.php:104
+#: modules/linkbox/linkbox.php:91 modules/meta/meta-descriptions.php:180
+#: modules/meta/meta-keywords.php:172 modules/meta/meta-robots.php:53
+#: modules/meta/webmaster-verify.php:87 modules/more-links/more-links.php:104
 #: modules/more-links/more-links.php:111
 #: modules/rich-snippets/rich-snippets.php:258
 #: modules/settings/settings.php:63
 #: modules/sharing-buttons/sharing-buttons.php:72 modules/slugs/slugs.php:76
-#: modules/titles/titles.php:341 modules/user-code/user-code.php:70
+#: modules/titles/titles.php:347 modules/user-code/user-code.php:97
 msgid "Overview"
 msgstr ""
 
@@ -264,9 +264,9 @@ msgid ""
 msgstr ""
 
 #: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:102
-#: modules/meta/meta-descriptions.php:185 modules/meta/meta-keywords.php:173
+#: modules/meta/meta-descriptions.php:191 modules/meta/meta-keywords.php:179
 #: modules/meta/meta-robots.php:64 modules/rich-snippets/rich-snippets.php:269
-#: modules/titles/titles.php:415
+#: modules/titles/titles.php:421
 msgid "Settings Help"
 msgstr ""
 
@@ -316,10 +316,10 @@ msgid ""
 msgstr ""
 
 #: modules/404s/fofs.php:74 modules/files/files.php:165
-#: modules/meta/meta-descriptions.php:206 modules/meta/meta-keywords.php:196
+#: modules/meta/meta-descriptions.php:212 modules/meta/meta-keywords.php:202
 #: modules/meta/meta-robots.php:103
 #: modules/rich-snippets/rich-snippets.php:279 modules/slugs/slugs.php:107
-#: modules/titles/titles.php:453 modules/user-code/user-code.php:84
+#: modules/titles/titles.php:459 modules/user-code/user-code.php:111
 msgid "Troubleshooting"
 msgstr ""
 
@@ -486,8 +486,8 @@ msgid "Delete"
 msgstr ""
 
 #: modules/autolinks/content-autolinks.php:397
-#: modules/autolinks/footer-autolinks.php:210 modules/noindex/noindex.php:54
-#: modules/noindex/noindex.php:78
+#: modules/autolinks/footer-autolinks.php:210 modules/noindex/noindex.php:61
+#: modules/noindex/noindex.php:85
 msgid "Nofollow"
 msgstr ""
 
@@ -725,108 +725,108 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/class.su-module.php:670
+#: modules/class.su-module.php:679
 msgid ""
 "All the modules on this page have been disabled. You can re-enable them "
 "using the <a href=\"%s\">Module Manager</a>."
 msgstr ""
 
-#: modules/class.su-module.php:1019
+#: modules/class.su-module.php:1028
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1098
+#: modules/class.su-module.php:1107
 msgid "Your site currently doesn&#8217;t have any public items of this type."
 msgstr ""
 
-#: modules/class.su-module.php:1184
+#: modules/class.su-module.php:1193
 msgid "&laquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1185
+#: modules/class.su-module.php:1194
 msgid "&raquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1192
+#: modules/class.su-module.php:1201
 msgid "Displaying %s&#8211;%s of %s"
 msgstr ""
 
-#: modules/class.su-module.php:1206
+#: modules/class.su-module.php:1215
 msgid "ID"
 msgstr ""
 
-#: modules/class.su-module.php:1240
+#: modules/class.su-module.php:1249
 msgid "View"
 msgstr ""
 
-#: modules/class.su-module.php:1242
+#: modules/class.su-module.php:1251
 msgid "Edit"
 msgstr ""
 
-#: modules/class.su-module.php:1412
+#: modules/class.su-module.php:1421
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1433
+#: modules/class.su-module.php:1442
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1974
+#: modules/class.su-module.php:1990
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:1993 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:2011 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
-#: modules/class.su-module.php:2708 modules/class.su-module.php:2720
+#: modules/class.su-module.php:2733 modules/class.su-module.php:2745
 msgid "A Deleted %s"
 msgstr ""
 
-#: modules/class.su-module.php:2710
+#: modules/class.su-module.php:2735
 msgid "A Deleted Post"
 msgstr ""
 
-#: modules/class.su-module.php:2725
+#: modules/class.su-module.php:2750
 msgid "A Deleted Term"
 msgstr ""
 
-#: modules/class.su-module.php:2731 modules/meta/meta-descriptions.php:25
-#: modules/meta/meta-keywords.php:34 plugin/class.seo-ultimate.php:1735
+#: modules/class.su-module.php:2756 modules/meta/meta-descriptions.php:31
+#: modules/meta/meta-keywords.php:40 plugin/class.seo-ultimate.php:1735
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2736 plugin/class.seo-ultimate.php:1813
+#: modules/class.su-module.php:2761 plugin/class.seo-ultimate.php:1813
 msgid "Author"
 msgstr ""
 
-#: modules/class.su-module.php:2738
+#: modules/class.su-module.php:2763
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2753 plugin/class.seo-ultimate.php:1843
+#: modules/class.su-module.php:2778 plugin/class.seo-ultimate.php:1843
 msgid "Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2755
+#: modules/class.su-module.php:2780
 msgid "Link Mask (Disabled)"
 msgstr ""
 
-#: modules/class.su-module.php:2760
+#: modules/class.su-module.php:2785
 msgid "A Deleted Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2790
+#: modules/class.su-module.php:2815
 msgid "Type a URL or start typing the name of an item on your site"
 msgstr ""
 
-#: modules/class.su-module.php:2803
+#: modules/class.su-module.php:2828
 msgid "Remove this location from this textbox"
 msgstr ""
 
-#: modules/class.su-module.php:2803
+#: modules/class.su-module.php:2828
 msgid "X"
 msgstr ""
 
@@ -903,11 +903,11 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/files/files.php:155 modules/meta/meta-descriptions.php:197
-#: modules/meta/meta-keywords.php:183 modules/modules/modules.php:174
+#: modules/files/files.php:155 modules/meta/meta-descriptions.php:203
+#: modules/meta/meta-keywords.php:189 modules/modules/modules.php:174
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
 #: modules/settings/settings.php:82 modules/slugs/slugs.php:87
-#: modules/titles/titles.php:442
+#: modules/titles/titles.php:448
 msgid "FAQ"
 msgstr ""
 
@@ -1211,63 +1211,63 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:12
+#: modules/meta/meta-descriptions.php:18
 msgid "Meta Description Editor"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:13
+#: modules/meta/meta-descriptions.php:19
 msgid "Meta Descriptions"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:24 modules/titles/titles.php:33
+#: modules/meta/meta-descriptions.php:30 modules/titles/titles.php:39
 msgid "Default Formats"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:31
+#: modules/meta/meta-descriptions.php:37
 msgid "Meta Description"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:50
+#: modules/meta/meta-descriptions.php:56
 msgid "Post Description Format"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:51
+#: modules/meta/meta-descriptions.php:57
 msgid "Page Description Format"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:52
+#: modules/meta/meta-descriptions.php:58
 msgid "Category Description Format"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:53
+#: modules/meta/meta-descriptions.php:59
 msgid "Post Tag Description Format"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:54
+#: modules/meta/meta-descriptions.php:60
 msgid "Pagination Description Format"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:62
+#: modules/meta/meta-descriptions.php:68
 msgid "Blog Homepage Meta Description"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:64
+#: modules/meta/meta-descriptions.php:70
 msgid "Use this blog&#8217s tagline as the default homepage description."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:65
+#: modules/meta/meta-descriptions.php:71
 msgid "Default Value"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:155
+#: modules/meta/meta-descriptions.php:161
 msgid "Meta Description:"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:158
+#: modules/meta/meta-descriptions.php:164
 msgid "You&#8217;ve entered %s characters. Most search engines use up to 140."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:166
+#: modules/meta/meta-descriptions.php:172
 msgid ""
 "<strong>Description</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
@@ -1275,7 +1275,7 @@ msgid ""
 "is important to ensuring a good search results clickthrough rate."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:175
+#: modules/meta/meta-descriptions.php:181
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1294,7 +1294,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:186
+#: modules/meta/meta-descriptions.php:192
 msgid ""
 "\r\n"
 "<p>Here&#8217;s information on the various settings:</p>\r\n"
@@ -1316,7 +1316,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:198
+#: modules/meta/meta-descriptions.php:204
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1330,7 +1330,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:207 modules/meta/meta-keywords.php:197
+#: modules/meta/meta-descriptions.php:213 modules/meta/meta-keywords.php:203
 #: modules/meta/meta-robots.php:104
 msgid ""
 "\r\n"
@@ -1352,39 +1352,39 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:12
+#: modules/meta/meta-keywords.php:18
 msgid "Meta Keywords Editor"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:13 modules/meta/meta-keywords.php:40
+#: modules/meta/meta-keywords.php:19 modules/meta/meta-keywords.php:46
 msgid "Meta Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:33 modules/noindex/noindex.php:43
+#: modules/meta/meta-keywords.php:39 modules/noindex/noindex.php:50
 msgid "Default Values"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:56
+#: modules/meta/meta-keywords.php:62
 msgid "The %d most commonly-used words"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:69
+#: modules/meta/meta-keywords.php:75
 msgid "Sitewide Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:69
+#: modules/meta/meta-keywords.php:75
 msgid "(Separate with commas)"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:76
+#: modules/meta/meta-keywords.php:82
 msgid "Blog Homepage Meta Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:153
+#: modules/meta/meta-keywords.php:159
 msgid "Meta Keywords:<br /><em>(separate with commas)</em>"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:158
+#: modules/meta/meta-keywords.php:164
 msgid ""
 "<strong>Keywords</strong> &mdash; The value of the meta keywords tag. The "
 "keywords list gives search engines a hint as to what this post/page is "
@@ -1392,7 +1392,7 @@ msgid ""
 "three</samp>."
 msgstr ""
 
-#: modules/meta/meta-keywords.php:167
+#: modules/meta/meta-keywords.php:173
 msgid ""
 "\r\n"
 "<p>Meta Keywords Editor lets you tell search engines what keywords are "
@@ -1403,7 +1403,7 @@ msgid ""
 "p>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:174
+#: modules/meta/meta-keywords.php:180
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1420,7 +1420,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:184
+#: modules/meta/meta-keywords.php:190
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1570,7 +1570,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/webmaster-verify.php:12 modules/meta/webmaster-verify.php:58
+#: modules/meta/webmaster-verify.php:12 modules/meta/webmaster-verify.php:87
 msgid "Webmaster Verification Assistant"
 msgstr ""
 
@@ -1578,19 +1578,27 @@ msgstr ""
 msgid "W.M. Verification"
 msgstr ""
 
-#: modules/meta/webmaster-verify.php:47
+#: modules/meta/webmaster-verify.php:25
 msgid "Google Webmaster Tools"
 msgstr ""
 
-#: modules/meta/webmaster-verify.php:48
+#: modules/meta/webmaster-verify.php:28
 msgid "Yahoo! Site Explorer"
 msgstr ""
 
-#: modules/meta/webmaster-verify.php:49
+#: modules/meta/webmaster-verify.php:31
 msgid "Bing Webmaster Center"
 msgstr ""
 
+#: modules/meta/webmaster-verify.php:58
+msgid "Webmaster Portal"
+msgstr ""
+
 #: modules/meta/webmaster-verify.php:59
+msgid "Meta Tag"
+msgstr ""
+
+#: modules/meta/webmaster-verify.php:88
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1784,94 +1792,94 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/noindex/noindex.php:12
+#: modules/noindex/noindex.php:19
 msgid "Noindex Manager"
 msgstr ""
 
-#: modules/noindex/noindex.php:13 modules/noindex/noindex.php:49
-#: modules/noindex/noindex.php:67
+#: modules/noindex/noindex.php:20 modules/noindex/noindex.php:56
+#: modules/noindex/noindex.php:74
 msgid "Noindex"
 msgstr ""
 
-#: modules/noindex/noindex.php:62 modules/noindex/noindex.php:73
+#: modules/noindex/noindex.php:69 modules/noindex/noindex.php:80
 msgid "Use default"
 msgstr ""
 
-#: modules/noindex/noindex.php:63
+#: modules/noindex/noindex.php:70
 msgid "noindex"
 msgstr ""
 
-#: modules/noindex/noindex.php:64
+#: modules/noindex/noindex.php:71
 msgid "index"
 msgstr ""
 
-#: modules/noindex/noindex.php:74
+#: modules/noindex/noindex.php:81
 msgid "nofollow"
 msgstr ""
 
-#: modules/noindex/noindex.php:75
+#: modules/noindex/noindex.php:82
 msgid "follow"
 msgstr ""
 
-#: modules/noindex/noindex.php:89
+#: modules/noindex/noindex.php:96
 msgid ""
 "Note: The current <a href=\"options-privacy.php\">privacy settings</a> will "
 "block indexing of the entire site, regardless of which options are set below."
 msgstr ""
 
-#: modules/noindex/noindex.php:92
+#: modules/noindex/noindex.php:99
 msgid "Prevent indexing of..."
 msgstr ""
 
-#: modules/noindex/noindex.php:93
+#: modules/noindex/noindex.php:100
 msgid "Administration back-end pages"
 msgstr ""
 
-#: modules/noindex/noindex.php:94
+#: modules/noindex/noindex.php:101
 msgid "Author archives"
 msgstr ""
 
-#: modules/noindex/noindex.php:95
+#: modules/noindex/noindex.php:102
 msgid "Blog search pages"
 msgstr ""
 
-#: modules/noindex/noindex.php:96
+#: modules/noindex/noindex.php:103
 msgid "Category archives"
 msgstr ""
 
-#: modules/noindex/noindex.php:97
+#: modules/noindex/noindex.php:104
 msgid "Comment feeds"
 msgstr ""
 
-#: modules/noindex/noindex.php:98
+#: modules/noindex/noindex.php:105
 msgid "Comment subpages"
 msgstr ""
 
-#: modules/noindex/noindex.php:99
+#: modules/noindex/noindex.php:106
 msgid "Date-based archives"
 msgstr ""
 
-#: modules/noindex/noindex.php:100
+#: modules/noindex/noindex.php:107
 msgid "Subpages of the homepage"
 msgstr ""
 
-#: modules/noindex/noindex.php:101
+#: modules/noindex/noindex.php:108
 msgid "Tag archives"
 msgstr ""
 
-#: modules/noindex/noindex.php:102
+#: modules/noindex/noindex.php:109
 msgid "User login/registration pages"
 msgstr ""
 
-#: modules/noindex/noindex.php:165
+#: modules/noindex/noindex.php:172
 msgid "Noindex: Tell search engines not to index this webpage."
 msgstr ""
 
-#: modules/noindex/noindex.php:166
+#: modules/noindex/noindex.php:173
 msgid "Nofollow: Tell search engines not to spider links on this webpage."
 msgstr ""
 
-#: modules/noindex/noindex.php:167
+#: modules/noindex/noindex.php:174
 msgid "Meta Robots Tag:"
 msgstr ""
 
@@ -2099,7 +2107,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.6)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2251,50 +2259,50 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-#: modules/settings/settings-data.php:82
+#: modules/settings/settings-data.php:86
 msgid "Settings successfully imported."
 msgstr ""
 
-#: modules/settings/settings-data.php:84
+#: modules/settings/settings-data.php:88
 msgid ""
 "The uploaded file is not in the proper format. Settings could not be "
 "imported."
 msgstr ""
 
-#: modules/settings/settings-data.php:86
+#: modules/settings/settings-data.php:90
 msgid "The settings file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings/settings-data.php:89
+#: modules/settings/settings-data.php:93
 msgid ""
 "Settings could not be imported because no settings file was selected. Please "
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings/settings-data.php:130
+#: modules/settings/settings-data.php:134
 msgid ""
 "The uploaded file is not in the proper format. Links could not be imported."
 msgstr ""
 
-#: modules/settings/settings-data.php:172
+#: modules/settings/settings-data.php:176
 msgid "Links successfully imported."
 msgstr ""
 
-#: modules/settings/settings-data.php:175
+#: modules/settings/settings-data.php:179
 msgid "The CSV file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings/settings-data.php:178
+#: modules/settings/settings-data.php:182
 msgid ""
 "Links could not be imported because no CSV file was selected. Please click "
 "the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings/settings-data.php:188
+#: modules/settings/settings-data.php:192
 msgid "Import SEO Ultimate Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:190
+#: modules/settings/settings-data.php:194
 msgid ""
 "You can use this form to upload and import an SEO Ultimate settings file "
 "stored on your computer. (These files can be created using the Export tool.) "
@@ -2302,21 +2310,21 @@ msgid ""
 "in the file."
 msgstr ""
 
-#: modules/settings/settings-data.php:194
+#: modules/settings/settings-data.php:198
 msgid ""
 "Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:195
+#: modules/settings/settings-data.php:199
 msgid "Import Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:201
+#: modules/settings/settings-data.php:205
 msgid "Import Deeplink Juggernaut CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:203
+#: modules/settings/settings-data.php:207
 msgid ""
 "You can use this form to upload and import a Deeplink Juggernaut CSV file "
 "stored on your computer. (These files can be created using the Export tool.) "
@@ -2324,38 +2332,38 @@ msgid ""
 "the file."
 msgstr ""
 
-#: modules/settings/settings-data.php:207
+#: modules/settings/settings-data.php:211
 msgid ""
 "Are you sure you want to import this CSV file? This will overwrite your "
 "current Deeplink Juggernaut links and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:208
+#: modules/settings/settings-data.php:212
 msgid "Import CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:223
+#: modules/settings/settings-data.php:227
 msgid "Import from Other Plugins"
 msgstr ""
 
-#: modules/settings/settings-data.php:225
+#: modules/settings/settings-data.php:229
 msgid ""
 "You can import settings and data from these plugins. Clicking a plugin&#8217;"
 "s name will take you to the importer page, where you can customize "
 "parameters and start the import."
 msgstr ""
 
-#: modules/settings/settings-data.php:245
+#: modules/settings/settings-data.php:249
 msgid "Export SEO Ultimate Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:247
+#: modules/settings/settings-data.php:251
 msgid ""
 "You can use this export tool to download an SEO Ultimate settings file to "
 "your computer."
 msgstr ""
 
-#: modules/settings/settings-data.php:249
+#: modules/settings/settings-data.php:253
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module. It does NOT include site-specific data like logged 404s or "
@@ -2363,15 +2371,15 @@ msgid ""
 "database backup, however)."
 msgstr ""
 
-#: modules/settings/settings-data.php:252
+#: modules/settings/settings-data.php:256
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:257
+#: modules/settings/settings-data.php:261
 msgid "Export Deeplink Juggernaut CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:259
+#: modules/settings/settings-data.php:263
 msgid ""
 "You can use this export tool to download a CSV file (comma-separated values "
 "file) that contains your Deeplink Juggernaut links. Once you download this "
@@ -2380,26 +2388,26 @@ msgid ""
 "the Import tool."
 msgstr ""
 
-#: modules/settings/settings-data.php:262
+#: modules/settings/settings-data.php:266
 msgid "Download CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:269
+#: modules/settings/settings-data.php:273
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings/settings-data.php:271
+#: modules/settings/settings-data.php:275
 msgid ""
 "You can erase all your SEO Ultimate settings and restore them to &#8220;"
 "factory defaults&#8221; by clicking the button below."
 msgstr ""
 
-#: modules/settings/settings-data.php:274
+#: modules/settings/settings-data.php:278
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:275
+#: modules/settings/settings-data.php:279
 msgid "Restore Default Settings"
 msgstr ""
 
@@ -2419,7 +2427,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.6)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:851
 msgid "SEO Ultimate"
@@ -2637,139 +2645,139 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:12
+#: modules/titles/titles.php:18
 msgid "Title Tag Rewriter"
 msgstr ""
 
-#: modules/titles/titles.php:40
+#: modules/titles/titles.php:46
 msgid "Title Tag"
 msgstr ""
 
-#: modules/titles/titles.php:53
+#: modules/titles/titles.php:59
 msgid ""
 "Convert lowercase category/tag names to title case when used in title tags."
 msgstr ""
 
-#: modules/titles/titles.php:53
+#: modules/titles/titles.php:59
 msgid "Title Tag Variables"
 msgstr ""
 
-#: modules/titles/titles.php:55
+#: modules/titles/titles.php:61
 msgid ""
 "Use output buffering &mdash; no configuration required, but slower (default)"
 msgstr ""
 
-#: modules/titles/titles.php:56
+#: modules/titles/titles.php:62
 msgid ""
 "Use filtering &mdash; faster, but configuration required (see the &#8220;"
 "Settings Help&#8221; dropdown for details)"
 msgstr ""
 
-#: modules/titles/titles.php:57
+#: modules/titles/titles.php:63
 msgid "Rewrite Method"
 msgstr ""
 
-#: modules/titles/titles.php:65
+#: modules/titles/titles.php:71
 msgid "{blog}"
 msgstr ""
 
-#: modules/titles/titles.php:66
+#: modules/titles/titles.php:72
 msgid "{post} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:67
+#: modules/titles/titles.php:73
 msgid "{page} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:68
+#: modules/titles/titles.php:74
 msgid "{category} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:69
+#: modules/titles/titles.php:75
 msgid "{tag} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:70
+#: modules/titles/titles.php:76
 msgid "Archives for {month} {day}, {year} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:71
+#: modules/titles/titles.php:77
 msgid "Archives for {month} {year} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:72
+#: modules/titles/titles.php:78
 msgid "Archives for {year} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:73
+#: modules/titles/titles.php:79
 msgid "Posts by {author} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:74
+#: modules/titles/titles.php:80
 msgid "Search Results for {query} | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:75
+#: modules/titles/titles.php:81
 msgid "404 Not Found | {blog}"
 msgstr ""
 
-#: modules/titles/titles.php:76
+#: modules/titles/titles.php:82
 msgid "{title} - Page {num}"
 msgstr ""
 
-#: modules/titles/titles.php:85
+#: modules/titles/titles.php:91
 msgid "Blog Homepage Title"
 msgstr ""
 
-#: modules/titles/titles.php:86
+#: modules/titles/titles.php:92
 msgid "Post Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:87
+#: modules/titles/titles.php:93
 msgid "Page Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:88
+#: modules/titles/titles.php:94
 msgid "Category Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:89
+#: modules/titles/titles.php:95
 msgid "Tag Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:90
+#: modules/titles/titles.php:96
 msgid "Day Archive Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:91
+#: modules/titles/titles.php:97
 msgid "Month Archive Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:92
+#: modules/titles/titles.php:98
 msgid "Year Archive Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:93
+#: modules/titles/titles.php:99
 msgid "Author Archive Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:94
+#: modules/titles/titles.php:100
 msgid "Search Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:95
+#: modules/titles/titles.php:101
 msgid "404 Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:96
+#: modules/titles/titles.php:102
 msgid "Pagination Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:328
+#: modules/titles/titles.php:334
 msgid "Title Tag:"
 msgstr ""
 
-#: modules/titles/titles.php:333
+#: modules/titles/titles.php:339
 msgid ""
 "<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; "
 "tag. The title appears in visitors&#8217; title bars and in search engine "
@@ -2777,7 +2785,7 @@ msgid ""
 "page=su-titles\" target=\"_blank\">default post/page titles</a> are used."
 msgstr ""
 
-#: modules/titles/titles.php:342
+#: modules/titles/titles.php:348
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2800,11 +2808,11 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:352
+#: modules/titles/titles.php:358
 msgid "Formats &amp; Variables"
 msgstr ""
 
-#: modules/titles/titles.php:353
+#: modules/titles/titles.php:359
 msgid ""
 "\r\n"
 "<p>Various variables, surrounded in {curly brackets}, are provided for use "
@@ -2907,7 +2915,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:416
+#: modules/titles/titles.php:422
 msgid ""
 "\r\n"
 "<p>Here&#8217;s documentation for the options on the &#8220;Settings&#8221; "
@@ -2962,7 +2970,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:443
+#: modules/titles/titles.php:449
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2985,7 +2993,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:454
+#: modules/titles/titles.php:460
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -3002,35 +3010,41 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/user-code/user-code.php:12
+#: modules/user-code/user-code.php:21
 msgid "Code Inserter"
 msgstr ""
 
-#: modules/user-code/user-code.php:27
+#: modules/user-code/user-code.php:47
 msgid "Everywhere"
 msgstr ""
 
-#: modules/user-code/user-code.php:34
+#: modules/user-code/user-code.php:53
+msgid ""
+"These fields are disabled because your user account does not have permission "
+"to insert arbitrary HTML into this site&#8217;s code."
+msgstr ""
+
+#: modules/user-code/user-code.php:61
 msgid "&lt;head&gt; Tag"
 msgstr ""
 
-#: modules/user-code/user-code.php:35
+#: modules/user-code/user-code.php:62
 msgid "Before Item Content"
 msgstr ""
 
-#: modules/user-code/user-code.php:36
+#: modules/user-code/user-code.php:63
 msgid "After Item Content"
 msgstr ""
 
-#: modules/user-code/user-code.php:37
+#: modules/user-code/user-code.php:64
 msgid "Footer"
 msgstr ""
 
-#: modules/user-code/user-code.php:51
+#: modules/user-code/user-code.php:78
 msgid "Code Inserter module"
 msgstr ""
 
-#: modules/user-code/user-code.php:71
+#: modules/user-code/user-code.php:98
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -3051,10 +3065,28 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/user-code/user-code.php:85
+#: modules/user-code/user-code.php:112
 msgid ""
 "\r\n"
 "<ul>\r\n"
+"\t<li><p><strong>Why do I get a message saying my account doesn&#8217;t have "
+"permission to insert arbitrary HTML code?</strong><br />WordPress has a "
+"security feature that only allows administrators to insert arbitrary, "
+"unfiltered HTML into the site. On single-site setups, site administrators "
+"have this capability. On multisite setups, only network admins have this "
+"capability. This is done for security reasons, since site users with the "
+"ability to insert arbitrary HTML could theoretically insert malicious code "
+"that could be used to hijack control of the site.</p><p>If you are the "
+"administrator of a site running on a network, then you will not be able to "
+"use Code Inserter under default security settings. However, the network "
+"administrator <em>will</em> be able to edit the fields on this page. If you "
+"have code that you really want inserted into a certain part of your site, "
+"ask your network administrator to do it for you.</p><p>If you are the "
+"network administrator of a multisite WordPress setup, and you completely "
+"trust all of the administrators and editors of the various sites on your "
+"network, you can install the <a href='http://wordpress.org/extend/plugins/"
+"unfiltered-mu/' target='_blank'>Unfiltered MU</a> plugin to enable the Code "
+"Inserter for all of those users.</p></li>\r\n"
 "\t<li><strong>Why doesn't my code appear on my site?</strong><br />It&#8217;"
 "s possible that your theme doesn't have the proper &#8220;hooks,&#8221; "
 "which are pieces of code that let WordPress plugins insert custom HTML into "
