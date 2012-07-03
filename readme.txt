@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.2.5
+Stable tag: 7.2.6
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -258,6 +258,16 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.2.6 (July 3, 2012) =
+* Improvement: Updated the Webmaster Verification Assistant interface to further clarify its functionality
+* Security Fix: Webmaster Verification Assistant no longer allows users without the unfiltered_html capability to insert arbitrary `<meta>` tags (and, theoretically, other HTML)
+* Security Fix: Code Inserter now checks for the unfiltered_html capability in addition to the manage_options capability. In other words, site administrators on multisite setups can no longer use Code Inserter. (Security Note: If any users without the unfiltered_html capability previously entered code into Code Inserter, that code will remain active even after upgrading. Network admins may want to check the Code Inserter pages of their network's sites to ensure that site admins have not entered any malicious code.)
+* Bugfix: Fixed broken settings exporter (bug introduced in 5.0)
+* Bugfix: Fixed a bug which caused some modules' settings to be excluded from settings export files (bug introduced in 1.5)
+* Bugfix: 404 Monitor's logs are now excluded from settings export files even if 404 Monitor is disabled (bug introduced in 2.1)
+* Bugfix: The custom title tags and meta data of categories/tags/terms are now excluded from settings export files (bug introduced in 2.9)
+* Bugfix: The dialog box that confirms you want to leave a page without saving changes no longer appears after starting a settings import (bug introduced in 5.7)
 
 = Version 7.2.5 (June 29, 2012) =
 * Improvement: The Upgrade/Downgrade/Reinstall/Uninstall tabs have been moved from the site admin to the network admin in cases where the plugin is network-activated on multisite setups

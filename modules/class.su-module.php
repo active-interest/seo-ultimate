@@ -288,10 +288,19 @@ class SU_Module {
 	 * @return string
 	 */
 	function get_settings_key() {
-		if (strlen($parent = $this->get_parent_module()) && !$this->is_independent_module())
-			return $this->plugin->modules[$parent]->get_settings_key();
-		else
-			return $this->get_module_key();
+		if (isset($this)) {
+			if (strlen($parent = $this->get_parent_module()) && !$this->is_independent_module())
+				return $this->plugin->modules[$parent]->get_settings_key();
+			else
+				return $this->get_module_key();
+		} else {
+			if (strlen($parent = self::get_parent_module()) && !self::is_independent_module()) {
+				global $seo_ultimate;
+				return $seo_ultimate->modules[$parent]->get_settings_key();
+			} else {
+				return false;
+			}
+		}
 	}
 	
 	/**
@@ -1464,21 +1473,23 @@ class SU_Module {
 	/**
 	 * @since 5.8
 	 */
-	function child_admin_form_start() {
-		if ($this->get_parent_module() && $this->plugin->module_exists($this->get_parent_module()))
-			$this->admin_form_table_start();
-		else
-			$this->admin_form_start();
+	function child_admin_form_start($table=true) {
+		if ($this->get_parent_module() && $this->plugin->module_exists($this->get_parent_module())) {
+			if ($table) $this->admin_form_table_start();
+		} else {
+			$this->admin_form_start(false, $table);
+		}
 	}
 	
 	/**
 	 * @since 5.8
 	 */
-	function child_admin_form_end() {
-		if ($this->get_parent_module() && $this->plugin->module_exists($this->get_parent_module()))
-			$this->admin_form_table_end();
-		else
-			$this->admin_form_end();
+	function child_admin_form_end($table=true) {
+		if ($this->get_parent_module() && $this->plugin->module_exists($this->get_parent_module())) {
+			if ($table) $this->admin_form_table_end();
+		} else {
+			$this->admin_form_end(null, $table);
+		}
 	}
 	
 	/**
@@ -1937,14 +1948,15 @@ class SU_Module {
 	 * @param array $defaults An array of default textbox values that trigger "Reset" links. (The field/setting ID is the key, and the default value is the value.) Optional.
 	 * @param mixed $grouptext The text to display in a table cell to the left of the one containing the textboxes. Optional.
 	 */
-	function textboxes($textboxes, $defaults=array(), $grouptext=false, $args=array()) {
+	function textboxes($textboxes, $defaults=array(), $grouptext=false, $args=array(), $textbox_args=array()) {
 		
 		$is_tree_parent = isset($args['is_tree_parent']) ? $args['is_tree_parent'] : false;
 		$is_ec_tree = isset($args['is_ec_tree']) ? $args['is_ec_tree'] : false;
 		$tree_level = isset($args['tree_level']) ? $args['tree_level'] : false;
 		$disabled = isset($args['disabled']) ? $args['disabled'] : false;
+		$in_table = isset($args['in_table']) ? $args['in_table'] : true;
 		
-		if ($this->is_action('update')) {
+		if (!$disabled && $this->is_action('update')) {
 			foreach ($textboxes as $id => $title) {
 				if (isset($_POST[$id]))
 					$this->update_setting($id, stripslashes($_POST[$id]));
@@ -1968,6 +1980,10 @@ class SU_Module {
 		if ($grouptext) $this->admin_form_group_start($grouptext, false);
 		
 		foreach ($textboxes as $id => $title) {
+			
+			$before = isset($textbox_args[$id]['before']) ? $textbox_args[$id]['before'] : '';
+			$after  = isset($textbox_args[$id]['after'])  ? $textbox_args[$id]['after']  : '';
+			
 			register_setting($this->get_module_key(), $id);
 			$value = su_esc_editable_html($this->get_setting($id));
 			$id = su_esc_attr($id);
@@ -1975,10 +1991,12 @@ class SU_Module {
 			
 			if ($grouptext)
 				echo "<div class='field'><label for='$id'>$title</label><br />\n";
-			elseif (strpos($title, '</a>') === false)
+			elseif ($in_table && strpos($title, '</a>') === false)
 				echo "<tr valign='top'$indentattrs$hidden>\n<th scope='row' class='su-field-label'>$indenttoggle<label for='$id'><span class='su-field-label-text'>$title</span></label></th>\n<td>";
-			else
+			elseif ($in_table)
 				echo "<tr valign='top'$indentattrs$hidden>\n<td class='su-field-label'>$indenttoggle<span class='su-field-label-text'>$title</span></td>\n<td>";
+			
+			echo $before;
 			
 			echo "<input name='$id' id='$id' type='text' value='$value' class='regular-text' ";
 			
@@ -2005,9 +2023,11 @@ class SU_Module {
 				echo '</a>';
 			}
 			
+			echo $after;
+			
 			if ($grouptext)
 				echo "</div>\n";
-			else
+			elseif ($in_table)
 				echo "</td>\n</tr>\n";
 		}
 		
@@ -2043,9 +2063,11 @@ class SU_Module {
 	 * @param int $rows The value of the textareas' rows attribute.
 	 * @param int $cols The value of the textareas' cols attribute.
 	 */
-	function textareas($textareas, $rows = 5, $cols = 30) {
+	function textareas($textareas, $rows = 5, $cols = 30, $args=array()) {
 		
-		if ($this->is_action('update')) {
+		$disabled = isset($args['disabled']) ? $args['disabled'] : false;
+		
+		if (!$disabled && $this->is_action('update')) {
 			foreach ($textareas as $id => $title) {
 				if (isset($_POST[$id]))
 					$this->update_setting($id, stripslashes($_POST[$id]));
@@ -2059,7 +2081,10 @@ class SU_Module {
 			
 			echo "<tr valign='top'>\n";
 			if ($title) echo "<th scope='row'><label for='$id'>$title</label></th>\n";
-			echo "<td><textarea name='$id' id='$id' type='text' class='regular-text' cols='$cols' rows='$rows'>$value</textarea>";
+			echo '<td>';
+			echo "<textarea name='$id' id='$id' type='text' class='regular-text' cols='$cols' rows='$rows'";
+			if ($disabled) echo " disabled='disabled'";
+			echo ">$value</textarea>";
 			echo "</td>\n</tr>\n";
 		}
 	}

@@ -7,6 +7,12 @@
 
 if (class_exists('SU_Module')) {
 
+function su_meta_keywords_export_filter($all_settings) {
+	unset($all_settings['meta']['taxonomy_keywords']);
+	return $all_settings;
+}
+add_filter('su_settings_export_array', 'su_meta_keywords_export_filter');
+
 class SU_MetaKeywords extends SU_Module {
 	
 	function get_module_title() { return __('Meta Keywords Editor', 'seo-ultimate'); }
