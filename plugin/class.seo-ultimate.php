@@ -1230,7 +1230,7 @@ class SEO_Ultimate {
 		);
 		
 		$change_labels = array(
-			  'module'   => array(__('new module', 'seo-ultimate'), __('new modules', 'seo-ultimate'))
+			  'module'		=> array(__('new module', 'seo-ultimate'), __('new modules', 'seo-ultimate'))
 			, 'feature'     => array(__('new feature', 'seo-ultimate'), __('new features', 'seo-ultimate'))
 			, 'bugfix'      => array(__('bugfix', 'seo-ultimate'), __('bugfixes', 'seo-ultimate'))
 			, 'improvement' => array(__('improvement', 'seo-ultimate'), __('improvements', 'seo-ultimate'))
@@ -1239,7 +1239,7 @@ class SEO_Ultimate {
 			, 'updated-lang'=> array(__('language pack update', 'seo-ultimate'), __('language pack updates', 'seo-ultimate'))
 		);
 		
-		$changes = array();
+		$changes = array_fill_keys($change_types, 0);
 		
 		$versions = $this->download_changelog();
 		if (!is_array($versions) || !count($versions)) return '';
