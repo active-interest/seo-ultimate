@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.2.6\n"
+"Project-Id-Version: SEO Ultimate 7.2.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-07-03 18:47:01+00:00\n"
+"POT-Creation-Date: 2012-07-05 15:00:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -205,7 +205,7 @@ msgstr ""
 msgid "404 Monitor"
 msgstr ""
 
-#: modules/404s/fofs.php:19 modules/canonical/canonical.php:201
+#: modules/404s/fofs.php:19 modules/canonical/canonical.php:212
 #: modules/files/files.php:144 modules/link-nofollow/link-nofollow.php:130
 #: modules/linkbox/linkbox.php:91 modules/meta/meta-descriptions.php:180
 #: modules/meta/meta-keywords.php:172 modules/meta/meta-robots.php:53
@@ -563,24 +563,50 @@ msgstr ""
 msgid "Negative match"
 msgstr ""
 
-#: modules/canonical/canonical.php:12 modules/canonical/canonical.php:201
+#: modules/canonical/canonical.php:12 modules/canonical/canonical.php:212
 msgid "Canonicalizer"
 msgstr ""
 
-#: modules/canonical/canonical.php:39
-msgid ""
-"Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> meta tags."
-msgstr ""
-
-#: modules/canonical/canonical.php:40
-msgid "Send <code>rel=&quot;canonical&quot;</code> HTTP headers."
-msgstr ""
-
 #: modules/canonical/canonical.php:41
-msgid "Redirect requests for nonexistent pagination."
+msgid ""
+"Generate <code>&lt;link rel=&quot;canonical&quot; /&gt;</code> meta tags"
 msgstr ""
 
-#: modules/canonical/canonical.php:202
+#: modules/canonical/canonical.php:42
+msgid "Send <code>rel=&quot;canonical&quot;</code> HTTP headers"
+msgstr ""
+
+#: modules/canonical/canonical.php:43
+msgid "Canonical URL Generation"
+msgstr ""
+
+#: modules/canonical/canonical.php:45
+msgid ""
+"Use <code>http://</code> or <code>https://</code> depending on how the "
+"visitor accessed the page"
+msgstr ""
+
+#: modules/canonical/canonical.php:46
+msgid "Make all canonical URLs begin with <code>http://</code>"
+msgstr ""
+
+#: modules/canonical/canonical.php:47
+msgid "Make all canonical URLs begin with <code>https://</code>"
+msgstr ""
+
+#: modules/canonical/canonical.php:48
+msgid "Canonical URL Scheme"
+msgstr ""
+
+#: modules/canonical/canonical.php:50
+msgid "Redirect requests for nonexistent pagination"
+msgstr ""
+
+#: modules/canonical/canonical.php:51
+msgid "Automated 301 Redirects"
+msgstr ""
+
+#: modules/canonical/canonical.php:213
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2107,7 +2133,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.6)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.7)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2427,7 +2453,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.6)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:851
 msgid "SEO Ultimate"
