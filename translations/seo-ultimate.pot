@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.2.7\n"
+"Project-Id-Version: SEO Ultimate 7.2.8\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-07-05 15:00:49+00:00\n"
+"POT-Creation-Date: 2012-07-07 17:06:04+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:113 modules/class.su-module.php:1214
+#: modules/404s/fofs-log.php:113 modules/class.su-module.php:1231
 msgid "Actions"
 msgstr ""
 
@@ -342,16 +342,6 @@ msgstr ""
 
 #: modules/autolinks/autolinks.php:11
 msgid "Deeplink Juggernaut"
-msgstr ""
-
-#: modules/autolinks/autolinks.php:18
-msgid ""
-"Deeplink Juggernaut requires PHP 5.2 or above in SEO Ultimate 6.0 and later. "
-"(Note that WordPress itself requires PHP 5.2 as well, starting with "
-"WordPress 3.2.) If you aren&#8217;t sure how to upgrade PHP, please ask your "
-"webhost. In the meantime, you can return to an older version of Deeplink "
-"Juggernaut that supports your version of PHP by <a href=\"%s\">downgrading</"
-"a> to SEO Ultimate 5.9."
 msgstr ""
 
 #: modules/autolinks/content-autolinks-settings.php:16
@@ -751,108 +741,108 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/class.su-module.php:679
+#: modules/class.su-module.php:696
 msgid ""
 "All the modules on this page have been disabled. You can re-enable them "
 "using the <a href=\"%s\">Module Manager</a>."
 msgstr ""
 
-#: modules/class.su-module.php:1028
+#: modules/class.su-module.php:1045
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1107
+#: modules/class.su-module.php:1124
 msgid "Your site currently doesn&#8217;t have any public items of this type."
 msgstr ""
 
-#: modules/class.su-module.php:1193
+#: modules/class.su-module.php:1210
 msgid "&laquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1194
+#: modules/class.su-module.php:1211
 msgid "&raquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1201
+#: modules/class.su-module.php:1218
 msgid "Displaying %s&#8211;%s of %s"
 msgstr ""
 
-#: modules/class.su-module.php:1215
+#: modules/class.su-module.php:1232
 msgid "ID"
 msgstr ""
 
-#: modules/class.su-module.php:1249
+#: modules/class.su-module.php:1266
 msgid "View"
 msgstr ""
 
-#: modules/class.su-module.php:1251
+#: modules/class.su-module.php:1268
 msgid "Edit"
 msgstr ""
 
-#: modules/class.su-module.php:1421
+#: modules/class.su-module.php:1438
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1442
+#: modules/class.su-module.php:1459
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1990
+#: modules/class.su-module.php:2007
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:2011 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:2028 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
-#: modules/class.su-module.php:2733 modules/class.su-module.php:2745
+#: modules/class.su-module.php:2750 modules/class.su-module.php:2762
 msgid "A Deleted %s"
 msgstr ""
 
-#: modules/class.su-module.php:2735
+#: modules/class.su-module.php:2752
 msgid "A Deleted Post"
 msgstr ""
 
-#: modules/class.su-module.php:2750
+#: modules/class.su-module.php:2767
 msgid "A Deleted Term"
 msgstr ""
 
-#: modules/class.su-module.php:2756 modules/meta/meta-descriptions.php:31
-#: modules/meta/meta-keywords.php:40 plugin/class.seo-ultimate.php:1735
+#: modules/class.su-module.php:2773 modules/meta/meta-descriptions.php:31
+#: modules/meta/meta-keywords.php:40 plugin/class.seo-ultimate.php:1740
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2761 plugin/class.seo-ultimate.php:1813
+#: modules/class.su-module.php:2778 plugin/class.seo-ultimate.php:1818
 msgid "Author"
 msgstr ""
 
-#: modules/class.su-module.php:2763
+#: modules/class.su-module.php:2780
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2778 plugin/class.seo-ultimate.php:1843
+#: modules/class.su-module.php:2795 plugin/class.seo-ultimate.php:1848
 msgid "Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2780
+#: modules/class.su-module.php:2797
 msgid "Link Mask (Disabled)"
 msgstr ""
 
-#: modules/class.su-module.php:2785
+#: modules/class.su-module.php:2802
 msgid "A Deleted Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2815
+#: modules/class.su-module.php:2832
 msgid "Type a URL or start typing the name of an item on your site"
 msgstr ""
 
-#: modules/class.su-module.php:2828
+#: modules/class.su-module.php:2845
 msgid "Remove this location from this textbox"
 msgstr ""
 
-#: modules/class.su-module.php:2828
+#: modules/class.su-module.php:2845
 msgid "X"
 msgstr ""
 
@@ -930,7 +920,7 @@ msgid ""
 msgstr ""
 
 #: modules/files/files.php:155 modules/meta/meta-descriptions.php:203
-#: modules/meta/meta-keywords.php:189 modules/modules/modules.php:174
+#: modules/meta/meta-keywords.php:189 modules/modules/modules.php:183
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
 #: modules/settings/settings.php:82 modules/slugs/slugs.php:87
 #: modules/titles/titles.php:448
@@ -1661,7 +1651,7 @@ msgstr ""
 msgid "Modules"
 msgstr ""
 
-#: modules/modules/modules.php:41
+#: modules/modules/modules.php:50
 msgid ""
 "SEO Ultimate&#8217;s features are located in groups called &#8220;modules."
 "&#8221; By default, most of these modules are listed in the &#8220;"
@@ -1670,45 +1660,45 @@ msgid ""
 "corner of your administration screen."
 msgstr ""
 
-#: modules/modules/modules.php:43
+#: modules/modules/modules.php:52
 msgid ""
 "The Module Manager lets you  disable or hide modules you don&#8217;t use. "
 "You can also silence modules from displaying bubble alerts on the menu."
 msgstr ""
 
-#: modules/modules/modules.php:47
+#: modules/modules/modules.php:56
 msgid "Modules updated."
 msgstr ""
 
-#: modules/modules/modules.php:52
+#: modules/modules/modules.php:61
 msgid "Status"
 msgstr ""
 
-#: modules/modules/modules.php:53
+#: modules/modules/modules.php:62
 msgid "Module"
 msgstr ""
 
-#: modules/modules/modules.php:66
+#: modules/modules/modules.php:75
 msgid "Enabled"
 msgstr ""
 
-#: modules/modules/modules.php:67
+#: modules/modules/modules.php:76
 msgid "Silenced"
 msgstr ""
 
-#: modules/modules/modules.php:68
+#: modules/modules/modules.php:77
 msgid "Hidden"
 msgstr ""
 
-#: modules/modules/modules.php:69
+#: modules/modules/modules.php:78
 msgid "Disabled"
 msgstr ""
 
-#: modules/modules/modules.php:161
+#: modules/modules/modules.php:170
 msgid "Options Help"
 msgstr ""
 
-#: modules/modules/modules.php:162
+#: modules/modules/modules.php:171
 msgid ""
 "\r\n"
 "<p>The Module Manager lets you customize the visibility and accessibility of "
@@ -1728,7 +1718,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/modules/modules.php:175
+#: modules/modules/modules.php:184
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1913,37 +1903,37 @@ msgstr ""
 msgid "Permalink Tweaker"
 msgstr ""
 
-#: modules/permalinks/permalinks.php:50
+#: modules/permalinks/permalinks.php:73
 msgid ""
 "To use the Permalinks Tweaker, you must disable default (query-string) "
 "permalinks in your <a href=\"options-permalink.php\">Permalink Settings</a>."
 msgstr ""
 
-#: modules/permalinks/permalinks.php:75
+#: modules/permalinks/permalinks.php:98
 msgid "Remove the URL bases of..."
 msgstr ""
 
-#: modules/permalinks/permalinks.php:80
+#: modules/permalinks/permalinks.php:103
 msgid "Before"
 msgstr ""
 
-#: modules/permalinks/permalinks.php:82
+#: modules/permalinks/permalinks.php:105
 msgid "After"
 msgstr ""
 
-#: modules/permalinks/permalinks.php:102
+#: modules/permalinks/permalinks.php:125
 msgid "term archive"
 msgstr ""
 
-#: modules/permalinks/permalinks.php:103
+#: modules/permalinks/permalinks.php:126
 msgid "page"
 msgstr ""
 
-#: modules/permalinks/permalinks.php:104
+#: modules/permalinks/permalinks.php:127
 msgid "URL Conflict Resolution"
 msgstr ""
 
-#: modules/permalinks/permalinks.php:104
+#: modules/permalinks/permalinks.php:127
 msgid ""
 "If a term archive and a Page with the same slug end up having the same URL "
 "because of the term&#8217;s base being removed, the URL should be given to "
@@ -2133,7 +2123,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.7)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.8)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2453,9 +2443,9 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.7)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.8)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:851
+#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:856
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -2510,7 +2500,7 @@ msgid "Uninstaller"
 msgstr ""
 
 #: modules/settings/uninstall.php:18 modules/settings/uninstall.php:22
-#: plugin/class.seo-ultimate.php:1334
+#: plugin/class.seo-ultimate.php:1339
 msgid "Uninstall"
 msgstr ""
 
@@ -3253,107 +3243,107 @@ msgstr ""
 msgid "Go to setting &raquo;"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:851
+#: plugin/class.seo-ultimate.php:856
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1036
+#: plugin/class.seo-ultimate.php:1041
 msgid ""
 "It looks like you made changes to the settings of this SEO Ultimate module. "
 "If you leave before saving, those changes will be lost."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1130
+#: plugin/class.seo-ultimate.php:1135
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1132
+#: plugin/class.seo-ultimate.php:1137
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1134
+#: plugin/class.seo-ultimate.php:1139
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1189
+#: plugin/class.seo-ultimate.php:1194
 msgid ""
 "SEO Ultimate includes the functionality of %1$s. You may want to deactivate "
 "%1$s to avoid plugin conflicts."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1233
+#: plugin/class.seo-ultimate.php:1238
 msgid "new module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1233
+#: plugin/class.seo-ultimate.php:1238
 msgid "new modules"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1234
+#: plugin/class.seo-ultimate.php:1239
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1234
+#: plugin/class.seo-ultimate.php:1239
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1235
+#: plugin/class.seo-ultimate.php:1240
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1235
+#: plugin/class.seo-ultimate.php:1240
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1236
+#: plugin/class.seo-ultimate.php:1241
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1236
+#: plugin/class.seo-ultimate.php:1241
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1237
+#: plugin/class.seo-ultimate.php:1242
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1237
+#: plugin/class.seo-ultimate.php:1242
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1238
+#: plugin/class.seo-ultimate.php:1243
 msgid "new language pack"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1238
+#: plugin/class.seo-ultimate.php:1243
 msgid "new language packs"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1239
+#: plugin/class.seo-ultimate.php:1244
 msgid "language pack update"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1239
+#: plugin/class.seo-ultimate.php:1244
 msgid "language pack updates"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1270
+#: plugin/class.seo-ultimate.php:1275
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1276
+#: plugin/class.seo-ultimate.php:1281
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1278
+#: plugin/class.seo-ultimate.php:1283
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1355
+#: plugin/class.seo-ultimate.php:1360
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1422
+#: plugin/class.seo-ultimate.php:1427
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -3361,19 +3351,19 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1544
+#: plugin/class.seo-ultimate.php:1549
 msgid "SEO Settings"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1734
+#: plugin/class.seo-ultimate.php:1739
 msgid "Home"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1807
+#: plugin/class.seo-ultimate.php:1812
 msgid "Author Archives"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1836
+#: plugin/class.seo-ultimate.php:1841
 msgid "Link Masks"
 msgstr ""
 
