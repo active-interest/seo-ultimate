@@ -20,12 +20,21 @@ class SU_Modules extends SU_Module {
 			
 			$psdata = (array)get_option('seo_ultimate', array());
 			
-			foreach ($_POST as $key => $value) {
+			foreach ($_POST as $key => $newvalue) {
 				if (substr($key, 0, 3) == 'su-') {
 					$key = str_replace(array('su-', '-module-status'), '', $key);
-					$value = intval($value);
 					
-					$psdata['modules'][$key] = $value;
+					$newvalue = intval($newvalue);
+					$oldvalue = $psdata['modules'][$key];
+					
+					if ($oldvalue != $newvalue) {
+						if ($oldvalue == SU_MODULE_DISABLED)
+							$this->plugin->call_module_func($key, 'activate');
+						if ($newvalue == SU_MODULE_DISABLED)
+							$this->plugin->call_module_func($key, 'deactivate');
+					}
+					
+					$psdata['modules'][$key] = $newvalue;
 				}
 			}
 			

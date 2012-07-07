@@ -112,7 +112,7 @@ class SU_MetaKeywords extends SU_Module {
 				}
 				
 				if ($this->get_setting("auto_keywords_posttype_{$posttypename}_words", false)) {
-					$words = preg_split("/[\W+]/", strip_tags($post->post_content), null, PREG_SPLIT_NO_EMPTY);
+					$words = preg_split("/[\s+]/", strip_tags($post->post_content), null, PREG_SPLIT_NO_EMPTY);
 					$words = array_count_values($words);
 					arsort($words);
 					$words = array_filter($words, array(&$this, 'filter_word_counts'));

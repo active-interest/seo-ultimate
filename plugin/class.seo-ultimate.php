@@ -353,13 +353,13 @@ class SEO_Ultimate {
 	
 	/**
 	 * WordPress will call this when the plugin is activated, as instructed by the register_activation_hook() call in {@link __construct()}.
-	 * Does activation tasks for the plugin itself, not modules.
 	 * 
 	 * @since 0.1
 	 */
-	function activate() {
-	
-		//Nothing here yet
+	function activate() {		
+		foreach ($this->modules as $key => $module) {
+			$this->modules[$key]->activate();
+		}
 	}
 	
 	/**
@@ -368,9 +368,11 @@ class SEO_Ultimate {
 	 * @since 0.1
 	 */
 	function deactivate() {
-	
+		
 		//Let modules run deactivation tasks
-		do_action('su_deactivate');
+		foreach ($this->modules as $key => $module) {
+			$this->modules[$key]->deactivate();
+		}
 		
 		//Unschedule all cron jobs		
 		$this->remove_cron_jobs(true);
@@ -501,6 +503,9 @@ class SEO_Ultimate {
 								$module_disabled = (isset($oldmodules[$module_parent]) && $oldmodules[$module_parent] == SU_MODULE_DISABLED);
 							else
 								$module_disabled = (isset($oldmodules[$module]) && $oldmodules[$module] == SU_MODULE_DISABLED);
+							
+							if (!isset($oldmodules[$module]) && call_user_func(array($class, 'get_default_status')) == SU_MODULE_DISABLED)
+								$module_disabled = true;
 							
 							if (in_array($module, $this->get_invincible_modules())) {
 								$module_disabled = false;
@@ -1448,7 +1453,7 @@ class SEO_Ultimate {
 	 * @param mixed $result Passed by reference. Set to the result of the function.
 	 * @return boolean Whether or not the function existed.
 	 */
-	function call_module_func($key, $function, &$result) {
+	function call_module_func($key, $function, &$result = null) {
 		
 		//Wipe passed-by-reference variable clean
 		$result = null;

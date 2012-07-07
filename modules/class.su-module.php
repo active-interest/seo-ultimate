@@ -326,12 +326,29 @@ class SU_Module {
 	function init() {}
 	
 	/**
-	 * Called upon module activation,
-	 * i.e. when a module is uploaded or when the plugin is activated for the first time.
+	 * Called under 3 circumstances:
+	 * 1. When the SEO Ultimate plugin is activated
+	 * 2. When a module is newly registered in the database, which can happen for two reasons:
+	 * 		a. The plugin is activated for the first time
+	 * 		b. The module has been newly added via a plugin upgrade
+	 * 3. When the module is re-enabled in the Module Manager after being disabled.
+	 * 
+	 * Note that this function will be called twice when the plugin is activated for the first time, since this will make #1 and #2 both true.
+	 * 
+	 * WARNING: Do not use "$this" in the activate() function. It will not work under condition #3. Check for isset($this) and if false, use self:: instead.
 	 * 
 	 * @since 0.1
 	 */
 	function activate() { }
+	
+	/**
+	 * Called under 2 circumstances:
+	 * 1. When the SEO Ultimate plugin is deactivated or uninstalled.
+	 * 2. When the module is disabled in the Module Manager.
+	 * 
+	 * @since 7.2.8
+	 */
+	function deactivate() { }
 	
 	/**
 	 * Called when SEO Ultimate has just been upgraded to a new version.
