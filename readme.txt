@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.2.8
+Stable tag: 7.2.9
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -262,6 +262,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.2.9 (July 9, 2012) =
+* Bugfix: Code Inserter no longer calls the `wp_get_current_user` function prematurely during first-time plugin activation (bug introduced in 7.2.6)
 
 = Version 7.2.8 (July 7, 2012) =
 * Bugfix: Permalink Tweaker now removes its changes to WordPress's rewrite rules when SEO Ultimate is deactivated/uninstalled or when Permalink Tweaker is disabled from the Module Manager

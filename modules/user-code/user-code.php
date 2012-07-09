@@ -27,10 +27,10 @@ class SU_UserCode extends SU_Module {
 	}
 	
 	function get_default_status() {
-		if ($this->user_authorized())
-			return SU_MODULE_ENABLED;
+		if (is_multisite())
+			return SU_MODULE_DISABLED;
 		
-		return SU_MODULE_DISABLED;
+		return SU_MODULE_ENABLED;
 	}
 	
 	function user_authorized() {
