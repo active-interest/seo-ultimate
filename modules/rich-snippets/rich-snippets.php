@@ -224,12 +224,12 @@ class SU_RichSnippets extends SU_Module {
 	}
 	
 	function postmeta_fields($fields) {
-		$fields['40|rich_snippet_type'] = $this->get_postmeta_dropdown('rich_snippet_type', array(
+		$fields['serp'][40]['rich_snippet_type'] = $this->get_postmeta_dropdown('rich_snippet_type', array(
 			  'none' => __('None', 'seo-ultimate')
 			, 'review' => __('Review', 'seo-ultimate')
 		), __('Rich Snippet Type:', 'seo-ultimate'));
 		
-		$fields['45|rich_snippet_review_item|rich_snippet_review_rating'] = $this->get_postmeta_subsection('rich_snippet_type', 'review',
+		$fields['serp'][45]['rich_snippet_review_item|rich_snippet_review_rating'] = $this->get_postmeta_subsection('rich_snippet_type', 'review',
 			
 			  $this->get_postmeta_textbox('rich_snippet_review_item', __('Name of Reviewed Item:', 'seo-ultimate'))
 			

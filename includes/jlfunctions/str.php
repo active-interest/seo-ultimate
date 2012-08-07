@@ -250,6 +250,13 @@ class sustr {
 		$regex = str_replace(array('@^.*', '.*$@i'), array('@', '@i'), $regex);
 		return $regex;
 	}
+	
+	function tolower($str) {
+		if (function_exists('mb_strtolower'))
+			return mb_strtolower($str);
+		
+		return strtolower($str);
+	}
 }
 
 ?>

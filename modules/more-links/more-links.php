@@ -48,7 +48,7 @@ class SU_MoreLinks extends SU_Module {
 	function postmeta_fields($fields, $screen) {
 		
 		if (strcmp($screen, 'post') == 0)
-			$fields['40|morelinktext'] = $this->get_postmeta_textbox('morelinktext', __('More Link Text:', 'seo-ultimate'));
+			$fields['links'][20]['morelinktext'] = $this->get_postmeta_textbox('morelinktext', __('Anchor Text of &#8220;More&#8221; Link:', 'seo-ultimate'));
 		
 		return $fields;
 	}

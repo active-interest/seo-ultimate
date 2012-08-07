@@ -52,19 +52,19 @@ class SU_LinkNofollow extends SU_Module {
 		$this->admin_form_start();
 		$this->admin_form_subheader(__('Add the nofollow attribute to...', 'seo-ultimate'));
 		$this->checkboxes(array(
-				  'nofollow_adjacent_post' => __("Adjacent post links", 'seo-ultimate')
-				, 'nofollow_category_loop' => __("Category links (after posts)", 'seo-ultimate')
-				, 'nofollow_category_list' => __("Category links (in lists)", 'seo-ultimate')
-				, 'nofollow_comment_popup' => __("Comment anchor links", 'seo-ultimate')
-				, 'nofollow_comment_feed' => __("Comment feed links", 'seo-ultimate')
-				, 'nofollow_date_archive' => __("Date-based archive links", 'seo-ultimate')
-				, 'nofollow_paged' => __("Pagination navigation links (all)", 'seo-ultimate')
-				, 'nofollow_paged_home' => __("Pagination navigation links (on blog home only)", 'seo-ultimate')
-				, 'nofollow_post_more' => __("&#8220;Read more&#8221; links", 'seo-ultimate')
-				, 'nofollow_register' => __("Registration link", 'seo-ultimate')
-				, 'nofollow_login' => __("Login link", 'seo-ultimate')
-				, 'nofollow_tag_loop' => __("Tag links (after posts)", 'seo-ultimate')
-				, 'nofollow_tag_list' => __("Tag links (in lists and clouds)", 'seo-ultimate')
+				  'nofollow_adjacent_post' => __('Adjacent post links (next post / previous post)', 'seo-ultimate')
+				, 'nofollow_category_loop' => __('Category links (after posts)', 'seo-ultimate')
+				, 'nofollow_category_list' => __('Category links (in lists)', 'seo-ultimate')
+				, 'nofollow_comment_popup' => __('Comment anchor links', 'seo-ultimate')
+				, 'nofollow_comment_feed' => __('Comment feed links', 'seo-ultimate')
+				, 'nofollow_date_archive' => __('Date-based archive links', 'seo-ultimate')
+				, 'nofollow_paged' => __('Pagination navigation links (all)', 'seo-ultimate')
+				, 'nofollow_paged_home' => __('Pagination navigation links (on blog home only)', 'seo-ultimate')
+				, 'nofollow_post_more' => __('&#8220;Read more&#8221; links', 'seo-ultimate')
+				, 'nofollow_register' => __('Registration link', 'seo-ultimate')
+				, 'nofollow_login' => __('Login link', 'seo-ultimate')
+				, 'nofollow_tag_loop' => __('Tag links (after posts)', 'seo-ultimate')
+				, 'nofollow_tag_list' => __('Tag links (in lists and clouds)', 'seo-ultimate')
 			));
 		
 		$this->admin_form_end();

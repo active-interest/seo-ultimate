@@ -36,7 +36,8 @@ class SU_MetaKeywords extends SU_Module {
 	function get_admin_page_tabs() {
 		return array_merge(
 			  array(
-				  array('title' => __('Default Values', 'seo-ultimate'), 'id' => 'su-default-values', 'callback' => 'defaults_tab')
+				  array('title' => __('Sitewide Values', 'seo-ultimate'), 'id' => 'su-sitewide-values', 'callback' => 'global_tab')
+				, array('title' => __('Default Values', 'seo-ultimate'), 'id' => 'su-default-values', 'callback' => 'defaults_tab')
 				, array('title' => __('Blog Homepage', 'seo-ultimate'), 'id' => 'su-blog-homepage', 'callback' => 'home_tab')
 				)
 			, $this->get_meta_edit_tabs(array(
@@ -46,6 +47,12 @@ class SU_MetaKeywords extends SU_Module {
 				, 'label' => __('Meta Keywords', 'seo-ultimate')
 			))
 		);
+	}
+	
+	function global_tab() {
+		$this->admin_form_table_start();
+		$this->textarea('global_keywords', __('Sitewide Keywords', 'seo-ultimate') . '<br /><small><em>' . __('(Separate with commas)', 'seo-ultimate') . '</em></small>');
+		$this->admin_form_table_end();
 	}
 	
 	function defaults_tab() {
@@ -71,8 +78,6 @@ class SU_MetaKeywords extends SU_Module {
 			if ($checkboxes)
 				$this->checkboxes($checkboxes, $posttypelabel);
 		}
-		
-		$this->textarea('global_keywords', __('Sitewide Keywords', 'seo-ultimate') . '<br /><small><em>' . __('(Separate with commas)', 'seo-ultimate') . '</em></small>');
 		
 		$this->admin_form_table_end();
 	}
@@ -118,6 +123,8 @@ class SU_MetaKeywords extends SU_Module {
 					$words = array_filter($words, array(&$this, 'filter_word_counts'));
 					$words = array_keys($words);
 					$stopwords = suarr::explode_lines($this->get_setting('words_to_remove', array(), 'slugs'));
+					$stopwords = array_map(array('sustr', 'tolower'), $stopwords);
+					$words     = array_map(array('sustr', 'tolower'), $words);
 					$words = array_diff($words, $stopwords);
 					$words = array_slice($words, 0, $this->get_setting("auto_keywords_posttype_{$posttypename}_words_value"));
 					$words = implode(',', $words);

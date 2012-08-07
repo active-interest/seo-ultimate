@@ -636,6 +636,11 @@ class SEO_Ultimate {
 				$this->modules[$key]->upgrade();
 			$this->modules[$key]->init();
 		}
+		
+		global $pagenow;
+		if ('post.php' == $pagenow) {
+			add_action('admin_enqueue_scripts', array(&$this, 'postmeta_box_tabs_init'));
+		}
 	}
 	
 	/**
@@ -1154,19 +1159,12 @@ class SEO_Ultimate {
 	 */
 	function plugin_page_notices() {
 		
-		if (isset($this->modules['settings']) && !$this->modules['settings']->get_setting('plugin_notices'))
-			return;
-		
 		global $pagenow;
 		
 		if ($pagenow == 'plugins.php') {
 		
 			$r_plugins = array(
-				  'all-in-one-seo-pack/all_in_one_seo_pack.php' //Title Tag Rewriter, Meta Editor, Noindex Manager
-				, 'another-wordpress-meta-plugin/another_wordpress_meta_plugin.php' //Meta Editor
-				, 'canonical/canonical.php' //Canonicalizer
-				, 'noindex-login/noindex-login.php' //Noindex Manager
-				, 'search-engine-verify/search-engine-verify.php' //Meta Editor
+				  'wordpress-seo/wp-seo.php'
 			);
 			
 			$i_plugins = get_plugins();
@@ -1179,19 +1177,14 @@ class SEO_Ultimate {
 	}
 	
 	/**
-	 * Outputs a table row notifying the user that he/she is using a plugin whose functionality SEO Ultimate replaces.
+	 * Outputs a table row notifying the user that he/she is using a plugin which may conflict with SEO Ultimate.
 	 * 
 	 * @since 0.1
 	 */
 	function plugin_page_notice($file, $data, $context) {
 		if (is_plugin_active($file)) {
-			
-			//3 columns if 2.8+ but 5 columns if 2.7.x or prior
-			global $wp_version;
-			$columns = version_compare($wp_version, '2.8', '>=') ? 3 : 5;
-			
-			echo "<tr class='plugin-update-tr su-plugin-notice'><td colspan='$columns' class='plugin-update'><div class='update-message'>\n";
-			printf(__('SEO Ultimate includes the functionality of %1$s. You may want to deactivate %1$s to avoid plugin conflicts.', 'seo-ultimate'), $data['Name']);
+			echo "<tr class='plugin-update-tr su-plugin-notice'><td colspan='3' class='plugin-update colspanchange'><div class='update-message'>\n";
+			printf(__('%1$s is known to cause conflicts with SEO Ultimate. Please deactivate %1$s if you wish to continue using SEO Ultimate.', 'seo-ultimate'), $data['Name']);
 			echo "</div></td></tr>\n";
 		}
 	}
@@ -1491,29 +1484,15 @@ class SEO_Ultimate {
 	/********** ADMIN POST META BOX FUNCTIONS **********/
 	
 	/**
-	 * Gets the post meta box fields from the modules, sorts them, and returns the HTML as a string.
-	 * 
-	 * @since 0.1
-	 * @uses $modules
-	 * @uses get_postmeta_array();
-	 * 
-	 * @param string $screen The admin screen currently being viewed (post, page). Defaults to post. Optional.
-	 * @return string Concatenated <tr>(field)</tr> strings.
+	 * @since 7.3
 	 */
-	function get_postmeta_fields($screen='post') {
-		
-		$fields = $this->get_postmeta_array($screen);
-		
-		if (count($fields) > 0) {
-		
-			//Sort the fields array
-			ksort($fields, SORT_STRING);
-			
-			//Return a string
-			return implode("\n", $fields);
-		}
-		
-		return '';
+	function get_postmeta_tabs() {
+		return array(
+			  'serp' => __('Search Engine Listing', 'seo-ultimate')
+			, 'opengraph' => __('Facebook Data', 'seo-ultimate')
+			, 'links' => __('Links', 'seo-ultimate')
+			, 'misc' => __('Miscellaneous', 'seo-ultimate')
+		);
 	}
 	
 	/**
@@ -1523,12 +1502,41 @@ class SEO_Ultimate {
 	 * @uses SU_Module::postmeta_fields()
 	 * 
 	 * @param string $screen The admin screen currently being viewed (post, page). Defaults to post. Optional.
-	 * @return array An array of post meta HTML.
+	 * @return array An array structured like this: $data[tab ID][position #][field name] = HTML
 	 */
 	function get_postmeta_array($screen='post') {
-		$fields = array();
-		foreach ($this->modules as $key => $module)
-			$fields = $this->modules[$key]->postmeta_fields($fields, $screen);
+		
+		static $fields = array();
+		if ($fields)
+			return $fields;
+		
+		$tabs = $this->get_postmeta_tabs();
+		
+		$module_fields = array();
+		
+		foreach ($this->modules as $key => $module) {
+			$module_fields = $this->modules[$key]->postmeta_fields(array(), $screen);
+			
+			foreach ($module_fields as $tab => $tab_fields) {
+				if (isset($tabs[$tab])) {
+					if (!isset($fields[$tab])) $fields[$tab] = array();
+					$fields[$tab] += $tab_fields;
+				} else { //Backcompat
+					if (strpos($tab, '|') === false) {
+						if (!isset($fields['misc'][$tab])) $fields['misc'][$tab] = array();
+						$fields['misc'][$tab] += $tab_fields;
+					} else {
+						list($pos, $key) = explode('|', $tab);
+						$fields['misc'][$pos][$key] = $tab_fields;
+					}
+				}
+			}
+		}
+		
+		foreach ($fields as $tab => $tab_poses) {
+			ksort($fields[$tab]);
+		}
+		
 		return $fields;
 	}
 	
@@ -1536,7 +1544,7 @@ class SEO_Ultimate {
 	 * If we have post meta fields to display, then register our meta box with WordPress.
 	 * 
 	 * @since 0.1
-	 * @uses get_postmeta_fields()
+	 * @uses get_postmeta_array()
 	 */
 	function add_postmeta_box() {
 		
@@ -1545,7 +1553,7 @@ class SEO_Ultimate {
 		foreach ($posttypes as $screen) {
 			
 			//Only show the meta box if there are fields to show.
-			if ($this->get_postmeta_fields($screen))
+			if ($this->get_postmeta_array($screen))
 				add_meta_box('su_postmeta', __('SEO Settings', 'seo-ultimate'), create_function('', 'global $seo_ultimate; $seo_ultimate->show_postmeta_box("'.$screen.'");'), $screen, 'normal', 'high');
 		}
 	}
@@ -1554,22 +1562,53 @@ class SEO_Ultimate {
 	 * Displays the inner contents of the post meta box.
 	 * 
 	 * @since 0.1
-	 * @uses get_postmeta_fields()
+	 * @uses get_postmeta_array()
 	 * 
 	 * @param string $screen The admin screen currently being viewed (post, page).
 	 */
 	function show_postmeta_box($screen) {
-	
+		
 		//Begin box
 		echo "<div id='su-postmeta-box'>\n";
 		wp_nonce_field('su-update-postmeta', '_su_wpnonce');
-		echo "\n<table>\n";
 		
-		//Output postmeta fields
-		echo $this->get_postmeta_fields($screen);
+		//Output postmeta tabs
+		$data = $this->get_postmeta_array();
+		$_tabs = $this->get_postmeta_tabs();
+		$tabs = array();
+		foreach ($_tabs as $tab_id => $tab_title) {
+			if (isset($data[$tab_id]))
+				$tabs[] = array('title' => $tab_title, 'id' => $tab_id, 'callback' => array('postmeta_tab', $tab_id));
+		}
+		$this->tabs($tabs);
+		
+		//Meta box footer
+		echo '<p class="su-postmeta-box-footer">';
+		printf(__('%1$s %2$s by %3$s', 'seo-ultimate'),
+			'<a href="'.SU_PLUGIN_URI.'" target="_blank">'.__(SU_PLUGIN_NAME, 'seo-ultimate').'</a>',
+			SU_VERSION,
+			'<a href="'.SU_AUTHOR_URI.'" target="_blank">'.__(SU_AUTHOR, 'seo-ultimate').'</a>'
+		);
+		echo '</p>';
 		
 		//End box
-		echo "\n</table>\n</div>\n";
+		echo "</div>\n";
+	}
+	
+	/**
+	 * @since 7.3
+	 */
+	function postmeta_tab($tab) {
+		echo "\n<table>\n";
+		
+		$data = $this->get_postmeta_array($screen);
+		foreach ($data[$tab] as $tab_pos) {
+			foreach ($tab_pos as $pos_field) {
+				echo $pos_field;
+			}
+		}
+		
+		echo "\n</table>\n";
 	}
 	
 	/**
@@ -1588,42 +1627,38 @@ class SEO_Ultimate {
 		//Run preliminary permissions checks
 		if ( !isset($_REQUEST['_su_wpnonce']) || !wp_verify_nonce($_REQUEST['_su_wpnonce'], 'su-update-postmeta') ) return;
 		$post_type = isset($_POST['post_type']) ? $_POST['post_type'] : 'post';
-		if (function_exists('get_post_type_object')) { //If WP3.0+...
-			$post_type_object = get_post_type_object($post_type);
-			if (!current_user_can($post_type_object->cap->edit_posts)) return;
-		} else { //WP2.9 or below
-			if ( 'page' == $_POST['post_type'] ) {
-				if ( !current_user_can( 'edit_page', $post_id )) return;
-			} elseif ( 'post' == $_POST['post_type'] ) {
-				if ( !current_user_can( 'edit_post', $post_id )) return;
-			} else return;
-		}
+		$post_type_object = get_post_type_object($post_type);
+		if (!current_user_can($post_type_object->cap->edit_posts)) return;
 		
 		//Get an array of the postmeta fields
-		$keys = array_keys($this->get_postmeta_array($post_type));
-		$fields = array();
-		
-		foreach ($keys as $key) {
-			$newfields = explode('|', $key);
-			array_shift($newfields);
-			$fields = array_merge($fields, $newfields);
-		}
-		
-		//Update postmeta values
-		foreach ($fields as $field) {
-			
-			$metakey = "_su_$field";
-			
-			$value = isset($_POST[$metakey]) ? stripslashes_deep($_POST[$metakey]) : '';
-			if (!apply_filters("su_custom_update_postmeta-$field", false, $value, $metakey, $post)) {
-				if (empty($value))
-					//Delete the old value
-					delete_post_meta($post_id, $metakey);
-				else
-					//Add the new value
-					update_post_meta($post_id, $metakey, $value);
+		$data = $this->get_postmeta_array($post_type);
+		foreach ($data as $tab => $tab_poses) {
+			foreach ($tab_poses as $tab_pos) {
+				foreach ($tab_pos as $fields => $html) {
+					$fields = explode('|', $fields);
+					foreach ($fields as $field) {
+						$metakey = "_su_$field";
+						
+						$value = isset($_POST[$metakey]) ? stripslashes_deep($_POST[$metakey]) : '';
+						if (!apply_filters("su_custom_update_postmeta-$field", false, $value, $metakey, $post)) {
+							if (empty($value))
+								//Delete the old value
+								delete_post_meta($post_id, $metakey);
+							else
+								//Add the new value
+								update_post_meta($post_id, $metakey, $value);
+						}
+					}
+				}
 			}
 		}
+	}
+	
+	/**
+	 * @since 7.3
+	 */
+	function postmeta_box_tabs_init() {
+		wp_enqueue_script('jquery-ui-tabs');
 	}
 	
 	
@@ -1856,6 +1891,64 @@ class SEO_Ultimate {
 		
 		echo json_encode($items);
 		die();
+	}
+	
+	/********** TABS **********/
+	
+	function tabs($tabs=array(), $table=false, &$callback=null) {
+		
+		if ($callback == null)
+			$callback = $this;
+		
+		if ($c = count($tabs)) {
+			
+			if ($c > 1)
+				echo "\n\n<div id='su-tabset' class='su-tabs'>\n";
+			
+			foreach ($tabs as $tab) {
+				
+				if (isset($tab['title']))	$title	  = $tab['title'];	  else return;
+				if (isset($tab['id']))		$id		  = $tab['id'];		  else return;
+				if (isset($tab['callback']))$function = $tab['callback']; else return;
+				
+				if ($c > 1) {
+					//$id = 'su-' . sustr::preg_filter('a-z0-9', strtolower($title));
+					echo "<fieldset id='$id'>\n<h3>$title</h3>\n<div class='su-tab-contents'>\n";
+				}
+				
+				if ($table) echo "<table class='form-table'>\n";
+				
+				$call = $args = array();
+				
+				if (is_array($function)) {
+					
+					if (is_array($function[0])) {
+						$call = array_shift($function);
+						$args = $function;
+					} elseif (is_string($function[0])) {
+						$call = array_shift($function);
+						$call = array($callback, $call);
+						$args = $function;
+					} else {
+						$call = $function;
+					}
+				} else {
+					$call = array($callback, $function);
+				}
+				if (is_callable($call)) call_user_func_array($call, $args);
+				
+				if ($table) echo "</table>";
+				
+				if ($c > 1)
+					echo "</div>\n</fieldset>\n";
+			}
+			
+			if ($c > 1) {
+				echo "</div>\n";
+				
+				echo '<script type="text/javascript" src="'.$this->plugin_dir_url.'includes/tabs.js?v='.SU_VERSION.'"></script>';
+			}
+		}
 	}
 }
 ?>

@@ -953,63 +953,12 @@ class SU_Module {
 	 * Outputs a tab control and loads the current tab.
 	 * 
 	 * @since 0.7
-	 * @uses get_admin_url()
-	 * @uses SEO_Ultimate::plugin_dir_url
 	 * 
 	 * @param array $tabs Array (id => __, title => __, callback => __)
 	 * @param bool $table Whether or not the tab contents should be wrapped in a form table.
 	 */
-	function admin_page_tabs($tabs = array(), $table=false) {
-		
-		if ($c = count($tabs)) {
-			
-			if ($c > 1)
-				echo "\n\n<div id='su-tabset' class='su-tabs'>\n";
-			
-			foreach ($tabs as $tab) {
-				
-				if (isset($tab['title']))	$title	  = $tab['title'];	  else return;
-				if (isset($tab['id']))		$id		  = $tab['id'];		  else return;
-				if (isset($tab['callback']))$function = $tab['callback']; else return;
-				
-				if ($c > 1) {
-					//$id = 'su-' . sustr::preg_filter('a-z0-9', strtolower($title));
-					echo "<fieldset id='$id'>\n<h3>$title</h3>\n<div class='su-tab-contents'>\n";
-				}
-				
-				if ($table) echo "<table class='form-table'>\n";
-				
-				$call = $args = array();
-				
-				if (is_array($function)) {
-					
-					if (is_array($function[0])) {
-						$call = array_shift($function);
-						$args = $function;
-					} elseif (is_string($function[0])) {
-						$call = array_shift($function);
-						$call = array(&$this, $call);
-						$args = $function;
-					} else {
-						$call = $function;
-					}
-				} else {
-					$call = array(&$this, $function);
-				}
-				if (is_callable($call)) call_user_func_array($call, $args);
-				
-				if ($table) echo "</table>";
-				
-				if ($c > 1)
-					echo "</div>\n</fieldset>\n";
-			}
-			
-			if ($c > 1) {
-				echo "</div>\n";
-				
-				echo '<script type="text/javascript" src="'.$this->plugin->plugin_dir_url.'includes/tabs.js?v='.SU_VERSION.'"></script>';
-			}
-		}
+	function admin_page_tabs($tabs=array(), $table=false) {
+		$this->plugin->tabs($tabs, $table, $this);
 	}
 	
 	/**
@@ -1082,7 +1031,7 @@ class SU_Module {
 		//Turn the types array into a tabs array
 		$tabs = array();
 		foreach ($types as $type)
-			$tabs[] = array(
+			$tabs[$type->name] = array(
 				  'title' => $type->labels->name
 				, 'id' => 'su-' . $type->name
 				, 'callback' => array('meta_edit_tab', 'post', 'su-' . $type->name, $type->name, $type->labels->singular_name, $fields)
@@ -1176,6 +1125,7 @@ class SU_Module {
 				wp(array(
 					  'post_type' => $type
 					, 'posts_per_page' => $per_page
+					, 'post_status' => 'any'
 					, 'paged' => $pagenum
 					, 'order' => 'ASC'
 					, 'orderby' => 'title'
@@ -1250,6 +1200,18 @@ class SU_Module {
 					$name = $object->post_title;
 					$view_url = get_permalink($id);
 					$edit_url = get_edit_post_link($id);
+					
+					$status_obj = get_post_status_object($object->post_status);
+					switch ($object->post_status) {
+						case 'publish': $status = ''; break;
+						case 'inherit': $status = ''; break;
+						case 'auto-draft': continue; break;
+						default: $status = $status_obj->label; break;
+					}
+					
+					if ($status)
+						$name .= "<span class='su-meta-table-post-status'> &mdash; $status</span>";
+					
 					break;
 				case 'term':
 					$id = intval($object->term_id);
@@ -2000,6 +1962,7 @@ class SU_Module {
 			
 			$before = isset($textbox_args[$id]['before']) ? $textbox_args[$id]['before'] : '';
 			$after  = isset($textbox_args[$id]['after'])  ? $textbox_args[$id]['after']  : '';
+			$placeholder = isset($textbox_args[$id]['placeholder']) ? $textbox_args[$id]['placeholder']  : '';
 			
 			register_setting($this->get_module_key(), $id);
 			$value = su_esc_editable_html($this->get_setting($id));
@@ -2016,6 +1979,11 @@ class SU_Module {
 			echo $before;
 			
 			echo "<input name='$id' id='$id' type='text' value='$value' class='regular-text' ";
+			
+			if ($placeholder) {
+				$a_placeholder = su_esc_attr($placeholder);
+				echo "placeholder='$placeholder' ";
+			}
 			
 			if ($disabled)
 				echo "disabled='disabled' />";
@@ -2062,9 +2030,9 @@ class SU_Module {
 	 * @param string|false $default The default textbox value. Setting this will trigger a "Reset" link. Optional.
 	 * @return string The HTML that would render the textbox.
 	 */
-	function textbox($id, $title, $default=false, $grouptext=false, $args=array()) {
+	function textbox($id, $title, $default=false, $grouptext=false, $args=array(), $textbox_args=array()) {
 		if ($default === false) $default = array(); else $default = array($id => $default);
-		$this->textboxes(array($id => $title), $default, $grouptext, $args);
+		$this->textboxes(array($id => $title), $default, $grouptext, $args, array($id => $textbox_args));
 	}
 	
 	/**

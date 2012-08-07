@@ -461,10 +461,10 @@ class SU_ContentAutolinks extends SU_Module {
 	function postmeta_fields($fields) {
 		$id = suwp::get_post_id();
 		
-		$fields['35|autolinks'] = $this->get_postmeta_textarea('autolinks', __('Incoming Autolink Anchors:<br /><em>(one per line)</em>', 'seo-ultimate'));
+		$fields['links'][10]['autolinks'] = $this->get_postmeta_textarea('autolinks', __('Inbound Autolink Anchors:<br /><em>(one per line)</em>', 'seo-ultimate'));
 		
 		if ($id && $this->get_setting('autolink_posttype_' . get_post_type($id)))
-			$fields['38|disable_autolinks'] = $this->get_postmeta_checkbox('disable_autolinks', __('Don&#8217;t add autolinks to anchor texts found in this post.', 'seo-ultimate'), __('Autolink Exclusion:', 'seo-ultimate'));
+			$fields['links'][15]['disable_autolinks'] = $this->get_postmeta_checkbox('disable_autolinks', __('Don&#8217;t add autolinks to anchor texts found in this post.', 'seo-ultimate'), __('Autolink Exclusion:', 'seo-ultimate'));
 		
 		return $fields;
 	}

@@ -331,7 +331,17 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function postmeta_fields($fields) {
-		$fields['10|title'] = $this->get_postmeta_textbox('title', __('Title Tag:', 'seo-ultimate'));
+		$id = "_su_title";
+		$value = su_esc_attr($this->get_postmeta('title'));
+		
+		$fields['serp'][10]['title'] =
+			  "<tr class='su textbox' valign='top'>\n<th scope='row' class='su'><label for='$id'>".__('Title Tag:', 'seo-ultimate')."</label></th>\n"
+			. "<td class='su'><input name='$id' id='$id' type='text' value='$value' class='regular-text' tabindex='2'"
+			. " onkeyup=\"javascript:document.getElementById('su_title_charcount').innerHTML = document.getElementById('_su_title').value.length\" />"
+			. "<br />".sprintf(__('You&#8217;ve entered %s characters. Most search engines use up to 70.', 'seo-ultimate'), "<strong id='su_title_charcount'>".strlen($value)."</strong>")
+			. "</td>\n</tr>\n"
+		;
+		
 		return $fields;
 	}
 	
