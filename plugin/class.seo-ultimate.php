@@ -638,7 +638,7 @@ class SEO_Ultimate {
 		}
 		
 		global $pagenow;
-		if ('post.php' == $pagenow) {
+		if ('post.php' == $pagenow || 'post-new.php' == $pagenow) {
 			add_action('admin_enqueue_scripts', array(&$this, 'postmeta_box_tabs_init'));
 		}
 	}
@@ -663,7 +663,7 @@ class SEO_Ultimate {
 		global $pagenow;
 		
 		foreach ($this->modules as $key => $x_module) {
-			if ('post.php' == $pagenow)
+			if ('post.php' == $pagenow || 'post-new.php' == $pagenow)
 				$this->modules[$key]->editor_init();
 			elseif ($this->modules[$key]->is_module_admin_page())
 				$this->modules[$key]->admin_page_init();
