@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.3.5
+Stable tag: 7.4
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,11 +11,11 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = Recent Releases =
 
+* Version 7.4 adds the Author Highlighter module
 * Version 7.3 adds the Open Graph Integrator module
 * Version 7.2 updates Permalink Tweaker
 * Version 7.1 adds new Link Mask Generator features
 * Version 7.0 adds meta description pagination and WP 3.3 compatibility
-* Version 6.9 adds the Settings Monitor module
 
 = Features =
 
@@ -135,6 +135,12 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Fine-grained controls allow you to customize the Open Graph title, image, and content type for every single post, page, attachment, and custom post type object on your site
 	* Mass-editors let you specify Open Graph data for multiple posts and pages at a time
 
+* **Author Highlighter** -- NEW in Version 7.4
+	* Generates code so that when one of your site's posts appears in Google search results, the Google+ profile picture of the post's author will appear alongside it
+	* Includes support for both single-author and multi-author site setups
+	* Supports author highlighting for posts, pages, attachments, custom post types, the homepage, archive pages, and author pages
+	* Inserts a "Google+ Profile URL" field on the WordPress user profile editor, so that users can insert their Google+ URL and enable author highlighting on their posts
+
 * **Settings Manager** (located under Settings > SEO Ultimate)
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
 	* Use the export/import functionality to move SEO Ultimate settings between WordPress sites.
@@ -191,7 +197,8 @@ To install the plugin manually:
 
 * **What's the minimum version of WordPress required to run SEO Ultimate?**
 	* WordPress 3.3 is required for all of the features to work properly.
-	* WordPress 3.2 is required for SEO Ultimate to run without crashing. (SEO Ultimate will refuse to activate under an older version of WordPress.)
+	* WordPress 3.2 is required for SEO Ultimate to run without crashing.
+	* SEO Ultimate will refuse to activate on any version of WordPress that's older than 3.2.
 
 * **Will SEO Ultimate work on multisite setups?**
 	Yes. SEO Ultimate versions 7.2.6 and later are designed to work on networks running WordPress 3.3 or later.
@@ -267,6 +274,13 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.4 (August 7, 2012) =
+* New Module: Author Highlighter
+	* Generates code so that when one of your site's posts appears in Google search results, the Google+ profile picture of the post's author will appear alongside it
+	* Includes support for both single-author and multi-author site setups
+	* Supports author highlighting for posts, pages, attachments, custom post types, the homepage, archive pages, and author pages
+	* Inserts a "Google+ Profile URL" field on the WordPress user profile editor, so that users can insert their Google+ URL and enable author highlighting on their posts
 
 = Version 7.3.5 (August 7, 2012) =
 * Bugfix: Fixed PHP error that appeared when Open Graph Integrator was enabled but Meta Description Editor was disabled (bug introduced in 7.3)
