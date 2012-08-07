@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.3\n"
+"Project-Id-Version: SEO Ultimate 7.3.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-08-07 03:38:54+00:00\n"
+"POT-Creation-Date: 2012-08-07 04:20:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -810,7 +810,7 @@ msgid "A Deleted Term"
 msgstr ""
 
 #: modules/class.su-module.php:2741 modules/meta/meta-descriptions.php:31
-#: modules/meta/meta-keywords.php:41 modules/opengraph/opengraph.php:230
+#: modules/meta/meta-keywords.php:41 modules/opengraph/opengraph.php:228
 #: plugin/class.seo-ultimate.php:1775
 msgid "Blog Homepage"
 msgstr ""
@@ -1378,12 +1378,12 @@ msgid "Meta Keywords"
 msgstr ""
 
 #: modules/meta/meta-keywords.php:39 modules/meta/meta-robots.php:22
-#: modules/opengraph/opengraph.php:228
+#: modules/opengraph/opengraph.php:226
 msgid "Sitewide Values"
 msgstr ""
 
 #: modules/meta/meta-keywords.php:40 modules/noindex/noindex.php:50
-#: modules/opengraph/opengraph.php:229
+#: modules/opengraph/opengraph.php:227
 msgid "Default Values"
 msgstr ""
 
@@ -1821,7 +1821,7 @@ msgid "Noindex"
 msgstr ""
 
 #: modules/noindex/noindex.php:69 modules/noindex/noindex.php:80
-#: modules/opengraph/opengraph.php:199 modules/opengraph/opengraph.php:272
+#: modules/opengraph/opengraph.php:197 modules/opengraph/opengraph.php:273
 msgid "Use default"
 msgstr ""
 
@@ -1911,150 +1911,150 @@ msgstr ""
 msgid "Open Graph"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:201
+#: modules/opengraph/opengraph.php:199
 msgid "Type"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:206
+#: modules/opengraph/opengraph.php:204
 msgid "Title"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:211
+#: modules/opengraph/opengraph.php:209
 msgid "Description"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:216
+#: modules/opengraph/opengraph.php:214
 msgid "Image"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:238
+#: modules/opengraph/opengraph.php:236
 msgid "Site Name"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:239
+#: modules/opengraph/opengraph.php:237
 msgid "Facebook App ID"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:246
+#: modules/opengraph/opengraph.php:244
 msgid "Default Types"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:252 modules/opengraph/opengraph.php:257
+#: modules/opengraph/opengraph.php:250 modules/opengraph/opengraph.php:255
 msgid "Default Image"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:255
+#: modules/opengraph/opengraph.php:253
 msgid ""
 "In the box below, you can specify an image URL or an image from your media "
 "library to use as a default image in the event that there is no image "
 "otherwise specified for a given webpage on your site. If you do not specify "
 "a default image in the box below, then dynamically-generated thumbnails from "
-"Thumbshots.org will be used instead."
+"the WordPress.com mShots service will be used instead."
 msgstr ""
 
-#: modules/opengraph/opengraph.php:264 modules/titles/titles.php:91
+#: modules/opengraph/opengraph.php:262 modules/titles/titles.php:91
 msgid "Blog Homepage Title"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:265
+#: modules/opengraph/opengraph.php:263
 msgid "Blog Homepage Description"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:266
+#: modules/opengraph/opengraph.php:264
 msgid "Blog Homepage Image"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:272
-msgid "Type:"
-msgstr ""
-
-#: modules/opengraph/opengraph.php:273 modules/widgets/widgets.php:136
+#: modules/opengraph/opengraph.php:270 modules/widgets/widgets.php:136
 msgid "Title:"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:274
+#: modules/opengraph/opengraph.php:271
 msgid "Description:"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:275
+#: modules/opengraph/opengraph.php:272
 msgid "Image:"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:300
+#: modules/opengraph/opengraph.php:273
+msgid "Type:"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:298
 msgid "Featured Image: %s"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:308
+#: modules/opengraph/opengraph.php:306
 #: modules/rich-snippets/rich-snippets.php:228
 #: modules/rich-snippets/rich-snippets.php:237
 msgid "None"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:309
+#: modules/opengraph/opengraph.php:307
 msgid "Internet"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:310
+#: modules/opengraph/opengraph.php:308
 msgid "Article"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:311
+#: modules/opengraph/opengraph.php:309
 msgid "Blog"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:312
+#: modules/opengraph/opengraph.php:310
 msgid "Profile"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:313
+#: modules/opengraph/opengraph.php:311
 msgid "Website"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:314
+#: modules/opengraph/opengraph.php:312
 msgid "Products"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:315
+#: modules/opengraph/opengraph.php:313
 msgid "Book"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:316
+#: modules/opengraph/opengraph.php:314
 msgid "Music"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:317
+#: modules/opengraph/opengraph.php:315
 msgid "Album"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:318
+#: modules/opengraph/opengraph.php:316
 msgid "Playlist"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:319
+#: modules/opengraph/opengraph.php:317
 msgid "Radio Station"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:320
+#: modules/opengraph/opengraph.php:318
 msgid "Song"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:321
+#: modules/opengraph/opengraph.php:319
 msgid "Videos"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:322
+#: modules/opengraph/opengraph.php:320
 msgid "Movie"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:323
+#: modules/opengraph/opengraph.php:321
 msgid "TV Episode"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:324
+#: modules/opengraph/opengraph.php:322
 msgid "TV Show"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:325
+#: modules/opengraph/opengraph.php:323
 msgid "Video"
 msgstr ""
 
@@ -2277,7 +2277,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.3)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.3.2)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2593,7 +2593,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.3)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.3.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
@@ -3502,7 +3502,7 @@ msgid "Search Engine Listing"
 msgstr ""
 
 #: plugin/class.seo-ultimate.php:1492
-msgid "Facebook Data"
+msgid "Social Networks Listing"
 msgstr ""
 
 #: plugin/class.seo-ultimate.php:1493
