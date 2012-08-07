@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.2.8\n"
+"Project-Id-Version: SEO Ultimate 7.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-07-07 17:06:04+00:00\n"
+"POT-Creation-Date: 2012-08-07 03:38:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:113 modules/class.su-module.php:1231
+#: modules/404s/fofs-log.php:113 modules/class.su-module.php:1181
 msgid "Actions"
 msgstr ""
 
@@ -207,14 +207,14 @@ msgstr ""
 
 #: modules/404s/fofs.php:19 modules/canonical/canonical.php:212
 #: modules/files/files.php:144 modules/link-nofollow/link-nofollow.php:130
-#: modules/linkbox/linkbox.php:91 modules/meta/meta-descriptions.php:180
-#: modules/meta/meta-keywords.php:172 modules/meta/meta-robots.php:53
+#: modules/linkbox/linkbox.php:91 modules/meta/meta-descriptions.php:193
+#: modules/meta/meta-keywords.php:179 modules/meta/meta-robots.php:52
 #: modules/meta/webmaster-verify.php:87 modules/more-links/more-links.php:104
 #: modules/more-links/more-links.php:111
 #: modules/rich-snippets/rich-snippets.php:258
 #: modules/settings/settings.php:63
-#: modules/sharing-buttons/sharing-buttons.php:72 modules/slugs/slugs.php:76
-#: modules/titles/titles.php:347 modules/user-code/user-code.php:97
+#: modules/sharing-buttons/sharing-buttons.php:72 modules/slugs/slugs.php:75
+#: modules/titles/titles.php:357 modules/user-code/user-code.php:97
 msgid "Overview"
 msgstr ""
 
@@ -264,9 +264,9 @@ msgid ""
 msgstr ""
 
 #: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:102
-#: modules/meta/meta-descriptions.php:191 modules/meta/meta-keywords.php:179
-#: modules/meta/meta-robots.php:64 modules/rich-snippets/rich-snippets.php:269
-#: modules/titles/titles.php:421
+#: modules/meta/meta-descriptions.php:204 modules/meta/meta-keywords.php:186
+#: modules/meta/meta-robots.php:63 modules/rich-snippets/rich-snippets.php:269
+#: modules/titles/titles.php:431
 msgid "Settings Help"
 msgstr ""
 
@@ -316,10 +316,10 @@ msgid ""
 msgstr ""
 
 #: modules/404s/fofs.php:74 modules/files/files.php:165
-#: modules/meta/meta-descriptions.php:212 modules/meta/meta-keywords.php:202
-#: modules/meta/meta-robots.php:103
-#: modules/rich-snippets/rich-snippets.php:279 modules/slugs/slugs.php:107
-#: modules/titles/titles.php:459 modules/user-code/user-code.php:111
+#: modules/meta/meta-descriptions.php:225 modules/meta/meta-keywords.php:209
+#: modules/meta/meta-robots.php:102
+#: modules/rich-snippets/rich-snippets.php:279 modules/slugs/slugs.php:106
+#: modules/titles/titles.php:469 modules/user-code/user-code.php:111
 msgid "Troubleshooting"
 msgstr ""
 
@@ -487,7 +487,7 @@ msgid "New window"
 msgstr ""
 
 #: modules/autolinks/content-autolinks.php:464
-msgid "Incoming Autolink Anchors:<br /><em>(one per line)</em>"
+msgid "Inbound Autolink Anchors:<br /><em>(one per line)</em>"
 msgstr ""
 
 #: modules/autolinks/content-autolinks.php:467
@@ -747,102 +747,103 @@ msgid ""
 "using the <a href=\"%s\">Module Manager</a>."
 msgstr ""
 
-#: modules/class.su-module.php:1045
+#: modules/class.su-module.php:994
 msgid "%1$s | %2$s %3$s by %4$s"
 msgstr ""
 
-#: modules/class.su-module.php:1124
+#: modules/class.su-module.php:1073
 msgid "Your site currently doesn&#8217;t have any public items of this type."
 msgstr ""
 
-#: modules/class.su-module.php:1210
+#: modules/class.su-module.php:1160
 msgid "&laquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1211
+#: modules/class.su-module.php:1161
 msgid "&raquo;"
 msgstr ""
 
-#: modules/class.su-module.php:1218
+#: modules/class.su-module.php:1168
 msgid "Displaying %s&#8211;%s of %s"
 msgstr ""
 
-#: modules/class.su-module.php:1232
+#: modules/class.su-module.php:1182
 msgid "ID"
 msgstr ""
 
-#: modules/class.su-module.php:1266
+#: modules/class.su-module.php:1228
 msgid "View"
 msgstr ""
 
-#: modules/class.su-module.php:1268
+#: modules/class.su-module.php:1230
 msgid "Edit"
 msgstr ""
 
-#: modules/class.su-module.php:1438
+#: modules/class.su-module.php:1400
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1459
+#: modules/class.su-module.php:1421
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:2007
+#: modules/class.su-module.php:1970
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:2028 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:1996 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
-#: modules/class.su-module.php:2750 modules/class.su-module.php:2762
+#: modules/class.su-module.php:2718 modules/class.su-module.php:2730
 msgid "A Deleted %s"
 msgstr ""
 
-#: modules/class.su-module.php:2752
+#: modules/class.su-module.php:2720
 msgid "A Deleted Post"
 msgstr ""
 
-#: modules/class.su-module.php:2767
+#: modules/class.su-module.php:2735
 msgid "A Deleted Term"
 msgstr ""
 
-#: modules/class.su-module.php:2773 modules/meta/meta-descriptions.php:31
-#: modules/meta/meta-keywords.php:40 plugin/class.seo-ultimate.php:1740
+#: modules/class.su-module.php:2741 modules/meta/meta-descriptions.php:31
+#: modules/meta/meta-keywords.php:41 modules/opengraph/opengraph.php:230
+#: plugin/class.seo-ultimate.php:1775
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2778 plugin/class.seo-ultimate.php:1818
+#: modules/class.su-module.php:2746 plugin/class.seo-ultimate.php:1853
 msgid "Author"
 msgstr ""
 
-#: modules/class.su-module.php:2780
+#: modules/class.su-module.php:2748
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2795 plugin/class.seo-ultimate.php:1848
+#: modules/class.su-module.php:2763 plugin/class.seo-ultimate.php:1883
 msgid "Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2797
+#: modules/class.su-module.php:2765
 msgid "Link Mask (Disabled)"
 msgstr ""
 
-#: modules/class.su-module.php:2802
+#: modules/class.su-module.php:2770
 msgid "A Deleted Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2832
+#: modules/class.su-module.php:2800
 msgid "Type a URL or start typing the name of an item on your site"
 msgstr ""
 
-#: modules/class.su-module.php:2845
+#: modules/class.su-module.php:2813
 msgid "Remove this location from this textbox"
 msgstr ""
 
-#: modules/class.su-module.php:2845
+#: modules/class.su-module.php:2813
 msgid "X"
 msgstr ""
 
@@ -919,11 +920,11 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/files/files.php:155 modules/meta/meta-descriptions.php:203
-#: modules/meta/meta-keywords.php:189 modules/modules/modules.php:183
+#: modules/files/files.php:155 modules/meta/meta-descriptions.php:216
+#: modules/meta/meta-keywords.php:196 modules/modules/modules.php:183
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
-#: modules/settings/settings.php:82 modules/slugs/slugs.php:87
-#: modules/titles/titles.php:448
+#: modules/settings/settings.php:82 modules/slugs/slugs.php:86
+#: modules/titles/titles.php:458
 msgid "FAQ"
 msgstr ""
 
@@ -1076,7 +1077,7 @@ msgid "Add the nofollow attribute to..."
 msgstr ""
 
 #: modules/link-nofollow/link-nofollow.php:55
-msgid "Adjacent post links"
+msgid "Adjacent post links (next post / previous post)"
 msgstr ""
 
 #: modules/link-nofollow/link-nofollow.php:56
@@ -1275,15 +1276,15 @@ msgstr ""
 msgid "Default Value"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:161
+#: modules/meta/meta-descriptions.php:174
 msgid "Meta Description:"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:164
+#: modules/meta/meta-descriptions.php:177
 msgid "You&#8217;ve entered %s characters. Most search engines use up to 140."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:172
+#: modules/meta/meta-descriptions.php:185
 msgid ""
 "<strong>Description</strong> &mdash; The value of the meta description tag. "
 "The description will often appear underneath the title in search engine "
@@ -1291,7 +1292,7 @@ msgid ""
 "is important to ensuring a good search results clickthrough rate."
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:181
+#: modules/meta/meta-descriptions.php:194
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1310,7 +1311,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:192
+#: modules/meta/meta-descriptions.php:205
 msgid ""
 "\r\n"
 "<p>Here&#8217;s information on the various settings:</p>\r\n"
@@ -1332,7 +1333,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:204
+#: modules/meta/meta-descriptions.php:217
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1346,8 +1347,8 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:213 modules/meta/meta-keywords.php:203
-#: modules/meta/meta-robots.php:104
+#: modules/meta/meta-descriptions.php:226 modules/meta/meta-keywords.php:210
+#: modules/meta/meta-robots.php:103
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1372,35 +1373,41 @@ msgstr ""
 msgid "Meta Keywords Editor"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:19 modules/meta/meta-keywords.php:46
+#: modules/meta/meta-keywords.php:19 modules/meta/meta-keywords.php:47
 msgid "Meta Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:39 modules/noindex/noindex.php:50
+#: modules/meta/meta-keywords.php:39 modules/meta/meta-robots.php:22
+#: modules/opengraph/opengraph.php:228
+msgid "Sitewide Values"
+msgstr ""
+
+#: modules/meta/meta-keywords.php:40 modules/noindex/noindex.php:50
+#: modules/opengraph/opengraph.php:229
 msgid "Default Values"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:62
-msgid "The %d most commonly-used words"
-msgstr ""
-
-#: modules/meta/meta-keywords.php:75
+#: modules/meta/meta-keywords.php:54
 msgid "Sitewide Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:75
+#: modules/meta/meta-keywords.php:54
 msgid "(Separate with commas)"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:82
+#: modules/meta/meta-keywords.php:69
+msgid "The %d most commonly-used words"
+msgstr ""
+
+#: modules/meta/meta-keywords.php:87
 msgid "Blog Homepage Meta Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:159
+#: modules/meta/meta-keywords.php:166
 msgid "Meta Keywords:<br /><em>(separate with commas)</em>"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:164
+#: modules/meta/meta-keywords.php:171
 msgid ""
 "<strong>Keywords</strong> &mdash; The value of the meta keywords tag. The "
 "keywords list gives search engines a hint as to what this post/page is "
@@ -1408,7 +1415,7 @@ msgid ""
 "three</samp>."
 msgstr ""
 
-#: modules/meta/meta-keywords.php:173
+#: modules/meta/meta-keywords.php:180
 msgid ""
 "\r\n"
 "<p>Meta Keywords Editor lets you tell search engines what keywords are "
@@ -1419,7 +1426,7 @@ msgid ""
 "p>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:180
+#: modules/meta/meta-keywords.php:187
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1436,7 +1443,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:190
+#: modules/meta/meta-keywords.php:197
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1464,30 +1471,26 @@ msgstr ""
 msgid "Meta Robot Tags"
 msgstr ""
 
-#: modules/meta/meta-robots.php:22
-msgid "Global"
-msgstr ""
-
-#: modules/meta/meta-robots.php:28
-msgid "Spider Instructions"
-msgstr ""
-
-#: modules/meta/meta-robots.php:30
+#: modules/meta/meta-robots.php:29
 msgid ""
 "Don&#8217t use this site&#8217s Open Directory description in search results."
 msgstr ""
 
-#: modules/meta/meta-robots.php:31
+#: modules/meta/meta-robots.php:30
 msgid ""
 "Don&#8217t use this site&#8217s Yahoo! Directory description in search "
 "results."
 msgstr ""
 
-#: modules/meta/meta-robots.php:32
+#: modules/meta/meta-robots.php:31
 msgid "Don&#8217t cache or archive this site."
 msgstr ""
 
-#: modules/meta/meta-robots.php:54
+#: modules/meta/meta-robots.php:32
+msgid "Spider Instructions"
+msgstr ""
+
+#: modules/meta/meta-robots.php:53
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1514,7 +1517,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-robots.php:65
+#: modules/meta/meta-robots.php:64
 msgid ""
 "\r\n"
 "<p>Here&#8217;s information on the various settings:</p>\r\n"
@@ -1633,7 +1636,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/misc/misc.php:11
+#: modules/misc/misc.php:11 plugin/class.seo-ultimate.php:1494
 msgid "Miscellaneous"
 msgstr ""
 
@@ -1748,7 +1751,7 @@ msgid "Default More Link Text"
 msgstr ""
 
 #: modules/more-links/more-links.php:51
-msgid "More Link Text:"
+msgid "Anchor Text of &#8220;More&#8221; Link:"
 msgstr ""
 
 #: modules/more-links/more-links.php:75
@@ -1818,6 +1821,7 @@ msgid "Noindex"
 msgstr ""
 
 #: modules/noindex/noindex.php:69 modules/noindex/noindex.php:80
+#: modules/opengraph/opengraph.php:199 modules/opengraph/opengraph.php:272
 msgid "Use default"
 msgstr ""
 
@@ -1897,6 +1901,161 @@ msgstr ""
 
 #: modules/noindex/noindex.php:174
 msgid "Meta Robots Tag:"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:15
+msgid "Open Graph Integrator"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:16
+msgid "Open Graph"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:201
+msgid "Type"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:206
+msgid "Title"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:211
+msgid "Description"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:216
+msgid "Image"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:238
+msgid "Site Name"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:239
+msgid "Facebook App ID"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:246
+msgid "Default Types"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:252 modules/opengraph/opengraph.php:257
+msgid "Default Image"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:255
+msgid ""
+"In the box below, you can specify an image URL or an image from your media "
+"library to use as a default image in the event that there is no image "
+"otherwise specified for a given webpage on your site. If you do not specify "
+"a default image in the box below, then dynamically-generated thumbnails from "
+"Thumbshots.org will be used instead."
+msgstr ""
+
+#: modules/opengraph/opengraph.php:264 modules/titles/titles.php:91
+msgid "Blog Homepage Title"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:265
+msgid "Blog Homepage Description"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:266
+msgid "Blog Homepage Image"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:272
+msgid "Type:"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:273 modules/widgets/widgets.php:136
+msgid "Title:"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:274
+msgid "Description:"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:275
+msgid "Image:"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:300
+msgid "Featured Image: %s"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:308
+#: modules/rich-snippets/rich-snippets.php:228
+#: modules/rich-snippets/rich-snippets.php:237
+msgid "None"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:309
+msgid "Internet"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:310
+msgid "Article"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:311
+msgid "Blog"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:312
+msgid "Profile"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:313
+msgid "Website"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:314
+msgid "Products"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:315
+msgid "Book"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:316
+msgid "Music"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:317
+msgid "Album"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:318
+msgid "Playlist"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:319
+msgid "Radio Station"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:320
+msgid "Song"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:321
+msgid "Videos"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:322
+msgid "Movie"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:323
+msgid "TV Episode"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:324
+msgid "TV Show"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:325
+msgid "Video"
 msgstr ""
 
 #: modules/permalinks/permalinks.php:15
@@ -1989,11 +2148,6 @@ msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:93
 msgid "Date Reviewed"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:228
-#: modules/rich-snippets/rich-snippets.php:237
-msgid "None"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:230
@@ -2123,7 +2277,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.8)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.3)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2140,19 +2294,15 @@ msgstr ""
 msgid "Global Settings"
 msgstr ""
 
-#: modules/settings/global-settings.php:41
+#: modules/settings/global-settings.php:40
 msgid "Enable nofollow&#8217;d attribution link"
 msgstr ""
 
-#: modules/settings/global-settings.php:42
+#: modules/settings/global-settings.php:41
 msgid "Enable attribution link CSS styling"
 msgstr ""
 
-#: modules/settings/global-settings.php:43
-msgid "Notify me about unnecessary active plugins"
-msgstr ""
-
-#: modules/settings/global-settings.php:44
+#: modules/settings/global-settings.php:42
 msgid "Insert comments around HTML code insertions"
 msgstr ""
 
@@ -2443,9 +2593,9 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.2.8)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:856
+#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -2500,7 +2650,7 @@ msgid "Uninstaller"
 msgstr ""
 
 #: modules/settings/uninstall.php:18 modules/settings/uninstall.php:22
-#: plugin/class.seo-ultimate.php:1339
+#: plugin/class.seo-ultimate.php:1332
 msgid "Uninstall"
 msgstr ""
 
@@ -2593,7 +2743,7 @@ msgstr ""
 msgid "Words to Remove"
 msgstr ""
 
-#: modules/slugs/slugs.php:77
+#: modules/slugs/slugs.php:76
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2613,7 +2763,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/slugs/slugs.php:88
+#: modules/slugs/slugs.php:87
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2649,7 +2799,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/slugs/slugs.php:108
+#: modules/slugs/slugs.php:107
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2741,10 +2891,6 @@ msgstr ""
 msgid "{title} - Page {num}"
 msgstr ""
 
-#: modules/titles/titles.php:91
-msgid "Blog Homepage Title"
-msgstr ""
-
 #: modules/titles/titles.php:92
 msgid "Post Title Format"
 msgstr ""
@@ -2789,11 +2935,15 @@ msgstr ""
 msgid "Pagination Title Format"
 msgstr ""
 
-#: modules/titles/titles.php:334
+#: modules/titles/titles.php:338
 msgid "Title Tag:"
 msgstr ""
 
-#: modules/titles/titles.php:339
+#: modules/titles/titles.php:341
+msgid "You&#8217;ve entered %s characters. Most search engines use up to 70."
+msgstr ""
+
+#: modules/titles/titles.php:349
 msgid ""
 "<strong>Title Tag</strong> &mdash; The exact contents of the &lt;title&gt; "
 "tag. The title appears in visitors&#8217; title bars and in search engine "
@@ -2801,7 +2951,7 @@ msgid ""
 "page=su-titles\" target=\"_blank\">default post/page titles</a> are used."
 msgstr ""
 
-#: modules/titles/titles.php:348
+#: modules/titles/titles.php:358
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2824,11 +2974,11 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:358
+#: modules/titles/titles.php:368
 msgid "Formats &amp; Variables"
 msgstr ""
 
-#: modules/titles/titles.php:359
+#: modules/titles/titles.php:369
 msgid ""
 "\r\n"
 "<p>Various variables, surrounded in {curly brackets}, are provided for use "
@@ -2931,7 +3081,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:422
+#: modules/titles/titles.php:432
 msgid ""
 "\r\n"
 "<p>Here&#8217;s documentation for the options on the &#8220;Settings&#8221; "
@@ -2986,7 +3136,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:449
+#: modules/titles/titles.php:459
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -3009,7 +3159,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:460
+#: modules/titles/titles.php:470
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -3131,10 +3281,6 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: modules/widgets/widgets.php:136
-msgid "Title:"
-msgstr ""
-
 #: modules/widgets/widgets.php:140
 msgid "Show post counts"
 msgstr ""
@@ -3243,107 +3389,107 @@ msgstr ""
 msgid "Go to setting &raquo;"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:856
+#: plugin/class.seo-ultimate.php:861
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1041
+#: plugin/class.seo-ultimate.php:1046
 msgid ""
 "It looks like you made changes to the settings of this SEO Ultimate module. "
 "If you leave before saving, those changes will be lost."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1135
+#: plugin/class.seo-ultimate.php:1140
 msgid "SEO Settings Help"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1137
+#: plugin/class.seo-ultimate.php:1142
 msgid "The SEO Settings box lets you customize these settings:"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1139
+#: plugin/class.seo-ultimate.php:1144
 msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1194
+#: plugin/class.seo-ultimate.php:1187
 msgid ""
-"SEO Ultimate includes the functionality of %1$s. You may want to deactivate "
-"%1$s to avoid plugin conflicts."
+"%1$s is known to cause conflicts with SEO Ultimate. Please deactivate %1$s "
+"if you wish to continue using SEO Ultimate."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1238
+#: plugin/class.seo-ultimate.php:1231
 msgid "new module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1238
+#: plugin/class.seo-ultimate.php:1231
 msgid "new modules"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1239
+#: plugin/class.seo-ultimate.php:1232
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1239
+#: plugin/class.seo-ultimate.php:1232
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1240
+#: plugin/class.seo-ultimate.php:1233
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1240
+#: plugin/class.seo-ultimate.php:1233
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1241
+#: plugin/class.seo-ultimate.php:1234
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1241
+#: plugin/class.seo-ultimate.php:1234
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1242
+#: plugin/class.seo-ultimate.php:1235
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1242
+#: plugin/class.seo-ultimate.php:1235
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1243
+#: plugin/class.seo-ultimate.php:1236
 msgid "new language pack"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1243
+#: plugin/class.seo-ultimate.php:1236
 msgid "new language packs"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1244
+#: plugin/class.seo-ultimate.php:1237
 msgid "language pack update"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1244
+#: plugin/class.seo-ultimate.php:1237
 msgid "language pack updates"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1275
+#: plugin/class.seo-ultimate.php:1268
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1281
+#: plugin/class.seo-ultimate.php:1274
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1283
+#: plugin/class.seo-ultimate.php:1276
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1360
+#: plugin/class.seo-ultimate.php:1353
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1427
+#: plugin/class.seo-ultimate.php:1420
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -3351,19 +3497,35 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1549
+#: plugin/class.seo-ultimate.php:1491
+msgid "Search Engine Listing"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1492
+msgid "Facebook Data"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1493
+msgid "Links"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1557
 msgid "SEO Settings"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1739
+#: plugin/class.seo-ultimate.php:1587
+msgid "%1$s %2$s by %3$s"
+msgstr ""
+
+#: plugin/class.seo-ultimate.php:1774
 msgid "Home"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1812
+#: plugin/class.seo-ultimate.php:1847
 msgid "Author Archives"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1841
+#: plugin/class.seo-ultimate.php:1876
 msgid "Link Masks"
 msgstr ""
 
