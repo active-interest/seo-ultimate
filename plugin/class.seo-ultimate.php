@@ -1446,7 +1446,7 @@ class SEO_Ultimate {
 	 * @param mixed $result Passed by reference. Set to the result of the function.
 	 * @return boolean Whether or not the function existed.
 	 */
-	function call_module_func($key, $function, &$result = null) {
+	function call_module_func($key, $function, &$result = null, $call_even_if_disabled=true) {
 		
 		//Wipe passed-by-reference variable clean
 		$result = null;
@@ -1456,7 +1456,7 @@ class SEO_Ultimate {
 		
 		if (isset($this->modules[$key]))
 			$obj =& $this->modules[$key];
-		elseif (isset($this->disabled_modules[$key]))
+		elseif (isset($this->disabled_modules[$key]) && $call_even_if_disabled)
 			$obj = $this->disabled_modules[$key];
 		else
 			return false;

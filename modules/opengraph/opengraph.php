@@ -77,7 +77,7 @@ class SU_OpenGraph extends SU_Module {
 			
 			//Description
 			if (!($tags['og:description'] = $this->get_postmeta('og_description')))
-				if ($this->plugin->call_module_func('meta-descriptions', 'get_meta_desc', $meta_desc) && $meta_desc)
+				if ($this->plugin->call_module_func('meta-descriptions', 'get_meta_desc', $meta_desc, false) && $meta_desc)
 					$tags['og:description'] = $meta_desc;
 			
 			//URL

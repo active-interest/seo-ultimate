@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.3.4
+Stable tag: 7.3.5
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -21,7 +21,7 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin with these powerful features:
 
-* **Title Tag Rewriter** -- UPDATED in Version 6.8
+* **Title Tag Rewriter**
 	* Out-of-the-box functionality puts your post titles at the beginning of the `<title>` tag for improved keyword SEO.
 	* Easily override the entire `<title>` tag contents for any individual post, page, attachment, category, post tag, or post format archive on your blog. Also supports custom post types and custom taxonomies.
 	* Customize your homepage's `<title>` tag.
@@ -127,7 +127,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Lets you output your Deeplink Juggernaut Footer Links in a widget
 	* The Siloed Categories widget makes it drag-and-drop-easy to construct siloed navigation on your site
 
-* **Settings Monitor** -- NEW in Version 6.9
+* **Settings Monitor**
 	* Keep tabs on the SEO-friendliness of your site's settings with a dashboard of green/yellow/red indicators
 
 * **Open Graph Integrator** -- NEW in Version 7.3
@@ -267,6 +267,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.3.5 (August 7, 2012) =
+* Bugfix: Fixed PHP error that appeared when Open Graph Integrator was enabled but Meta Description Editor was disabled (bug introduced in 7.3)
 
 = Version 7.3.4 (August 7, 2012) =
 * Bugfix: Fixed bug that caused the Open Graph Type dropdown in the "SEO Settings" box to read "Video" by default (bug introduced in 7.3)
@@ -418,8 +421,8 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 = Version 6.6 (July 15, 2011) =
 * New Module: SEO Ultimate Widgets
-* Feature: The new "Footer Links" widget lets you display your Deeplink Juggernaut Footer Links in a widgetized footer or sidebar
-* Feature: The new "Siloed Categories" widget lets you create a navigation section that's siloed around a taxonomy of your choosing
+	* The new "Footer Links" widget lets you display your Deeplink Juggernaut Footer Links in a widgetized footer or sidebar
+	* The new "Siloed Categories" widget lets you create a navigation section that's siloed around a taxonomy of your choosing
 
 = Version 6.5.2 (July 13, 2011) =
 * Bugfix: Restored access to the "Global" tab of Meta Robot Tags Editor (broke in 6.4)
