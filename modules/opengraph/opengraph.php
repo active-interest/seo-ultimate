@@ -98,9 +98,7 @@ class SU_OpenGraph extends SU_Module {
 					
 					$tags['article:published_time'] = get_the_date('Y-m-d');
 					$tags['article:modified_time'] = get_the_modified_date('Y-m-d');
-					
-					global $authordata;
-					$tags['article:author'] = get_author_posts_url($authordata->ID, $authordata->user_nicename);
+					$tags['article:author'] = get_author_posts_url($post->post_author);
 					
 					$taxonomy_names = suwp::get_taxonomy_names();
 					foreach ($taxonomy_names as $taxonomy_name) {
@@ -158,7 +156,7 @@ class SU_OpenGraph extends SU_Module {
 		if ((!isset($tags['og:image']) || !$tags['og:image']) && $tags['og:image'] !== false) {
 			$tags['og:image'] = $this->jlsuggest_value_to_url($this->get_setting('default_og_image'), true);
 			if (!$tags['og:image'] && $tags['og:url'])
-				$tags['og:image'] = 'http://open.thumbshots.org/image.aspx?url='.urlencode($tags['og:url']);
+				$tags['og:image'] = 'http://s.wordpress.com/mshots/v1/'.urlencode($tags['og:url']);
 		}
 		
 		//Site Name
@@ -252,7 +250,7 @@ class SU_OpenGraph extends SU_Module {
 		$this->admin_subheader(__('Default Image', 'seo-ultimate'));
 		$this->admin_form_table_start();
 		
-		$this->textblock(__('In the box below, you can specify an image URL or an image from your media library to use as a default image in the event that there is no image otherwise specified for a given webpage on your site. If you do not specify a default image in the box below, then dynamically-generated thumbnails from Thumbshots.org will be used instead.', 'seo-ultimate'));
+		$this->textblock(__('In the box below, you can specify an image URL or an image from your media library to use as a default image in the event that there is no image otherwise specified for a given webpage on your site. If you do not specify a default image in the box below, then dynamically-generated thumbnails from the WordPress.com mShots service will be used instead.', 'seo-ultimate'));
 		
 		$this->jlsuggest_box('default_og_image', __('Default Image', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
 		
@@ -269,10 +267,10 @@ class SU_OpenGraph extends SU_Module {
 	
 	function postmeta_fields($fields) {
 		
-		$fields['opengraph'][10]['og_type'] = $this->get_postmeta_dropdown('og_type', array_merge(array(__('Use default', 'seo-ultimate')), $this->get_type_options()), __('Type:', 'seo-ultimate'));
-		$fields['opengraph'][20]['og_title'] = $this->get_postmeta_textbox('og_title', __('Title:', 'seo-ultimate'));
-		$fields['opengraph'][30]['og_description'] = $this->get_postmeta_textarea('og_description', __('Description:', 'seo-ultimate'));
-		$fields['opengraph'][40]['og_image'] = $this->get_postmeta_jlsuggest_box('og_image', __('Image:', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
+		$fields['opengraph'][10]['og_title'] = $this->get_postmeta_textbox('og_title', __('Title:', 'seo-ultimate'));
+		$fields['opengraph'][20]['og_description'] = $this->get_postmeta_textarea('og_description', __('Description:', 'seo-ultimate'));
+		$fields['opengraph'][30]['og_image'] = $this->get_postmeta_jlsuggest_box('og_image', __('Image:', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
+		$fields['opengraph'][40]['og_type'] = $this->get_postmeta_dropdown('og_type', array_merge(array(__('Use default', 'seo-ultimate')), $this->get_type_options()), __('Type:', 'seo-ultimate'));
 		
 		return $fields;
 	}

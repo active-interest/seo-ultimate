@@ -1489,7 +1489,7 @@ class SEO_Ultimate {
 	function get_postmeta_tabs() {
 		return array(
 			  'serp' => __('Search Engine Listing', 'seo-ultimate')
-			, 'opengraph' => __('Facebook Data', 'seo-ultimate')
+			, 'opengraph' => __('Social Networks Listing', 'seo-ultimate')
 			, 'links' => __('Links', 'seo-ultimate')
 			, 'misc' => __('Miscellaneous', 'seo-ultimate')
 		);
