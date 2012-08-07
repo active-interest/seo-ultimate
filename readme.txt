@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.3.3
+Stable tag: 7.3.4
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -267,6 +267,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.3.4 (August 7, 2012) =
+* Bugfix: Fixed bug that caused the Open Graph Type dropdown in the "SEO Settings" box to read "Video" by default (bug introduced in 7.3)
 
 = Version 7.3.3 (August 7, 2012) =
 * Bugfix: Fixed JavaScript error on the Add New Post screen (bug introduced in 7.3)
