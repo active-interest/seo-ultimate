@@ -137,7 +137,7 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 
 * **Settings Manager** (located under Settings > SEO Ultimate)
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
-	* Use the export/import functionality to move SEO Ultimate settings between WordPress sites using.
+	* Use the export/import functionality to move SEO Ultimate settings between WordPress sites.
 	* Reset all settings back to "factory defaults" if something goes wrong.
 
 * **Additional features**
