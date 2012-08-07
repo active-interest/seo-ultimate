@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.3.2\n"
+"Project-Id-Version: SEO Ultimate 7.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-08-07 04:20:25+00:00\n"
+"POT-Creation-Date: 2012-08-07 19:49:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -338,6 +338,44 @@ msgid ""
 "\t<li>Some parts of your website may not be under WordPress's control; the "
 "404 Monitor can't track 404 errors on non-WordPress website areas.</li>\r\n"
 "</ul>\r\n"
+msgstr ""
+
+#: modules/author-links/author-links.php:16
+msgid "Author Highlighter"
+msgstr ""
+
+#: modules/author-links/author-links.php:31
+msgid ""
+"In order for author highlighting to work, your authors with Google+ accounts "
+"need to add their Google+ URLs to their profile page on this site. Why "
+"don&#8217;t you start by adding your Google+ URL to <a href=\"profile.php"
+"\">your profile</a>?"
+msgstr ""
+
+#: modules/author-links/author-links.php:36
+msgid ""
+"Since this site only has one <a href=\"users.php\">registered user</a> who "
+"has written posts, Author Highlighter is providing that user&#8217;s Google+ "
+"profile image to Google for it to use when any page on this WordPress site "
+"appears in Google&#8217;s search result listings. If at some point you were "
+"to add an additional user to this site and that user were to write some "
+"posts, then additional options would show up in this section."
+msgstr ""
+
+#: modules/author-links/author-links.php:50
+msgid "(None)"
+msgstr ""
+
+#: modules/author-links/author-links.php:55
+msgid "Author of Blog Homepage"
+msgstr ""
+
+#: modules/author-links/author-links.php:56
+msgid "Author of Archive Pages"
+msgstr ""
+
+#: modules/author-links/author-links.php:93
+msgid "Google+ Profile URL"
 msgstr ""
 
 #: modules/autolinks/autolinks.php:11
@@ -2277,7 +2315,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.3.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.4)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2593,7 +2631,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.3.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.4)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
