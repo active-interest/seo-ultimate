@@ -268,7 +268,7 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
-= Vresion 7.3.3 (August 7, 2012) =
+= Version 7.3.3 (August 7, 2012) =
 * Bugfix: Fixed JavaScript error on the Add New Post screen (bug introduced in 7.3)
 
 = Version 7.3.2 (August 6, 2012) =
