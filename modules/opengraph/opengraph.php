@@ -157,8 +157,8 @@ class SU_OpenGraph extends SU_Module {
 		
 		if ((!isset($tags['og:image']) || !$tags['og:image']) && $tags['og:image'] !== false) {
 			$tags['og:image'] = $this->jlsuggest_value_to_url($this->get_setting('default_og_image'), true);
-			if (!$tags['og:image'])
-				$tags['og:image'] = 'http://open.thumbshots.org/image.aspx?url='.urlencode($url);
+			if (!$tags['og:image'] && $tags['og:url'])
+				$tags['og:image'] = 'http://open.thumbshots.org/image.aspx?url='.urlencode($tags['og:url']);
 		}
 		
 		//Site Name
