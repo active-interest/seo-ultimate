@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.4\n"
+"Project-Id-Version: SEO Ultimate 7.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-08-07 19:49:55+00:00\n"
+"POT-Creation-Date: 2012-08-09 15:06:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -206,14 +206,14 @@ msgid "404 Monitor"
 msgstr ""
 
 #: modules/404s/fofs.php:19 modules/canonical/canonical.php:212
-#: modules/files/files.php:144 modules/link-nofollow/link-nofollow.php:130
-#: modules/linkbox/linkbox.php:91 modules/meta/meta-descriptions.php:193
+#: modules/files/files.php:144 modules/link-nofollow/link-nofollow.php:132
+#: modules/linkbox/linkbox.php:94 modules/meta/meta-descriptions.php:193
 #: modules/meta/meta-keywords.php:179 modules/meta/meta-robots.php:52
 #: modules/meta/webmaster-verify.php:87 modules/more-links/more-links.php:104
 #: modules/more-links/more-links.php:111
-#: modules/rich-snippets/rich-snippets.php:258
+#: modules/rich-snippets/rich-snippets.php:390
 #: modules/settings/settings.php:63
-#: modules/sharing-buttons/sharing-buttons.php:72 modules/slugs/slugs.php:75
+#: modules/sharing-buttons/sharing-buttons.php:71 modules/slugs/slugs.php:78
 #: modules/titles/titles.php:357 modules/user-code/user-code.php:97
 msgid "Overview"
 msgstr ""
@@ -263,9 +263,9 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:102
+#: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:105
 #: modules/meta/meta-descriptions.php:204 modules/meta/meta-keywords.php:186
-#: modules/meta/meta-robots.php:63 modules/rich-snippets/rich-snippets.php:269
+#: modules/meta/meta-robots.php:63 modules/rich-snippets/rich-snippets.php:401
 #: modules/titles/titles.php:431
 msgid "Settings Help"
 msgstr ""
@@ -318,7 +318,7 @@ msgstr ""
 #: modules/404s/fofs.php:74 modules/files/files.php:165
 #: modules/meta/meta-descriptions.php:225 modules/meta/meta-keywords.php:209
 #: modules/meta/meta-robots.php:102
-#: modules/rich-snippets/rich-snippets.php:279 modules/slugs/slugs.php:106
+#: modules/rich-snippets/rich-snippets.php:410 modules/slugs/slugs.php:109
 #: modules/titles/titles.php:469 modules/user-code/user-code.php:111
 msgid "Troubleshooting"
 msgstr ""
@@ -575,7 +575,7 @@ msgstr ""
 msgid "Footer Deeplink Juggernaut"
 msgstr ""
 
-#: modules/autolinks/footer-autolinks.php:17 modules/widgets/widgets.php:170
+#: modules/autolinks/footer-autolinks.php:17 modules/widgets/widgets.php:174
 msgid "Footer Links"
 msgstr ""
 
@@ -825,63 +825,63 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1970
+#: modules/class.su-module.php:1974
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:1996 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:2000 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
-#: modules/class.su-module.php:2718 modules/class.su-module.php:2730
+#: modules/class.su-module.php:2738 modules/class.su-module.php:2750
 msgid "A Deleted %s"
 msgstr ""
 
-#: modules/class.su-module.php:2720
+#: modules/class.su-module.php:2740
 msgid "A Deleted Post"
 msgstr ""
 
-#: modules/class.su-module.php:2735
+#: modules/class.su-module.php:2755
 msgid "A Deleted Term"
 msgstr ""
 
-#: modules/class.su-module.php:2741 modules/meta/meta-descriptions.php:31
-#: modules/meta/meta-keywords.php:41 modules/opengraph/opengraph.php:228
+#: modules/class.su-module.php:2761 modules/meta/meta-descriptions.php:31
+#: modules/meta/meta-keywords.php:41 modules/opengraph/opengraph.php:266
 #: plugin/class.seo-ultimate.php:1775
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2746 plugin/class.seo-ultimate.php:1853
+#: modules/class.su-module.php:2766 plugin/class.seo-ultimate.php:1853
 msgid "Author"
 msgstr ""
 
-#: modules/class.su-module.php:2748
+#: modules/class.su-module.php:2768
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2763 plugin/class.seo-ultimate.php:1883
+#: modules/class.su-module.php:2783 plugin/class.seo-ultimate.php:1883
 msgid "Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2765
+#: modules/class.su-module.php:2785
 msgid "Link Mask (Disabled)"
 msgstr ""
 
-#: modules/class.su-module.php:2770
+#: modules/class.su-module.php:2790
 msgid "A Deleted Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2800
+#: modules/class.su-module.php:2820
 msgid "Type a URL or start typing the name of an item on your site"
 msgstr ""
 
-#: modules/class.su-module.php:2813
+#: modules/class.su-module.php:2833
 msgid "Remove this location from this textbox"
 msgstr ""
 
-#: modules/class.su-module.php:2813
+#: modules/class.su-module.php:2833
 msgid "X"
 msgstr ""
 
@@ -959,9 +959,9 @@ msgid ""
 msgstr ""
 
 #: modules/files/files.php:155 modules/meta/meta-descriptions.php:216
-#: modules/meta/meta-keywords.php:196 modules/modules/modules.php:183
+#: modules/meta/meta-keywords.php:196 modules/modules/modules.php:190
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
-#: modules/settings/settings.php:82 modules/slugs/slugs.php:86
+#: modules/settings/settings.php:82 modules/slugs/slugs.php:89
 #: modules/titles/titles.php:458
 msgid "FAQ"
 msgstr ""
@@ -1110,71 +1110,71 @@ msgstr ""
 msgid "Nofollow Manager"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:53
-msgid "Add the nofollow attribute to..."
-msgstr ""
-
-#: modules/link-nofollow/link-nofollow.php:55
+#: modules/link-nofollow/link-nofollow.php:57
 msgid "Adjacent post links (next post / previous post)"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:56
+#: modules/link-nofollow/link-nofollow.php:58
 msgid "Category links (after posts)"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:57
+#: modules/link-nofollow/link-nofollow.php:59
 msgid "Category links (in lists)"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:58
+#: modules/link-nofollow/link-nofollow.php:60
 msgid "Comment anchor links"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:59
+#: modules/link-nofollow/link-nofollow.php:61
 msgid "Comment feed links"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:60
+#: modules/link-nofollow/link-nofollow.php:62
 msgid "Date-based archive links"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:61
+#: modules/link-nofollow/link-nofollow.php:63
 msgid "Pagination navigation links (all)"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:62
+#: modules/link-nofollow/link-nofollow.php:64
 msgid "Pagination navigation links (on blog home only)"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:63
+#: modules/link-nofollow/link-nofollow.php:65
 msgid "&#8220;Read more&#8221; links"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:64
+#: modules/link-nofollow/link-nofollow.php:66
 msgid "Registration link"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:65
+#: modules/link-nofollow/link-nofollow.php:67
 msgid "Login link"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:66
+#: modules/link-nofollow/link-nofollow.php:68
 msgid "Tag links (after posts)"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:67
+#: modules/link-nofollow/link-nofollow.php:69
 msgid "Tag links (in lists and clouds)"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:76
+#: modules/link-nofollow/link-nofollow.php:70
+msgid "Add the nofollow attribute to..."
+msgstr ""
+
+#: modules/link-nofollow/link-nofollow.php:78
 msgid "When displaying page lists, nofollow links to this page"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:76
+#: modules/link-nofollow/link-nofollow.php:78
 msgid "Nofollow:"
 msgstr ""
 
-#: modules/link-nofollow/link-nofollow.php:131
+#: modules/link-nofollow/link-nofollow.php:133
 msgid ""
 "\r\n"
 "<p>Nofollow Manager adds the <code>rel=&quot;nofollow&quot;</code> attribute "
@@ -1192,31 +1192,31 @@ msgstr ""
 msgid "Linkbox Inserter"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:18
+#: modules/linkbox/linkbox.php:21
 msgid "Link to this post!"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:45
+#: modules/linkbox/linkbox.php:48
 msgid "At the end of posts"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:46
+#: modules/linkbox/linkbox.php:49
 msgid "At the end of pages"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:47
+#: modules/linkbox/linkbox.php:50
 msgid "When called by the su_linkbox hook"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:48
+#: modules/linkbox/linkbox.php:51
 msgid "Display linkboxes..."
 msgstr ""
 
-#: modules/linkbox/linkbox.php:49
+#: modules/linkbox/linkbox.php:52
 msgid "Linkbox HTML"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:92
+#: modules/linkbox/linkbox.php:95
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1231,7 +1231,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:103
+#: modules/linkbox/linkbox.php:106
 msgid ""
 "\r\n"
 "<p>Here&#8217;s information on the various settings:</p>\r\n"
@@ -1416,12 +1416,12 @@ msgid "Meta Keywords"
 msgstr ""
 
 #: modules/meta/meta-keywords.php:39 modules/meta/meta-robots.php:22
-#: modules/opengraph/opengraph.php:226
+#: modules/opengraph/opengraph.php:264
 msgid "Sitewide Values"
 msgstr ""
 
 #: modules/meta/meta-keywords.php:40 modules/noindex/noindex.php:50
-#: modules/opengraph/opengraph.php:227
+#: modules/opengraph/opengraph.php:265
 msgid "Default Values"
 msgstr ""
 
@@ -1697,8 +1697,8 @@ msgid ""
 "SEO Ultimate&#8217;s features are located in groups called &#8220;modules."
 "&#8221; By default, most of these modules are listed in the &#8220;"
 "SEO&#8221; menu on the left. Whenever you&#8217;re working with a module, "
-"you can view documentation by clicking the tabs in the upper-right-hand "
-"corner of your administration screen."
+"you can view documentation by clicking the &#8220;Help&#8221; tab in the "
+"upper-right-hand corner of your administration screen."
 msgstr ""
 
 #: modules/modules/modules.php:52
@@ -1735,11 +1735,11 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#: modules/modules/modules.php:170
+#: modules/modules/modules.php:177
 msgid "Options Help"
 msgstr ""
 
-#: modules/modules/modules.php:171
+#: modules/modules/modules.php:178
 msgid ""
 "\r\n"
 "<p>The Module Manager lets you customize the visibility and accessibility of "
@@ -1759,7 +1759,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/modules/modules.php:184
+#: modules/modules/modules.php:191
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1859,7 +1859,8 @@ msgid "Noindex"
 msgstr ""
 
 #: modules/noindex/noindex.php:69 modules/noindex/noindex.php:80
-#: modules/opengraph/opengraph.php:197 modules/opengraph/opengraph.php:273
+#: modules/opengraph/opengraph.php:235 modules/opengraph/opengraph.php:325
+#: modules/opengraph/opengraph.php:326
 msgid "Use default"
 msgstr ""
 
@@ -1949,39 +1950,55 @@ msgstr ""
 msgid "Open Graph"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:199
+#: modules/opengraph/opengraph.php:237
 msgid "Type"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:204
+#: modules/opengraph/opengraph.php:242
 msgid "Title"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:209
+#: modules/opengraph/opengraph.php:247
 msgid "Description"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:214
+#: modules/opengraph/opengraph.php:252
 msgid "Image"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:236
+#: modules/opengraph/opengraph.php:274
 msgid "Site Name"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:237
+#: modules/opengraph/opengraph.php:275
 msgid "Facebook App ID"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:244
+#: modules/opengraph/opengraph.php:276
+msgid "This Site&#8217;s Twitter Handle"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:283
 msgid "Default Types"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:250 modules/opengraph/opengraph.php:255
+#: modules/opengraph/opengraph.php:285
+msgid "Post Type"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:286
+msgid "Open Graph Type"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:287
+msgid "Twitter Type"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:302 modules/opengraph/opengraph.php:307
 msgid "Default Image"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:253
+#: modules/opengraph/opengraph.php:305
 msgid ""
 "In the box below, you can specify an image URL or an image from your media "
 "library to use as a default image in the event that there is no image "
@@ -1990,110 +2007,126 @@ msgid ""
 "the WordPress.com mShots service will be used instead."
 msgstr ""
 
-#: modules/opengraph/opengraph.php:262 modules/titles/titles.php:91
+#: modules/opengraph/opengraph.php:314 modules/titles/titles.php:91
 msgid "Blog Homepage Title"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:263
+#: modules/opengraph/opengraph.php:315
 msgid "Blog Homepage Description"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:264
+#: modules/opengraph/opengraph.php:316
 msgid "Blog Homepage Image"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:270 modules/widgets/widgets.php:136
+#: modules/opengraph/opengraph.php:322 modules/widgets/widgets.php:140
 msgid "Title:"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:271
+#: modules/opengraph/opengraph.php:323
 msgid "Description:"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:272
+#: modules/opengraph/opengraph.php:324
 msgid "Image:"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:273
-msgid "Type:"
+#: modules/opengraph/opengraph.php:325
+msgid "Open Graph Type:"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:298
+#: modules/opengraph/opengraph.php:326
+msgid "Twitter Type:"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:351
 msgid "Featured Image: %s"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:306
-#: modules/rich-snippets/rich-snippets.php:228
-#: modules/rich-snippets/rich-snippets.php:237
+#: modules/opengraph/opengraph.php:359
+#: modules/rich-snippets/rich-snippets.php:353
 msgid "None"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:307
+#: modules/opengraph/opengraph.php:360
 msgid "Internet"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:308
+#: modules/opengraph/opengraph.php:361
 msgid "Article"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:309
+#: modules/opengraph/opengraph.php:362
 msgid "Blog"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:310
+#: modules/opengraph/opengraph.php:363
 msgid "Profile"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:311
+#: modules/opengraph/opengraph.php:364
 msgid "Website"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:312
+#: modules/opengraph/opengraph.php:365
 msgid "Products"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:313
+#: modules/opengraph/opengraph.php:366
 msgid "Book"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:314
+#: modules/opengraph/opengraph.php:367
 msgid "Music"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:315
+#: modules/opengraph/opengraph.php:368
 msgid "Album"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:316
+#: modules/opengraph/opengraph.php:369
 msgid "Playlist"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:317
+#: modules/opengraph/opengraph.php:370
 msgid "Radio Station"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:318
+#: modules/opengraph/opengraph.php:371
 msgid "Song"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:319
+#: modules/opengraph/opengraph.php:372
 msgid "Videos"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:320
+#: modules/opengraph/opengraph.php:373
 msgid "Movie"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:321
+#: modules/opengraph/opengraph.php:374
 msgid "TV Episode"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:322
+#: modules/opengraph/opengraph.php:375
 msgid "TV Show"
 msgstr ""
 
-#: modules/opengraph/opengraph.php:323
+#: modules/opengraph/opengraph.php:376
 msgid "Video"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:383
+msgid "Regular"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:384
+#: modules/rich-snippets/rich-snippets.php:114
+msgid "Photo"
+msgstr ""
+
+#: modules/opengraph/opengraph.php:406
+msgid "Twitter Handle"
 msgstr ""
 
 #: modules/permalinks/permalinks.php:15
@@ -2137,110 +2170,182 @@ msgid ""
 "the %s."
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:12
+#: modules/rich-snippets/rich-snippets.php:14
 msgid "Rich Snippet Creator"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:17
-msgid ""
-"Reviews\n"
-"Review"
+#: modules/rich-snippets/rich-snippets.php:31
+msgid "Schema.org Microdata"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:28
-msgid "Data Format"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:29
-msgid "Categories/Tags That Indicate Reviews"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:37
-msgid "Microformats (recommended)"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:43
-msgid "HTML5 Microdata"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:49
-msgid "RDFa"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:62
-#: modules/rich-snippets/rich-snippets.php:229
+#: modules/rich-snippets/rich-snippets.php:44
+#: modules/rich-snippets/rich-snippets.php:343
 msgid "Review"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:70
+#: modules/rich-snippets/rich-snippets.php:49
 msgid "Item Reviewed"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:82
+#: modules/rich-snippets/rich-snippets.php:52
 msgid "Star Rating"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:87
+#: modules/rich-snippets/rich-snippets.php:65
 msgid "Review Author"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:93
+#: modules/rich-snippets/rich-snippets.php:70
 msgid "Date Reviewed"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:230
-msgid "Rich Snippet Type:"
+#: modules/rich-snippets/rich-snippets.php:78
+#: modules/rich-snippets/rich-snippets.php:344
+msgid "Place"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:234
+#: modules/rich-snippets/rich-snippets.php:82
+msgid "Address"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:86
+msgid "Street Address"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:89
+msgid "PO Box"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:92
+#: modules/rich-snippets/rich-snippets.php:95
+msgid "City"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:98
+msgid "Country"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:101
+msgid "Postal Code"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:106
+msgid "Fax Number"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:109
+msgid "Map URL"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:123
+msgid "Phone Number"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:304
+msgid "Schema.org markup generated by %1$s (%2$s)"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:342
+msgid "Standard"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:345
+msgid "Search Result Type:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:350
 msgid "Name of Reviewed Item:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:238
+#: modules/rich-snippets/rich-snippets.php:354
 msgid "0.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:239
+#: modules/rich-snippets/rich-snippets.php:355
 msgid "1 star"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:240
+#: modules/rich-snippets/rich-snippets.php:356
 msgid "1.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:241
+#: modules/rich-snippets/rich-snippets.php:357
 msgid "2 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:242
+#: modules/rich-snippets/rich-snippets.php:358
 msgid "2.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:243
+#: modules/rich-snippets/rich-snippets.php:359
 msgid "3 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:244
+#: modules/rich-snippets/rich-snippets.php:360
 msgid "3.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:245
+#: modules/rich-snippets/rich-snippets.php:361
 msgid "4 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:246
+#: modules/rich-snippets/rich-snippets.php:362
 msgid "4.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:247
+#: modules/rich-snippets/rich-snippets.php:363
 msgid "5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:248
+#: modules/rich-snippets/rich-snippets.php:364
 msgid "Star Rating for Reviewed Item:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:259
+#: modules/rich-snippets/rich-snippets.php:370
+msgid "Street Address:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:371
+msgid "Post Office Box Number:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:372
+msgid "City:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:373
+msgid "State or Region:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:374
+msgid "Country:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:375
+msgid "Postal Code:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:376
+msgid "Address:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:377
+msgid "Map Page:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:378
+msgid "Phone Number:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:379
+msgid "Fax Number:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:380
+msgid "Photo:"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:391
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2268,16 +2373,10 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:270
+#: modules/rich-snippets/rich-snippets.php:402
 msgid ""
 "\r\n"
 "<ul>\r\n"
-"\t<li><strong>Data Format</strong> &mdash; This lets you select the &#8220;"
-"language&#8221; that Rich Snippet Creator uses to communicate the rich "
-"snippet data to Google. Google supports all three options. We recommend "
-"&#8220;Microformats&#8221; because it&#8217;s compatible with the greatest "
-"number of HTML/XHTML variants. This option will likely be of interest only "
-"to advanced users.</li>\r\n"
 "\t<li><strong>Categories/Tags That Indicate Reviews</strong> &mdash; If you "
 "haven&#8217;t set the &#8220;Rich Snippet Type&#8221; setting for an old "
 "post or page, then Rich Snippet Creator will automatically set its default "
@@ -2288,7 +2387,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:280
+#: modules/rich-snippets/rich-snippets.php:411
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2315,7 +2414,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.4)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2631,7 +2730,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.4)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
@@ -2733,7 +2832,7 @@ msgid "Uninstallation complete. Thanks for trying SEO Ultimate."
 msgstr ""
 
 #: modules/sharing-buttons/sharing-buttons.php:12
-#: modules/sharing-buttons/sharing-buttons.php:72
+#: modules/sharing-buttons/sharing-buttons.php:71
 msgid "Sharing Facilitator"
 msgstr ""
 
@@ -2741,23 +2840,23 @@ msgstr ""
 msgid "Bookmark and Share"
 msgstr ""
 
-#: modules/sharing-buttons/sharing-buttons.php:39
-msgid "Which provider would you like to use for your sharing buttons?"
-msgstr ""
-
-#: modules/sharing-buttons/sharing-buttons.php:41
+#: modules/sharing-buttons/sharing-buttons.php:40
 msgid "None; disable sharing buttons"
 msgstr ""
 
-#: modules/sharing-buttons/sharing-buttons.php:42
+#: modules/sharing-buttons/sharing-buttons.php:41
 msgid "Use the ShareThis button"
 msgstr ""
 
-#: modules/sharing-buttons/sharing-buttons.php:43
+#: modules/sharing-buttons/sharing-buttons.php:42
 msgid "Use the AddThis button"
 msgstr ""
 
-#: modules/sharing-buttons/sharing-buttons.php:73
+#: modules/sharing-buttons/sharing-buttons.php:43
+msgid "Which provider would you like to use for your sharing buttons?"
+msgstr ""
+
+#: modules/sharing-buttons/sharing-buttons.php:72
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2777,11 +2876,11 @@ msgstr ""
 msgid "Slug Optimizer"
 msgstr ""
 
-#: modules/slugs/slugs.php:16
+#: modules/slugs/slugs.php:19
 msgid "Words to Remove"
 msgstr ""
 
-#: modules/slugs/slugs.php:76
+#: modules/slugs/slugs.php:79
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2801,7 +2900,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/slugs/slugs.php:87
+#: modules/slugs/slugs.php:90
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2837,7 +2936,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/slugs/slugs.php:107
+#: modules/slugs/slugs.php:110
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -3304,49 +3403,49 @@ msgstr ""
 msgid "SEO Ultimate Widgets"
 msgstr ""
 
-#: modules/widgets/widgets.php:42
+#: modules/widgets/widgets.php:46
 msgid ""
 "On category archives, displays a list of child categories and/or posts in "
 "the category. Displays a list of top-level categories everywhere else. "
 "Powered by the SEO Ultimate plugin."
 msgstr ""
 
-#: modules/widgets/widgets.php:43
+#: modules/widgets/widgets.php:47
 msgid "Siloed Categories"
 msgstr ""
 
-#: modules/widgets/widgets.php:57
+#: modules/widgets/widgets.php:61
 msgid "Tags"
 msgstr ""
 
-#: modules/widgets/widgets.php:140
+#: modules/widgets/widgets.php:144
 msgid "Show post counts"
 msgstr ""
 
-#: modules/widgets/widgets.php:142
+#: modules/widgets/widgets.php:146
 msgid "Use term descriptions in title attributes"
 msgstr ""
 
-#: modules/widgets/widgets.php:144
+#: modules/widgets/widgets.php:148
 msgid "Taxonomy:"
 msgstr ""
 
-#: modules/widgets/widgets.php:169
+#: modules/widgets/widgets.php:173
 msgid ""
 "Add this widget to display Deeplink Juggernaut&#8217;s Footer Links in a "
 "widget area of your choosing rather than the default wp_footer section. "
 "Powered by the SEO Ultimate plugin."
 msgstr ""
 
-#: modules/widgets/widgets.php:223
+#: modules/widgets/widgets.php:227
 msgid "Title: <em>(optional)</em>"
 msgstr ""
 
-#: modules/widgets/widgets.php:227
+#: modules/widgets/widgets.php:231
 msgid "Display as a list"
 msgstr ""
 
-#: modules/widgets/widgets.php:230
+#: modules/widgets/widgets.php:234
 msgid "Use my <a href=\"%s\" target=\"_blank\">footer link HTML formats</a>"
 msgstr ""
 
