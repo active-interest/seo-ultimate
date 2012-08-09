@@ -28,7 +28,8 @@
 }
 
 #su-fofs .su-404s-clear-log {
-	float: right;
+	text-align: right;
+	padding: 0.5em 0;
 }
 
 #su-fofs .form-table input#max_log_size {

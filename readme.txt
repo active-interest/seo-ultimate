@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate, Open Graph, og, microdata, Facebook, Twitter, Schema.org
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.5
+Stable tag: 7.5.1
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, Open Graph, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -278,6 +278,10 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.5.1 (August 9, 2012) =
+* Bugfix: Removed blank Rich Snippet Creator admin page from the SEO menu
+* Bugfix: Removed non-functional "Test" link from the "Add a New Alias" section of Link Mask Generator's admin page
 
 = Version 7.5 (August 9, 2012) =
 * Feature: Open Graph Integrator now includes Twitter Card support

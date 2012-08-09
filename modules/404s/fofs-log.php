@@ -161,6 +161,7 @@ class SU_FofsLog extends SU_Module {
 			
 			$this->clear_log_button();
 			
+			echo "<div id='su-404s-log-table'>\n";
 			$headers = $this->get_admin_table_columns();
 			$this->admin_wftable_start();
 			
@@ -241,6 +242,7 @@ class SU_FofsLog extends SU_Module {
 			$this->update_setting('log', $the404s);
 			
 			$this->admin_wftable_end();
+			echo "</div>\n";
 			
 			$this->clear_log_button();
 		}

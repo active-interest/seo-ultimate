@@ -12,6 +12,7 @@ class SU_RichSnippets extends SU_Module {
 	var $apply_subproperty_markup_args = array();
 	
 	function get_module_title() { return __('Rich Snippet Creator', 'seo-ultimate'); }
+	function get_menu_title() { return false; }
 	
 	function get_admin_url($key = false) {
 		if ($key)
