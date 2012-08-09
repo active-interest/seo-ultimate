@@ -11,6 +11,9 @@ class SU_Linkbox extends SU_Module {
 
 	function get_module_title() { return __('Linkbox Inserter', 'seo-ultimate'); }
 	
+	function get_parent_module() { return 'misc'; }
+	function get_settings_key() { return 'linkbox'; }
+	
 	function get_default_settings() {
 		//The default linkbox HTML
 		return array(
@@ -41,13 +44,13 @@ class SU_Linkbox extends SU_Module {
 	}
 	
 	function admin_page_contents() {
-		$this->admin_form_start();
+		$this->child_admin_form_start();
 		$this->checkboxes(array('filter_posts'	=> __('At the end of posts', 'seo-ultimate')
 							,	'filter_pages'	=> __('At the end of pages', 'seo-ultimate')
 							,	'action_hook'	=> __('When called by the su_linkbox hook', 'seo-ultimate')
 		), __('Display linkboxes...', 'seo-ultimate'));
-		$this->textarea('html', __('Linkbox HTML', 'seo-ultimate'), 10);
-		$this->admin_form_end();
+		$this->textarea('html', __('Linkbox HTML', 'seo-ultimate'));
+		$this->child_admin_form_end();
 	}
 	
 	function should_linkbox() {

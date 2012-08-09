@@ -1425,12 +1425,12 @@ class SEO_Ultimate {
 	/********** MODULE FUNCTIONS ***********/
 	
 	/**
-	 * Checks to see whether a specified module exists.
+	 * Checks to see whether an instantiation of the specified module exists (i.e. whether the module is non-disabled).
 	 * 
 	 * @since 1.5
 	 * 
 	 * @param string $key The key of the module to check.
-	 * @return boolean Whether the module is enabled.
+	 * @return boolean Whether the module is enabled (or silent or hidden).
 	 */
 	function module_exists($key) {
 		return isset($this->modules[$key]);

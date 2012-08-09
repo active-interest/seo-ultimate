@@ -1,21 +1,21 @@
 === SEO Ultimate ===
 Contributors: SEO Design Solutions, JohnLamansky
-Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate
+Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate, Open Graph, og, microdata, Facebook, Twitter, Schema.org
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.4
+Stable tag: 7.5
 
-This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
+This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, Open Graph, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
 == Description ==
 
 = Recent Releases =
 
+* Version 7.5 adds support for Twitter Cards, Schema.org, and place snippets
 * Version 7.4 adds the Author Highlighter module
 * Version 7.3 adds the Open Graph Integrator module
 * Version 7.2 updates Permalink Tweaker
 * Version 7.1 adds new Link Mask Generator features
-* Version 7.0 adds meta description pagination and WP 3.3 compatibility
 
 = Features =
 
@@ -94,10 +94,10 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* Use to add Google Analytics, Feedburner FeedFlare, Google AdSense section targeting, and other SEO/SEM-enhancing code snippets.
 	* Code remains even when switching themes.
 
-* **Rich Snippet Creator**
-	* Easily add rich snippet code to your review posts.
+* **Rich Snippet Creator** -- UPDATED in Version 7.5
+	* Easily add rich snippet code for reviews and places.
 	* Attract more search traffic with eye-catching supplementary SERP data.
-	* Add code to old review posts automatically.
+	* Supports the new Schema.org format used by Google, Bing, Yahoo, and Yandex.
 
 * **Sharing Facilitator**
 	* Adds buttons that make it easy for visitors to share your content on social networking sites (thus building links to your site).
@@ -124,24 +124,25 @@ SEO Ultimate is an all-in-one [SEO](http://www.seodesignsolutions.com/) plugin w
 	* The "URL Conflict Resolution" setting lets you arbitrate between pages/terms when taxonomy base removal causes their URLs to conflict
 
 * **SEO Ultimate Widgets**
-	* Lets you output your Deeplink Juggernaut Footer Links in a widget
-	* The Siloed Categories widget makes it drag-and-drop-easy to construct siloed navigation on your site
+	* Lets you output your Deeplink Juggernaut Footer Links in a widget.
+	* The Siloed Categories widget makes it drag-and-drop-easy to construct siloed navigation on your site.
 
 * **Settings Monitor**
-	* Keep tabs on the SEO-friendliness of your site's settings with a dashboard of green/yellow/red indicators
+	* Keep tabs on the SEO-friendliness of your site's settings with a dashboard of green/yellow/red indicators.
 
-* **Open Graph Integrator** -- NEW in Version 7.3
-	* Out-of-the-box functionality autogenerates Open Graph data for your homepage, posts, pages, attachments, custom post type objects, and user profile pages
-	* Fine-grained controls allow you to customize the Open Graph title, image, and content type for every single post, page, attachment, and custom post type object on your site
-	* Mass-editors let you specify Open Graph data for multiple posts and pages at a time
+* **Open Graph Integrator** -- UPDATED in Version 7.5
+	* Out-of-the-box functionality autogenerates Open Graph data for your homepage, posts, pages, attachments, custom post type objects, and user profile pages.
+	* Fine-grained controls allow you to customize the Open Graph title, image, and content type for every single post, page, attachment, and custom post type object on your site.
+	* Mass-editors let you specify Open Graph data for multiple posts and pages at a time.
+	* Includes support for summary-style and photo-style Twitter Cards.
 
 * **Author Highlighter** -- NEW in Version 7.4
-	* Generates code so that when one of your site's posts appears in Google search results, the Google+ profile picture of the post's author will appear alongside it
-	* Includes support for both single-author and multi-author site setups
-	* Supports author highlighting for posts, pages, attachments, custom post types, the homepage, archive pages, and author pages
-	* Inserts a "Google+ Profile URL" field on the WordPress user profile editor, so that users can insert their Google+ URL and enable author highlighting on their posts
+	* Generates code so that when one of your site's posts appears in Google search results, the Google+ profile picture of the post's author will appear alongside it.
+	* Includes support for both single-author and multi-author site setups.
+	* Supports author highlighting for posts, pages, attachments, custom post types, the homepage, archive pages, and author pages.
+	* Inserts a "Google+ Profile URL" field on the WordPress user profile editor, so that users can insert their Google+ URL and enable author highlighting on their posts.
 
-* **Settings Manager** (located under Settings > SEO Ultimate)
+* **Plugin Settings Manager** (located under Settings > SEO Ultimate)
 	* Export your SEO Ultimate settings to a file and re-import later if desired.
 	* Use the export/import functionality to move SEO Ultimate settings between WordPress sites.
 	* Reset all settings back to "factory defaults" if something goes wrong.
@@ -202,6 +203,9 @@ To install the plugin manually:
 
 * **Will SEO Ultimate work on multisite setups?**
 	Yes. SEO Ultimate versions 7.2.6 and later are designed to work on networks running WordPress 3.3 or later.
+
+* **Which browsers work best with the SEO Ultimate administration interface?**
+	SEO Ultimate's administration interface occasionally uses some HTML5 features. All modern browsers support these features with the exception of Internet Explorer. Don't worry, you'll still be able to use the administration interface with Internet Explorer, but you'll get the best experience if you use another browser. (Note that this only applies to the browser _you_ use. The visitors to your website, on the other hand, can use whatever browser they want.)
 
 = General FAQ =
 
@@ -274,6 +278,19 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.5 (August 9, 2012) =
+* Feature: Open Graph Integrator now includes Twitter Card support
+* Feature: Rich Snippet Creator now supports Place microdata
+* Improvement: Rich Snippet Creator has been updated to use the new Schema.org microdata format supported by Google, Bing, Yahoo, and Yandex
+* Improvement: Module Manager no longer shows the "Hidden" option for Miscellaneous modules, since for those modules the "Hidden" option behaves no differently than the "Enabled" option
+* Bugfix: Adjusted 404 Monitor CSS to account for WordPress CSS changes
+* Bugfix: Since Open Graph articles are only supposed to have one "article:section" element but can have multiple "article:tag" elements, posts with multiple categories now have those categories listed in the Open Graph code as "article:tag" elements instead of multiple "article:section" elements, while posts with just one category continue to have that category marked as "article:section"
+* Removed Feature: Rich Snippet Creator no longer lets you choose between the microdata/microformat/RDFa data formats, since these have been replaced with the new Schema.org format. (Rich Snippet Creator will update all your old microdata/microformat/RDFa code automatically.)
+* Removed Feature: The previous version of Rich Snippet Creator was able to mark old posts as reviews if they had certain categories or tags. This feature has been removed, and old posts must now be marked as reviews manually. This is because automatically marking old posts as reviews won't do you much good unless those posts also have review data, which must be entered in manually anyway.
+* Note: Rich Snippet Creator no longer has an admin page; now the module's only interface is in the "SEO Settings" box
+* Change: The "Link Masks" section now appears on the "Links" tab of the "SEO Settings" box instead of on the "Miscellaneous" tab
+* Change: The admin pages for Linkbox Inserter, Nofollow Manager, and Slug Optimizer have been moved to the Miscellaneous page in order to reduce clutter on the SEO menu
 
 = Version 7.4 (August 7, 2012) =
 * New Module: Author Highlighter

@@ -187,7 +187,7 @@ class sustr {
 	}
 	
 	function htmlsafe_str_replace($search, $replace, $subject, $limit, &$count, $exclude_tags = false) {
-		$search = sustr::preg_escape($search);
+		$search = sustr::preg_escape($search, '');
 		return sustr::htmlsafe_preg_replace($search, $replace, $subject, $limit, $count, $exclude_tags);
 	}
 	

@@ -12,6 +12,9 @@ class SU_LinkNofollow extends SU_Module {
 	function get_module_title() { return __('Nofollow Manager', 'seo-ultimate'); }
 	function get_default_status() { return SU_MODULE_DISABLED; }
 	
+	function get_parent_module() { return 'misc'; }
+	function get_settings_key() { return 'link-nofollow'; }
+	
 	function init() {
 		$filterdata = array(
 			  'nofollow_links' => array(
@@ -49,8 +52,7 @@ class SU_LinkNofollow extends SU_Module {
 	}
 	
 	function admin_page_contents() {
-		$this->admin_form_start();
-		$this->admin_form_subheader(__('Add the nofollow attribute to...', 'seo-ultimate'));
+		$this->child_admin_form_start();
 		$this->checkboxes(array(
 				  'nofollow_adjacent_post' => __('Adjacent post links (next post / previous post)', 'seo-ultimate')
 				, 'nofollow_category_loop' => __('Category links (after posts)', 'seo-ultimate')
@@ -65,9 +67,9 @@ class SU_LinkNofollow extends SU_Module {
 				, 'nofollow_login' => __('Login link', 'seo-ultimate')
 				, 'nofollow_tag_loop' => __('Tag links (after posts)', 'seo-ultimate')
 				, 'nofollow_tag_list' => __('Tag links (in lists and clouds)', 'seo-ultimate')
-			));
+			), __('Add the nofollow attribute to...', 'seo-ultimate'));
 		
-		$this->admin_form_end();
+		$this->child_admin_form_end();
 	}
 	
 	function postmeta_fields($fields, $screen) {

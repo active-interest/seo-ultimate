@@ -19,12 +19,17 @@ class SU_OpenGraph extends SU_Module {
 		return array(
 			  'default_post_og_type' => 'article'
 			, 'default_page_og_type' => 'article'
+			, 'default_post_twitter_card' => 'summary'
+			, 'default_page_twitter_card' => 'summary'
+			, 'default_attachment_twitter_card' => 'photo'
 		);
 	}
 	
 	function init() {
 		add_filter('language_attributes', array(&$this, 'html_tag_xmlns_attrs'), 1000);
 		add_action('su_head', array(&$this, 'head_tag_output'));
+		add_filter('su_get_setting-opengraph-twitter_site_handle', array(&$this, 'sanitize_twitter_handle'));
+		add_filter('user_contactmethods', array(&$this, 'add_twitter_field'));
 	}
 	
 	function html_tag_xmlns_attrs($attrs) {
@@ -41,12 +46,15 @@ class SU_OpenGraph extends SU_Module {
 	
 	function head_tag_output() {
 		
-		$tags = array();
+		$tags = $twitter_tags = array();
 		
 		if (is_home()) {
 			
 			//Type
 			$tags['og:type'] = 'blog';
+			
+			//Twitter Type
+			$twitter_tags['twitter:card'] = 'summary';
 			
 			//Title
 			if (!($tags['og:title'] = $this->get_setting('home_og_title')))
@@ -67,86 +75,104 @@ class SU_OpenGraph extends SU_Module {
 			global $wp_query;
 			$post = $wp_query->get_queried_object();
 			
-			//Type
-			if (!($tags['og:type'] = $this->get_postmeta('og_type')))
-				$tags['og:type'] = $this->get_setting("default_{$post->post_type}_og_type");
-			
-			//Title
-			if (!($tags['og:title'] = $this->get_postmeta('og_title')))
-				$tags['og:title'] = strip_tags( apply_filters( 'single_post_title', $post->post_title ) );
-			
-			//Description
-			if (!($tags['og:description'] = $this->get_postmeta('og_description')))
-				if ($this->plugin->call_module_func('meta-descriptions', 'get_meta_desc', $meta_desc, false) && $meta_desc)
-					$tags['og:description'] = $meta_desc;
-			
-			//URL
-			$tags['og:url'] = get_permalink($post->ID);
-			
-			//Image
-			$tags['og:image'] = $this->jlsuggest_value_to_url($this->get_postmeta('og_image'), true);
-			if (!$tags['og:image']) {
-				if ('attachment' == $post->post_type)
-					$tags['og:image'] = wp_get_attachment_url();
-				elseif ($thumbnail_id = get_post_thumbnail_id($post->ID))
-					$tags['og:image'] = wp_get_attachment_url($thumbnail_id);
-			}
-			
-			//Additional fields
-			switch ($tags['og:type']) {
-				case 'article':
-					
-					$tags['article:published_time'] = get_the_date('Y-m-d');
-					$tags['article:modified_time'] = get_the_modified_date('Y-m-d');
-					$tags['article:author'] = get_author_posts_url($post->post_author);
-					
-					$taxonomy_names = suwp::get_taxonomy_names();
-					foreach ($taxonomy_names as $taxonomy_name) {
-						if ($terms = get_the_terms(get_the_ID(), $taxonomy_name)) {
-							
-							if ('category' == $taxonomy_name)
-								$meta_property = 'article:section';
-							else
-								$meta_property = 'article:tag';
-							
-							foreach ($terms as $term) {
-								$tags[$meta_property][] = $term->name;
+			if (is_object($post)) {
+				//Type
+				if (!($tags['og:type'] = $this->get_postmeta('og_type')))
+					$tags['og:type'] = $this->get_setting("default_{$post->post_type}_og_type");
+				
+				//Twitter Type
+				if (!($twitter_tags['twitter:card'] = $this->get_postmeta('twitter_card')))
+					$twitter_tags['twitter:card'] = $this->get_setting("default_{$post->post_type}_twitter_card");
+				
+				//Title
+				if (!($tags['og:title'] = $this->get_postmeta('og_title')))
+					$tags['og:title'] = strip_tags( apply_filters( 'single_post_title', $post->post_title ) );
+				
+				//Description
+				if (!($tags['og:description'] = $this->get_postmeta('og_description')))
+					if ($this->plugin->call_module_func('meta-descriptions', 'get_meta_desc', $meta_desc, false) && $meta_desc)
+						$tags['og:description'] = $meta_desc;
+				
+				//URL
+				$tags['og:url'] = get_permalink($post->ID);
+				
+				//Image
+				$tags['og:image'] = $this->jlsuggest_value_to_url($this->get_postmeta('og_image'), true);
+				if (!$tags['og:image']) {
+					if ('attachment' == $post->post_type)
+						$tags['og:image'] = wp_get_attachment_url();
+					elseif ($thumbnail_id = get_post_thumbnail_id($post->ID))
+						$tags['og:image'] = wp_get_attachment_url($thumbnail_id);
+				}
+				
+				//Additional fields
+				switch ($tags['og:type']) {
+					case 'article':
+						
+						$tags['article:published_time'] = get_the_date('Y-m-d');
+						$tags['article:modified_time'] = get_the_modified_date('Y-m-d');
+						$tags['article:author'] = get_author_posts_url($post->post_author);
+						
+						$single_category = (count(get_the_category()) == 1);
+						
+						$taxonomy_names = suwp::get_taxonomy_names();
+						foreach ($taxonomy_names as $taxonomy_name) {
+							if ($terms = get_the_terms(get_the_ID(), $taxonomy_name)) {
+								
+								if ($single_category && 'category' == $taxonomy_name)
+									$meta_property = 'article:section';
+								else
+									$meta_property = 'article:tag';
+								
+								foreach ($terms as $term) {
+									$tags[$meta_property][] = $term->name;
+								}
 							}
 						}
-					}
-					
-					break;
+						
+						break;
+				}
+				
+				//Author's Twitter Handle
+				$handle = get_user_meta($post->post_author, 'twitter', true);
+				$handle = $this->sanitize_twitter_handle($handle);
+				$twitter_tags['twitter:creator'] = $handle;
 			}
-			
 		} elseif (is_author()) {
 			
 			global $wp_query;
 			$author = $wp_query->get_queried_object();
 			
-			//Type
-			$tags['og:type'] = 'profile';
-			
-			//Title
-			$tags['og:title'] = $author->display_name;
-			
-			//Description
-			$tags['og:title'] = get_the_author_meta('description', $author->ID);
-			
-			//Image
-			$tags['og:image'] = false;
-			
-			//URL
-			$tags['og:url'] = get_author_posts_url($author->ID, $author->user_nicename);
-			
-			//First Name
-			$tags['profile:first_name'] = get_the_author_meta('first_name', $author->ID);
-			
-			//Last Name
-			$tags['profile:last_name'] = get_the_author_meta('last_name', $author->ID);
-			
-			//Username
-			$tags['profile:username'] = $author->user_login;
-			
+			if (is_object($author)) {
+				//Type
+				$tags['og:type'] = 'profile';
+				
+				//Title
+				$tags['og:title'] = $author->display_name;
+				
+				//Description
+				$tags['og:title'] = get_the_author_meta('description', $author->ID);
+				
+				//Image
+				$tags['og:image'] = false;
+				
+				//URL
+				$tags['og:url'] = get_author_posts_url($author->ID, $author->user_nicename);
+				
+				//First Name
+				$tags['profile:first_name'] = get_the_author_meta('first_name', $author->ID);
+				
+				//Last Name
+				$tags['profile:last_name'] = get_the_author_meta('last_name', $author->ID);
+				
+				//Username
+				$tags['profile:username'] = $author->user_login;
+				
+				//Twitter Handle
+				$handle = get_user_meta($author->ID, 'twitter', true);
+				$handle = $this->sanitize_twitter_handle($handle);
+				$twitter_tags['twitter:creator'] = $handle;
+			}
 		} else
 			return;
 		
@@ -166,16 +192,28 @@ class SU_OpenGraph extends SU_Module {
 		//FB App ID
 		$tags['fb:app_id'] = $this->get_setting('default_fb_app_id');
 		
+		//Twitter Site Handle
+		$twitter_tags['twitter:site'] = $this->get_setting('twitter_site_handle');
+		
 		//Output meta tags
 		$xmlnses = $this->namespaces_declared ? array() : $this->get_xmlns_attrs();
-		foreach ($tags as $property => $values) {
-			foreach ((array)$values as $value) {
-				$property = su_esc_attr($property);
-				$value  = su_esc_attr($value);
-				if (strlen(trim($property)) && strlen(trim($value))) {
-					$xmlns = $xmlnses[sustr::upto($property, ':')];
-					if ($xmlns) $xmlns .= ' ';
-					echo "\t<meta property=\"$property\" content=\"$value\" $xmlns/>\n";
+		
+		$output_formats = array(
+			  '<meta property="%1$s" content="%2$s" %3$s/>' => $tags
+			, '<meta name="%1$s" content="%2$s" />' => $twitter_tags
+		);
+		foreach ($output_formats as $html_format => $format_tags) {
+			foreach ($format_tags as $property => $values) {
+				foreach ((array)$values as $value) {
+					$property = su_esc_attr($property);
+					$value  = su_esc_attr($value);
+					if (strlen(trim($property)) && strlen(trim($value))) {
+						$xmlns = $xmlnses[sustr::upto($property, ':')];
+						if ($xmlns) $xmlns .= ' ';
+						echo "\t";
+						printf($html_format, $property, $value, $xmlns);
+						echo "\n";
+					}
 				}
 			}
 		}
@@ -194,7 +232,7 @@ class SU_OpenGraph extends SU_Module {
 		$postmeta_edit_tabs = $this->get_postmeta_edit_tabs(array(
 			  array(
 				  'type' => 'dropdown'
-				, 'options' => array_merge(array(__('Use default', 'seo-ultimate')), $this->get_type_options())
+				, 'options' => array_merge(array('' => __('Use default', 'seo-ultimate')), $this->get_type_options())
 				, 'name' => 'og_type'
 				, 'label' => __('Type', 'seo-ultimate')
 				)
@@ -235,6 +273,7 @@ class SU_OpenGraph extends SU_Module {
 		$this->admin_form_table_start();
 		$this->textbox('og_site_name', __('Site Name', 'seo-ultimate'), false, false, array(), array('placeholder' => get_bloginfo('name')));
 		$this->textbox('default_fb_app_id', __('Facebook App ID', 'seo-ultimate'));
+		$this->textbox('twitter_site_handle', __('This Site&#8217;s Twitter Handle', 'seo-ultimate'));
 		$this->admin_form_table_end();
 	}
 	
@@ -242,10 +281,23 @@ class SU_OpenGraph extends SU_Module {
 		$posttypes = suwp::get_post_type_objects();
 		
 		$this->admin_subheader(__('Default Types', 'seo-ultimate'));
-		$this->admin_form_table_start();
-		foreach ($posttypes as $posttype)
-			$this->dropdown("default_{$posttype->name}_og_type", $this->get_type_options(), $posttype->labels->name);
-		$this->admin_form_table_end();
+		$this->admin_wftable_start(array(
+			  'posttype' => __('Post Type', 'seo-ultimate')
+			, 'og' => __('Open Graph Type', 'seo-ultimate')
+			, 'twitter' => __('Twitter Type', 'seo-ultimate')
+		));
+		foreach ($posttypes as $posttype) {
+			echo "<tr valign='middle'>\n";
+			echo "\t<th class='su-opengraph-posttype' scope='row'>" . esc_html($posttype->labels->name) . "</th>\n";
+			echo "\t<td class='su-opengraph-og'>";
+			$this->dropdown("default_{$posttype->name}_og_type", $this->get_type_options(), false, '%s', array('in_table' => false));
+			echo "</td>\n";
+			echo "\t<td class='su-opengraph-twitter'>";
+			$this->dropdown("default_{$posttype->name}_twitter_card", $this->get_twitter_type_options(), false, '%s', array('in_table' => false));
+			echo "</td>\n";
+			echo "</tr>\n";
+		}
+		$this->admin_wftable_end();
 		
 		$this->admin_subheader(__('Default Image', 'seo-ultimate'));
 		$this->admin_form_table_start();
@@ -270,7 +322,8 @@ class SU_OpenGraph extends SU_Module {
 		$fields['opengraph'][10]['og_title'] = $this->get_postmeta_textbox('og_title', __('Title:', 'seo-ultimate'));
 		$fields['opengraph'][20]['og_description'] = $this->get_postmeta_textarea('og_description', __('Description:', 'seo-ultimate'));
 		$fields['opengraph'][30]['og_image'] = $this->get_postmeta_jlsuggest_box('og_image', __('Image:', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
-		$fields['opengraph'][40]['og_type'] = $this->get_postmeta_dropdown('og_type', array_merge(array(__('Use default', 'seo-ultimate')), $this->get_type_options()), __('Type:', 'seo-ultimate'));
+		$fields['opengraph'][40]['og_type'] = $this->get_postmeta_dropdown('og_type', array_merge(array('' => __('Use default', 'seo-ultimate')), $this->get_type_options()), __('Open Graph Type:', 'seo-ultimate'));
+		$fields['opengraph'][50]['twitter_card'] = $this->get_postmeta_dropdown('twitter_card', array_merge(array('' => __('Use default', 'seo-ultimate')), $this->get_twitter_type_options()), __('Twitter Type:', 'seo-ultimate'));
 		
 		return $fields;
 	}
@@ -323,6 +376,35 @@ class SU_OpenGraph extends SU_Module {
 				, 'video.other' => __('Video', 'seo-ultimate')
 			)
 		);
+	}
+	
+	function get_twitter_type_options() {
+		return array(
+			  'summary' => __('Regular', 'seo-ultimate')
+			, 'photo' => __('Photo', 'seo-ultimate')
+		);
+	}
+	
+	function sanitize_twitter_handle($value) {
+		if (strpos($value, '/') === false) {
+			$handle = ltrim($value, '@');
+		} else {
+			$url_parts = explode('/', $value);
+			$handle = array_pop($url_parts);
+		}
+		
+		$handle = sustr::preg_filter('a-zA-Z0-9_', $handle);
+		$handle = trim($handle);
+		
+		if ($handle)
+			$handle = "@$handle";
+		
+		return $handle;
+	}
+	
+	function add_twitter_field( $contactmethods ) {
+		$contactmethods['twitter'] = __('Twitter Handle', 'seo-ultimate');
+		return $contactmethods;
 	}
 }
 

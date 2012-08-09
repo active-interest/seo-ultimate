@@ -11,10 +11,13 @@ class SU_Slugs extends SU_Module {
 	
 	function get_module_title() { return __('Slug Optimizer', 'seo-ultimate'); }
 	
+	function get_parent_module() { return 'misc'; }
+	function get_settings_key() { return 'slugs'; }
+	
 	function admin_page_contents() {
-		$this->admin_form_start();
+		$this->child_admin_form_start();
 		$this->textarea('words_to_remove', __('Words to Remove', 'seo-ultimate'), 20);
-		$this->admin_form_end();
+		$this->child_admin_form_end();
 	}
 	
 	function init() {

@@ -1849,7 +1849,9 @@ class SU_Module {
 	 * @param string|false $grouptext The text to display in a table cell to the left of the one containing the dropdown. Optional.
 	 * @param string $text A printf-style format string in which "%s" is replaced with the dropdown. Use this to put text before or after the dropdown.
 	 */
-	function dropdown($name, $values, $grouptext=false, $text='%s') {
+	function dropdown($name, $values, $grouptext=false, $text='%s', $args=array()) {
+		
+		$in_table = isset($args['in_table']) ? $args['in_table'] : true;
 		
 		//Save dropdown setting after form submission
 		if ($this->is_action('update') && isset($_POST[$name]))
@@ -1857,7 +1859,7 @@ class SU_Module {
 		
 		if ($grouptext)
 			$this->admin_form_group_start($grouptext, false);
-		else
+		elseif ($in_table)
 			echo "<tr valign='top' class='su-admin-form-dropdown'>\n<td colspan='2'>\n";
 		
 		if (is_array($values)) {
@@ -1871,8 +1873,10 @@ class SU_Module {
 			printf($text, $dropdown);
 		}
 		
-		if ($grouptext) echo "</fieldset>";
-		echo "</td>\n</tr>\n";
+		if ($grouptext)
+			$this->admin_form_group_end();
+		elseif ($in_table)
+			echo "</td>\n</tr>\n";
 	}
 	
 	/**
@@ -2344,19 +2348,35 @@ class SU_Module {
 	 * @param array $textboxes An array of textboxes. (Field/setting IDs are the keys, and descriptions are the values.)
 	 * @return string The HTML that would render the textboxes.
 	 */
-	function get_postmeta_textboxes($textboxes) {
-
+	function get_postmeta_textboxes($textboxes, $textbox_args=array(), $grouptext=false) {
+		
 		$html = '';
 		
+		if ($grouptext) {
+			$h_grouptext = esc_html($grouptext);
+			$html .= "<tr class='su textbox' valign='top'>\n<th scope='row' class='su'><label>$h_grouptext</label></th>\n<td class='su group'><table>";
+		}
+		
 		foreach ($textboxes as $id => $title) {
+			
+			$type = isset($textbox_args[$id]['type']) ? $textbox_args[$id]['type'] : 'text';
 			
 			register_setting('seo-ultimate', $id);
 			$value = su_esc_editable_html($this->get_postmeta($id));
 			$id = "_su_".su_esc_attr($id);
-			//$title = str_replace(' ', '&nbsp;', $title);
 			
-			$html .= "<tr class='su textbox' valign='middle'>\n<th scope='row' class='su'><label for='$id'>$title</label></th>\n"
-					."<td class='su'><input name='$id' id='$id' type='text' value='$value' class='regular-text' tabindex='2' /></td>\n</tr>\n";
+			$e_title = su_esc_attr($title);
+			
+			if ($grouptext)
+				$html .= "<tr><th scope='row'>$title</th><td><input name='$id' id='$id' type='$type' value='$value' class='regular-text' tabindex='2' /></td></tr>";
+			else
+				$html .= "<tr class='su textbox' valign='middle'>\n<th scope='row' class='su'><label for='$id'>$title</label></th>\n"
+						."<td class='su'><input name='$id' id='$id' type='$type' value='$value' class='regular-text' tabindex='2' /></td>\n</tr>\n";
+		}
+		
+		if ($grouptext) {
+			$h_grouptext = esc_html($grouptext);
+			$html .= "</table></td>\n</tr>\n";
 		}
 		
 		return $html;
@@ -2372,8 +2392,8 @@ class SU_Module {
 	 * @param string $title The label of the HTML element.
 	 * @return string The HTML that would render the textbox.
 	 */
-	function get_postmeta_textbox($id, $title) {
-		return $this->get_postmeta_textboxes(array($id => $title));
+	function get_postmeta_textbox($id, $title, $args=array()) {
+		return $this->get_postmeta_textboxes(array($id => $title), array($id => $args));
 	}
 	
 	/**

@@ -205,7 +205,7 @@ class SU_InternalLinkAliases extends SU_Module {
 			
 			$html .= "</td>\n</tr>\n";
 			
-			$fields['70|aliases'] = $html;
+			$fields['links'][30]['aliases'] = $html;
 		}
 		
 		return $fields;

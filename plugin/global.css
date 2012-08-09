@@ -117,6 +117,10 @@ div.su-help h6 {
 	white-space: nowrap;
 }
 
+#su-postmeta-box table tr[valign="top"] th.su {
+	padding-top: 0.7em;
+}
+
 #su-postmeta-box table tr.textarea th.su label {
 	display: block;
 	margin-top: 5px;
@@ -127,6 +131,26 @@ div.su-help h6 {
 }
 
 #su-postmeta-box table td.su {
+	width: 100%;
+}
+
+#su-postmeta-box table td.su.group table {
+	border-spacing: 0;
+}
+
+#su-postmeta-box table td.su.group th {
+	text-align: right;
+	font-weight: normal;
+	white-space: nowrap;
+	padding: 0 0.5em;
+	vertical-align: middle;
+}
+
+#su-postmeta-box table td.su.group {
+	padding: 0.4em;
+}
+
+#su-postmeta-box table td.su.group td {
 	width: 100%;
 }
 
@@ -166,24 +190,9 @@ div.su-module select optgroup option {
 	text-decoration: none;
 }
 
-input.jlsuggest:-moz-placeholder {
-	background-color: #E0E7FF;
-	border-color: #C0CDFF;
-	color: black;
+#su-postmeta-box input[type="tel"] {
+	box-sizing: border-box;
 }
-
-/* Requires IE10+ */
-input.jlsuggest:-ms-input-placeholder {
-	background-color: #E0E7FF;
-	border-color: #C0CDFF;
-	color: black;
-}
-
-/*
-A ::-webkit-input-placeholder block is not included because
-the background-color rule doesn't apply correctly on Chrome
-and it looks rather horrendous...
-*/
 
 
 /* PLUGIN NOTICES */
