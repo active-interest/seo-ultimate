@@ -98,7 +98,7 @@ class SU_MoreLinks extends SU_Module {
 		
 		if ($this->has_enabled_parent()) {
 			$screen->add_help_tab(array(
-			  'id' => 'su-more-links-overview'
+			  'id' => 'su-more-links-help'
 			, 'title' => __('More Link Customizer', 'seo-ultimate')
 			, 'content' => 
 '<h3>' . __('Overview', 'seo-ultimate') . '</h3>' . $overview . 

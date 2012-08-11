@@ -2129,7 +2129,7 @@ class SU_Module {
 			echo "<tr valign='top'>\n";
 			if ($title) echo "<th scope='row'><label for='$id'>$title</label></th>\n";
 			echo "<td>";
-			echo $this->get_jlsuggest_box($id, $this->get_setting($id));
+			echo $this->get_jlsuggest_box($id, $this->get_setting($id), $params);
 			echo "</td>\n</tr>\n";
 		}
 	}

@@ -129,7 +129,7 @@ class SU_LinkNofollow extends SU_Module {
 		
 		$screen->add_help_tab(array(
 			  'id' => 'su-link-nofollow-overview'
-			, 'title' => __('Overview', 'seo-ultimate')
+			, 'title' => $this->has_enabled_parent() ? __('Nofollow Manager', 'seo-ultimate') : __('Overview', 'seo-ultimate')
 			, 'content' => __("
 <p>Nofollow Manager adds the <code>rel=&quot;nofollow&quot;</code> attribute to types of links that you specify. The <code>rel=&quot;nofollow&quot;</code> attribute prevents a link from passing PageRank.</p>
 <p>If you&#8217;re migrating to SEO Ultimate from another plugin, Nofollow Manager can help you maintain your existing settings (as part of an &#8220;if it ain&#8217;t broke don&#8217;t fix it&#8221; strategy). In other cases, however, we recommend not using the Nofollow Manager because in 2008 Google disabled the ability to use the <code>rel=&quot;nofollow&quot;</code> attribute for PageRank sculpting.</p>
