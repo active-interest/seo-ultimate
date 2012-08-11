@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.5\n"
+"Project-Id-Version: SEO Ultimate 7.5.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-08-09 15:06:57+00:00\n"
+"POT-Creation-Date: 2012-08-11 15:47:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Referers"
 msgstr ""
 
-#: modules/404s/fofs-log.php:118 modules/404s/fofs-log.php:221
+#: modules/404s/fofs-log.php:118 modules/404s/fofs-log.php:222
 msgid "User Agents"
 msgstr ""
 
@@ -115,43 +115,43 @@ msgstr ""
 msgid "No 404 errors in the log."
 msgstr ""
 
-#: modules/404s/fofs-log.php:180
+#: modules/404s/fofs-log.php:181
 msgid "Open URL in new window (will not be logged)"
 msgstr ""
 
-#: modules/404s/fofs-log.php:181
+#: modules/404s/fofs-log.php:182
 msgid "Query Google for cached version of URL (opens in new window)"
 msgstr ""
 
-#: modules/404s/fofs-log.php:182
+#: modules/404s/fofs-log.php:183
 msgid "Remove this URL from the log"
 msgstr ""
 
-#: modules/404s/fofs-log.php:185
+#: modules/404s/fofs-log.php:186
 msgid "%s at %s"
 msgstr ""
 
-#: modules/404s/fofs-log.php:189
+#: modules/404s/fofs-log.php:190
 msgid "View list of referring URLs"
 msgstr ""
 
-#: modules/404s/fofs-log.php:190
+#: modules/404s/fofs-log.php:191
 msgid "View list of user agents"
 msgstr ""
 
-#: modules/404s/fofs-log.php:200
+#: modules/404s/fofs-log.php:201
 msgid "Referring URLs"
 msgstr ""
 
-#: modules/404s/fofs-log.php:201 modules/404s/fofs-log.php:222
+#: modules/404s/fofs-log.php:202 modules/404s/fofs-log.php:223
 msgid "Hide list"
 msgstr ""
 
-#: modules/404s/fofs-log.php:252
+#: modules/404s/fofs-log.php:254
 msgid "Are you sure you want to delete all 404 log entries?"
 msgstr ""
 
-#: modules/404s/fofs-log.php:254
+#: modules/404s/fofs-log.php:256
 msgid "Clear Log"
 msgstr ""
 
@@ -207,14 +207,15 @@ msgstr ""
 
 #: modules/404s/fofs.php:19 modules/canonical/canonical.php:212
 #: modules/files/files.php:144 modules/link-nofollow/link-nofollow.php:132
-#: modules/linkbox/linkbox.php:94 modules/meta/meta-descriptions.php:193
-#: modules/meta/meta-keywords.php:179 modules/meta/meta-robots.php:52
-#: modules/meta/webmaster-verify.php:87 modules/more-links/more-links.php:104
-#: modules/more-links/more-links.php:111
-#: modules/rich-snippets/rich-snippets.php:390
+#: modules/linkbox/linkbox.php:128 modules/linkbox/linkbox.php:135
+#: modules/meta/meta-descriptions.php:193 modules/meta/meta-keywords.php:179
+#: modules/meta/meta-robots.php:52 modules/meta/webmaster-verify.php:87
+#: modules/more-links/more-links.php:104 modules/more-links/more-links.php:111
+#: modules/rich-snippets/rich-snippets.php:391
 #: modules/settings/settings.php:63
-#: modules/sharing-buttons/sharing-buttons.php:71 modules/slugs/slugs.php:78
-#: modules/titles/titles.php:357 modules/user-code/user-code.php:97
+#: modules/sharing-buttons/sharing-buttons.php:71 modules/slugs/slugs.php:112
+#: modules/slugs/slugs.php:120 modules/titles/titles.php:357
+#: modules/user-code/user-code.php:97
 msgid "Overview"
 msgstr ""
 
@@ -263,10 +264,10 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:105
-#: modules/meta/meta-descriptions.php:204 modules/meta/meta-keywords.php:186
-#: modules/meta/meta-robots.php:63 modules/rich-snippets/rich-snippets.php:401
-#: modules/titles/titles.php:431
+#: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:129
+#: modules/linkbox/linkbox.php:140 modules/meta/meta-descriptions.php:204
+#: modules/meta/meta-keywords.php:186 modules/meta/meta-robots.php:63
+#: modules/rich-snippets/rich-snippets.php:402 modules/titles/titles.php:431
 msgid "Settings Help"
 msgstr ""
 
@@ -318,8 +319,9 @@ msgstr ""
 #: modules/404s/fofs.php:74 modules/files/files.php:165
 #: modules/meta/meta-descriptions.php:225 modules/meta/meta-keywords.php:209
 #: modules/meta/meta-robots.php:102
-#: modules/rich-snippets/rich-snippets.php:410 modules/slugs/slugs.php:109
-#: modules/titles/titles.php:469 modules/user-code/user-code.php:111
+#: modules/rich-snippets/rich-snippets.php:411 modules/slugs/slugs.php:114
+#: modules/slugs/slugs.php:130 modules/titles/titles.php:469
+#: modules/user-code/user-code.php:111
 msgid "Troubleshooting"
 msgstr ""
 
@@ -961,8 +963,8 @@ msgstr ""
 #: modules/files/files.php:155 modules/meta/meta-descriptions.php:216
 #: modules/meta/meta-keywords.php:196 modules/modules/modules.php:190
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
-#: modules/settings/settings.php:82 modules/slugs/slugs.php:89
-#: modules/titles/titles.php:458
+#: modules/settings/settings.php:82 modules/slugs/slugs.php:113
+#: modules/slugs/slugs.php:125 modules/titles/titles.php:458
 msgid "FAQ"
 msgstr ""
 
@@ -1064,49 +1066,50 @@ msgstr ""
 msgid "Only on This Post&hellip; (optional)"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:122
+#: modules/internal-link-aliases/internal-link-aliases.php:115
 msgid "Test"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:139
+#: modules/internal-link-aliases/internal-link-aliases.php:142
 msgid "Alias Directory"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:141
+#: modules/internal-link-aliases/internal-link-aliases.php:144
 msgid "Nofollow aliased links"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:141
+#: modules/internal-link-aliases/internal-link-aliases.php:144
 msgid "Link Attributes"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:164
+#: modules/internal-link-aliases/internal-link-aliases.php:167
 msgid "Link Masks:"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:167
+#: modules/internal-link-aliases/internal-link-aliases.php:170
 msgid "URL"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:167
+#: modules/internal-link-aliases/internal-link-aliases.php:170
 msgid "Mask URL"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:204
+#: modules/internal-link-aliases/internal-link-aliases.php:207
 msgid ""
 "You can stop search engines from following a link by typing in a mask for "
 "its URL."
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:291
+#: modules/internal-link-aliases/internal-link-aliases.php:294
 msgid "Added by SEO Ultimate's Link Mask Generator module"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:302
+#: modules/internal-link-aliases/internal-link-aliases.php:305
 msgid "End Link Mask Generator output"
 msgstr ""
 
 #: modules/link-nofollow/link-nofollow.php:12
+#: modules/link-nofollow/link-nofollow.php:132
 msgid "Nofollow Manager"
 msgstr ""
 
@@ -1188,7 +1191,7 @@ msgid ""
 "attribute for PageRank sculpting.</p>\r\n"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:12
+#: modules/linkbox/linkbox.php:12 modules/linkbox/linkbox.php:126
 msgid "Linkbox Inserter"
 msgstr ""
 
@@ -1216,7 +1219,7 @@ msgstr ""
 msgid "Linkbox HTML"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:95
+#: modules/linkbox/linkbox.php:92
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1231,7 +1234,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/linkbox/linkbox.php:106
+#: modules/linkbox/linkbox.php:100
 msgid ""
 "\r\n"
 "<p>Here&#8217;s information on the various settings:</p>\r\n"
@@ -2044,7 +2047,7 @@ msgid "Featured Image: %s"
 msgstr ""
 
 #: modules/opengraph/opengraph.php:359
-#: modules/rich-snippets/rich-snippets.php:353
+#: modules/rich-snippets/rich-snippets.php:354
 msgid "None"
 msgstr ""
 
@@ -2121,7 +2124,7 @@ msgid "Regular"
 msgstr ""
 
 #: modules/opengraph/opengraph.php:384
-#: modules/rich-snippets/rich-snippets.php:114
+#: modules/rich-snippets/rich-snippets.php:115
 msgid "Photo"
 msgstr ""
 
@@ -2174,178 +2177,178 @@ msgstr ""
 msgid "Rich Snippet Creator"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:31
+#: modules/rich-snippets/rich-snippets.php:32
 msgid "Schema.org Microdata"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:44
-#: modules/rich-snippets/rich-snippets.php:343
+#: modules/rich-snippets/rich-snippets.php:45
+#: modules/rich-snippets/rich-snippets.php:344
 msgid "Review"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:49
+#: modules/rich-snippets/rich-snippets.php:50
 msgid "Item Reviewed"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:52
+#: modules/rich-snippets/rich-snippets.php:53
 msgid "Star Rating"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:65
+#: modules/rich-snippets/rich-snippets.php:66
 msgid "Review Author"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:70
+#: modules/rich-snippets/rich-snippets.php:71
 msgid "Date Reviewed"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:78
-#: modules/rich-snippets/rich-snippets.php:344
+#: modules/rich-snippets/rich-snippets.php:79
+#: modules/rich-snippets/rich-snippets.php:345
 msgid "Place"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:82
+#: modules/rich-snippets/rich-snippets.php:83
 msgid "Address"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:86
+#: modules/rich-snippets/rich-snippets.php:87
 msgid "Street Address"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:89
+#: modules/rich-snippets/rich-snippets.php:90
 msgid "PO Box"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:92
-#: modules/rich-snippets/rich-snippets.php:95
+#: modules/rich-snippets/rich-snippets.php:93
+#: modules/rich-snippets/rich-snippets.php:96
 msgid "City"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:98
+#: modules/rich-snippets/rich-snippets.php:99
 msgid "Country"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:101
+#: modules/rich-snippets/rich-snippets.php:102
 msgid "Postal Code"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:106
+#: modules/rich-snippets/rich-snippets.php:107
 msgid "Fax Number"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:109
+#: modules/rich-snippets/rich-snippets.php:110
 msgid "Map URL"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:123
+#: modules/rich-snippets/rich-snippets.php:124
 msgid "Phone Number"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:304
+#: modules/rich-snippets/rich-snippets.php:305
 msgid "Schema.org markup generated by %1$s (%2$s)"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:342
+#: modules/rich-snippets/rich-snippets.php:343
 msgid "Standard"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:345
+#: modules/rich-snippets/rich-snippets.php:346
 msgid "Search Result Type:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:350
+#: modules/rich-snippets/rich-snippets.php:351
 msgid "Name of Reviewed Item:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:354
+#: modules/rich-snippets/rich-snippets.php:355
 msgid "0.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:355
+#: modules/rich-snippets/rich-snippets.php:356
 msgid "1 star"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:356
+#: modules/rich-snippets/rich-snippets.php:357
 msgid "1.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:357
+#: modules/rich-snippets/rich-snippets.php:358
 msgid "2 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:358
+#: modules/rich-snippets/rich-snippets.php:359
 msgid "2.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:359
+#: modules/rich-snippets/rich-snippets.php:360
 msgid "3 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:360
+#: modules/rich-snippets/rich-snippets.php:361
 msgid "3.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:361
+#: modules/rich-snippets/rich-snippets.php:362
 msgid "4 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:362
+#: modules/rich-snippets/rich-snippets.php:363
 msgid "4.5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:363
+#: modules/rich-snippets/rich-snippets.php:364
 msgid "5 stars"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:364
+#: modules/rich-snippets/rich-snippets.php:365
 msgid "Star Rating for Reviewed Item:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:370
+#: modules/rich-snippets/rich-snippets.php:371
 msgid "Street Address:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:371
+#: modules/rich-snippets/rich-snippets.php:372
 msgid "Post Office Box Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:372
+#: modules/rich-snippets/rich-snippets.php:373
 msgid "City:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:373
+#: modules/rich-snippets/rich-snippets.php:374
 msgid "State or Region:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:374
+#: modules/rich-snippets/rich-snippets.php:375
 msgid "Country:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:375
+#: modules/rich-snippets/rich-snippets.php:376
 msgid "Postal Code:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:376
+#: modules/rich-snippets/rich-snippets.php:377
 msgid "Address:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:377
+#: modules/rich-snippets/rich-snippets.php:378
 msgid "Map Page:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:378
+#: modules/rich-snippets/rich-snippets.php:379
 msgid "Phone Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:379
+#: modules/rich-snippets/rich-snippets.php:380
 msgid "Fax Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:380
+#: modules/rich-snippets/rich-snippets.php:381
 msgid "Photo:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:391
+#: modules/rich-snippets/rich-snippets.php:392
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2373,7 +2376,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:402
+#: modules/rich-snippets/rich-snippets.php:403
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2387,7 +2390,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:411
+#: modules/rich-snippets/rich-snippets.php:412
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2414,7 +2417,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.2)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2730,7 +2733,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
@@ -2872,7 +2875,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/slugs/slugs.php:12
+#: modules/slugs/slugs.php:12 modules/slugs/slugs.php:110
 msgid "Slug Optimizer"
 msgstr ""
 
@@ -2880,7 +2883,7 @@ msgstr ""
 msgid "Words to Remove"
 msgstr ""
 
-#: modules/slugs/slugs.php:79
+#: modules/slugs/slugs.php:76
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2900,7 +2903,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/slugs/slugs.php:90
+#: modules/slugs/slugs.php:84
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2936,7 +2939,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/slugs/slugs.php:110
+#: modules/slugs/slugs.php:101
 msgid ""
 "\r\n"
 "<ul>\r\n"
