@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate, Open Graph, og, microdata, Facebook, Twitter, Schema.org
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.5.3
+Stable tag: 7.5.4
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, Open Graph, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -238,7 +238,7 @@ To install the plugin manually:
 	Open the editor, click the "Screen Options" tab in the upper-right-hand corner, and uncheck the "SEO Settings" checkbox. Note that the box's visibility is a per-user preference.
 
 * **Why did some of the textboxes disappear from the "SEO Settings" box?**
-	The "SEO Settings" fields are added by your modules. The "Title Tag" field is added by the Title Tag Rewriter module, the "Description" and "Keywords" fields are added by the Meta Editor module, etc. If you disable a module using the Module Manager, its fields in the "SEO Settings" box will be disabled too. You can re-enable the field in question by re-enabling the corresponding module.
+	The "SEO Settings" fields are added by your modules. The "Title Tag" field is added by the Title Tag Rewriter module, the "Meta Description" field is added by the Meta Description Editor module, etc. If you disable a module using the Module Manager, its fields in the "SEO Settings" box will be disabled too. You can re-enable the field in question by re-enabling the corresponding module.
 
 
 = Module FAQ =
@@ -277,9 +277,12 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 7.5.4 (August 11, 2012) =
+* Bugfix: Fixed broken settings reset function (bug introduced in 5.0)
+
 = Version 7.5.3 (August 11, 2012) =
 * Bugfix: The Autolink Exclusion checkbox now appears when adding posts, not just when editing them
-* Bugfix: Documentation for the SEO Settings box now appears on the post editor screen's "Help" dropdown under the "SEO Settings" tab instead of under generic "Overview" tab
+* Bugfix: Documentation for the SEO Settings box now appears on the post editor screen's "Help" dropdown under the "SEO Settings" tab instead of under the generic "Overview" tab
 * Removed Feature: Webmaster Verification Assistant no longer supports verification tags for the now-defunct Yahoo! Site Explorer
 * Compatibility: SEO Ultimate will now refuse to activate on any version of WordPress older than 3.3
 
