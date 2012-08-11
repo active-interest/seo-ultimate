@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.5.3\n"
+"Project-Id-Version: SEO Ultimate 7.5.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-08-11 18:20:17+00:00\n"
+"POT-Creation-Date: 2012-08-11 19:01:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -966,7 +966,7 @@ msgstr ""
 #: modules/files/files.php:155 modules/meta/meta-descriptions.php:216
 #: modules/meta/meta-keywords.php:191 modules/modules/modules.php:190
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
-#: modules/settings/settings.php:82 modules/slugs/slugs.php:113
+#: modules/settings/settings.php:81 modules/slugs/slugs.php:113
 #: modules/slugs/slugs.php:125 modules/titles/titles.php:458
 msgid "FAQ"
 msgstr ""
@@ -2408,7 +2408,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.3)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.4)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2426,15 +2426,15 @@ msgid "Global Settings"
 msgstr ""
 
 #: modules/settings/global-settings.php:40
-msgid "Enable nofollow&#8217;d attribution link"
+msgid "Identify the plugin&#8217;s HTML code insertions with HTML comment tags"
 msgstr ""
 
 #: modules/settings/global-settings.php:41
-msgid "Enable attribution link CSS styling"
+msgid "Enable nofollow&#8217;d attribution link on my site"
 msgstr ""
 
 #: modules/settings/global-settings.php:42
-msgid "Insert comments around HTML code insertions"
+msgid "Add CSS styles to the attribution link"
 msgstr ""
 
 #: modules/settings/install.php:18
@@ -2576,30 +2576,30 @@ msgid ""
 "click the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings/settings-data.php:134
+#: modules/settings/settings-data.php:140
 msgid ""
 "The uploaded file is not in the proper format. Links could not be imported."
 msgstr ""
 
-#: modules/settings/settings-data.php:176
+#: modules/settings/settings-data.php:182
 msgid "Links successfully imported."
 msgstr ""
 
-#: modules/settings/settings-data.php:179
+#: modules/settings/settings-data.php:185
 msgid "The CSV file could not be uploaded successfully."
 msgstr ""
 
-#: modules/settings/settings-data.php:182
+#: modules/settings/settings-data.php:188
 msgid ""
 "Links could not be imported because no CSV file was selected. Please click "
 "the &#8220;Browse&#8221; button and select a file to import."
 msgstr ""
 
-#: modules/settings/settings-data.php:192
+#: modules/settings/settings-data.php:198
 msgid "Import SEO Ultimate Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:194
+#: modules/settings/settings-data.php:200
 msgid ""
 "You can use this form to upload and import an SEO Ultimate settings file "
 "stored on your computer. (These files can be created using the Export tool.) "
@@ -2607,21 +2607,21 @@ msgid ""
 "in the file."
 msgstr ""
 
-#: modules/settings/settings-data.php:198
+#: modules/settings/settings-data.php:204
 msgid ""
 "Are you sure you want to import this settings file? This will overwrite your "
 "current settings and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:199
+#: modules/settings/settings-data.php:205
 msgid "Import Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:205
+#: modules/settings/settings-data.php:211
 msgid "Import Deeplink Juggernaut CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:207
+#: modules/settings/settings-data.php:213
 msgid ""
 "You can use this form to upload and import a Deeplink Juggernaut CSV file "
 "stored on your computer. (These files can be created using the Export tool.) "
@@ -2629,38 +2629,38 @@ msgid ""
 "the file."
 msgstr ""
 
-#: modules/settings/settings-data.php:211
+#: modules/settings/settings-data.php:217
 msgid ""
 "Are you sure you want to import this CSV file? This will overwrite your "
 "current Deeplink Juggernaut links and cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:212
+#: modules/settings/settings-data.php:218
 msgid "Import CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:227
+#: modules/settings/settings-data.php:233
 msgid "Import from Other Plugins"
 msgstr ""
 
-#: modules/settings/settings-data.php:229
+#: modules/settings/settings-data.php:235
 msgid ""
 "You can import settings and data from these plugins. Clicking a plugin&#8217;"
 "s name will take you to the importer page, where you can customize "
 "parameters and start the import."
 msgstr ""
 
-#: modules/settings/settings-data.php:249
+#: modules/settings/settings-data.php:255
 msgid "Export SEO Ultimate Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:251
+#: modules/settings/settings-data.php:257
 msgid ""
 "You can use this export tool to download an SEO Ultimate settings file to "
 "your computer."
 msgstr ""
 
-#: modules/settings/settings-data.php:253
+#: modules/settings/settings-data.php:259
 msgid ""
 "A settings file includes the data of every checkbox and textbox of every "
 "installed module. It does NOT include site-specific data like logged 404s or "
@@ -2668,15 +2668,15 @@ msgid ""
 "database backup, however)."
 msgstr ""
 
-#: modules/settings/settings-data.php:256
+#: modules/settings/settings-data.php:262
 msgid "Download Settings File"
 msgstr ""
 
-#: modules/settings/settings-data.php:261
+#: modules/settings/settings-data.php:267
 msgid "Export Deeplink Juggernaut CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:263
+#: modules/settings/settings-data.php:269
 msgid ""
 "You can use this export tool to download a CSV file (comma-separated values "
 "file) that contains your Deeplink Juggernaut links. Once you download this "
@@ -2685,26 +2685,26 @@ msgid ""
 "the Import tool."
 msgstr ""
 
-#: modules/settings/settings-data.php:266
+#: modules/settings/settings-data.php:272
 msgid "Download CSV File"
 msgstr ""
 
-#: modules/settings/settings-data.php:273
+#: modules/settings/settings-data.php:279
 msgid "All settings have been erased and defaults have been restored."
 msgstr ""
 
-#: modules/settings/settings-data.php:275
+#: modules/settings/settings-data.php:281
 msgid ""
 "You can erase all your SEO Ultimate settings and restore them to &#8220;"
 "factory defaults&#8221; by clicking the button below."
 msgstr ""
 
-#: modules/settings/settings-data.php:278
+#: modules/settings/settings-data.php:284
 msgid ""
 "Are you sure you want to erase all module settings? This cannot be undone."
 msgstr ""
 
-#: modules/settings/settings-data.php:279
+#: modules/settings/settings-data.php:285
 msgid "Restore Default Settings"
 msgstr ""
 
@@ -2724,7 +2724,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.3)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.4)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
@@ -2742,21 +2742,18 @@ msgid ""
 "\r\n"
 "<p>Here&#8217;s information on some of the settings:</p>\r\n"
 "<ul>\r\n"
-"\t<li><strong>Enable nofollow&#8217;d attribution link</strong> &mdash; If "
-"enabled, the plugin will display an attribution link on your site.</li>\r\n"
-"\t<li><strong>Notify me about unnecessary active plugins</strong> &mdash; If "
-"enabled, SEO Ultimate will add notices to your &#8220;Plugins&#8221; "
-"administration page if you have any other plugins installed whose "
-"functionality SEO Ultimate replaces.</li>\r\n"
-"\t<li><strong>Insert comments around HTML code insertions</strong> &mdash; "
-"If enabled, SEO Ultimate will use HTML comments to identify all code it "
-"inserts into your <code>&lt;head&gt;</code> tag. This is useful if you&#8217;"
-"re trying to figure out whether or not SEO Ultimate is inserting a certain "
-"piece of header code.</li>\r\n"
+"\t<li><strong>Identify the plugin&#8217;s HTML code insertions with HTML "
+"comment tags</strong> &mdash; If enabled, SEO Ultimate will use HTML "
+"comments to identify all code it inserts into your <code>&lt;head&gt;</code> "
+"tag. This is useful if you&#8217;re trying to figure out whether or not SEO "
+"Ultimate is inserting a certain piece of header code.</li>\r\n"
+"\t<li><strong>Enable nofollow&#8217;d attribution link on my site</strong> "
+"&mdash; If enabled, the plugin will display an attribution link on your site."
+"</li>\r\n"
 "</ul>\r\n"
 msgstr ""
 
-#: modules/settings/settings.php:83
+#: modules/settings/settings.php:82
 msgid ""
 "\r\n"
 "<ul>\r\n"
