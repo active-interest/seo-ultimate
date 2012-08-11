@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate, Open Graph, og, microdata, Facebook, Twitter, Schema.org
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.5.2
+Stable tag: 7.5.3
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, Open Graph, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -197,9 +197,7 @@ To install the plugin manually:
 = Compatibility =
 
 * **What's the minimum version of WordPress required to run SEO Ultimate?**
-	* WordPress 3.3 is required for all of the features to work properly.
-	* WordPress 3.2 is required for SEO Ultimate to run without crashing.
-	* SEO Ultimate will refuse to activate on any version of WordPress that's older than 3.2.
+	WordPress 3.3 is required. SEO Ultimate would generate PHP errors if you tried to run it on an earlier version, and so it will simply refuse to activate on any version of WordPress that's older than 3.3.
 
 * **Will SEO Ultimate work on multisite setups?**
 	Yes. SEO Ultimate versions 7.2.6 and later are designed to work on networks running WordPress 3.3 or later.
@@ -278,6 +276,12 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.5.3 (August 11, 2012) =
+* Bugfix: The Autolink Exclusion checkbox now appears when adding posts, not just when editing them
+* Bugfix: Documentation for the SEO Settings box now appears on the post editor screen's "Help" dropdown under the "SEO Settings" tab instead of under generic "Overview" tab
+* Removed Feature: Webmaster Verification Assistant no longer supports verification tags for the now-defunct Yahoo! Site Explorer
+* Compatibility: SEO Ultimate will now refuse to activate on any version of WordPress older than 3.3
 
 = Version 7.5.2 (August 11, 2012) =
 * Bugfix: Fixed disorganized documentation on the Miscellaneous page (bug introduced in 7.5)

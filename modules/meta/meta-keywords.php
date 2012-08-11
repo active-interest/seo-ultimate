@@ -167,11 +167,6 @@ class SU_MetaKeywords extends SU_Module {
 		return $fields;
 	}
 	
-	function postmeta_help($help) {
-		$help[] = __('<strong>Keywords</strong> &mdash; The value of the meta keywords tag. The keywords list gives search engines a hint as to what this post/page is about. Be sure to separate keywords with commas, like so: <samp>one,two,three</samp>.', 'seo-ultimate');
-		return $help;
-	}
-	
 	function add_help_tabs($screen) {
 		
 		$screen->add_help_tab(array(

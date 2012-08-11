@@ -223,7 +223,7 @@ class SEO_Ultimate {
 			add_action('network_admin_menu', array(&$this, 'add_network_admin_menus'), 10);
 			
 			//Hook to customize contextual help
-			add_filter('contextual_help', array(&$this, 'admin_help'), 10, 2);
+			add_action('admin_head', array(&$this, 'admin_help'), 11);
 			
 			//Postmeta box hooks
 			add_action('admin_menu', array(&$this, 'add_postmeta_box'));
@@ -1118,33 +1118,28 @@ class SEO_Ultimate {
 	 * @param string $screen The screen currently being shown.
 	 * @return string The contextual help content that should be shown.
 	 */
-	function admin_help($text, $screen) {
+	function admin_help() {
 		
-		//The $screen parameter changed to an object in WordPress 3.0 alpha
-		if (is_object($screen)) $screen = $screen->id;
+		$screen = get_current_screen();
+		if ('post' != $screen->base) //WP_Screen->base added in WP 3.3
+			return;
 		
-		//If we're on the post or page editor...
-		if (strcmp($screen, 'post') == 0 || strcmp($screen, 'page') == 0) {
-			
-			//Gather post meta help content
-			$helparray = apply_filters('su_postmeta_help', array());
-			
-			if ($helparray) {
-			
-				$customhelp = '';
-				foreach ($helparray as $line) {
-					$customhelp .= "<li><p>$line</p></li>\n";
-				}
-				
-				$text .= "<div class='su-help'>\n";
-				$text .= '<h5>'.__('SEO Settings Help', 'seo-ultimate')."</h5>\n";
-				$text .= "<div class='metabox-prefs'>\n";
-				$text .= "<p>".__('The SEO Settings box lets you customize these settings:', 'seo-ultimate')."</p>\n";
-				$text .= "<ul>\n$customhelp\n</ul>";
-				$text .= "<p><em>".__('(The SEO Settings box is part of the SEO Ultimate plugin.)', 'seo-ultimate')."</em></p>\n";
-				$text .= "\n</div>\n</div>\n";
-				return $text;
+		//Gather post meta help content
+		$helparray = apply_filters('su_postmeta_help', array());
+		
+		if ($helparray) {
+		
+			$customhelp = '';
+			foreach ($helparray as $line) {
+				$customhelp .= "<p>$line</p>\n";
 			}
+			
+			//WP_Screen->add_help_tab added in WP 3.3
+			$screen->add_help_tab(array(
+				  'id' => 'seo-ultimate-post-meta-help'
+				, 'title' => __('SEO Settings', 'seo-ultimate')
+				, 'content' => "<div class='su-help'>\n$customhelp\n</div>\n"
+			));
 		}
 		
 		//No custom help content to show. Return the default.

@@ -182,7 +182,7 @@ class SU_MetaDescriptions extends SU_Module {
 	}
 	
 	function postmeta_help($help) {
-		$help[] = __('<strong>Description</strong> &mdash; The value of the meta description tag. The description will often appear underneath the title in search engine results. Writing an accurate, attention-grabbing description for every post is important to ensuring a good search results clickthrough rate.', 'seo-ultimate');
+		$help[] = __('<strong>Meta Description</strong> &mdash; The value of the meta description tag. The description will often appear underneath the title in search engine results. Writing an accurate, attention-grabbing description for every post is important to ensuring a good search results clickthrough rate.', 'seo-ultimate');
 		return $help;
 	}
 	
