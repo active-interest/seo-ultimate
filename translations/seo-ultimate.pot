@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.5.2\n"
+"Project-Id-Version: SEO Ultimate 7.5.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-08-11 15:47:59+00:00\n"
+"POT-Creation-Date: 2012-08-11 18:20:17+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -208,8 +208,8 @@ msgstr ""
 #: modules/404s/fofs.php:19 modules/canonical/canonical.php:212
 #: modules/files/files.php:144 modules/link-nofollow/link-nofollow.php:132
 #: modules/linkbox/linkbox.php:128 modules/linkbox/linkbox.php:135
-#: modules/meta/meta-descriptions.php:193 modules/meta/meta-keywords.php:179
-#: modules/meta/meta-robots.php:52 modules/meta/webmaster-verify.php:87
+#: modules/meta/meta-descriptions.php:193 modules/meta/meta-keywords.php:174
+#: modules/meta/meta-robots.php:52 modules/meta/webmaster-verify.php:84
 #: modules/more-links/more-links.php:104 modules/more-links/more-links.php:111
 #: modules/rich-snippets/rich-snippets.php:391
 #: modules/settings/settings.php:63
@@ -266,7 +266,7 @@ msgstr ""
 
 #: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:129
 #: modules/linkbox/linkbox.php:140 modules/meta/meta-descriptions.php:204
-#: modules/meta/meta-keywords.php:186 modules/meta/meta-robots.php:63
+#: modules/meta/meta-keywords.php:181 modules/meta/meta-robots.php:63
 #: modules/rich-snippets/rich-snippets.php:402 modules/titles/titles.php:431
 msgid "Settings Help"
 msgstr ""
@@ -317,7 +317,7 @@ msgid ""
 msgstr ""
 
 #: modules/404s/fofs.php:74 modules/files/files.php:165
-#: modules/meta/meta-descriptions.php:225 modules/meta/meta-keywords.php:209
+#: modules/meta/meta-descriptions.php:225 modules/meta/meta-keywords.php:204
 #: modules/meta/meta-robots.php:102
 #: modules/rich-snippets/rich-snippets.php:411 modules/slugs/slugs.php:114
 #: modules/slugs/slugs.php:130 modules/titles/titles.php:469
@@ -526,19 +526,19 @@ msgstr ""
 msgid "New window"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:464
+#: modules/autolinks/content-autolinks.php:471
 msgid "Inbound Autolink Anchors:<br /><em>(one per line)</em>"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:467
+#: modules/autolinks/content-autolinks.php:474
 msgid "Don&#8217;t add autolinks to anchor texts found in this post."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:467
+#: modules/autolinks/content-autolinks.php:474
 msgid "Autolink Exclusion:"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:473
+#: modules/autolinks/content-autolinks.php:480
 msgid ""
 "<strong>Incoming Autolink Anchors</strong> &mdash; When you enter anchors "
 "into this box, Deeplink Juggernaut will search for that anchor in all your "
@@ -546,7 +546,10 @@ msgid ""
 "editing is about &#8220;blue widgets,&#8221; you could type &#8220;blue "
 "widgets&#8221; into the &#8220;Incoming Autolink Anchors&#8221; box and "
 "Deeplink Juggernaut will automatically build internal links to this post "
-"with that anchor text (assuming other posts contain that text)."
+"with that anchor text (assuming other posts contain that text). If you&#8217;"
+"re working on a draft post or a scheduled post, don&#8217;t worry &mdash; "
+"SEO Ultimate won&#8217;t add autolinks to this post until it&#8217;s "
+"published."
 msgstr ""
 
 #: modules/autolinks/footer-autolinks-settings.php:16
@@ -851,11 +854,11 @@ msgstr ""
 
 #: modules/class.su-module.php:2761 modules/meta/meta-descriptions.php:31
 #: modules/meta/meta-keywords.php:41 modules/opengraph/opengraph.php:266
-#: plugin/class.seo-ultimate.php:1775
+#: plugin/class.seo-ultimate.php:1770
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2766 plugin/class.seo-ultimate.php:1853
+#: modules/class.su-module.php:2766 plugin/class.seo-ultimate.php:1848
 msgid "Author"
 msgstr ""
 
@@ -863,7 +866,7 @@ msgstr ""
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2783 plugin/class.seo-ultimate.php:1883
+#: modules/class.su-module.php:2783 plugin/class.seo-ultimate.php:1878
 msgid "Link Mask"
 msgstr ""
 
@@ -961,7 +964,7 @@ msgid ""
 msgstr ""
 
 #: modules/files/files.php:155 modules/meta/meta-descriptions.php:216
-#: modules/meta/meta-keywords.php:196 modules/modules/modules.php:190
+#: modules/meta/meta-keywords.php:191 modules/modules/modules.php:190
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
 #: modules/settings/settings.php:82 modules/slugs/slugs.php:113
 #: modules/slugs/slugs.php:125 modules/titles/titles.php:458
@@ -1327,8 +1330,8 @@ msgstr ""
 
 #: modules/meta/meta-descriptions.php:185
 msgid ""
-"<strong>Description</strong> &mdash; The value of the meta description tag. "
-"The description will often appear underneath the title in search engine "
+"<strong>Meta Description</strong> &mdash; The value of the meta description "
+"tag. The description will often appear underneath the title in search engine "
 "results. Writing an accurate, attention-grabbing description for every post "
 "is important to ensuring a good search results clickthrough rate."
 msgstr ""
@@ -1388,7 +1391,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:226 modules/meta/meta-keywords.php:210
+#: modules/meta/meta-descriptions.php:226 modules/meta/meta-keywords.php:205
 #: modules/meta/meta-robots.php:103
 msgid ""
 "\r\n"
@@ -1448,15 +1451,7 @@ msgstr ""
 msgid "Meta Keywords:<br /><em>(separate with commas)</em>"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:171
-msgid ""
-"<strong>Keywords</strong> &mdash; The value of the meta keywords tag. The "
-"keywords list gives search engines a hint as to what this post/page is "
-"about. Be sure to separate keywords with commas, like so: <samp>one,two,"
-"three</samp>."
-msgstr ""
-
-#: modules/meta/meta-keywords.php:180
+#: modules/meta/meta-keywords.php:175
 msgid ""
 "\r\n"
 "<p>Meta Keywords Editor lets you tell search engines what keywords are "
@@ -1467,7 +1462,7 @@ msgid ""
 "p>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:187
+#: modules/meta/meta-keywords.php:182
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1484,7 +1479,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:197
+#: modules/meta/meta-keywords.php:192
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1630,7 +1625,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/webmaster-verify.php:12 modules/meta/webmaster-verify.php:87
+#: modules/meta/webmaster-verify.php:12 modules/meta/webmaster-verify.php:84
 msgid "Webmaster Verification Assistant"
 msgstr ""
 
@@ -1643,28 +1638,24 @@ msgid "Google Webmaster Tools"
 msgstr ""
 
 #: modules/meta/webmaster-verify.php:28
-msgid "Yahoo! Site Explorer"
-msgstr ""
-
-#: modules/meta/webmaster-verify.php:31
 msgid "Bing Webmaster Center"
 msgstr ""
 
-#: modules/meta/webmaster-verify.php:58
+#: modules/meta/webmaster-verify.php:55
 msgid "Webmaster Portal"
 msgstr ""
 
-#: modules/meta/webmaster-verify.php:59
+#: modules/meta/webmaster-verify.php:56
 msgid "Meta Tag"
 msgstr ""
 
-#: modules/meta/webmaster-verify.php:88
+#: modules/meta/webmaster-verify.php:85
 msgid ""
 "\r\n"
 "<ul>\r\n"
 "\t<li><strong>What it does:</strong> Webmaster Verification Assistant lets "
-"you enter in verification codes for the webmaster portals of the 3 leading "
-"search engines.</li>\r\n"
+"you enter in verification codes for the webmaster portals of leading search "
+"engines.</li>\r\n"
 "\t<li><strong>Why it helps:</strong> Webmaster Verification Assistant "
 "assists you in obtaining access to webmaster portals, which can provide you "
 "with valuable SEO tools.</li>\r\n"
@@ -1677,7 +1668,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/misc/misc.php:11 plugin/class.seo-ultimate.php:1494
+#: modules/misc/misc.php:11 plugin/class.seo-ultimate.php:1489
 msgid "Miscellaneous"
 msgstr ""
 
@@ -2417,7 +2408,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.3)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2733,7 +2724,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.2)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
@@ -2790,7 +2781,7 @@ msgid "Uninstaller"
 msgstr ""
 
 #: modules/settings/uninstall.php:18 modules/settings/uninstall.php:22
-#: plugin/class.seo-ultimate.php:1332
+#: plugin/class.seo-ultimate.php:1327
 msgid "Uninstall"
 msgstr ""
 
@@ -3539,97 +3530,89 @@ msgid ""
 "If you leave before saving, those changes will be lost."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1140
-msgid "SEO Settings Help"
+#: plugin/class.seo-ultimate.php:1140 plugin/class.seo-ultimate.php:1552
+msgid "SEO Settings"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1142
-msgid "The SEO Settings box lets you customize these settings:"
-msgstr ""
-
-#: plugin/class.seo-ultimate.php:1144
-msgid "(The SEO Settings box is part of the SEO Ultimate plugin.)"
-msgstr ""
-
-#: plugin/class.seo-ultimate.php:1187
+#: plugin/class.seo-ultimate.php:1182
 msgid ""
 "%1$s is known to cause conflicts with SEO Ultimate. Please deactivate %1$s "
 "if you wish to continue using SEO Ultimate."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1231
+#: plugin/class.seo-ultimate.php:1226
 msgid "new module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1231
+#: plugin/class.seo-ultimate.php:1226
 msgid "new modules"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1232
+#: plugin/class.seo-ultimate.php:1227
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1232
+#: plugin/class.seo-ultimate.php:1227
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1233
+#: plugin/class.seo-ultimate.php:1228
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1233
+#: plugin/class.seo-ultimate.php:1228
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1234
+#: plugin/class.seo-ultimate.php:1229
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1234
+#: plugin/class.seo-ultimate.php:1229
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1235
+#: plugin/class.seo-ultimate.php:1230
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1235
+#: plugin/class.seo-ultimate.php:1230
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1236
+#: plugin/class.seo-ultimate.php:1231
 msgid "new language pack"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1236
+#: plugin/class.seo-ultimate.php:1231
 msgid "new language packs"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1237
+#: plugin/class.seo-ultimate.php:1232
 msgid "language pack update"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1237
+#: plugin/class.seo-ultimate.php:1232
 msgid "language pack updates"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1268
+#: plugin/class.seo-ultimate.php:1263
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1274
+#: plugin/class.seo-ultimate.php:1269
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1276
+#: plugin/class.seo-ultimate.php:1271
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1353
+#: plugin/class.seo-ultimate.php:1348
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1420
+#: plugin/class.seo-ultimate.php:1415
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -3637,35 +3620,31 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1491
+#: plugin/class.seo-ultimate.php:1486
 msgid "Search Engine Listing"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1492
+#: plugin/class.seo-ultimate.php:1487
 msgid "Social Networks Listing"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1493
+#: plugin/class.seo-ultimate.php:1488
 msgid "Links"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1557
-msgid "SEO Settings"
-msgstr ""
-
-#: plugin/class.seo-ultimate.php:1587
+#: plugin/class.seo-ultimate.php:1582
 msgid "%1$s %2$s by %3$s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1774
+#: plugin/class.seo-ultimate.php:1769
 msgid "Home"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1847
+#: plugin/class.seo-ultimate.php:1842
 msgid "Author Archives"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1876
+#: plugin/class.seo-ultimate.php:1871
 msgid "Link Masks"
 msgstr ""
 
