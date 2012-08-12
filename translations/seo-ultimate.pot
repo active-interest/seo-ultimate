@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.5.4\n"
+"Project-Id-Version: SEO Ultimate 7.5.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-08-11 19:01:05+00:00\n"
+"POT-Creation-Date: 2012-08-12 15:35:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -208,7 +208,7 @@ msgstr ""
 #: modules/404s/fofs.php:19 modules/canonical/canonical.php:212
 #: modules/files/files.php:144 modules/link-nofollow/link-nofollow.php:132
 #: modules/linkbox/linkbox.php:128 modules/linkbox/linkbox.php:135
-#: modules/meta/meta-descriptions.php:193 modules/meta/meta-keywords.php:174
+#: modules/meta/meta-descriptions.php:193 modules/meta/meta-keywords.php:173
 #: modules/meta/meta-robots.php:52 modules/meta/webmaster-verify.php:84
 #: modules/more-links/more-links.php:104 modules/more-links/more-links.php:111
 #: modules/rich-snippets/rich-snippets.php:391
@@ -266,8 +266,8 @@ msgstr ""
 
 #: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:129
 #: modules/linkbox/linkbox.php:140 modules/meta/meta-descriptions.php:204
-#: modules/meta/meta-keywords.php:181 modules/meta/meta-robots.php:63
-#: modules/rich-snippets/rich-snippets.php:402 modules/titles/titles.php:431
+#: modules/meta/meta-keywords.php:180 modules/meta/meta-robots.php:63
+#: modules/rich-snippets/rich-snippets.php:402
 msgid "Settings Help"
 msgstr ""
 
@@ -317,10 +317,10 @@ msgid ""
 msgstr ""
 
 #: modules/404s/fofs.php:74 modules/files/files.php:165
-#: modules/meta/meta-descriptions.php:225 modules/meta/meta-keywords.php:204
+#: modules/meta/meta-descriptions.php:225 modules/meta/meta-keywords.php:203
 #: modules/meta/meta-robots.php:102
 #: modules/rich-snippets/rich-snippets.php:411 modules/slugs/slugs.php:114
-#: modules/slugs/slugs.php:130 modules/titles/titles.php:469
+#: modules/slugs/slugs.php:130 modules/titles/titles.php:479
 #: modules/user-code/user-code.php:111
 msgid "Troubleshooting"
 msgstr ""
@@ -853,7 +853,7 @@ msgid "A Deleted Term"
 msgstr ""
 
 #: modules/class.su-module.php:2761 modules/meta/meta-descriptions.php:31
-#: modules/meta/meta-keywords.php:41 modules/opengraph/opengraph.php:266
+#: modules/meta/meta-keywords.php:40 modules/opengraph/opengraph.php:266
 #: plugin/class.seo-ultimate.php:1770
 msgid "Blog Homepage"
 msgstr ""
@@ -964,10 +964,10 @@ msgid ""
 msgstr ""
 
 #: modules/files/files.php:155 modules/meta/meta-descriptions.php:216
-#: modules/meta/meta-keywords.php:191 modules/modules/modules.php:190
+#: modules/meta/meta-keywords.php:190 modules/modules/modules.php:190
 #: modules/more-links/more-links.php:105 modules/more-links/more-links.php:116
 #: modules/settings/settings.php:81 modules/slugs/slugs.php:113
-#: modules/slugs/slugs.php:125 modules/titles/titles.php:458
+#: modules/slugs/slugs.php:125 modules/titles/titles.php:468
 msgid "FAQ"
 msgstr ""
 
@@ -1391,7 +1391,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:226 modules/meta/meta-keywords.php:205
+#: modules/meta/meta-descriptions.php:226 modules/meta/meta-keywords.php:204
 #: modules/meta/meta-robots.php:103
 msgid ""
 "\r\n"
@@ -1417,41 +1417,41 @@ msgstr ""
 msgid "Meta Keywords Editor"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:19 modules/meta/meta-keywords.php:47
+#: modules/meta/meta-keywords.php:19 modules/meta/meta-keywords.php:46
 msgid "Meta Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:39 modules/meta/meta-robots.php:22
+#: modules/meta/meta-keywords.php:38 modules/meta/meta-robots.php:22
 #: modules/opengraph/opengraph.php:264
 msgid "Sitewide Values"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:40 modules/noindex/noindex.php:50
+#: modules/meta/meta-keywords.php:39 modules/noindex/noindex.php:50
 #: modules/opengraph/opengraph.php:265
 msgid "Default Values"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:54
+#: modules/meta/meta-keywords.php:53
 msgid "Sitewide Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:54
+#: modules/meta/meta-keywords.php:53
 msgid "(Separate with commas)"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:69
+#: modules/meta/meta-keywords.php:68
 msgid "The %d most commonly-used words"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:87
+#: modules/meta/meta-keywords.php:86
 msgid "Blog Homepage Meta Keywords"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:166
+#: modules/meta/meta-keywords.php:165
 msgid "Meta Keywords:<br /><em>(separate with commas)</em>"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:175
+#: modules/meta/meta-keywords.php:174
 msgid ""
 "\r\n"
 "<p>Meta Keywords Editor lets you tell search engines what keywords are "
@@ -1462,7 +1462,7 @@ msgid ""
 "p>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:182
+#: modules/meta/meta-keywords.php:181
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -1479,7 +1479,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:192
+#: modules/meta/meta-keywords.php:191
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2408,7 +2408,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.4)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.5)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2724,7 +2724,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.4)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
@@ -2964,7 +2964,7 @@ msgstr ""
 #: modules/titles/titles.php:62
 msgid ""
 "Use filtering &mdash; faster, but configuration required (see the &#8220;"
-"Settings Help&#8221; dropdown for details)"
+"Settings Tab&#8221 section of the &#8220;Help&#8221; dropdown for details)"
 msgstr ""
 
 #: modules/titles/titles.php:63
@@ -3103,7 +3103,7 @@ msgid ""
 msgstr ""
 
 #: modules/titles/titles.php:368
-msgid "Formats &amp; Variables"
+msgid "Default Formats Tab"
 msgstr ""
 
 #: modules/titles/titles.php:369
@@ -3209,6 +3209,10 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
+#: modules/titles/titles.php:431
+msgid "Settings Tab"
+msgstr ""
+
 #: modules/titles/titles.php:432
 msgid ""
 "\r\n"
@@ -3221,27 +3225,29 @@ msgid ""
 "title&gt;</code> tags.</p>\r\n"
 "\t\t<ul>\r\n"
 "\t\t\t<li><strong>Use output buffering</strong> &mdash; This is the &#8220;"
-"traditional&#8221; method that most SEO plugins use. With this method, SEO "
-"Ultimate will intercept your site&#8217;s <code>&lt;head&gt;</code> tag "
-"section as it&#8217;s being outputted, locate the <code>&lt;title&gt;</code> "
-"tag, edit its value, and then output the edited <code>&lt;head&gt;</code> "
-"data. The good thing about this method is that you don&#8217;t have to edit "
-"your theme in any way, as SEO Ultimate will overwrite whatever your theme "
-"puts in your <code>&lt;title&gt;</code> tag. The bad thing is that this "
-"output interception takes a few extra milliseconds to complete. If you are "
-"concerned about performance, are comfortable editing your theme&#8217;s "
-"`header.php` file, and will remember to edit the `header.php` file of any "
-"new themes you activate, you may want to try the filtering rewrite method.</"
-"li>\r\n"
+"traditional&#8221; method that most SEO plugins use.\r\n"
+"\t\t\t\tWith this method, SEO Ultimate will intercept your site&#8217;s "
+"<code>&lt;head&gt;</code> tag section as it&#8217;s being outputted, \r\n"
+"\t\t\t\tlocate the <code>&lt;title&gt;</code> tag, edit its value, and then "
+"output the edited <code>&lt;head&gt;</code> data. \r\n"
+"\t\t\t\tThe good thing about this method is that you don&#8217;t have to "
+"edit your theme in any way, as SEO Ultimate will overwrite \r\n"
+"\t\t\t\twhatever your theme puts in your <code>&lt;title&gt;</code> tag. The "
+"bad thing is that this output interception takes a few extra \r\n"
+"\t\t\t\tmilliseconds to complete. If you are concerned about performance, "
+"are comfortable editing your theme&#8217;s header.php file, \r\n"
+"\t\t\t\tand will remember to edit the header.php file of any new themes you "
+"activate, you may want to try the filtering rewrite method.</li>\r\n"
 "\t\t\t<li>\r\n"
 "\t\t\t\t<p><strong>Use filtering</strong> &mdash; With this method, SEO "
-"Ultimate will register itself with WordPress and will replace "
-"WordPress&#8217;s <code>&lt;title&gt;</code> tag output with its own. This "
-"method can only edit the text that WordPress itself generates for the "
-"<code>&lt;title&gt;</code> tag; the filtering method can&#8217;t edit "
-"anything extra your theme may add. For this reason, you need to edit your "
-"theme to make sure it&#8217;s only pulling <code>&lt;title&gt;</code> tag "
-"data from WordPress and is not adding anything else.</p>\r\n"
+"Ultimate will register itself with WordPress and will replace \r\n"
+"\t\t\t\tWordPress&#8217;s <code>&lt;title&gt;</code> tag output with its "
+"own. This method can only edit the text that WordPress itself \r\n"
+"\t\t\t\tgenerates for the <code>&lt;title&gt;</code> tag; the filtering "
+"method can&#8217;t edit anything extra your theme may add. \r\n"
+"\t\t\t\tFor this reason, you need to edit your theme to make sure it&#8217;s "
+"only pulling <code>&lt;title&gt;</code> tag data from WordPress \r\n"
+"\t\t\t\tand is not adding anything else.</p>\r\n"
 "\t\t\t\t<p>Here&#8217;s how to set up filtering:</p>\r\n"
 "\t\t\t\t<ol>\r\n"
 "\t\t\t\t\t<li>Go to <a href='theme-editor.php'>Appearance &rArr; Editor</a> "
@@ -3264,7 +3270,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:459
+#: modules/titles/titles.php:469
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -3287,7 +3293,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/titles/titles.php:470
+#: modules/titles/titles.php:480
 msgid ""
 "\r\n"
 "<ul>\r\n"
