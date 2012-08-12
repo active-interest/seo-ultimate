@@ -22,7 +22,6 @@ class SU_MetaKeywords extends SU_Module {
 	
 	function init() {
 		add_action('su_head', array(&$this, 'head_tag_output'));
-		add_filter('su_postmeta_help', array(&$this, 'postmeta_help'), 20);
 	}
 	
 	function get_default_settings() {
