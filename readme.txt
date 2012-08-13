@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate, Open Graph, og, microdata, Facebook, Twitter, Schema.org
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 7.5.5
+Stable tag: 7.5.6
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, Open Graph, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -276,6 +276,17 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.5.6 (August 13, 2012) =
+* Feature: Rich Snippet Creator now includes an "Image of Reviewed Item" field for reviews
+* Bugfix: The autocomplete dropdowns of the "Link Location" boxes of Deeplink Juggernaut's Footer Linker once again include taxonomy archive pages
+* Bugfix: Fixed bug that would cause a single, blank autolink entry pointing to a post to appear on the Deeplink Juggernaut Content Links list (bug introduced in 3.9)
+* Bugfix: The "Link Masks" section of the "SEO Settings" box no longer includes links to anchor targets (i.e. links that begin with "#")
+* Bugfix: Restored access to the "When displaying page lists, nofollow links to this page" checkbox that disappeared from the "SEO Settings" box in version 7.3
+* Bugfix: Fixed errors that would appear when Open Graph Integrator and the WP_DEBUG mode were both enabled (bug introduced in 7.3)
+* Bugfix: Fixed errors that would appear when Rich Snippet Creator and the WP_DEBUG mode were both enabled (bug introduced in 7.5)
+* Bugfix: Fixed errors that would appear on the post editor screen with the WP_DEBUG mode enabled (bug introduced in 7.5.3)
+* Bugfix: Rich Snippet Creator now outputs a hidden datePublished property using a `<meta>` tag instead of using a self-closing `<time>` tag
 
 = Version 7.5.5 (August 12, 2012) =
 * Bugfix: Fixed PHP warning that appeared on the post editor screen with Meta Keywords Editor enabled (bug introduced in 7.5.3)

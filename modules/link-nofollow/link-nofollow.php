@@ -73,9 +73,9 @@ class SU_LinkNofollow extends SU_Module {
 	}
 	
 	function postmeta_fields($fields, $screen) {
-
+		
 		if (strcmp($screen, 'page') == 0)
-			$fields['40|nofollow'] = $this->get_postmeta_checkbox('nofollow', __('When displaying page lists, nofollow links to this page', 'seo-ultimate'), __('Nofollow:', 'seo-ultimate'));
+			$fields['links'][30]['nofollow'] = $this->get_postmeta_checkbox('nofollow', __('When displaying page lists, nofollow links to this page', 'seo-ultimate'), __('Nofollow:', 'seo-ultimate'));
 		
 		return $fields;
 	}

@@ -161,7 +161,7 @@ class SU_InternalLinkAliases extends SU_Module {
 		
 		$alias_dir = $this->get_setting('alias_dir', 'go');
 		
-		if ($content && preg_match_all('@ href=["\']([^"\']+)["\']@', $content, $matches)) {
+		if ($content && preg_match_all('@ href=["\']([^#][^"\']+)["\']@', $content, $matches)) {
 			$urls = array_unique($matches[1]);
 			
 			$html = "<tr valign='top'>\n<th scope='row' class='su'>".__('Link Masks:', 'seo-ultimate')."</th>\n<td>\n";
@@ -179,6 +179,7 @@ class SU_InternalLinkAliases extends SU_Module {
 			}
 			
 			foreach ($urls as $url) {
+				
 				$a_url = su_esc_attr($url);
 				$un_h_url = htmlspecialchars_decode($url);
 				$ht_url = esc_html(sustr::truncate($url, 30));
@@ -208,7 +209,7 @@ class SU_InternalLinkAliases extends SU_Module {
 			
 			$html .= "</td>\n</tr>\n";
 			
-			$fields['links'][30]['aliases'] = $html;
+			$fields['links'][100]['aliases'] = $html;
 		}
 		
 		return $fields;

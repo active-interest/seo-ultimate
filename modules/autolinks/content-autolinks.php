@@ -428,32 +428,41 @@ class SU_ContentAutolinks extends SU_Module {
 		$keep_anchors = array();
 		$others_anchors = array();
 		$new_anchors = suarr::explode_lines($value);
+		$new_anchors = array_map('trim', $new_anchors);
+		array_filter($new_anchors);
 		
-		foreach ($links as $link_data) {
-			if ($link_data['to_type'] == 'posttype_'.$post->post_type && $link_data['to_id'] == $post->ID) {
-				if (in_array($link_data['anchor'], $new_anchors)) {
-					$keep_anchors[] = $link_data['anchor'];
+		if (count($new_anchors)) {
+			
+			foreach ($links as $link_data) {
+				if ($link_data['to_type'] == 'posttype_'.$post->post_type && $link_data['to_id'] == $post->ID) {
+					if (in_array($link_data['anchor'], $new_anchors)) {
+						$keep_anchors[] = $link_data['anchor'];
+						$new_links[] = $link_data;
+					}
+				} else {
+					$others_anchors[] = $link_data['anchor'];
 					$new_links[] = $link_data;
 				}
-			} else {
-				$others_anchors[] = $link_data['anchor'];
-				$new_links[] = $link_data;
 			}
+			
+			$anchors_to_add = array_diff($new_anchors, $keep_anchors, $others_anchors);
+			
+			if (count($anchors_to_add)) {
+				foreach ($anchors_to_add as $anchor_to_add) {
+					if (trim($anchor_to_add))
+						$new_links[] = array(
+							  'anchor' => $anchor_to_add
+							, 'to_type' => 'posttype_'.$post->post_type
+							, 'to_id' => $post->ID
+							, 'title' => ''
+							, 'nofollow' => false
+							, 'target' => 'self'
+						);
+				}
+			}
+			
+			$this->update_setting('links', $new_links);
 		}
-		
-		$anchors_to_add = array_diff($new_anchors, $keep_anchors, $others_anchors);
-		
-		foreach ($anchors_to_add as $anchor_to_add)
-			$new_links[] = array(
-				  'anchor' => $anchor_to_add
-				, 'to_type' => 'posttype_'.$post->post_type
-				, 'to_id' => $post->ID
-				, 'title' => ''
-				, 'nofollow' => false
-				, 'target' => 'self'
-			);
-		
-		$this->update_setting('links', $new_links);
 		
 		return true;
 	}

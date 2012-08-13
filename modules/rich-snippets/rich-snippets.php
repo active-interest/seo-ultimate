@@ -47,7 +47,7 @@ class SU_RichSnippets extends SU_Module {
 				, 'content_tags' => '<div itemprop="reviewBody">%s</div>'
 				, 'properties' => array(
 					  'item' => array(
-						  'label' => __('Item Reviewed', 'seo-ultimate')
+						  'label' => __('Name of Reviewed Item', 'seo-ultimate')
 						, 'tags' => 'itemReviewed'
 					),'rating' => array(
 						  'label' => __('Star Rating', 'seo-ultimate')
@@ -62,6 +62,11 @@ class SU_RichSnippets extends SU_Module {
 										. '<meta itemprop="ratingValue" content="%s" />'
 										. '<meta itemprop="bestRating" content="5" />'
 										. '</span>'
+					),'image' => array(
+						  'label' => __('Image of Reviewed Item', 'seo-ultimate')
+						, 'tags' => '<a itemprop="image" href="%1$s">%1$s</a>'
+						, 'hidden_tags'=> '<link itemprop="image" href="%s" />'
+						, 'jlsuggest' => true
 					),'reviewer' => array(
 						  'label' => __('Review Author', 'seo-ultimate')
 						, 'editable' => false
@@ -72,7 +77,7 @@ class SU_RichSnippets extends SU_Module {
 						, 'editable' => false
 						, 'value_function' => array('get_the_time', 'Y-m-d')
 						, 'tags' => '<time itemprop="datePublished">%s</time>'
-						, 'hidden_tags' => '<time itemprop="datePublished" datetime="%s" />'
+						, 'hidden_tags' => '<meta itemprop="datePublished" content="%s" />'
 					)
 				)
 			),'place' => array(
@@ -160,10 +165,6 @@ class SU_RichSnippets extends SU_Module {
 		$types = $this->get_supported_snippet_types();
 		$type_data = $types[$type];
 		
-		$tag = is_array($property_data['tags']) ?
-						$property_data['tags'][$format] :
-						$property_data['tags'];
-		
 		//Cycle through the current type's properties
 		$append = '';
 		$num_properties = 0;
@@ -244,7 +245,7 @@ class SU_RichSnippets extends SU_Module {
 						$value = $this->jlsuggest_value_to_url($value, true);
 					
 				} else {
-				
+					
 					//If a value is not set, look for a value-generating function
 					if (isset($property_data['value_function'])) {
 						$valfunc = (array)$property_data['value_function'];
@@ -345,10 +346,12 @@ class SU_RichSnippets extends SU_Module {
 			, 'place' => __('Place', 'seo-ultimate')
 		), __('Search Result Type:', 'seo-ultimate'));
 		
-		$fields['serp'][45]['rich_snippet_review_item|rich_snippet_review_rating'] =
+		$fields['serp'][45]['rich_snippet_review_item|rich_snippet_review_image|rich_snippet_review_rating'] =
 			$this->get_postmeta_subsection('rich_snippet_type', 'review',
 				
 				  $this->get_postmeta_textbox('rich_snippet_review_item', __('Name of Reviewed Item:', 'seo-ultimate'))
+				
+				. $this->get_postmeta_jlsuggest_box('rich_snippet_review_image', __('Image of Reviewed Item:', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*')
 				
 				. $this->get_postmeta_dropdown('rich_snippet_review_rating', array(
 					  '0'   => __('None', 'seo-ultimate')

@@ -1141,9 +1141,6 @@ class SEO_Ultimate {
 				, 'content' => "<div class='su-help'>\n$customhelp\n</div>\n"
 			));
 		}
-		
-		//No custom help content to show. Return the default.
-		return $text;
 	}
 	
 	/**
@@ -1496,20 +1493,21 @@ class SEO_Ultimate {
 	 * @since 0.8
 	 * @uses SU_Module::postmeta_fields()
 	 * 
-	 * @param string $screen The admin screen currently being viewed (post, page). Defaults to post. Optional.
+	 * @param string $screen The admin screen currently being viewed (post, page).
 	 * @return array An array structured like this: $data[tab ID][position #][field name] = HTML
 	 */
-	function get_postmeta_array($screen='post') {
+	function get_postmeta_array($screen) {
 		
-		static $fields = array();
-		if ($fields)
-			return $fields;
+		static $return = array();
+		if (!empty($return[$screen]))
+			return $return[$screen];
 		
 		$tabs = $this->get_postmeta_tabs();
 		
 		$module_fields = array();
 		
 		foreach ($this->modules as $key => $module) {
+			
 			$module_fields = $this->modules[$key]->postmeta_fields(array(), $screen);
 			
 			foreach ($module_fields as $tab => $tab_fields) {
@@ -1532,6 +1530,8 @@ class SEO_Ultimate {
 			ksort($fields[$tab]);
 		}
 		
+		$return[$screen] = $fields;
+		
 		return $fields;
 	}
 	
@@ -1546,6 +1546,9 @@ class SEO_Ultimate {
 		//Add the metabox to posts and pages.
 		$posttypes = suwp::get_post_type_names();
 		foreach ($posttypes as $screen) {
+			
+			if (strpos($screen, '"') !== false)
+				continue;
 			
 			//Only show the meta box if there are fields to show.
 			if ($this->get_postmeta_array($screen))
@@ -1568,12 +1571,12 @@ class SEO_Ultimate {
 		wp_nonce_field('su-update-postmeta', '_su_wpnonce');
 		
 		//Output postmeta tabs
-		$data = $this->get_postmeta_array();
+		$data = $this->get_postmeta_array($screen);
 		$_tabs = $this->get_postmeta_tabs();
 		$tabs = array();
 		foreach ($_tabs as $tab_id => $tab_title) {
 			if (isset($data[$tab_id]))
-				$tabs[] = array('title' => $tab_title, 'id' => $tab_id, 'callback' => array('postmeta_tab', $tab_id));
+				$tabs[] = array('title' => $tab_title, 'id' => $tab_id, 'callback' => array('postmeta_tab', $tab_id, $screen));
 		}
 		$this->tabs($tabs);
 		
@@ -1593,7 +1596,7 @@ class SEO_Ultimate {
 	/**
 	 * @since 7.3
 	 */
-	function postmeta_tab($tab) {
+	function postmeta_tab($tab, $screen) {
 		echo "\n<table>\n";
 		
 		$data = $this->get_postmeta_array($screen);
@@ -1805,28 +1808,26 @@ class SEO_Ultimate {
 			}
 		}
 		
-		if (!$include || in_array('taxonomy', $include)) {
-			$taxonomyobjs = suwp::get_taxonomies();
-			foreach ($taxonomyobjs as $taxonomyobj) {
+		$taxonomyobjs = suwp::get_taxonomies();
+		foreach ($taxonomyobjs as $taxonomyobj) {
+			
+			if ($include && !in_array('taxonomy', $include) && !in_array('taxonomy_' . $posttypeobj->name, $include))
+				continue;
+			
+			$terms = get_terms($taxonomyobj->name, array(
+				'search' => $_GET['q']
+			));
+			
+			if (count($terms)) {
 				
-				if ($include && !in_array('taxonomy_' . $posttypeobj->name, $include))
-					continue;
+				$items[] = array('text' => $taxonomyobj->labels->name, 'isheader' => true);
 				
-				$terms = get_terms($taxonomyobj->name, array(
-					'search' => $_GET['q'] //NOTE: get_terms does NOT sanitize the "search" variable for SQL queries prior to WordPress 3.1.3, which is why this plugin will refuse to run on versions prior to 3.1.3
-				));
-				
-				if (count($terms)) {
-					
-					$items[] = array('text' => $taxonomyobj->labels->name, 'isheader' => true);
-					
-					foreach ($terms as $term)
-						$items[] = array(
-							  'text' => $term->name
-							, 'value' => 'obj_taxonomy_' . $taxonomyobj->name . '/' . $term->term_id
-							, 'selectedtext' => $term->name . '<span class="type"> &mdash; '.$taxonomyobj->labels->singular_name.'</span>'
-						);
-				}
+				foreach ($terms as $term)
+					$items[] = array(
+						  'text' => $term->name
+						, 'value' => 'obj_taxonomy_' . $taxonomyobj->name . '/' . $term->term_id
+						, 'selectedtext' => $term->name . '<span class="type"> &mdash; '.$taxonomyobj->labels->singular_name.'</span>'
+					);
 			}
 		}
 		

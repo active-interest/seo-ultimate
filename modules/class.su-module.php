@@ -2448,7 +2448,7 @@ class SU_Module {
 	 */
 	function get_postmeta_checkboxes($checkboxes, $grouptext) {
 		
-		$valign = (is_array($checkboxes) && count($checkboxes)) ? 'top' : 'middle';
+		$valign = (is_array($checkboxes) && count($checkboxes) > 1) ? 'top' : 'middle';
 		$html = "<tr class='su checkboxes' valign='$valign'>\n<th scope='row' class='su'>$grouptext</th>\n<td class='su'><fieldset><legend class='hidden'>$grouptext</legend>\n";
 		
 		if (is_array($checkboxes)) {

@@ -196,7 +196,7 @@ class SU_OpenGraph extends SU_Module {
 		$twitter_tags['twitter:site'] = $this->get_setting('twitter_site_handle');
 		
 		//Output meta tags
-		$xmlnses = $this->namespaces_declared ? array() : $this->get_xmlns_attrs();
+		$xmlns_attrs = $this->namespaces_declared ? array() : $this->get_xmlns_attrs();
 		
 		$output_formats = array(
 			  '<meta property="%1$s" content="%2$s" %3$s/>' => $tags
@@ -208,10 +208,10 @@ class SU_OpenGraph extends SU_Module {
 					$property = su_esc_attr($property);
 					$value  = su_esc_attr($value);
 					if (strlen(trim($property)) && strlen(trim($value))) {
-						$xmlns = $xmlnses[sustr::upto($property, ':')];
-						if ($xmlns) $xmlns .= ' ';
+						$xmlns = sustr::upto($property, ':');
+						$xmlns_attr = empty($xmlns_attrs[$xmlns]) ? '' : $xmlns_attrs[$xmlns] . ' ';
 						echo "\t";
-						printf($html_format, $property, $value, $xmlns);
+						printf($html_format, $property, $value, $xmlns_attr);
 						echo "\n";
 					}
 				}
