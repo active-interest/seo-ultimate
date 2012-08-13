@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate 7.5.5\n"
+"Project-Id-Version: SEO Ultimate 7.5.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2012-08-12 15:35:15+00:00\n"
+"POT-Creation-Date: 2012-08-13 16:46:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -211,7 +211,7 @@ msgstr ""
 #: modules/meta/meta-descriptions.php:193 modules/meta/meta-keywords.php:173
 #: modules/meta/meta-robots.php:52 modules/meta/webmaster-verify.php:84
 #: modules/more-links/more-links.php:104 modules/more-links/more-links.php:111
-#: modules/rich-snippets/rich-snippets.php:391
+#: modules/rich-snippets/rich-snippets.php:394
 #: modules/settings/settings.php:63
 #: modules/sharing-buttons/sharing-buttons.php:71 modules/slugs/slugs.php:112
 #: modules/slugs/slugs.php:120 modules/titles/titles.php:357
@@ -267,7 +267,7 @@ msgstr ""
 #: modules/404s/fofs.php:45 modules/linkbox/linkbox.php:129
 #: modules/linkbox/linkbox.php:140 modules/meta/meta-descriptions.php:204
 #: modules/meta/meta-keywords.php:180 modules/meta/meta-robots.php:63
-#: modules/rich-snippets/rich-snippets.php:402
+#: modules/rich-snippets/rich-snippets.php:405
 msgid "Settings Help"
 msgstr ""
 
@@ -319,7 +319,7 @@ msgstr ""
 #: modules/404s/fofs.php:74 modules/files/files.php:165
 #: modules/meta/meta-descriptions.php:225 modules/meta/meta-keywords.php:203
 #: modules/meta/meta-robots.php:102
-#: modules/rich-snippets/rich-snippets.php:411 modules/slugs/slugs.php:114
+#: modules/rich-snippets/rich-snippets.php:414 modules/slugs/slugs.php:114
 #: modules/slugs/slugs.php:130 modules/titles/titles.php:479
 #: modules/user-code/user-code.php:111
 msgid "Troubleshooting"
@@ -526,19 +526,19 @@ msgstr ""
 msgid "New window"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:471
+#: modules/autolinks/content-autolinks.php:480
 msgid "Inbound Autolink Anchors:<br /><em>(one per line)</em>"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:474
+#: modules/autolinks/content-autolinks.php:483
 msgid "Don&#8217;t add autolinks to anchor texts found in this post."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:474
+#: modules/autolinks/content-autolinks.php:483
 msgid "Autolink Exclusion:"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:480
+#: modules/autolinks/content-autolinks.php:489
 msgid ""
 "<strong>Incoming Autolink Anchors</strong> &mdash; When you enter anchors "
 "into this box, Deeplink Juggernaut will search for that anchor in all your "
@@ -854,11 +854,11 @@ msgstr ""
 
 #: modules/class.su-module.php:2761 modules/meta/meta-descriptions.php:31
 #: modules/meta/meta-keywords.php:40 modules/opengraph/opengraph.php:266
-#: plugin/class.seo-ultimate.php:1770
+#: plugin/class.seo-ultimate.php:1773
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2766 plugin/class.seo-ultimate.php:1848
+#: modules/class.su-module.php:2766 plugin/class.seo-ultimate.php:1849
 msgid "Author"
 msgstr ""
 
@@ -866,7 +866,7 @@ msgstr ""
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2783 plugin/class.seo-ultimate.php:1878
+#: modules/class.su-module.php:2783 plugin/class.seo-ultimate.php:1879
 msgid "Link Mask"
 msgstr ""
 
@@ -1097,17 +1097,17 @@ msgstr ""
 msgid "Mask URL"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:207
+#: modules/internal-link-aliases/internal-link-aliases.php:208
 msgid ""
 "You can stop search engines from following a link by typing in a mask for "
 "its URL."
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:294
+#: modules/internal-link-aliases/internal-link-aliases.php:295
 msgid "Added by SEO Ultimate's Link Mask Generator module"
 msgstr ""
 
-#: modules/internal-link-aliases/internal-link-aliases.php:305
+#: modules/internal-link-aliases/internal-link-aliases.php:306
 msgid "End Link Mask Generator output"
 msgstr ""
 
@@ -1668,7 +1668,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/misc/misc.php:11 plugin/class.seo-ultimate.php:1489
+#: modules/misc/misc.php:11 plugin/class.seo-ultimate.php:1486
 msgid "Miscellaneous"
 msgstr ""
 
@@ -2038,7 +2038,7 @@ msgid "Featured Image: %s"
 msgstr ""
 
 #: modules/opengraph/opengraph.php:359
-#: modules/rich-snippets/rich-snippets.php:354
+#: modules/rich-snippets/rich-snippets.php:357
 msgid "None"
 msgstr ""
 
@@ -2115,7 +2115,7 @@ msgid "Regular"
 msgstr ""
 
 #: modules/opengraph/opengraph.php:384
-#: modules/rich-snippets/rich-snippets.php:115
+#: modules/rich-snippets/rich-snippets.php:120
 msgid "Photo"
 msgstr ""
 
@@ -2173,12 +2173,12 @@ msgid "Schema.org Microdata"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:45
-#: modules/rich-snippets/rich-snippets.php:344
+#: modules/rich-snippets/rich-snippets.php:345
 msgid "Review"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:50
-msgid "Item Reviewed"
+msgid "Name of Reviewed Item"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:53
@@ -2186,160 +2186,168 @@ msgid "Star Rating"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:66
-msgid "Review Author"
+msgid "Image of Reviewed Item"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:71
+msgid "Review Author"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:76
 msgid "Date Reviewed"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:79
-#: modules/rich-snippets/rich-snippets.php:345
+#: modules/rich-snippets/rich-snippets.php:84
+#: modules/rich-snippets/rich-snippets.php:346
 msgid "Place"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:83
+#: modules/rich-snippets/rich-snippets.php:88
 msgid "Address"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:87
+#: modules/rich-snippets/rich-snippets.php:92
 msgid "Street Address"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:90
+#: modules/rich-snippets/rich-snippets.php:95
 msgid "PO Box"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:93
-#: modules/rich-snippets/rich-snippets.php:96
+#: modules/rich-snippets/rich-snippets.php:98
+#: modules/rich-snippets/rich-snippets.php:101
 msgid "City"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:99
+#: modules/rich-snippets/rich-snippets.php:104
 msgid "Country"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:102
+#: modules/rich-snippets/rich-snippets.php:107
 msgid "Postal Code"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:107
+#: modules/rich-snippets/rich-snippets.php:112
 msgid "Fax Number"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:110
+#: modules/rich-snippets/rich-snippets.php:115
 msgid "Map URL"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:124
+#: modules/rich-snippets/rich-snippets.php:129
 msgid "Phone Number"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:305
+#: modules/rich-snippets/rich-snippets.php:306
 msgid "Schema.org markup generated by %1$s (%2$s)"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:343
+#: modules/rich-snippets/rich-snippets.php:344
 msgid "Standard"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:346
+#: modules/rich-snippets/rich-snippets.php:347
 msgid "Search Result Type:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:351
+#: modules/rich-snippets/rich-snippets.php:352
 msgid "Name of Reviewed Item:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:355
-msgid "0.5 stars"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:356
-msgid "1 star"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:357
-msgid "1.5 stars"
+#: modules/rich-snippets/rich-snippets.php:354
+msgid "Image of Reviewed Item:"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:358
-msgid "2 stars"
+msgid "0.5 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:359
-msgid "2.5 stars"
+msgid "1 star"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:360
-msgid "3 stars"
+msgid "1.5 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:361
-msgid "3.5 stars"
+msgid "2 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:362
-msgid "4 stars"
+msgid "2.5 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:363
-msgid "4.5 stars"
+msgid "3 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:364
-msgid "5 stars"
+msgid "3.5 stars"
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:365
+msgid "4 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:366
+msgid "4.5 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:367
+msgid "5 stars"
+msgstr ""
+
+#: modules/rich-snippets/rich-snippets.php:368
 msgid "Star Rating for Reviewed Item:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:371
+#: modules/rich-snippets/rich-snippets.php:374
 msgid "Street Address:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:372
+#: modules/rich-snippets/rich-snippets.php:375
 msgid "Post Office Box Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:373
+#: modules/rich-snippets/rich-snippets.php:376
 msgid "City:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:374
+#: modules/rich-snippets/rich-snippets.php:377
 msgid "State or Region:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:375
+#: modules/rich-snippets/rich-snippets.php:378
 msgid "Country:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:376
+#: modules/rich-snippets/rich-snippets.php:379
 msgid "Postal Code:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:377
+#: modules/rich-snippets/rich-snippets.php:380
 msgid "Address:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:378
+#: modules/rich-snippets/rich-snippets.php:381
 msgid "Map Page:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:379
+#: modules/rich-snippets/rich-snippets.php:382
 msgid "Phone Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:380
+#: modules/rich-snippets/rich-snippets.php:383
 msgid "Fax Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:381
+#: modules/rich-snippets/rich-snippets.php:384
 msgid "Photo:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:392
+#: modules/rich-snippets/rich-snippets.php:395
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2367,7 +2375,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:403
+#: modules/rich-snippets/rich-snippets.php:406
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2381,7 +2389,7 @@ msgid ""
 "</ul>\r\n"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:412
+#: modules/rich-snippets/rich-snippets.php:415
 msgid ""
 "\r\n"
 "<ul>\r\n"
@@ -2408,7 +2416,7 @@ msgstr ""
 msgid "SEO Design Solutions Whitepapers"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.6)  #-#-#-#-#
 #. Author of the plugin/theme
 #: modules/sds-blog/sds-blog.php:49
 msgid "SEO Design Solutions"
@@ -2724,7 +2732,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (SEO Ultimate 7.5.6)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:861
 msgid "SEO Ultimate"
@@ -2778,7 +2786,7 @@ msgid "Uninstaller"
 msgstr ""
 
 #: modules/settings/uninstall.php:18 modules/settings/uninstall.php:22
-#: plugin/class.seo-ultimate.php:1327
+#: plugin/class.seo-ultimate.php:1324
 msgid "Uninstall"
 msgstr ""
 
@@ -3533,89 +3541,89 @@ msgid ""
 "If you leave before saving, those changes will be lost."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1140 plugin/class.seo-ultimate.php:1552
+#: plugin/class.seo-ultimate.php:1140 plugin/class.seo-ultimate.php:1555
 msgid "SEO Settings"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1182
+#: plugin/class.seo-ultimate.php:1179
 msgid ""
 "%1$s is known to cause conflicts with SEO Ultimate. Please deactivate %1$s "
 "if you wish to continue using SEO Ultimate."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1226
+#: plugin/class.seo-ultimate.php:1223
 msgid "new module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1226
+#: plugin/class.seo-ultimate.php:1223
 msgid "new modules"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1227
+#: plugin/class.seo-ultimate.php:1224
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1227
+#: plugin/class.seo-ultimate.php:1224
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1228
+#: plugin/class.seo-ultimate.php:1225
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1228
+#: plugin/class.seo-ultimate.php:1225
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1229
+#: plugin/class.seo-ultimate.php:1226
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1229
+#: plugin/class.seo-ultimate.php:1226
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1230
+#: plugin/class.seo-ultimate.php:1227
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1230
+#: plugin/class.seo-ultimate.php:1227
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1231
+#: plugin/class.seo-ultimate.php:1228
 msgid "new language pack"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1231
+#: plugin/class.seo-ultimate.php:1228
 msgid "new language packs"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1232
+#: plugin/class.seo-ultimate.php:1229
 msgid "language pack update"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1232
+#: plugin/class.seo-ultimate.php:1229
 msgid "language pack updates"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1263
+#: plugin/class.seo-ultimate.php:1260
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1269
+#: plugin/class.seo-ultimate.php:1266
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1271
+#: plugin/class.seo-ultimate.php:1268
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1348
+#: plugin/class.seo-ultimate.php:1345
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1415
+#: plugin/class.seo-ultimate.php:1412
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-privacy.php\" "
@@ -3623,31 +3631,31 @@ msgid ""
 "to everyone."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1486
+#: plugin/class.seo-ultimate.php:1483
 msgid "Search Engine Listing"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1487
+#: plugin/class.seo-ultimate.php:1484
 msgid "Social Networks Listing"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1488
+#: plugin/class.seo-ultimate.php:1485
 msgid "Links"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1582
+#: plugin/class.seo-ultimate.php:1585
 msgid "%1$s %2$s by %3$s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1769
+#: plugin/class.seo-ultimate.php:1772
 msgid "Home"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1842
+#: plugin/class.seo-ultimate.php:1843
 msgid "Author Archives"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1871
+#: plugin/class.seo-ultimate.php:1872
 msgid "Link Masks"
 msgstr ""
 
