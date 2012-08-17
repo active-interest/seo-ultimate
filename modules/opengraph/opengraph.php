@@ -179,11 +179,8 @@ class SU_OpenGraph extends SU_Module {
 		if ($tags['og:type'] == 'none')
 			$tags['og:type'] = '';
 		
-		if ((!isset($tags['og:image']) || !$tags['og:image']) && $tags['og:image'] !== false) {
+		if ((!isset($tags['og:image']) || !$tags['og:image']) && $tags['og:image'] !== false)
 			$tags['og:image'] = $this->jlsuggest_value_to_url($this->get_setting('default_og_image'), true);
-			if (!$tags['og:image'] && $tags['og:url'])
-				$tags['og:image'] = 'http://s.wordpress.com/mshots/v1/'.urlencode($tags['og:url']);
-		}
 		
 		//Site Name
 		if (!($tags['og:site_name'] = $this->get_setting('og_site_name')))
@@ -302,7 +299,7 @@ class SU_OpenGraph extends SU_Module {
 		$this->admin_subheader(__('Default Image', 'seo-ultimate'));
 		$this->admin_form_table_start();
 		
-		$this->textblock(__('In the box below, you can specify an image URL or an image from your media library to use as a default image in the event that there is no image otherwise specified for a given webpage on your site. If you do not specify a default image in the box below, then dynamically-generated thumbnails from the WordPress.com mShots service will be used instead.', 'seo-ultimate'));
+		$this->textblock(__('In the box below, you can specify an image URL or an image from your media library to use as a default image in the event that there is no image otherwise specified for a given webpage on your site.', 'seo-ultimate'));
 		
 		$this->jlsuggest_box('default_og_image', __('Default Image', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
 		
