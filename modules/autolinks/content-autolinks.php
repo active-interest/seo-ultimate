@@ -282,7 +282,7 @@ class SU_ContentAutolinks extends SU_Module {
 				$dampen_sitewide_lpa = sustr::preg_filter('0-9', strval($_POST["link_{$i}_dampen_sitewide_lpa"]));
 				$dampen_sitewide_lpa = ($dampen_sitewide_lpa === '') ? false : intval($dampen_sitewide_lpa);
 				
-				$sitewide_lpa = sustr::preg_filter('0-9', strval($_POST["link_{$i}_sitewide_lpa"]));
+				$sitewide_lpa = isset($_POST["link_{$i}_sitewide_lpa"]) ? sustr::preg_filter('0-9', strval($_POST["link_{$i}_sitewide_lpa"])) : '';
 				$sitewide_lpa = ($sitewide_lpa === '') ? false : intval($sitewide_lpa);
 				
 				$target = empty($_POST["link_{$i}_target"]) ? 'self' : 'blank';
@@ -333,7 +333,7 @@ class SU_ContentAutolinks extends SU_Module {
 		$headers['link-anchor'] = __('Anchor Text', 'seo-ultimate');
 		$headers['link-to'] = __('Destination', 'seo-ultimate');
 		$headers['link-title'] = __('Title Attribute <em>(optional)</em>', 'seo-ultimate');
-		if ($this->get_setting('enable_perlink_sitewide_lpa_limit', false) || $this->legacy_sitewide_lpa_in_use)
+		if ($this->get_setting('enable_perlink_dampen_sitewide_lpa', false, null, true) || $this->legacy_sitewide_lpa_in_use)
 			$headers['link-dampen-sitewide-lpa'] = __('Dampener', 'seo-ultimate');
 		if ($this->legacy_sitewide_lpa_in_use)
 			$headers['link-sitewide-lpa'] = __('Site Cap', 'seo-ultimate');
@@ -365,13 +365,17 @@ class SU_ContentAutolinks extends SU_Module {
 			$cells['link-to'] = $this->get_jlsuggest_box("link_{$i}_to", $jlsuggest_box_params);
 			$cells['link-title'] = $this->get_input_element('textbox', "link_{$i}_title", $link['title']);
 			
-			if ($this->get_setting('enable_perlink_sitewide_lpa_limit', false) || $this->legacy_sitewide_lpa_in_use)
+			if ($this->get_setting('enable_perlink_dampen_sitewide_lpa', false, null, true) || $this->legacy_sitewide_lpa_in_use) {
 				$cells['link-dampen-sitewide-lpa'] = $this->get_input_element('textbox', "link_{$i}_dampen_sitewide_lpa", $link['dampen_sitewide_lpa'], $default_dampen_sitewide_lpa) . '%';
+				$cells['link-options'] = '';
+			} else {
+				$cells['link-options'] = $this->get_input_element('hidden', "link_{$i}_dampen_sitewide_lpa", $link['dampen_sitewide_lpa'], $default_dampen_sitewide_lpa);
+			}
 			
 			if ($this->legacy_sitewide_lpa_in_use)
 				$cells['link-sitewide-lpa'] = $this->get_input_element('textbox', "link_{$i}_sitewide_lpa", $link['sitewide_lpa']);
 			
-			$cells['link-options'] =
+			$cells['link-options'] .=
 					 $this->get_input_element('checkbox', "link_{$i}_nofollow", $link['nofollow'], str_replace(' ', '&nbsp;', __('Nofollow', 'seo-ultimate')))
 					.'<br />'
 					.$this->get_input_element('checkbox', "link_{$i}_target", $link['target'] == 'blank', str_replace(' ', '&nbsp;', __('New window', 'seo-ultimate')));
