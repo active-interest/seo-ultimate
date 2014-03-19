@@ -7,12 +7,12 @@ These styles are sometimes or always referenced outside of SEO Ultimate's admin 
 
 #adminmenu .toplevel_page_seo div.wp-menu-image {
 	background-image: url(images/icon.png);
-	background-position: -1px -33px;
+	background-position: 2px -30px;
 }
 
 #adminmenu .toplevel_page_seo:hover div.wp-menu-image,
 #adminmenu .toplevel_page_seo .wp-has-current-submenu div.wp-menu-image {
-	background-position: -1px -1px;
+	background-position: 2px 2px;
 }
 
 /* MESSAGES */
@@ -161,12 +161,12 @@ div.su-help h6 {
 }
 
 #su-postmeta-box select optgroup,
-div.su-module select optgroup {
+div.sdf-admin select optgroup {
 	margin-top: 1em;
 }
 
 #su-postmeta-box select optgroup option,
-div.su-module select optgroup option {
+div.sdf-admin select optgroup option {
 	margin-left: 1em;
 }
 
@@ -262,7 +262,7 @@ div.su-module select optgroup option {
 	clear: left;
 }
 
-div.su-module .su-tabs .su-tab-contents {
+div.sdf-admin .su-tabs .su-tab-contents {
 	margin-top: 1em;
 }
 
