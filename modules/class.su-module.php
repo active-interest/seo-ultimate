@@ -293,18 +293,18 @@ class SU_Module {
 			if (strlen($parent = $this->get_parent_module()) && !$this->is_independent_module())
 				return $this->plugin->modules[$parent]->get_settings_key();
 			else
-				if (strlen($parent = self::get_parent_module()) && !self::is_independent_module()) {
-					global $seo_ultimate;
-					return $seo_ultimate->modules[$parent]->get_settings_key();
-				} else {
-					return false;
-				}
+				return $this->get_module_key();
 		} else {
 			if (strlen($parent = self::get_parent_module()) && !self::is_independent_module()) {
 				global $seo_ultimate;
 				return $seo_ultimate->modules[$parent]->get_settings_key();
 			} else {
-				return false;
+				if (strlen($parent = self::get_parent_module()) && !self::is_independent_module()) {
+					global $seo_ultimate;
+					return $seo_ultimate->get_module_key();
+				} else {
+					return false;
+				}
 			}
 		}
 	}
@@ -780,7 +780,7 @@ class SU_Module {
 	 */
 	function update_setting($key, $value, $module=null, $array_key=null) {
 		if (!$module) $module = $this->get_settings_key();
-		
+
 		$msdata = (array)get_option("seo_ultimate_module_$module", array());
 		
 		$use_custom  = 	apply_filters("su_custom_update_setting-$module-$key", false, $value, $key) ||
@@ -2064,6 +2064,59 @@ class SU_Module {
 	function jlsuggest_box($id, $title, $params='') {
 		$this->jlsuggest_boxes(array(compact('id', 'title', 'params')));
 	}
+	/**
+	 * @since 7.6.3
+	 */
+	function medialib_boxes($media_boxes) {
+		
+		if ($this->is_action('update')) {
+			foreach ($media_boxes as $media_box) {
+				
+				if (!isset($media_box['id']))
+					continue;
+				
+				$id = $media_box['id'];
+				
+				if (isset($_POST[$id]))
+					$this->update_setting($id, stripslashes($_POST[$id]));
+			}
+		}
+		
+		foreach ($media_boxes as $media_box) {
+			
+			if (!isset($media_box['id']))
+				continue;
+			
+			$media_box = wp_parse_args($media_box, array(
+				  'title' => ''
+				, 'params' => ''
+			));
+			
+			extract($media_box, EXTR_SKIP);
+			
+			register_setting($this->get_module_key(), $id);
+			
+			echo "<div class='form-group'>\n";
+			if ($title) echo "<label class='col-sm-4 col-md-4 control-label' for='$id'>$title</label>\n";
+			echo "<div class='col-sm-4 col-md-4'>";
+			echo "<div class='input-group'>
+				<input id='".su_esc_attr($id)."' name='".su_esc_attr($id)."' type='text' class='wpu-image form-control' size='40' value='".$this->get_setting($id)."'>
+				<span class='input-group-btn'>
+					<span class='btn btn-custom btn-file wpu-media-upload'>
+						<i class='fa fa-upload'></i> Upload Image <input type='file'>
+					</span>
+				</span>
+			</div>";
+			echo "</div>\n<div class='col-sm-4 col-md-4 help-text'>\n</div>\n</div>\n";
+		}
+	}
+	
+	/**
+	 * @since 7.6.3
+	 */
+	function medialib_box($id, $title, $params='') {
+		$this->medialib_boxes(array(compact('id', 'title', 'params')));
+	}
 	
 	/********** ADMIN SECURITY FUNCTIONS **********/
 	
@@ -2490,6 +2543,61 @@ class SU_Module {
 	function get_postmeta_jlsuggest_box($id, $title, $params=false) {
 		$jls_box = compact('id', 'title', 'params');
 		return $this->get_postmeta_jlsuggest_boxes(array($jls_box));
+	}
+	
+	/**
+	 * Generates the HTML for multiple post meta mediaupload boxes.
+	 * 
+	 * @since 7.6.3
+	 * 
+	 * @param array $media_boxes An array of mediaupload boxes. (Field/setting IDs are the keys, and descriptions are the values.)
+	 * @return string The HTML for the mediaupload boxes.
+	 */
+	function get_postmeta_medialib_boxes($media_boxes) {
+		
+		$html = '';
+		
+		foreach ($media_boxes as $media_box) {
+			
+			if (!isset($media_box['id']) || !isset($media_box['title']))
+				continue;
+			
+			$id = $media_box['id'];
+			$title = $media_box['title'];
+			
+			register_setting('seo-ultimate', $id);
+			$value = su_esc_editable_html($this->get_postmeta($id));
+			$id = "_su_".su_esc_attr($id);
+			
+			$html .= "<div class='form-group su'>\n<label class='col-sm-4 col-md-4 control-label' for='$id'>$title</label>\n"
+					."<div class='col-sm-4 col-md-4 su'>";
+			$html .= "<div class='input-group'>
+				<input id='".su_esc_attr($id)."' name='".su_esc_attr($id)."' type='text' class='wpu-image form-control' size='40' value='".$value."'>
+				<span class='input-group-btn'>
+					<span class='btn btn-custom btn-file wpu-media-upload'>
+						<i class='fa fa-upload'></i> Upload Image <input type='file'>
+					</span>
+				</span>
+			</div>";
+			$html .= "</div>\n<div class='col-sm-4 col-md-4 help-text'>\n</div>\n</div>\n";
+		}
+		
+		return $html;
+	}
+	
+	/**
+	 * Generates the HTML for a single post meta mediaupload box.
+	 * 
+	 * @since 7.6.3
+	 * @uses get_postmeta_medialib_boxes()
+	 * 
+	 * @param string $id The ID of the HTML element.
+	 * @param string $title The label of the HTML element.
+	 * @return string The HTML that would render the mediaupload box.
+	 */
+	function get_postmeta_medialib_box($id, $title) {
+		$media_box = compact('id', 'title');
+		return $this->get_postmeta_medialib_boxes(array($media_box));
 	}
 	
 	/**

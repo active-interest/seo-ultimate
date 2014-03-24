@@ -53,7 +53,7 @@ class SU_SdsBlog extends SU_Module {
 			echo "\n\n<div class='col-sm-8 col-md-9'>\n";
 		}
 		
-		echo "<a href='http://www.seodesignsolutions.com'><img src='{$this->plugin->plugin_dir_url}plugin/images/sds-logo.png' alt='".__('SEO Design Solutions', 'seo-ultimate')."' id='sds-logo' /></a>";
+		echo "<a href='http://www.seodesignsolutions.com'><img src='{$this->plugin->plugin_dir_url}plugin/img/sds-logo.png' alt='".__('SEO Design Solutions', 'seo-ultimate')."' id='sds-logo' /></a>";
 		echo "<p>".__('The search engine optimization articles below are loaded from the website of SEO Design Solutions, the company behind the SEO Ultimate plugin. Click on an article&#8217;s title to read it.', 'seo-ultimate')."</p>\n";
 		echo "<div class='rss-widget'>\n";
 		

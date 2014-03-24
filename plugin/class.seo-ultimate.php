@@ -239,6 +239,9 @@ class SEO_Ultimate {
 			
 			//JLSuggest AJAX
 			add_action('wp_ajax_su-jlsuggest-autocomplete', array(&$this, 'jlsuggest_autocomplete'));
+			
+			// add dashboart widget
+			add_action( 'wp_dashboard_setup', array(&$this, 'su_add_dashboard_widgets'));
 		}
 	}
 	
@@ -1073,25 +1076,30 @@ class SEO_Ultimate {
 		}
 		
 		//load if SDF is not active
-			global $pagenow;
-			$current = (isset($_GET['page'])) ? $_GET['page'] : '';
-			$pages = array( 'edit.php', 'post.php', 'post-new.php' );
-			$sdf_admin_pages = array('sdf','sdf-settings','sdf-silo','sdf-silo-manual-builder','sdf-header','sdf-layout','sdf-shortcode','sdf-styles','revslider','sdf-footer','seo', 'su-fofs', 'su-misc', 'su-user-code', 'su-autolinks', 'su-files', 'su-internal-link-aliases', 'su-meta-descriptions', 'su-meta-keywords', 'su-meta-robots', 'su-opengraph', 'seo-ultimate', 'su-wp-settings', 'su-titles', 'su-sds-blog');
-			if( in_array( $pagenow, $pages ) || in_array( $current, $sdf_admin_pages )) {
-				// admin styles 	 	
-				wp_register_style('sdf-bootstrap-admin',  $this->plugin_dir_url.'plugin/sdf/bootstrap/css/bootstrap.admin.css', array(), '3.0.3', 'screen');
-				wp_register_style('sdf-bootstrap-admin-theme',  $this->plugin_dir_url.'plugin/sdf/bootstrap/css/bootstrap-theme.admin.css', array(), '3.0.3', 'screen');		
-				wp_register_style('sdf-font-awesome', 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', array(), '4.0.3', 'screen');
-				wp_register_style('sdf-css-admin',  $this->plugin_dir_url.'plugin/sdf/sdf.admin.css', array(), '3.0.3', 'screen');
-				wp_enqueue_style('sdf-bootstrap-admin');
-				wp_enqueue_style('sdf-bootstrap-admin-theme');
-				wp_enqueue_style('sdf-font-awesome');
-				wp_enqueue_style('sdf-css-admin');
-			}
-			
-			wp_register_script('sdf_bs_js', 'https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js', array('jquery'), '3.0.3', false);	
-			wp_enqueue_script('sdf_bs_js');
-			wp_enqueue_media();
+		global $pagenow;
+		$current = (isset($_GET['page'])) ? $_GET['page'] : '';
+		$pages = array( 'edit.php', 'post.php', 'post-new.php' );
+		$sdf_admin_pages = array('sdf','sdf-settings','sdf-silo','sdf-silo-manual-builder','sdf-header','sdf-layout','sdf-shortcode','sdf-styles','revslider','sdf-footer','seo', 'su-fofs', 'su-misc', 'su-user-code', 'su-autolinks', 'su-files', 'su-internal-link-aliases', 'su-meta-descriptions', 'su-meta-keywords', 'su-meta-robots', 'su-opengraph', 'seo-ultimate', 'su-wp-settings', 'su-titles', 'su-sds-blog');
+		if( in_array( $pagenow, $pages ) || in_array( $current, $sdf_admin_pages )) {
+			// admin styles 	 	
+			wp_register_style('sdf-bootstrap-admin',  $this->plugin_dir_url.'plugin/sdf/bootstrap/css/bootstrap.admin.css', array(), '3.0.3', 'screen');
+			wp_register_style('sdf-bootstrap-admin-theme',  $this->plugin_dir_url.'plugin/sdf/bootstrap/css/bootstrap-theme.admin.css', array(), '3.0.3', 'screen');		
+			wp_register_style('sdf-font-awesome', 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', array(), '4.0.3', 'screen');
+			wp_register_style('sdf-css-admin',  $this->plugin_dir_url.'plugin/sdf/sdf.admin.css', array(), '3.0.3', 'screen');
+			wp_enqueue_style('sdf-bootstrap-admin');
+			wp_enqueue_style('sdf-bootstrap-admin-theme');
+			wp_enqueue_style('sdf-font-awesome');
+			wp_enqueue_style('sdf-css-admin');
+		}
+		
+		wp_register_script('sdf_bs_js', 'https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js', array('jquery'), '3.0.3', false);	
+		wp_register_script('sdf_admin_js', $this->plugin_dir_url.'plugin/sdf/sdf.admin.js', array('jquery'), '');
+		wp_enqueue_script('sdf_bs_js');
+		wp_enqueue_script('sdf_admin_js');
+		wp_enqueue_media();
+		
+		// load dashboard widget
+		if($pagenow == 'index.php') $this->queue_js('modules', 'sdf-ads');
 		
 		//Figure out what plugin admin page we're on
 		global $plugin_page;
@@ -2048,5 +2056,44 @@ class SEO_Ultimate {
 			}
 		}
 	}
+	
+	/**
+	* Add a widget to the wp dashboard.
+	*
+	* This function is hooked into the 'wp_dashboard_setup' action below.
+	*
+	* @since 7.6.2
+	*/
+	function su_add_dashboard_widgets() {
+
+	wp_add_dashboard_widget( 'su_dashboard_widget', 'From the Creators of SEO Ultimate', array(&$this, 'su_dashboard_widget_function') );
+	
+	// Globalize the metaboxes array, this holds all the widgets for wp-admin
+	global $wp_meta_boxes;
+
+	// Get the regular dashboard widgets array 
+	// (which has our new widget already but at the end)
+	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+
+	// Backup and delete our new dashboard widget from the end of the array
+	$su_widget_backup = array( 'su_dashboard_widget' => $normal_dashboard['su_dashboard_widget'] );
+	unset( $normal_dashboard['su_dashboard_widget'] );
+
+	// Merge the two arrays together so our widget is at the beginning
+	$sorted_dashboard = array_merge( $su_widget_backup, $normal_dashboard );
+
+	// Save the sorted array back into the original metaboxes 
+	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+		
+	}
+
+	/**
+	 * Create the function to output the contents of our Dashboard Widget.
+	 */
+	function su_dashboard_widget_function() {
+
+		// Display whatever it is you want to show.
+		echo "<p>If you like SEO Ultimate, then help their creators give more. Show your support and buy their paid products.</p><a rel=\"home\" title=\"SEO Design Framework\" href=\"http://www.seodesignframework.com/\"><img src=\"https://s3.amazonaws.com/sdfimages/seoultimatebanner/02_1.png\" alt=\"SEO Design Framework\" /></a>";
+	} 
 }
 ?>

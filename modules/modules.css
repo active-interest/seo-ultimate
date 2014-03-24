@@ -127,7 +127,7 @@ div.sdf-admin textarea[disabled] {
 
 div.sdf-admin .su-meta-edit-table table.widefat,
 div.sdf-admin .su-meta-edit-table table.widefat .regular-text { width: 100%; }
-div.sdf-admin .su-meta-edit-table table.widefat td.su-actions { width: 6em; }
+div.sdf-admin .su-meta-edit-table table.widefat td.su-actions { width: 8em; }
 div.sdf-admin .su-meta-edit-table table.widefat td.su-id { width: 2em; }
 div.sdf-admin .su-meta-edit-table table.widefat td.su-name { width: 20em; }
 div.sdf-admin .su-meta-edit-table table.widefat td { vertical-align: middle; }

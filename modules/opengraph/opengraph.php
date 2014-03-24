@@ -447,7 +447,7 @@ class SU_OpenGraph extends SU_Module {
 		
 		$this->textblock(__('In the box below, you can specify an image URL or an image from your media library to use as a default image in the event that there is no image otherwise specified for a given webpage on your site.', 'seo-ultimate'));
 		
-		$this->jlsuggest_box('default_og_image', __('Default Image', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
+		$this->medialib_box('default_og_image', __('Default Image', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
 		
 		$this->admin_form_table_end();
 	}
@@ -467,7 +467,7 @@ class SU_OpenGraph extends SU_Module {
 		$this->admin_form_table_start();
 		$this->textbox('home_og_title', __('Blog Homepage Title', 'seo-ultimate'), false, false, array(), array('placeholder' => get_bloginfo('name')));
 		$this->textbox('home_og_description', __('Blog Homepage Description', 'seo-ultimate'), false, false, array(), array('placeholder' => get_bloginfo('description')));
-		$this->jlsuggest_box('home_og_image', __('Blog Homepage Image', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
+		$this->medialib_box('home_og_image', __('Blog Homepage Image', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
 		$this->admin_form_table_end();
 	}
 	
@@ -475,7 +475,7 @@ class SU_OpenGraph extends SU_Module {
 		
 		$fields['opengraph'][10]['og_title'] = $this->get_postmeta_textbox('og_title', __('Title:', 'seo-ultimate'));
 		$fields['opengraph'][20]['og_description'] = $this->get_postmeta_textarea('og_description', __('Description:', 'seo-ultimate'));
-		$fields['opengraph'][30]['og_image'] = $this->get_postmeta_jlsuggest_box('og_image', __('Image:', 'seo-ultimate'), 'types=posttype_attachment&post_mime_type=image/*');
+		$fields['opengraph'][30]['og_image'] = $this->get_postmeta_medialib_box('og_image', __('Image:', 'seo-ultimate'));
 		$fields['opengraph'][40]['og_type'] = $this->get_postmeta_dropdown('og_type', array_merge(array('' => __('Use default', 'seo-ultimate')), $this->get_type_options()), __('Open Graph Type:', 'seo-ultimate'));
 		$fields['opengraph'][50]['twitter_card'] = $this->get_postmeta_dropdown('twitter_card', array_merge(array('' => __('Use default', 'seo-ultimate')), $this->get_twitter_type_options()), __('Twitter Type:', 'seo-ultimate'));
 		

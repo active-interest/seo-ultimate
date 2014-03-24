@@ -18,6 +18,7 @@ jQuery(document).ready(function($) {
 		to_toggle.slideToggle();
 	});
 });
+})(jQuery);
 
 function su_reset_textbox(id, d, m, e) {
 	if (confirm(m+"\n\n"+d)) {
@@ -45,5 +46,3 @@ function su_disable_unload_confirm() {
 function su_confirm_unload_message() {
 	return suModulesModulesL10n.unloadConfirmMessage;
 }
-
-})(jQuery);
