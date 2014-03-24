@@ -2939,7 +2939,7 @@ class SU_Module {
 	 * @since 7.6
 	 */
 	function should_show_sdf_theme_promo() {
-		return $this->is_sdf_theme_promo_applicable() && $this->get_setting('sdf_theme');
+		return $this->is_sdf_theme_promo_applicable() && $this->get_setting('sdf_theme','', 'settings');
 	}
 	
 	/**
