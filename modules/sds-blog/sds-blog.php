@@ -205,7 +205,7 @@ class SU_SdsBlog extends SU_Module {
 			if ( $link == '' ) {
 				echo "<li>$title{$date}{$summary}{$author}</li>";
 			} else {
-				echo "<li><a class='rsswidget' href='$link' title='$desc' target='_blank'>$title</a>{$date}{$summary}{$author}</li>";
+				echo "<li><a class='rsswidget' href='$link' title='$desc' target='_blank' rel='nofollow'>$title</a>{$date}{$summary}{$author}</li>";
 			}
 		}
 		echo '</ul>';

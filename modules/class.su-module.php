@@ -975,9 +975,9 @@ class SU_Module {
 	function admin_footer() {
 		printf(__('%1$s | %2$s %3$s by %4$s', 'seo-ultimate'),
 			$this->get_module_title(),
-			'<a href="'.SU_PLUGIN_URI.'" target="_blank">'.__(SU_PLUGIN_NAME, 'seo-ultimate').'</a>',
+			'<a href="'.SU_PLUGIN_URI.'" target="_blank" rel="nofollow">'.__(SU_PLUGIN_NAME, 'seo-ultimate').'</a>',
 			SU_VERSION,
-			'<a href="'.SU_AUTHOR_URI.'" target="_blank">'.__(SU_AUTHOR, 'seo-ultimate').'</a>'
+			'<a href="'.SU_AUTHOR_URI.'" target="_blank" rel="nofollow">'.__(SU_AUTHOR, 'seo-ultimate').'</a>'
 		);
 		
 		echo "<br />";
@@ -3046,7 +3046,7 @@ class SU_Module {
 			if ( $link == '' ) {
 				echo "<h3>$title</h3>{$summary}";
 			} else {
-				echo "<h3>$title</h3>{$summary}<p><a class='btn btn-large btn-warning' href='$link' target='_blank'>Read More</a></p>";
+				echo "<h3>$title</h3>{$summary}<p><a class='btn btn-large btn-warning' href='$link' target='_blank' rel='nofollow'>Read More</a></p>";
 			}
 		}
 		$rss->__destruct();

@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
 		if (data.enabled === true) {
 			var shuffled_banners = shuffleArray(data.banners);
 			var shuffled_slides = shuffleArray(data.slides);
-			sdf_carousel = sdf_carousel + "<a href=\"" + shuffled_banners[0].banner_link + "\" target=\"_blank\"><img src=\"" + shuffled_banners[0].banner_img + "\" alt=\"Slide "+ i +"\"></a>";
+			sdf_carousel = sdf_carousel + "<a href=\"" + shuffled_banners[0].banner_link + "\" rel=\"nofollow\" target=\"_blank\"><img src=\"" + shuffled_banners[0].banner_img + "\" alt=\"Slide "+ i +"\"></a>";
 			sdf_carousel = sdf_carousel + "<div id=\"sdfCarousel\" class=\"carousel slide\"><ol class=\"carousel-indicators\">";
 					
 			var active_indicator = '';
@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
 			for ( var i = 0; i < shuffled_slides.length; i++ ) {
 				if (i == 0) active_indicator = ' active';
 				else active_indicator = '';
-				sdf_carousel = sdf_carousel + "<div class=\"item"+ active_indicator +"\"><div class=\"container\"><div class=\"carousel-caption\">"+ shuffled_slides[i].slide_cap + "<p><a class=\"btn btn-large btn-warning\" href=\""+ shuffled_slides[i].slide_link + "\" target=\"_blank\">Read More</a></p></div></div></div>";
+				sdf_carousel = sdf_carousel + "<div class=\"item"+ active_indicator +"\"><div class=\"container\"><div class=\"carousel-caption\">"+ shuffled_slides[i].slide_cap + "<p><a class=\"btn btn-large btn-warning\" href=\""+ shuffled_slides[i].slide_link + "\" rel=\"nofollow\" target=\"_blank\">Read More</a></p></div></div></div>";
 			};
 			sdf_carousel = sdf_carousel + "<div class=\"item\"><div class=\"container\"><div class=\"carousel-caption\">"+ sds_promo_blog_post + "</div></div></div>";
 			sdf_carousel = sdf_carousel + "</div><a class=\"left carousel-control\" href=\"#sdfCarousel\" data-slide=\"prev\"><span class=\"glyphicon glyphicon-chevron-left\"></span></a><a class=\"right carousel-control\" href=\"#sdfCarousel\" data-slide=\"next\"><span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>";
