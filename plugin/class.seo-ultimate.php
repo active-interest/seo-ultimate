@@ -2087,7 +2087,7 @@ class SEO_Ultimate {
 	*/
 	function su_add_dashboard_widgets() {
 
-	wp_add_dashboard_widget( 'su_dashboard_widget', 'From the Creators of SEO Ultimate', array(&$this, 'su_dashboard_widget_function') );
+	wp_add_dashboard_widget( 'sdf_dashboard_widget', 'From the Creators of SEO Ultimate', array(&$this, 'sdf_dashboard_widget_function') );
 	
 	// Globalize the metaboxes array, this holds all the widgets for wp-admin
 	global $wp_meta_boxes;
@@ -2097,8 +2097,8 @@ class SEO_Ultimate {
 	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
 
 	// Backup and delete our new dashboard widget from the end of the array
-	$su_widget_backup = array( 'su_dashboard_widget' => $normal_dashboard['su_dashboard_widget'] );
-	unset( $normal_dashboard['su_dashboard_widget'] );
+	$su_widget_backup = array( 'sdf_dashboard_widget' => $normal_dashboard['sdf_dashboard_widget'] );
+	unset( $normal_dashboard['sdf_dashboard_widget'] );
 
 	// Merge the two arrays together so our widget is at the beginning
 	$sorted_dashboard = array_merge( $su_widget_backup, $normal_dashboard );
@@ -2111,7 +2111,7 @@ class SEO_Ultimate {
 	/**
 	 * Create the function to output the contents of our Dashboard Widget.
 	 */
-	function su_dashboard_widget_function() {
+	function sdf_dashboard_widget_function() {
 
 		// Display whatever it is you want to show in widget content.
 		//echo "";

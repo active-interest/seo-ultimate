@@ -4,7 +4,7 @@
 jQuery(document).ready(function($) {
 	
 	$('#sdf-promo-carousel').hide();
-	$('#su_dashboard_widget .inside').hide();
+	$('#sdf_dashboard_widget .inside').hide();
 	var sds_promo_blog_post = $('#sds_promo_blog_post').html();
 	var banners_remote = 'https://s3.amazonaws.com/sdfimages/seoultimatebanner/seo_ultimate_banners_jsonp_764.json';
 
@@ -46,10 +46,10 @@ jQuery(document).ready(function($) {
 			$('#sdf-promo-carousel').html(sdf_carousel).delay(500).fadeIn(600).carousel({ interval:8000 });
 			
 			// dashboard widget
-			$('#su_dashboard_widget h3.hndle span').html(data.dashboard_widget[0].title);
-			$('#su_dashboard_widget .inside').html(data.dashboard_widget[0].content);
+			$('#sdf_dashboard_widget h3.hndle span').html(data.dashboard_widget[0].title);
+			$('#sdf_dashboard_widget .inside').html(data.dashboard_widget[0].content);
 			setTimeout(function(){
-				$('#su_dashboard_widget .inside').fadeIn(600);
+				$('#sdf_dashboard_widget .inside').fadeIn(600);
 			},800);
 		}	
 	})
