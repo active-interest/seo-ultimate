@@ -3,7 +3,7 @@ Contributors: SEO Design Solutions, JohnLamansky, djalexandar
 Tags: seo, SEO Ultimate, suite, google, yahoo, bing, search engines, admin, post, page, custom post types, categories, tags, terms, custom taxonomies, base, title, title tag, wp_title, meta, robots, noindex, nofollow, canonical, HTTP headers, 404, robots.txt, htaccess, slugs, url, anchor, more, link, excerpt, permalink, links, autolinks, code, footer, settings, redirect, 301, 302, 307, modules, uninstallable, reinstallable, downgradable, import, export, CSV, affiliate, Open Graph, og, microdata, Facebook, Twitter, Schema.org
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 7.6.5
+Stable tag: 7.6.5.1
 
 This all-in-one SEO plugin gives you control over title tags, noindex, meta tags, Open Graph, slugs, canonical, autolinks, 404 errors, rich snippets, and more.
 
@@ -11,7 +11,7 @@ This all-in-one SEO plugin gives you control over title tags, noindex, meta tags
 
 = From the Creators of SEO Ultimate =
 
-If you like SEO Ultimate, then help their creators make it better. Buy their [WordPress Theme Framework](http://www.seodesignframework.com/) today.
+If You Like SEO Ultimate, You're Going to Love Our [WordPress Theme Framework](http://www.seodesignframework.com/)
 
 = Recent Releases =
 
@@ -247,6 +247,9 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 
 == Changelog ==
+
+= Version 7.6.5.1 (June 03, 2014) =
+* Bugfix: Permalink Tweaker (URL Bases)
 
 = Version 7.6.5 (June 02, 2014) =
 * Bugfix: jQuery UI slider styles collision
