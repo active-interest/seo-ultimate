@@ -195,7 +195,7 @@ class SU_Titles extends SU_Module {
 			$monthnum = get_query_var('monthnum');
 			$daynum = get_query_var('day');
 		}
-		$month = $wp_locale->get_month($monthnum);
+		$month = $wp_locale->get_month($monthnum < 1 ? 1 : $monthnum);
 		$monthnum = zeroise($monthnum, 2);
 		$day = date('jS', mktime(12,0,0,$monthnum,$daynum,$year));
 		$daynum = zeroise($daynum, 2);
