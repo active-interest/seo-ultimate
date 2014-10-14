@@ -142,7 +142,6 @@ class SU_Titles extends SU_Module {
 	}
 	
 	function change_title_tag($head) {
-		
 		$title = $this->get_title();
 		if (!$title) return $head;
 		// Pre-parse the title replacement text to escape the $ ($n backreferences) when followed by a number 0-99 because of preg_replace issue
@@ -164,9 +163,16 @@ class SU_Titles extends SU_Module {
 		//Custom taxonomy title?
 		if (suwp::is_tax()) {
 			$tax_titles = $this->get_setting('taxonomy_titles');
-			if ($tax_title = $tax_titles[$wp_query->get_queried_object_id()])
-				//return htmlspecialchars($this->get_title_paged($tax_title));
+			$tax_id = $wp_query->get_queried_object_id();
+			if (!empty($tax_titles[$tax_id]) && $tax_title = $tax_titles[$tax_id]) {
 				$format = $tax_title;
+			} else {
+				$format = get_queried_object()->name . " | {blog}";
+			}
+		} else if (is_archive()) {
+			$obj = get_queried_object();
+			$format = (!empty($obj->label) ? $obj->label . ' | ' : '' ) . '{blog}';
+
 		} else {
 			//Get format
 			if (!($format = $this->get_title_format())) return '';
