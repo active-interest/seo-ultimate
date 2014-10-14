@@ -158,17 +158,20 @@ class SU_Titles extends SU_Module {
 		//Custom post/page title?
 		if ($post_title = $this->get_postmeta('title'))
 			return htmlspecialchars($this->get_title_paged($post_title));
-		
+
+		if (!$this->should_rewrite_title()) return '';
+
 		//Custom taxonomy title?
 		if (suwp::is_tax()) {
 			$tax_titles = $this->get_setting('taxonomy_titles');
 			if ($tax_title = $tax_titles[$wp_query->get_queried_object_id()])
-				return htmlspecialchars($this->get_title_paged($tax_title));
+				//return htmlspecialchars($this->get_title_paged($tax_title));
+				$format = $tax_title;
+		} else {
+			//Get format
+			if (!($format = $this->get_title_format())) return '';
 		}
-		
-		//Get format
-		if (!$this->should_rewrite_title()) return '';
-		if (!($format = $this->get_title_format())) return '';
+	
 		
 		//Load post/page titles
 		$post_id = 0;
