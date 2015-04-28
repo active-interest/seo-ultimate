@@ -2,13 +2,11 @@
 (function($) { 
     "use strict";
 	jQuery(document).ready(function($) {
-	
-	
-  // sdf media upload
+// sdf media upload
 	var sdf_image_media_frame;
   $(document.body).on('click.sdf-open-media-manager', '.sdf-open-media', function(e) {
     e.preventDefault();
-    var current_widget_form = $(e.currentTarget).closest('form');
+    var current_widget_form = $(e.currentTarget).parents('form:first');
     if ( sdf_image_media_frame ) {
       sdf_image_media_frame.open();
       return;
@@ -66,6 +64,5 @@
 		custom_file_frame.open();
 	});
 
-});
-	
-})(jQuery);
+});	
+})(jQuery);	

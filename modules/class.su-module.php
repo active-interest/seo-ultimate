@@ -1196,9 +1196,16 @@ class SU_Module {
 					
 					break;
 				case 'term':
-					$id = intval($object->term_id);
+					if (!isset($object->term_taxonomy_id)) {
+						$id = intval($object->term_id);
+						$view_url = get_term_link($id, $type);
+					}
+					else{
+						$id = intval($object->term_taxonomy_id);
+						$view_url = get_term_link(intval($object->term_id), $type);
+					}
 					$name = $object->name;
-					$view_url = get_term_link($id, $type);
+
 					$edit_url = suwp::get_edit_term_link($id, $type);
 					break;
 				default: return false; break;
