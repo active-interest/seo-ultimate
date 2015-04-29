@@ -1137,7 +1137,7 @@ class SU_Module {
 		echo "\n<div class='su-meta-edit-table'>\n";
 		
 		$page_links = paginate_links( array(
-			  'base' => add_query_arg( $type . '_paged', '%#%' ) . '#' . $tab
+			  'base' => esc_url( add_query_arg( $type . '_paged', '%#%' ) ) . '#' . $tab
 			, 'format' => ''
 			, 'prev_text' => __('&laquo;')
 			, 'next_text' => __('&raquo;')

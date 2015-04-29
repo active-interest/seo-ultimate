@@ -5678,7 +5678,7 @@ button.sdf-admin .close {
   border: 0;
   -webkit-appearance: none;
 }
-.modal-open {
+.sdf-modal-open {
   overflow: hidden;
 }
 .sdf-admin .modal {
@@ -5709,7 +5709,7 @@ button.sdf-admin .close {
   -o-transform: translate(0, 0);
   transform: translate(0, 0);
 }
-.modal-open .sdf-admin .modal {
+.sdf-modal-open .sdf-admin .modal {
   overflow-x: hidden;
   overflow-y: auto;
 }
