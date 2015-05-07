@@ -124,10 +124,14 @@ function su_esc_editable_html($str) {
 	return _wp_specialchars($str, ENT_QUOTES, false, true);
 }
 
+// Add a parent shortcut link for admin toolbar
+function seo_ultimate_admin_bar_menu( $meta = true ) {
+	global $wp_admin_bar, $seo_ultimate;
+		if ( !is_user_logged_in() ) { return; }
+		if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+		if (isset($seo_ultimate->modules['settings']) && $seo_ultimate->modules['settings']->get_setting('seo_toolbar_menu') === false) { return; }
 
-
-	// Add a parent shortcut link for admin toolbar
-	function custom_toolbar_link($wp_admin_bar) {
+		// Add the parent link for admin toolbar
 		$args = array(
 			'id' => 'seo-ultimate',
 			'title' => 'SEO', 
@@ -139,7 +143,7 @@ function su_esc_editable_html($str) {
 		);
 		$wp_admin_bar->add_node($args);
 	
-		// Add the child link for admin toolbar	
+		// Add the child link for admin toolbar
 		$args = array(
 			'id' => 'su-moduels',
 			'title' => 'Modules', 
@@ -308,7 +312,6 @@ function su_esc_editable_html($str) {
 		);
 		$wp_admin_bar->add_node($args);
 		
-	}
-	add_action('admin_bar_menu', 'custom_toolbar_link', 95);
-
+}
+add_action('admin_bar_menu', 'seo_ultimate_admin_bar_menu', 95);
 ?>

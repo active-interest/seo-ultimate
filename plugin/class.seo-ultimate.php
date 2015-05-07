@@ -497,8 +497,11 @@ class SEO_Ultimate {
 							else
 								$module_disabled = (isset($oldmodules[$module]) && $oldmodules[$module] == SU_MODULE_DISABLED);
 							
-							if (!isset($oldmodules[$module]) && call_user_func(array($class, 'get_default_status')) == SU_MODULE_DISABLED)
-								$module_disabled = true;
+							//if (!isset($oldmodules[$module]) && call_user_func(array($class, 'get_default_status')) == SU_MODULE_DISABLED)
+								//$module_disabled = true;
+							
+							if (!isset($oldmodules[$module]) && call_user_func(array($class, 'get_default_status') == SU_MODULE_DISABLED));							
+								$module_disabled = false;
 							
 							if (in_array($module, $this->get_invincible_modules())) {
 								$module_disabled = false;

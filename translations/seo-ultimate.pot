@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate v7.6.5.2\n"
+"Project-Id-Version: SEO Ultimate v7.6.5.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2015-04-28 17:50+0100\n"
-"PO-Revision-Date: 2015-04-28 17:50+0100\n"
+"POT-Creation-Date: 2015-05-07 19:21+0100\n"
+"PO-Revision-Date: 2015-05-07 19:21+0100\n"
 "Last-Translator: \n"
 "Language-Team: SEO Design Solutions <support@seodesignsolutions.com>\n"
 "Language: en_US\n"
@@ -1218,11 +1218,11 @@ msgstr ""
 
 #: modules/class.su-module.php:2801 modules/meta/meta-descriptions.php:31
 #: modules/meta/meta-keywords.php:40 modules/opengraph/opengraph.php:352
-#: plugin/class.seo-ultimate.php:1876
+#: plugin/class.seo-ultimate.php:1879
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2806 plugin/class.seo-ultimate.php:1952
+#: modules/class.su-module.php:2806 plugin/class.seo-ultimate.php:1955
 msgid "Author"
 msgstr ""
 
@@ -1230,7 +1230,7 @@ msgstr ""
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2823 plugin/class.seo-ultimate.php:1982
+#: modules/class.su-module.php:2823 plugin/class.seo-ultimate.php:1985
 msgid "Link Mask"
 msgstr ""
 
@@ -2165,7 +2165,7 @@ msgid ""
 msgstr ""
 
 #: modules/misc/misc.php:11 modules/misc/misc.php:12
-#: plugin/class.seo-ultimate.php:1586
+#: plugin/class.seo-ultimate.php:1589
 msgid "Miscellaneous"
 msgstr ""
 
@@ -3111,12 +3111,16 @@ msgstr ""
 msgid "Global Settings"
 msgstr ""
 
-#: modules/settings/global-settings.php:41
+#: modules/settings/global-settings.php:42
 msgid "Identify the plugin&#8217;s HTML code insertions with HTML comment tags"
 msgstr ""
 
-#: modules/settings/global-settings.php:42
+#: modules/settings/global-settings.php:43
 msgid "Show the promo slider for SEO Design Framework on plugin pages"
+msgstr ""
+
+#: modules/settings/global-settings.php:44
+msgid "Show \"SEO\" Menu in admin toolbar"
 msgstr ""
 
 #: modules/settings/install.php:18
@@ -3410,7 +3414,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:854
+#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:857
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -3462,7 +3466,7 @@ msgid "Uninstaller"
 msgstr ""
 
 #: modules/settings/uninstall.php:18 modules/settings/uninstall.php:22
-#: plugin/class.seo-ultimate.php:1414
+#: plugin/class.seo-ultimate.php:1417
 msgid "Uninstall"
 msgstr ""
 
@@ -4195,102 +4199,102 @@ msgstr ""
 msgid "Go to setting &raquo;"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:854
+#: plugin/class.seo-ultimate.php:857
 msgid "SEO"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1135
+#: plugin/class.seo-ultimate.php:1138
 msgid ""
 "It looks like you made changes to the settings of this SEO Ultimate module. "
 "If you leave before saving, those changes will be lost."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1230 plugin/class.seo-ultimate.php:1656
+#: plugin/class.seo-ultimate.php:1233 plugin/class.seo-ultimate.php:1659
 msgid "SEO Settings"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1269
+#: plugin/class.seo-ultimate.php:1272
 #, php-format
 msgid ""
 "%1$s is known to cause conflicts with SEO Ultimate. Please deactivate %1$s "
 "if you wish to continue using SEO Ultimate."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1313
+#: plugin/class.seo-ultimate.php:1316
 msgid "new module"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1313
+#: plugin/class.seo-ultimate.php:1316
 msgid "new modules"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1314
+#: plugin/class.seo-ultimate.php:1317
 msgid "new feature"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1314
+#: plugin/class.seo-ultimate.php:1317
 msgid "new features"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1315
+#: plugin/class.seo-ultimate.php:1318
 msgid "bugfix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1315
+#: plugin/class.seo-ultimate.php:1318
 msgid "bugfixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1316
+#: plugin/class.seo-ultimate.php:1319
 msgid "improvement"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1316
+#: plugin/class.seo-ultimate.php:1319
 msgid "improvements"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1317
+#: plugin/class.seo-ultimate.php:1320
 msgid "security fix"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1317
+#: plugin/class.seo-ultimate.php:1320
 msgid "security fixes"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1318
+#: plugin/class.seo-ultimate.php:1321
 msgid "new language pack"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1318
+#: plugin/class.seo-ultimate.php:1321
 msgid "new language packs"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1319
+#: plugin/class.seo-ultimate.php:1322
 msgid "language pack update"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1319
+#: plugin/class.seo-ultimate.php:1322
 msgid "language pack updates"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1350
+#: plugin/class.seo-ultimate.php:1353
 #, php-format
 msgid "%d %s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1356
+#: plugin/class.seo-ultimate.php:1359
 #, php-format
 msgid "Upgrade now to get %s. %s."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1358
+#: plugin/class.seo-ultimate.php:1361
 msgid "View changelog"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1435
+#: plugin/class.seo-ultimate.php:1438
 msgid "Active Modules: "
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1502
+#: plugin/class.seo-ultimate.php:1505
 msgid ""
 "<strong>SEO Ultimate Notice:</strong> Your blog is configured to block "
 "search engine spiders. To resolve this, <a href=\"options-reading.php\" "
@@ -4298,32 +4302,32 @@ msgid ""
 "discourage search engines&#8221; option."
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1583
+#: plugin/class.seo-ultimate.php:1586
 msgid "Search Engine Listing"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1584
+#: plugin/class.seo-ultimate.php:1587
 msgid "Social Networks Listing"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1585
+#: plugin/class.seo-ultimate.php:1588
 msgid "Links"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1687
+#: plugin/class.seo-ultimate.php:1690
 #, php-format
 msgid "%1$s %2$s by %3$s"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1875
+#: plugin/class.seo-ultimate.php:1878
 msgid "Home"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1946
+#: plugin/class.seo-ultimate.php:1949
 msgid "Author Archives"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:1975
+#: plugin/class.seo-ultimate.php:1978
 msgid "Link Masks"
 msgstr ""
 
