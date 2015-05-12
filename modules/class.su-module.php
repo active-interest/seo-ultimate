@@ -1468,7 +1468,7 @@ class SU_Module {
 	 * @param $headers Array of (CSS class => Internationalized column title)
 	 */
 	function admin_wftable_start($headers = false) {
-		echo "\n<table class='widefat' cellspacing='0'>\n";
+		echo "\n<table class='table table-bordered'>\n";
 		if ($headers)
 			$this->table_column_headers($headers);
 		else {

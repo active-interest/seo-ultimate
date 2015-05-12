@@ -490,18 +490,13 @@ class SEO_Ultimate {
 						//If this is actually a module...
 						if (class_exists($class)) {
 							
-							if (	   ($module_parent = call_user_func(array($class, 'get_parent_module')))
-									&& !call_user_func(array($class, 'is_independent_module'))
-								)
+							if (($module_parent = call_user_func(array($class, 'get_parent_module'))) && !call_user_func(array($class, 'is_independent_module')))
 								$module_disabled = (isset($oldmodules[$module_parent]) && $oldmodules[$module_parent] == SU_MODULE_DISABLED);
 							else
 								$module_disabled = (isset($oldmodules[$module]) && $oldmodules[$module] == SU_MODULE_DISABLED);
 							
-							//if (!isset($oldmodules[$module]) && call_user_func(array($class, 'get_default_status')) == SU_MODULE_DISABLED)
-								//$module_disabled = true;
-							
-							if (!isset($oldmodules[$module]) && call_user_func(array($class, 'get_default_status') == SU_MODULE_DISABLED));							
-								$module_disabled = false;
+							if (!isset($oldmodules[$module]) && call_user_func(array($class, 'get_default_status')) == SU_MODULE_DISABLED)
+								$module_disabled = true;
 							
 							if (in_array($module, $this->get_invincible_modules())) {
 								$module_disabled = false;
