@@ -1083,9 +1083,10 @@ class SEO_Ultimate {
 		//load if SDF is not active
 		global $pagenow;
 		$current = (isset($_GET['page'])) ? $_GET['page'] : '';
-		$pages = array( 'index.php', 'edit.php', 'post.php', 'post-new.php' );
+		$post_type = (isset($_GET['post_type'])) ? $_GET['post_type'] : '';
+		$post_types = array( 'page', 'portfolio', 'ads', '');
 		$sdf_admin_pages = array('sdf','sdf-settings','sdf-silo','sdf-silo-manual-builder','sdf-header','sdf-layout','sdf-shortcode','sdf-styles','revslider','sdf-footer','seo', 'su-fofs', 'su-misc', 'su-user-code', 'su-autolinks', 'su-files', 'su-internal-link-aliases', 'su-meta-descriptions', 'su-meta-keywords', 'su-meta-robots', 'su-opengraph', 'seo-ultimate', 'su-wp-settings', 'su-titles', 'su-sds-blog');
-		if( in_array( $pagenow, $pages ) || in_array( $current, $sdf_admin_pages )) {
+		if( in_array( $current, $sdf_admin_pages) || ( in_array( $pagenow, array( 'post.php', 'post-new.php' )) && in_array( $post_type, $post_types ) )) {
 			// admin styles
 			wp_register_style('sdf-bootstrap-admin', $this->plugin_dir_url.'plugin/sdf/bootstrap/css/bootstrap.admin.css', array(), null, 'screen');
 			wp_register_style('sdf-bootstrap-admin-theme', $this->plugin_dir_url.'plugin/sdf/bootstrap/css/bootstrap-theme.admin.css', array(), null, 'screen');		

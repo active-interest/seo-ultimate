@@ -7,7 +7,6 @@ jQuery(document).ready(function($) {
 	$('#sdf_dashboard_widget .inside').hide();
 	var sds_promo_blog_post = $('#sds_promo_blog_post').html();
 	var banners_remote = ({
-"enabled":true,
 "banners": [
 {"banner_img":"InternalLinkBanner.jpg", "banner_link":"https://seodesignframework.leadpages.net/internal-links/"},
 {"banner_img":"MetaWritingBanner.jpg", "banner_link":"https://seodesignframework.leadpages.net/meta-titles-descriptions/"}
@@ -19,12 +18,14 @@ jQuery(document).ready(function($) {
 {"slide_cap":"<h3>What, No Control?</h3><p>Become Master of your Blog with Page-Level Controls that Liberate Designs and Crush Limitations of other Themes and Frameworks.</p>", "slide_link":"http://www.seodesignframework.com/page-level-controls/"}
 ],
 "dashboard_widget": [
-{"title":"Learn How to Use SEO Ultimate", "content":"<p>Get access to <a rel=\"nofollow\" target=\"_blank\" title=\"SEO Ultimate video training\" href=\"https://seodesignframework.leadpages.net/seo-ultimate-video-training/\">detailed video training</a> covering each module.</p><a rel=\"nofollow\" target=\"_blank\" title=\"SEO Ultimate video training\" href=\"https://seodesignframework.leadpages.net/seo-ultimate-video-training/\"><img src=\"" + suModulesSdfAdsSdfAdsL10n.sdf_banners_url + "SEO-VideoTraining-Banner-v3.jpg\" alt=\"SEO Ultimate video training\" /></a>"}
+{"title":"Introducing SEO Ultimate+", "content":"<a rel=\"nofollow\" target=\"_blank\" title=\"SEO Ultimate+\" href=\"http://www.seoultimateplus.com\"><img src=\"" + suModulesSdfAdsSdfAdsL10n.sdf_banners_url + "SEO-Ultimate-Dashboard-Bannner-1.jpg\" alt=\"SEO Ultimate+\" /></a><p>To Get Premium Support and Exclusive New Features.<br />Upgrade to <a rel=\"nofollow\" target=\"_blank\" title=\"SEO Ultimate+\" href=\"http://www.seoultimateplus.com\">SEO Ultimate+</a> Today!</p>"}
 ]
 })
 
-	var sdf_carousel = '';
-	if (banners_remote.enabled === true) {
+		
+	var promo_carousel = $('#sdf-promo-carousel');
+	if (promo_carousel.length > 0) {
+		var sdf_carousel = '';
 		var shuffled_banners = shuffleArray(banners_remote.banners);
 		var shuffled_slides = shuffleArray(banners_remote.slides);
 		// check if it's cloud hosted banner
@@ -51,15 +52,15 @@ jQuery(document).ready(function($) {
 		sdf_carousel = sdf_carousel + "<div class=\"item\"><div class=\"container\"><div class=\"carousel-caption\">"+ sds_promo_blog_post + "</div></div></div>";
 		sdf_carousel = sdf_carousel + "</div><a class=\"left carousel-control\" href=\"#sdfCarousel\" data-slide=\"prev\"><span class=\"glyphicon glyphicon-chevron-left\"></span></a><a class=\"right carousel-control\" href=\"#sdfCarousel\" data-slide=\"next\"><span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>";
 		
-		$('#sdf-promo-carousel').html(sdf_carousel).delay(500).fadeIn(400).carousel({ interval:12000 });
-		
-		// dashboard widget
-		$('#sdf_dashboard_widget h3.hndle span').html(banners_remote.dashboard_widget[0].title);
-		$('#sdf_dashboard_widget .inside').html(banners_remote.dashboard_widget[0].content);
-		setTimeout(function(){
-			$('#sdf_dashboard_widget .inside').fadeIn(400);
-		},800);
-	}
+		promo_carousel.html(sdf_carousel).delay(500).fadeIn(400).carousel({ interval:12000 });
+	}	
+	
+	// dashboard widget
+	$('#sdf_dashboard_widget h3.hndle span').html(banners_remote.dashboard_widget[0].title);
+	$('#sdf_dashboard_widget .inside').html(banners_remote.dashboard_widget[0].content);
+	setTimeout(function(){
+		$('#sdf_dashboard_widget .inside').fadeIn(400);
+	},800);
 
 });
  
