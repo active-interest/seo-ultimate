@@ -254,6 +254,13 @@ Frequently asked questions, settings help, and troubleshooting tips for SEO Ulti
 
 == Changelog ==
 
+= Version 7.6.5.7 (June 29, 2015) =
+* Improvement: SEO Admin Toolbar Menu
+* Bugfix: Bootstrap/Prototype Conflict Fix
+* Bugfix: Load seo.admin.css
+* Bugfix: Styles fix for all post types
+* Bugfix: Removed Dashboard Banner
+
 = Version 7.6.5.6 (June 8, 2015) =
 * Bugfix: CiviCRM Conflict Issue With SEO Ultimate Open Graph Integrator & Titles Module
 * Bugfix: Excluded Bootstrap tooltips and popovers from css/js
