@@ -1137,7 +1137,7 @@ class SU_Module {
 		echo "\n<div class='su-meta-edit-table'>\n";
 		
 		$page_links = paginate_links( array(
-			  'base' => add_query_arg( $type . '_paged', '%#%' ) . '#' . $tab
+			  'base' => esc_url( add_query_arg( $type . '_paged', '%#%' ) ) . '#' . $tab
 			, 'format' => ''
 			, 'prev_text' => __('&laquo;')
 			, 'next_text' => __('&raquo;')
@@ -1196,9 +1196,16 @@ class SU_Module {
 					
 					break;
 				case 'term':
-					$id = intval($object->term_id);
+					if (!isset($object->term_taxonomy_id)) {
+						$id = intval($object->term_id);
+						$view_url = get_term_link($id, $type);
+					}
+					else{
+						$id = intval($object->term_taxonomy_id);
+						$view_url = get_term_link(intval($object->term_id), $type);
+					}
 					$name = $object->name;
-					$view_url = get_term_link($id, $type);
+
 					$edit_url = suwp::get_edit_term_link($id, $type);
 					break;
 				default: return false; break;
@@ -1461,7 +1468,7 @@ class SU_Module {
 	 * @param $headers Array of (CSS class => Internationalized column title)
 	 */
 	function admin_wftable_start($headers = false) {
-		echo "\n<table class='widefat' cellspacing='0'>\n";
+		echo "\n<table class='table table-bordered'>\n";
 		if ($headers)
 			$this->table_column_headers($headers);
 		else {
@@ -3059,6 +3066,8 @@ class SU_Module {
 			<?php $this->promo_sdf_banners_rss_output( 'http://feeds.seodesignsolutions.com/SeoDesignSolutionsBlog', array('show_summary' => 1, 'show_date' => 0, 'items' => 1) ); ?>
 			</div>
 			<div id="sdf-promo-carousel"></div>
+			<p>Remove these ads?<br />
+			<a href="https://seoultimateplus.com/?ref=su-rmv-ad" target="_blank" title="Upgrade to SEO Ultimate+">Upgrade to SEO Ultimate+</a></p>
 			<?php
 		}	
 	}

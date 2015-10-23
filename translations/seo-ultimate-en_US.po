@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the SEO Ultimate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: SEO Ultimate v7.6.4\n"
+"Project-Id-Version: SEO Ultimate v7.6.5.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-ultimate\n"
-"POT-Creation-Date: 2014-04-11 15:17+0100\n"
-"PO-Revision-Date: 2014-04-11 15:17+0100\n"
+"POT-Creation-Date: 2015-06-29 20:58+0100\n"
+"PO-Revision-Date: 2015-06-29 20:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: SEO Design Solutions <support@seodesignsolutions.com>\n"
 "Language: en_US\n"
@@ -190,6 +190,7 @@ msgid "(Use * as wildcard)"
 msgstr ""
 
 #: modules/404s/fofs.php:11 modules/404s/fofs.php:12
+#: plugin/su-functions.php:239 plugin/su-functions.php:244
 msgid "404 Monitor"
 msgstr ""
 
@@ -203,8 +204,8 @@ msgstr ""
 #: modules/meta/webmaster-verify.php:95 modules/meta/webmaster-verify.php:101
 #: modules/more-links/more-links.php:104 modules/more-links/more-links.php:111
 #: modules/opengraph/opengraph.php:545
-#: modules/rich-snippets/rich-snippets.php:412
-#: modules/rich-snippets/rich-snippets.php:419
+#: modules/rich-snippets/rich-snippets.php:410
+#: modules/rich-snippets/rich-snippets.php:417
 #: modules/settings/settings.php:63
 #: modules/sharing-buttons/sharing-buttons.php:82
 #: modules/sharing-buttons/sharing-buttons.php:88 modules/slugs/slugs.php:113
@@ -319,8 +320,8 @@ msgstr ""
 #: modules/404s/fofs.php:96 modules/autolinks/autolinks.php:162
 #: modules/files/files.php:179 modules/meta/meta-descriptions.php:224
 #: modules/meta/meta-keywords.php:213 modules/meta/meta-robots.php:102
-#: modules/rich-snippets/rich-snippets.php:413
-#: modules/rich-snippets/rich-snippets.php:424 modules/slugs/slugs.php:115
+#: modules/rich-snippets/rich-snippets.php:411
+#: modules/rich-snippets/rich-snippets.php:422 modules/slugs/slugs.php:115
 #: modules/slugs/slugs.php:131 modules/titles/titles.php:479
 #: modules/user-code/user-code.php:113
 msgid "Troubleshooting"
@@ -343,11 +344,13 @@ msgid ""
 "</ul>\n"
 msgstr ""
 
-#: modules/author-links/author-links.php:1
+#: modules/author-links/author-links.php:16
+#: modules/author-links/author-links.php:17 plugin/su-functions.php:251
+#: plugin/su-functions.php:256
 msgid "Author Highlighter"
 msgstr ""
 
-#: modules/author-links/author-links.php:1
+#: modules/author-links/author-links.php:31
 msgid ""
 "In order for author highlighting to work, your authors with Google+ accounts "
 "need to add their Google+ URLs to their profile page on this site. Why "
@@ -355,7 +358,7 @@ msgid ""
 "\">your profile</a>?"
 msgstr ""
 
-#: modules/author-links/author-links.php:1
+#: modules/author-links/author-links.php:36
 msgid ""
 "Since this site only has one <a href=\"users.php\">registered user</a> who "
 "has written posts, Author Highlighter is providing that user&#8217;s Google+ "
@@ -365,19 +368,24 @@ msgid ""
 "posts, then additional options would show up in this section."
 msgstr ""
 
-#: modules/author-links/author-links.php:1
+#: modules/author-links/author-links.php:50
 msgid "(None)"
 msgstr ""
 
-#: modules/author-links/author-links.php:1
+#: modules/author-links/author-links.php:55
 msgid "Author of Blog Homepage"
 msgstr ""
 
-#: modules/author-links/author-links.php:1
+#: modules/author-links/author-links.php:56
 msgid "Author of Archive Pages"
 msgstr ""
 
+#: modules/author-links/author-links.php:93
+msgid "Google+ Profile URL"
+msgstr ""
+
 #: modules/autolinks/autolinks.php:11 modules/autolinks/autolinks.php:12
+#: plugin/su-functions.php:203 plugin/su-functions.php:208
 msgid "Deeplink Juggernaut"
 msgstr ""
 
@@ -807,13 +815,13 @@ msgstr ""
 msgid "Content Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:263
+#: modules/autolinks/content-autolinks.php:264
 msgid ""
 "The Content Links section of Deeplink Juggernaut lets you automatically link "
 "a certain word or phrase in your post/page content to a URL you specify."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:326
+#: modules/autolinks/content-autolinks.php:327
 msgid ""
 "<strong>Functionality Change Notice:</strong> The &#8220;Site Cap&#8221; "
 "feature (which allowed you set a per-link sitewide quantity limit) has been "
@@ -828,74 +836,74 @@ msgid ""
 "to make those boxes (and this message) go away."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:332
+#: modules/autolinks/content-autolinks.php:333
 #: modules/autolinks/footer-autolinks.php:157
 msgid "Edit Existing Links"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:336
+#: modules/autolinks/content-autolinks.php:337
 #: modules/autolinks/footer-autolinks.php:161
 msgid "Add a New Link"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:349
+#: modules/autolinks/content-autolinks.php:350
 #: modules/autolinks/footer-autolinks.php:171
 msgid "Anchor Text"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:350
+#: modules/autolinks/content-autolinks.php:351
 #: modules/autolinks/footer-autolinks.php:172
 msgid "Destination"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:351
+#: modules/autolinks/content-autolinks.php:352
 #: modules/autolinks/footer-autolinks.php:173
 msgid "Title Attribute <em>(optional)</em>"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:353
+#: modules/autolinks/content-autolinks.php:354
 msgid "Dampener"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:355
+#: modules/autolinks/content-autolinks.php:356
 msgid "Site Cap"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:356
+#: modules/autolinks/content-autolinks.php:357
 #: modules/autolinks/footer-autolinks.php:174
 msgid "Options"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:358
+#: modules/autolinks/content-autolinks.php:359
 #: modules/autolinks/footer-autolinks.php:176
 #: modules/internal-link-aliases/internal-link-aliases.php:103
 msgid "Delete"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:395
+#: modules/autolinks/content-autolinks.php:396
 #: modules/autolinks/footer-autolinks.php:210 modules/noindex/noindex.php:61
 #: modules/noindex/noindex.php:85
 msgid "Nofollow"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:397
+#: modules/autolinks/content-autolinks.php:398
 #: modules/autolinks/footer-autolinks.php:212
 msgid "New window"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:478
+#: modules/autolinks/content-autolinks.php:479
 msgid "Inbound Autolink Anchors:<br /><em>(one per line)</em>"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:481
+#: modules/autolinks/content-autolinks.php:482
 msgid "Don&#8217;t add autolinks to anchor texts found in this post."
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:481
+#: modules/autolinks/content-autolinks.php:482
 msgid "Autolink Exclusion:"
 msgstr ""
 
-#: modules/autolinks/content-autolinks.php:487
+#: modules/autolinks/content-autolinks.php:488
 msgid ""
 "<strong>Incoming Autolink Anchors</strong> &mdash; When you enter anchors "
 "into this box, Deeplink Juggernaut will search for that anchor in all your "
@@ -954,6 +962,7 @@ msgid "Negative match"
 msgstr ""
 
 #: modules/canonical/canonical.php:12 modules/canonical/canonical.php:221
+#: plugin/su-functions.php:263 plugin/su-functions.php:268
 msgid "Canonicalizer"
 msgstr ""
 
@@ -1172,95 +1181,96 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: modules/class.su-module.php:1210
+#: modules/class.su-module.php:1217
 msgid "View"
 msgstr ""
 
-#: modules/class.su-module.php:1212
+#: modules/class.su-module.php:1219
 msgid "Edit"
 msgstr ""
 
-#: modules/class.su-module.php:1382
+#: modules/class.su-module.php:1389
 msgid "Settings updated."
 msgstr ""
 
-#: modules/class.su-module.php:1403
+#: modules/class.su-module.php:1410
 msgid "Save Changes"
 msgstr ""
 
-#: modules/class.su-module.php:1890
+#: modules/class.su-module.php:1897
 msgid ""
 "Are you sure you want to replace the textbox contents with this default "
 "value?"
 msgstr ""
 
-#: modules/class.su-module.php:1919 modules/settings/settings-data.php:23
+#: modules/class.su-module.php:1926 modules/settings/settings-data.php:23
 msgid "Reset"
 msgstr ""
 
-#: modules/class.su-module.php:2776 modules/class.su-module.php:2788
+#: modules/class.su-module.php:2778 modules/class.su-module.php:2790
 #, php-format
 msgid "A Deleted %s"
 msgstr ""
 
-#: modules/class.su-module.php:2778
+#: modules/class.su-module.php:2780
 msgid "A Deleted Post"
 msgstr ""
 
-#: modules/class.su-module.php:2793
+#: modules/class.su-module.php:2795
 msgid "A Deleted Term"
 msgstr ""
 
-#: modules/class.su-module.php:2799 modules/meta/meta-descriptions.php:31
+#: modules/class.su-module.php:2801 modules/meta/meta-descriptions.php:31
 #: modules/meta/meta-keywords.php:40 modules/opengraph/opengraph.php:352
 #: plugin/class.seo-ultimate.php:1876
 msgid "Blog Homepage"
 msgstr ""
 
-#: modules/class.su-module.php:2804 plugin/class.seo-ultimate.php:1952
+#: modules/class.su-module.php:2806 plugin/class.seo-ultimate.php:1952
 msgid "Author"
 msgstr ""
 
-#: modules/class.su-module.php:2806
+#: modules/class.su-module.php:2808
 msgid "A Deleted User"
 msgstr ""
 
-#: modules/class.su-module.php:2821 plugin/class.seo-ultimate.php:1982
+#: modules/class.su-module.php:2823 plugin/class.seo-ultimate.php:1982
 msgid "Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2823
+#: modules/class.su-module.php:2825
 msgid "Link Mask (Disabled)"
 msgstr ""
 
-#: modules/class.su-module.php:2828
+#: modules/class.su-module.php:2830
 msgid "A Deleted Link Mask"
 msgstr ""
 
-#: modules/class.su-module.php:2858
+#: modules/class.su-module.php:2860
 msgid "Type a URL or start typing the name of an item on your site"
 msgstr ""
 
-#: modules/class.su-module.php:2871
+#: modules/class.su-module.php:2873
 msgid "Remove this location from this textbox"
 msgstr ""
 
-#: modules/class.su-module.php:2871
+#: modules/class.su-module.php:2873
 msgid "X"
 msgstr ""
 
-#: modules/class.su-module.php:2980 modules/sds-blog/sds-blog.php:138
+#: modules/class.su-module.php:2982 modules/sds-blog/sds-blog.php:138
 #, php-format
 msgid "<strong>RSS Error</strong>: %s"
 msgstr ""
 
-#: modules/class.su-module.php:2996 modules/sds-blog/sds-blog.php:154
+#: modules/class.su-module.php:2998 modules/sds-blog/sds-blog.php:154
 msgid ""
 "An error has occurred, which probably means the feed is down. Try again "
 "later."
 msgstr ""
 
 #: modules/files/files.php:14 modules/files/files.php:15
+#: plugin/su-functions.php:287 plugin/su-functions.php:292
 msgid "File Editor"
 msgstr ""
 
@@ -1408,6 +1418,7 @@ msgstr ""
 
 #: modules/internal-link-aliases/internal-link-aliases.php:27
 #: modules/internal-link-aliases/internal-link-aliases.php:28
+#: plugin/su-functions.php:215 plugin/su-functions.php:220
 msgid "Link Mask Generator"
 msgstr ""
 
@@ -1569,7 +1580,8 @@ msgid ""
 msgstr ""
 
 #: modules/link-nofollow/link-nofollow.php:12
-#: modules/link-nofollow/link-nofollow.php:132
+#: modules/link-nofollow/link-nofollow.php:132 plugin/su-functions.php:347
+#: plugin/su-functions.php:352
 msgid "Nofollow Manager"
 msgstr ""
 
@@ -1652,6 +1664,7 @@ msgid ""
 msgstr ""
 
 #: modules/linkbox/linkbox.php:12 modules/linkbox/linkbox.php:126
+#: plugin/su-functions.php:299 plugin/su-functions.php:304
 msgid "Linkbox Inserter"
 msgstr ""
 
@@ -1729,7 +1742,8 @@ msgid ""
 "</ul>\n"
 msgstr ""
 
-#: modules/meta/meta-descriptions.php:18
+#: modules/meta/meta-descriptions.php:18 plugin/su-functions.php:179
+#: plugin/su-functions.php:184
 msgid "Meta Description Editor"
 msgstr ""
 
@@ -1874,7 +1888,8 @@ msgid ""
 "</ul>\n"
 msgstr ""
 
-#: modules/meta/meta-keywords.php:18
+#: modules/meta/meta-keywords.php:18 plugin/su-functions.php:311
+#: plugin/su-functions.php:316
 msgid "Meta Keywords Editor"
 msgstr ""
 
@@ -1990,7 +2005,8 @@ msgstr ""
 msgid "Meta Robot Tags Editor"
 msgstr ""
 
-#: modules/meta/meta-robots.php:13
+#: modules/meta/meta-robots.php:13 plugin/su-functions.php:191
+#: plugin/su-functions.php:196
 msgid "Meta Robot Tags"
 msgstr ""
 
@@ -2117,6 +2133,7 @@ msgid ""
 msgstr ""
 
 #: modules/meta/webmaster-verify.php:12 modules/meta/webmaster-verify.php:93
+#: plugin/su-functions.php:431 plugin/su-functions.php:436
 msgid "Webmaster Verification Assistant"
 msgstr ""
 
@@ -2160,7 +2177,8 @@ msgid ""
 msgstr ""
 
 #: modules/misc/misc.php:11 modules/misc/misc.php:12
-#: plugin/class.seo-ultimate.php:1586
+#: plugin/class.seo-ultimate.php:1586 plugin/su-functions.php:335
+#: plugin/su-functions.php:340
 msgid "Miscellaneous"
 msgstr ""
 
@@ -2174,7 +2192,8 @@ msgstr ""
 msgid "Module Manager"
 msgstr ""
 
-#: modules/modules/modules.php:13
+#: modules/modules/modules.php:13 plugin/su-functions.php:155
+#: plugin/su-functions.php:160
 msgid "Modules"
 msgstr ""
 
@@ -2270,6 +2289,7 @@ msgid ""
 msgstr ""
 
 #: modules/more-links/more-links.php:12 modules/more-links/more-links.php:102
+#: plugin/su-functions.php:323 plugin/su-functions.php:328
 msgid "More Link Customizer"
 msgstr ""
 
@@ -2802,7 +2822,8 @@ msgid ""
 "</ul>\n"
 msgstr ""
 
-#: modules/permalinks/permalinks.php:15
+#: modules/permalinks/permalinks.php:15 plugin/su-functions.php:227
+#: plugin/su-functions.php:232
 msgid "Permalink Tweaker"
 msgstr ""
 
@@ -2845,7 +2866,8 @@ msgid ""
 msgstr ""
 
 #: modules/rich-snippets/rich-snippets.php:14
-#: modules/rich-snippets/rich-snippets.php:410
+#: modules/rich-snippets/rich-snippets.php:408 plugin/su-functions.php:371
+#: plugin/su-functions.php:376
 msgid "Rich Snippet Creator"
 msgstr ""
 
@@ -2993,51 +3015,47 @@ msgstr ""
 msgid "Star Rating for Reviewed Item:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:374
+#: modules/rich-snippets/rich-snippets.php:373
 msgid "Street Address:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:375
+#: modules/rich-snippets/rich-snippets.php:374
 msgid "Post Office Box Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:376
+#: modules/rich-snippets/rich-snippets.php:375
 msgid "City:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:377
+#: modules/rich-snippets/rich-snippets.php:376
 msgid "State or Region:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:378
+#: modules/rich-snippets/rich-snippets.php:377
 msgid "Country:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:379
+#: modules/rich-snippets/rich-snippets.php:378
 msgid "Postal Code:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:380
-msgid "Address:"
-msgstr ""
-
-#: modules/rich-snippets/rich-snippets.php:381
+#: modules/rich-snippets/rich-snippets.php:379
 msgid "Map Page:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:382
+#: modules/rich-snippets/rich-snippets.php:380
 msgid "Phone Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:383
+#: modules/rich-snippets/rich-snippets.php:381
 msgid "Fax Number:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:384
+#: modules/rich-snippets/rich-snippets.php:382
 msgid "Photo:"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:393
+#: modules/rich-snippets/rich-snippets.php:391
 msgid ""
 "\n"
 "<ul>\n"
@@ -3064,7 +3082,7 @@ msgid ""
 "</ul>\n"
 msgstr ""
 
-#: modules/rich-snippets/rich-snippets.php:401
+#: modules/rich-snippets/rich-snippets.php:399
 msgid ""
 "\n"
 "<ul>\n"
@@ -3110,12 +3128,16 @@ msgstr ""
 msgid "Global Settings"
 msgstr ""
 
-#: modules/settings/global-settings.php:41
+#: modules/settings/global-settings.php:42
 msgid "Identify the plugin&#8217;s HTML code insertions with HTML comment tags"
 msgstr ""
 
-#: modules/settings/global-settings.php:42
+#: modules/settings/global-settings.php:43
 msgid "Show the promo slider for SEO Design Framework on plugin pages"
+msgstr ""
+
+#: modules/settings/global-settings.php:44
+msgid "Show \"SEO\" Menu in admin toolbar"
 msgstr ""
 
 #: modules/settings/install.php:18
@@ -3397,7 +3419,8 @@ msgstr ""
 msgid "Plugin Management"
 msgstr ""
 
-#: modules/settings/settings.php:16
+#: modules/settings/settings.php:16 plugin/su-functions.php:359
+#: plugin/su-functions.php:364
 msgid "Plugin Settings"
 msgstr ""
 
@@ -3409,7 +3432,7 @@ msgstr ""
 msgid "SEO Ultimate Plugin Settings"
 msgstr ""
 
-#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:854
+#: modules/settings/settings.php:26 plugin/class.seo-ultimate.php:852
 msgid "SEO Ultimate"
 msgstr ""
 
@@ -3506,7 +3529,8 @@ msgid "Uninstallation complete. Thanks for trying SEO Ultimate."
 msgstr ""
 
 #: modules/sharing-buttons/sharing-buttons.php:12
-#: modules/sharing-buttons/sharing-buttons.php:80
+#: modules/sharing-buttons/sharing-buttons.php:80 plugin/su-functions.php:407
+#: plugin/su-functions.php:412
 msgid "Sharing Facilitator"
 msgstr ""
 
@@ -3546,6 +3570,7 @@ msgid ""
 msgstr ""
 
 #: modules/slugs/slugs.php:12 modules/slugs/slugs.php:111
+#: plugin/su-functions.php:419 plugin/su-functions.php:424
 msgid "Slug Optimizer"
 msgstr ""
 
@@ -3622,6 +3647,7 @@ msgid ""
 msgstr ""
 
 #: modules/titles/titles.php:18 modules/titles/titles.php:19
+#: plugin/su-functions.php:167 plugin/su-functions.php:172
 msgid "Title Tag Rewriter"
 msgstr ""
 
@@ -3994,6 +4020,7 @@ msgid ""
 msgstr ""
 
 #: modules/user-code/user-code.php:21 modules/user-code/user-code.php:22
+#: plugin/su-functions.php:275 plugin/su-functions.php:280
 msgid "Code Inserter"
 msgstr ""
 
@@ -4121,7 +4148,8 @@ msgid "Use my <a href=\"%s\" target=\"_blank\">footer link HTML formats</a>"
 msgstr ""
 
 #: modules/wp-settings/wp-settings.php:14
-#: modules/wp-settings/wp-settings.php:15
+#: modules/wp-settings/wp-settings.php:15 plugin/su-functions.php:395
+#: plugin/su-functions.php:400
 msgid "Settings Monitor"
 msgstr ""
 
@@ -4194,7 +4222,8 @@ msgstr ""
 msgid "Go to setting &raquo;"
 msgstr ""
 
-#: plugin/class.seo-ultimate.php:854
+#: plugin/class.seo-ultimate.php:852 plugin/su-functions.php:137
+#: plugin/su-functions.php:141
 msgid "SEO"
 msgstr ""
 
@@ -4205,6 +4234,7 @@ msgid ""
 msgstr ""
 
 #: plugin/class.seo-ultimate.php:1230 plugin/class.seo-ultimate.php:1656
+#: plugin/su-functions.php:150
 msgid "SEO Settings"
 msgstr ""
 
@@ -4399,6 +4429,78 @@ msgstr ""
 
 #: plugin/class.su-installer.php:38
 msgid "Plugin upgraded successfully."
+msgstr ""
+
+#: plugin/su-functions.php:383 plugin/su-functions.php:388
+msgid "SEO Ultimate Plus Widgets"
+msgstr ""
+
+#: plugin/su-functions.php:443 plugin/su-functions.php:448
+msgid "What&#39;s New"
+msgstr ""
+
+#: plugin/su-functions.php:457
+msgid "Keyword Research"
+msgstr ""
+
+#: plugin/su-functions.php:476
+msgid "Google AdWords Keyword Planner"
+msgstr ""
+
+#: plugin/su-functions.php:483
+msgid "Google Insights"
+msgstr ""
+
+#: plugin/su-functions.php:496
+msgid "Page Analysis Tools"
+msgstr ""
+
+#: plugin/su-functions.php:502
+msgid "Check OSE DA/PA"
+msgstr ""
+
+#: plugin/su-functions.php:509
+msgid "Check Keyword Density"
+msgstr ""
+
+#: plugin/su-functions.php:516
+msgid "Check Google Cache"
+msgstr ""
+
+#: plugin/su-functions.php:523
+msgid "Check Headers"
+msgstr ""
+
+#: plugin/su-functions.php:530
+msgid "Check Rich Snippets"
+msgstr ""
+
+#: plugin/su-functions.php:537
+msgid "Facebook Debugger"
+msgstr ""
+
+#: plugin/su-functions.php:544
+msgid "Pinterest Rich Pins Validator"
+msgstr ""
+
+#: plugin/su-functions.php:551
+msgid "HTML Validator"
+msgstr ""
+
+#: plugin/su-functions.php:558
+msgid "CSS Validator"
+msgstr ""
+
+#: plugin/su-functions.php:565
+msgid "Google Page Speed Test"
+msgstr ""
+
+#: plugin/su-functions.php:572
+msgid "Modern IE Site Scan"
+msgstr ""
+
+#: plugin/su-functions.php:579
+msgid "Wayback Machine Page Archive"
 msgstr ""
 
 #: seo-ultimate.php:84
